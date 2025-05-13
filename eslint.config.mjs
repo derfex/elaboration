@@ -17,14 +17,14 @@ export default [
       '@nx/enforce-module-boundaries': [
         'error',
         {
-          enforceBuildableLibDependency: true,
           allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
           depConstraints: [
             {
-              sourceTag: '*',
               onlyDependOnLibsWithTags: ['*'],
+              sourceTag: '*',
             },
           ],
+          enforceBuildableLibDependency: true,
         },
       ],
     },
@@ -42,5 +42,23 @@ export default [
     ],
     // Override or add rules here
     rules: {},
+  },
+
+  {
+    files: ['**/*.{js,ts,vue}'],
+    name: 'app/{js,ts,vue}/sort',
+    rules: {
+      'sort-keys': ['error', 'asc', { caseSensitive: true, minKeys: 2, natural: true }],
+    },
+  },
+
+  {
+    files: ['**/*.{ts,vue}'],
+    name: 'app/{ts,vue}/typification',
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'error',
+      '@typescript-eslint/no-explicit-any': 'warn',
+    },
   },
 ];
