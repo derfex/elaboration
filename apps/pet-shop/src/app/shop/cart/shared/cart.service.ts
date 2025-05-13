@@ -8,7 +8,7 @@ import {
 // Internal modules.
 import {
   ProductModels,
-} from 'src/app/shop/products/shared/product-table-view.model';
+} from '../../products/shared/product-table-view.model';
 
 // Definitions.
 interface IItemsState {
@@ -47,7 +47,7 @@ export class CartService {
     });
   }
 
-  public deleteProductByID(id): void {
+  public deleteProductByID(id: number): void {
     const value = this.subject.getValue();
     const items = value.items.filter(item => item.id !== id);
     const keys = value.keys;
