@@ -1,3 +1,4 @@
+// TODO: Avoid `I` prefix.
 export interface IProductTableViewModel {
   id: number;
   name: string;
