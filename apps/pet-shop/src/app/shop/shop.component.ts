@@ -1,14 +1,14 @@
 // External modules.
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { Subscription } from 'rxjs';
+import { type Subscription } from 'rxjs';
 import { CartComponent } from './cart/cart.component';
 
 // Internal modules.
 import { CartService } from './cart/shared/cart.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service';
-import { IProductTableViewModel } from './products/shared/product-table-view.model';
+import { type IProductTableViewModel } from './products/shared/product-table-view.model';
 import { CategoriesSelectComponent } from './shared/components/categories-select/categories-select.component';
 
 // Definitions.
@@ -41,7 +41,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly cartService: CartService,
-    private readonly productsService: ProductsHTTPService
+    private readonly productsService: ProductsHTTPService,
   ) {}
 
   // region ## Lifecycle hooks
