@@ -5,18 +5,18 @@ import {
 
 @Component({
   selector: 'app-emptiness',
-  templateUrl: './emptiness.component.html',
   styleUrls: ['./emptiness.component.sass'],
+  templateUrl: './emptiness.component.html',
 })
 export class EmptinessComponent {
-  private caption = 'No data to display';
+  protected caption = 'No data to display';
 
   @Input()
-  set text(caption: string) {
+  public set text(caption: string) {
     this.caption = caption;
   }
 
-  get text(): string {
+  public get text(): string {
     return this.caption;
   }
 }
