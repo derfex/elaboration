@@ -3,7 +3,7 @@ export interface IProductTableViewModel {
   id: number;
   name: string;
   parent: {
-    id: number;
+    id: number | null;
     name: string;
   };
   price: number;
