@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import {
   IProductsService,
   ObservableProducts,
-} from 'src/app/shop/products/services-implementation/products-service';
+} from '../products-service';
 import productsData from './products.data';
 
 
@@ -14,11 +14,7 @@ import productsData from './products.data';
   providedIn: 'root',
 })
 export class ProductsLocalService implements IProductsService {
-  private readonly observable: ObservableProducts;
-
-  constructor() {
-    this.observable = of(productsData);
-  }
+  private readonly observable: ObservableProducts = of(productsData);
 
   public getAll(): ObservableProducts {
     return this.observable;
