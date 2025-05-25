@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+
+// TODO: Rename to `BackendAPIService`.
 
 @Injectable({
   providedIn: 'root',
 })
 export class APIService {
-  constructor(private readonly httpClient: HttpClient) {}
+  readonly #httpClient = inject(HttpClient);
 
   public get<T>(url: string): Observable<T> {
-    return this.httpClient.get<T>(url);
+    return this.#httpClient.get<T>(url);
   }
 }
