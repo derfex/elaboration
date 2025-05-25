@@ -13,6 +13,6 @@ export const routes: Routes = [
       import(
         './integrator/pages/nx-welcome-page/nx-welcome-page.component'
       ).then((c) => c.NxWelcomePageComponent),
-    path: 'angular-hello',
+    path: 'nx-welcome',
   },
 ];
