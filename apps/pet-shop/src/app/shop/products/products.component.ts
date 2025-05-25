@@ -1,35 +1,68 @@
 // External modules.
 import { SelectionModel } from '@angular/cdk/collections';
+import { NgIf } from '@angular/common';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatSort, Sort } from '@angular/material/sort';
 import {
-  Component,
-  Input,
-  ViewChild,
-} from '@angular/core';
-import {
-  MatSort,
-  Sort,
-} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
+  MatTable,
+  MatTableDataSource,
+} from '@angular/material/table';
 
 // Internal modules.
+import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component';
 import {
   IProductTableViewModel,
   ProductModels,
 } from './shared/product-table-view.model';
 
-
 @Component({
+  imports: [
+    MatCell,
+    MatCellDef,
+    MatCheckbox,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatSort,
+    MatTable,
+    NgIf,
+
+    // Provided by the app.
+    EmptinessComponent,
+  ],
   selector: 'app-products',
-  templateUrl: './products.component.html',
+  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrls: ['./products.component.sass'],
+  templateUrl: './products.component.html',
 })
 export class ProductsComponent {
   // region ## Properties
   private itemsPrivate: ProductModels = [];
-  private dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([]);
-  private displayedColumns: string[] = ['select', 'number', 'name', 'parent', 'price'];
-  private selection = new SelectionModel<IProductTableViewModel>(true, []);
-  private filterPrivate: number = null;
+  protected dataSource: MatTableDataSource<IProductTableViewModel> =
+    new MatTableDataSource<IProductTableViewModel>([]);
+  protected displayedColumns: string[] = [
+    'select',
+    'number',
+    'name',
+    'parent',
+    'price',
+  ];
+  protected selection = new SelectionModel<IProductTableViewModel>(true, []);
+  private filterPrivate: number | null = null;
 
   @Input()
   set items(items: ProductModels) {
@@ -48,22 +81,21 @@ export class ProductsComponent {
   }
 
   get filter(): number {
-    return this.filterPrivate;
+    return this.filterPrivate ?? 0;
   }
 
-  @ViewChild(MatSort, {static: false})
-  sort: MatSort;
+  @ViewChild(MatSort, { static: false })
+  sort: MatSort | undefined;
 
   // endregion ## Properties
 
   constructor() {
-    this.dataSource.filterPredicate = (data, filter) => (
-      data.parent.id === +filter
-    );
+    this.dataSource.filterPredicate = (data, filter): boolean =>
+      data.parent.id === +filter;
   }
 
   // region ## Methods
-  private sortData(sort: Sort): void {
+  protected sortData(sort: Sort): void {
     const data = this.itemsPrivate.slice();
     if (!sort.active || sort.direction === '') {
       this.dataSource.data = data;
@@ -84,35 +116,36 @@ export class ProductsComponent {
     this.dataSource.data = data;
   }
 
-  private hasDisplayedData(): boolean {
+  protected hasDisplayedData(): boolean {
     return !!this.dataSource.filteredData.length;
   }
 
   // region ### Selection
   // Whether the number of selected elements matches the total number of rows.
-  private isAllSelected(): boolean {
+  protected isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
   // Selects all rows if they are not all selected; otherwise clear selection.
-  private masterToggle(): void {
+  protected masterToggle(): void {
     if (this.isAllSelected()) {
       this.selection.clear();
     } else {
-      this.dataSource.data.forEach(row => this.selection.select(row));
+      this.dataSource.data.forEach((row) => this.selection.select(row));
     }
   }
 
   // The label for the checkbox on the passed row.
-  private checkboxLabel(row?: IProductTableViewModel): string {
+  protected checkboxLabel(row?: IProductTableViewModel): string {
     if (!row) {
-      return `${ this.isAllSelected() ? 'select' : 'deselect' } all`;
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${ this.selection.isSelected(row) ? 'deselect' : 'select' } row ${ row.id + 1 }`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+      row.id + 1
+    }`;
   }
-
 
   public get selected(): ProductModels {
     return this.selection.selected;
