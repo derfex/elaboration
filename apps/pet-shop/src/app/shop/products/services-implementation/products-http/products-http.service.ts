@@ -3,10 +3,10 @@ import { inject, Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 // Internal modules.
+import { environment } from '../../../../../environments/environment';
 import { APIService } from '../../../../shared/services/api.service';
 import { IProductTableViewModel } from '../../shared/product-table-view.model';
 import { IProductsService, ObservableProducts } from '../products-service';
-import { environment } from './environment';
 
 // Definitions.
 function transformProduct(product: IProductTableViewModel): IProductTableViewModel {

@@ -3,8 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Internal modules.
+import { environment } from '../../../../environments/environment';
 import { APIService } from '../../../shared/services/api.service';
-import { environment } from './environment';
 
 // Definitions.
 // TODO: Avoid `I` prefix.
