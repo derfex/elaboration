@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 // Internal modules.
 import { APIService } from '../../../shared/services/api.service';
-import { environment } from './environment.prod';
+import { environment } from './environment';
 
 // Definitions.
 // TODO: Avoid `I` prefix.

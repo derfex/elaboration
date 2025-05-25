@@ -5,15 +5,14 @@
 const root = 'https://ssdev.superagent.ru/TestApp/';
 
 export const environment = {
-  production: false,
   API: {
-    root,
-    products: {
-      getAll: 'assets/products.json',
-    },
     categories: {
       getAll: 'assets/product-categories.json',
     },
+    products: {
+      getAll: 'assets/products.json',
+    },
+    root,
   },
 };
 

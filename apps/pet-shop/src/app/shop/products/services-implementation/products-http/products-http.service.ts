@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { APIService } from '../../../../shared/services/api.service';
 import { IProductTableViewModel } from '../../shared/product-table-view.model';
 import { IProductsService, ObservableProducts } from '../products-service';
-import { environment } from './environment.prod';
+import { environment } from './environment';
 
 // Definitions.
 function transformProduct(product: IProductTableViewModel): IProductTableViewModel {
