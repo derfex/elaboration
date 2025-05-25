@@ -45,6 +45,7 @@ import { CartService } from './shared/cart.service';
     EmptinessComponent,
   ],
   selector: 'app-cart',
+  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrls: ['./cart.component.sass'],
   templateUrl: './cart.component.html',
 })
