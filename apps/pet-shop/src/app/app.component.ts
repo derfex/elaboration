@@ -1,16 +1,13 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { Component } from '@angular/core'
+import { RouterModule } from '@angular/router'
 
 @Component({
   imports: [
-    NxWelcomeComponent,
     RouterModule,
   ],
   selector: 'app-root',
+  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  title = 'pet-shop';
-}
+export class AppComponent {}
