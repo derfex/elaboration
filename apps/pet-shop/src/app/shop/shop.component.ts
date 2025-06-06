@@ -1,21 +1,21 @@
 // External modules.
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { type Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core'
+import { MatButton } from '@angular/material/button'
+import { type Subscription } from 'rxjs'
 
 // Internal modules.
-import { CartComponent } from './cart/cart.component';
-import { CartService } from './cart/shared/cart.service';
-import { ProductsComponent } from './products/products.component';
-import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service';
-import { type IProductTableViewModel } from './products/shared/product-table-view.model';
-import { CategoriesSelectComponent } from './shared/components/categories-select/categories-select.component';
+import { CartComponent } from './cart/cart.component'
+import { CartService } from './cart/shared/cart.service'
+import { ProductsComponent } from './products/products.component'
+import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
+import { type IProductTableViewModel } from './products/shared/product-table-view.model'
+import { CategoriesSelectComponent } from './shared/components/categories-select/categories-select.component'
 
 // Definitions.
-type Products = IProductTableViewModel[];
-
+type Products = IProductTableViewModel[]
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButton,
 
@@ -25,17 +25,17 @@ type Products = IProductTableViewModel[];
     ProductsComponent,
   ],
   selector: 'app-shop',
-  standalone: true,
+  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrls: ['./shop.component.sass'],
   templateUrl: './shop.component.html',
 })
 export class ShopComponent implements OnInit, OnDestroy {
   // region ## Properties
-  private products: Products = [];
-  protected productsInList: Products = [];
-  protected productsInCart: Products = [];
-  private keysInCart: Set<number> = new Set();
-  private subscriptionToCart: Subscription | undefined;
+  private products: Products = []
+  protected productsInList: Products = []
+  protected productsInCart: Products = []
+  private keysInCart: Set<number> = new Set()
+  private subscriptionToCart: Subscription | undefined
 
   // endregion ## Properties
 
@@ -47,37 +47,37 @@ export class ShopComponent implements OnInit, OnDestroy {
   // region ## Lifecycle hooks
   public ngOnInit(): void {
     this.productsService.getAll().subscribe({
-      error: (error) => {
-        throw error;
+      error: (error: unknown): void => {
+        throw error
       },
-      next: (data: Products) => {
-        this.products = data;
-        this.productsInList = data.filter(this.needInList, this);
+      next: (data: Products): void => {
+        this.products = data
+        this.productsInList = data.filter(this.needInList, this)
       },
-    });
+    })
 
-    this.subscriptionToCart = this.cartService.state.subscribe((payload) => {
-      this.productsInCart = payload.items;
-      this.keysInCart = payload.keys;
-      this.productsInList = this.products.filter(this.needInList, this);
-    });
+    this.subscriptionToCart = this.cartService.state.subscribe((payload): void => {
+      this.productsInCart = payload.items
+      this.keysInCart = payload.keys
+      this.productsInList = this.products.filter(this.needInList, this)
+    })
   }
 
   public ngOnDestroy(): void {
     // Unsubscribe to ensure no memory leaks.
-    this.subscriptionToCart?.unsubscribe();
+    this.subscriptionToCart?.unsubscribe()
   }
 
   // endregion ## Lifecycle hooks
 
   // region ## Methods
   private needInList(product: IProductTableViewModel): boolean {
-    return !this.keysInCart.has(product.id);
+    return !this.keysInCart.has(product.id)
   }
 
   public addToCart(productsComponent: ProductsComponent): void {
-    this.cartService.addProducts(productsComponent.selected);
-    productsComponent.clearSelection();
+    this.cartService.addProducts(productsComponent.selected)
+    productsComponent.clearSelection()
   }
 
   // endregion ## Methods
