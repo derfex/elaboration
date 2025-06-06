@@ -19,7 +19,7 @@ import { type Subscription } from 'rxjs'
 
 // Internal modules.
 import { CartService } from '../../../shop/cart/shared/cart.service'
-import { type IProductTableViewModel, type ProductModels } from '../../../shop/products/shared/product-table-view.model'
+import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
 
 @Component({
@@ -48,18 +48,18 @@ import { EmptinessComponent } from '../../../shop/shared/components/emptiness/em
 })
 export class PSCartComponent implements OnInit, OnDestroy {
   // region ## Properties
-  private itemsPrivate: ProductModels = []
-  protected dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([])
+  protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
   protected displayedColumns: string[] = ['delete', 'number', 'name', 'parent', 'price']
+  private itemsPrivate: readonly ProductTableViewModel[] = []
   private subscriptionToCart: Subscription | undefined
 
   @Input()
-  public set items(items: ProductModels) {
+  public set items(items: readonly ProductTableViewModel[]) {
     this.itemsPrivate = items
-    this.dataSource = new MatTableDataSource<IProductTableViewModel>(items)
+    this.dataSource = new MatTableDataSource<ProductTableViewModel>([...items])
   }
 
-  public get items(): ProductModels {
+  public get items(): readonly ProductTableViewModel[] {
     return this.itemsPrivate
   }
 

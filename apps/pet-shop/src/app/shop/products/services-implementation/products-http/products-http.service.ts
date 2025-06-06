@@ -1,34 +1,35 @@
 // External modules.
-import { inject, Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { inject, Injectable } from '@angular/core'
+import { type Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 // Internal modules.
-import { environment } from '../../../../../environments/environment';
-import { APIService } from '../../../../shared/services/api.service';
-import { IProductTableViewModel } from '../../shared/product-table-view.model';
-import { IProductsService, ObservableProducts } from '../products-service';
+import { environment } from '../../../../../environments/environment'
+import { APIService } from '../../../../shared/services/api.service'
+import { ProductTableViewModel } from '../../shared/product-table-view.model'
+import { IProductsService } from '../products-service'
 
 // Definitions.
-function transformProduct(product: IProductTableViewModel): IProductTableViewModel {
+// TODO: Do we need the function?
+function transformProduct(product: ProductTableViewModel): ProductTableViewModel {
   if (!product.parent) {
-    product.parent = {
+    (product as any).parent = {
       id: null,
       name: '—',
-    };
+    }
   }
-  return product;
+  return product
 }
-
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsHTTPService implements IProductsService {
-  readonly #backendAPIService = inject(APIService);
+  readonly #backendAPIService = inject(APIService)
 
-  public getAll(): ObservableProducts {
+  public getAll(): Observable<readonly ProductTableViewModel[]> {
     return this.#backendAPIService
-      .get<IProductTableViewModel[]>(environment.API.products.getAll)
-      .pipe(map((products: IProductTableViewModel[]): IProductTableViewModel[] => products.map(transformProduct)));
+      .get<readonly ProductTableViewModel[]>(environment.API.products.getAll)
+      .pipe(map((products: readonly ProductTableViewModel[]): readonly ProductTableViewModel[] => products.map(transformProduct)))
   }
 }

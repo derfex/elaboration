@@ -20,7 +20,7 @@ import {
 
 // Internal modules.
 import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component'
-import { IProductTableViewModel, ProductModels } from './shared/product-table-view.model'
+import { ProductTableViewModel } from './shared/product-table-view.model'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,30 +50,30 @@ import { IProductTableViewModel, ProductModels } from './shared/product-table-vi
 })
 export class ProductsComponent {
   // region ## Properties
-  protected dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([])
+  protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
   protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'parent', 'price']
-  protected selection = new SelectionModel<IProductTableViewModel>(true, [])
+  protected selection = new SelectionModel<ProductTableViewModel>(true, [])
 
   private filterPrivate: number | null = null
-  private itemsPrivate: ProductModels = []
+  private itemsPrivate: readonly ProductTableViewModel[] = []
 
   @Input()
-  set items(items: ProductModels) {
+  public set items(items: readonly ProductTableViewModel[]) {
     this.itemsPrivate = items
-    this.dataSource.data = items
+    this.dataSource.data = [...items]
   }
 
-  get items(): ProductModels {
+  public get items(): readonly ProductTableViewModel[] {
     return this.itemsPrivate
   }
 
   @Input()
-  set filter(filter: number) {
+  public set filter(filter: number) {
     this.filterPrivate = filter
     this.dataSource.filter = filter ? filter + '' : ''
   }
 
-  get filter(): number {
+  public get filter(): number {
     return this.filterPrivate ?? 0
   }
 
@@ -83,7 +83,7 @@ export class ProductsComponent {
   // endregion ## Properties
 
   constructor() {
-    this.dataSource.filterPredicate = (data, filter): boolean => data.parent.id === +filter
+    this.dataSource.filterPredicate = (data: ProductTableViewModel, filter: string): boolean => data.parent.id === +filter
   }
 
   // region ## Methods
@@ -130,14 +130,14 @@ export class ProductsComponent {
   }
 
   // The label for the checkbox on the passed row.
-  protected checkboxLabel(row?: IProductTableViewModel): string {
+  protected checkboxLabel(row?: ProductTableViewModel): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`
   }
 
-  public get selected(): ProductModels {
+  public get selected(): readonly ProductTableViewModel[] {
     return this.selection.selected
   }
 

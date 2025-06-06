@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject, type Observable } from 'rxjs'
 
 // Internal modules.
-import { type IProductTableViewModel, type ProductModels } from '../../products/shared/product-table-view.model'
+import { type ProductTableViewModel } from '../../products/shared/product-table-view.model'
 
 // Definitions.
 interface IItemsState {
-  items: ProductModels
   keys: Set<number>
+  items: readonly ProductTableViewModel[]
 }
 
 const defaultState: IItemsState = {
@@ -30,11 +30,11 @@ export class CartService {
   // endregion ## Properties
 
   // region ## Methods
-  public addProducts(products: ProductModels): void {
+  public addProducts(products: readonly ProductTableViewModel[]): void {
     const value = this.subject.getValue()
     const items = value.items.concat(products)
     const keys = value.keys
-    products.forEach((product: IProductTableViewModel): void => {
+    products.forEach((product: ProductTableViewModel): void => {
       keys.add(product.id)
     })
     this.subject.next({

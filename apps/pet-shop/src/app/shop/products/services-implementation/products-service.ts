@@ -1,11 +1,11 @@
-import { Observable } from 'rxjs';
-import { IProductTableViewModel } from '../shared/product-table-view.model';
+import { Observable } from 'rxjs'
+import { ProductTableViewModel } from '../shared/product-table-view.model'
 
 // TODO: Rename the file to `products-service.types.ts`.
 
-export type ObservableProducts = Observable<IProductTableViewModel[]>;
+export type ObservableProducts = Observable<readonly ProductTableViewModel[]>
 
 // TODO: Avoid `I` prefix.
 export interface IProductsService {
-  getAll(): ObservableProducts;
+  getAll(): Observable<readonly ProductTableViewModel[]>
 }

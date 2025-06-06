@@ -1,18 +1,18 @@
-import { IProductTableViewModel } from '../../shared/product-table-view.model';
+import { ProductTableViewModel } from '../../shared/product-table-view.model'
 
 export class ProductsModel {
-  #counter = 0;
-  readonly #items: IProductTableViewModel[] = [];
+  #counter = 0
+  readonly #items: ProductTableViewModel[] = []
 
-  public addProduct(data: Omit<IProductTableViewModel, 'id'>): void {
-    const id = ++this.#counter;
+  public addProduct(data: Omit<ProductTableViewModel, 'id'>): void {
+    const id = ++this.#counter
     this.#items.push({
       id,
       ...data,
-    });
+    })
   }
 
-  public getAll(): readonly IProductTableViewModel[] {
-    return this.#items;
+  public getAll(): readonly ProductTableViewModel[] {
+    return this.#items
   }
 }

@@ -8,11 +8,8 @@ import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { CartService } from './cart/shared/cart.service'
 import { ProductsComponent } from './products/products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
-import { type IProductTableViewModel } from './products/shared/product-table-view.model'
+import { type ProductTableViewModel } from './products/shared/product-table-view.model'
 import { CategoriesSelectComponent } from './shared/components/categories-select/categories-select.component'
-
-// Definitions.
-type Products = IProductTableViewModel[]
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,9 +30,9 @@ export class ShopComponent implements OnInit, OnDestroy {
   // region ## Properties
   readonly #cdr = inject(ChangeDetectorRef)
 
-  private products: Products = []
-  protected productsInList: Products = []
-  protected productsInCart: Products = []
+  private products: readonly ProductTableViewModel[] = []
+  protected productsInList: readonly ProductTableViewModel[] = []
+  protected productsInCart: readonly ProductTableViewModel[] = []
   private keysInCart: Set<number> = new Set()
   private subscriptionToCart: Subscription | undefined
 
@@ -52,7 +49,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       error: (error: unknown): void => {
         throw error
       },
-      next: (data: Products): void => {
+      next: (data: readonly ProductTableViewModel[]): void => {
         this.products = data
         this.productsInList = data.filter(this.needInList, this)
         this.#cdr.markForCheck()
@@ -74,7 +71,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   // endregion ## Lifecycle hooks
 
   // region ## Methods
-  private needInList(product: IProductTableViewModel): boolean {
+  private needInList(product: ProductTableViewModel): boolean {
     return !this.keysInCart.has(product.id)
   }
 
