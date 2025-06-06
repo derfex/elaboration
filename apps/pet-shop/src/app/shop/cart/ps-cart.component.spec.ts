@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PsCartComponent } from './ps-cart.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { PSCartComponent } from './ps-cart.component'
 
-describe('PsCartComponent', (): void => {
-  let component: PsCartComponent;
-  let fixture: ComponentFixture<PsCartComponent>;
+describe('PSCartComponent', (): void => {
+  let component: PSCartComponent
+  let fixture: ComponentFixture<PSCartComponent>
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [PsCartComponent],
-    }).compileComponents();
-  });
+      imports: [PSCartComponent],
+    }).compileComponents()
+  })
 
   beforeEach((): void => {
-    fixture = TestBed.createComponent(PsCartComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PSCartComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', (): void => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

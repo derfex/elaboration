@@ -19,7 +19,7 @@ import {
 import { Subscription } from 'rxjs'
 
 // Internal modules.
-import { IProductTableViewModel, ProductModels } from '../products/shared/product-table-view.model'
+import { type IProductTableViewModel, type ProductModels } from '../products/shared/product-table-view.model'
 import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component'
 import { CartService } from './shared/cart.service'
 
@@ -45,10 +45,10 @@ import { CartService } from './shared/cart.service'
   ],
   selector: 'app-cart',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
-  styleUrls: ['./ps-cart.component.sass'],
+  styleUrl: './ps-cart.component.sass',
   templateUrl: './ps-cart.component.html',
 })
-export class PsCartComponent implements OnInit, OnDestroy {
+export class PSCartComponent implements OnInit, OnDestroy {
   // region ## Properties
   private itemsPrivate: ProductModels = []
   protected dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([])
