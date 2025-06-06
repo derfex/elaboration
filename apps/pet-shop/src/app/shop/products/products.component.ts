@@ -1,7 +1,7 @@
 // External modules.
 import { SelectionModel } from '@angular/cdk/collections'
 import { NgIf } from '@angular/common'
-import { Component, Input, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import {
@@ -23,6 +23,7 @@ import { EmptinessComponent } from '../shared/components/emptiness/emptiness.com
 import { IProductTableViewModel, ProductModels } from './shared/product-table-view.model'
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatCell,
     MatCellDef,
