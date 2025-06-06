@@ -2,9 +2,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { type Subscription } from 'rxjs';
-import { CartComponent } from './cart/cart.component';
 
 // Internal modules.
+import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/shared/cart.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service';
