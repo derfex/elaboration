@@ -1,5 +1,4 @@
 // External modules.
-import { NgIf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
@@ -38,7 +37,6 @@ import { CartService } from './shared/cart.service'
     MatRow,
     MatRowDef,
     MatTable,
-    NgIf,
 
     // Provided by the app.
     EmptinessComponent,

@@ -1,4 +1,4 @@
-<div *ngIf="hasDisplayedData()">
+@if (hasDisplayedData()) {
   <mat-table
     [dataSource]="dataSource"
     class="mat-elevation-z8"
@@ -52,9 +52,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-</div>
-<app-emptiness
-  *ngIf="!hasDisplayedData()"
-  text="Add products to the cart"
->
-</app-emptiness>
+} @else {
+  <app-emptiness
+    text="Add products to the cart"
+  />
+}
