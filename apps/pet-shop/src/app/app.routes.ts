@@ -7,6 +7,7 @@ export const routes: Routes = [
         (c) => c.HomePageComponent
       ),
     path: '',
+    title: 'Elaboration: Angular. Pet-shop',
   },
   {
     loadComponent: () =>
@@ -14,5 +15,6 @@ export const routes: Routes = [
         './integrator/pages/nx-welcome-page/nx-welcome-page.component'
       ).then((c) => c.NxWelcomePageComponent),
     path: 'nx-welcome',
+    title: 'Elaboration: Angular. NX welcome',
   },
 ];
