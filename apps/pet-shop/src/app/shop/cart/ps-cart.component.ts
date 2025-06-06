@@ -45,10 +45,10 @@ import { CartService } from './shared/cart.service'
   ],
   selector: 'app-cart',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
-  styleUrls: ['./cart.component.sass'],
-  templateUrl: './cart.component.html',
+  styleUrls: ['./ps-cart.component.sass'],
+  templateUrl: './ps-cart.component.html',
 })
-export class CartComponent implements OnInit, OnDestroy {
+export class PsCartComponent implements OnInit, OnDestroy {
   // region ## Properties
   private itemsPrivate: ProductModels = []
   protected dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([])
