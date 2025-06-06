@@ -1,9 +1,9 @@
 // External modules.
-import { SelectionModel } from '@angular/cdk/collections';
-import { NgIf } from '@angular/common';
-import { Component, Input, ViewChild } from '@angular/core';
-import { MatCheckbox } from '@angular/material/checkbox';
-import { MatSort, Sort } from '@angular/material/sort';
+import { SelectionModel } from '@angular/cdk/collections'
+import { NgIf } from '@angular/common'
+import { Component, Input, ViewChild } from '@angular/core'
+import { MatCheckbox } from '@angular/material/checkbox'
+import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import {
   MatCell,
   MatCellDef,
@@ -16,14 +16,11 @@ import {
   MatRowDef,
   MatTable,
   MatTableDataSource,
-} from '@angular/material/table';
+} from '@angular/material/table'
 
 // Internal modules.
-import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component';
-import {
-  IProductTableViewModel,
-  ProductModels,
-} from './shared/product-table-view.model';
+import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component'
+import { IProductTableViewModel, ProductModels } from './shared/product-table-view.model'
 
 @Component({
   imports: [
@@ -38,6 +35,7 @@ import {
     MatRow,
     MatRowDef,
     MatSort,
+    MatSortModule,
     MatTable,
     NgIf,
 
@@ -51,108 +49,98 @@ import {
 })
 export class ProductsComponent {
   // region ## Properties
-  private itemsPrivate: ProductModels = [];
-  protected dataSource: MatTableDataSource<IProductTableViewModel> =
-    new MatTableDataSource<IProductTableViewModel>([]);
-  protected displayedColumns: string[] = [
-    'select',
-    'number',
-    'name',
-    'parent',
-    'price',
-  ];
-  protected selection = new SelectionModel<IProductTableViewModel>(true, []);
-  private filterPrivate: number | null = null;
+  protected dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([])
+  protected displayedColumns: string[] = ['select', 'number', 'name', 'parent', 'price']
+  protected selection = new SelectionModel<IProductTableViewModel>(true, [])
+  private filterPrivate: number | null = null
+  private itemsPrivate: ProductModels = []
 
   @Input()
   set items(items: ProductModels) {
-    this.itemsPrivate = items;
-    this.dataSource.data = items;
+    this.itemsPrivate = items
+    this.dataSource.data = items
   }
 
   get items(): ProductModels {
-    return this.itemsPrivate;
+    return this.itemsPrivate
   }
 
   @Input()
   set filter(filter: number) {
-    this.filterPrivate = filter;
-    this.dataSource.filter = filter ? filter + '' : '';
+    this.filterPrivate = filter
+    this.dataSource.filter = filter ? filter + '' : ''
   }
 
   get filter(): number {
-    return this.filterPrivate ?? 0;
+    return this.filterPrivate ?? 0
   }
 
   @ViewChild(MatSort, { static: false })
-  sort: MatSort | undefined;
+  sort: MatSort | undefined
 
   // endregion ## Properties
 
   constructor() {
-    this.dataSource.filterPredicate = (data, filter): boolean =>
-      data.parent.id === +filter;
+    this.dataSource.filterPredicate = (data, filter): boolean => data.parent.id === +filter
   }
 
   // region ## Methods
   protected sortData(sort: Sort): void {
-    const data = this.itemsPrivate.slice();
+    const data = this.itemsPrivate.slice()
     if (!sort.active || sort.direction === '') {
-      this.dataSource.data = data;
-      return;
+      this.dataSource.data = data
+      return
     }
 
     data.sort((a, b) => {
-      const isAsc = sort.direction === 'asc';
+      const isAsc = sort.direction === 'asc'
       switch (sort.active) {
         case 'name':
-          return compare(a.name, b.name, isAsc);
+          return compare(a.name, b.name, isAsc)
         case 'price':
-          return compare(a.price, b.price, isAsc);
+          return compare(a.price, b.price, isAsc)
         default:
-          return 0;
+          return 0
       }
-    });
-    this.dataSource.data = data;
+    })
+    this.dataSource.data = data
   }
 
   protected hasDisplayedData(): boolean {
-    return !!this.dataSource.filteredData.length;
+    return !!this.dataSource.filteredData.length
   }
 
   // region ### Selection
   // Whether the number of selected elements matches the total number of rows.
   protected isAllSelected(): boolean {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+    const numSelected = this.selection.selected.length
+    const numRows = this.dataSource.data.length
+    return numSelected === numRows
   }
 
   // Selects all rows if they are not all selected; otherwise clear selection.
   protected masterToggle(): void {
     if (this.isAllSelected()) {
-      this.selection.clear();
+      this.selection.clear()
     } else {
-      this.dataSource.data.forEach((row) => this.selection.select(row));
+      this.dataSource.data.forEach((row) => this.selection.select(row))
     }
   }
 
   // The label for the checkbox on the passed row.
   protected checkboxLabel(row?: IProductTableViewModel): string {
     if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+      return `${this.isAllSelected() ? 'select' : 'deselect'} all`
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
-      row.id + 1
-    }`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`
   }
 
   public get selected(): ProductModels {
-    return this.selection.selected;
+    return this.selection.selected
   }
 
   public clearSelection(): void {
-    this.selection.clear();
+    this.selection.clear()
   }
 
   // endregion ### Selection
@@ -161,5 +149,5 @@ export class ProductsComponent {
 
 // Extra.
 function compare(a: number | string, b: number | string, isAsc: boolean): number {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1)
 }
