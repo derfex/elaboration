@@ -4,7 +4,7 @@ import { MatButton } from '@angular/material/button'
 import { type Subscription } from 'rxjs'
 
 // Internal modules.
-import { CartComponent } from './cart/cart.component'
+import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { CartService } from './cart/shared/cart.service'
 import { ProductsComponent } from './products/products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
@@ -20,8 +20,8 @@ type Products = IProductTableViewModel[]
     MatButton,
 
     // Provided by the app.
-    CartComponent,
     CategoriesSelectComponent,
+    PSCartComponent,
     ProductsComponent,
   ],
   selector: 'app-shop',

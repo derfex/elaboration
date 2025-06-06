@@ -15,12 +15,12 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table'
-import { Subscription } from 'rxjs'
+import { type Subscription } from 'rxjs'
 
 // Internal modules.
-import { type IProductTableViewModel, type ProductModels } from '../products/shared/product-table-view.model'
-import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component'
-import { CartService } from './shared/cart.service'
+import { CartService } from '../../../shop/cart/shared/cart.service'
+import { type IProductTableViewModel, type ProductModels } from '../../../shop/products/shared/product-table-view.model'
+import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,7 +41,7 @@ import { CartService } from './shared/cart.service'
     // Provided by the app.
     EmptinessComponent,
   ],
-  selector: 'app-cart',
+  selector: 'app-ps-cart',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './ps-cart.component.sass',
   templateUrl: './ps-cart.component.html',
@@ -54,12 +54,12 @@ export class PSCartComponent implements OnInit, OnDestroy {
   private subscriptionToCart: Subscription | undefined
 
   @Input()
-  set items(items: ProductModels) {
+  public set items(items: ProductModels) {
     this.itemsPrivate = items
     this.dataSource = new MatTableDataSource<IProductTableViewModel>(items)
   }
 
-  get items(): ProductModels {
+  public get items(): ProductModels {
     return this.itemsPrivate
   }
 
@@ -69,7 +69,7 @@ export class PSCartComponent implements OnInit, OnDestroy {
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    this.subscriptionToCart = this.cartService.state.subscribe((payload) => {
+    this.subscriptionToCart = this.cartService.state.subscribe((payload): void => {
       this.items = payload.items
     })
   }
