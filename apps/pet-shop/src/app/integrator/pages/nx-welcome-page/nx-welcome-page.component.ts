@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { NxWelcomeComponent } from '../../angular-example/nx-welcome/nx-welcome.component';
+import { NxWelcomeComponent } from '../../angular-example/nx-welcome/nx-welcome.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
