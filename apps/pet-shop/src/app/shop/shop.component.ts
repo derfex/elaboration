@@ -53,6 +53,7 @@ export class ShopComponent implements OnInit, OnDestroy {
       next: (data: Products): void => {
         this.products = data
         this.productsInList = data.filter(this.needInList, this)
+        this.#cdr.markForCheck()
       },
     })
 
