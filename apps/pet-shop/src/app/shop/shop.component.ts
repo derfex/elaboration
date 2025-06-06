@@ -1,5 +1,5 @@
 // External modules.
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core'
 import { MatButton } from '@angular/material/button'
 import { type Subscription } from 'rxjs'
 
@@ -26,11 +26,13 @@ type Products = IProductTableViewModel[]
   ],
   selector: 'app-shop',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
-  styleUrls: ['./shop.component.sass'],
+  styleUrl: './shop.component.sass',
   templateUrl: './shop.component.html',
 })
 export class ShopComponent implements OnInit, OnDestroy {
   // region ## Properties
+  readonly #cdr = inject(ChangeDetectorRef)
+
   private products: Products = []
   protected productsInList: Products = []
   protected productsInCart: Products = []
