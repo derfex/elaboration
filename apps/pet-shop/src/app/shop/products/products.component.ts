@@ -45,14 +45,15 @@ import { IProductTableViewModel, ProductModels } from './shared/product-table-vi
   ],
   selector: 'app-products',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
-  styleUrls: ['./products.component.sass'],
+  styleUrl: './products.component.sass',
   templateUrl: './products.component.html',
 })
 export class ProductsComponent {
   // region ## Properties
   protected dataSource: MatTableDataSource<IProductTableViewModel> = new MatTableDataSource<IProductTableViewModel>([])
-  protected displayedColumns: string[] = ['select', 'number', 'name', 'parent', 'price']
+  protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'parent', 'price']
   protected selection = new SelectionModel<IProductTableViewModel>(true, [])
+
   private filterPrivate: number | null = null
   private itemsPrivate: ProductModels = []
 
