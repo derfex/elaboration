@@ -1,7 +1,5 @@
-import { Observable } from 'rxjs'
-import { ProductTableViewModel } from '../shared/product-table-view.model'
-
-// TODO: Rename the file to `products-service.types.ts`.
+import type { Observable } from 'rxjs'
+import type { ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 
 export interface PSProductsService {
   getAll(): Observable<readonly ProductTableViewModel[]>
