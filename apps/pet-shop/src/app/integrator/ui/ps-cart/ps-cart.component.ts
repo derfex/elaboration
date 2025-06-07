@@ -1,4 +1,4 @@
-// External modules.
+// # External modules
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
@@ -17,7 +17,7 @@ import {
 } from '@angular/material/table'
 import { type Subscription } from 'rxjs'
 
-// Internal modules.
+// # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
 import { type PSCartService } from './ps-cart.service'

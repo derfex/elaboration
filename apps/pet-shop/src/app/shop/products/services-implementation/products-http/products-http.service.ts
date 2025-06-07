@@ -1,9 +1,9 @@
-// External modules.
+// # External modules
 import { inject, Injectable } from '@angular/core'
 import { type Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-// Internal modules.
+// # Internal modules
 import { environment } from '../../../../../environments/environment'
 import { APIService } from '../../../../shared/services/api.service'
 import { ProductTableViewModel } from '../../shared/product-table-view.model'
@@ -13,7 +13,7 @@ import { IProductsService } from '../products-service'
 // TODO: Do we need the function?
 function transformProduct(product: ProductTableViewModel): ProductTableViewModel {
   if (!product.parent) {
-    (product as any).parent = {
+    ;(product as any).parent = {
       id: null,
       name: '—',
     }
@@ -30,6 +30,10 @@ export class ProductsHTTPService implements IProductsService {
   public getAll(): Observable<readonly ProductTableViewModel[]> {
     return this.#backendAPIService
       .get<readonly ProductTableViewModel[]>(environment.API.products.getAll)
-      .pipe(map((products: readonly ProductTableViewModel[]): readonly ProductTableViewModel[] => products.map(transformProduct)))
+      .pipe(
+        map((products: readonly ProductTableViewModel[]): readonly ProductTableViewModel[] =>
+          products.map(transformProduct),
+        ),
+      )
   }
 }

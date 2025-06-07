@@ -1,4 +1,4 @@
-// External modules.
+// # External modules
 import { SelectionModel } from '@angular/cdk/collections'
 import { NgIf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core'
@@ -18,7 +18,7 @@ import {
   MatTableDataSource,
 } from '@angular/material/table'
 
-// Internal modules.
+// # Internal modules
 import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component'
 import { ProductTableViewModel } from './shared/product-table-view.model'
 
@@ -83,7 +83,8 @@ export class ProductsComponent {
   // endregion ## Properties
 
   constructor() {
-    this.dataSource.filterPredicate = (data: ProductTableViewModel, filter: string): boolean => data.parent.id === +filter
+    this.dataSource.filterPredicate = (data: ProductTableViewModel, filter: string): boolean =>
+      data.parent.id === +filter
   }
 
   // region ## Methods

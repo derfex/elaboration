@@ -1,4 +1,4 @@
-// External modules.
+// # External modules
 import { NgForOf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { FormsModule } from '@angular/forms'
@@ -7,7 +7,7 @@ import { MatFormField, MatLabel } from '@angular/material/input'
 import { MatSelect } from '@angular/material/select'
 import { Subscription } from 'rxjs'
 
-// Internal modules.
+// # Internal modules
 import { CategoriesService, CategoryModels } from '../../services/categories.service'
 
 @Component({

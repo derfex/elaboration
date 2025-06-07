@@ -1,9 +1,9 @@
-// External modules.
+// # External modules
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core'
 import { MatButton } from '@angular/material/button'
 import { type Subscription } from 'rxjs'
 
-// Internal modules.
+// # Internal modules
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { PSCartService } from '../integrator/ui/ps-cart/ps-cart.service'
 import { ProductsComponent } from './products/products.component'

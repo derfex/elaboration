@@ -1,8 +1,8 @@
-// External modules.
+// # External modules
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, type Observable } from 'rxjs'
 
-// Internal modules.
+// # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 
 @Injectable({
