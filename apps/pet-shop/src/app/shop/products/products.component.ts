@@ -41,12 +41,12 @@ import { ProductTableViewModel } from './shared/product-table-view.model'
     // Provided by the app.
     PSEmptinessComponent,
   ],
-  selector: 'app-products',
+  selector: 'app-ps-products',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
-  styleUrl: './products.component.sass',
-  templateUrl: './products.component.html',
+  styleUrl: './ps-products.component.sass',
+  templateUrl: './ps-products.component.html',
 })
-export class ProductsComponent {
+export class PSProductsComponent {
   // region ## Properties
   protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
   protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'parent', 'price']

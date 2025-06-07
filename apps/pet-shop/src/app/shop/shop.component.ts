@@ -7,7 +7,7 @@ import { type Subscription } from 'rxjs'
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { PSCartService } from '../integrator/ui/ps-cart/ps-cart.service'
 import { PSCategoriesSelectComponent } from '../integrator/ui/ps-categories/ps-categories-select/ps-categories-select.component'
-import { ProductsComponent } from './products/products.component'
+import { PSProductsComponent } from './products/products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
 import { type ProductTableViewModel } from './products/shared/product-table-view.model'
 
@@ -19,7 +19,7 @@ import { type ProductTableViewModel } from './products/shared/product-table-view
     // Provided by the app.
     PSCartComponent,
     PSCategoriesSelectComponent,
-    ProductsComponent,
+    PSProductsComponent,
   ],
   selector: 'app-shop',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
@@ -76,7 +76,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     return !this.keysInCart.has(product.id)
   }
 
-  public addToCart(productsComponent: ProductsComponent): void {
+  public addToCart(productsComponent: PSProductsComponent): void {
     this.cartService.addProducts(productsComponent.selected)
     productsComponent.clearSelection()
   }
