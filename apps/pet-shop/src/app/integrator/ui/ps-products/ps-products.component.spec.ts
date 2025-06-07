@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { PSProductsComponent } from './products.component'
+import { PSProductsComponent } from './ps-products.component'
 
 // TODO: Explore the tests, refactor, {migrate to `vitest`?}.
 

@@ -7,7 +7,7 @@ import { type Subscription } from 'rxjs'
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { PSCartService } from '../integrator/ui/ps-cart/ps-cart.service'
 import { PSCategoriesSelectComponent } from '../integrator/ui/ps-categories/ps-categories-select/ps-categories-select.component'
-import { PSProductsComponent } from './products/products.component'
+import { PSProductsComponent } from '../integrator/ui/ps-products/ps-products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
 import { type ProductTableViewModel } from './products/shared/product-table-view.model'
 
