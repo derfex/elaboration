@@ -4,16 +4,13 @@
     [(ngModel)]="selectedID"
     name="category"
   >
-    <mat-option
-      [value]="null"
-    >
+    <mat-option [value]="null">
       <i>Clear</i>
     </mat-option>
-    <mat-option
-      *ngFor="let item of items"
-      [value]="item.id"
-    >
-      {{ item.name }}
-    </mat-option>
+    @for (item of items; track item.id) {
+      <mat-option [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    }
   </mat-select>
 </mat-form-field>
