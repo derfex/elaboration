@@ -1,11 +1,11 @@
 // # External modules
 import { NgForOf } from '@angular/common'
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormsModule } from '@angular/forms'
 import { MatOption } from '@angular/material/core'
 import { MatFormField, MatLabel } from '@angular/material/input'
 import { MatSelect } from '@angular/material/select'
-import type { Subscription } from 'rxjs'
 
 // # Internal modules
 import { PSCategoriesForBEService } from '../../../../integrator/backend-api/ps-categories/ps-categories-for-be.service'
@@ -32,23 +32,15 @@ export class CategoriesSelectComponent implements OnInit {
   // region ## Properties
   protected items: readonly PSCategory[] = []
   protected selectedID: number | null = null
-  private subscriptionToCategories: Subscription | undefined
 
+  readonly #destroyRef = inject(DestroyRef)
   readonly #psCategoriesForBEService = inject(PSCategoriesForBEService)
 
   // endregion ## Properties
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    // FIXME: Unsubscribe.
-    this.subscriptionToCategories = this.#psCategoriesForBEService.readList().subscribe(
-      (data: readonly PSCategory[]) => {
-        this.items = data
-      },
-      (error: unknown): void => {
-        throw error
-      },
-    )
+    this.#fetchCategories()
   }
 
   // endregion ## Lifecycle hooks
@@ -56,6 +48,20 @@ export class CategoriesSelectComponent implements OnInit {
   // region ## Methods
   public get selected(): number {
     return this.selectedID ?? 0
+  }
+
+  #fetchCategories(): void {
+    this.#psCategoriesForBEService
+      .readList()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        error: (error: unknown): void => {
+          throw error
+        },
+        next: (data: readonly PSCategory[]) => {
+          this.items = data
+        },
+      })
   }
 
   // endregion ## Methods
