@@ -5,54 +5,52 @@ import { BehaviorSubject, type Observable } from 'rxjs'
 // Internal modules.
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 
-// Definitions.
-interface IItemsState {
-  keys: Set<number>
-  items: readonly ProductTableViewModel[]
-}
-
-const defaultState: IItemsState = {
-  items: [],
-  keys: new Set(),
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class PSCartService {
   // region ## Properties
-  private subject = new BehaviorSubject<IItemsState>(defaultState)
+  readonly #subject = new BehaviorSubject<ItemsState>(defaultState)
 
-  public get state(): Observable<IItemsState> {
-    return this.subject.asObservable()
+  public get state(): Observable<ItemsState> {
+    return this.#subject.asObservable()
   }
 
   // endregion ## Properties
 
   // region ## Methods
   public addProducts(products: readonly ProductTableViewModel[]): void {
-    const value = this.subject.getValue()
-    const items = value.items.concat(products)
-    const keys = value.keys
+    const { items, keysSet } = this.#subject.getValue()
+    const nextItems = items.concat(products)
     products.forEach((product: ProductTableViewModel): void => {
-      keys.add(product.id)
+      keysSet.add(product.id)
     })
-    this.subject.next({
-      items,
-      keys,
+    this.#subject.next({
+      items: nextItems,
+      keysSet,
     })
   }
 
   public deleteProductByID(id: number): void {
-    const value = this.subject.getValue()
-    const items = value.items.filter((item) => item.id !== id)
-    const keys = value.keys
-    keys.delete(id)
-    this.subject.next({
-      items,
-      keys,
+    const { items, keysSet } = this.#subject.getValue()
+    const nextItems = items.filter((item: ProductTableViewModel): boolean => item.id !== id)
+    keysSet.delete(id)
+    this.#subject.next({
+      items: nextItems,
+      keysSet,
     })
   }
 
   // endregion ## Methods
+}
+
+// # Definitions
+interface ItemsState {
+  readonly items: readonly ProductTableViewModel[]
+  readonly keysSet: Set<number>
+}
+
+const defaultState: ItemsState = {
+  items: [],
+  keysSet: new Set(),
 }

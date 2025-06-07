@@ -9,7 +9,7 @@ import { APIService } from '../../../../shared/services/api.service'
 import { ProductTableViewModel } from '../../shared/product-table-view.model'
 import { IProductsService } from '../products-service'
 
-// Definitions.
+// # Definitions
 // TODO: Do we need the function?
 function transformProduct(product: ProductTableViewModel): ProductTableViewModel {
   if (!product.parent) {

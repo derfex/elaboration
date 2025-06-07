@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { APIService } from '../../../shared/services/api.service';
 
-// Definitions.
+// # Definitions
 // TODO: Avoid `I` prefix.
 interface ICategory {
   id: number;
