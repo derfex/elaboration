@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { CategoriesService } from './categories.service';
+import { CategoriesService } from './ps-categories-for-be.service'
 
 describe('CategoriesService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
