@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { PSEmptinessComponent } from './emptiness.component'
+import { PSEmptinessComponent } from './ps-emptiness.component'
 
 describe('PSEmptinessComponent', (): void => {
   let component: PSEmptinessComponent

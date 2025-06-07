@@ -19,7 +19,7 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import { PSEmptinessComponent } from '../shared/components/emptiness/emptiness.component'
+import { PSEmptinessComponent } from '../../integrator/ui-kit/ps-emptiness/ps-emptiness.component'
 import { ProductTableViewModel } from './shared/product-table-view.model'
 
 @Component({

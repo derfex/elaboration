@@ -19,7 +19,7 @@ import {
 
 // # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
-import { PSEmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
+import { PSEmptinessComponent } from '../../ui-kit/ps-emptiness/ps-emptiness.component'
 import { PSCartService } from './ps-cart.service'
 import { type PSCartState } from './ps-cart.service.type'
 
