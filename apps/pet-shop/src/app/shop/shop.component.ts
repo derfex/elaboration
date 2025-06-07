@@ -1,15 +1,16 @@
 // # External modules
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, OnInit } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatButton } from '@angular/material/button'
-import { type Subscription } from 'rxjs'
 
 // # Internal modules
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { PSCartService } from '../integrator/ui/ps-cart/ps-cart.service'
+import type { PSCartState } from '../integrator/ui/ps-cart/ps-cart.service.type'
 import { PSCategoriesSelectComponent } from '../integrator/ui/ps-categories/ps-categories-select/ps-categories-select.component'
 import { PSProductsComponent } from '../integrator/ui/ps-products/ps-products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
-import { type ProductTableViewModel } from './products/shared/product-table-view.model'
+import type { ProductTableViewModel } from './products/shared/product-table-view.model'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,63 +23,72 @@ import { type ProductTableViewModel } from './products/shared/product-table-view
     PSProductsComponent,
   ],
   selector: 'app-shop',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './shop.component.sass',
   templateUrl: './shop.component.html',
 })
-export class ShopComponent implements OnInit, OnDestroy {
+export class ShopComponent implements OnInit {
   // region ## Properties
-  readonly #cdr = inject(ChangeDetectorRef)
-
-  private products: readonly ProductTableViewModel[] = []
   protected productsInList: readonly ProductTableViewModel[] = []
   protected productsInCart: readonly ProductTableViewModel[] = []
+
+  readonly #cdr = inject(ChangeDetectorRef)
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #psCartService = inject(PSCartService)
+  readonly #psProductsService = inject(ProductsHTTPService)
+
+  private products: readonly ProductTableViewModel[] = []
   private keysInCart: Set<number> = new Set()
-  private subscriptionToCart: Subscription | undefined
 
   // endregion ## Properties
 
-  constructor(
-    private readonly cartService: PSCartService,
-    private readonly productsService: ProductsHTTPService,
-  ) {}
-
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    // TODO: Unsubscribe.
-    this.productsService.readList().subscribe({
-      error: (error: unknown): void => {
-        throw error
-      },
-      next: (data: readonly ProductTableViewModel[]): void => {
-        this.products = data
-        this.productsInList = data.filter(this.needInList, this)
-        this.#cdr.markForCheck()
-      },
-    })
-
-    this.subscriptionToCart = this.cartService.state.subscribe((payload): void => {
-      this.productsInCart = payload.items
-      this.keysInCart = payload.keysSet
-      this.productsInList = this.products.filter(this.needInList, this)
-    })
-  }
-
-  public ngOnDestroy(): void {
-    // Unsubscribe to ensure no memory leaks.
-    this.subscriptionToCart?.unsubscribe()
+    this.#fetchProductsToCart()
+    this.#fetchProductsToList()
   }
 
   // endregion ## Lifecycle hooks
 
-  // region ## Methods
-  private needInList(product: ProductTableViewModel): boolean {
-    return !this.keysInCart.has(product.id)
+  // region ## Public API
+  public addToCart(productsComponent: PSProductsComponent): void {
+    this.#psCartService.addProducts(productsComponent.selected)
+    productsComponent.clearSelection()
   }
 
-  public addToCart(productsComponent: PSProductsComponent): void {
-    this.cartService.addProducts(productsComponent.selected)
-    productsComponent.clearSelection()
+  // endregion ## Public API
+
+  // region ## Methods
+  #fetchProductsToCart(): void {
+    this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe({
+      error: (error: unknown): void => {
+        throw error
+      },
+      next: (payload: PSCartState): void => {
+        this.productsInCart = payload.items
+        this.keysInCart = payload.keysSet
+        this.productsInList = this.products.filter(this.needInList, this)
+      },
+    })
+  }
+
+  #fetchProductsToList(): void {
+    this.#psProductsService
+      .readList()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe({
+        error: (error: unknown): void => {
+          throw error
+        },
+        next: (data: readonly ProductTableViewModel[]): void => {
+          this.products = data
+          this.productsInList = data.filter(this.needInList, this)
+          this.#cdr.markForCheck()
+        },
+      })
+  }
+
+  private needInList(product: ProductTableViewModel): boolean {
+    return !this.keysInCart.has(product.id)
   }
 
   // endregion ## Methods
