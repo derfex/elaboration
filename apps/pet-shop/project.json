@@ -47,7 +47,8 @@
         ],
         "scripts": [],
         "styles": [
-          "apps/pet-shop/src/styles.scss"
+          "@angular/material/prebuilt-themes/azure-blue.css",
+          "apps/pet-shop/src/styles.sass"
         ],
         "tsConfig": "apps/pet-shop/tsconfig.app.json"
       },
