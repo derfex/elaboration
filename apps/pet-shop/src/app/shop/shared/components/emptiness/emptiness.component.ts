@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-emptiness',
-  styleUrls: ['./emptiness.component.sass'],
+  selector: 'app-ps-emptiness',
+  styleUrl: './emptiness.component.sass',
   templateUrl: './emptiness.component.html',
 })
-export class EmptinessComponent {
+export class PSEmptinessComponent {
   protected caption = 'No data to display'
 
   @Input()

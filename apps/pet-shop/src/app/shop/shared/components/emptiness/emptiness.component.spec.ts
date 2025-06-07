@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EmptinessComponent } from './emptiness.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { PSEmptinessComponent } from './emptiness.component'
 
-describe('EmptinessComponent', (): void => {
-  let component: EmptinessComponent;
-  let fixture: ComponentFixture<EmptinessComponent>;
+describe('PSEmptinessComponent', (): void => {
+  let component: PSEmptinessComponent
+  let fixture: ComponentFixture<PSEmptinessComponent>
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [EmptinessComponent],
-    }).compileComponents();
-  });
+      imports: [PSEmptinessComponent],
+    }).compileComponents()
+  })
 
   beforeEach((): void => {
-    fixture = TestBed.createComponent(EmptinessComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PSEmptinessComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', (): void => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

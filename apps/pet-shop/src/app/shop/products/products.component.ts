@@ -19,7 +19,7 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import { EmptinessComponent } from '../shared/components/emptiness/emptiness.component'
+import { PSEmptinessComponent } from '../shared/components/emptiness/emptiness.component'
 import { ProductTableViewModel } from './shared/product-table-view.model'
 
 @Component({
@@ -41,7 +41,7 @@ import { ProductTableViewModel } from './shared/product-table-view.model'
     NgIf,
 
     // Provided by the app.
-    EmptinessComponent,
+    PSEmptinessComponent,
   ],
   selector: 'app-products',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?

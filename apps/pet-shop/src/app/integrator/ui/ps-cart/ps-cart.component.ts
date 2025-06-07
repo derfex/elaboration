@@ -19,7 +19,7 @@ import {
 
 // # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
-import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
+import { PSEmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
 import { PSCartService } from './ps-cart.service'
 import { type PSCartState } from './ps-cart.service.type'
 
@@ -40,7 +40,7 @@ import { type PSCartState } from './ps-cart.service.type'
     MatTable,
 
     // Provided by the app.
-    EmptinessComponent,
+    PSEmptinessComponent,
   ],
   selector: 'app-ps-cart',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
