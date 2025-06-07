@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { PSCategoriesSelectComponent } from './categories-select.component'
+import { PSCategoriesSelectComponent } from './ps-categories-select.component'
 
 // TODO: Explore the tests, refactor, {migrate to `vitest`?}.
 
