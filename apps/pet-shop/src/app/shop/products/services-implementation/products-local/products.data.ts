@@ -1,4 +1,4 @@
-import type { ProductTableViewModel } from '../../../../integrator/ui/ps-products/ps-products.type'
+import type { PSProductTableItem } from '../../../../integrator/ui/ps-products/ps-products.type'
 import { ProductsModel } from './products.model'
 
 const products = new ProductsModel()
@@ -23,4 +23,4 @@ const products = new ProductsModel()
   })
 })
 
-export default products.readList() as readonly ProductTableViewModel[]
+export default products.readList() as readonly PSProductTableItem[]

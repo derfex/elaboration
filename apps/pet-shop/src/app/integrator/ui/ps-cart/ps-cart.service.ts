@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject, type Observable } from 'rxjs'
 
 // # Internal modules
-import type { ProductTableViewModel } from '../ps-products/ps-products.type'
+import type { PSProductTableItem } from '../ps-products/ps-products.type'
 import type { PSCartState } from './ps-cart.service.type'
 
 @Injectable({
@@ -20,10 +20,10 @@ export class PSCartService {
   // endregion ## Properties
 
   // region ## Methods
-  public addProducts(products: readonly ProductTableViewModel[]): void {
+  public addProducts(products: readonly PSProductTableItem[]): void {
     const { items, keysSet } = this.#subject.getValue()
     const nextItems = items.concat(products)
-    products.forEach((product: ProductTableViewModel): void => {
+    products.forEach((product: PSProductTableItem): void => {
       keysSet.add(product.id)
     })
     this.#subject.next({
@@ -34,7 +34,7 @@ export class PSCartService {
 
   public deleteProductByID(id: number): void {
     const { items, keysSet } = this.#subject.getValue()
-    const nextItems = items.filter((item: ProductTableViewModel): boolean => item.id !== id)
+    const nextItems = items.filter((item: PSProductTableItem): boolean => item.id !== id)
     keysSet.delete(id)
     this.#subject.next({
       items: nextItems,

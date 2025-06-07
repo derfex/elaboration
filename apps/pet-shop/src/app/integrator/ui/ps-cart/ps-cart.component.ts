@@ -19,7 +19,7 @@ import {
 
 // # Internal modules
 import { PSEmptinessComponent } from '../../ui-kit/ps-emptiness/ps-emptiness.component'
-import type { ProductTableViewModel } from '../ps-products/ps-products.type'
+import type { PSProductTableItem } from '../ps-products/ps-products.type'
 import { PSCartService } from './ps-cart.service'
 import { type PSCartState } from './ps-cart.service.type'
 
@@ -50,20 +50,20 @@ import { type PSCartState } from './ps-cart.service.type'
 export class PSCartComponent implements OnInit {
   // region ## Properties
   @Input()
-  public set items(items: readonly ProductTableViewModel[]) {
+  public set items(items: readonly PSProductTableItem[]) {
     this.#items = items
-    this.dataSource = new MatTableDataSource<ProductTableViewModel>([...items])
+    this.dataSource = new MatTableDataSource<PSProductTableItem>([...items])
   }
 
-  public get items(): readonly ProductTableViewModel[] {
+  public get items(): readonly PSProductTableItem[] {
     return this.#items
   }
 
-  protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
+  protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected displayedColumns: string[] = ['delete', 'number', 'name', 'parent', 'price']
 
   readonly #destroyRef = inject(DestroyRef)
-  #items: readonly ProductTableViewModel[] = []
+  #items: readonly PSProductTableItem[] = []
   readonly #psCartService = inject(PSCartService)
 
   // endregion ## Properties

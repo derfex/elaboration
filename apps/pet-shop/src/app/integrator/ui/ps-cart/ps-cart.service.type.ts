@@ -1,6 +1,6 @@
-import type { ProductTableViewModel } from '../ps-products/ps-products.type'
+import type { PSProductTableItem } from '../ps-products/ps-products.type'
 
 export interface PSCartState {
-  readonly items: readonly ProductTableViewModel[]
+  readonly items: readonly PSProductTableItem[]
   readonly keysSet: Set<number>
 }

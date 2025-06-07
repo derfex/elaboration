@@ -19,7 +19,7 @@ import {
 
 // # Internal modules
 import { PSEmptinessComponent } from '../../ui-kit/ps-emptiness/ps-emptiness.component'
-import type { ProductTableViewModel } from './ps-products.type'
+import type { PSProductTableItem } from './ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,20 +48,20 @@ import type { ProductTableViewModel } from './ps-products.type'
 })
 export class PSProductsComponent {
   // region ## Properties
-  protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
+  protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'parent', 'price']
-  protected selection = new SelectionModel<ProductTableViewModel>(true, [])
+  protected selection = new SelectionModel<PSProductTableItem>(true, [])
 
   private filterPrivate: number | null = null
-  private itemsPrivate: readonly ProductTableViewModel[] = []
+  private itemsPrivate: readonly PSProductTableItem[] = []
 
   @Input()
-  public set items(items: readonly ProductTableViewModel[]) {
+  public set items(items: readonly PSProductTableItem[]) {
     this.itemsPrivate = items
     this.dataSource.data = [...items]
   }
 
-  public get items(): readonly ProductTableViewModel[] {
+  public get items(): readonly PSProductTableItem[] {
     return this.itemsPrivate
   }
 
@@ -81,7 +81,7 @@ export class PSProductsComponent {
   // endregion ## Properties
 
   constructor() {
-    this.dataSource.filterPredicate = (data: ProductTableViewModel, filter: string): boolean =>
+    this.dataSource.filterPredicate = (data: PSProductTableItem, filter: string): boolean =>
       data.parent.id === +filter
   }
 
@@ -129,14 +129,14 @@ export class PSProductsComponent {
   }
 
   // The label for the checkbox on the passed row.
-  protected checkboxLabel(row?: ProductTableViewModel): string {
+  protected checkboxLabel(row?: PSProductTableItem): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`
   }
 
-  public get selected(): readonly ProductTableViewModel[] {
+  public get selected(): readonly PSProductTableItem[] {
     return this.selection.selected
   }
 

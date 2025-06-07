@@ -10,7 +10,7 @@ import { PSCartService } from '../ps-cart/ps-cart.service'
 import type { PSCartState } from '../ps-cart/ps-cart.service.type'
 import { PSCategoriesSelectComponent } from '../ps-categories/ps-categories-select/ps-categories-select.component'
 import { PSProductsComponent } from '../ps-products/ps-products.component'
-import type { ProductTableViewModel } from '../ps-products/ps-products.type'
+import type { PSProductTableItem } from '../ps-products/ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,13 +28,13 @@ import type { ProductTableViewModel } from '../ps-products/ps-products.type'
 })
 export class PetShopComponent implements OnInit {
   // region ## Properties
-  protected productsInList: readonly ProductTableViewModel[] = []
-  protected productsInCart: readonly ProductTableViewModel[] = []
+  protected productsInList: readonly PSProductTableItem[] = []
+  protected productsInCart: readonly PSProductTableItem[] = []
 
   readonly #cdr = inject(ChangeDetectorRef)
   readonly #destroyRef = inject(DestroyRef)
   #keysInCart: Set<number> = new Set()
-  #products: readonly ProductTableViewModel[] = []
+  #products: readonly PSProductTableItem[] = []
   readonly #psCartService = inject(PSCartService)
   readonly #psProductsService = inject(ProductsHTTPService)
 
@@ -75,7 +75,7 @@ export class PetShopComponent implements OnInit {
         error: (error: unknown): void => {
           throw error
         },
-        next: (products: readonly ProductTableViewModel[]): void => {
+        next: (products: readonly PSProductTableItem[]): void => {
           this.#products = products
           this.productsInList = products.filter(this.#needInList, this)
           this.#cdr.markForCheck()
@@ -83,7 +83,7 @@ export class PetShopComponent implements OnInit {
       })
   }
 
-  #needInList(product: ProductTableViewModel): boolean {
+  #needInList(product: PSProductTableItem): boolean {
     return !this.#keysInCart.has(product.id)
   }
 

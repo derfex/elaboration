@@ -7,11 +7,11 @@ import { map } from 'rxjs/operators'
 import { environment } from '../../../../../environments/environment'
 import { BackendAPIService } from '../../../../integrator/backend-api/backend-api/backend-api.service'
 import type { PSProductsService } from '../../../../integrator/ui/ps-products/products-service.type'
-import type { ProductTableViewModel } from '../../../../integrator/ui/ps-products/ps-products.type'
+import type { PSProductTableItem } from '../../../../integrator/ui/ps-products/ps-products.type'
 
 // # Definitions
 // TODO: Do we need the function?
-function transformProduct(product: ProductTableViewModel): ProductTableViewModel {
+function transformProduct(product: PSProductTableItem): PSProductTableItem {
   if (!product.parent) {
     ;(product as any).parent = {
       id: null,
@@ -27,11 +27,11 @@ function transformProduct(product: ProductTableViewModel): ProductTableViewModel
 export class ProductsHTTPService implements PSProductsService {
   readonly #backendAPIService = inject(BackendAPIService)
 
-  public readList(): Observable<readonly ProductTableViewModel[]> {
+  public readList(): Observable<readonly PSProductTableItem[]> {
     return this.#backendAPIService
-      .get<readonly ProductTableViewModel[]>(environment.API.products.readList)
+      .get<readonly PSProductTableItem[]>(environment.API.products.readList)
       .pipe(
-        map((products: readonly ProductTableViewModel[]): readonly ProductTableViewModel[] =>
+        map((products: readonly PSProductTableItem[]): readonly PSProductTableItem[] =>
           products.map(transformProduct),
         ),
       )
