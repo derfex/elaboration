@@ -1,9 +1,9 @@
-const root = 'https://ssdev.superagent.ru/TestApp/';
+const root = 'https://ssdev.superagent.ru/TestApp/'
 
 export const environment = {
   API: {
     categories: {
-      getAll: root + 'Values/GetParents',
+      readList: root + 'Values/GetParents',
     },
     products: {
       getAll: root + 'Values/GetAll',
@@ -11,4 +11,4 @@ export const environment = {
     root,
   },
   production: true,
-};
+}

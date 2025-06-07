@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms'
 import { MatOption } from '@angular/material/core'
 import { MatFormField, MatLabel } from '@angular/material/input'
 import { MatSelect } from '@angular/material/select'
-import { Subscription } from 'rxjs'
+import type { Subscription } from 'rxjs'
 
 // # Internal modules
-import { CategoriesService, CategoryModels } from '../../services/categories.service'
+import type { PSCategory } from '../../../../integrator/backend-api/ps-categories/ps-categories.type'
+import { CategoriesService } from '../../services/categories.service'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,7 +30,7 @@ import { CategoriesService, CategoryModels } from '../../services/categories.ser
 })
 export class CategoriesSelectComponent implements OnInit {
   // region ## Properties
-  protected items: CategoryModels = []
+  protected items: readonly PSCategory[] = []
   protected selectedID: number | null = null
   private subscriptionToCategories: Subscription | undefined
 
@@ -40,8 +41,8 @@ export class CategoriesSelectComponent implements OnInit {
   // region ## Lifecycle hooks
   public ngOnInit(): void {
     // FIXME: Unsubscribe.
-    this.subscriptionToCategories = this.categoriesService.getAll().subscribe(
-      (data: CategoryModels) => {
+    this.subscriptionToCategories = this.categoriesService.readList().subscribe(
+      (data: readonly PSCategory[]) => {
         this.items = data
       },
       (error: unknown): void => {

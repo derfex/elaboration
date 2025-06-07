@@ -1,19 +1,11 @@
 // # External modules
 import { inject, Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import type { Observable } from 'rxjs'
 
 // # Internal modules
 import { environment } from '../../../../environments/environment'
 import { BackendAPIService } from '../../../integrator/backend-api/backend-api/backend-api.service'
-
-// # Definitions
-// TODO: Avoid `I` prefix.
-interface ICategory {
-  id: number
-  name: string
-}
-
-export type CategoryModels = readonly ICategory[]
+import type { PSCategory } from '../../../integrator/backend-api/ps-categories/ps-categories.type'
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +13,7 @@ export type CategoryModels = readonly ICategory[]
 export class CategoriesService {
   readonly #backendAPIService = inject(BackendAPIService)
 
-  public getAll(): Observable<CategoryModels> {
-    return this.#backendAPIService.get<readonly ICategory[]>(environment.API.categories.getAll)
+  public readList(): Observable<readonly PSCategory[]> {
+    return this.#backendAPIService.get<readonly PSCategory[]>(environment.API.categories.readList)
   }
 }
