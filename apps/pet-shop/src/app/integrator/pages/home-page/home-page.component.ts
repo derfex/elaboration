@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ShopComponent } from '../../../shop/shop.component'
+import { PetShopComponent } from '../../../shop/shop.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
-    ShopComponent,
+    PetShopComponent,
   ],
   selector: 'app-home-page',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?

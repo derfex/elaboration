@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ShopComponent } from './shop.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { PetShopComponent } from './shop.component'
 
-describe('ShopComponent', (): void => {
-  let component: ShopComponent;
-  let fixture: ComponentFixture<ShopComponent>;
+describe('PetShopComponent', (): void => {
+  let component: PetShopComponent
+  let fixture: ComponentFixture<PetShopComponent>
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [ShopComponent],
-    }).compileComponents();
-  });
+      imports: [PetShopComponent],
+    }).compileComponents()
+  })
 
   beforeEach((): void => {
-    fixture = TestBed.createComponent(ShopComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PetShopComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', (): void => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

@@ -22,11 +22,11 @@ import type { ProductTableViewModel } from './products/shared/product-table-view
     PSCategoriesSelectComponent,
     PSProductsComponent,
   ],
-  selector: 'app-shop',
-  styleUrl: './shop.component.sass',
-  templateUrl: './shop.component.html',
+  selector: 'app-pet-shop',
+  styleUrl: './pet-shop.component.sass',
+  templateUrl: './pet-shop.component.html',
 })
-export class ShopComponent implements OnInit {
+export class PetShopComponent implements OnInit {
   // region ## Properties
   protected productsInList: readonly ProductTableViewModel[] = []
   protected productsInCart: readonly ProductTableViewModel[] = []
