@@ -21,7 +21,7 @@ import type { PSCategory } from '../../../../integrator/backend-api/ps-categorie
 
     //
   ],
-  selector: 'app-categories-select',
+  selector: 'app-ps-categories-select',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrls: ['./categories-select.component.sass'],
   templateUrl: './categories-select.component.html',
@@ -43,11 +43,14 @@ export class CategoriesSelectComponent implements OnInit {
 
   // endregion ## Lifecycle hooks
 
-  // region ## Methods
+  // region ## Public API
   public get selected(): number {
     return this.selectedID ?? 0
   }
 
+  // endregion ## Public API
+
+  // region ## Methods
   #fetchCategories(): void {
     this.#psCategoriesForBEService
       .readList()
