@@ -1,6 +1,6 @@
-import type { PSProductTableItem } from '../../../../integrator/ui/ps-products/ps-products.type'
+import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
 
-export class ProductsModel {
+export class PSProductsStorage {
   #counter = 0
   readonly #items: PSProductTableItem[] = []
 

@@ -1,7 +1,7 @@
 import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
-import { ProductsModel } from './ps-products-storage'
+import { PSProductsStorage } from './ps-products-storage'
 
-const products = new ProductsModel()
+const productsStorage = new PSProductsStorage()
 
 ;(
   [
@@ -13,7 +13,7 @@ const products = new ProductsModel()
     ['Cooler', 'PC', 3000],
   ] satisfies readonly [string, string, number][]
 ).forEach(([name, parentName, price]: [string, string, number]): void => {
-  products.create({
+  productsStorage.create({
     name,
     parent: {
       id: 1,
@@ -23,4 +23,4 @@ const products = new ProductsModel()
   })
 })
 
-export default products.readList() as readonly PSProductTableItem[]
+export default productsStorage.readList() as readonly PSProductTableItem[]
