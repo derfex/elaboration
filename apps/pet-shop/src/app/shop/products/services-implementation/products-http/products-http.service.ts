@@ -27,7 +27,7 @@ function transformProduct(product: ProductTableViewModel): ProductTableViewModel
 export class ProductsHTTPService implements PSProductsService {
   readonly #backendAPIService = inject(BackendAPIService)
 
-  public getAll(): Observable<readonly ProductTableViewModel[]> {
+  public readList(): Observable<readonly ProductTableViewModel[]> {
     return this.#backendAPIService
       .get<readonly ProductTableViewModel[]>(environment.API.products.getAll)
       .pipe(

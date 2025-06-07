@@ -45,7 +45,8 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    this.productsService.getAll().subscribe({
+    // TODO: Unsubscribe.
+    this.productsService.readList().subscribe({
       error: (error: unknown): void => {
         throw error
       },

@@ -13,7 +13,7 @@ import productsData from './products.data'
 export class ProductsLocalService implements PSProductsService {
   private readonly observable: Observable<readonly ProductTableViewModel[]> = of(productsData)
 
-  public getAll(): Observable<readonly ProductTableViewModel[]> {
+  public readList(): Observable<readonly ProductTableViewModel[]> {
     return this.observable
   }
 }
