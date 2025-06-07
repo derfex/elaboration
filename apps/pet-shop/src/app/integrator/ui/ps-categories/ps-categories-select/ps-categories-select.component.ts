@@ -23,8 +23,8 @@ import type { PSCategory } from '../../../backend-api/ps-categories/ps-categorie
   ],
   selector: 'app-ps-categories-select',
   standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
-  styleUrls: ['./categories-select.component.sass'],
-  templateUrl: './categories-select.component.html',
+  styleUrl: './ps-categories-select.component.sass',
+  templateUrl: './ps-categories-select.component.html',
 })
 export class PSCategoriesSelectComponent implements OnInit {
   // region ## Properties
