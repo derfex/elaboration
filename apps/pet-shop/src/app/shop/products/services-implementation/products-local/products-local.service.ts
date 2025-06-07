@@ -1,18 +1,19 @@
 // # External modules
 import { Injectable } from '@angular/core'
-import { of } from 'rxjs'
+import { type Observable, of } from 'rxjs'
 
 // # Internal modules
-import { IProductsService, ObservableProducts } from '../products-service'
+import type { ProductTableViewModel } from '../../shared/product-table-view.model'
+import type { PSProductsService } from '../products-service'
 import productsData from './products.data'
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsLocalService implements IProductsService {
-  private readonly observable: ObservableProducts = of(productsData)
+export class ProductsLocalService implements PSProductsService {
+  private readonly observable: Observable<readonly ProductTableViewModel[]> = of(productsData)
 
-  public getAll(): ObservableProducts {
+  public getAll(): Observable<readonly ProductTableViewModel[]> {
     return this.observable
   }
 }

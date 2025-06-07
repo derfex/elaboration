@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators'
 import { environment } from '../../../../../environments/environment'
 import { BackendAPIService } from '../../../../integrator/backend-api/backend-api/backend-api.service'
 import { ProductTableViewModel } from '../../shared/product-table-view.model'
-import { IProductsService } from '../products-service'
+import type { PSProductsService } from '../products-service'
 
 // # Definitions
 // TODO: Do we need the function?
@@ -24,7 +24,7 @@ function transformProduct(product: ProductTableViewModel): ProductTableViewModel
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsHTTPService implements IProductsService {
+export class ProductsHTTPService implements PSProductsService {
   readonly #backendAPIService = inject(BackendAPIService)
 
   public getAll(): Observable<readonly ProductTableViewModel[]> {
