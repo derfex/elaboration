@@ -18,9 +18,9 @@ import {
 import { type Subscription } from 'rxjs'
 
 // Internal modules.
-import { CartService } from '../../../shop/cart/shared/cart.service'
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
+import { type PSCartService } from './ps-cart.service'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,7 +65,7 @@ export class PSCartComponent implements OnInit, OnDestroy {
 
   // endregion ## Properties
 
-  constructor(private readonly cartService: CartService) {}
+  constructor(private readonly cartService: PSCartService) {}
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
