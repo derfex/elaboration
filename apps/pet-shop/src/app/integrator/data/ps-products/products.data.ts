@@ -1,5 +1,5 @@
-import type { PSProductTableItem } from '../../../../integrator/ui/ps-products/ps-products.type'
-import { ProductsModel } from './products.model'
+import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
+import { ProductsModel } from './ps-products-storage'
 
 const products = new ProductsModel()
 
