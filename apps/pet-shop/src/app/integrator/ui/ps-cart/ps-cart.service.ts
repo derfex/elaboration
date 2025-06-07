@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject, type Observable } from 'rxjs'
 
 // # Internal modules
-import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
+import type { ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import type { PSCartState } from './ps-cart.service.type'
 
 @Injectable({
