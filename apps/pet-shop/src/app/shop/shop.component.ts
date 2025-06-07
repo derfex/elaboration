@@ -5,7 +5,7 @@ import { type Subscription } from 'rxjs'
 
 // Internal modules.
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
-import { PSCartService } from './cart/shared/ps-cart.service'
+import { PSCartService } from '../integrator/ui/ps-cart/ps-cart.service'
 import { ProductsComponent } from './products/products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
 import { type ProductTableViewModel } from './products/shared/product-table-view.model'
@@ -58,7 +58,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
     this.subscriptionToCart = this.cartService.state.subscribe((payload): void => {
       this.productsInCart = payload.items
-      this.keysInCart = payload.keys
+      this.keysInCart = payload.keysSet
       this.productsInList = this.products.filter(this.needInList, this)
     })
   }
