@@ -10,7 +10,7 @@ export const environment = {
       readList: 'assets/product-categories.json',
     },
     products: {
-      getAll: 'assets/products.json',
+      readList: 'assets/products.json',
     },
     root,
   },

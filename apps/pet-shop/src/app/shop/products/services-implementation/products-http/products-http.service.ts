@@ -29,7 +29,7 @@ export class ProductsHTTPService implements PSProductsService {
 
   public readList(): Observable<readonly ProductTableViewModel[]> {
     return this.#backendAPIService
-      .get<readonly ProductTableViewModel[]>(environment.API.products.getAll)
+      .get<readonly ProductTableViewModel[]>(environment.API.products.readList)
       .pipe(
         map((products: readonly ProductTableViewModel[]): readonly ProductTableViewModel[] =>
           products.map(transformProduct),

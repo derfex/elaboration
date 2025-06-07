@@ -6,7 +6,7 @@ export const environment = {
       readList: root + 'Values/GetParents',
     },
     products: {
-      getAll: root + 'Values/GetAll',
+      readList: root + 'Values/GetAll',
     },
     root,
   },
