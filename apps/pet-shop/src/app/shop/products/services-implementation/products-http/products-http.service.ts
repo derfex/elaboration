@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 
 // # Internal modules
 import { environment } from '../../../../../environments/environment'
-import { BackendAPIService } from '../../../../shared/services/api.service'
+import { BackendAPIService } from '../../../../integrator/backend-api/backend-api/backend-api.service'
 import { ProductTableViewModel } from '../../shared/product-table-view.model'
 import { IProductsService } from '../products-service'
 

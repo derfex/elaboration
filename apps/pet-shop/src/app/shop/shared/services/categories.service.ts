@@ -4,7 +4,7 @@ import { Observable } from 'rxjs'
 
 // # Internal modules
 import { environment } from '../../../../environments/environment'
-import { BackendAPIService } from '../../../shared/services/api.service'
+import { BackendAPIService } from '../../../integrator/backend-api/backend-api/backend-api.service'
 
 // # Definitions
 // TODO: Avoid `I` prefix.
