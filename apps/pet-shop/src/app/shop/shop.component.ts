@@ -33,11 +33,10 @@ export class ShopComponent implements OnInit {
 
   readonly #cdr = inject(ChangeDetectorRef)
   readonly #destroyRef = inject(DestroyRef)
+  #keysInCart: Set<number> = new Set()
+  #products: readonly ProductTableViewModel[] = []
   readonly #psCartService = inject(PSCartService)
   readonly #psProductsService = inject(ProductsHTTPService)
-
-  private products: readonly ProductTableViewModel[] = []
-  private keysInCart: Set<number> = new Set()
 
   // endregion ## Properties
 
@@ -49,15 +48,12 @@ export class ShopComponent implements OnInit {
 
   // endregion ## Lifecycle hooks
 
-  // region ## Public API
-  public addToCart(productsComponent: PSProductsComponent): void {
+  // region ## Methods
+  protected addToCart(productsComponent: PSProductsComponent): void {
     this.#psCartService.addProducts(productsComponent.selected)
     productsComponent.clearSelection()
   }
 
-  // endregion ## Public API
-
-  // region ## Methods
   #fetchProductsToCart(): void {
     this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe({
       error: (error: unknown): void => {
@@ -65,8 +61,8 @@ export class ShopComponent implements OnInit {
       },
       next: (payload: PSCartState): void => {
         this.productsInCart = payload.items
-        this.keysInCart = payload.keysSet
-        this.productsInList = this.products.filter(this.needInList, this)
+        this.#keysInCart = payload.keysSet
+        this.productsInList = this.#products.filter(this.#needInList, this)
       },
     })
   }
@@ -79,16 +75,16 @@ export class ShopComponent implements OnInit {
         error: (error: unknown): void => {
           throw error
         },
-        next: (data: readonly ProductTableViewModel[]): void => {
-          this.products = data
-          this.productsInList = data.filter(this.needInList, this)
+        next: (products: readonly ProductTableViewModel[]): void => {
+          this.#products = products
+          this.productsInList = products.filter(this.#needInList, this)
           this.#cdr.markForCheck()
         },
       })
   }
 
-  private needInList(product: ProductTableViewModel): boolean {
-    return !this.keysInCart.has(product.id)
+  #needInList(product: ProductTableViewModel): boolean {
+    return !this.#keysInCart.has(product.id)
   }
 
   // endregion ## Methods
