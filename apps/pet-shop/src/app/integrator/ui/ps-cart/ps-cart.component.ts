@@ -1,5 +1,6 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, inject, Input, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import {
@@ -15,7 +16,6 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table'
-import { type Subscription } from 'rxjs'
 
 // # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
@@ -46,15 +46,8 @@ import { PSCartService } from './ps-cart.service'
   styleUrl: './ps-cart.component.sass',
   templateUrl: './ps-cart.component.html',
 })
-export class PSCartComponent implements OnInit, OnDestroy {
+export class PSCartComponent implements OnInit {
   // region ## Properties
-  protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
-  protected displayedColumns: string[] = ['delete', 'number', 'name', 'parent', 'price']
-
-  #items: readonly ProductTableViewModel[] = []
-
-  private subscriptionToCart: Subscription | undefined
-
   @Input()
   public set items(items: readonly ProductTableViewModel[]) {
     this.#items = items
@@ -65,20 +58,18 @@ export class PSCartComponent implements OnInit, OnDestroy {
     return this.#items
   }
 
+  protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
+  protected displayedColumns: string[] = ['delete', 'number', 'name', 'parent', 'price']
+
+  readonly #destroyRef = inject(DestroyRef)
+  #items: readonly ProductTableViewModel[] = []
   readonly #psCartService = inject(PSCartService)
 
   // endregion ## Properties
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    this.subscriptionToCart = this.#psCartService.state.subscribe((payload): void => {
-      this.items = payload.items
-    })
-  }
-
-  public ngOnDestroy(): void {
-    // Unsubscribe to ensure no memory leaks.
-    ;(this.subscriptionToCart as Subscription).unsubscribe()
+    this.#fetchCartItems()
   }
 
   // endregion ## Lifecycle hooks
@@ -90,6 +81,12 @@ export class PSCartComponent implements OnInit, OnDestroy {
 
   protected deleteItem(id: number): void {
     this.#psCartService.deleteProductByID(id)
+  }
+
+  #fetchCartItems(): void {
+    this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((payload): void => {
+      this.items = payload.items
+    })
   }
 
   // endregion ## Methods
