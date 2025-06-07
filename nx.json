@@ -5,8 +5,13 @@
     "@nx/angular:application": {
       "e2eTestRunner": "playwright",
       "linter": "eslint",
-      "style": "scss",
+      "style": "sass",
       "unitTestRunner": "vitest"
+    },
+    "@nx/angular:component": {
+      "changeDetection": "OnPush",
+      "displayBlock": true,
+      "prefix": "app"
     }
   },
   "namedInputs": {
