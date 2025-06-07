@@ -21,6 +21,7 @@ import {
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
 import { PSCartService } from './ps-cart.service'
+import { type PSCartState } from './ps-cart.service.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -84,8 +85,8 @@ export class PSCartComponent implements OnInit {
   }
 
   #fetchCartItems(): void {
-    this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe((payload): void => {
-      this.items = payload.items
+    this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(({ items }: PSCartState): void => {
+      this.items = items
     })
   }
 

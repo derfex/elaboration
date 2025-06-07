@@ -4,15 +4,16 @@ import { BehaviorSubject, type Observable } from 'rxjs'
 
 // # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
+import type { PSCartState } from './ps-cart.service.type'
 
 @Injectable({
   providedIn: 'root',
 })
 export class PSCartService {
   // region ## Properties
-  readonly #subject = new BehaviorSubject<ItemsState>(defaultState)
+  readonly #subject = new BehaviorSubject<PSCartState>(defaultState)
 
-  public get state(): Observable<ItemsState> {
+  public get state(): Observable<PSCartState> {
     return this.#subject.asObservable()
   }
 
@@ -45,12 +46,7 @@ export class PSCartService {
 }
 
 // # Definitions
-interface ItemsState {
-  readonly items: readonly ProductTableViewModel[]
-  readonly keysSet: Set<number>
-}
-
-const defaultState: ItemsState = {
+const defaultState: PSCartState = {
   items: [],
   keysSet: new Set(),
 }
