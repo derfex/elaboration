@@ -50,17 +50,19 @@ export class PSCartComponent implements OnInit, OnDestroy {
   // region ## Properties
   protected dataSource: MatTableDataSource<ProductTableViewModel> = new MatTableDataSource<ProductTableViewModel>([])
   protected displayedColumns: string[] = ['delete', 'number', 'name', 'parent', 'price']
-  private itemsPrivate: readonly ProductTableViewModel[] = []
+
+  #items: readonly ProductTableViewModel[] = []
+
   private subscriptionToCart: Subscription | undefined
 
   @Input()
   public set items(items: readonly ProductTableViewModel[]) {
-    this.itemsPrivate = items
+    this.#items = items
     this.dataSource = new MatTableDataSource<ProductTableViewModel>([...items])
   }
 
   public get items(): readonly ProductTableViewModel[] {
-    return this.itemsPrivate
+    return this.#items
   }
 
   readonly #psCartService = inject(PSCartService)
