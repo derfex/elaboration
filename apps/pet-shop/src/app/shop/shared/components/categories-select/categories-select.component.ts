@@ -1,6 +1,6 @@
 // # External modules
 import { NgForOf } from '@angular/common'
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { MatOption } from '@angular/material/core'
 import { MatFormField, MatLabel } from '@angular/material/input'
@@ -8,8 +8,8 @@ import { MatSelect } from '@angular/material/select'
 import type { Subscription } from 'rxjs'
 
 // # Internal modules
+import { PSCategoriesForBEService } from '../../../../integrator/backend-api/ps-categories/ps-categories-for-be.service'
 import type { PSCategory } from '../../../../integrator/backend-api/ps-categories/ps-categories-for-be.type'
-import { CategoriesService } from '../../services/categories.service'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,14 +34,14 @@ export class CategoriesSelectComponent implements OnInit {
   protected selectedID: number | null = null
   private subscriptionToCategories: Subscription | undefined
 
-  // endregion ## Properties
+  readonly #psCategoriesForBEService = inject(PSCategoriesForBEService)
 
-  constructor(private readonly categoriesService: CategoriesService) {}
+  // endregion ## Properties
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
     // FIXME: Unsubscribe.
-    this.subscriptionToCategories = this.categoriesService.readList().subscribe(
+    this.subscriptionToCategories = this.#psCategoriesForBEService.readList().subscribe(
       (data: readonly PSCategory[]) => {
         this.items = data
       },
