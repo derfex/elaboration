@@ -5,7 +5,7 @@ import { type Subscription } from 'rxjs'
 
 // Internal modules.
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
-import { CartService } from './cart/shared/cart.service'
+import { PSCartService } from './cart/shared/ps-cart.service'
 import { ProductsComponent } from './products/products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
 import { type ProductTableViewModel } from './products/shared/product-table-view.model'
@@ -39,7 +39,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   // endregion ## Properties
 
   constructor(
-    private readonly cartService: CartService,
+    private readonly cartService: PSCartService,
     private readonly productsService: ProductsHTTPService,
   ) {}
 

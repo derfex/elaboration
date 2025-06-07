@@ -19,7 +19,7 @@ const defaultState: IItemsState = {
 @Injectable({
   providedIn: 'root',
 })
-export class CartService {
+export class PSCartService {
   // region ## Properties
   private subject = new BehaviorSubject<IItemsState>(defaultState)
 
