@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { PetShopComponent } from '../../../shop/shop.component'
+import { PetShopComponent } from '../../ui/pet-shop/pet-shop.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

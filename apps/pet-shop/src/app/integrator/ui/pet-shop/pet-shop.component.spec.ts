@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { PetShopComponent } from './shop.component'
+import { PetShopComponent } from './pet-shop.component'
+
+// TODO: Explore the tests, refactor, {migrate to `vitest`?}.
 
 describe('PetShopComponent', (): void => {
   let component: PetShopComponent
