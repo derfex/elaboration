@@ -1,4 +1,4 @@
-import { ProductTableViewModel } from '../../shared/product-table-view.model'
+import type { ProductTableViewModel } from '../../../../integrator/ui/ps-products/ps-products.type'
 import { ProductsModel } from './products.model'
 
 const products = new ProductsModel()
@@ -13,7 +13,7 @@ const products = new ProductsModel()
     ['Cooler', 'PC', 3000],
   ] satisfies readonly [string, string, number][]
 ).forEach(([name, parentName, price]: [string, string, number]): void => {
-  products.addProduct({
+  products.create({
     name,
     parent: {
       id: 1,
@@ -23,4 +23,4 @@ const products = new ProductsModel()
   })
 })
 
-export default products.getAll() as readonly ProductTableViewModel[]
+export default products.readList() as readonly ProductTableViewModel[]

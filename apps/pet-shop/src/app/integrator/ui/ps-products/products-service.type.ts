@@ -1,5 +1,5 @@
 import type { Observable } from 'rxjs'
-import type { ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
+import type { ProductTableViewModel } from './ps-products.type'
 
 export interface PSProductsService {
   readList(): Observable<readonly ProductTableViewModel[]>

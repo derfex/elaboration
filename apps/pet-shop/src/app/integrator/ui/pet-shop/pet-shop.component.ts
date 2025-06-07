@@ -5,12 +5,12 @@ import { MatButton } from '@angular/material/button'
 
 // # Internal modules
 import { ProductsHTTPService } from '../../../shop/products/services-implementation/products-http/products-http.service'
-import type { ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import { PSCartComponent } from '../ps-cart/ps-cart.component'
 import { PSCartService } from '../ps-cart/ps-cart.service'
 import type { PSCartState } from '../ps-cart/ps-cart.service.type'
 import { PSCategoriesSelectComponent } from '../ps-categories/ps-categories-select/ps-categories-select.component'
 import { PSProductsComponent } from '../ps-products/ps-products.component'
+import type { ProductTableViewModel } from '../ps-products/ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

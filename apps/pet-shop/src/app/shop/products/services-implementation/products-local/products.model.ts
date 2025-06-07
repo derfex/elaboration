@@ -1,10 +1,10 @@
-import { ProductTableViewModel } from '../../shared/product-table-view.model'
+import type { ProductTableViewModel } from '../../../../integrator/ui/ps-products/ps-products.type'
 
 export class ProductsModel {
   #counter = 0
   readonly #items: ProductTableViewModel[] = []
 
-  public addProduct(data: Omit<ProductTableViewModel, 'id'>): void {
+  public create(data: Omit<ProductTableViewModel, 'id'>): void {
     const id = ++this.#counter
     this.#items.push({
       id,
@@ -12,7 +12,7 @@ export class ProductsModel {
     })
   }
 
-  public getAll(): readonly ProductTableViewModel[] {
+  public readList(): readonly ProductTableViewModel[] {
     return this.#items
   }
 }

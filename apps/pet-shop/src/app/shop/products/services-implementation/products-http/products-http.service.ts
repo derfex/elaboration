@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators'
 import { environment } from '../../../../../environments/environment'
 import { BackendAPIService } from '../../../../integrator/backend-api/backend-api/backend-api.service'
 import type { PSProductsService } from '../../../../integrator/ui/ps-products/products-service.type'
-import { ProductTableViewModel } from '../../shared/product-table-view.model'
+import type { ProductTableViewModel } from '../../../../integrator/ui/ps-products/ps-products.type'
 
 // # Definitions
 // TODO: Do we need the function?

@@ -4,7 +4,7 @@ import { type Observable, of } from 'rxjs'
 
 // # Internal modules
 import type { PSProductsService } from '../../../../integrator/ui/ps-products/products-service.type'
-import type { ProductTableViewModel } from '../../shared/product-table-view.model'
+import type { ProductTableViewModel } from '../../../../integrator/ui/ps-products/ps-products.type'
 import productsData from './products.data'
 
 @Injectable({
