@@ -8,7 +8,7 @@ import { MatSelect } from '@angular/material/select'
 import type { Subscription } from 'rxjs'
 
 // # Internal modules
-import type { PSCategory } from '../../../../integrator/backend-api/ps-categories/ps-categories.type'
+import type { PSCategory } from '../../../../integrator/backend-api/ps-categories/ps-categories-for-be.type'
 import { CategoriesService } from '../../services/categories.service'
 
 @Component({
