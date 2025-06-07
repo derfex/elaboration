@@ -1,6 +1,5 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { NgIf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
@@ -38,7 +37,6 @@ import { ProductTableViewModel } from './shared/product-table-view.model'
     MatSort,
     MatSortModule,
     MatTable,
-    NgIf,
 
     // Provided by the app.
     PSEmptinessComponent,
