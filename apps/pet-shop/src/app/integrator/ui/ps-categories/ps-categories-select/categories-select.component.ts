@@ -7,8 +7,8 @@ import { MatFormField, MatLabel } from '@angular/material/input'
 import { MatSelect } from '@angular/material/select'
 
 // # Internal modules
-import { PSCategoriesForBEService } from '../../../../integrator/backend-api/ps-categories/ps-categories-for-be.service'
-import type { PSCategory } from '../../../../integrator/backend-api/ps-categories/ps-categories-for-be.type'
+import { PSCategoriesForBEService } from '../../../backend-api/ps-categories/ps-categories-for-be.service'
+import type { PSCategory } from '../../../backend-api/ps-categories/ps-categories-for-be.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +26,7 @@ import type { PSCategory } from '../../../../integrator/backend-api/ps-categorie
   styleUrls: ['./categories-select.component.sass'],
   templateUrl: './categories-select.component.html',
 })
-export class CategoriesSelectComponent implements OnInit {
+export class PSCategoriesSelectComponent implements OnInit {
   // region ## Properties
   protected items: readonly PSCategory[] = []
   protected selectedID: number | null = null

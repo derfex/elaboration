@@ -6,7 +6,7 @@ import { type Subscription } from 'rxjs'
 // # Internal modules
 import { PSCartComponent } from '../integrator/ui/ps-cart/ps-cart.component'
 import { PSCartService } from '../integrator/ui/ps-cart/ps-cart.service'
-import { CategoriesSelectComponent } from '../integrator/ui/ps-categories/ps-categories-select/categories-select.component'
+import { PSCategoriesSelectComponent } from '../integrator/ui/ps-categories/ps-categories-select/categories-select.component'
 import { ProductsComponent } from './products/products.component'
 import { ProductsHTTPService } from './products/services-implementation/products-http/products-http.service'
 import { type ProductTableViewModel } from './products/shared/product-table-view.model'
@@ -17,8 +17,8 @@ import { type ProductTableViewModel } from './products/shared/product-table-view
     MatButton,
 
     // Provided by the app.
-    CategoriesSelectComponent,
     PSCartComponent,
+    PSCategoriesSelectComponent,
     ProductsComponent,
   ],
   selector: 'app-shop',

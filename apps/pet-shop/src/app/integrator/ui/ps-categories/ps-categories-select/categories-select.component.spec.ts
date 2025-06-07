@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CategoriesSelectComponent } from './categories-select.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { PSCategoriesSelectComponent } from './categories-select.component'
 
-describe('CategoriesSelectComponent', (): void => {
-  let component: CategoriesSelectComponent;
-  let fixture: ComponentFixture<CategoriesSelectComponent>;
+// TODO: Explore the tests, refactor, {migrate to `vitest`?}.
+
+describe('PSCategoriesSelectComponent', (): void => {
+  let component: PSCategoriesSelectComponent
+  let fixture: ComponentFixture<PSCategoriesSelectComponent>
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [CategoriesSelectComponent],
-    }).compileComponents();
-  });
+      imports: [PSCategoriesSelectComponent],
+    }).compileComponents()
+  })
 
   beforeEach((): void => {
-    fixture = TestBed.createComponent(CategoriesSelectComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PSCategoriesSelectComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', (): void => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
