@@ -1,5 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, Input, OnDestroy, OnInit } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import {
@@ -20,7 +20,7 @@ import { type Subscription } from 'rxjs'
 // # Internal modules
 import { type ProductTableViewModel } from '../../../shop/products/shared/product-table-view.model'
 import { EmptinessComponent } from '../../../shop/shared/components/emptiness/emptiness.component'
-import { type PSCartService } from './ps-cart.service'
+import { PSCartService } from './ps-cart.service'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,13 +63,13 @@ export class PSCartComponent implements OnInit, OnDestroy {
     return this.itemsPrivate
   }
 
-  // endregion ## Properties
+  readonly #psCartService = inject(PSCartService)
 
-  constructor(private readonly cartService: PSCartService) {}
+  // endregion ## Properties
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    this.subscriptionToCart = this.cartService.state.subscribe((payload): void => {
+    this.subscriptionToCart = this.#psCartService.state.subscribe((payload): void => {
       this.items = payload.items
     })
   }
@@ -87,7 +87,7 @@ export class PSCartComponent implements OnInit, OnDestroy {
   }
 
   protected deleteItem(id: number): void {
-    this.cartService.deleteProductByID(id)
+    this.#psCartService.deleteProductByID(id)
   }
 
   // endregion ## Methods
