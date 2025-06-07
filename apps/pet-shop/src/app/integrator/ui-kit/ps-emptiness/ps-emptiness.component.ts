@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-ps-emptiness',
-  styleUrl: './emptiness.component.sass',
-  templateUrl: './emptiness.component.html',
+  styleUrl: './ps-emptiness.component.sass',
+  templateUrl: './ps-emptiness.component.html',
 })
 export class PSEmptinessComponent {
   protected caption = 'No data to display'
