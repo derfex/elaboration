@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { PSCartComponent } from './ps-cart.component'
 
+// TODO: Explore the tests, refactor, {migrate to `vitest`?}.
+
 describe('PSCartComponent', (): void => {
   let component: PSCartComponent
   let fixture: ComponentFixture<PSCartComponent>

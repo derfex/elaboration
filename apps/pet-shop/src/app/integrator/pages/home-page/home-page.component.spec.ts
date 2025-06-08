@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HomePageComponent } from './home-page.component'
 
+// TODO: Explore the tests, refactor, {migrate to `vitest`?}.
+
 describe('HomePageComponent', (): void => {
   let component: HomePageComponent
   let fixture: ComponentFixture<HomePageComponent>
