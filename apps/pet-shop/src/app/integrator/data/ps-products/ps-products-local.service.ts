@@ -10,10 +10,10 @@ import productsData from './products.data'
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsLocalService implements PSProductsService {
-  private readonly observable: Observable<readonly PSProductTableItem[]> = of(productsData)
+export class PSProductsLocalService implements PSProductsService {
+  readonly #observable: Observable<readonly PSProductTableItem[]> = of(productsData)
 
   public readList(): Observable<readonly PSProductTableItem[]> {
-    return this.observable
+    return this.#observable
   }
 }
