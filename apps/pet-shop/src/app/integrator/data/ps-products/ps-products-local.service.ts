@@ -5,13 +5,13 @@ import { type Observable, of } from 'rxjs'
 // # Internal modules
 import type { PSProductsService } from '../../ui/ps-products/products-service.type'
 import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
-import productsData from './products.data'
+import { psProducts } from '../pet-shop.data'
 
 @Injectable({
   providedIn: 'root',
 })
 export class PSProductsLocalService implements PSProductsService {
-  readonly #observable: Observable<readonly PSProductTableItem[]> = of(productsData)
+  readonly #observable: Observable<readonly PSProductTableItem[]> = of(psProducts)
 
   public readList(): Observable<readonly PSProductTableItem[]> {
     return this.#observable

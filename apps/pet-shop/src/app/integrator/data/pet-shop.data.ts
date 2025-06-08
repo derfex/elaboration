@@ -32,3 +32,5 @@ const psProductsStorage = new PSProductsStorage()
     })
   })
 }
+
+export const psProducts = psProductsStorage.readList()
