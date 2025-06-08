@@ -7,8 +7,9 @@ import { MatFormField, MatLabel } from '@angular/material/input'
 import { MatSelect } from '@angular/material/select'
 
 // # Internal modules
-import { PSCategoriesForBEService } from '../../../backend-api/ps-categories/ps-categories-for-be.service'
-import type { PSCategory } from '../../../backend-api/ps-categories/ps-categories-for-be.type'
+import { PSCategoriesForBEService } from '../../../data-access/backend-api/ps-categories/ps-categories-for-be.service'
+// TODO: Use another `PSCategory`.
+import type { PSCategoryForBE } from '../../../data-access/backend-api/ps-categories/ps-categories-for-be.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +29,7 @@ import type { PSCategory } from '../../../backend-api/ps-categories/ps-categorie
 })
 export class PSCategoriesSelectComponent implements OnInit {
   // region ## Properties
-  protected items: readonly PSCategory[] = []
+  protected items: readonly PSCategoryForBE[] = []
   protected selectedID: number | null = null
 
   readonly #destroyRef = inject(DestroyRef)

@@ -4,9 +4,9 @@ import { type Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 // # Internal modules
-import { environment } from '../../../../environments/environment'
-import type { PSProductsServiceReadList } from '../../ui/ps-products/products-service.type'
-import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
+import { environment } from '../../../../../environments/environment'
+import type { PSProductsServiceReadList } from '../../../ui/ps-products/products-service.type'
+import type { PSProductTableItem } from '../../../ui/ps-products/ps-products.type'
 import { BackendAPIService } from '../backend-api/backend-api.service'
 
 // # Definitions

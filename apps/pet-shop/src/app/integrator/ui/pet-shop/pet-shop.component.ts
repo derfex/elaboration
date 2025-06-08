@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatButton } from '@angular/material/button'
 
 // # Internal modules
-import { PSProductsHTTPService } from '../../backend-api/ps-products/ps-products-http.service'
+import { PSProductsHTTPService } from '../../data-access/backend-api/ps-products/ps-products-http.service'
 import { PSCartComponent } from '../ps-cart/ps-cart.component'
 import { PSCartService } from '../ps-cart/ps-cart.service'
 import type { PSCartState } from '../ps-cart/ps-cart.service.type'
