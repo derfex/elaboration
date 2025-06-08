@@ -22,7 +22,6 @@ import { PSCategoriesForBEService } from '../../../data-access/backend-api/ps-ca
     //
   ],
   selector: 'app-ps-categories-select',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './ps-categories-select.component.sass',
   templateUrl: './ps-categories-select.component.html',
 })

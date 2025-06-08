@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
   imports: [CommonModule],
   selector: 'app-nx-welcome',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styles: [],
   template: `
     <!--

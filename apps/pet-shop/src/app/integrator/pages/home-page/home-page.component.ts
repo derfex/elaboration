@@ -8,7 +8,6 @@ import { PetShopComponent } from '../../ui/pet-shop/pet-shop.component'
     PetShopComponent,
   ],
   selector: 'app-home-page',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './home-page.component.sass',
   templateUrl: './home-page.component.html',
 })

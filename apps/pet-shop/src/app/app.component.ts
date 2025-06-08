@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router'
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterModule],
   selector: 'app-root',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
 })

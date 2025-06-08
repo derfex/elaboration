@@ -42,7 +42,6 @@ import type { PSProductTableItem } from './ps-products.type'
     PSEmptinessComponent,
   ],
   selector: 'app-ps-products',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './ps-products.component.sass',
   templateUrl: './ps-products.component.html',
 })

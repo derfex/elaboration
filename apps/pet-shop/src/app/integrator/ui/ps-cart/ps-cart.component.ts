@@ -43,7 +43,6 @@ import { type PSCartState } from './ps-cart.service.type'
     PSEmptinessComponent,
   ],
   selector: 'app-ps-cart',
-  standalone: true, // TODO: Can we delete `standalone: true` for Angular@19?
   styleUrl: './ps-cart.component.sass',
   templateUrl: './ps-cart.component.html',
 })
