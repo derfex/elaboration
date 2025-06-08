@@ -1,11 +1,13 @@
-import { TestBed } from '@angular/core/testing';
-import { ProductsHTTPService } from './products-http.service';
+import { TestBed } from '@angular/core/testing'
+import { PSProductsHTTPService } from './ps-products-http.service'
 
-describe('ProductsHTTPService', (): void => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+// TODO: Explore the tests, refactor, {migrate to `vitest`?}.
+
+describe('PSProductsHTTPService', (): void => {
+  beforeEach(() => TestBed.configureTestingModule({}))
 
   it('should be created', (): void => {
-    const service: ProductsHTTPService = TestBed.get(ProductsHTTPService);
-    expect(service).toBeTruthy();
-  });
-});
+    const service: PSProductsHTTPService = TestBed.get(PSProductsHTTPService)
+    expect(service).toBeTruthy()
+  })
+})

@@ -4,10 +4,10 @@ import { type Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 // # Internal modules
-import { environment } from '../../../../../environments/environment'
-import { BackendAPIService } from '../../../../integrator/backend-api/backend-api/backend-api.service'
-import type { PSProductsService } from '../../../../integrator/ui/ps-products/products-service.type'
-import type { PSProductTableItem } from '../../../../integrator/ui/ps-products/ps-products.type'
+import { environment } from '../../../../environments/environment'
+import type { PSProductsServiceReadList } from '../../ui/ps-products/products-service.type'
+import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
+import { BackendAPIService } from '../backend-api/backend-api.service'
 
 // # Definitions
 // TODO: Do we need the function?
@@ -24,7 +24,7 @@ function transformProduct(product: PSProductTableItem): PSProductTableItem {
 @Injectable({
   providedIn: 'root',
 })
-export class ProductsHTTPService implements PSProductsService {
+export class PSProductsHTTPService implements PSProductsServiceReadList {
   readonly #backendAPIService = inject(BackendAPIService)
 
   public readList(): Observable<readonly PSProductTableItem[]> {

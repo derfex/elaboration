@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatButton } from '@angular/material/button'
 
 // # Internal modules
-import { ProductsHTTPService } from '../../backend-api/ps-products/ps-products-http.service'
+import { PSProductsHTTPService } from '../../backend-api/ps-products/ps-products-http.service'
 import { PSCartComponent } from '../ps-cart/ps-cart.component'
 import { PSCartService } from '../ps-cart/ps-cart.service'
 import type { PSCartState } from '../ps-cart/ps-cart.service.type'
@@ -36,7 +36,7 @@ export class PetShopComponent implements OnInit {
   #keysInCart: Set<number> = new Set()
   #products: readonly PSProductTableItem[] = []
   readonly #psCartService = inject(PSCartService)
-  readonly #psProductsService = inject(ProductsHTTPService)
+  readonly #psProductsService = inject(PSProductsHTTPService)
 
   // endregion ## Properties
 
