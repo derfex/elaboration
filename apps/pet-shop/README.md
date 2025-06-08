@@ -14,7 +14,7 @@ https://ssdev.superagent.ru/TestApp/swagger/#/Values
 
 ## Acceptance criteria
 
-* [x] The page displays a table with products, columns: selected (checkbox), category (group), product (name), price (price).
+* [x] The page displays a table with products, columns: selected (checkbox), category (`category`), product (`name`), price (`price`).
 * [x] A user can select multiple rows by checking the box in the table.
 * [x] After clicking the “Add to cart” button, the selected items are no longer displayed in the product list.
 * [x] It should be possible to select products by a specific category.

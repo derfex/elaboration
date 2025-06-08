@@ -48,7 +48,7 @@ import type { PSProductTableItem } from './ps-products.type'
 export class PSProductsComponent implements OnInit {
   // region ## Properties
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'parent', 'price']
+  protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'category', 'price']
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
 
   private filterPrivate: number | null = null
@@ -81,8 +81,8 @@ export class PSProductsComponent implements OnInit {
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
-    this.dataSource.filterPredicate = (data: PSProductTableItem, filter: string): boolean =>
-      data.parent.id === +filter
+    this.dataSource.filterPredicate = ({ category }: PSProductTableItem, filter: string): boolean =>
+      category.id === +filter
   }
 
   // endregion ## Lifecycle hooks

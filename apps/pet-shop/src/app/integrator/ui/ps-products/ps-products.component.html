@@ -47,10 +47,10 @@
       <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
     </ng-container>
 
-    <!-- Parent Column -->
-    <ng-container matColumnDef="parent">
-      <mat-header-cell *matHeaderCellDef>Group</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.parent.name}}</mat-cell>
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.category.name}}</mat-cell>
     </ng-container>
 
     <!-- Price Column -->

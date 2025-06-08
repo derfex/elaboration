@@ -19,19 +19,19 @@ export class PSProductsHTTPService implements PSProductsServiceReadList {
   public readList(): Observable<readonly PSProduct[]> {
     return this.#backendAPIService
       .get<readonly PSProductForBE[]>(environment.API.products.readList)
-      .pipe(map((products: readonly PSProductForBE[]): readonly PSProduct[] => products.map(transformProduct)))
+      .pipe(map((products: readonly PSProductForBE[]): readonly PSProduct[] => products.map(convertProduct)))
   }
 }
 
 // # Definitions
-function transformProduct({ id, name, parent, price }: PSProductForBE): PSProduct {
+function convertProduct({ id, name, parent, price }: PSProductForBE): PSProduct {
   return {
-    id,
-    name,
-    parent: {
+    category: {
       id: parent.id,
       name: parent.name,
     },
+    id,
+    name,
     price,
   }
 }

@@ -20,15 +20,15 @@ const psProductsStorage = new PSProductsStorage()
     ['Food 1', 'Food', 1500],
     ['Food 2', 'Food', 3000],
   ]
-  productsBlanks.forEach(([name, parentName, price]: [string, string, number]): void => {
-    const parent = psProductCategoriesStorage.readByName(parentName)
-    if (!parent) {
+  productsBlanks.forEach(([name, categoryName, price]: [string, string, number]): void => {
+    const category = psProductCategoriesStorage.readByName(categoryName)
+    if (!category) {
       // TODO: Throw an error. Or use a general category.
       return
     }
     psProductsStorage.create({
+      category,
       name,
-      parent,
       price,
     })
   })
