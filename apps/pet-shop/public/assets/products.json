@@ -4,7 +4,7 @@
     "lastChange": "2018-11-09T14:38:06.2678113",
     "name": "Food for turtles in the form of sticks",
     "parent": {
-      "id": 1,
+      "id": 4,
       "name": "Food"
     },
     "price": 545
@@ -14,7 +14,7 @@
     "lastChange": "2018-11-09T14:38:15.7002145",
     "name": "Food for goldfish",
     "parent": {
-      "id": 1,
+      "id": 4,
       "name": "Food"
     },
     "price": 165
@@ -24,7 +24,7 @@
     "lastChange": "2018-11-09T14:38:19.4284301",
     "name": "Food for tropical fish.",
     "parent": {
-      "id": 1,
+      "id": 4,
       "name": "Food"
     },
     "price": 316
@@ -54,8 +54,8 @@
     "lastChange": "2018-11-09T14:40:42.7621372",
     "name": "Siphon Tetratec GC 40 (50-200 l)",
     "parent": {
-      "id": 3,
-      "name": "Aquariums"
+      "id": 1,
+      "name": "Accessories"
     },
     "price": 1239
   },
@@ -64,7 +64,7 @@
     "lastChange": "2018-11-09T14:40:45.5306922",
     "name": "Tetra net No. 3 L (12 cm)",
     "parent": {
-      "id": 3,
+      "id": 1,
       "name": "Accessories"
     },
     "price": 105
@@ -74,7 +74,7 @@
     "lastChange": "2018-11-09T14:40:46.6064284",
     "name": "Sprayer AS 25",
     "parent": {
-      "id": 3,
+      "id": 1,
       "name": "Accessories"
     },
     "price": 64
@@ -84,7 +84,7 @@
     "lastChange": "2018-11-09T14:45:15.2327229",
     "name": "Aquarium decor Barrel 15x7x9 cm, plastic, 505",
     "parent": {
-      "id": 4,
+      "id": 3,
       "name": "Decorations"
     },
     "price": 761
@@ -94,7 +94,7 @@
     "lastChange": "2018-11-09T14:45:17.2647417",
     "name": "Decor for aquariums Ardena small, 15x10x6 cm",
     "parent": {
-      "id": 4,
+      "id": 3,
       "name": "Decorations"
     },
     "price": 459
@@ -104,7 +104,7 @@
     "lastChange": "2018-11-09T14:45:18.4034088",
     "name": "Aquarium Decor Egyptian Pyramid, 22x22x14 cm",
     "parent": {
-      "id": 4,
+      "id": 3,
       "name": "Decorations"
     },
     "price": 761

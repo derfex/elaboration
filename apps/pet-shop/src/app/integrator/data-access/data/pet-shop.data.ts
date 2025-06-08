@@ -4,7 +4,7 @@ import { PSProductsStorage } from './ps-products/ps-products-storage'
 
 const psProductCategoriesStorage = new PSProductCategoriesStorage()
 {
-  const categoriesNames = ['Food', 'Aquariums', 'Accessories', 'Decorations']
+  const categoriesNames = ['Accessories', 'Aquariums', 'Decorations', 'Food']
   categoriesNames.forEach((name: string): void => {
     psProductCategoriesStorage.create({ name })
   })

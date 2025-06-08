@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Food"
+    "name": "Accessories"
   },
   {
     "id": 2,
@@ -9,10 +9,10 @@
   },
   {
     "id": 3,
-    "name": "Accessories"
+    "name": "Decorations"
   },
   {
     "id": 4,
-    "name": "Decorations"
+    "name": "Food"
   }
 ]
