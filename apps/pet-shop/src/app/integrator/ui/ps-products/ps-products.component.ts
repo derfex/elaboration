@@ -1,6 +1,6 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input, type OnInit, ViewChild } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import {
@@ -45,7 +45,7 @@ import type { PSProductTableItem } from './ps-products.type'
   styleUrl: './ps-products.component.sass',
   templateUrl: './ps-products.component.html',
 })
-export class PSProductsComponent {
+export class PSProductsComponent implements OnInit {
   // region ## Properties
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'parent', 'price']
@@ -79,10 +79,13 @@ export class PSProductsComponent {
 
   // endregion ## Properties
 
-  constructor() {
+  // region ## Lifecycle hooks
+  public ngOnInit(): void {
     this.dataSource.filterPredicate = (data: PSProductTableItem, filter: string): boolean =>
       data.parent.id === +filter
   }
+
+  // endregion ## Lifecycle hooks
 
   // region ## Methods
   protected sortData(sort: Sort): void {
