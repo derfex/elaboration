@@ -6,8 +6,7 @@ describe('NxWelcomePageComponent', (): void => {
   let fixture: ComponentFixture<NxWelcomePageComponent>
 
   beforeEach(async (): Promise<void> => {
-    await TestBed.configureTestingModule({})
-      .compileComponents()
+    await TestBed.configureTestingModule({}).compileComponents()
 
     fixture = TestBed.createComponent(NxWelcomePageComponent)
     component = fixture.componentInstance

@@ -6,8 +6,7 @@ describe('HomePageComponent', (): void => {
   let fixture: ComponentFixture<HomePageComponent>
 
   beforeEach(async (): Promise<void> => {
-    await TestBed.configureTestingModule({})
-      .compileComponents()
+    await TestBed.configureTestingModule({}).compileComponents()
 
     fixture = TestBed.createComponent(HomePageComponent)
     component = fixture.componentInstance
