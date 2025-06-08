@@ -1,6 +1,6 @@
 import type { Observable } from 'rxjs'
-import type { PSProductTableItem } from './ps-products.type'
+import type { PSProduct } from '../../../../architecture/entities/ps-products/ps-products.type'
 
 export interface PSProductsServiceReadList {
-  readList(): Observable<readonly PSProductTableItem[]>
+  readList(): Observable<readonly PSProduct[]>
 }

@@ -1,7 +1,6 @@
-export interface PSProduct {
+export interface PSProductForBE {
   readonly id: number
-  // TODO: Do we need `lastChange`?
-  // readonly lastChange: string
+  readonly lastChange: string
   readonly name: string
   readonly parent: {
     readonly id: number

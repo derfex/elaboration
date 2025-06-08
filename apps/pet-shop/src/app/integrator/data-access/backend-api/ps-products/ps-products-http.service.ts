@@ -4,22 +4,11 @@ import { type Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 // # Internal modules
+import type { PSProduct } from '../../../../../architecture/entities/ps-products/ps-products.type'
 import { environment } from '../../../../../environments/environment'
 import type { PSProductsServiceReadList } from '../../../ui/ps-products/products-service.type'
-import type { PSProductTableItem } from '../../../ui/ps-products/ps-products.type'
 import { BackendAPIService } from '../backend-api/backend-api.service'
-
-// # Definitions
-// TODO: Do we need the function?
-function transformProduct(product: PSProductTableItem): PSProductTableItem {
-  if (!product.parent) {
-    ;(product as any).parent = {
-      id: null,
-      name: '—',
-    }
-  }
-  return product
-}
+import type { PSProductForBE } from './ps-products-for-be.type'
 
 @Injectable({
   providedIn: 'root',
@@ -27,13 +16,22 @@ function transformProduct(product: PSProductTableItem): PSProductTableItem {
 export class PSProductsHTTPService implements PSProductsServiceReadList {
   readonly #backendAPIService = inject(BackendAPIService)
 
-  public readList(): Observable<readonly PSProductTableItem[]> {
+  public readList(): Observable<readonly PSProduct[]> {
     return this.#backendAPIService
-      .get<readonly PSProductTableItem[]>(environment.API.products.readList)
-      .pipe(
-        map((products: readonly PSProductTableItem[]): readonly PSProductTableItem[] =>
-          products.map(transformProduct),
-        ),
-      )
+      .get<readonly PSProductForBE[]>(environment.API.products.readList)
+      .pipe(map((products: readonly PSProductForBE[]): readonly PSProduct[] => products.map(transformProduct)))
+  }
+}
+
+// # Definitions
+function transformProduct({ id, name, parent, price }: PSProductForBE): PSProduct {
+  return {
+    id,
+    name,
+    parent: {
+      id: parent.id,
+      name: parent.name,
+    },
+    price,
   }
 }
