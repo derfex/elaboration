@@ -19,8 +19,8 @@ export class PSProductCategoriesStorage {
     return this.#itemsByIDMap.get(categoryID) ?? null
   }
 
-  public readByName(categoryID: PSProductCategory['id']): PSProductCategory | null {
-    return this.#itemsByIDMap.get(categoryID) ?? null
+  public readByName(categoryID: PSProductCategory['name']): PSProductCategory | null {
+    return this.#itemsByNameMap.get(categoryID) ?? null
   }
 
   public readList(): readonly PSProductCategory[] {
