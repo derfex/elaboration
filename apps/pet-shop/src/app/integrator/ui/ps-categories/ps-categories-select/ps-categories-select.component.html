@@ -1,0 +1,16 @@
+<mat-form-field>
+  <mat-label>Filter by category</mat-label>
+  <mat-select
+    [(ngModel)]="selectedID"
+    name="category"
+  >
+    <mat-option [value]="null">
+      <i>Clear</i>
+    </mat-option>
+    @for (item of items; track item.id) {
+      <mat-option [value]="item.id">
+        {{item.name}}
+      </mat-option>
+    }
+  </mat-select>
+</mat-form-field>

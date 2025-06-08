@@ -1,0 +1,39 @@
+:host
+  display: block
+
+$_background-color: #fff
+
+/* Prevent margin collapse */
+.app-shop__container
+  &:before,
+  &:after
+    content: ''
+    display: table
+
+.app-table-container
+  position: relative
+
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
+    height: 15px
+    pointer-events: none
+
+  &:before
+    top: 0
+    background-image: linear-gradient($_background-color, transparent)
+
+  &:after
+    bottom: 0
+    background-image: linear-gradient(transparent, $_background-color)
+
+.app-table-container__scrollable
+  padding: 10px
+  max-height: 330px
+  overflow-y: auto
+
+.app-button-container
+  margin: 10px 20px

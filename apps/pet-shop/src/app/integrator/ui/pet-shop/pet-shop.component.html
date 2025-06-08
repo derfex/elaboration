@@ -1,0 +1,30 @@
+<div class="app-shop__container">
+  <div class="app-button-container">
+    <app-ps-categories-select #categoriesSelectComponent/>
+  </div>
+  <div class="app-table-container">
+    <div class="app-table-container__scrollable">
+      <app-ps-products
+        #productsComponent
+        [items]="productsInList"
+        [filter]="categoriesSelectComponent.selected"
+      />
+    </div>
+  </div>
+  <div class="app-button-container">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="addToCart(productsComponent)"
+    >
+      Add to cart
+    </button>
+  </div>
+  <div class="app-table-container">
+    <div class="app-table-container__scrollable">
+      <app-ps-cart
+        [items]="productsInCart"
+      />
+    </div>
+  </div>
+</div>

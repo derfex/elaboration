@@ -1,0 +1,101 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "pet-shop",
+  "prefix": "app",
+  "projectType": "application",
+  "sourceRoot": "apps/pet-shop/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true
+        },
+        "production": {
+          "budgets": [
+            {
+              "maximumError": "1mb",
+              "maximumWarning": "500kb",
+              "type": "initial"
+            },
+            {
+              "maximumError": "8kb",
+              "maximumWarning": "4kb",
+              "type": "anyComponentStyle"
+            }
+          ],
+          "outputHashing": "all"
+        }
+      },
+      "defaultConfiguration": "production",
+      "executor": "@angular-devkit/build-angular:application",
+      "options": {
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/pet-shop/public"
+          }
+        ],
+        "browser": "apps/pet-shop/src/main.ts",
+        "index": "apps/pet-shop/src/index.html",
+        "inlineStyleLanguage": "scss",
+        "outputPath": "dist/apps/pet-shop",
+        "polyfills": [
+          "zone.js"
+        ],
+        "scripts": [],
+        "styles": [
+          "@angular/material/prebuilt-themes/azure-blue.css",
+          "apps/pet-shop/src/styles.sass"
+        ],
+        "tsConfig": "apps/pet-shop/tsconfig.app.json"
+      },
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "pet-shop:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve": {
+      "configurations": {
+        "development": {
+          "buildTarget": "pet-shop:build:development"
+        },
+        "production": {
+          "buildTarget": "pet-shop:build:production"
+        }
+      },
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "executor": "@angular-devkit/build-angular:dev-server"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "pet-shop:build",
+        "port": 4200,
+        "spa": true,
+        "staticFilePath": "dist/apps/pet-shop/browser"
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "reportsDirectory": "../../coverage/apps/pet-shop"
+      },
+      "outputs": [
+        "{options.reportsDirectory}"
+      ]
+    }
+  }
+}
