@@ -1,9 +1,11 @@
-# Задача для изучения Angular
+# Task for learning Angular
+
+[Translation to Russian](README-ru.md)
 
 ## User story
 
-Как покупатель сайта я хочу видеть весь список товаров с ценами, выбрать несколько позиций и добавить в заказ, чтобы осуществить покупку.
-Должна присутствовать возможность редактирования заказа.
+As a buyer on a website, I want to see the entire list of products with prices, select several items and add to an order to make a purchase.
+There should be an option to edit the order.
 
 ## Details
 
@@ -12,11 +14,12 @@ https://ssdev.superagent.ru/TestApp/swagger/#/Values
 
 ## Acceptance criteria
 
-* [x] На страничке выводится таблица с товарами, колонки: выбран (флажок), категория (group), товар (name), цена (price).
-* [x] Можно выбрать несколько строк путём установки флажка в таблице.
-* [x] После нажатия на кнопку «в корзину» выбранные позиции перестают отображаться в списке товаров.
-* [x] Должна быть возможность отобрать товары по определённой категории.
-* [x] Должна быть возможность установить сортировку по: алфавиту (наименование товара), по цене (убывание/возрастание).
-* [x] Добавленные в заказ товары можно просмотреть в корзине.
-* [x] Должна быть возможность удалить товары из заказа в корзине (механизм удаления аналогичен механизму добавления товаров в заказ).
-* [x] Для стилизации использовать `@angular/material` или `ng-bootstrap`.
+* [x] The page displays a table with products, columns: selected (checkbox), category (group), product (name), price (price).
+* [x] A user can select multiple rows by checking the box in the table.
+* [x] After clicking the “Add to cart” button, the selected items are no longer displayed in the product list.
+* [x] It should be possible to select products by a specific category.
+* [x] It should be possible to set sorting by: alphabetically (product name), by price (ascending/descending).
+* [x] Products added to an order can be viewed in the cart.
+* [x] It should be possible to remove products from the order in the cart
+  (the mechanism for removing products is similar to the mechanism for adding products to the order).
+* [x] Use `@angular/material` or `ng-bootstrap` for styling.
