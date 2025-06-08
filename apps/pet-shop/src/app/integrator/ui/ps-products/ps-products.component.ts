@@ -48,7 +48,7 @@ import type { PSProductTableItem } from './ps-products.type'
 export class PSProductsComponent implements OnInit {
   // region ## Properties
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: readonly string[] = ['select', 'number', 'name', 'category', 'price']
+  protected displayedColumns: readonly string[] = ['action', 'number', 'name', 'category', 'price']
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
 
   private filterPrivate: number | null = null

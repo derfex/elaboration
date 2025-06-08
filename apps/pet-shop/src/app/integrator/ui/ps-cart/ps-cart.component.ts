@@ -59,7 +59,7 @@ export class PSCartComponent implements OnInit {
   }
 
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: string[] = ['delete', 'number', 'name', 'category', 'price']
+  protected displayedColumns: string[] = ['action', 'number', 'name', 'category', 'price']
 
   readonly #destroyRef = inject(DestroyRef)
   #items: readonly PSProductTableItem[] = []
