@@ -2,7 +2,7 @@
 
 ## Applications
 
-[List of applications](applications.md)
+[List of applications](documentation/applications.md)
 
 ## Nx
 
