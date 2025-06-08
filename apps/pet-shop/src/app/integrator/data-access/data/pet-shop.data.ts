@@ -1,3 +1,4 @@
+import type { PSProduct } from '../../../../architecture/entities/ps-products/ps-products.type'
 import { PSProductCategoriesStorage } from './ps-categories/ps-product-categories-storage'
 import { PSProductsStorage } from './ps-products/ps-products-storage'
 
@@ -33,4 +34,4 @@ const psProductsStorage = new PSProductsStorage()
   })
 }
 
-export const psProducts = psProductsStorage.readList()
+export const psProducts: readonly PSProduct[] = psProductsStorage.readList()
