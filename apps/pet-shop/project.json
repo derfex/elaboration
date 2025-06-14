@@ -38,10 +38,11 @@
             "input": "apps/pet-shop/public"
           }
         ],
+        "baseHref": "elaboration",
         "browser": "apps/pet-shop/src/main.ts",
         "index": "apps/pet-shop/src/index.html",
         "inlineStyleLanguage": "scss",
-        "outputPath": "dist/apps/pet-shop",
+        "outputPath": "docs/apps/pet-shop",
         "polyfills": [
           "zone.js"
         ],
