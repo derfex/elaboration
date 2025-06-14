@@ -1,9 +1,8 @@
-import { CommonModule } from '@angular/common'
 import { Component, ViewEncapsulation } from '@angular/core'
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  imports: [CommonModule],
+  imports: [],
   selector: 'app-nx-welcome',
   styles: [],
   template: `

@@ -30,7 +30,7 @@
         }
       },
       "defaultConfiguration": "production",
-      "executor": "@angular-devkit/build-angular:application",
+      "executor": "@angular/build:application",
       "options": {
         "assets": [
           {
@@ -57,7 +57,7 @@
       ]
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "@angular/build:extract-i18n",
       "options": {
         "buildTarget": "pet-shop:build"
       }
@@ -76,7 +76,7 @@
       },
       "continuous": true,
       "defaultConfiguration": "development",
-      "executor": "@angular-devkit/build-angular:dev-server"
+      "executor": "@angular/build:dev-server"
     },
     "serve-static": {
       "continuous": true,
