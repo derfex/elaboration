@@ -38,6 +38,7 @@
             "input": "apps/pet-shop/public"
           }
         ],
+        "baseHref": "/elaboration/apps/pet-shop/browser/",
         "browser": "apps/pet-shop/src/main.ts",
         "index": "apps/pet-shop/src/index.html",
         "inlineStyleLanguage": "scss",
