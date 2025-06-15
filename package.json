@@ -1,5 +1,8 @@
 {
   "author": "derfex",
+  "bugs": {
+    "url": "https://github.com/derfex/elaboration/issues"
+  },
   "dependencies": {
     "@angular/cdk": "20.0.3",
     "@angular/common": "20.0.3",
