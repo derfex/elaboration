@@ -57,9 +57,6 @@
   "license": "MIT",
   "name": "@elaboration/source",
   "private": true,
-  "scripts": {
-    "build:prod": "nx build pet-shop --configuration=production",
-    "deploy": "npm run build:prod && git add docs/apps/pet-shop && git commit -m 'build(pet-shop): deploy to GitHub Pages'"
-  },
+  "scripts": {},
   "version": "0.0.0"
 }
