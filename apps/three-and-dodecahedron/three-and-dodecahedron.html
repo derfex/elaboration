@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Dodecahedron</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  // Сцена, камера и рендерер
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+
+  // Создание додекаэдра
+  const geometry = new THREE.DodecahedronGeometry(2); // Радиус 2
+  const material = new THREE.MeshBasicMaterial({ color: 0x0077ff, wireframe: true });
+  const dodecahedron = new THREE.Mesh(geometry, material);
+  scene.add(dodecahedron);
+
+  // Камеру позиционируем так, чтобы видеть 3D-объект
+  camera.position.z = 5;
+
+  // Анимация для вращения
+  function animate() {
+    requestAnimationFrame(animate);
+
+    // Вращаем додекаэдр
+    dodecahedron.rotation.x += 0.01;
+    dodecahedron.rotation.y += 0.01;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // Адаптация размера `canvas` при изменении окна
+  window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  });
+</script>
+</body>
+</html>
