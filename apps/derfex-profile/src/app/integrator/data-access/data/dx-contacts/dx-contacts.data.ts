@@ -1,0 +1,14 @@
+import { type DXContact, DXContactCodename } from '~entities/dx-contacts/dx-contacts.type'
+
+export const dxContacts = [
+  {
+    codename: DXContactCodename.GitHub,
+    name: 'GitHub',
+    url: 'https://github.com/derfex',
+  },
+  {
+    codename: DXContactCodename.LinkedIn,
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/dmitry-p-b43379302',
+  },
+] as const satisfies readonly DXContact[]
