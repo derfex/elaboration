@@ -22,7 +22,7 @@
     "@angular-devkit/core": "20.1.6",
     "@angular-devkit/schematics": "20.1.6",
     "@angular/build": "20.1.6",
-    "@angular/cli": "20.1.6",
+    "@angular/cli": "~20.1.0",
     "@angular/compiler-cli": "20.1.8",
     "@angular/language-service": "20.1.8",
     "@eslint/js": "9.29.0",
