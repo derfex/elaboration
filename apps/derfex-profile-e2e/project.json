@@ -1,0 +1,9 @@
+{
+  "name": "derfex-profile-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/derfex-profile-e2e/src",
+  "implicitDependencies": ["derfex-profile"],
+  "// targets": "to see all targets run: nx show project derfex-profile-e2e --web",
+  "targets": {}
+}

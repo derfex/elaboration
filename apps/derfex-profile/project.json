@@ -1,0 +1,98 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "derfex-profile",
+  "prefix": "app",
+  "projectType": "application",
+  "sourceRoot": "apps/derfex-profile/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true
+        },
+        "production": {
+          "budgets": [
+            {
+              "maximumError": "1mb",
+              "maximumWarning": "500kb",
+              "type": "initial"
+            },
+            {
+              "maximumError": "8kb",
+              "maximumWarning": "4kb",
+              "type": "anyComponentStyle"
+            }
+          ],
+          "outputHashing": "all"
+        }
+      },
+      "defaultConfiguration": "production",
+      "executor": "@angular/build:application",
+      "options": {
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/derfex-profile/public"
+          }
+        ],
+        "browser": "apps/derfex-profile/src/main.ts",
+        "inlineStyleLanguage": "sass",
+        "outputPath": "dist/apps/derfex-profile",
+        "polyfills": [
+          "zone.js"
+        ],
+        "styles": [
+          "apps/derfex-profile/src/styles.sass"
+        ],
+        "tsConfig": "apps/derfex-profile/tsconfig.app.json"
+      },
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n",
+      "options": {
+        "buildTarget": "derfex-profile:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve": {
+      "configurations": {
+        "development": {
+          "buildTarget": "derfex-profile:build:development"
+        },
+        "production": {
+          "buildTarget": "derfex-profile:build:production"
+        }
+      },
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "executor": "@angular/build:dev-server"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "derfex-profile:build",
+        "port": 4200,
+        "spa": true,
+        "staticFilePath": "dist/apps/derfex-profile/browser"
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "reportsDirectory": "../../coverage/apps/derfex-profile"
+      },
+      "outputs": [
+        "{options.reportsDirectory}"
+      ]
+    }
+  }
+}
