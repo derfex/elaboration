@@ -1,18 +1,47 @@
 {
   "migrations": [
     {
-      "version": "20.0.0-0",
-      "description": "Updates the Angular CDK to v20",
-      "factory": "./ng-update/index#updateToV20",
-      "package": "@angular/cdk",
-      "name": "migration-v20"
+      "description": "Migrate the legacy 'development' custom condition to a workspace-unique custom condition name.",
+      "factory": "./src/migrations/update-21-5-0/migrate-development-custom-condition",
+      "name": "migrate-development-custom-condition",
+      "package": "@nx/js",
+      "version": "21.5.0-beta.2"
     },
     {
-      "version": "20.0.0-0",
-      "description": "Updates Angular Material to v20",
-      "factory": "./ng-update/index_bundled#updateToV20",
-      "package": "@angular/material",
-      "name": "migration-v20"
+      "description": "Set the 'tsConfig' option to build and test targets to help with Angular migration issues.",
+      "factory": "./src/migrations/update-21-5-0/set-tsconfig-option",
+      "name": "set-tsconfig-option",
+      "package": "@nx/angular",
+      "version": "21.5.0-beta.0"
+    },
+    {
+      "cli": "nx",
+      "description": "Update the @angular/cli package version to ~20.2.0.",
+      "factory": "./src/migrations/update-21-5-0/update-angular-cli",
+      "name": "update-angular-cli-version-20-2-0",
+      "package": "@nx/angular",
+      "requires": {
+        "@angular/core": ">=20.2.0"
+      },
+      "version": "21.5.0-beta.2"
+    },
+    {
+      "description": "Remove any Karma configuration files that only contain the default content. The default configuration is automatically available without a specific project configurationfile.",
+      "factory": "./src/migrations/update-21-5-0/remove-default-karma-configuration-files",
+      "name": "remove-default-karma-configuration-files",
+      "package": "@nx/angular",
+      "requires": {
+        "@angular/core": ">=20.2.0"
+      },
+      "version": "21.5.0-beta.2"
+    },
+    {
+      "description": "Replaces usages of the deprecated Router.getCurrentNavigation method with the Router.currentNavigation signal",
+      "factory": "./bundles/router-current-navigation.cjs#migrate",
+      "name": "router-current-navigation",
+      "optional": true,
+      "package": "@angular/core",
+      "version": "20.2.0"
     }
   ]
 }
