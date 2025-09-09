@@ -1,18 +1,21 @@
-import { TestBed } from '@angular/core/testing'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { App } from './app'
-import { NxWelcome } from './nx-welcome'
 
 describe('App', (): void => {
+  let component: App
+  let fixture: ComponentFixture<App>
+
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [App, NxWelcome],
+      imports: [App],
     }).compileComponents()
+
+    fixture = TestBed.createComponent(App)
+    component = fixture.componentInstance
+    fixture.detectChanges()
   })
 
-  it('should render title', (): void => {
-    const fixture = TestBed.createComponent(App)
-    fixture.detectChanges()
-    const compiled = fixture.nativeElement as HTMLElement
-    expect(compiled.querySelector('h1')?.textContent).toContain('Welcome derfex-profile')
+  it('should create', (): void => {
+    expect(component).toBeTruthy()
   })
 })
