@@ -15,6 +15,15 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "~app/*": ["apps/derfex-profile/src/app/*"],
+      "~be/*": ["apps/derfex-profile/src/app/integrator/backend-api/*"],
+      "~entities/*": ["apps/derfex-profile/src/architecture/entities/*"],
+      "~integrator/*": ["apps/derfex-profile/src/app/integrator/*"],
+      "~pages/*": ["apps/derfex-profile/src/app/integrator/pages/*"],
+      "~ui/*": ["apps/derfex-profile/src/app/integrator/ui/*"],
+      "~ui-kit/*": ["apps/derfex-profile/src/app/integrator/ui-kit/*"],
+    },
     "strict": true,
     "target": "es2022"
   },
