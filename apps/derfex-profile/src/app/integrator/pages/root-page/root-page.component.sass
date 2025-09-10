@@ -1,0 +1,24 @@
+@use '../../ui-kit/identity/identity'
+@use '../../ui-kit/layout/layout'
+
+:host
+  display: grid
+  grid-auto-rows: 1fr auto
+  grid-template-areas: 'scrollable-container' 'header-section-container'
+  height: 100%
+
+  @media (layout.$app-device-width-small <= width)
+    grid-auto-rows: auto 1fr
+    grid-template-areas: 'header-section-container' 'scrollable-container'
+
+.app-header-section-container
+  grid-area: header-section-container
+
+.app-scrollable-container
+  grid-area: scrollable-container
+
+.app-scrollable-container
+  display: flex
+  flex-direction: column
+  overflow-y: auto
+  scroll-behavior: smooth
