@@ -1,0 +1,19 @@
+$app-device-width-extra-small: 360px
+$app-device-width-small: 512px
+
+@mixin app-layout_flex-column-mixin($_row-gap)
+  display: flex
+  flex-direction: column
+  row-gap: $_row-gap
+
+$app-layout_horizontal-padding: 20px
+$_app-layout_vertical-padding: 16px
+
+@mixin app-layout_all-paddings-mixin
+  padding: $_app-layout_vertical-padding $app-layout_horizontal-padding
+
+@mixin app-layout_horizontal-paddings-mixin
+  padding-inline: $app-layout_horizontal-padding
+
+@mixin app-layout_vertical-paddings-mixin
+  padding-block: $_app-layout_vertical-padding
