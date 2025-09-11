@@ -1,2 +1,13 @@
+@use '../../ui-kit/layout/layout'
+
+:host
+  --app-header-background-color: #f9f9f9
+
 :host
   display: block
+
+.app-layout-header-container
+  @include layout.app-layout_header-paddings-mixin
+
+.app-section
+  background: var(--app-header-background-color)

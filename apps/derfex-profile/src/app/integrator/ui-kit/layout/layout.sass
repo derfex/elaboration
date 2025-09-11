@@ -1,10 +1,17 @@
 $app-device-width-extra-small: 360px
-$app-device-width-small: 512px
+$app-device-width-small: 576px // TODO: 512px?
+$app-device-width-medium: 768px
+$app-device-width-large: 992px
+$app-device-width-extra-large: 1200px
+$app-device-width-extra-extra-large: 1400px
 
 @mixin app-layout_flex-column-mixin($_row-gap)
   display: flex
   flex-direction: column
   row-gap: $_row-gap
+
+// # Padding
+// TODO: reorganize.
 
 $app-layout_horizontal-padding: 20px
 $_app-layout_vertical-padding: 16px
@@ -17,3 +24,27 @@ $_app-layout_vertical-padding: 16px
 
 @mixin app-layout_vertical-paddings-mixin
   padding-block: $_app-layout_vertical-padding
+
+// # Section
+
+$_app-layout_section-slanted-lines-width-extra-small: 0
+$_app-layout_section-slanted-lines-width-small: 8px
+$_app-layout_section-slanted-lines-width-medium: 16px
+$_app-layout_section-slanted-lines-width-large: 40px
+
+$_app-layout_section-label-size: 40px
+
+$_app-layout_section-max-width: $app-device-width-extra-extra-large
+
+@mixin app-layout_header-paddings-mixin
+  @media ($app-device-width-small <= width)
+    padding-inline: $_app-layout_section-slanted-lines-width-small
+
+  @media ($app-device-width-medium <= width)
+    margin-inline: auto
+    padding-inline: $_app-layout_section-slanted-lines-width-medium
+
+  @media ($app-device-width-large <= width)
+    padding-left: $_app-layout_section-label-size + $_app-layout_section-slanted-lines-width-large
+    padding-right: $_app-layout_section-slanted-lines-width-large
+    max-width: $_app-layout_section-max-width

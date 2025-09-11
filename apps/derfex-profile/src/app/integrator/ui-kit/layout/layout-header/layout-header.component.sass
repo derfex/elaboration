@@ -2,20 +2,13 @@
 @use '../layout'
 
 :host
-  --app-header-background-color: var(--ut-background-color-tertiary, #f9f9f9)
-
-:host
   display: block
 
 .app-header-container
   display: flex
   align-items: center
   justify-content: space-between
-
-  @include layout.app-layout_horizontal-paddings-mixin
-
   height: 44px
-  background: var(--app-header-background-color)
 
   .app-logotype-container
     --dx-logotype-v-fill: #ddd
