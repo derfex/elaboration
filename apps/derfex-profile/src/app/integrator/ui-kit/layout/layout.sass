@@ -48,3 +48,137 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
     padding-left: $_app-layout_section-label-size + $_app-layout_section-slanted-lines-width-large
     padding-right: $_app-layout_section-slanted-lines-width-large
     max-width: $_app-layout_section-max-width
+
+@mixin app-layout_section-with-codename-mixin($_label-selector, $_codename-selector, $_content-selector)
+  --app-section-pattern-foreground-color: #eee
+  --app-section-label-color: #777
+
+  display: grid
+  grid-template-areas: 'section-label' 'section-content'
+
+  border-block: 1px solid var(--app-section-pattern-foreground-color)
+
+  @media ($app-device-width-small <= width)
+    display: grid
+    grid-template-areas: 'section-pattern-left section-label section-pattern-right' 'section-pattern-left section-content section-pattern-right'
+    grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
+
+    &:before
+      grid-area: section-pattern-left
+
+    &:after
+      grid-area: section-pattern-right
+
+    &:before, &:after
+      content: ''
+      display: block
+
+      @include _app-layout_section-with-background-mixin
+
+  @media ($app-device-width-medium <= width)
+    grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
+    margin-inline: auto
+    max-width: $_app-layout_section-max-width
+
+  @media ($app-device-width-large <= width)
+    grid-template-areas: 'section-label section-pattern-left section-content section-pattern-right'
+    grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
+
+  #{$_label-selector}
+    grid-area: section-label
+    display: flex
+
+  #{$_content-selector}
+    grid-area: section-content
+
+  #{$_codename-selector}
+    @include _app-layout_section-codename-label-mixin
+
+@mixin app-layout_section-with-number-mixin($_label-selector, $_number-selector, $_content-selector)
+  --app-section-pattern-foreground-color: #eee
+  --app-section-label-color: #777
+
+  display: grid
+  grid-template-areas: 'section-label' 'section-content'
+
+  border-block: 1px solid var(--app-section-pattern-foreground-color)
+
+  @media ($app-device-width-small <= width)
+    display: grid
+    grid-template-areas: 'section-pattern-left section-label section-pattern-right' 'section-pattern-left section-content section-pattern-right'
+    grid-template-columns: 8px 1fr 8px
+
+    &:before
+      grid-area: section-pattern-left
+
+    &:after
+      grid-area: section-pattern-right
+
+    &:before, &:after
+      content: ''
+      display: block
+
+      @include _app-layout_section-with-background-mixin
+
+  @media ($app-device-width-medium <= width)
+    grid-template-columns: 16px 1fr 16px
+    margin-inline: auto
+    max-width: 1400px
+
+  @media ($app-device-width-large <= width)
+    grid-template-areas: 'section-label section-pattern-left section-content section-pattern-right'
+    grid-template-columns: 40px 40px 1fr 40px
+
+  #{$_label-selector}
+    grid-area: section-label
+    display: flex
+
+  #{$_content-selector}
+    grid-area: section-content
+
+  #{$_number-selector}
+    @include _app-layout_section-square-label-mixin
+
+// # Section' label
+
+$_app-layout_section-label-border-width: 1px
+$_app-layout_section-label-padding: 8px
+$_app-layout_section-label-line-height: $_app-layout_section-label-size - 2 * ($_app-layout_section-label-border-width + $_app-layout_section-label-padding)
+
+@mixin _app-layout_section-label-mixin
+  border: $_app-layout_section-label-border-width solid var(--app-section-pattern-foreground-color)
+  padding: $_app-layout_section-label-padding
+  font-family: monospace
+  line-height: $_app-layout_section-label-line-height
+
+@mixin _app-layout_section-codename-label-mixin
+  @include _app-layout_section-label-mixin
+
+  height: $_app-layout_section-label-size
+
+  @media ($app-device-width-large <= width)
+    font-size: 10px
+    // TODO:
+    // text-align: right
+    // rotate: -90deg
+
+@mixin _app-layout_section-square-label-mixin
+  @include _app-layout_section-label-mixin
+
+  width: $_app-layout_section-label-size
+  height: $_app-layout_section-label-size
+  text-align: center
+
+@mixin _app-layout_section-pattern-slanted-lines-background-mixin
+  background-attachment: fixed
+  background-image: repeating-linear-gradient(135deg, var(--app-section-pattern-foreground-color) 0, var(--app-section-pattern-foreground-color) 1px, #0000 0, #0000 50%)
+  background-size: 8px 8px
+
+@mixin _app-layout_section-pattern-checkered-background-mixin
+  background-attachment: fixed
+  background-image: linear-gradient(90deg, #f6f6f6 1px, #0000 1px), linear-gradient(#f6f6f6 1px, #0000 1px)
+  background-size: 8px 8px
+
+@mixin _app-layout_section-with-background-mixin
+  border-inline: 1px solid var(--app-section-pattern-foreground-color)
+  @include _app-layout_section-pattern-slanted-lines-background-mixin

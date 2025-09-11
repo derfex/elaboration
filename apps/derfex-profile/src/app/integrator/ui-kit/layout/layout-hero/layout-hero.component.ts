@@ -13,10 +13,10 @@ export class LayoutHeroComponent {
   public readonly contactGitHubURL = input.required<string>()
   public readonly contactTelegramURL = input.required<string>()
   public readonly nameText = input.required<string>()
-  public readonly titleText = input.required<string>()
+  public readonly titleXML = input.required<string>()
 
   readonly #titleParts = computed(() => {
-    const title = this.titleText()
+    const title = this.titleXML()
     const [start, rest] = title.split('<highlight>')
     const [highlight, end] = rest.split('</highlight>')
     return {
