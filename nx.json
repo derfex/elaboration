@@ -11,7 +11,8 @@
     "@nx/angular:component": {
       "changeDetection": "OnPush",
       "displayBlock": true,
-      "prefix": "app"
+      "prefix": "app",
+      "style": "sass"
     }
   },
   "namedInputs": {
