@@ -1,0 +1,17 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/typography/typography'
+
+:host
+  display: block
+
+.app-article
+  @include layout.app-layout_flex-column-mixin(16px)
+
+  justify-content: space-between
+
+  @include layout.app-layout_horizontal-paddings-mixin
+
+  padding-block: 20px
+
+.app-title
+  @include typography.app-typography_h2-mixin
