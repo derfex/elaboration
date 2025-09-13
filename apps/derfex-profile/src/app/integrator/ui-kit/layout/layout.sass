@@ -57,40 +57,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
   border-block: 1px solid var(--app-section-pattern-foreground-color)
 
   #{$_wrapper-selector}
-    display: grid
-    grid-template-areas: 'section-label' 'section-content'
-
-    @media ($app-device-width-small <= width)
-      grid-template-areas: 'section-pattern-left section-label section-pattern-right' 'section-pattern-left section-content section-pattern-right'
-      grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
-
-      &:before
-        grid-area: section-pattern-left
-
-      &:after
-        grid-area: section-pattern-right
-
-      &:before, &:after
-        content: ''
-        display: block
-
-        @include _app-layout_section-with-background-mixin
-
-    @media ($app-device-width-medium <= width)
-      grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
-      margin-inline: auto
-      max-width: $_app-layout_section-max-width
-
-    @media ($app-device-width-large <= width)
-      grid-template-areas: 'section-label section-pattern-left section-content section-pattern-right'
-      grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
-
-  #{$_label-selector}
-    grid-area: section-label
-    display: flex
-
-  #{$_content-selector}
-    grid-area: section-content
+    @include _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
 
   #{$_codename-selector}
     @include _app-layout_section-codename-label-mixin
@@ -102,33 +69,40 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
   border-block: 1px solid var(--app-section-pattern-foreground-color)
 
   #{$_wrapper-selector}
-    display: grid
-    grid-template-areas: 'section-label' 'section-content'
+    @include _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
 
-    @media ($app-device-width-small <= width)
-      grid-template-areas: 'section-pattern-left section-label section-pattern-right' 'section-pattern-left section-content section-pattern-right'
-      grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
+  #{$_number-selector}
+    @include _app-layout_section-square-label-mixin
 
-      &:before
-        grid-area: section-pattern-left
+// # Section' wrapper
+@mixin _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
+  display: grid
+  grid-template-areas: 'section-label' 'section-content'
 
-      &:after
-        grid-area: section-pattern-right
+  @media ($app-device-width-small <= width)
+    grid-template-areas: 'section-pattern-left section-label section-pattern-right' 'section-pattern-left section-content section-pattern-right'
+    grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
 
-      &:before, &:after
-        content: ''
-        display: block
+    &:before
+      grid-area: section-pattern-left
 
-        @include _app-layout_section-with-background-mixin
+    &:after
+      grid-area: section-pattern-right
 
-    @media ($app-device-width-medium <= width)
-      grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
-      margin-inline: auto
-      max-width: $_app-layout_section-max-width
+    &:before, &:after
+      content: ''
+      display: block
 
-    @media ($app-device-width-large <= width)
-      grid-template-areas: 'section-label section-pattern-left section-content section-pattern-right'
-      grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
+      @include _app-layout_section-with-background-mixin
+
+  @media ($app-device-width-medium <= width)
+    grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
+    margin-inline: auto
+    max-width: $_app-layout_section-max-width
+
+  @media ($app-device-width-large <= width)
+    grid-template-areas: 'section-label section-pattern-left section-content section-pattern-right'
+    grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
 
   #{$_label-selector}
     grid-area: section-label
@@ -136,9 +110,6 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
 
   #{$_content-selector}
     grid-area: section-content
-
-  #{$_number-selector}
-    @include _app-layout_section-square-label-mixin
 
 // # Section' label
 
