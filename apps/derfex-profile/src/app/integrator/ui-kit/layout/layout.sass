@@ -74,7 +74,39 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
   #{$_number-selector}
     @include _app-layout_section-square-label-mixin
 
-// # Section' wrapper
+// # Section separator
+@mixin app-layout_section-separator-mixin
+  --app-section-pattern-foreground-color: #eee
+
+  display: grid
+  grid-template-areas: '.'
+
+  @media ($app-device-width-small <= width)
+    grid-template-areas: 'section-pattern-left . section-pattern-right'
+    grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
+
+    &:before
+      grid-area: section-pattern-left
+
+    &:after
+      grid-area: section-pattern-right
+
+    &:before, &:after
+      content: ''
+      display: block
+
+      @include _app-layout_section-with-background-mixin
+
+  @media ($app-device-width-medium <= width)
+    grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
+    margin-inline: auto
+    max-width: $_app-layout_section-max-width
+
+  @media ($app-device-width-large <= width)
+    grid-template-areas: '. section-pattern-left . section-pattern-right'
+    grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
+
+// # Section wrapper
 @mixin _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
   display: grid
   grid-template-areas: 'section-label' 'section-content'
