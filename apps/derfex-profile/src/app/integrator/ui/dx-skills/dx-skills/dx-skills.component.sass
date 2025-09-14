@@ -1,4 +1,5 @@
 @use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/reset'
 @use '../../../ui-kit/typography/typography'
 
 :host
@@ -18,6 +19,8 @@
   grid-auto-flow: dense
   grid-gap: 4px
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+
+  @include reset.app-reset_ul-mixin
 
 .app-title
   @include typography.app-typography_h2-mixin
