@@ -3,7 +3,7 @@ import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.typ
 export const dxSkills = [
   {
     codename: 'HTML5' as DXSkillCodename,
-    name: 'HTML',
+    name: 'HTML5',
     url: 'https://developer.mozilla.org/docs/Web/HTML',
   },
   {
