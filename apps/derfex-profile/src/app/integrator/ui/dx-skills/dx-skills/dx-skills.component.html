@@ -2,7 +2,7 @@
   <h2 class="app-title">{{titleText()}}</h2>
   <ul class="app-skills">
     @for (skill of skills(); track skill.codename) {
-      <li>
+      <li class="app-skills__item">
         <app-dx-skill-card
           [titleAttribute]="skill.name"
           [url]="skill.url"

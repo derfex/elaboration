@@ -13,11 +13,6 @@ describe('DXSkillsComponent', (): void => {
   })
 
   it('should create', (): void => {
-    const mottoTextValue = 'No data.'
-    const titleTextValue = 'No data'
-    fixture.componentRef.setInput('mottoText', mottoTextValue)
-    fixture.componentRef.setInput('titleText', titleTextValue)
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })
