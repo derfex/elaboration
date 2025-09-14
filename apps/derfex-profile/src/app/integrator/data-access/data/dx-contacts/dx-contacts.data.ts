@@ -11,4 +11,9 @@ export const dxContacts = [
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/in/dmitry-p-b43379302',
   },
+  {
+    codename: DXContactCodename.Telegram,
+    name: 'Telegram',
+    url: 'https://t.me/dapolovnyov',
+  },
 ] as const satisfies readonly DXContact[]
