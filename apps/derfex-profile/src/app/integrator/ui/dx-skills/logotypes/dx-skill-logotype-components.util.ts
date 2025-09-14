@@ -5,6 +5,7 @@ import { CSSLogotypeComponent } from '~ui/dx-skills/logotypes/css-logotype/css-l
 import { GitHubLogotypeComponent } from '~ui/dx-skills/logotypes/github-logotype/github-logotype.component'
 import { HTML5LogotypeComponent } from '~ui/dx-skills/logotypes/html5-logotype/html5-logotype.component'
 import { JavaScriptLogotypeComponent } from '~ui/dx-skills/logotypes/javascript-logotype/javascript-logotype.component'
+import { NodeJSLogotypeComponent } from '~ui/dx-skills/logotypes/node-js-logotype/node-js-logotype.component'
 import { TypeScriptLogotypeComponent } from '~ui/dx-skills/logotypes/typescript-logotype/typescript-logotype.component'
 
 export type DXSkillLogotypeComponentType =
@@ -13,6 +14,7 @@ export type DXSkillLogotypeComponentType =
   | typeof GitHubLogotypeComponent
   | typeof HTML5LogotypeComponent
   | typeof JavaScriptLogotypeComponent
+  | typeof NodeJSLogotypeComponent
   | typeof TypeScriptLogotypeComponent
 
 export class DXSkillLogotypeComponentsUtil {
@@ -25,7 +27,7 @@ export class DXSkillLogotypeComponentsUtil {
     ['GitHub' as DXSkillCodename, GitHubLogotypeComponent],
     ['HTML5' as DXSkillCodename, HTML5LogotypeComponent],
     ['JS' as DXSkillCodename, JavaScriptLogotypeComponent],
-    ['NodeJS' as DXSkillCodename, AngularLogotypeComponent], // TODO: Replace.
+    ['NodeJS' as DXSkillCodename, NodeJSLogotypeComponent],
     ['TS' as DXSkillCodename, TypeScriptLogotypeComponent],
   ])
 
