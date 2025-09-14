@@ -1,0 +1,24 @@
+:host
+  display: block
+
+.app-card__a
+  display: block
+  text-decoration: none
+
+.app-card__article
+  $_transition-duration: var(--app-transition-duration)
+
+  display: flex
+  align-items: center
+  place-content: center
+  border: 1px solid #eee
+  padding: 20px
+  height: 80px
+
+  filter: grayscale(1)
+  opacity: .7
+  transition: $_transition-duration
+
+  &:hover
+    filter: grayscale(0)
+    opacity: 1
