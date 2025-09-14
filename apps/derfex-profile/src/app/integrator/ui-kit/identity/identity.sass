@@ -1,9 +1,11 @@
 @use 'color-palette'
 @use 'fonts'
+@use 'transitions'
 
 @mixin app-identity_styles-mixin
   @include color-palette.app-color-palette_variables-mixin
   @include fonts.app-fonts_styles-mixin
+  @include transitions.app-transitions_styles-mixin
 
   body
     color: #333
