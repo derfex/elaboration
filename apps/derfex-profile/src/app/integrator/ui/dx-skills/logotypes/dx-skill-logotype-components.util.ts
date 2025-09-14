@@ -4,12 +4,14 @@ import { AngularLogotypeComponent } from '~ui/dx-skills/logotypes/angular-logoty
 import { CSSLogotypeComponent } from '~ui/dx-skills/logotypes/css-logotype/css-logotype.component'
 import { GitHubLogotypeComponent } from '~ui/dx-skills/logotypes/github-logotype/github-logotype.component'
 import { HTML5LogotypeComponent } from '~ui/dx-skills/logotypes/html5-logotype/html5-logotype.component'
+import { JavaScriptLogotypeComponent } from '~ui/dx-skills/logotypes/javascript-logotype/javascript-logotype.component'
 
 export type DXSkillLogotypeComponentType =
   | typeof AngularLogotypeComponent
   | typeof CSSLogotypeComponent
   | typeof GitHubLogotypeComponent
   | typeof HTML5LogotypeComponent
+  | typeof JavaScriptLogotypeComponent
 
 export class DXSkillLogotypeComponentsUtil {
   static readonly #logotypeComponentsMap: ReadonlyMap<DXSkillCodename, DXSkillLogotypeComponentType> = new Map<
@@ -20,7 +22,7 @@ export class DXSkillLogotypeComponentsUtil {
     ['CSS' as DXSkillCodename, CSSLogotypeComponent],
     ['GitHub' as DXSkillCodename, GitHubLogotypeComponent],
     ['HTML5' as DXSkillCodename, HTML5LogotypeComponent],
-    ['JS' as DXSkillCodename, AngularLogotypeComponent], // TODO: Replace.
+    ['JS' as DXSkillCodename, JavaScriptLogotypeComponent],
     ['NodeJS' as DXSkillCodename, AngularLogotypeComponent], // TODO: Replace.
     ['TS' as DXSkillCodename, AngularLogotypeComponent], // TODO: Replace.
   ])
