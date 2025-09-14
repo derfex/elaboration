@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
-import { TelegramIconComponent } from '~ui/dx-contacts/icons/telegram-icon/telegram-icon.component'
 import { GitHubInvertocatLogotypeComponent } from '~ui/dx-contacts/logotypes/github-invertocat-logotype/github-invertocat-logotype.component'
+import { TelegramLogotypeComponent } from '~ui/dx-contacts/logotypes/telegram-logotype/telegram-logotype.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [GitHubInvertocatLogotypeComponent, TelegramIconComponent],
+  imports: [GitHubInvertocatLogotypeComponent, TelegramLogotypeComponent],
   selector: 'app-layout-hero',
   styleUrl: './layout-hero.component.sass',
   templateUrl: './layout-hero.component.html',
