@@ -13,5 +13,11 @@
 
   padding-block: 20px
 
+.app-skills
+  display: grid
+  grid-auto-flow: dense
+  grid-gap: 4px
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+
 .app-title
   @include typography.app-typography_h2-mixin

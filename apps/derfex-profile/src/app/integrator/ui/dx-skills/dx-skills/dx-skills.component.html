@@ -1,6 +1,13 @@
 <article class="app-article">
   <h2 class="app-title">{{titleText()}}</h2>
-  <div>
-    {{skillsText()}}
+  <div class="app-skills">
+    @for (skill of skills(); track skill.codename) {
+      <app-dx-skill-card
+        [titleAttribute]="skill.name"
+        [url]="skill.url"
+      >
+        {{skill.name}}
+      </app-dx-skill-card>
+    }
   </div>
 </article>
