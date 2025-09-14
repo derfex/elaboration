@@ -31,4 +31,9 @@ export const dxSkills = [
     name: 'Angular',
     url: 'https://angular.dev',
   },
+  {
+    codename: 'GitHub' as DXSkillCodename,
+    name: 'GitHub',
+    url: 'https://github.com',
+  },
 ] as const satisfies readonly DXSkill[]
