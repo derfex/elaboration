@@ -5,6 +5,7 @@ import { CSSLogotypeComponent } from '~ui/dx-skills/logotypes/css-logotype/css-l
 import { GitHubLogotypeComponent } from '~ui/dx-skills/logotypes/github-logotype/github-logotype.component'
 import { HTML5LogotypeComponent } from '~ui/dx-skills/logotypes/html5-logotype/html5-logotype.component'
 import { JavaScriptLogotypeComponent } from '~ui/dx-skills/logotypes/javascript-logotype/javascript-logotype.component'
+import { TypeScriptLogotypeComponent } from '~ui/dx-skills/logotypes/typescript-logotype/typescript-logotype.component'
 
 export type DXSkillLogotypeComponentType =
   | typeof AngularLogotypeComponent
@@ -12,6 +13,7 @@ export type DXSkillLogotypeComponentType =
   | typeof GitHubLogotypeComponent
   | typeof HTML5LogotypeComponent
   | typeof JavaScriptLogotypeComponent
+  | typeof TypeScriptLogotypeComponent
 
 export class DXSkillLogotypeComponentsUtil {
   static readonly #logotypeComponentsMap: ReadonlyMap<DXSkillCodename, DXSkillLogotypeComponentType> = new Map<
@@ -24,7 +26,7 @@ export class DXSkillLogotypeComponentsUtil {
     ['HTML5' as DXSkillCodename, HTML5LogotypeComponent],
     ['JS' as DXSkillCodename, JavaScriptLogotypeComponent],
     ['NodeJS' as DXSkillCodename, AngularLogotypeComponent], // TODO: Replace.
-    ['TS' as DXSkillCodename, AngularLogotypeComponent], // TODO: Replace.
+    ['TS' as DXSkillCodename, TypeScriptLogotypeComponent],
   ])
 
   public static getComponent(dxSkillCodename: DXSkillCodename): DXSkillLogotypeComponentType | never {
