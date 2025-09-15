@@ -15,14 +15,16 @@ export class DXSkillsSectionComponent implements OnInit {
 
   protected readonly numberText = computed<string>(() => ('' + this.number()).padStart(2, '0'))
   protected readonly sectionParameters = signal({
+    descriptionText: 'No data',
     skills: [] as readonly DXSkill[],
     titleText: 'No data',
   })
 
   public ngOnInit(): void {
     this.sectionParameters.set({
+      descriptionText: 'The main technologies and tools that I own.',
       skills: dxSkills,
       titleText: 'Skills',
-    })
+    } as const)
   }
 }

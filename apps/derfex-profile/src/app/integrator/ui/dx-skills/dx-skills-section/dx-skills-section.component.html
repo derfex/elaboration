@@ -3,6 +3,7 @@
     <div class="app-section__label"><span class="app-section__number">{{numberText()}}</span></div>
     <div class="app-section__content">
       <app-dx-skills
+        [descriptionText]="sectionParameters().descriptionText"
         [skills]="sectionParameters().skills"
         [titleText]="sectionParameters().titleText"
       />

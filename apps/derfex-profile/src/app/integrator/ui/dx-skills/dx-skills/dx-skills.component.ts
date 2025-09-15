@@ -21,6 +21,7 @@ import {
   templateUrl: './dx-skills.component.html',
 })
 export class DXSkillsComponent {
+  public readonly descriptionText = input.required<string>()
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
