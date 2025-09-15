@@ -1,0 +1,12 @@
+<div class="app-section">
+  <div class="app-section__wrapper">
+    <div class="app-section__label"><span class="app-section__number">{{numberText()}}</span></div>
+    <div class="app-section__content">
+      <app-dx-projects
+        [descriptionText]="sectionParameters().descriptionText"
+        [projects]="sectionParameters().projects"
+        [titleText]="sectionParameters().titleText"
+      />
+    </div>
+  </div>
+</div>
