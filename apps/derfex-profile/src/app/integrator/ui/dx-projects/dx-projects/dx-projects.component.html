@@ -1,0 +1,15 @@
+<article class="app-article">
+  <h2 class="app-title">{{titleText()}}</h2>
+  <p class="app-description">{{descriptionText()}}</p>
+  <ul class="app-projects">
+    @for (project of projectsForTemplate(); track project.codename) {
+      <li class="app-projects__item">
+        <app-dx-project-card
+          [resultURL]="project.resultURL"
+          [sourceURL]="project.sourceURL"
+          [title]="project.name"
+        />
+      </li>
+    }
+  </ul>
+</article>

@@ -1,0 +1,34 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/reset'
+@use '../../../ui-kit/typography/typography'
+
+:host
+  display: block
+
+.app-article
+  @include layout.app-layout_flex-column-mixin(16px)
+
+  justify-content: space-between
+
+  @include layout.app-layout_horizontal-paddings-mixin
+
+  padding-block: 20px
+
+.app-description
+  @include typography.app-typography_p-mixin
+
+  color: #444
+
+.app-projects
+  display: grid
+  grid-auto-flow: dense
+  grid-gap: 4px
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
+
+  @include reset.app-reset_ul-mixin
+
+.app-projects__item
+  border: 1px solid #eee
+
+.app-title
+  @include typography.app-typography_h2-mixin
