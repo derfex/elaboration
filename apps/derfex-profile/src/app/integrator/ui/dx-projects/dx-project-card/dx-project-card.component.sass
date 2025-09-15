@@ -1,0 +1,72 @@
+@use 'sass:math'
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/typography/typography'
+
+:host
+  display: block
+
+.app-card
+  $_transition-duration: var(--app-transition-duration)
+
+  display: flex
+  align-items: center
+  place-content: center
+  padding: 20px
+
+  filter: grayscale(1)
+  opacity: .7
+  transition: $_transition-duration
+
+  &:hover
+    filter: grayscale(0)
+    opacity: 1
+
+.app-content
+  @include layout.app-layout_flex-column-mixin(16px)
+
+.app-github-invertocat-logotype-component
+  display: inline-block
+  width: 1em
+  color: #24292f
+
+.app-link
+  display: flex
+  align-items: flex-start
+  column-gap: 4px
+
+  color: color-mix(in oklch, var(--dx-color-accent), #fff)
+  text-decoration: none
+
+  &:hover
+    color: var(--dx-color-accent)
+
+.app-links
+  display: flex
+  column-gap: 12px
+
+  @include typography.app-typography_p-mixin
+
+.app-play-icon
+  $_icon-size: 16px
+  $_icon-size-half: math.div($_icon-size, 2)
+
+  display: inline-flex
+  border: 1px solid currentColor
+  border-radius: $_icon-size-half
+  padding-left: math.div($_icon-size, 8)
+  width: $_icon-size
+  height: $_icon-size
+
+  &::before
+    $_size: $_icon-size-half
+
+    content: ''
+    margin: auto
+    border-left: $_size solid currentColor
+    border-right: 0 solid #0000
+    border-block: math.div($_size, 2) solid #0000
+    width: $_size
+    height: $_size
+
+.app-title
+  @include typography.app-typography_h3-mixin

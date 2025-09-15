@@ -1,0 +1,27 @@
+<article class="app-card">
+  <div class="app-content">
+    <h3 class="app-title">{{title()}}</h3>
+    <p class="app-links">
+      <a
+        class="app-link"
+        [href]="resultURL()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span class="app-play-icon"></span>
+        Result
+      </a>
+      <span> | </span>
+      <a
+        class="app-link"
+        [href]="sourceURL()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <app-github-invertocat-logotype class="app-github-invertocat-logotype-component" />
+        Source code
+      </a>
+    </p>
+
+  </div>
+</article>
