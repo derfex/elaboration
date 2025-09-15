@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, type OnInit, signal } from '@angular/core'
 import type { DXSkill } from '~entities/dx-skills/dx-skills.type'
 import { dxSkills } from '~integrator/data-access/data/dx-skills/dx-skills.data'
+import { LayoutSectionUtil } from '~ui-kit/layout/layout-section.util'
 import { DXSkillsComponent } from '~ui/dx-skills/dx-skills/dx-skills.component'
 
 @Component({
@@ -13,7 +14,7 @@ import { DXSkillsComponent } from '~ui/dx-skills/dx-skills/dx-skills.component'
 export class DXSkillsSectionComponent implements OnInit {
   public readonly number = input.required<number>()
 
-  protected readonly numberText = computed<string>(() => ('' + this.number()).padStart(2, '0'))
+  protected readonly numberText = computed<string>(() => LayoutSectionUtil.convertNumber(this.number()))
   protected readonly sectionParameters = signal({
     descriptionText: 'No data',
     skills: [] as readonly DXSkill[],
