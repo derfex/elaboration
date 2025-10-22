@@ -1,0 +1,45 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/typography/typography'
+
+:host
+  display: block
+
+.app-card
+  padding: 16px
+
+.app-content
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-period
+  @include typography.app-typography_p-mixin
+
+  font-size: .62em
+  color: #777
+
+.app-role
+  @include typography.app-typography_h3-mixin
+
+  color: var(--dx-color-accent)
+
+.app-short-description
+  @include typography.app-typography_p-mixin
+
+  font-style: italic
+
+.app-skills-list
+  display: flex
+  flex-wrap: wrap
+  gap: 4px
+  padding-left: 0
+  list-style: none
+
+.app-skills-list__item
+  border-radius: 4px
+  padding: 4px
+  background: color-mix(in oklch, #eee, transparent)
+  white-space: nowrap
+
+.app-skills-title
+  @include typography.app-typography_h4-mixin
+
+  color: color-mix(in oklch, var(--dx-color-accent), transparent)
