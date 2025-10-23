@@ -14,6 +14,8 @@
           [skills]="activity.skills"
         />
       </li>
+    } @empty {
+      <p class="app-empty-state">{{emptyStateText()}}</p>
     }
   </ul>
 </article>

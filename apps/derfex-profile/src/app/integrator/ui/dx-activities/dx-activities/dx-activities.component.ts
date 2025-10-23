@@ -14,6 +14,7 @@ export class DXActivitiesComponent {
   public readonly activities = input.required<readonly DXActivitiesListItem[]>()
   public readonly activitySkillsTitleText = input.required<string>()
   public readonly descriptionText = input.required<string>()
+  public readonly emptyStateText = input.required<string>()
   public readonly titleText = input.required<string>()
 
   protected readonly activitiesForTemplate = computed<readonly DXActivityForTemplate[]>(() => {
