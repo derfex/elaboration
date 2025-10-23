@@ -1,4 +1,4 @@
-import { newDevError } from '~app/dev/dev-error.util'
+import { assertDefined } from '~app/dev/dev-error.util'
 import type { DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { AngularLogotypeComponent } from '~ui/dx-skills/logotypes/angular-logotype/angular-logotype.component'
 import { CSSLogotypeComponent } from '~ui/dx-skills/logotypes/css-logotype/css-logotype.component'
@@ -33,11 +33,10 @@ export class DXSkillLogotypeComponentsUtil {
 
   public static getComponent(dxSkillCodename: DXSkillCodename): DXSkillLogotypeComponentType | never {
     const logotypeComponent = this.#logotypeComponentsMap.get(dxSkillCodename)
-    if (!logotypeComponent) {
-      throw newDevError(
-        `[DXSkillLogotypeComponentsUtil] Component for '${dxSkillCodename}' \`DXSkillCodename\` does not exist.`,
-      )
-    }
+    assertDefined<DXSkillLogotypeComponentType>(
+      logotypeComponent,
+      `[DXSkillLogotypeComponentsUtil] Component for '${dxSkillCodename}' \`DXSkillCodename\` does not exist.`,
+    )
     return logotypeComponent
   }
 }
