@@ -1,4 +1,3 @@
-// import type { DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import type { Brand } from '../../brand-type-utility'
 
 export interface DXActivity {
@@ -8,12 +7,12 @@ export interface DXActivity {
   readonly results: readonly string[]
   readonly role: string
   readonly shortDescription: string
-  readonly skills: readonly string[]
+  readonly skillsSet: ReadonlySet<DXActivitySkillCodename>
 
   // TODO?: Use?
   // readonly descriptionParagraphList: readonly string[]
   // readonly responsibilitiesParagraphList: readonly string[]
-  // readonly skillsSet: ReadonlySet<DXSkillCodename>
 }
 
 export type DXActivityCodename = Brand<string, 'dx activity codename'>
+export type DXActivitySkillCodename = Brand<string, 'dx activity skill codename'>

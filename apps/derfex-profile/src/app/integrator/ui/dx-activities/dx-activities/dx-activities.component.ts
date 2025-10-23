@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
-import type { DXActivity, DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-activity-card.component'
 
 @Component({
@@ -10,7 +11,7 @@ import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-a
   templateUrl: './dx-activities.component.html',
 })
 export class DXActivitiesComponent {
-  public readonly activities = input.required<readonly DXActivity[]>()
+  public readonly activities = input.required<readonly DXActivitiesListItem[]>()
   public readonly activitySkillsTitleText = input.required<string>()
   public readonly descriptionText = input.required<string>()
   public readonly titleText = input.required<string>()
@@ -25,7 +26,7 @@ export class DXActivitiesComponent {
     periodFrom,
     role,
     shortDescription,
-  }: DXActivity): DXActivityForTemplate {
+  }: DXActivitiesListItem): DXActivityForTemplate {
     return {
       codename,
       periodFrom,
@@ -45,10 +46,10 @@ export class DXActivitiesComponent {
 
 interface DXActivityForTemplate {
   readonly codename: DXActivityCodename
-  readonly periodFrom: DXActivity['periodFrom']
-  readonly periodTo: DXActivity['periodTo']
-  readonly results: DXActivity['results']
-  readonly role: DXActivity['role']
-  readonly shortDescription: DXActivity['shortDescription']
-  readonly skills: DXActivity['skills']
+  readonly periodFrom: DXActivitiesListItem['periodFrom']
+  readonly periodTo: DXActivitiesListItem['periodTo']
+  readonly results: DXActivitiesListItem['results']
+  readonly role: DXActivitiesListItem['role']
+  readonly shortDescription: DXActivitiesListItem['shortDescription']
+  readonly skills: DXActivitiesListItem['skills']
 }
