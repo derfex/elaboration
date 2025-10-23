@@ -1,0 +1,54 @@
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import type { DXActivity, DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-activity-card.component'
+
+@Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [DXActivityCardComponent],
+  selector: 'app-dx-activities',
+  styleUrl: './dx-activities.component.sass',
+  templateUrl: './dx-activities.component.html',
+})
+export class DXActivitiesComponent {
+  public readonly activities = input.required<readonly DXActivity[]>()
+  public readonly activitySkillsTitleText = input.required<string>()
+  public readonly descriptionText = input.required<string>()
+  public readonly titleText = input.required<string>()
+
+  protected readonly activitiesForTemplate = computed<readonly DXActivityForTemplate[]>(() => {
+    return this.activities().map(this.#prepareDXSkillForTemplate.bind(this))
+  })
+
+  #prepareDXSkillForTemplate({
+    codename,
+    periodTo,
+    periodFrom,
+    role,
+    shortDescription,
+  }: DXActivity): DXActivityForTemplate {
+    return {
+      codename,
+      periodFrom,
+      periodTo,
+      results: [
+        'Built websites for eight clients as a team.',
+        'Created on my own a web application for a tablet to draw up an estimate specification and administer a set of services.',
+        'Website development and management, primarily for online stores. Resource analytics and optimization. Contextual advertising.',
+        'Layout development, JavaScript, asynchronous database queries, PHP, MySQL.',
+      ],
+      role,
+      shortDescription,
+      skills: ['CSS', 'HTML5', 'JavaScript', 'MySQL', 'PHP'],
+    }
+  }
+}
+
+interface DXActivityForTemplate {
+  readonly codename: DXActivityCodename
+  readonly periodFrom: DXActivity['periodFrom']
+  readonly periodTo: DXActivity['periodTo']
+  readonly results: DXActivity['results']
+  readonly role: DXActivity['role']
+  readonly shortDescription: DXActivity['shortDescription']
+  readonly skills: DXActivity['skills']
+}

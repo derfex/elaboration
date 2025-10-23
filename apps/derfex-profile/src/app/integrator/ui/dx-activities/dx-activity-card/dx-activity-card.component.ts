@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   templateUrl: './dx-activity-card.component.html',
 })
 export class DXActivityCardComponent {
-  public readonly dateEnd = input.required<Date | null>()
-  public readonly dateStart = input.required<Date>()
+  public readonly periodFrom = input.required<Date>()
+  public readonly periodTo = input.required<Date | null>()
   public readonly results = input.required<readonly string[]>()
   public readonly role = input.required<string>()
   public readonly shortDescription = input.required<string>()
