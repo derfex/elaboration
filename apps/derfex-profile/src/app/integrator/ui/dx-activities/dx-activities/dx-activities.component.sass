@@ -19,15 +19,14 @@
 
   color: #444
 
-.app-activities
-  display: grid
-  grid-auto-flow: dense
-  grid-gap: 4px
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
+.app-list
+  @include layout.app-layout_flex-column-mixin(4px)
 
-  @include reset.app-reset_ul-mixin
+  margin: 0
+  padding-left: 0
+  list-style: none
 
-.app-skills__item
+.app-list__item
   border: 1px solid #eee
 
 .app-title

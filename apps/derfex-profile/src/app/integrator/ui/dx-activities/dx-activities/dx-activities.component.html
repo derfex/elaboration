@@ -1,9 +1,9 @@
  <article class="app-article">
   <h2 class="app-title">{{titleText()}}</h2>
   <p class="app-description">{{descriptionText()}}</p>
-  <ul class="app-activities">
+  <ul class="app-list">
     @for (activity of activitiesForTemplate(); track activity.codename) {
-      <li class="app-skills__item">
+      <li class="app-list__item">
         <app-dx-activity-card
           [periodFrom]="activity.periodFrom"
           [periodTo]="activity.periodTo"
