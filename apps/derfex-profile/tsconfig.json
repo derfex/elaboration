@@ -17,7 +17,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
       "~app/*": ["apps/derfex-profile/src/app/*"],
-      "~be/*": ["apps/derfex-profile/src/app/integrator/backend-api/*"],
+      "~be/*": ["apps/derfex-profile/src/app/integrator/data-access/backend-api/*"],
       "~entities/*": ["apps/derfex-profile/src/architecture/entities/*"],
       "~integrator/*": ["apps/derfex-profile/src/app/integrator/*"],
       "~pages/*": ["apps/derfex-profile/src/app/integrator/pages/*"],
