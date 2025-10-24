@@ -18,29 +18,27 @@ export class DXActivitiesComponent {
   public readonly titleText = input.required<string>()
 
   protected readonly activitiesForTemplate = computed<readonly DXActivityForTemplate[]>(() => {
-    return this.activities().map(this.#prepareDXSkillForTemplate.bind(this))
+    return this.activities().map(this.#prepareDXActivityForTemplate.bind(this))
   })
 
-  #prepareDXSkillForTemplate({
+  // TODO: Do we need `DXActivityForTemplate` and `#prepareDXActivityForTemplate(1)`.
+  #prepareDXActivityForTemplate({
     codename,
-    periodTo,
     periodFrom,
+    periodTo,
+    results,
     role,
     shortDescription,
+    skills,
   }: DXActivitiesListItem): DXActivityForTemplate {
     return {
       codename,
       periodFrom,
       periodTo,
-      results: [
-        'Built websites for eight clients as a team.',
-        'Created on my own a web application for a tablet to draw up an estimate specification and administer a set of services.',
-        'Website development and management, primarily for online stores. Resource analytics and optimization. Contextual advertising.',
-        'Layout development, JavaScript, asynchronous database queries, PHP, MySQL.',
-      ],
+      results,
       role,
       shortDescription,
-      skills: ['CSS', 'HTML5', 'JavaScript', 'MySQL', 'PHP'],
+      skills,
     }
   }
 }
