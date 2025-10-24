@@ -8,6 +8,4 @@ import { RouterModule } from '@angular/router'
   styleUrl: './app.sass',
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = 'derfex-profile'
-}
+export class App {}
