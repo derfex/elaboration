@@ -14,7 +14,7 @@ import type { DXProject } from '~ui/dx-projects/dx-projects-section/dx-projects-
 })
 export class DXProjectsComponent {
   public readonly descriptionText = input.required<string>()
-  public readonly projects = input.required<readonly any[]>()
+  public readonly projects = input.required<readonly DXProject[]>()
   public readonly titleText = input.required<string>()
 
   protected readonly projectsForTemplate = computed<readonly DXProjectForTemplate[]>(() => {
