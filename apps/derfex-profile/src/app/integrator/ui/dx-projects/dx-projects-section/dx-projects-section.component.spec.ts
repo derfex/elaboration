@@ -10,10 +10,11 @@ describe('DXProjectsSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(DXProjectsSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {
+    fixture.componentRef.setInput('number', 0)
+    fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })
