@@ -16,7 +16,7 @@ export class DXActivityCardComponent {
   public readonly skillsTitleText = input.required<string>()
 
   protected readonly period = computed<string>(() => {
-    return getPeriodTextWithENLocalization(this.dateStart(), this.dateEnd())
+    return getPeriodTextWithENLocalization(this.periodFrom(), this.periodTo())
     // TODO?: Calculate length of the period. Example: `2021-01 – настоящее время · 4 г. 3 мес.`
   })
 }
