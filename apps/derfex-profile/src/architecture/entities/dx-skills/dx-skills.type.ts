@@ -1,4 +1,4 @@
-import type { Brand } from '../../brand-type-utility'
+import type { Brand } from '../../brand-type.util'
 
 export interface DXSkill {
   readonly codename: DXSkillCodename
