@@ -26,10 +26,7 @@ export class DXActivitiesSectionMediatorService {
   readonly #dxActivitySkillsForBEService = inject(DXActivitySkillsForBEService)
 
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
-    interface Lists {
-      readonly dxActivities: DXActivitiesForBE
-      readonly dxActivitySkills: DXActivitySkillsForBE
-    }
+    type SectionLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
 
     return this.#readURL().pipe(
       switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> => {
@@ -43,34 +40,36 @@ export class DXActivitiesSectionMediatorService {
           const dxActivitySkillsURL = prepareProfileDataBEAPIURL(
             parametersFromBEAPI.list.query.skills.sourceRelativeURL,
           )
-          // FIXME?: Deprecated?
-          return combineLatest({
-            dxActivities: this.#readDXActivities(dxActivitiesURL),
-            dxActivitySkills: this.#readDXActivitySkills(dxActivitySkillsURL),
-          }).pipe(
-            map<Lists, [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]>(
-              ({ dxActivities, dxActivitySkills }) => [parametersFromBEAPI, dxActivities, dxActivitySkills],
-            ),
+          type EntitiesLists = [DXActivitiesForBE, DXActivitySkillsForBE]
+
+          return combineLatest([
+            this.#readDXActivities(dxActivitiesURL),
+            this.#readDXActivitySkills(dxActivitySkillsURL),
+          ]).pipe(
+            map<EntitiesLists, SectionLists>(([dxActivities, dxActivitySkills]) => [
+              parametersFromBEAPI,
+              dxActivities,
+              dxActivitySkills,
+            ]),
           )
         },
       ),
-      map<
-        [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE],
-        DXActivitiesSectionParametersAndList
-      >(([parametersFromBEAPI, dxActivities, dxActivitySkillsURL]): DXActivitiesSectionParametersAndList => {
-        const list = this.#prepareList(dxActivities, dxActivitySkillsURL)
-        const sectionParameters: DXActivitiesSectionParameters = {
-          descriptionText: parametersFromBEAPI.descriptionText,
-          list: {
-            emptyStateText: parametersFromBEAPI.list.emptyStateText,
-            item: {
-              skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
+      map<SectionLists, DXActivitiesSectionParametersAndList>(
+        ([parametersFromBEAPI, dxActivities, dxActivitySkillsURL]): DXActivitiesSectionParametersAndList => {
+          const list = this.#prepareList(dxActivities, dxActivitySkillsURL)
+          const sectionParameters: DXActivitiesSectionParameters = {
+            descriptionText: parametersFromBEAPI.descriptionText,
+            list: {
+              emptyStateText: parametersFromBEAPI.list.emptyStateText,
+              item: {
+                skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
+              },
             },
-          },
-          titleText: parametersFromBEAPI.titleText,
-        }
-        return { list, sectionParameters }
-      }),
+            titleText: parametersFromBEAPI.titleText,
+          }
+          return { list, sectionParameters }
+        },
+      ),
     )
   }
 
