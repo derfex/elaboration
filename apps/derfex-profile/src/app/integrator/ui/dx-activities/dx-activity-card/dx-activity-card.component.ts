@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
-import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
+import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -8,16 +7,13 @@ import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
   templateUrl: './dx-activity-card.component.html',
 })
 export class DXActivityCardComponent {
-  public readonly periodFrom = input.required<Date>()
-  public readonly periodTo = input.required<Date | null>()
+  // TODO?: Display a caption, like a tag, like a category of an activity.
+  //  Examples: `web-studio`, `independent development.
+  public readonly period = input.required<string>()
+  // TODO?: Display length of the period. Example: `2021-01 – настоящее время · 4 г. 3 мес.`.
   public readonly results = input.required<readonly string[]>()
   public readonly role = input.required<string>()
   public readonly shortDescription = input.required<string>()
   public readonly skills = input.required<readonly string[]>()
   public readonly skillsTitleText = input.required<string>()
-
-  protected readonly period = computed<string>(() => {
-    return LocaleUtil.getPeriodTextWithRULocalization(this.periodFrom(), this.periodTo())
-    // TODO?: Calculate length of the period. Example: `2021-01 – настоящее время · 4 г. 3 мес.`
-  })
 }

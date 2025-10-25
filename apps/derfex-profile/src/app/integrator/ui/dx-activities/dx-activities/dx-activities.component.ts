@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
 import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-activity-card.component'
 
@@ -31,10 +32,10 @@ export class DXActivitiesComponent {
     shortDescription,
     skills,
   }: DXActivitiesListItem): DXActivityForTemplate {
+    const period = LocaleUtil.getPeriodTextWithRULocalization(periodFrom, periodTo)
     return {
       codename,
-      periodFrom,
-      periodTo,
+      period,
       results,
       role,
       shortDescription,
@@ -45,8 +46,7 @@ export class DXActivitiesComponent {
 
 interface DXActivityForTemplate {
   readonly codename: DXActivityCodename
-  readonly periodFrom: DXActivitiesListItem['periodFrom']
-  readonly periodTo: DXActivitiesListItem['periodTo']
+  readonly period: string
   readonly results: DXActivitiesListItem['results']
   readonly role: DXActivitiesListItem['role']
   readonly shortDescription: DXActivitiesListItem['shortDescription']
