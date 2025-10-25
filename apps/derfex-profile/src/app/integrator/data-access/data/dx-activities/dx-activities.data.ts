@@ -1,4 +1,5 @@
 import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 
 export const dxActivities = [
@@ -57,10 +58,10 @@ function generateActivity(
   results: readonly string[] = [],
   skills: readonly string[] = [],
 ): DXActivitiesListItem {
+  const period = LocaleUtil.getPeriodTextWithENLocalization(new Date(periodFrom), periodTo ? new Date(periodTo) : null)
   return {
     codename: codename as DXActivityCodename,
-    periodFrom: new Date(periodFrom),
-    periodTo: periodTo ? new Date(periodTo) : null,
+    period,
     results,
     role,
     shortDescription,

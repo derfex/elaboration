@@ -55,8 +55,7 @@ class DXActivitiesSectionMediatorStubService {
     const dxActivities: readonly DXActivitiesListItem[] = [
       {
         codename: 'act-1' as DXActivityCodename,
-        periodFrom: new Date('2020-02'),
-        periodTo: new Date('2020-02'),
+        period: '2020-02 – 2020-02',
         results: ['result 1'],
         role: 'No data',
         shortDescription: 'short description 1',
@@ -64,8 +63,7 @@ class DXActivitiesSectionMediatorStubService {
       },
       {
         codename: 'act-2' as DXActivityCodename,
-        periodFrom: new Date('2020-05'),
-        periodTo: new Date('2020-08'),
+        period: '2020-05 – 2020-08',
         results: ['result 4'],
         role: 'No data',
         shortDescription: 'short description 2',

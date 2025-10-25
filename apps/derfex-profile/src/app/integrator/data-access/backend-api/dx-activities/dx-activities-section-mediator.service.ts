@@ -9,6 +9,7 @@ import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
 import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type {
   DXActivitiesSectionParameters,
   DXActivitiesSectionParametersAndList,
@@ -88,7 +89,7 @@ export class DXActivitiesSectionMediatorService {
         const codename = activityForBE.codename as DXActivityCodename
         const periodFrom = new Date(activityForBE.periodFrom)
         const periodTo = activityForBE.periodTo ? new Date(activityForBE.periodTo) : null
-
+        const period = LocaleUtil.getPeriodTextWithRULocalization(periodFrom, periodTo)
         const skills = activityForBE.skillCodenames
           .map((codename: string): string => {
             const skillTitle = dxActivitySkillsMap.get(codename)
@@ -99,15 +100,18 @@ export class DXActivitiesSectionMediatorService {
             return skillTitle
           })
           .sort()
+        const { results, role, shortDescription } = activityForBE
         return {
-          ...activityForBE,
           codename,
-          periodFrom,
-          periodTo,
+          period,
+          results,
+          role,
+          shortDescription,
           skills,
         }
       })
-      .sort((a: DXActivitiesListItem, b: DXActivitiesListItem): number => +b.periodFrom - +a.periodFrom)
+      // TODO: Implement the sorting.
+      // .sort((a: DXActivitiesListItem, b: DXActivitiesListItem): number => +b.periodFrom - +a.periodFrom)
   }
 
   #readDXActivities(dxActivitiesURL: string): Observable<DXActivitiesForBE> {

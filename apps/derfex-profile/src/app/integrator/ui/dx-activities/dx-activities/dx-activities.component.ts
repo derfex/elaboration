@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
 import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
-import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-activity-card.component'
 
@@ -25,14 +24,12 @@ export class DXActivitiesComponent {
   // TODO: Do we need `DXActivityForTemplate` and `#prepareDXActivityForTemplate(1)`.
   #prepareDXActivityForTemplate({
     codename,
-    periodFrom,
-    periodTo,
+    period,
     results,
     role,
     shortDescription,
     skills,
   }: DXActivitiesListItem): DXActivityForTemplate {
-    const period = LocaleUtil.getPeriodTextWithRULocalization(periodFrom, periodTo)
     return {
       codename,
       period,
@@ -46,7 +43,7 @@ export class DXActivitiesComponent {
 
 interface DXActivityForTemplate {
   readonly codename: DXActivityCodename
-  readonly period: string
+  readonly period: DXActivitiesListItem['period']
   readonly results: DXActivitiesListItem['results']
   readonly role: DXActivitiesListItem['role']
   readonly shortDescription: DXActivitiesListItem['shortDescription']
