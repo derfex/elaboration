@@ -6,7 +6,7 @@ import type { AppLocale } from '~integrator/data-access/locale/locale.type'
   providedIn: 'root',
 })
 export class LocaleSwitcherService {
-  readonly #locale = new BehaviorSubject<AppLocale>('RU')
+  readonly #locale = new BehaviorSubject<AppLocale>('EN')
 
   public get locale(): Observable<AppLocale> {
     return this.#locale.asObservable()
