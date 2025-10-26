@@ -27,6 +27,7 @@ describe('DXActivitiesSectionMediatorService', (): void => {
         { provide: BackendAPIConfigurationService, useClass: BackendAPIConfigurationStubService },
         { provide: DXActivitiesForBEService, useClass: DXActivitiesForBEStubService },
         { provide: DXActivitySkillsForBEService, useClass: DXActivitySkillsForBEStubService },
+        // TODO: { provide: LocaleSwitcherService, useClass: LocaleSwitcherStubService },
       ],
     })
     httpTestingController = TestBed.inject(HttpTestingController)
