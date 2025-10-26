@@ -1,0 +1,9 @@
+@for (locale of locales(); track locale.codename) {
+  <button
+    class="app-locale-item"
+    [disabled]="locale.disabled"
+    (click)="buttonClickHandler(locale.codename)"
+  >
+    {{locale.label}}
+  </button>
+}
