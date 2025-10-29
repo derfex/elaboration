@@ -31,7 +31,7 @@ export class DXSkillLogotypeComponentsUtil {
     ['TS' as DXSkillCodename, TypeScriptLogotypeComponent],
   ])
 
-  public static getComponent(dxSkillCodename: DXSkillCodename): DXSkillLogotypeComponentType | never {
+  public static getComponent(dxSkillCodename: DXSkillCodename): DXSkillLogotypeComponentType {
     const logotypeComponent = this.#logotypeComponentsMap.get(dxSkillCodename)
     assertDefined<DXSkillLogotypeComponentType>(
       logotypeComponent,

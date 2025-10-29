@@ -45,8 +45,7 @@ describe('DXActivitiesSectionMediatorService', (): void => {
 })
 
 class BackendAPIConfigurationStubService {
-  // TODO: Do we need to specify `never` if we have not `throw` inside?
-  public readURL(urlCodename: string): Observable<string> | never {
+  public readURL(urlCodename: string): Observable<string> {
     return of(urlCodename)
   }
 }

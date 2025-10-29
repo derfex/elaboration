@@ -76,7 +76,7 @@ export class DXActivitiesSectionMediatorService {
   #prepareList(
     dxActivities: DXActivitiesForBE,
     dxActivitySkills: DXActivitySkillsForBE,
-  ): readonly DXActivitiesListItem[] | never {
+  ): readonly DXActivitiesListItem[] {
     const dxActivitySkillsMap: ReadonlyMap<DXActivitySkillForBE['codename'], DXActivitySkillForBE['title']> = new Map(
       dxActivitySkills.map<[DXActivitySkillForBE['codename'], DXActivitySkillForBE['title']]>(({ codename, title }) => [
         codename,
