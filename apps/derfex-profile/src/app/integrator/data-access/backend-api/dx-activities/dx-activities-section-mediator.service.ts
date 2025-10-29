@@ -102,10 +102,7 @@ export class DXActivitiesSectionMediatorService {
     return dxActivities
       .map((activityForBE: DXActivityForBE): DXActivitiesListItem => {
         const codename = activityForBE.codename as DXActivityCodename
-        const periodFrom = new Date(activityForBE.periodFrom)
-        const periodTo = activityForBE.periodTo ? new Date(activityForBE.periodTo) : null
-        const getPeriodTextFn = this.#chooseGetPeriodTextFn(locale)
-        const period = getPeriodTextFn(periodFrom, periodTo)
+        const period = this.#chooseGetPeriodTextFn(locale)(activityForBE.periodFrom, activityForBE.periodTo)
         const skills = activityForBE.skillCodenames
           .map((codename: string): string => {
             const skillTitle = dxActivitySkillsMap.get(codename)
@@ -149,4 +146,4 @@ export class DXActivitiesSectionMediatorService {
 
 type DXActivitiesForBE = readonly DXActivityForBE[]
 type DXActivitySkillsForBE = readonly DXActivitySkillForBE[]
-type GetPeriodTextFn = (start: Date, end: Date | null) => string
+type GetPeriodTextFn = (start: string, end: string | null) => string
