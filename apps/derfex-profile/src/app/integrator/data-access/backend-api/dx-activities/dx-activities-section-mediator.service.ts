@@ -9,6 +9,7 @@ import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
 import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type {
   DXActivitiesSectionParameters,
@@ -24,6 +25,11 @@ export class DXActivitiesSectionMediatorService {
   readonly #httpClient = inject(HttpClient)
   readonly #dxActivitiesForBEService = inject(DXActivitiesForBEService)
   readonly #dxActivitySkillsForBEService = inject(DXActivitySkillsForBEService)
+
+  readonly #getPeriodTextFnMap: ReadonlyMap<AppLocale, GetPeriodTextFn> = new Map<AppLocale, GetPeriodTextFn>([
+    ['EN', LocaleUtil.getPeriodTextWithENLocalization.bind(LocaleUtil)],
+    ['RU', LocaleUtil.getPeriodTextWithRULocalization.bind(LocaleUtil)],
+  ])
 
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
     type SectionLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
@@ -56,7 +62,7 @@ export class DXActivitiesSectionMediatorService {
       ),
       map<SectionLists, DXActivitiesSectionParametersAndList>(
         ([parametersFromBEAPI, dxActivities, dxActivitySkillsURL]): DXActivitiesSectionParametersAndList => {
-          const list = this.#prepareList(dxActivities, dxActivitySkillsURL)
+          const list = this.#prepareList(dxActivities, dxActivitySkillsURL, 'EN')
           const sectionParameters: DXActivitiesSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             list: {
@@ -73,9 +79,19 @@ export class DXActivitiesSectionMediatorService {
     )
   }
 
+  #chooseGetPeriodTextFn(locale: AppLocale): GetPeriodTextFn {
+    const getPeriodTextFn = this.#getPeriodTextFnMap.get(locale)
+    assertDefined<GetPeriodTextFn>(
+      getPeriodTextFn,
+      `[DXActivitiesSectionMediatorService] Wrong data. The locale ('${locale}') does not exist.`,
+    )
+    return getPeriodTextFn
+  }
+
   #prepareList(
     dxActivities: DXActivitiesForBE,
     dxActivitySkills: DXActivitySkillsForBE,
+    locale: AppLocale,
   ): readonly DXActivitiesListItem[] {
     const dxActivitySkillsMap: ReadonlyMap<DXActivitySkillForBE['codename'], DXActivitySkillForBE['title']> = new Map(
       dxActivitySkills.map<[DXActivitySkillForBE['codename'], DXActivitySkillForBE['title']]>(({ codename, title }) => [
@@ -88,7 +104,8 @@ export class DXActivitiesSectionMediatorService {
         const codename = activityForBE.codename as DXActivityCodename
         const periodFrom = new Date(activityForBE.periodFrom)
         const periodTo = activityForBE.periodTo ? new Date(activityForBE.periodTo) : null
-        const period = LocaleUtil.getPeriodTextWithRULocalization(periodFrom, periodTo)
+        const getPeriodTextFn = this.#chooseGetPeriodTextFn(locale)
+        const period = getPeriodTextFn(periodFrom, periodTo)
         const skills = activityForBE.skillCodenames
           .map((codename: string): string => {
             const skillTitle = dxActivitySkillsMap.get(codename)
@@ -132,3 +149,4 @@ export class DXActivitiesSectionMediatorService {
 
 type DXActivitiesForBE = readonly DXActivityForBE[]
 type DXActivitySkillsForBE = readonly DXActivitySkillForBE[]
+type GetPeriodTextFn = (start: Date, end: Date | null) => string
