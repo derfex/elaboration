@@ -37,10 +37,9 @@ export class BackendAPIConfigurationService {
     shareReplay(1),
   )
 
-  // TODO: Do we need to specify `never` if we have not `throw` inside?
-  public readURL(urlCodename: BackendAPIURLCodename): Observable<string> | never {
+  public readURL(urlCodename: BackendAPIURLCodename): Observable<string> {
     return this.#urlMap$.pipe(
-      map((urlMap): string | never => {
+      map((urlMap): string => {
         const url = urlMap.get(urlCodename)
         assertDefined<string>(
           url,
