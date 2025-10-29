@@ -1,3 +1,4 @@
+// Expected string format for `periodFrom` and `periodTo`: 'YYYY-MM'.
 export interface DXActivityForBE {
   readonly codename: string
   readonly periodFrom: string

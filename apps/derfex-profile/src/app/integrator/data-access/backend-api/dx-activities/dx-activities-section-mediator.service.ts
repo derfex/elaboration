@@ -8,7 +8,7 @@ import { DXActivitiesForBEService } from '~be/dx-activities/dx-activities-for-be
 import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx-activities/dx-activities-for-be.type'
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
-import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { DXActivity, DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type {
@@ -79,6 +79,14 @@ export class DXActivitiesSectionMediatorService {
     )
   }
 
+  #calculatePeriodTo(periodTo: string | null): number | null {
+    if (periodTo === null) return null
+    const endOfMonth = new Date(periodTo)
+    endOfMonth.setMonth(endOfMonth.getMonth() + 1)
+    endOfMonth.setDate(-1)
+    return +endOfMonth
+  }
+
   #chooseGetPeriodTextFn(locale: AppLocale): GetPeriodTextFn {
     const getPeriodTextFn = this.#getPeriodTextFnMap.get(locale)
     assertDefined<GetPeriodTextFn>(
@@ -100,9 +108,11 @@ export class DXActivitiesSectionMediatorService {
       ]),
     )
     return dxActivities
-      .map((activityForBE: DXActivityForBE): DXActivitiesListItem => {
+      .map((activityForBE: DXActivityForBE): DXActivitiesSectionMediatorListItem => {
         const codename = activityForBE.codename as DXActivityCodename
         const period = this.#chooseGetPeriodTextFn(locale)(activityForBE.periodFrom, activityForBE.periodTo)
+        const periodFrom = +(new Date(activityForBE.periodFrom))
+        const periodTo = this.#calculatePeriodTo(activityForBE.periodTo)
         const skills = activityForBE.skillCodenames
           .map((codename: string): string => {
             const skillTitle = dxActivitySkillsMap.get(codename)
@@ -117,14 +127,26 @@ export class DXActivitiesSectionMediatorService {
         return {
           codename,
           period,
+          periodFrom,
+          periodTo,
           results,
           role,
           shortDescription,
           skills,
         }
       })
-      // TODO: Implement the sorting.
-      // .sort((a: DXActivitiesListItem, b: DXActivitiesListItem): number => +b.periodFrom - +a.periodFrom)
+      .sort(
+        (a: DXActivitiesSectionMediatorListItem, b: DXActivitiesSectionMediatorListItem): number =>
+          +b.periodFrom - +a.periodFrom,
+      )
+      .map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
+        codename,
+        period,
+        results,
+        role,
+        shortDescription,
+        skills,
+      }))
   }
 
   #readDXActivities(dxActivitiesURL: string): Observable<DXActivitiesForBE> {
@@ -147,3 +169,14 @@ export class DXActivitiesSectionMediatorService {
 type DXActivitiesForBE = readonly DXActivityForBE[]
 type DXActivitySkillsForBE = readonly DXActivitySkillForBE[]
 type GetPeriodTextFn = (start: string, end: string | null) => string
+
+interface DXActivitiesSectionMediatorListItem {
+  readonly codename: DXActivityCodename
+  readonly period: string
+  readonly periodFrom: number
+  readonly periodTo: number | null
+  readonly results: DXActivity['results']
+  readonly role: DXActivity['role']
+  readonly shortDescription: DXActivity['shortDescription']
+  readonly skills: readonly string[]
+}
