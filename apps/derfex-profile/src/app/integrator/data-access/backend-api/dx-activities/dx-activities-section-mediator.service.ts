@@ -32,9 +32,9 @@ export class DXActivitiesSectionMediatorService {
   ])
 
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
-    type SectionLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
+    type SectionParametersAndLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
 
-    return this.#readURL().pipe(
+    const sectionParametersAndLists = this.#readURL().pipe(
       switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> => {
         return this.#readSectionParameters(dxActivitiesSectionURL)
       }),
@@ -52,7 +52,7 @@ export class DXActivitiesSectionMediatorService {
             this.#readDXActivities(dxActivitiesURL),
             this.#readDXActivitySkills(dxActivitySkillsURL),
           ]).pipe(
-            map<EntitiesLists, SectionLists>(([dxActivities, dxActivitySkills]) => [
+            map<EntitiesLists, SectionParametersAndLists>(([dxActivities, dxActivitySkills]) => [
               parametersFromBEAPI,
               dxActivities,
               dxActivitySkills,
@@ -60,7 +60,10 @@ export class DXActivitiesSectionMediatorService {
           )
         },
       ),
-      map<SectionLists, DXActivitiesSectionParametersAndList>(
+    )
+
+    return sectionParametersAndLists.pipe(
+      map<SectionParametersAndLists, DXActivitiesSectionParametersAndList>(
         ([parametersFromBEAPI, dxActivities, dxActivitySkillsURL]): DXActivitiesSectionParametersAndList => {
           const list = this.#prepareList(dxActivities, dxActivitySkillsURL, 'EN')
           const sectionParameters: DXActivitiesSectionParameters = {
