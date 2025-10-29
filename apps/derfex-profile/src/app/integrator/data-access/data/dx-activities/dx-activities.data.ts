@@ -58,7 +58,7 @@ function generateActivity(
   results: readonly string[] = [],
   skills: readonly string[] = [],
 ): DXActivitiesListItem {
-  const period = LocaleUtil.getPeriodTextWithENLocalization(new Date(periodFrom), periodTo ? new Date(periodTo) : null)
+  const period = LocaleUtil.getPeriodTextWithENLocalization(periodFrom, periodTo)
   return {
     codename: codename as DXActivityCodename,
     period,
