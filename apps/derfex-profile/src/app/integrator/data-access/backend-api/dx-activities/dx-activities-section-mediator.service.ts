@@ -116,7 +116,7 @@ export class DXActivitiesSectionMediatorService {
       .map((activityForBE: DXActivityForBE): DXActivitiesSectionMediatorListItem => {
         const codename = activityForBE.codename as DXActivityCodename
         const period = this.#chooseGetPeriodTextFn(locale)(activityForBE.periodFrom, activityForBE.periodTo)
-        const periodFrom = +(new Date(activityForBE.periodFrom))
+        const periodFrom = Date.parse(activityForBE.periodFrom)
         const periodTo = this.#calculatePeriodTo(activityForBE.periodTo)
         const skills = activityForBE.skillCodenames
           .map((codename: string): string => {
