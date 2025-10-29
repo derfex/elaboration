@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { combineLatest, map, type Observable, switchMap } from 'rxjs'
+import { combineLatest, map, type Observable, switchMap, zip } from 'rxjs'
 import { assertDefined } from '~app/dev/dev-error.util'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
@@ -9,6 +9,7 @@ import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
 import type { DXActivity, DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type {
@@ -22,9 +23,10 @@ import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-ac
 })
 export class DXActivitiesSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
-  readonly #httpClient = inject(HttpClient)
   readonly #dxActivitiesForBEService = inject(DXActivitiesForBEService)
   readonly #dxActivitySkillsForBEService = inject(DXActivitySkillsForBEService)
+  readonly #httpClient = inject(HttpClient)
+  readonly #localeSwitcherService = inject(LocaleSwitcherService)
 
   readonly #getPeriodTextFnMap: ReadonlyMap<AppLocale, GetPeriodTextFn> = new Map<AppLocale, GetPeriodTextFn>([
     ['EN', LocaleUtil.getPeriodTextWithENLocalization.bind(LocaleUtil)],
@@ -62,10 +64,10 @@ export class DXActivitiesSectionMediatorService {
       ),
     )
 
-    return sectionParametersAndLists.pipe(
-      map<SectionParametersAndLists, DXActivitiesSectionParametersAndList>(
-        ([parametersFromBEAPI, dxActivities, dxActivitySkillsURL]): DXActivitiesSectionParametersAndList => {
-          const list = this.#prepareList(dxActivities, dxActivitySkillsURL, 'EN')
+    return zip([this.#localeSwitcherService.locale, sectionParametersAndLists]).pipe(
+      map<[AppLocale, SectionParametersAndLists], DXActivitiesSectionParametersAndList>(
+        ([locale, [parametersFromBEAPI, dxActivities, dxActivitySkillsURL]]): DXActivitiesSectionParametersAndList => {
+          const list = this.#prepareList(dxActivities, dxActivitySkillsURL, locale)
           const sectionParameters: DXActivitiesSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             list: {
