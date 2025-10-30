@@ -46,57 +46,6 @@ export class DXActivitiesSectionMediatorService {
       )
   }
 
-  #readSectionParametersAndListAsUncompiled(): Observable<DXActivitiesSectionParametersAndList> {
-    type SectionParametersAndLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
-
-    const sectionParametersAndLists = this.#readURLForUncompiled().pipe(
-      switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> => {
-        return this.#readSectionParametersAsUncompiled(dxActivitiesSectionURL)
-      }),
-      switchMap(
-        (
-          parametersFromBEAPI: DXActivitiesSectionParametersForBE,
-        ): Observable<[DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]> => {
-          const dxActivitiesURL = prepareProfileDataBEAPIURL(parametersFromBEAPI.list.sourceRelativeURL)
-          const dxActivitySkillsURL = prepareProfileDataBEAPIURL(
-            parametersFromBEAPI.list.query.skills.sourceRelativeURL,
-          )
-          type EntitiesLists = [DXActivitiesForBE, DXActivitySkillsForBE]
-
-          return combineLatest([
-            this.#readDXActivitiesAsUncompiled(dxActivitiesURL),
-            this.#readDXActivitySkillsAsUncompiled(dxActivitySkillsURL),
-          ]).pipe(
-            map<EntitiesLists, SectionParametersAndLists>(([dxActivities, dxActivitySkills]) => [
-              parametersFromBEAPI,
-              dxActivities,
-              dxActivitySkills,
-            ]),
-          )
-        },
-      ),
-    )
-
-    return zip([this.#localeSwitcherService.locale, sectionParametersAndLists]).pipe(
-      map<[AppLocale, SectionParametersAndLists], DXActivitiesSectionParametersAndList>(
-        ([locale, [parametersFromBEAPI, dxActivities, dxActivitySkillsURL]]): DXActivitiesSectionParametersAndList => {
-          const list = this.#prepareList(dxActivities, dxActivitySkillsURL, locale)
-          const sectionParameters: DXActivitiesSectionParameters = {
-            descriptionText: parametersFromBEAPI.descriptionText,
-            list: {
-              emptyStateText: parametersFromBEAPI.list.emptyStateText,
-              item: {
-                skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
-              },
-            },
-            titleText: parametersFromBEAPI.titleText,
-          }
-          return { list, sectionParameters }
-        },
-      ),
-    )
-  }
-
   #calculatePeriodTo(periodTo: string | null): number {
     if (periodTo === null) return Infinity
     const endOfMonth = new Date(periodTo)
@@ -225,6 +174,57 @@ export class DXActivitiesSectionMediatorService {
             shortDescription,
             skills,
           }))
+          const sectionParameters: DXActivitiesSectionParameters = {
+            descriptionText: parametersFromBEAPI.descriptionText,
+            list: {
+              emptyStateText: parametersFromBEAPI.list.emptyStateText,
+              item: {
+                skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
+              },
+            },
+            titleText: parametersFromBEAPI.titleText,
+          }
+          return { list, sectionParameters }
+        },
+      ),
+    )
+  }
+
+  #readSectionParametersAndListAsUncompiled(): Observable<DXActivitiesSectionParametersAndList> {
+    type SectionParametersAndLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
+
+    const sectionParametersAndLists = this.#readURLForUncompiled().pipe(
+      switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> => {
+        return this.#readSectionParametersAsUncompiled(dxActivitiesSectionURL)
+      }),
+      switchMap(
+        (
+          parametersFromBEAPI: DXActivitiesSectionParametersForBE,
+        ): Observable<[DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]> => {
+          const dxActivitiesURL = prepareProfileDataBEAPIURL(parametersFromBEAPI.list.sourceRelativeURL)
+          const dxActivitySkillsURL = prepareProfileDataBEAPIURL(
+            parametersFromBEAPI.list.query.skills.sourceRelativeURL,
+          )
+          type EntitiesLists = [DXActivitiesForBE, DXActivitySkillsForBE]
+
+          return combineLatest([
+            this.#readDXActivitiesAsUncompiled(dxActivitiesURL),
+            this.#readDXActivitySkillsAsUncompiled(dxActivitySkillsURL),
+          ]).pipe(
+            map<EntitiesLists, SectionParametersAndLists>(([dxActivities, dxActivitySkills]) => [
+              parametersFromBEAPI,
+              dxActivities,
+              dxActivitySkills,
+            ]),
+          )
+        },
+      ),
+    )
+
+    return zip([this.#localeSwitcherService.locale, sectionParametersAndLists]).pipe(
+      map<[AppLocale, SectionParametersAndLists], DXActivitiesSectionParametersAndList>(
+        ([locale, [parametersFromBEAPI, dxActivities, dxActivitySkillsURL]]): DXActivitiesSectionParametersAndList => {
+          const list = this.#prepareList(dxActivities, dxActivitySkillsURL, locale)
           const sectionParameters: DXActivitiesSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             list: {
