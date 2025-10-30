@@ -34,6 +34,10 @@ export class DXActivitiesSectionMediatorService {
   ])
 
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
+    return this.#readSectionParametersAndListAsUncompiled()
+  }
+
+  #readSectionParametersAndListAsUncompiled(): Observable<DXActivitiesSectionParametersAndList> {
     type SectionParametersAndLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
 
     const sectionParametersAndLists = this.#readURLForUncompiled().pipe(
