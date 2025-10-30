@@ -36,7 +36,7 @@ export class DXActivitiesSectionMediatorService {
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
     type SectionParametersAndLists = [DXActivitiesSectionParametersForBE, DXActivitiesForBE, DXActivitySkillsForBE]
 
-    const sectionParametersAndLists = this.#readURL().pipe(
+    const sectionParametersAndLists = this.#readURLForUncompiled().pipe(
       switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> => {
         return this.#readSectionParameters(dxActivitiesSectionURL)
       }),
@@ -166,7 +166,7 @@ export class DXActivitiesSectionMediatorService {
     return this.#httpClient.get<DXActivitiesSectionParametersForBE>(dxActivitiesSectionURL)
   }
 
-  #readURL(): Observable<string> {
+  #readURLForUncompiled(): Observable<string> {
     return this.#backendAPIConfigurationService.readURL('sections/dxActivities')
   }
 }
