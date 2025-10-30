@@ -42,7 +42,7 @@ export class DXActivitiesSectionMediatorService {
 
     const sectionParametersAndLists = this.#readURLForUncompiled().pipe(
       switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> => {
-        return this.#readSectionParameters(dxActivitiesSectionURL)
+        return this.#readSectionParametersAsUncompiled(dxActivitiesSectionURL)
       }),
       switchMap(
         (
@@ -55,8 +55,8 @@ export class DXActivitiesSectionMediatorService {
           type EntitiesLists = [DXActivitiesForBE, DXActivitySkillsForBE]
 
           return combineLatest([
-            this.#readDXActivities(dxActivitiesURL),
-            this.#readDXActivitySkills(dxActivitySkillsURL),
+            this.#readDXActivitiesAsUncompiled(dxActivitiesURL),
+            this.#readDXActivitySkillsAsUncompiled(dxActivitySkillsURL),
           ]).pipe(
             map<EntitiesLists, SectionParametersAndLists>(([dxActivities, dxActivitySkills]) => [
               parametersFromBEAPI,
@@ -158,15 +158,15 @@ export class DXActivitiesSectionMediatorService {
       }))
   }
 
-  #readDXActivities(dxActivitiesURL: string): Observable<DXActivitiesForBE> {
+  #readDXActivitiesAsUncompiled(dxActivitiesURL: string): Observable<DXActivitiesForBE> {
     return this.#dxActivitiesForBEService.readList(dxActivitiesURL)
   }
 
-  #readDXActivitySkills(dxActivitySkillsURL: string): Observable<DXActivitySkillsForBE> {
+  #readDXActivitySkillsAsUncompiled(dxActivitySkillsURL: string): Observable<DXActivitySkillsForBE> {
     return this.#dxActivitySkillsForBEService.readList(dxActivitySkillsURL)
   }
 
-  #readSectionParameters(dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> {
+  #readSectionParametersAsUncompiled(dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> {
     return this.#httpClient.get<DXActivitiesSectionParametersForBE>(dxActivitiesSectionURL)
   }
 
