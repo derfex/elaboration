@@ -24,6 +24,7 @@ export class BackendAPIConfigurationService {
 
   readonly #relativeURLCodenamesMap: ReadonlyMap<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename> =
     new Map<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename>([
+      ['dxActivitiesSectionCompiledRelativeURL', 'compiled/dxActivities/section'],
       ['dxActivitiesSectionRelativeURL', 'sections/dxActivities'],
     ])
 
