@@ -88,8 +88,8 @@ export class DXActivitiesSectionMediatorService {
     )
   }
 
-  #calculatePeriodTo(periodTo: string | null): number | null {
-    if (periodTo === null) return null
+  #calculatePeriodTo(periodTo: string | null): number {
+    if (periodTo === null) return Infinity
     const endOfMonth = new Date(periodTo)
     endOfMonth.setMonth(endOfMonth.getMonth() + 1)
     endOfMonth.setDate(-1)
@@ -145,8 +145,12 @@ export class DXActivitiesSectionMediatorService {
         }
       })
       .sort(
-        (a: DXActivitiesSectionMediatorListItem, b: DXActivitiesSectionMediatorListItem): number =>
-          +b.periodFrom - +a.periodFrom,
+        (a: DXActivitiesSectionMediatorListItem, b: DXActivitiesSectionMediatorListItem): number => {
+          const periodFromDelta = b.periodFrom - a.periodFrom
+          if (periodFromDelta !== 0) return periodFromDelta
+          const periodToDelta = b.periodTo - a.periodTo
+          return !Number.isNaN(periodToDelta) ? periodToDelta : 0
+        }
       )
       .map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
         codename,
@@ -183,7 +187,7 @@ interface DXActivitiesSectionMediatorListItem {
   readonly codename: DXActivityCodename
   readonly period: string
   readonly periodFrom: number
-  readonly periodTo: number | null
+  readonly periodTo: number
   readonly results: DXActivity['results']
   readonly role: DXActivity['role']
   readonly shortDescription: DXActivity['shortDescription']
