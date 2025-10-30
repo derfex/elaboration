@@ -1,9 +1,14 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { combineLatest, map, type Observable, switchMap, zip } from 'rxjs'
+import { catchError, combineLatest, map, type Observable, switchMap, zip } from 'rxjs'
 import { assertDefined } from '~app/dev/dev-error.util'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
+import { DXActivitiesCompiledForBEService } from '~be/dx-activities/dx-activities-compiled-for-be.service'
+import type {
+  DXActivitiesCompiledSectionParametersForBE,
+  DXActivityCompiledForBE,
+} from '~be/dx-activities/dx-activities-compiled-for-be.type'
 import { DXActivitiesForBEService } from '~be/dx-activities/dx-activities-for-be.service'
 import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx-activities/dx-activities-for-be.type'
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
@@ -23,6 +28,7 @@ import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-ac
 })
 export class DXActivitiesSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
+  readonly #dxActivitiesCompiledForBEService = inject(DXActivitiesCompiledForBEService)
   readonly #dxActivitiesForBEService = inject(DXActivitiesForBEService)
   readonly #dxActivitySkillsForBEService = inject(DXActivitySkillsForBEService)
   readonly #httpClient = inject(HttpClient)
@@ -34,7 +40,10 @@ export class DXActivitiesSectionMediatorService {
   ])
 
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
-    return this.#readSectionParametersAndListAsUncompiled()
+    return this.#readSectionParametersAndListAsCompiled()
+      .pipe(
+        catchError(() => this.#readSectionParametersAndListAsUncompiled())
+      )
   }
 
   #readSectionParametersAndListAsUncompiled(): Observable<DXActivitiesSectionParametersAndList> {
@@ -162,6 +171,10 @@ export class DXActivitiesSectionMediatorService {
       }))
   }
 
+  #readDXActivitiesAsCompiled(dxActivitiesURL: string): Observable<DXActivitiesCompiledForBE> {
+    return this.#dxActivitiesCompiledForBEService.readList(dxActivitiesURL)
+  }
+
   #readDXActivitiesAsUncompiled(dxActivitiesURL: string): Observable<DXActivitiesForBE> {
     return this.#dxActivitiesForBEService.readList(dxActivitiesURL)
   }
@@ -170,8 +183,66 @@ export class DXActivitiesSectionMediatorService {
     return this.#dxActivitySkillsForBEService.readList(dxActivitySkillsURL)
   }
 
+  #readSectionParametersAsCompiled(dxActivitiesSectionURL: string): Observable<DXActivitiesCompiledSectionParametersForBE> {
+    return this.#dxActivitiesCompiledForBEService.readSectionParameters(dxActivitiesSectionURL)
+  }
+
   #readSectionParametersAsUncompiled(dxActivitiesSectionURL: string): Observable<DXActivitiesSectionParametersForBE> {
     return this.#httpClient.get<DXActivitiesSectionParametersForBE>(dxActivitiesSectionURL)
+  }
+
+  #readSectionParametersAndListAsCompiled(): Observable<DXActivitiesSectionParametersAndList> {
+    type SectionParametersAndList = [DXActivitiesCompiledSectionParametersForBE, DXActivitiesCompiledForBE]
+
+    const sectionParametersAndList = this.#readURLForCompiled().pipe(
+      switchMap((dxActivitiesSectionURL: string): Observable<DXActivitiesCompiledSectionParametersForBE> => {
+        return this.#readSectionParametersAsCompiled(dxActivitiesSectionURL)
+      }),
+      switchMap(
+        (
+          parametersFromBEAPI: DXActivitiesCompiledSectionParametersForBE,
+        ): Observable<[DXActivitiesCompiledSectionParametersForBE, DXActivitiesCompiledForBE]> => {
+          const dxActivitiesURL = prepareProfileDataBEAPIURL(parametersFromBEAPI.list.sourceRelativeURL)
+
+          return this.#readDXActivitiesAsCompiled(dxActivitiesURL).pipe(
+            map<DXActivitiesCompiledForBE, SectionParametersAndList>((dxActivities) => [
+              parametersFromBEAPI,
+              dxActivities,
+            ]),
+          )
+        },
+      ),
+    )
+
+    return sectionParametersAndList.pipe(
+      map<SectionParametersAndList, DXActivitiesSectionParametersAndList>(
+        ([parametersFromBEAPI, dxActivities]): DXActivitiesSectionParametersAndList => {
+          const list = dxActivities.map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
+            codename: codename as DXActivityCodename,
+            period,
+            results,
+            role,
+            shortDescription,
+            skills,
+          }))
+          const sectionParameters: DXActivitiesSectionParameters = {
+            descriptionText: parametersFromBEAPI.descriptionText,
+            list: {
+              emptyStateText: parametersFromBEAPI.list.emptyStateText,
+              item: {
+                skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
+              },
+            },
+            titleText: parametersFromBEAPI.titleText,
+          }
+          return { list, sectionParameters }
+        },
+      ),
+    )
+  }
+
+  #readURLForCompiled(): Observable<string> {
+    return this.#backendAPIConfigurationService.readURL('compiled/dxActivities/section')
   }
 
   #readURLForUncompiled(): Observable<string> {
@@ -179,6 +250,7 @@ export class DXActivitiesSectionMediatorService {
   }
 }
 
+type DXActivitiesCompiledForBE = readonly DXActivityCompiledForBE[]
 type DXActivitiesForBE = readonly DXActivityForBE[]
 type DXActivitySkillsForBE = readonly DXActivitySkillForBE[]
 type GetPeriodTextFn = (start: string, end: string | null) => string
