@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, type OnInit, signal } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  input,
+  type OnInit,
+  signal,
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { DXActivitiesSectionMediatorService } from '~be/dx-activities/dx-activities-section-mediator.service'
 import { LayoutSectionUtil } from '~ui-kit/layout/layout-section.util'
 import type { DXActivitiesSectionParametersAndList } from '~ui/dx-activities/dx-activities-section/dx-activities-section.type'
@@ -13,6 +23,7 @@ import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-ac
   templateUrl: './dx-activities-section.component.html',
 })
 export class DXActivitiesSectionComponent implements OnInit {
+  readonly #destroyRef = inject(DestroyRef)
   readonly #dxActivitiesSectionMediatorService = inject(DXActivitiesSectionMediatorService)
 
   public readonly number = input.required<number>()
@@ -29,7 +40,7 @@ export class DXActivitiesSectionComponent implements OnInit {
   public ngOnInit(): void {
     this.#dxActivitiesSectionMediatorService
       .readSectionParametersAndList()
-      .pipe()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe(({ list, sectionParameters }: DXActivitiesSectionParametersAndList): void => {
         this.sectionParameters.set({
           activities: list,
