@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, type OnInit, signal } from '@angular/core'
 import { LayoutHeroComponent } from '~ui-kit/layout/layout-hero/layout-hero.component'
+import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,7 +11,7 @@ import { LayoutHeroComponent } from '~ui-kit/layout/layout-hero/layout-hero.comp
 })
 export class HeroSectionComponent implements OnInit {
   protected readonly codename = 'HERO'
-  protected readonly sectionParameters = signal({
+  protected readonly sectionParameters = signal<HeroSectionParameters>({
     contactGitHubURL: 'No data',
     contactTelegramURL: 'No data',
     nameText: 'No data',
