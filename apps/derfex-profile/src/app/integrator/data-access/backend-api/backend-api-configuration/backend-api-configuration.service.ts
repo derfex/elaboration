@@ -26,6 +26,7 @@ export class BackendAPIConfigurationService {
     new Map<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename>([
       ['dxActivitiesSectionCompiledRelativeURL', 'compiled/dxActivities/section'],
       ['dxActivitiesSectionRelativeURL', 'sections/dxActivities'],
+      ['heroSectionRelativeURL', 'sections/hero'],
     ])
 
   readonly #urlMap$: Observable<ReadonlyMap<BackendAPIURLCodename, string>> = this.#readConfiguration(
