@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, type OnInit, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, type OnInit, signal } from '@angular/core'
+import { HeroSectionMediatorService } from '~be/hero/hero-section-mediator.service'
 import { LayoutHeroComponent } from '~ui-kit/layout/layout-hero/layout-hero.component'
 import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
 
@@ -10,20 +11,27 @@ import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
   templateUrl: './hero-section.component.html',
 })
 export class HeroSectionComponent implements OnInit {
+  readonly #heroSectionMediatorService = inject(HeroSectionMediatorService)
+
   protected readonly codename = 'HERO'
   protected readonly sectionParameters = signal<HeroSectionParameters>({
     contactGitHubURL: 'No data',
     contactTelegramURL: 'No data',
     nameText: 'No data',
-    titleXML: 'No data',
+    titleXML: '<highlight>No data</highlight>',
   })
 
   public ngOnInit(): void {
-    this.sectionParameters.set({
-      contactGitHubURL: 'https://github.com/derfex',
-      contactTelegramURL: 'https://t.me/dapolovnyov',
-      nameText: 'Dmitry P.',
-      titleXML: 'Your friendly neighborhood <highlight>software engineer</highlight> to help you develop your business!',
-    })
+    this.#heroSectionMediatorService
+      .readSectionParameters()
+      .pipe()
+      .subscribe(({ contactGitHubURL, contactTelegramURL, nameText, titleXML }: HeroSectionParameters): void => {
+        this.sectionParameters.set({
+          contactGitHubURL,
+          contactTelegramURL,
+          nameText,
+          titleXML,
+        })
+      })
   }
 }
