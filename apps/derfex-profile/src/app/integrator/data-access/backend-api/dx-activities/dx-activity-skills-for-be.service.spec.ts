@@ -3,7 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing'
 import { DXActivitySkillsForBEService } from './dx-activity-skills-for-be.service'
 
-describe('DXActivitySkillsForBeService', (): void => {
+describe('DXActivitySkillsForBEService', (): void => {
   let httpTestingController: HttpTestingController
   let service: DXActivitySkillsForBEService
 
