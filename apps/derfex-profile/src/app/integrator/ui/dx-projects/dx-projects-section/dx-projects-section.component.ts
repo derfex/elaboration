@@ -17,13 +17,17 @@ export class DXProjectsSectionComponent implements OnInit {
   protected readonly numberText = computed<string>(() => LayoutSectionUtil.convertNumber(this.number()))
   protected readonly sectionParameters = signal({
     descriptionText: 'No data',
+    emptyStateText: 'No data',
     projects: [] as readonly DXProjectsListItem[],
+    resultTitleText: 'No data',
+    sourceCodeTitleText: 'No data',
     titleText: 'No data',
   })
 
   public ngOnInit(): void {
     this.sectionParameters.set({
       descriptionText: 'Some of my projects are open source.',
+      emptyStateText: 'No data',
       projects: [
         {
           codename: 'PetShop' as DXProjectCodename,
@@ -62,6 +66,8 @@ export class DXProjectsSectionComponent implements OnInit {
           sourceURL: 'https://github.com/derfex/pure-tasks/tree/master/svg-chart',
         },
       ],
+      resultTitleText: 'Result',
+      sourceCodeTitleText: 'Source code',
       titleText: 'Projects',
     } as const)
   }

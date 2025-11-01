@@ -5,11 +5,15 @@
     @for (project of projectsForTemplate(); track project.codename) {
       <li class="app-projects__item">
         <app-dx-project-card
+          [resultTitleText]="resultTitleText()"
           [resultURL]="project.resultURL"
+          [sourceCodeTitleText]="sourceCodeTitleText()"
           [sourceURL]="project.sourceURL"
           [title]="project.name"
         />
       </li>
+    } @empty {
+      <p class="app-empty-state">{{emptyStateText()}}</p>
     }
   </ul>
 </article>

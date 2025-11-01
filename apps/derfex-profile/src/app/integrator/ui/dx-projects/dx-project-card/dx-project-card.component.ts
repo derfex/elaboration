@@ -9,7 +9,9 @@ import { GitHubInvertocatLogotypeComponent } from '~ui/dx-contacts/logotypes/git
   templateUrl: './dx-project-card.component.html',
 })
 export class DXProjectCardComponent {
-  public readonly title = input.required<string>()
+  public readonly resultTitleText = input.required<string>()
   public readonly resultURL = input.required<string>()
+  public readonly sourceCodeTitleText = input.required<string>()
   public readonly sourceURL = input.required<string>()
+  public readonly title = input.required<string>()
 }

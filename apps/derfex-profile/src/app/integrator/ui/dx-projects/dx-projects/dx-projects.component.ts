@@ -15,7 +15,10 @@ import type { DXProjectsListItem } from '~ui/dx-projects/dx-projects/dx-projects
 })
 export class DXProjectsComponent {
   public readonly descriptionText = input.required<string>()
+  public readonly emptyStateText = input.required<string>()
   public readonly projects = input.required<readonly DXProjectsListItem[]>()
+  public readonly resultTitleText = input.required<string>()
+  public readonly sourceCodeTitleText = input.required<string>()
   public readonly titleText = input.required<string>()
 
   protected readonly projectsForTemplate = computed<readonly DXProjectForTemplate[]>(() => {
