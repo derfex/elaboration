@@ -223,8 +223,8 @@ export class DXActivitiesSectionMediatorService {
 
     return zip([this.#localeSwitcherService.locale, sectionParametersAndLists]).pipe(
       map<[AppLocale, SectionParametersAndLists], DXActivitiesSectionParametersAndList>(
-        ([locale, [parametersFromBEAPI, dxActivities, dxActivitySkillsURL]]): DXActivitiesSectionParametersAndList => {
-          const list = this.#prepareList(dxActivities, dxActivitySkillsURL, locale)
+        ([locale, [parametersFromBEAPI, dxActivities, dxActivitySkills]]): DXActivitiesSectionParametersAndList => {
+          const list = this.#prepareList(dxActivities, dxActivitySkills, locale)
           const sectionParameters: DXActivitiesSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             list: {
