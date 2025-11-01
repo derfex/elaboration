@@ -5,7 +5,10 @@ import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-a
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DXActivityCardComponent],
+  imports: [
+    // Provided by the app.
+    DXActivityCardComponent,
+  ],
   selector: 'app-dx-activities',
   styleUrl: './dx-activities.component.sass',
   templateUrl: './dx-activities.component.html',
