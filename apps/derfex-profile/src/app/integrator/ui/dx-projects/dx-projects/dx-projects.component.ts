@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import type { DXProjectCodename } from '~entities/dx-projects/dx-projects.type'
 import { DXProjectCardComponent } from '~ui/dx-projects/dx-project-card/dx-project-card.component'
-import type { DXProject } from '~ui/dx-projects/dx-projects-section/dx-projects-section.component'
+import type { DXProjectsListItem } from '~ui/dx-projects/dx-projects/dx-projects.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,14 +15,14 @@ import type { DXProject } from '~ui/dx-projects/dx-projects-section/dx-projects-
 })
 export class DXProjectsComponent {
   public readonly descriptionText = input.required<string>()
-  public readonly projects = input.required<readonly DXProject[]>()
+  public readonly projects = input.required<readonly DXProjectsListItem[]>()
   public readonly titleText = input.required<string>()
 
   protected readonly projectsForTemplate = computed<readonly DXProjectForTemplate[]>(() => {
     return this.projects().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 
-  #prepareDXSkillForTemplate({ codename, name, resultURL, sourceURL }: DXProject): DXProjectForTemplate {
+  #prepareDXSkillForTemplate({ codename, name, resultURL, sourceURL }: DXProjectsListItem): DXProjectForTemplate {
     return {
       codename,
       name,
@@ -32,8 +33,8 @@ export class DXProjectsComponent {
 }
 
 interface DXProjectForTemplate {
-  readonly codename: string
-  readonly name: string
-  readonly resultURL: string
-  readonly sourceURL: string
+  readonly codename: DXProjectCodename
+  readonly name: DXProjectsListItem['name']
+  readonly resultURL: DXProjectsListItem['resultURL']
+  readonly sourceURL: DXProjectsListItem['sourceURL']
 }
