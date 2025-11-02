@@ -1,4 +1,4 @@
-import type { DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { DXActivityCodename } from '~entities/dx-activities/dx-activities.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 

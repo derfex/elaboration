@@ -1,4 +1,4 @@
-import type { DXActivity, DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { DXActivity, DXActivityCodename } from '~entities/dx-activities/dx-activities.type'
 
 export interface DXActivitiesListItem {
   readonly codename: DXActivityCodename

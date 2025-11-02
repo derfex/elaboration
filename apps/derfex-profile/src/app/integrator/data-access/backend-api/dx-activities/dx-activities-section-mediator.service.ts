@@ -13,7 +13,7 @@ import { DXActivitiesForBEService } from '~be/dx-activities/dx-activities-for-be
 import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx-activities/dx-activities-for-be.type'
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
-import type { DXActivity, DXActivityCodename } from '~entities/dx-activity/dx-activity.type'
+import type { DXActivity, DXActivityCodename } from '~entities/dx-activities/dx-activities.type'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
@@ -40,10 +40,11 @@ export class DXActivitiesSectionMediatorService {
   ])
 
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
-    return this.#readSectionParametersAndListAsCompiled()
-      .pipe(
-        catchError(() => this.#readSectionParametersAndListAsUncompiled())
-      )
+    return this.#readSectionParametersAndListAsCompiled().pipe(
+      catchError(
+        (): Observable<DXActivitiesSectionParametersAndList> => this.#readSectionParametersAndListAsUncompiled(),
+      ),
+    )
   }
 
   #calculatePeriodTo(periodTo: string | null): number {
@@ -102,14 +103,12 @@ export class DXActivitiesSectionMediatorService {
           skills,
         }
       })
-      .sort(
-        (a: DXActivitiesSectionMediatorListItem, b: DXActivitiesSectionMediatorListItem): number => {
-          const periodFromDelta = b.periodFrom - a.periodFrom
-          if (periodFromDelta !== 0) return periodFromDelta
-          const periodToDelta = b.periodTo - a.periodTo
-          return !Number.isNaN(periodToDelta) ? periodToDelta : 0
-        }
-      )
+      .sort((a: DXActivitiesSectionMediatorListItem, b: DXActivitiesSectionMediatorListItem): number => {
+        const periodFromDelta = b.periodFrom - a.periodFrom
+        if (periodFromDelta !== 0) return periodFromDelta
+        const periodToDelta = b.periodTo - a.periodTo
+        return !Number.isNaN(periodToDelta) ? periodToDelta : 0
+      })
       .map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
         codename,
         period,
@@ -132,7 +131,9 @@ export class DXActivitiesSectionMediatorService {
     return this.#dxActivitySkillsForBEService.readList(dxActivitySkillsURL)
   }
 
-  #readSectionParametersAsCompiled(dxActivitiesSectionURL: string): Observable<DXActivitiesCompiledSectionParametersForBE> {
+  #readSectionParametersAsCompiled(
+    dxActivitiesSectionURL: string,
+  ): Observable<DXActivitiesCompiledSectionParametersForBE> {
     return this.#dxActivitiesCompiledForBEService.readSectionParameters(dxActivitiesSectionURL)
   }
 
@@ -166,14 +167,16 @@ export class DXActivitiesSectionMediatorService {
     return sectionParametersAndList.pipe(
       map<SectionParametersAndList, DXActivitiesSectionParametersAndList>(
         ([parametersFromBEAPI, dxActivities]): DXActivitiesSectionParametersAndList => {
-          const list = dxActivities.map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
-            codename: codename as DXActivityCodename,
-            period,
-            results,
-            role,
-            shortDescription,
-            skills,
-          }))
+          const list = dxActivities.map<DXActivitiesListItem>(
+            ({ codename, period, results, role, shortDescription, skills }) => ({
+              codename: codename as DXActivityCodename,
+              period,
+              results,
+              role,
+              shortDescription,
+              skills,
+            }),
+          )
           const sectionParameters: DXActivitiesSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             list: {
