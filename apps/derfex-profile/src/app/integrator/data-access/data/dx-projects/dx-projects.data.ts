@@ -1,6 +1,6 @@
 import type { DXProject, DXProjectCodename } from '~entities/dx-projects/dx-projects.type'
 
-// TODO: Do we need it?
+// TODO?: Do we need it?
 export const dxProjects = [
   {
     codename: 'PetShop' as DXProjectCodename,

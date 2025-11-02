@@ -1,5 +1,6 @@
 import { type DXContact, DXContactCodename } from '~entities/dx-contacts/dx-contacts.type'
 
+// TODO?: Do we need it?
 export const dxContacts = [
   {
     codename: DXContactCodename.GitHub,

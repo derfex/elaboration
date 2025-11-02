@@ -2,6 +2,7 @@ import type { DXActivityCodename } from '~entities/dx-activities/dx-activities.t
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 
+// TODO?: Do we need it?
 export const dxActivities = [
   generateActivity(
     'Axe',
@@ -24,6 +25,7 @@ export const dxActivities = [
   ),
 ] as const satisfies readonly DXActivitiesListItem[]
 
+// TODO?: Do we need it?
 export const dxActivitiesRU = [
   generateActivity(
     'Axe',

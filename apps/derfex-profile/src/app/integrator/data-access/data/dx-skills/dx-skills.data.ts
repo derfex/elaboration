@@ -1,5 +1,6 @@
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 
+// TODO?: Do we need it?
 export const dxSkills = [
   {
     codename: 'Angular' as DXSkillCodename,
