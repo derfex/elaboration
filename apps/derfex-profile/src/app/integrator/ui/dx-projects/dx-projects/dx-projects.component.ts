@@ -22,10 +22,11 @@ export class DXProjectsComponent {
   public readonly titleText = input.required<string>()
 
   protected readonly projectsForTemplate = computed<readonly DXProjectForTemplate[]>(() => {
-    return this.projects().map(this.#prepareDXSkillForTemplate.bind(this))
+    return this.projects().map(this.#prepareDXProjectForTemplate.bind(this))
   })
 
-  #prepareDXSkillForTemplate({ codename, name, resultURL, sourceURL }: DXProjectsListItem): DXProjectForTemplate {
+  // TODO: Do we need `DXProjectForTemplate` and `#prepareDXProjectForTemplate(1)`?
+  #prepareDXProjectForTemplate({ codename, name, resultURL, sourceURL }: DXProjectsListItem): DXProjectForTemplate {
     return {
       codename,
       name,

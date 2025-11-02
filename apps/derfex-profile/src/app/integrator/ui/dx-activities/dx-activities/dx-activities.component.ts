@@ -24,7 +24,7 @@ export class DXActivitiesComponent {
     return this.activities().map(this.#prepareDXActivityForTemplate.bind(this))
   })
 
-  // TODO: Do we need `DXActivityForTemplate` and `#prepareDXActivityForTemplate(1)`.
+  // TODO: Do we need `DXActivityForTemplate` and `#prepareDXActivityForTemplate(1)`?
   #prepareDXActivityForTemplate({
     codename,
     period,
