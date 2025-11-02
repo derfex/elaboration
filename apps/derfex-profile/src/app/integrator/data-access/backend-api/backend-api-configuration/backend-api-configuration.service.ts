@@ -26,6 +26,7 @@ export class BackendAPIConfigurationService {
     new Map<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename>([
       ['dxActivitiesSectionCompiledRelativeURL', 'compiled/dxActivities/section'],
       ['dxActivitiesSectionRelativeURL', 'sections/dxActivities'],
+      ['dxProjectsSectionRelativeURL', 'sections/dxProjects'],
       ['dxSkillsSectionRelativeURL', 'sections/dxSkills'],
       ['heroSectionRelativeURL', 'sections/hero'],
     ])
