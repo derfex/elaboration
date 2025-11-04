@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, type Observable } from 'rxjs'
+import { BehaviorSubject, distinctUntilChanged, type Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class LoadingNotifierService {
   readonly #processCodenamesSet = new Set<string>()
 
   public get loading(): Observable<boolean> {
-    return this.#loading.asObservable()
+    return this.#loading.asObservable().pipe(distinctUntilChanged())
   }
 
   public setProcessLoading(processCodename: string, loading: boolean): void {

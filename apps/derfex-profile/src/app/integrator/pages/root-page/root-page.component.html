@@ -11,3 +11,6 @@
   <app-layout-section-separator />
   <app-dx-activities-section [number]="3" />
 </div>
+@if (loading()) {
+  <app-layout-loader />
+}

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { map, type Observable, switchMap } from 'rxjs'
+import { map, type Observable, switchMap, tap } from 'rxjs'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import { DXProjectsForBEService } from '~be/dx-projects/dx-projects-for-be.service'
 import type { DXProjectForBE, DXProjectsSectionParametersForBE } from '~be/dx-projects/dx-projects-for-be.type'
 import type { DXProject, DXProjectCodename } from '~entities/dx-projects/dx-projects.type'
+import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import type {
   DXProjectsSectionParameters,
   DXProjectsSectionParametersAndList,
@@ -19,9 +20,14 @@ export class DXProjectsSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #dxProjectsForBEService = inject(DXProjectsForBEService)
   readonly #httpClient = inject(HttpClient)
+  readonly #loadingNotifierService = inject(LoadingNotifierService)
 
   public readSectionParametersAndList(): Observable<DXProjectsSectionParametersAndList> {
-    return this.#readSectionParametersAndListAsUncompiled()
+    return this.#readSectionParametersAndListAsUncompiled().pipe(
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('sections/dxProjects'), false)
+      }),
+    )
   }
 
   #prepareList(dxProjects: DXProjectsForBE): readonly DXProjectsListItem[] {
@@ -87,7 +93,11 @@ export class DXProjectsSectionMediatorService {
   }
 
   #readURLForUncompiled(): Observable<string> {
-    return this.#backendAPIConfigurationService.readURL('sections/dxProjects')
+    return this.#backendAPIConfigurationService.readURL('sections/dxProjects').pipe(
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('sections/dxProjects'), true)
+      }),
+    )
   }
 }
 
@@ -97,4 +107,8 @@ interface DXProjectsSectionMediatorListItem {
   readonly name: DXProject['name']
   readonly resultURL: DXProject['resultURL']
   readonly sourceURL: DXProject['sourceURL']
+}
+
+function createProcessCodename(string: string): string {
+  return `DXProjectsSectionMediatorService ${string}`
 }

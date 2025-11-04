@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { catchError, combineLatest, map, type Observable, switchMap, zip } from 'rxjs'
+import { catchError, combineLatest, map, type Observable, switchMap, tap, zip } from 'rxjs'
 import { assertDefined } from '~app/dev/dev-error.util'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
@@ -14,6 +14,7 @@ import type { DXActivitiesSectionParametersForBE, DXActivityForBE } from '~be/dx
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
 import type { DXActivity, DXActivityCodename } from '~entities/dx-activities/dx-activities.type'
+import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
@@ -32,6 +33,7 @@ export class DXActivitiesSectionMediatorService {
   readonly #dxActivitiesForBEService = inject(DXActivitiesForBEService)
   readonly #dxActivitySkillsForBEService = inject(DXActivitySkillsForBEService)
   readonly #httpClient = inject(HttpClient)
+  readonly #loadingNotifierService = inject(LoadingNotifierService)
   readonly #localeSwitcherService = inject(LocaleSwitcherService)
 
   readonly #getPeriodTextFnMap: ReadonlyMap<AppLocale, GetPeriodTextFn> = new Map<AppLocale, GetPeriodTextFn>([
@@ -44,6 +46,10 @@ export class DXActivitiesSectionMediatorService {
       catchError(
         (): Observable<DXActivitiesSectionParametersAndList> => this.#readSectionParametersAndListAsUncompiled(),
       ),
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('compiled/dxActivities/section'), false)
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('sections/dxActivities'), false)
+      }),
     )
   }
 
@@ -245,11 +251,19 @@ export class DXActivitiesSectionMediatorService {
   }
 
   #readURLForCompiled(): Observable<string> {
-    return this.#backendAPIConfigurationService.readURL('compiled/dxActivities/section')
+    return this.#backendAPIConfigurationService.readURL('compiled/dxActivities/section').pipe(
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('compiled/dxActivities/section'), true)
+      }),
+    )
   }
 
   #readURLForUncompiled(): Observable<string> {
-    return this.#backendAPIConfigurationService.readURL('sections/dxActivities')
+    return this.#backendAPIConfigurationService.readURL('sections/dxActivities').pipe(
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('sections/dxActivities'), true)
+      }),
+    )
   }
 }
 
@@ -267,4 +281,8 @@ interface DXActivitiesSectionMediatorListItem {
   readonly role: DXActivity['role']
   readonly shortDescription: DXActivity['shortDescription']
   readonly skills: readonly string[]
+}
+
+function createProcessCodename(string: string): string {
+  return `DXActivitiesSectionMediatorService ${string}`
 }

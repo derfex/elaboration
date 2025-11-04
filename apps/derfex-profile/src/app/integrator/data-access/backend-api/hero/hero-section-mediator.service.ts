@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { type Observable, switchMap } from 'rxjs'
+import { type Observable, switchMap, tap } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
+import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
 
 @Injectable({
@@ -10,9 +11,14 @@ import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
 export class HeroSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #httpClient = inject(HttpClient)
+  readonly #loadingNotifierService = inject(LoadingNotifierService)
 
   public readSectionParameters(): Observable<HeroSectionParameters> {
-    return this.#readSectionParametersAsUncompiled()
+    return this.#readSectionParametersAsUncompiled().pipe(
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('sections/hero'), false)
+      }),
+    )
   }
 
   #readSectionParametersAsUncompiledByURL(heroSectionURL: string): Observable<HeroSectionParameters> {
@@ -28,6 +34,14 @@ export class HeroSectionMediatorService {
   }
 
   #readURLForUncompiled(): Observable<string> {
-    return this.#backendAPIConfigurationService.readURL('sections/hero')
+    return this.#backendAPIConfigurationService.readURL('sections/hero').pipe(
+      tap((): void => {
+        this.#loadingNotifierService.setProcessLoading(createProcessCodename('sections/hero'), true)
+      }),
+    )
   }
+}
+
+function createProcessCodename(string: string): string {
+  return `HeroSectionMediatorService ${string}`
 }
