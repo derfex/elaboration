@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core'
-import { LOCAL_STORAGE } from '~ui-kit/web-api/local-storage/local-storage.token'
+import { LOCAL_STORAGE } from '~integrator/data-access/web-api/local-storage/local-storage.token'
 
 @Injectable({
   providedIn: 'root',
