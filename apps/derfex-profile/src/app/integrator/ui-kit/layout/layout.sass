@@ -177,8 +177,12 @@ $_app-layout_section-label-line-height: $_app-layout_section-label-size - 2 * ($
   background-size: 8px 8px
 
 @mixin app-layout_section-pattern-checkered-background-mixin
+  --app-section-pattern-checkered-background-color: var(--app-decor-color--f6f6f6)
+
+  $_color: var(--app-section-pattern-checkered-background-color)
+
   background-attachment: fixed
-  background-image: linear-gradient(90deg, #f6f6f6 1px, #0000 1px), linear-gradient(#f6f6f6 1px, #0000 1px)
+  background-image: linear-gradient(90deg, $_color 1px, #0000 1px), linear-gradient($_color 1px, #0000 1px)
   background-size: 8px 8px
 
 @mixin _app-layout_section-with-background-mixin
