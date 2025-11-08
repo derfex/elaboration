@@ -51,8 +51,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
 
 
 @mixin app-layout_section-with-codename-mixin($_wrapper-selector, $_label-selector, $_codename-selector, $_content-selector)
-  --app-section-pattern-foreground-color: #eee
-  --app-section-label-color: #777
+  --app-section-pattern-foreground-color: var(--app-decor-color--eee)
 
   border-block: 1px solid var(--app-section-pattern-foreground-color)
 
@@ -63,8 +62,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
     @include _app-layout_section-codename-label-mixin
 
 @mixin app-layout_section-with-number-mixin($_wrapper-selector, $_label-selector, $_number-selector, $_content-selector)
-  --app-section-pattern-foreground-color: #eee
-  --app-section-label-color: #777
+  --app-section-pattern-foreground-color: var(--app-decor-color--eee)
 
   border-block: 1px solid var(--app-section-pattern-foreground-color)
 
@@ -76,7 +74,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
 
 // # Section separator
 @mixin app-layout_section-separator-mixin
-  --app-section-pattern-foreground-color: #eee
+  --app-section-pattern-foreground-color: var(--app-decor-color--eee)
 
   display: grid
   grid-template-areas: '.'
