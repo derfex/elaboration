@@ -25,10 +25,6 @@ export class AppThemeSwitcherService {
     this.#updateThemeColorSchemeCSSClasses(renderer, darkThemeIsNeeded)
   }
 
-  public switchThemeToNext(renderer: Renderer2): void {
-    this.switchTheme(renderer, this.#appThemeIsDark ? 'light' : 'dark')
-  }
-
   #observePrefersColorScheme(renderer: Renderer2): void {
     const mediaQueryList = this.#mediaQueryService.matchMedia('(prefers-color-scheme: dark)')
     this.#updateThemeColorSchemeCSSClasses(renderer, mediaQueryList.matches)
