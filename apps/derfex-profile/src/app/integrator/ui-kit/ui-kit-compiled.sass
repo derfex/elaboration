@@ -7,6 +7,23 @@
   @include identity.app-identity_styles-mixin
   @include theming.app-theming_styles-mixin
 
+
+  // ## Primitive
+
+  :root
+    --dx-color-crayola-dark-blue--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-surface-color))
+
+  // ## Semantic
+
+  :root
+    --app-h4-color: var(--dx-color-crayola-dark-blue--500)
+
+  // ## Component
+
+  // TODO?
+
+  // ## Init
+
   :root
     background: var(--app-surface-color)
     color: var(--app-text-color)
