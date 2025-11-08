@@ -1,9 +1,11 @@
 import { inject, InjectionToken, PLATFORM_ID } from '@angular/core'
+import { WINDOW } from '~integrator/data-access/web-api/window.token'
 
-export const LOCAL_STORAGE = new InjectionToken<Storage>('window local storage object', {
+export const LOCAL_STORAGE = new InjectionToken<Storage>('An abstraction over window local storage object', {
   factory: (): Storage => {
     if (inject(PLATFORM_ID) === 'browser') {
-      if (storageAvailable()) return window.localStorage
+      const window = inject(WINDOW)
+      if (storageAvailable(window)) return window.localStorage
     }
     return {
       // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -18,7 +20,7 @@ export const LOCAL_STORAGE = new InjectionToken<Storage>('window local storage o
   providedIn: 'root',
 })
 
-function storageAvailable(): boolean {
+function storageAvailable(window: Window): boolean {
   let storage
   try {
     storage = window.localStorage
