@@ -9,10 +9,10 @@ import {
   providedIn: 'root',
 })
 export class AppThemeSwitcherService {
-  readonly #htmlElement = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
+  readonly #htmlElementRef = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)
 
-  #appThemeIsDark = true
+  #appThemeIsDark = false
 
   public observePrefersColorScheme(renderer: Renderer2): void {
     this.#observePrefersColorScheme(renderer)
@@ -22,13 +22,7 @@ export class AppThemeSwitcherService {
     const darkThemeIsNeeded = theme === 'dark'
     if (this.#appThemeIsDark === darkThemeIsNeeded) return
     this.#appThemeIsDark = darkThemeIsNeeded
-    if (darkThemeIsNeeded) {
-      renderer.addClass(this.#htmlElement, appThemeColorSchemeDarkCSSClass)
-      renderer.removeClass(this.#htmlElement, appThemeColorSchemeLightCSSClass)
-    } else {
-      renderer.removeClass(this.#htmlElement, appThemeColorSchemeDarkCSSClass)
-      renderer.addClass(this.#htmlElement, appThemeColorSchemeLightCSSClass)
-    }
+    this.#updateThemeColorSchemeCSSClasses(renderer, darkThemeIsNeeded)
   }
 
   public switchThemeToNext(renderer: Renderer2): void {
@@ -36,12 +30,21 @@ export class AppThemeSwitcherService {
   }
 
   #observePrefersColorScheme(renderer: Renderer2): void {
-    console.log('debugger')
     const mediaQueryList = this.#mediaQueryService.matchMedia('(prefers-color-scheme: dark)')
-    this.switchTheme(renderer, mediaQueryList.matches ? 'dark' : 'light')
+    this.#updateThemeColorSchemeCSSClasses(renderer, mediaQueryList.matches)
     mediaQueryList.addEventListener('change', ({ matches: dark }): void => {
       this.switchTheme(renderer, dark ? 'dark' : 'light')
     })
+  }
+
+  #updateThemeColorSchemeCSSClasses(renderer: Renderer2, darkThemeIsNeeded: boolean): void {
+    if (darkThemeIsNeeded) {
+      renderer.addClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
+      renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
+    } else {
+      renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
+      renderer.addClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
+    }
   }
 }
 
