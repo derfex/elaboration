@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, Renderer2 } from '@angular/core'
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
@@ -6,6 +6,7 @@ import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocalStorageService } from '~integrator/data-access/web-api/local-storage/local-storage.service'
 import { LayoutLoaderComponent } from '~ui-kit/layout/layout-loader/layout-loader.component'
 import { LayoutSectionSeparatorComponent } from '~ui-kit/layout/layout-section-separator/layout-section-separator.component'
+import { AppThemeSwitcherService } from '~ui-kit/theming/app-theme-switcher.service'
 import { DXActivitiesSectionComponent } from '~ui/dx-activities/dx-activities-section/dx-activities-section.component'
 import { DXProjectsSectionComponent } from '~ui/dx-projects/dx-projects-section/dx-projects-section.component'
 import { DXSkillsSectionComponent } from '~ui/dx-skills/dx-skills-section/dx-skills-section.component'
@@ -29,10 +30,12 @@ import { HeroSectionComponent } from '~ui/hero-section/hero-section.component'
   templateUrl: './root-page.component.html',
 })
 export class RootPageComponent implements OnInit {
+  readonly #appThemeSwitcherService = inject(AppThemeSwitcherService)
   readonly #destroyRef = inject(DestroyRef)
   readonly #loadingNotifierService = inject(LoadingNotifierService)
   readonly #localStorageService = inject(LocalStorageService)
   readonly #localeSwitcherService = inject(LocaleSwitcherService)
+  readonly #renderer = inject(Renderer2)
 
   protected loading = toSignal(this.#loadingNotifierService.loading, { initialValue: true })
 
@@ -47,5 +50,7 @@ export class RootPageComponent implements OnInit {
       .subscribe((locale: AppLocale): void => {
         this.#localStorageService.setItem('locale', locale)
       })
+
+    this.#appThemeSwitcherService.observePrefersColorScheme(this.#renderer)
   }
 }

@@ -1,4 +1,5 @@
 import { DOCUMENT, inject, Injectable, type Renderer2 } from '@angular/core'
+import { MediaQueryService } from '~integrator/data-access/web-api/media-query/media-query.service'
 import {
   appThemeColorSchemeDarkCSSClass,
   appThemeColorSchemeLightCSSClass,
@@ -9,8 +10,13 @@ import {
 })
 export class AppThemeSwitcherService {
   readonly #htmlElement = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
+  readonly #mediaQueryService = inject(MediaQueryService)
 
   #appThemeIsDark = true
+
+  public observePrefersColorScheme(renderer: Renderer2): void {
+    this.#observePrefersColorScheme(renderer)
+  }
 
   public switchTheme(renderer: Renderer2, theme: AppTheme): void {
     const darkThemeIsNeeded = theme === 'dark'
@@ -27,6 +33,15 @@ export class AppThemeSwitcherService {
 
   public switchThemeToNext(renderer: Renderer2): void {
     this.switchTheme(renderer, this.#appThemeIsDark ? 'light' : 'dark')
+  }
+
+  #observePrefersColorScheme(renderer: Renderer2): void {
+    console.log('debugger')
+    const mediaQueryList = this.#mediaQueryService.matchMedia('(prefers-color-scheme: dark)')
+    this.switchTheme(renderer, mediaQueryList.matches ? 'dark' : 'light')
+    mediaQueryList.addEventListener('change', ({ matches: dark }): void => {
+      this.switchTheme(renderer, dark ? 'dark' : 'light')
+    })
   }
 }
 
