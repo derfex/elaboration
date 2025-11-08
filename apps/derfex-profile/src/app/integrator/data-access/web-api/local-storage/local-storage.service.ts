@@ -5,21 +5,21 @@ import { LOCAL_STORAGE } from '~integrator/data-access/web-api/local-storage/loc
   providedIn: 'root',
 })
 export class LocalStorageService {
-  readonly #storage = inject(LOCAL_STORAGE)
+  readonly #storageRef = inject(LOCAL_STORAGE)
 
   public clear(): void {
-    this.#storage.clear()
+    this.#storageRef.clear()
   }
 
   public getItem<T extends string>(key: string): T | null {
-    return this.#storage.getItem(key) as T | null
+    return this.#storageRef.getItem(key) as T | null
   }
 
   public setItem(key: string, value: string): void {
-    this.#storage.setItem(key, value)
+    this.#storageRef.setItem(key, value)
   }
 
   public removeItem(key: string): void {
-    this.#storage.removeItem(key)
+    this.#storageRef.removeItem(key)
   }
 }

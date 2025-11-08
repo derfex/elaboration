@@ -4,8 +4,8 @@ import { WINDOW } from '~integrator/data-access/web-api/window.token'
 export const LOCAL_STORAGE = new InjectionToken<Storage>('An abstraction over window local storage object', {
   factory: (): Storage => {
     if (inject(PLATFORM_ID) === 'browser') {
-      const window = inject(WINDOW)
-      if (storageAvailable(window)) return window.localStorage
+      const windowRef = inject(WINDOW)
+      if (storageAvailable(windowRef)) return windowRef.localStorage
     }
     return {
       // eslint-disable-next-line @typescript-eslint/no-empty-function
