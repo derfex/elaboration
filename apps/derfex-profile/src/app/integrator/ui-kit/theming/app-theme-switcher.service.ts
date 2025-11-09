@@ -14,7 +14,7 @@ export class AppThemeSwitcherService {
   readonly #htmlElementRef = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)
 
-  #colorScheme = new BehaviorSubject<ThemeColorSchemeCodename>('normal')
+  readonly #colorScheme = new BehaviorSubject<ThemeColorSchemeCodename>('normal')
   #colorSchemeIsDark = false
 
   public get colorScheme(): Observable<ThemeColorSchemeCodename> {
@@ -32,9 +32,9 @@ export class AppThemeSwitcherService {
         : colorScheme === 'light'
           ? false
           : this.#getMediaQueryPrefersColorSchemeDark().matches
+    this.#colorScheme.next(colorScheme)
     if (this.#colorSchemeIsDark === darkColorSchemeIsNeeded) return
     this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
-    this.#colorScheme.next(colorScheme)
   }
 
   #getMediaQueryPrefersColorSchemeDark(): MediaQueryList {

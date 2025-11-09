@@ -25,8 +25,8 @@ export class ColorSchemeSwitcherComponent implements OnInit {
       })
   }
 
-  protected buttonClickHandler(theme: ThemeColorSchemeCodename): void {
-    this.#appThemeSwitcherService.switchColorScheme(this.#renderer, theme !== 'normal' ? theme : 'dark')
+  protected buttonClickHandler(colorScheme: ThemeColorSchemeCodename): void {
+    this.#appThemeSwitcherService.switchColorScheme(this.#renderer, colorScheme)
   }
 
   #generateColorSchemeForTemplateList([darkChecked, lightChecked, normalChecked]: readonly [
