@@ -18,14 +18,19 @@ export class AppThemeSwitcherService {
     this.#observePrefersColorScheme(renderer)
   }
 
-  public switchColorScheme(renderer: Renderer2, theme: AppTheme): void {
-    const darkColorSchemeIsNeeded = theme === 'dark'
+  public switchColorScheme(renderer: Renderer2, theme: ColorSchemeCodename): void {
+    const darkColorSchemeIsNeeded =
+      theme === 'dark' ? true : theme === 'normal' ? this.#getMediaQueryPrefersColorSchemeDark().matches : false
     if (this.#colorSchemeIsDark === darkColorSchemeIsNeeded) return
     this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
   }
 
+  #getMediaQueryPrefersColorSchemeDark(): MediaQueryList {
+    return this.#mediaQueryService.matchMedia('(prefers-color-scheme: dark)')
+  }
+
   #observePrefersColorScheme(renderer: Renderer2): void {
-    const mediaQueryList = this.#mediaQueryService.matchMedia('(prefers-color-scheme: dark)')
+    const mediaQueryList = this.#getMediaQueryPrefersColorSchemeDark()
     this.#updateThemeColorSchemeCSSClasses(renderer, mediaQueryList.matches)
     mediaQueryList.addEventListener('change', ({ matches: dark }: MediaQueryListEvent): void => {
       this.switchColorScheme(renderer, dark ? 'dark' : 'light')
@@ -44,4 +49,4 @@ export class AppThemeSwitcherService {
   }
 }
 
-type AppTheme = 'dark' | 'light'
+type ColorSchemeCodename = 'dark' | 'light' | 'normal'
