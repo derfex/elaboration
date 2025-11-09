@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { DerfexLogotypeComponent } from '~ui-kit/identity/derfex-logotype/derfex-logotype.component'
-import { LocaleSwitcherComponent } from '~ui/app-settings/locale-switcher/locale-switcher/locale-switcher.component'
+import { AppSettingsComponent } from '~ui/app-settings/app-settings/app-settings.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
+    AppSettingsComponent,
     DerfexLogotypeComponent,
-    LocaleSwitcherComponent,
   ],
   selector: 'app-layout-header',
   styleUrl: './layout-header.component.sass',
