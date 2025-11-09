@@ -1,9 +1,13 @@
-@for (locale of locales(); track locale.codename) {
-  <button
-    class="app-locale-item"
-    [disabled]="locale.disabled"
-    (click)="buttonClickHandler(locale.codename)"
-  >
-    {{locale.label}}
-  </button>
-}
+<div role="radiogroup">
+  @for (locale of locales(); track locale.codename) {
+    <button
+      class="app-locale-item"
+      [attr.aria-checked]="locale.ariaChecked"
+      [disabled]="locale.disabled"
+      (click)="buttonClickHandler(locale.codename)"
+      role="radio"
+    >
+      {{locale.label}}
+    </button>
+  }
+</div>

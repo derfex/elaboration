@@ -32,16 +32,18 @@ export class LocaleSwitcherComponent implements OnInit {
     this.#documentLangSwitcherService.switchLang(this.#renderer, locale)
   }
 
-  #generateLocaleForTemplateList([enDisabled, ruDisabled]: readonly [boolean, boolean]): LocalesForTemplate {
+  #generateLocaleForTemplateList([enChecked, ruChecked]: readonly [boolean, boolean]): LocalesForTemplate {
     return [
       {
+        ariaChecked: enChecked,
         codename: 'EN',
-        disabled: enDisabled,
+        disabled: enChecked,
         label: 'En',
       },
       {
+        ariaChecked: ruChecked,
         codename: 'RU',
-        disabled: ruDisabled,
+        disabled: ruChecked,
         label: 'Ru',
       },
     ]
@@ -56,6 +58,7 @@ export class LocaleSwitcherComponent implements OnInit {
 }
 
 interface LocaleForTemplate {
+  readonly ariaChecked: boolean
   readonly codename: AppLocale
   readonly disabled: boolean
   readonly label: string
