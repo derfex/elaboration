@@ -11,20 +11,22 @@
   // ## Primitive
 
   :root
-    --dx-color-crayola-dark-blue--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-surface-color))
+    --dx-color-crayola-dark-blue--to-surface--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-surface-color))
+    --dx-color-crayola-dark-blue--to-text--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-text-color))
 
   // ## Semantic
 
   :root
-    --dx-color-accent--500: var(--dx-color-crayola-dark-blue--500)
+    --dx-color-accent--to-surface--500: var(--dx-color-crayola-dark-blue--to-surface--500)
 
+    --app-h2-color: var(--dx-color-crayola-dark-blue--to-text--500)
     --app-h3-color: var(--dx-color-accent)
-    --app-h4-color: var(--dx-color-accent--500)
+    --app-h4-color: var(--dx-color-accent--to-surface--500)
 
   // ## Component
 
   :root
-    --app-link-color: var(--dx-color-accent--500)
+    --app-link-color: var(--dx-color-accent--to-surface--500)
     --app-link-color-hover: var(--dx-color-accent)
 
   // ## Init
