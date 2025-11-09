@@ -38,10 +38,10 @@ export class AppSettingsService {
     const colorScheme = this.#localStorageService.getItem<ThemeColorSchemeCodename>('colorScheme')
     if (colorScheme) {
       this.#appThemeSwitcherService.switchColorScheme(renderer, colorScheme)
+    } else {
+      // TODO?: Unsubscribe?
+      this.#appThemeSwitcherService.observePrefersColorScheme(renderer)
     }
-
-    // TODO?: Unsubscribe?
-    this.#appThemeSwitcherService.observePrefersColorScheme(renderer)
 
     return this.#appThemeSwitcherService.colorScheme.pipe(
       map((colorScheme: ThemeColorSchemeCodename): void => {
