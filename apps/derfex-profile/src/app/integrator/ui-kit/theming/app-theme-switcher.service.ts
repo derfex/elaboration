@@ -4,6 +4,7 @@ import {
   appThemeColorSchemeDarkCSSClass,
   appThemeColorSchemeLightCSSClass,
 } from '~ui-kit/theming/theming'
+import type { ThemeColorSchemeCodename } from '~ui-kit/theming/theming.type'
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,9 @@ export class AppThemeSwitcherService {
     this.#observePrefersColorScheme(renderer)
   }
 
-  public switchColorScheme(renderer: Renderer2, theme: ColorSchemeCodename): void {
+  public switchColorScheme(renderer: Renderer2, theme: ThemeColorSchemeCodename): void {
     const darkColorSchemeIsNeeded =
-      theme === 'dark' ? true : theme === 'normal' ? this.#getMediaQueryPrefersColorSchemeDark().matches : false
+      theme === 'dark' ? true : theme === 'light' ? false : this.#getMediaQueryPrefersColorSchemeDark().matches
     if (this.#colorSchemeIsDark === darkColorSchemeIsNeeded) return
     this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
   }
@@ -48,5 +49,3 @@ export class AppThemeSwitcherService {
     this.#colorSchemeIsDark = darkColorSchemeIsNeeded
   }
 }
-
-type ColorSchemeCodename = 'dark' | 'light' | 'normal'
