@@ -12,35 +12,35 @@ export class AppThemeSwitcherService {
   readonly #htmlElementRef = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)
 
-  #appThemeIsDark = false
+  #colorSchemeIsDark = false
 
   public observePrefersColorScheme(renderer: Renderer2): void {
     this.#observePrefersColorScheme(renderer)
   }
 
-  public switchTheme(renderer: Renderer2, theme: AppTheme): void {
-    const darkThemeIsNeeded = theme === 'dark'
-    if (this.#appThemeIsDark === darkThemeIsNeeded) return
-    this.#updateThemeColorSchemeCSSClasses(renderer, darkThemeIsNeeded)
+  public switchColorScheme(renderer: Renderer2, theme: AppTheme): void {
+    const darkColorSchemeIsNeeded = theme === 'dark'
+    if (this.#colorSchemeIsDark === darkColorSchemeIsNeeded) return
+    this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
   }
 
   #observePrefersColorScheme(renderer: Renderer2): void {
     const mediaQueryList = this.#mediaQueryService.matchMedia('(prefers-color-scheme: dark)')
     this.#updateThemeColorSchemeCSSClasses(renderer, mediaQueryList.matches)
     mediaQueryList.addEventListener('change', ({ matches: dark }: MediaQueryListEvent): void => {
-      this.switchTheme(renderer, dark ? 'dark' : 'light')
+      this.switchColorScheme(renderer, dark ? 'dark' : 'light')
     })
   }
 
-  #updateThemeColorSchemeCSSClasses(renderer: Renderer2, darkThemeIsNeeded: boolean): void {
-    if (darkThemeIsNeeded) {
+  #updateThemeColorSchemeCSSClasses(renderer: Renderer2, darkColorSchemeIsNeeded: boolean): void {
+    if (darkColorSchemeIsNeeded) {
       renderer.addClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
       renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
     } else {
       renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
       renderer.addClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
     }
-    this.#appThemeIsDark = darkThemeIsNeeded
+    this.#colorSchemeIsDark = darkColorSchemeIsNeeded
   }
 }
 
