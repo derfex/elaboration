@@ -21,7 +21,6 @@ export class AppThemeSwitcherService {
   public switchTheme(renderer: Renderer2, theme: AppTheme): void {
     const darkThemeIsNeeded = theme === 'dark'
     if (this.#appThemeIsDark === darkThemeIsNeeded) return
-    this.#appThemeIsDark = darkThemeIsNeeded
     this.#updateThemeColorSchemeCSSClasses(renderer, darkThemeIsNeeded)
   }
 
@@ -41,6 +40,7 @@ export class AppThemeSwitcherService {
       renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
       renderer.addClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
     }
+    this.#appThemeIsDark = darkThemeIsNeeded
   }
 }
 
