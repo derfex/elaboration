@@ -1,0 +1,13 @@
+<div role="radiogroup">
+  @for (colorScheme of colorSchemes(); track colorScheme.codename) {
+    <button
+      class="app-locale-item"
+      [attr.aria-checked]="colorScheme.ariaChecked"
+      [disabled]="colorScheme.disabled"
+      (click)="buttonClickHandler(colorScheme.codename)"
+      role="radio"
+    >
+      {{colorScheme.label}}
+    </button>
+  }
+</div>

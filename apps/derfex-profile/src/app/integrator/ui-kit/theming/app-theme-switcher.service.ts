@@ -1,4 +1,5 @@
 import { DOCUMENT, inject, Injectable, type Renderer2 } from '@angular/core'
+import { BehaviorSubject, distinctUntilChanged, type Observable } from 'rxjs'
 import { MediaQueryService } from '~integrator/data-access/web-api/media-query/media-query.service'
 import {
   appThemeColorSchemeDarkCSSClass,
@@ -13,7 +14,12 @@ export class AppThemeSwitcherService {
   readonly #htmlElementRef = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)
 
+  #colorScheme = new BehaviorSubject<ThemeColorSchemeCodename>('normal')
   #colorSchemeIsDark = false
+
+  public get colorScheme(): Observable<ThemeColorSchemeCodename> {
+    return this.#colorScheme.asObservable().pipe(distinctUntilChanged())
+  }
 
   public observePrefersColorScheme(renderer: Renderer2): void {
     this.#observePrefersColorScheme(renderer)
@@ -28,6 +34,7 @@ export class AppThemeSwitcherService {
           : this.#getMediaQueryPrefersColorSchemeDark().matches
     if (this.#colorSchemeIsDark === darkColorSchemeIsNeeded) return
     this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
+    this.#colorScheme.next(colorScheme)
   }
 
   #getMediaQueryPrefersColorSchemeDark(): MediaQueryList {

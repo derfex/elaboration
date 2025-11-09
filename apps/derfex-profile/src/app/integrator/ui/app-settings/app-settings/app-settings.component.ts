@@ -2,10 +2,15 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, Re
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { AppSettingsService } from '~ui/app-settings/app-settings/app-settings.service'
 import { LocaleSwitcherComponent } from '~ui/app-settings/locale-switcher/locale-switcher/locale-switcher.component'
+import { ColorSchemeSwitcherComponent } from '~ui/app-settings/color-scheme-switcher/color-scheme-switcher.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocaleSwitcherComponent],
+  imports: [
+    // Provided by the app.
+    ColorSchemeSwitcherComponent,
+    LocaleSwitcherComponent,
+  ],
   selector: 'app-settings',
   styleUrl: './app-settings.component.sass',
   templateUrl: './app-settings.component.html',
