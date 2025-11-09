@@ -1,6 +1,7 @@
 @use '../../../ui-kit/layout/layout'
 @use '../../../ui-kit/reset'
 @use '../../../ui-kit/typography/typography'
+@use '../../../ui-kit/ui-kit'
 
 :host
   display: block
@@ -33,6 +34,4 @@
   border: 1px solid var(--app-decor-color--eee)
 
 .app-title
-  @include typography.app-typography_h2-mixin
-
-  color: var(--app-h2-color)
+  @include ui-kit.app-ui-kit_h2-mixin
