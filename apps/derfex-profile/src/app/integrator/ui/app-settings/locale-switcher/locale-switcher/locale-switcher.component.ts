@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, Re
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
-import { DocumentLangSwitcherService } from '~ui/locale-switcher/document-lang-switcher/document-lang-switcher.service'
+import { DocumentLangSwitcherService } from '~ui/app-settings/locale-switcher/document-lang-switcher/document-lang-switcher.service'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
