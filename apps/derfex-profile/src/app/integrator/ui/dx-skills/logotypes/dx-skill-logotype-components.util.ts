@@ -2,6 +2,7 @@ import { assertDefined } from '~app/dev/dev-error.util'
 import type { DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { AngularLogotypeComponent } from '~ui/dx-skills/logotypes/angular-logotype/angular-logotype.component'
 import { CSSLogotypeComponent } from '~ui/dx-skills/logotypes/css-logotype/css-logotype.component'
+import { GitLogotypeComponent } from '~ui/dx-skills/logotypes/git-logotype/git-logotype.component'
 import { GitHubLogotypeComponent } from '~ui/dx-skills/logotypes/github-logotype/github-logotype.component'
 import { HTML5LogotypeComponent } from '~ui/dx-skills/logotypes/html5-logotype/html5-logotype.component'
 import { JavaScriptLogotypeComponent } from '~ui/dx-skills/logotypes/javascript-logotype/javascript-logotype.component'
@@ -25,6 +26,7 @@ export class DXSkillLogotypeComponentsUtil {
   >([
     ['Angular' as DXSkillCodename, AngularLogotypeComponent],
     ['CSS' as DXSkillCodename, CSSLogotypeComponent],
+    ['Git' as DXSkillCodename, GitLogotypeComponent],
     ['GitHub' as DXSkillCodename, GitHubLogotypeComponent],
     ['HTML5' as DXSkillCodename, HTML5LogotypeComponent],
     ['JS' as DXSkillCodename, JavaScriptLogotypeComponent],
