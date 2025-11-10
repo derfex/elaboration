@@ -11,6 +11,7 @@ import { RxJSLogotypeComponent } from '~ui/dx-skills/logotypes/rx-js-logotype/rx
 import { SASSLogotypeComponent } from '~ui/dx-skills/logotypes/sass-logotype/sass-logotype.component'
 import { SVGLogotypeComponent } from '~ui/dx-skills/logotypes/svg-logotype/svg-logotype.component'
 import { TypeScriptLogotypeComponent } from '~ui/dx-skills/logotypes/typescript-logotype/typescript-logotype.component'
+import { VueLogotypeComponent } from '~ui/dx-skills/logotypes/vue-logotype/vue-logotype.component'
 
 export type DXSkillLogotypeComponentType =
   | typeof AngularLogotypeComponent
@@ -37,6 +38,7 @@ export class DXSkillLogotypeComponentsUtil {
     ['SASS' as DXSkillCodename, SASSLogotypeComponent],
     ['SVG' as DXSkillCodename, SVGLogotypeComponent],
     ['TS' as DXSkillCodename, TypeScriptLogotypeComponent],
+    ['Vue' as DXSkillCodename, VueLogotypeComponent],
   ])
 
   public static getComponent(dxSkillCodename: DXSkillCodename): DXSkillLogotypeComponentType {
