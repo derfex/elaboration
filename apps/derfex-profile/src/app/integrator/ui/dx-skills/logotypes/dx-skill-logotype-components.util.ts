@@ -7,7 +7,7 @@ import { GitHubLogotypeComponent } from '~ui/dx-skills/logotypes/github-logotype
 import { HTML5LogotypeComponent } from '~ui/dx-skills/logotypes/html5-logotype/html5-logotype.component'
 import { JavaScriptLogotypeComponent } from '~ui/dx-skills/logotypes/javascript-logotype/javascript-logotype.component'
 import { NodeJSLogotypeComponent } from '~ui/dx-skills/logotypes/node-js-logotype/node-js-logotype.component'
-import { RxJSLogotypeComponent } from '~ui/dx-skills/logotypes/rxjs-logotype/rxjs-logotype.component'
+import { RxJSLogotypeComponent } from '~ui/dx-skills/logotypes/rx-js-logotype/rx-js-logotype.component'
 import { TypeScriptLogotypeComponent } from '~ui/dx-skills/logotypes/typescript-logotype/typescript-logotype.component'
 
 export type DXSkillLogotypeComponentType =

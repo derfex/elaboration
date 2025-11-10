@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { RxJSLogotypeComponent } from './rxjs-logotype.component'
+import { RxJSLogotypeComponent } from './rx-js-logotype.component'
 
 describe('RxJSLogotypeComponent', (): void => {
   let component: RxJSLogotypeComponent
