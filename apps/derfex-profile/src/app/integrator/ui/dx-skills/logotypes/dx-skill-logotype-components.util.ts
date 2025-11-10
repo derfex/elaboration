@@ -8,6 +8,7 @@ import { HTML5LogotypeComponent } from '~ui/dx-skills/logotypes/html5-logotype/h
 import { JavaScriptLogotypeComponent } from '~ui/dx-skills/logotypes/javascript-logotype/javascript-logotype.component'
 import { NodeJSLogotypeComponent } from '~ui/dx-skills/logotypes/node-js-logotype/node-js-logotype.component'
 import { RxJSLogotypeComponent } from '~ui/dx-skills/logotypes/rx-js-logotype/rx-js-logotype.component'
+import { SASSLogotypeComponent } from '~ui/dx-skills/logotypes/sass-logotype/sass-logotype.component'
 import { TypeScriptLogotypeComponent } from '~ui/dx-skills/logotypes/typescript-logotype/typescript-logotype.component'
 
 export type DXSkillLogotypeComponentType =
@@ -32,6 +33,7 @@ export class DXSkillLogotypeComponentsUtil {
     ['JS' as DXSkillCodename, JavaScriptLogotypeComponent],
     ['NodeJS' as DXSkillCodename, NodeJSLogotypeComponent],
     ['RxJS' as DXSkillCodename, RxJSLogotypeComponent],
+    ['SASS' as DXSkillCodename, SASSLogotypeComponent],
     ['TS' as DXSkillCodename, TypeScriptLogotypeComponent],
   ])
 
