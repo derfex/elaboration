@@ -36,12 +36,7 @@ export class AppSettingsService {
 
   #initAndObserveThemeColorScheme(renderer: Renderer2): Observable<void> {
     const colorScheme = this.#localStorageService.getItem<ThemeColorSchemeCodename>('colorScheme')
-    if (colorScheme) {
-      this.#appThemeSwitcherService.switchColorScheme(renderer, colorScheme)
-    } else {
-      // TODO?: Unsubscribe?
-      this.#appThemeSwitcherService.observePrefersColorScheme(renderer)
-    }
+    this.#appThemeSwitcherService.initColorScheme(renderer, colorScheme)
 
     return this.#appThemeSwitcherService.colorScheme.pipe(
       map((colorScheme: ThemeColorSchemeCodename): void => {

@@ -21,20 +21,30 @@ export class AppThemeSwitcherService {
     return this.#colorScheme.asObservable().pipe(distinctUntilChanged())
   }
 
-  public observePrefersColorScheme(renderer: Renderer2): void {
-    this.#observePrefersColorScheme(renderer)
+  public initColorScheme(renderer: Renderer2, colorScheme: ThemeColorSchemeCodename | null): void {
+    if (colorScheme) {
+      const darkColorSchemeIsNeeded = this.#checkIfDarkColorSchemeIsNeeded(colorScheme)
+      this.#colorScheme.next(colorScheme)
+      this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
+    } else {
+      // TODO?: Unsubscribe?
+      this.#observePrefersColorScheme(renderer)
+    }
   }
 
   public switchColorScheme(renderer: Renderer2, colorScheme: ThemeColorSchemeCodename): void {
-    const darkColorSchemeIsNeeded =
-      colorScheme === 'dark'
-        ? true
-        : colorScheme === 'light'
-          ? false
-          : this.#getMediaQueryPrefersColorSchemeDark().matches
+    const darkColorSchemeIsNeeded = this.#checkIfDarkColorSchemeIsNeeded(colorScheme)
     this.#colorScheme.next(colorScheme)
     if (this.#colorSchemeIsDark === darkColorSchemeIsNeeded) return
     this.#updateThemeColorSchemeCSSClasses(renderer, darkColorSchemeIsNeeded)
+  }
+
+  #checkIfDarkColorSchemeIsNeeded(colorScheme: ThemeColorSchemeCodename): boolean {
+    return colorScheme === 'dark'
+      ? true
+      : colorScheme === 'light'
+        ? false
+        : this.#getMediaQueryPrefersColorSchemeDark().matches
   }
 
   #getMediaQueryPrefersColorSchemeDark(): MediaQueryList {
