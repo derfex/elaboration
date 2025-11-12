@@ -3,10 +3,13 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
+import { DXActivitiesCompiledForBEService } from '~be/dx-activities/dx-activities-compiled-for-be.service'
 import { DXActivitiesForBEService } from '~be/dx-activities/dx-activities-for-be.service'
 import type { DXActivityForBE } from '~be/dx-activities/dx-activities-for-be.type'
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
 import type { DXActivitySkillForBE } from '~be/dx-activities/dx-activity-skills-for-be.type'
+import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
+import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import { DXActivitiesSectionMediatorService } from './dx-activities-section-mediator.service'
 
 describe('DXActivitiesSectionMediatorService', (): void => {
@@ -25,9 +28,11 @@ describe('DXActivitiesSectionMediatorService', (): void => {
 
         // Provided by the app.
         { provide: BackendAPIConfigurationService, useClass: BackendAPIConfigurationStubService },
+        { provide: DXActivitiesCompiledForBEService, useClass: DXActivitiesCompiledForBEStubService },
         { provide: DXActivitiesForBEService, useClass: DXActivitiesForBEStubService },
         { provide: DXActivitySkillsForBEService, useClass: DXActivitySkillsForBEStubService },
-        // TODO: { provide: LocaleSwitcherService, useClass: LocaleSwitcherStubService },
+        { provide: LoadingNotifierService, useClass: LoadingNotifierStubService },
+        { provide: LocaleSwitcherService, useClass: LocaleSwitcherStubService },
       ],
     })
     httpTestingController = TestBed.inject(HttpTestingController)
@@ -47,6 +52,34 @@ describe('DXActivitiesSectionMediatorService', (): void => {
 class BackendAPIConfigurationStubService {
   public readURL(urlCodename: string): Observable<string> {
     return of(urlCodename)
+  }
+}
+
+class DXActivitiesCompiledForBE {}
+
+class DXActivitiesCompiledForBEStubService {
+  public readList(): Observable<readonly DXActivitiesCompiledForBE[]> {
+    const dxActivities: readonly DXActivitiesCompiledForBE[] = [
+      {
+        codename: 'act-1',
+        periodFrom: '2020-02',
+        periodTo: '2020-02',
+        results: ['result 1'],
+        role: 'No data',
+        shortDescription: 'short description 1',
+        skillCodenames: ['CSS', 'Git'],
+      },
+      {
+        codename: 'act-2',
+        periodFrom: '2020-05',
+        periodTo: '2020-08',
+        results: ['result 4'],
+        role: 'No data',
+        shortDescription: 'short description 2',
+        skillCodenames: ['Angular', 'CSS', 'Git'],
+      },
+    ]
+    return of(dxActivities)
   }
 }
 
@@ -91,3 +124,7 @@ class DXActivitySkillsForBEStubService {
     return of(dxActivitySkills)
   }
 }
+
+class LoadingNotifierStubService {}
+
+class LocaleSwitcherStubService {}
