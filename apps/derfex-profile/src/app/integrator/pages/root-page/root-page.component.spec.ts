@@ -2,6 +2,8 @@ import { provideHttpClient } from '@angular/common/http'
 import { provideHttpClientTesting } from '@angular/common/http/testing'
 import { Component } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type Observable, of } from 'rxjs'
+import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { RootPageComponent } from './root-page.component'
 
 describe('RootPageComponent', (): void => {
@@ -28,6 +30,9 @@ describe('RootPageComponent', (): void => {
         // Doing it the other way around can potentially break your tests.
         provideHttpClient(),
         provideHttpClientTesting(),
+
+        // Provided by the app.
+        { provide: LoadingNotifierService, useClass: LoadingNotifierStubService },
       ],
     }).compileComponents()
 
@@ -58,3 +63,9 @@ class HeroSectionStubComponent {}
 
 @Component({ selector: 'app-layout-section-separator', template: '' })
 class LayoutSectionSeparatorStubComponent {}
+
+class LoadingNotifierStubService {
+  public get loading(): Observable<boolean> {
+    return of(false)
+  }
+}
