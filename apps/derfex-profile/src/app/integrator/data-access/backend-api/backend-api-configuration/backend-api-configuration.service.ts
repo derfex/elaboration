@@ -24,14 +24,16 @@ export class BackendAPIConfigurationService {
     ['RU', prepareProfileDataBEAPIURL('data/settings/backend-api-configuration--ru.json')],
   ])
 
-  readonly #relativeURLCodenamesMap: ReadonlyMap<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename> =
-    new Map<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename>([
-      ['dxActivitiesSectionCompiledRelativeURL', 'compiled/dxActivities/section'],
-      ['dxActivitiesSectionRelativeURL', 'sections/dxActivities'],
-      ['dxProjectsSectionRelativeURL', 'sections/dxProjects'],
-      ['dxSkillsSectionRelativeURL', 'sections/dxSkills'],
-      ['heroSectionRelativeURL', 'sections/hero'],
-    ])
+  readonly #relativeURLCodenamesMap: ReadonlyMap<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename> = new Map<
+    BackendAPIRelativeURLCodenameForBE,
+    BackendAPIURLCodename
+  >([
+    ['dxActivitiesSectionCompiledRelativeURL', 'compiled/dxActivities/section'],
+    ['dxActivitiesSectionRelativeURL', 'sections/dxActivities'],
+    ['dxProjectsSectionRelativeURL', 'sections/dxProjects'],
+    ['dxSkillsSectionRelativeURL', 'sections/dxSkills'],
+    ['heroSectionRelativeURL', 'sections/hero'],
+  ])
 
   readonly #urlMap$: Observable<ReadonlyMap<BackendAPIURLCodename, string>> = this.#readConfiguration(
     inject(HttpClient),
