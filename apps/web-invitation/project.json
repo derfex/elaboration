@@ -1,0 +1,90 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "web-invitation",
+  "prefix": "app",
+  "projectType": "application",
+  "sourceRoot": "apps/web-invitation/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true
+        },
+        "production": {
+          "budgets": [
+            {
+              "maximumError": "1mb",
+              "maximumWarning": "500kb",
+              "type": "initial"
+            },
+            {
+              "maximumError": "8kb",
+              "maximumWarning": "4kb",
+              "type": "anyComponentStyle"
+            }
+          ],
+          "outputHashing": "all"
+        }
+      },
+      "defaultConfiguration": "production",
+      "executor": "@angular/build:application",
+      "options": {
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/web-invitation/public"
+          }
+        ],
+        "browser": "apps/web-invitation/src/main.ts",
+        "inlineStyleLanguage": "sass",
+        "outputPath": "dist/apps/web-invitation",
+        "polyfills": ["zone.js"],
+        "styles": ["apps/web-invitation/src/styles.sass"],
+        "tsConfig": "apps/web-invitation/tsconfig.app.json"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n",
+      "options": {
+        "buildTarget": "web-invitation:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve": {
+      "configurations": {
+        "development": {
+          "buildTarget": "web-invitation:build:development"
+        },
+        "production": {
+          "buildTarget": "web-invitation:build:production"
+        }
+      },
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "executor": "@angular/build:dev-server"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "web-invitation:build",
+        "port": 4200,
+        "spa": true,
+        "staticFilePath": "dist/apps/web-invitation/browser"
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "reportsDirectory": "../../coverage/apps/web-invitation"
+      },
+      "outputs": ["{options.reportsDirectory}"]
+    }
+  }
+}
