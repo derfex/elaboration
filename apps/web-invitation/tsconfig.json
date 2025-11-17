@@ -15,6 +15,9 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "~app/*": ["apps/derfex-profile/src/app/*"],
+    },
     "strict": true,
     "target": "es2022"
   },
