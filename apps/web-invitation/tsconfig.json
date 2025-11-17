@@ -16,7 +16,8 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "~app/*": ["apps/derfex-profile/src/app/*"],
+      "~app/*": ["apps/web-invitation/src/app/*"],
+      "~ui-kit/*": ["apps/web-invitation/src/app/integrator/ui-kit/*"],
     },
     "strict": true,
     "target": "es2022"
