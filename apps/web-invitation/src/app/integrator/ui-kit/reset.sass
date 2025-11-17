@@ -1,0 +1,20 @@
+@mixin app-reset_styles-mixin
+  // Stretching root tags.
+  html
+    height: 100%
+
+  body
+    margin: 0
+    height: 100%
+
+  // Set `box-sizing`.
+  html
+    box-sizing: border-box
+
+  *, *::after, *::before
+    box-sizing: inherit
+
+@mixin app-reset_ul-mixin
+  margin: 0
+  padding: 0
+  list-style: none
