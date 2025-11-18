@@ -1,0 +1,37 @@
+$app-device-width-extra-small: 360px
+$app-device-width-small: 576px // TODO: 512px?
+$app-device-width-medium: 768px
+$app-device-width-large: 992px
+$app-device-width-extra-large: 1200px
+$app-device-width-extra-extra-large: 1400px
+
+@mixin app-layout_flex-column-mixin($_row-gap)
+  display: flex
+  flex-direction: column
+  row-gap: $_row-gap
+
+// # Padding
+// TODO: reorganize.
+
+$_app-layout_horizontal-padding: 20px
+$_app-layout_vertical-padding: 16px
+
+@mixin app-layout_paddings-mixin
+  padding: $_app-layout_vertical-padding $_app-layout_horizontal-padding
+
+@mixin app-layout_padding-inline-mixin
+  padding-inline: $_app-layout_horizontal-padding
+
+@mixin app-layout_padding-block-mixin
+  padding-block: $_app-layout_vertical-padding
+
+// # Section
+
+$_app-layout_section-max-width: $app-device-width-extra-extra-large
+
+
+// ## Section wrapper
+
+@mixin app-layout_section-wrapper-mixin
+  margin-inline: auto
+  max-width: $_app-layout_section-max-width
