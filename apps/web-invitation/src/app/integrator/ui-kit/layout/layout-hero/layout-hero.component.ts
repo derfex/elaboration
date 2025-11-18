@@ -7,5 +7,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   templateUrl: './layout-hero.component.html',
 })
 export class LayoutHeroComponent {
-  public readonly title = input.required<string>()
+  public readonly titleText = input.required<string>()
 }
