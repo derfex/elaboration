@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { AppHeroSectionComponent } from './app-hero-section.component'
 
 describe('AppHeroSectionComponent', (): void => {
