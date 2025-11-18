@@ -17,6 +17,7 @@
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
       "~app/*": ["apps/web-invitation/src/app/*"],
+      "~pages/*": ["apps/web-invitation/src/app/integrator/pages/*"],
       "~ui/*": ["apps/web-invitation/src/app/integrator/ui/*"],
       "~ui-kit/*": ["apps/web-invitation/src/app/integrator/ui-kit/*"],
     },
