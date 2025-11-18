@@ -1,4 +1,5 @@
 @use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/reset'
 @use '../../../ui-kit/ui-kit'
 
 :host
@@ -6,6 +7,9 @@
 
 .app-event-program
   @include layout.app-layout_paddings-mixin
+
+.app-stages
+  @include reset.app-reset_ul-mixin
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
