@@ -1,4 +1,6 @@
-@use './reset'
+@use './identity/identity-foundation'
+@use './reset-foundation'
 
 @mixin app-ui-kit-foundation_styles-mixin
-  @include reset.app-reset_styles-mixin
+  @include reset-foundation.app-reset-foundation_styles-mixin
+  @include identity-foundation.app-identity-foundation_styles-mixin
