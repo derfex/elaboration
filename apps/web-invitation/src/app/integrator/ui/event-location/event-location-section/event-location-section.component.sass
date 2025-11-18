@@ -5,13 +5,32 @@
   display: block
 
 .app-section
+  @include layout.app-layout_flex-column-mixin(8px)
   @include layout.app-layout_padding-block-mixin
 
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin
 
-  margin-bottom: 16px
+  width: 100%
+
+
+.app-description
+  @include layout.app-layout_flex-column-mixin(4px)
+  @include layout.app-layout_padding-inline-mixin
+
+.app-description__paragraph
+  @include  ui-kit.app-ui-kit_p-mixin
+
+.app-google-map-container
+  width: 100%
 
 .app-title
   @include layout.app-layout_padding-inline-mixin
   @include ui-kit.app-ui-kit_h2-mixin
+
+.app-transfer
+  @include layout.app-layout_flex-column-mixin(4px)
+  @include layout.app-layout_padding-inline-mixin
+
+.app-transfer__paragraph
+  @include  ui-kit.app-ui-kit_p-mixin

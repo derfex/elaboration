@@ -16,19 +16,30 @@ export class EventLocationSectionComponent implements OnInit {
   readonly #eventLocationSectionMediatorService = inject(EventLocationSectionMediatorService)
 
   protected readonly sectionParameters = signal<EventLocationSectionParameters>({
+    descriptionParagraphList: [],
     locationURL: 'NoData',
     titleText: 'No data',
+    transferParagraphList: [],
   })
 
   public ngOnInit(): void {
     this.#eventLocationSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))
-      .subscribe(({ locationURL, titleText }: EventLocationSectionParameters): void => {
-        this.sectionParameters.set({
+      .subscribe(
+        ({
+          descriptionParagraphList,
           locationURL,
           titleText,
-        })
-      })
+          transferParagraphList,
+        }: EventLocationSectionParameters): void => {
+          this.sectionParameters.set({
+            descriptionParagraphList,
+            locationURL,
+            titleText,
+            transferParagraphList,
+          })
+        },
+      )
   }
 }

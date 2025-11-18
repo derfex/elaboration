@@ -2,5 +2,21 @@
   <div class="app-section__wrapper">
     <h2 class="app-title">{{sectionParameters().titleText}}</h2>
   </div>
-  <app-google-map [locationURL]="sectionParameters().locationURL" />
+  <div class="app-section__wrapper">
+    <div class="app-description">
+      @for (descriptionText of sectionParameters().descriptionParagraphList; track descriptionText) {
+        <p class="app-description__paragraph">{{descriptionText}}</p>
+      }
+    </div>
+  </div>
+  <div class="app-google-map-container">
+    <app-google-map [locationURL]="sectionParameters().locationURL" />
+  </div>
+  <div class="app-section__wrapper">
+    <div class="app-transfer">
+      @for (transferText of sectionParameters().transferParagraphList; track transferText) {
+        <p class="app-transfer__paragraph">{{transferText}}</p>
+      }
+    </div>
+  </div>
 </div>
