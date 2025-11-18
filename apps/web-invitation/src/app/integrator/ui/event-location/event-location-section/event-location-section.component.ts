@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, type OnInit, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { EventLocationSectionMediatorService } from '~be/event-location/event-location-section-mediator.service'
 import type { EventLocationSectionParameters } from '~ui/event-location/event-location-section/event-location-section.type'
 import { GoogleMapComponent } from '~ui/event-location/google-map/google-map.component'
 
@@ -10,15 +12,23 @@ import { GoogleMapComponent } from '~ui/event-location/google-map/google-map.com
   templateUrl: './event-location-section.component.html',
 })
 export class EventLocationSectionComponent implements OnInit {
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #eventLocationSectionMediatorService = inject(EventLocationSectionMediatorService)
+
   protected readonly sectionParameters = signal<EventLocationSectionParameters>({
     locationURL: 'NoData',
     titleText: 'No data',
   })
 
   public ngOnInit(): void {
-    this.sectionParameters.set({
-      locationURL: 'NoData',
-      titleText: 'No data',
-    })
+    this.#eventLocationSectionMediatorService
+      .readSectionParameters()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(({ locationURL, titleText }: EventLocationSectionParameters): void => {
+        this.sectionParameters.set({
+          locationURL,
+          titleText,
+        })
+      })
   }
 }
