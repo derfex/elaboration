@@ -1,8 +1,10 @@
+@use '../layout'
+
 :host
   display: block
 
 .app-footer
-  padding: 40px
+  @include layout.app-layout_paddings-mixin
 
 .app-love-path
   stroke-linecap: round
