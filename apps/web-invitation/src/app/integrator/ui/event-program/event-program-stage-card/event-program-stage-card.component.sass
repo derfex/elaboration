@@ -1,0 +1,30 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-event-program-stage-card
+  display: grid
+  grid-template-columns: auto auto
+
+
+$_padding: 20px
+
+.app-description
+  @include layout.app-layout_flex-column-mixin(4px)
+
+.app-description__paragraph
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-period-from-container
+  padding: $_padding
+
+.app-period-from
+  font-weight: 900
+
+.app-text-container
+  padding: $_padding
+
+.app-title
+  @include ui-kit.app-ui-kit_h3-mixin
