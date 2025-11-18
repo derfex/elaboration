@@ -4,10 +4,14 @@
 :host
   display: block
 
+.app-section
+  @include layout.app-layout_padding-block-mixin
+
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin
 
-  margin-top: 16px
+  margin-bottom: 16px
 
 .app-title
+  @include layout.app-layout_padding-inline-mixin
   @include ui-kit.app-ui-kit_h2-mixin
