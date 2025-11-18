@@ -1,0 +1,13 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-section__wrapper
+  @include layout.app-layout_section-wrapper-mixin
+
+  margin-top: 16px
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
