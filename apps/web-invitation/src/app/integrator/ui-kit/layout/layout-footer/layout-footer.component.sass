@@ -1,3 +1,4 @@
+@use '../../typography/typography'
 @use '../layout'
 
 :host
@@ -22,8 +23,8 @@
   color: #fca5a5
 
 .app-paragraph
-  font-size: 0.875rem
-  line-height: 1.25rem
-  text-align: center
-  opacity: 0.6
-  color: rgb(107, 114, 128)
+  @include typography.app-typography_p-mixin
+
+  display: flex
+  align-items: center
+  gap: 4px
