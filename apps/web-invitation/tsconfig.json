@@ -17,6 +17,9 @@
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
       "~app/*": ["apps/web-invitation/src/app/*"],
+      "~be/*": ["apps/web-invitation/src/app/integrator/data-access/backend-api/*"],
+      "~entities/*": ["apps/web-invitation/src/architecture/entities/*"],
+      "~integrator/*": ["apps/web-invitation/src/app/integrator/*"],
       "~pages/*": ["apps/web-invitation/src/app/integrator/pages/*"],
       "~ui/*": ["apps/web-invitation/src/app/integrator/ui/*"],
       "~ui-kit/*": ["apps/web-invitation/src/app/integrator/ui-kit/*"],
