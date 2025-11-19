@@ -1,0 +1,8 @@
+<article class="app-section">
+  <h2 class="app-title">{{titleText()}}</h2>
+  <div class="app-paragraphs">
+    @for (paragraph of paragraphs(); track paragraph) {
+      <p class="app-paragraphs__item">{{paragraph}}</p>
+    }
+  </div>
+</article>
