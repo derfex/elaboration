@@ -8,7 +8,13 @@
   $_period-from-container-width: 120px
 
   display: grid
-  grid-template-columns: $_period-from-container-width auto
+  grid-template-columns: 1fr
+  border-radius: 4px
+
+  @include ui-kit.app-ui-kit_glass-mixin
+
+  @media (width > layout.$app-device-width-medium)
+    grid-template-columns: $_period-from-container-width auto
 
 
 $_padding: 20px
@@ -23,8 +29,17 @@ $_padding: 20px
   padding: $_padding
 
 .app-period-from
+  border-radius: 16px
+  padding: 4px 16px
   font-family: monospace
   font-size: 20px
+
+  @include ui-kit.app-ui-kit_glass-mixin
+
+  color: var(--app-surface-3-color)
+
+  .app-event-program-stage-card:hover &
+    text-shadow: 0 0 2px var(--app-surface-3-color)
 
 .app-text-container
   @include layout.app-layout_flex-column-mixin(8px)

@@ -6,10 +6,12 @@
   display: block
 
 .app-event-program
+  @include layout.app-layout_flex-column-mixin(16px)
   @include layout.app-layout_paddings-mixin
 
 .app-stages
   @include reset.app-reset_ul-mixin
+  @include layout.app-layout_flex-column-mixin(8px)
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
