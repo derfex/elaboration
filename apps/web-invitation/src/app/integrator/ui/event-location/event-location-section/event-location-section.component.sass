@@ -23,6 +23,15 @@
 
 .app-google-map-container
   width: 100%
+  filter: grayscale(1)
+  opacity: 0.2
+  transition-duration: var(--app-transition-duration)
+  transition-property: filter, opacity
+  transition-timing-function: var(--app-transition-timing-function)
+
+  .app-section:hover &
+    filter: grayscale(0)
+    opacity: 1
 
 .app-title
   @include layout.app-layout_padding-inline-mixin
