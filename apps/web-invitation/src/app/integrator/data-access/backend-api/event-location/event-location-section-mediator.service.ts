@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core'
 import { type Observable, of } from 'rxjs'
 import type { EventLocationSectionParametersForBE } from '~be/event-location/event-location-section-for-be.type'
+import type { EventLocationSectionParameters } from '~ui/event-location/event-location-section/event-location-section.type'
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventLocationSectionMediatorService {
-  public readSectionParameters(): Observable<EventLocationSectionParametersForBE> {
+  public readSectionParameters(): Observable<EventLocationSectionParameters> {
     return this.#readSectionParametersAsUncompiled()
   }
 
