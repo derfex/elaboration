@@ -20,6 +20,8 @@
 
 
 @mixin app-ui-kit_glass-mixin
+  // Inspired by https://habr.com/ru/articles/861290
+
   // Bottom and right deep effect
   $_effect-b-r: inset -0.75px -0.5px rgba(255, 255, 255, 0.1)
   // Top and left deep effect
@@ -33,5 +35,6 @@
 
   $_box-shadow: $_effect-b-r, $_effect-t-l, $_effect-shadow, $_effect-short-subsurface, $_effect-long-subsurface
 
-  backdrop-filter: blur(10px)
+  // Uncomment `backdrop-filter: blur(10px)` when should cover a picture.
+  // backdrop-filter: blur(10px)
   box-shadow: $_box-shadow
