@@ -23,9 +23,12 @@ $_padding: 20px
   padding: $_padding
 
 .app-period-from
-  font-weight: 900
+  font-family: monospace
+  font-size: 20px
 
 .app-text-container
+  @include layout.app-layout_flex-column-mixin(8px)
+
   padding: $_padding
 
 .app-title
