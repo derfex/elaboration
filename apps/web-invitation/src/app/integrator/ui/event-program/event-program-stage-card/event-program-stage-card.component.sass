@@ -1,3 +1,4 @@
+@use '../../../ui-kit/identity/transitions'
 @use '../../../ui-kit/layout/layout'
 @use '../../../ui-kit/ui-kit'
 
@@ -9,7 +10,7 @@
 
   display: grid
   grid-template-columns: 1fr
-  border-radius: 4px
+  border-radius: 8px
 
   @include ui-kit.app-ui-kit_glass-mixin
 
@@ -38,6 +39,8 @@ $_padding: 20px
 
   color: var(--app-surface-3-color)
 
+  @include transitions.app-transitions_transition-mixin(text-shadow)
+
   .app-event-program-stage-card:hover &
     text-shadow: 0 0 2px var(--app-surface-3-color)
 
@@ -48,3 +51,5 @@ $_padding: 20px
 
 .app-title
   @include ui-kit.app-ui-kit_h3-mixin
+
+  text-decoration: var(--app-surface-2-color) wavy underline
