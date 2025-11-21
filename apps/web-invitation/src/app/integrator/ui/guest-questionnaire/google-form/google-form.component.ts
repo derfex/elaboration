@@ -13,6 +13,8 @@ export class GoogleFormComponent {
   public readonly height = input.required<number>()
   public readonly url = input.required<string>()
 
+  protected readonly loadingText = 'Загрузка…'
+
   protected readonly src = computed<SafeResourceUrl>(() => {
     return this.#domSanitizer.bypassSecurityTrustResourceUrl(this.url())
   })

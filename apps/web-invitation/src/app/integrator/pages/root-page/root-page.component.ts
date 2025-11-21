@@ -4,6 +4,7 @@ import { AppHeroSectionComponent } from '~ui/app-hero-section/app-hero-section.c
 import { EventDetailsSectionComponent } from '~ui/event-details/event-details-section/event-details-section.component'
 import { EventLocationSectionComponent } from '~ui/event-location/event-location-section/event-location-section.component'
 import { EventProgramSectionComponent } from '~ui/event-program/event-program-section/event-program-section.component'
+import { GuestQuestionnaireSectionComponent } from '~ui/guest-questionnaire/guest-questionnaire-section/guest-questionnaire-section.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,6 +15,7 @@ import { EventProgramSectionComponent } from '~ui/event-program/event-program-se
     EventDetailsSectionComponent,
     EventLocationSectionComponent,
     EventProgramSectionComponent,
+    GuestQuestionnaireSectionComponent,
   ],
   selector: 'app-root-page',
   styleUrl: './root-page.component.sass',

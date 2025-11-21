@@ -1,0 +1,26 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-section
+  padding-block: 20px
+  background: var(--app-surface-2-color)
+
+.app-section__wrapper
+  @include layout.app-layout_section-wrapper-mixin
+
+
+.app-google-form-component-container
+  @include ui-kit.app-ui-kit_glass-mixin
+
+  margin-inline: auto
+  border-radius: 16px
+  padding: 20px
+  max-width: 800px
+  background: var(--app-surface-4-color)
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+  @include layout.app-layout_padding-inline-mixin
