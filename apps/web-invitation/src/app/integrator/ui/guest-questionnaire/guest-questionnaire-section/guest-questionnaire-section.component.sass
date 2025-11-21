@@ -12,15 +12,24 @@
   @include layout.app-layout_section-wrapper-mixin
 
 
+.app-description
+  @include layout.app-layout_flex-column-mixin(4px)
+
+.app-description__paragraph
+  @include ui-kit.app-ui-kit_p-mixin
+
 .app-google-form-component-container
   @include ui-kit.app-ui-kit_glass-mixin
 
-  margin-inline: auto
+  margin-top: 8px
   border-radius: 16px
   padding: 20px
   max-width: 800px
   background: var(--app-surface-4-color)
 
+.app-text-container
+  @include layout.app-layout_flex-column-mixin(16px)
+  @include layout.app-layout_padding-inline-mixin
+
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
-  @include layout.app-layout_padding-inline-mixin
