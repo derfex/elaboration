@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, type OnInit, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { GuestQuestionnaireSectionMediatorService } from '~be/guest-questionnaire/guest-questionnaire-section-mediator.service'
 import { GoogleFormComponent } from '~ui/guest-questionnaire/google-form/google-form.component'
 import type { GuestQuestionnaireSectionParameters } from '~ui/guest-questionnaire/guest-questionnaire-section/guest-questionnaire-section.type'
 
@@ -10,6 +12,9 @@ import type { GuestQuestionnaireSectionParameters } from '~ui/guest-questionnair
   templateUrl: './guest-questionnaire-section.component.html',
 })
 export class GuestQuestionnaireSectionComponent implements OnInit {
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #guestQuestionnaireSectionMediatorService = inject(GuestQuestionnaireSectionMediatorService)
+
   protected readonly sectionParameters = signal<GuestQuestionnaireSectionParameters>({
     descriptionParagraphList: [],
     googleFormHeight: 0,
@@ -24,5 +29,24 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
       googleFormURL: 'NoData',
       titleText: 'No data',
     })
+
+    this.#guestQuestionnaireSectionMediatorService
+      .readSectionParameters()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe(
+        ({
+          descriptionParagraphList,
+          googleFormHeight,
+          googleFormURL,
+          titleText,
+        }: GuestQuestionnaireSectionParameters): void => {
+          this.sectionParameters.set({
+            descriptionParagraphList,
+            googleFormHeight,
+            googleFormURL,
+            titleText,
+          })
+        },
+      )
   }
 }
