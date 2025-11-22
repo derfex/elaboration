@@ -11,11 +11,19 @@ import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-sec
 })
 export class AppHeroSectionComponent implements OnInit {
   protected readonly sectionParameters = signal<AppHeroSectionParameters>({
+    appealText: 'No data.',
+    authorsSignatureLines: [],
+    eventDateCaptionText: 'No data',
+    eventDateValueText: 'No data',
     titleText: 'No data',
   })
 
   public ngOnInit(): void {
     this.sectionParameters.set({
+      appealText: 'No data.',
+      authorsSignatureLines: [],
+      eventDateCaptionText: 'No data',
+      eventDateValueText: 'No data',
       titleText: 'No data',
     })
   }

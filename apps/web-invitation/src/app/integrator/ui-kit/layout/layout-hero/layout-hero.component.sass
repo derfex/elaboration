@@ -1,11 +1,75 @@
 @use '../../ui-kit'
 @use '../layout'
 
+@mixin _app-gradient-mixin
+  padding-inline-end: .25em // Reason: it needs more space because of the cursive `font-family`.
+  background-clip: text
+  background-image: var(--app-gradient-diagonal)
+  color: #0000
+
+
 :host
   display: block
 
 .app-hero
   @include layout.app-layout_paddings-mixin
 
+
+.app-letter
+  display: grid
+  gap: 20px 100px
+
+@media (layout.$app-device-width-medium <= width)
+  .app-letter
+    grid-template-areas: 'title title' 'appeal event-date' 'appeal authors-signature'
+
+  .app-appeal
+    grid-area: appeal
+
+  .app-authors-signature
+    grid-area: authors-signature
+
+  .app-event-date-container
+    grid-area: event-date
+
+  .app-title
+    grid-area: title
+
+
+.app-appeal
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-authors-signature
+  @include layout.app-layout_flex-column-mixin(4px)
+  @include ui-kit.app-ui-kit_p-mixin
+
+  text-align: end
+
+.app-event-date
+  @include ui-kit.app-ui-kit_h1-mixin
+  @include _app-gradient-mixin
+
+  display: block table
+  font-size: 28px
+  font-weight: 900
+
+  @media (layout.$app-device-width-small <= width)
+    font-size: 40px
+
+.app-event-date-container
+  @include ui-kit.app-ui-kit_p-mixin
+
 .app-title
   @include ui-kit.app-ui-kit_h1-mixin
+
+  font-size: 36px
+  font-weight: 900
+
+  @media (layout.$app-device-width-small <= width)
+    font-size: 56px
+
+  @media (layout.$app-device-width-medium <= width)
+    font-size: 100px
+
+.app-title__highlight
+  @include _app-gradient-mixin
