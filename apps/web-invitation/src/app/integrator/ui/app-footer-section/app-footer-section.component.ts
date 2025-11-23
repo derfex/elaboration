@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, type OnInit, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { AppSectionsMediatorService } from '~be/app/app-sections-mediator.service'
 import { LayoutFooterComponent } from '~ui-kit/layout/layout-footer/layout-footer.component'
 import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-footer-section.type'
 
@@ -10,13 +12,19 @@ import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-foot
   templateUrl: './app-footer-section.component.html',
 })
 export class AppFooterSectionComponent implements OnInit {
+  readonly #appSectionsMediatorService = inject(AppSectionsMediatorService)
+  readonly #destroyRef = inject(DestroyRef)
+
   protected readonly sectionParameters = signal<AppFooterSectionParameters>({
     carefullyCraftedWithText: 'No data',
   })
 
   public ngOnInit(): void {
-    this.sectionParameters.set({
-      carefullyCraftedWithText: 'No data',
-    })
+    this.#appSectionsMediatorService
+      .readAppFooterSectionParameters()
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((parameters: AppFooterSectionParameters): void => {
+        this.sectionParameters.set(parameters)
+      })
   }
 }
