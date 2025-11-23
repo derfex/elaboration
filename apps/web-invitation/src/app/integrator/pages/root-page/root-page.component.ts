@@ -3,6 +3,7 @@ import { AppFooterSectionComponent } from '~ui/app-footer-section/app-footer-sec
 import { AppHeroSectionComponent } from '~ui/app-hero-section/app-hero-section.component'
 import { EventDetailsSectionComponent } from '~ui/event-details/event-details-section/event-details-section.component'
 import { EventLocationSectionComponent } from '~ui/event-location/event-location-section/event-location-section.component'
+import { EventOrganizationSectionComponent } from '~ui/event-organization/event-organization-section/event-organization-section.component'
 import { EventProgramSectionComponent } from '~ui/event-program/event-program-section/event-program-section.component'
 import { GuestQuestionnaireSectionComponent } from '~ui/guest-questionnaire/guest-questionnaire-section/guest-questionnaire-section.component'
 
@@ -14,6 +15,7 @@ import { GuestQuestionnaireSectionComponent } from '~ui/guest-questionnaire/gues
     AppHeroSectionComponent,
     EventDetailsSectionComponent,
     EventLocationSectionComponent,
+    EventOrganizationSectionComponent,
     EventProgramSectionComponent,
     GuestQuestionnaireSectionComponent,
   ],
