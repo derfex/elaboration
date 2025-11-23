@@ -13,7 +13,7 @@ export class GuestQuestionnaireSectionMediatorService {
 
   #readSectionParametersAsUncompiled(): Observable<GuestQuestionnaireSectionParametersForBE> {
     return of({
-      descriptionParagraphList: [],
+      descriptionParagraphs: [],
       googleFormHeight: 0,
       googleFormURL: 'NoData',
       titleText: 'No data',

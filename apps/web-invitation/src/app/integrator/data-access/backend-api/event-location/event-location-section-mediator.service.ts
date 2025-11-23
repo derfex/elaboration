@@ -13,10 +13,10 @@ export class EventLocationSectionMediatorService {
 
   #readSectionParametersAsUncompiled(): Observable<EventLocationSectionParametersForBE> {
     return of({
-      descriptionParagraphList: ['No data', 'No data', 'No data'],
+      descriptionParagraphs: [],
       locationURL: 'NoData',
       titleText: 'No data',
-      transferParagraphList: ['No data', 'No data'],
+      transferParagraphs: [],
     })
   }
 }

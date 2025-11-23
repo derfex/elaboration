@@ -4,7 +4,7 @@
   </div>
   <div class="app-section__wrapper">
     <div class="app-description">
-      @for (descriptionText of sectionParameters().descriptionParagraphList; track descriptionText) {
+      @for (descriptionText of sectionParameters().descriptionParagraphs; track descriptionText) {
         <p class="app-description__paragraph">{{descriptionText}}</p>
       }
     </div>
@@ -14,7 +14,7 @@
   </div>
   <div class="app-section__wrapper">
     <div class="app-transfer">
-      @for (transferText of sectionParameters().transferParagraphList; track transferText) {
+      @for (transferText of sectionParameters().transferParagraphs; track transferText) {
         <p class="app-transfer__paragraph">{{transferText}}</p>
       }
     </div>

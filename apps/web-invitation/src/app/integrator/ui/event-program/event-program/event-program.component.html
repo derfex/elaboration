@@ -4,7 +4,7 @@
     @for (stage of stages(); track stage.codename) {
       <li>
         <app-event-program-stage-card
-          [descriptionParagraphList]="stage.descriptionParagraphList"
+          [descriptionParagraphs]="stage.descriptionParagraphs"
           [periodFrom]="stage.periodFrom"
           [title]="stage.title"
         />

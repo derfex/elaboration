@@ -16,7 +16,7 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
   readonly #guestQuestionnaireSectionMediatorService = inject(GuestQuestionnaireSectionMediatorService)
 
   protected readonly sectionParameters = signal<GuestQuestionnaireSectionParameters>({
-    descriptionParagraphList: [],
+    descriptionParagraphs: [],
     googleFormHeight: 0,
     googleFormURL: 'NoData',
     titleText: 'No data',
@@ -24,7 +24,7 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
 
   public ngOnInit(): void {
     this.sectionParameters.set({
-      descriptionParagraphList: [],
+      descriptionParagraphs: [],
       googleFormHeight: 0,
       googleFormURL: 'NoData',
       titleText: 'No data',
@@ -35,13 +35,13 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe(
         ({
-          descriptionParagraphList,
+          descriptionParagraphs,
           googleFormHeight,
           googleFormURL,
           titleText,
         }: GuestQuestionnaireSectionParameters): void => {
           this.sectionParameters.set({
-            descriptionParagraphList,
+            descriptionParagraphs,
             googleFormHeight,
             googleFormURL,
             titleText,

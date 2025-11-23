@@ -1,4 +1,4 @@
 export interface EventDetailsSectionParametersForBE {
-  readonly descriptionParagraphList: readonly string[]
+  readonly descriptionParagraphs: readonly string[]
   readonly titleText: string
 }

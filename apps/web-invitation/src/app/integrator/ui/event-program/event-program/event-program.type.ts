@@ -5,7 +5,7 @@ import type {
 
 export interface EventProgramStagesListItem {
   readonly codename: EventProgramStageCodename
-  readonly descriptionParagraphList: EventProgramStage['descriptionParagraphList']
+  readonly descriptionParagraphs: EventProgramStage['descriptionParagraphs']
   readonly periodFrom: EventProgramStage['periodFrom']
   readonly title: EventProgramStage['title']
 }

@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   templateUrl: './event-program-stage-card.component.html',
 })
 export class EventProgramStageCardComponent {
-  public readonly descriptionParagraphList = input.required<readonly string[]>()
+  public readonly descriptionParagraphs = input.required<readonly string[]>()
   public readonly periodFrom = input.required<string>()
   public readonly title = input.required<string>()
 }

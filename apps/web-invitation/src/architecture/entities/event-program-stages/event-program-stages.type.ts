@@ -2,7 +2,7 @@ import type { Brand } from '../../brand-type.util'
 
 export interface EventProgramStage {
   readonly codename: EventProgramStageCodename
-  readonly descriptionParagraphList: readonly string[]
+  readonly descriptionParagraphs: readonly string[]
   readonly periodFrom: string
   readonly title: string
 }

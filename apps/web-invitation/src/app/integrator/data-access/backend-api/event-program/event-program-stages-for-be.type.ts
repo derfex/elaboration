@@ -2,7 +2,7 @@ import type { EventProgramStageCodename } from '~entities/event-program-stages/e
 
 export interface EventProgramStageForBE {
   readonly codename: EventProgramStageCodename
-  readonly descriptionParagraphList: readonly string[]
+  readonly descriptionParagraphs: readonly string[]
   readonly periodFrom: string
   readonly title: string
 }

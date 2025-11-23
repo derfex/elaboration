@@ -3,7 +3,7 @@
     <div class="app-text-container">
       <h2 class="app-title">{{sectionParameters().titleText}}</h2>
       <div class="app-description">
-        @for (description of sectionParameters().descriptionParagraphList; track description) {
+        @for (description of sectionParameters().descriptionParagraphs; track description) {
           <p class="app-description__paragraph">{{description}}</p>
         }
       </div>
