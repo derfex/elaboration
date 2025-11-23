@@ -1,0 +1,32 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/reset'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-event-organization
+  @include layout.app-layout_flex-column-mixin(16px)
+  @include layout.app-layout_paddings-mixin
+
+
+.app-contact
+  @include reset.app-reset_a-mixin
+  @include ui-kit.app-ui-kit_button-secondary-mixin
+
+.app-contacts
+  @include reset.app-reset_ul-mixin
+
+  display: grid
+  grid-auto-flow: dense
+  grid-gap: 16px
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+
+.app-paragraphs
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-paragraphs__item
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin

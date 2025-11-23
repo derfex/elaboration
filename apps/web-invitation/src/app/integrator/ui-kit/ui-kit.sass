@@ -17,6 +17,21 @@
   @include typography.app-typography_p-mixin
 
 
+@mixin app-ui-kit_button-secondary-mixin
+  display: block
+  border: 0
+  padding: 8px 20px
+  line-height: initial
+  text-align: center
+  background: var(--app-button-secondary-bg-color)
+  color: var(--app-button-secondary-color)
+
+  @include transitions.app-transitions_transition-mixin(background)
+
+  &:hover
+    background: var(--app-button-secondary-hover-bg-color)
+
+
 @mixin app-ui-kit_glass-mixin
   // Inspired by https://habr.com/ru/articles/861290
 

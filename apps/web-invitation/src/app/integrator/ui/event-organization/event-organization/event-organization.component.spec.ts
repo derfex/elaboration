@@ -1,0 +1,19 @@
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
+import { EventOrganizationComponent } from './event-organization.component'
+
+describe('EventOrganizationComponent', (): void => {
+  let component: EventOrganizationComponent
+  let fixture: ComponentFixture<EventOrganizationComponent>
+
+  beforeEach(async (): Promise<void> => {
+    await TestBed.configureTestingModule({}).compileComponents()
+
+    fixture = TestBed.createComponent(EventOrganizationComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
+
+  it('should create', (): void => {
+    expect(component).toBeTruthy()
+  })
+})
