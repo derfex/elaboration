@@ -1,5 +1,9 @@
-@mixin app-fonts_heading-mixin
-  font-family: 'Caveat', cursive
+@mixin app-fonts_cursive-mixin
+  font-family: 'Shantell Sans', cursive
   font-optical-sizing: auto
   font-style: normal
-  font-weight: 400
+  font-variation-settings: 'BNCE' 0, 'INFM' 0, 'SPAC' 0
+  font-weight: 700
+
+@mixin app-fonts_heading-mixin
+  @include app-fonts_cursive-mixin
