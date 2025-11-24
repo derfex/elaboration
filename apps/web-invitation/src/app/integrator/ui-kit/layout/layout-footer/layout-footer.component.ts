@@ -7,5 +7,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   templateUrl: './layout-footer.component.html',
 })
 export class LayoutFooterComponent {
+  public readonly appealText = input.required<string>()
+  public readonly copyrightText = input.required<string>()
   public readonly craftedWithText = input.required<string>()
 }
