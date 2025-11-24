@@ -5,16 +5,16 @@
 
   :root
     --app-color-blue-current: #015185
-    --app-color-blue-extra: #5990c0
     --app-color-light-cream: #fcedd3
-    --app-color-sandy-amber: #cea273
-    --app-color-silent-navy: #102a6b
 
     --app-color-cyan: #00f0ff
 
     --app-color-black: #020202
     --app-color-gray-light: #eee
     --app-color-white: #fefefe
+
+    --app-color-cyan--dark-50: color-mix(in oklch, var(--app-color-cyan), var(--app-color-black))
+    --app-color-cyan--dark-75: color-mix(in oklch, var(--app-color-cyan), var(--app-color-black) 75%)
 
   // ## Semantic
 
@@ -23,16 +23,15 @@
     --app-heading-color: var(--app-color-cyan)
     --app-surface-1-color: var(--app-color-black)
     --app-surface-2-color: var(--app-color-blue-current)
-    --app-surface-3-color: var(--app-color-blue-extra)
     --app-surface-4-color: var(--app-color-gray-light)
     --app-text-color: var(--app-color-white)
 
   // ## Component
 
   :root
-    --app-button-secondary-bg-color: var(--app-color-light-cream)
-    --app-button-secondary-color: var(--app-color-blue-current)
-    --app-button-secondary-hover-bg-color: var(--app-surface-3-color)
+    --app-button-secondary-bg-color: var(--app-color-cyan--dark-50)
+    --app-button-secondary-color: var(--app-color-white)
+    --app-button-secondary-hover-bg-color: var(--app-color-cyan--dark-75)
 
     --app-accent-gradient-color-from: var(--app-color-accent)
     --app-accent-gradient-color-to: var(--app-color-light-cream)
