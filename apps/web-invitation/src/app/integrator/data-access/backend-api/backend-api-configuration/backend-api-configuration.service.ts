@@ -16,7 +16,10 @@ export class BackendAPIConfigurationService {
   readonly #relativeURLCodenamesMap: ReadonlyMap<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename> = new Map<
     BackendAPIRelativeURLCodenameForBE,
     BackendAPIURLCodename
-  >([['eventDetailsSectionRelativeURL', 'sections/eventDetails']])
+  >([
+    ['eventDaySectionRelativeURL', 'sections/eventDay'],
+    ['eventDetailsSectionRelativeURL', 'sections/eventDetails'],
+  ])
 
   readonly #urlMap$: Observable<ReadonlyMap<BackendAPIURLCodename, string>> = this.#readConfiguration(
     inject(HttpClient),
