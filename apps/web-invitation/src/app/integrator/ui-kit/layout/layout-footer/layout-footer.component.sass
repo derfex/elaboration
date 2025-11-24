@@ -1,3 +1,4 @@
+@use '../../identity/fonts'
 @use '../../ui-kit'
 @use '../layout'
 
@@ -11,6 +12,7 @@
 
 .app-highlight
   @include ui-kit.app-ui-kit_background-clip-mixin(var(--app-accent-gradient-diagonal))
+  @include fonts.app-fonts_cursive-mixin
 
   line-height: initial
 
