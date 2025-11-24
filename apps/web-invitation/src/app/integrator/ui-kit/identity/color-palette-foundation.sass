@@ -10,18 +10,22 @@
     --app-color-sandy-amber: #cea273
     --app-color-silent-navy: #102a6b
 
+    --app-color-cyan: #00f0ff
+
+    --app-color-black: #020202
     --app-color-gray-light: #eee
+    --app-color-white: #fefefe
 
   // ## Semantic
 
   :root
-    --app-color-accent: var(--app-color-sandy-amber)
-    --app-heading-color: var(--app-color-light-cream)
-    --app-surface-1-color: var(--app-color-silent-navy)
+    --app-color-accent: var(--app-color-cyan)
+    --app-heading-color: var(--app-color-cyan)
+    --app-surface-1-color: var(--app-color-black)
     --app-surface-2-color: var(--app-color-blue-current)
     --app-surface-3-color: var(--app-color-blue-extra)
     --app-surface-4-color: var(--app-color-gray-light)
-    --app-text-color: #fff
+    --app-text-color: var(--app-color-white)
 
   // ## Component
 
@@ -33,8 +37,3 @@
     --app-accent-gradient-color-from: var(--app-color-accent)
     --app-accent-gradient-color-to: var(--app-color-light-cream)
     --app-accent-gradient-diagonal: linear-gradient(135deg, var(--app-accent-gradient-color-from) 0%, var(--app-accent-gradient-color-to) 100%)
-
-    --app-sea-gradient-color-from: var(--app-color-accent)
-    --app-sea-gradient-color-middle: var(--app-color-gray-light)
-    --app-sea-gradient-color-to: var(--app-surface-3-color)
-    --app-sea-gradient-diagonal: linear-gradient(3deg, var(--app-sea-gradient-color-from) 0%, var(--app-sea-gradient-color-from) 36%, var(--app-sea-gradient-color-middle) 38%, var(--app-sea-gradient-color-to) 40%, var(--app-sea-gradient-color-to) 100%)

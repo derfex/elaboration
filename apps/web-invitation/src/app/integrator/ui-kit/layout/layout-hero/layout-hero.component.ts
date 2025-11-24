@@ -7,9 +7,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   templateUrl: './layout-hero.component.html',
 })
 export class LayoutHeroComponent {
-  public readonly appealText = input.required<string>()
-  public readonly authorsSignatureLines = input.required<readonly string[]>()
-  public readonly eventDateCaptionText = input.required<string>()
-  public readonly eventDateValueText = input.required<string>()
-  public readonly titleText = input.required<string>()
+  public readonly phraseText = input.required<string>()
 }

@@ -16,11 +16,7 @@ export class AppHeroSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
 
   protected readonly sectionParameters = signal<AppHeroSectionParameters>({
-    appealText: 'No data.',
-    authorsSignatureLines: [],
-    eventDateCaptionText: 'No data',
-    eventDateValueText: 'No data',
-    titleText: 'No data',
+    phraseText: 'No data.',
   })
 
   public ngOnInit(): void {

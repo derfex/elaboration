@@ -1,17 +1,3 @@
 <section class="app-hero">
-  <div class="app-letter">
-    <h1 class="app-title">
-      <span class="app-title__highlight">{{titleText()}}</span>
-    </h1>
-    <p class="app-appeal">{{appealText()}}</p>
-    <p class="app-event-date-container">
-      {{eventDateCaptionText()}}
-      <strong class="app-event-date">{{eventDateValueText()}}</strong>
-    </p>
-    <p class="app-authors-signature">
-      @for (line of authorsSignatureLines(); track line) {
-        <span>{{line}}</span>
-      }
-    </p>
-  </div>
+  <p class="app-phrase">{{phraseText()}}</p>
 </section>
