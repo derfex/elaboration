@@ -54,7 +54,7 @@ export class BackendAPIConfigurationService {
   }
 
   #readConfiguration(httpClient: HttpClient): Observable<BackendAPIConfigurationForBE> {
-    const backendAPIConfigurationURL = 'data/settings/backend-api-configuration.json'
+    const backendAPIConfigurationURL = prepareWebInvitationDataBEAPIURL('data/settings/backend-api-configuration.json')
     return httpClient.get<BackendAPIConfigurationForBE>(backendAPIConfigurationURL)
   }
 }
