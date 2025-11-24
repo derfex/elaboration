@@ -5,6 +5,8 @@ export interface AppSectionsParametersForBE {
 
 
 interface AppFooterSectionParametersForBE {
+  readonly appealText: string
+  readonly copyrightText: string
   readonly craftedWithText: string
 }
 

@@ -16,6 +16,8 @@ export class AppFooterSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
 
   protected readonly sectionParameters = signal<AppFooterSectionParameters>({
+    appealText: 'No data.',
+    copyrightText: 'No data',
     craftedWithText: 'No data',
   })
 

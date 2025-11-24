@@ -23,10 +23,12 @@ export class AppSectionsMediatorService {
   #readSectionsParametersAsUncompiled(): Observable<AppSectionsParametersForBE> {
     return of({
       footer: {
+        appealText: 'No data.',
+        copyrightText: 'No data',
         craftedWithText: 'No data',
       },
       hero: {
-        appealText: 'No data',
+        appealText: 'No data.',
         authorsSignatureLines: [],
         eventDateCaptionText: 'No data',
         eventDateValueText: 'No data',
