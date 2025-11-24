@@ -2,10 +2,10 @@
 @use '../layout'
 
 @mixin _app-gradient-mixin
-  padding-inline-end: .25em // Reason: it needs more space because of the cursive `font-family`.
-  background-clip: text
-  background-image: var(--app-sea-gradient-diagonal)
-  color: #0000
+  // Reason of `padding-inline-end`: it needs more space because of the cursive `font-family`.
+  padding-inline-end: .25em
+
+  @include ui-kit.app-ui-kit_background-clip-mixin(var(--app-sea-gradient-diagonal))
 
 
 :host

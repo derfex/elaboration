@@ -33,6 +33,11 @@
     background: var(--app-button-secondary-hover-bg-color)
 
 
+@mixin app-ui-kit_background-clip-mixin($_bg-image)
+  background-clip: text
+  background-image: $_bg-image
+  color: #0000
+
 @mixin app-ui-kit_glass-mixin
   // Inspired by https://habr.com/ru/articles/861290
 
