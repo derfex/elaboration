@@ -2,10 +2,6 @@
 @use '../../ui-kit'
 @use '../layout'
 
-@mixin _app-neon-mixin
-  text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)
-
-
 :host
   display: block
 
@@ -15,7 +11,7 @@
 
 .app-phrase
   @include ui-kit.app-ui-kit_p-mixin
-  @include _app-neon-mixin
+  @include ui-kit.app-ui-kit_neon-mixin
   @include fonts.app-fonts_geometric-mixin
 
   font-size: 20px

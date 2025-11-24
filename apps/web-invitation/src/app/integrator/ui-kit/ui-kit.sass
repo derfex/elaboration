@@ -33,10 +33,11 @@
     background: var(--app-button-secondary-hover-bg-color)
 
 
-@mixin app-ui-kit_background-clip-mixin($_bg-image)
-  background-clip: text
-  background-image: $_bg-image
-  color: #0000
+// Note: unused.
+// @mixin app-ui-kit_background-clip-mixin($_bg-image)
+//   background-clip: text
+//   background-image: $_bg-image
+//   color: #0000
 
 @mixin app-ui-kit_glass-mixin
   // Inspired by https://habr.com/ru/articles/861290
@@ -54,6 +55,8 @@
 
   $_box-shadow: $_effect-b-r, $_effect-t-l, $_effect-shadow, $_effect-short-subsurface, $_effect-long-subsurface
 
-  // Uncomment `backdrop-filter: blur(10px)` when should cover a picture.
-  // backdrop-filter: blur(10px)
+  backdrop-filter: blur(10px)
   box-shadow: $_box-shadow
+
+@mixin app-ui-kit_neon-mixin
+  text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)

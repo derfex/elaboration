@@ -1,10 +1,6 @@
 @use '../../../ui-kit/layout/layout'
 @use '../../../ui-kit/ui-kit'
 
-@mixin _app-neon-mixin
-  text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)
-
-
 :host
   display: block
 
@@ -44,7 +40,7 @@
 
 .app-event-date
   @include ui-kit.app-ui-kit_h1-mixin
-  @include _app-neon-mixin
+  @include ui-kit.app-ui-kit_neon-mixin
 
   display: block table
   font-size: 28px
@@ -75,4 +71,4 @@
     font-size: 100px
 
 .app-title__highlight
-  @include _app-neon-mixin
+  @include ui-kit.app-ui-kit_neon-mixin
