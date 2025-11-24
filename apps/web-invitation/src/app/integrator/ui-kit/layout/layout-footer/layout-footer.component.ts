@@ -7,5 +7,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   templateUrl: './layout-footer.component.html',
 })
 export class LayoutFooterComponent {
-  public readonly carefullyCraftedWithText = input.required<string>()
+  public readonly craftedWithText = input.required<string>()
 }

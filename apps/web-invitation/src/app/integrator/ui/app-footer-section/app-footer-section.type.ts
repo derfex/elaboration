@@ -1,3 +1,3 @@
 export interface AppFooterSectionParameters {
-  readonly carefullyCraftedWithText: string
+  readonly craftedWithText: string
 }

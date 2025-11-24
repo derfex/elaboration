@@ -5,7 +5,7 @@ export interface AppSectionsParametersForBE {
 
 
 interface AppFooterSectionParametersForBE {
-  readonly carefullyCraftedWithText: string
+  readonly craftedWithText: string
 }
 
 interface AppHeroSectionParametersForBE {

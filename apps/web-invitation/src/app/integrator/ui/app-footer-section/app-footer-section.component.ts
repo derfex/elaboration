@@ -16,7 +16,7 @@ export class AppFooterSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
 
   protected readonly sectionParameters = signal<AppFooterSectionParameters>({
-    carefullyCraftedWithText: 'No data',
+    craftedWithText: 'No data',
   })
 
   public ngOnInit(): void {
