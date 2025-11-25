@@ -16,8 +16,11 @@ export class AppSectionsMediatorService {
       map<AppSectionsParametersForBE, AppFooterSectionParameters>(({ footer }) => footer),
     )
   }
+
   public readAppHeroSectionParameters(): Observable<AppHeroSectionParameters> {
-    return this.#sectionsParameters$.pipe(map<AppSectionsParametersForBE, AppHeroSectionParameters>(({ hero }) => hero))
+    return this.#sectionsParameters$.pipe(
+      map<AppSectionsParametersForBE, AppHeroSectionParameters>(({ hero: { phraseText } }) => ({ phraseText })),
+    )
   }
 
   #readSectionsParametersAsUncompiled(): Observable<AppSectionsParametersForBE> {
@@ -28,11 +31,8 @@ export class AppSectionsMediatorService {
         craftedWithText: 'No data',
       },
       hero: {
-        appealText: 'No data.',
-        authorsSignatureLines: [],
-        eventDateCaptionText: 'No data',
-        eventDateValueText: 'No data',
-        titleText: 'No data',
+        illustrationImageRelativeURL: 'NoData',
+        phraseText: 'No data.',
       },
     })
   }

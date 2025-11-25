@@ -11,5 +11,6 @@ interface AppFooterSectionParametersForBE {
 }
 
 interface AppHeroSectionParametersForBE {
+  readonly illustrationImageRelativeURL: string
   readonly phraseText: string
 }
