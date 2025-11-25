@@ -16,6 +16,10 @@ export class AppHeroSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
 
   protected readonly sectionParameters = signal<AppHeroSectionParameters>({
+    illustrationImageAltText: 'No data',
+    illustrationImageHeight: 0,
+    illustrationImageURL: 'NoData',
+    illustrationImageWidth: 0,
     phraseText: 'No data.',
   })
 
