@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, si
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { AppSectionsMediatorService } from '~be/app/app-sections-mediator.service'
 import { LayoutHeroComponent } from '~ui-kit/layout/layout-hero/layout-hero.component'
-import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-section.type'
+import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-section/app-hero-section.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

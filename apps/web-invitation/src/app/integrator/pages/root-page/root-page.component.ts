@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { AppFooterSectionComponent } from '~ui/app-footer-section/app-footer-section.component'
-import { AppHeroSectionComponent } from '~ui/app-hero-section/app-hero-section.component'
+import { AppHeroSectionComponent } from '~ui/app-hero-section/app-hero-section/app-hero-section.component'
 import { EventDaySectionComponent } from '~ui/event-day/event-day-section/event-day-section.component'
 import { EventDetailsSectionComponent } from '~ui/event-details/event-details-section/event-details-section.component'
 import { EventLocationSectionComponent } from '~ui/event-location/event-location-section/event-location-section.component'
