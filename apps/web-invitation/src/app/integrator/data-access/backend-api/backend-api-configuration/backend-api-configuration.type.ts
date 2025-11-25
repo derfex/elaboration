@@ -4,6 +4,7 @@ export interface BackendAPIConfigurationForBE {
   readonly eventDetailsSectionRelativeURL: string
   readonly eventLocationSectionRelativeURL: string
   readonly eventProgramSectionRelativeURL: string
+  readonly eventOrganizationSectionRelativeURL: string
   readonly guestQuestionnaireSectionRelativeURL: string
 }
 
