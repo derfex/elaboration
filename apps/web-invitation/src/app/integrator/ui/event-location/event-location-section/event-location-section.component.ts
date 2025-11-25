@@ -17,6 +17,10 @@ export class EventLocationSectionComponent implements OnInit {
 
   protected readonly sectionParameters = signal<EventLocationSectionParameters>({
     descriptionParagraphs: [],
+    illustrationImageAltText: 'No data',
+    illustrationImageHeight: 0,
+    illustrationImageURL: 'NoData',
+    illustrationImageWidth: 0,
     locationURL: 'NoData',
     titleText: 'No data',
     transferParagraphs: [],
@@ -27,18 +31,8 @@ export class EventLocationSectionComponent implements OnInit {
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe(
-        ({
-          descriptionParagraphs,
-          locationURL,
-          titleText,
-          transferParagraphs,
-        }: EventLocationSectionParameters): void => {
-          this.sectionParameters.set({
-            descriptionParagraphs,
-            locationURL,
-            titleText,
-            transferParagraphs,
-          })
+        (parameters: EventLocationSectionParameters): void => {
+          this.sectionParameters.set(parameters)
         },
       )
   }

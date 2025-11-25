@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { type Observable, switchMap } from 'rxjs'
+import { map, type Observable, switchMap } from 'rxjs'
+import { prepareWebInvitationDataCDNURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import type { EventLocationSectionParametersForBE } from '~be/event-location/event-location-section-for-be.type'
 import type { EventLocationSectionParameters } from '~ui/event-location/event-location-section/event-location-section.type'
@@ -13,7 +14,33 @@ export class EventLocationSectionMediatorService {
   readonly #httpClient = inject(HttpClient)
 
   public readSectionParameters(): Observable<EventLocationSectionParameters> {
-    return this.#readSectionParametersAsUncompiled()
+    return this.#readSectionParametersAsUncompiled().pipe(
+      map<EventLocationSectionParametersForBE, EventLocationSectionParameters>((parameters) =>
+        this.#convertSectionParameters(parameters),
+      ),
+    )
+  }
+
+  #convertSectionParameters({
+    descriptionParagraphs,
+    illustrationImageAltText,
+    illustrationImageHeight,
+    illustrationImageRelativeURL,
+    illustrationImageWidth,
+    locationURL,
+    titleText,
+    transferParagraphs,
+  }: EventLocationSectionParametersForBE): EventLocationSectionParameters {
+    return {
+      descriptionParagraphs,
+      illustrationImageAltText,
+      illustrationImageHeight,
+      illustrationImageURL: prepareWebInvitationDataCDNURL(illustrationImageRelativeURL),
+      illustrationImageWidth,
+      locationURL,
+      titleText,
+      transferParagraphs,
+    }
   }
 
   #readSectionParametersAsUncompiled(): Observable<EventLocationSectionParametersForBE> {
