@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, si
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { AppSectionsMediatorService } from '~be/app/app-sections-mediator.service'
 import { LayoutFooterComponent } from '~ui-kit/layout/layout-footer/layout-footer.component'
-import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-footer-section.type'
+import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-footer-section/app-footer-section.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
