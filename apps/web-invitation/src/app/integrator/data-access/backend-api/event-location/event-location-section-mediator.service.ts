@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core'
-import { type Observable, of } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
+import { inject, Injectable } from '@angular/core'
+import { type Observable, switchMap } from 'rxjs'
+import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import type { EventLocationSectionParametersForBE } from '~be/event-location/event-location-section-for-be.type'
 import type { EventLocationSectionParameters } from '~ui/event-location/event-location-section/event-location-section.type'
 
@@ -7,16 +9,26 @@ import type { EventLocationSectionParameters } from '~ui/event-location/event-lo
   providedIn: 'root',
 })
 export class EventLocationSectionMediatorService {
+  readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
+  readonly #httpClient = inject(HttpClient)
+
   public readSectionParameters(): Observable<EventLocationSectionParameters> {
     return this.#readSectionParametersAsUncompiled()
   }
 
   #readSectionParametersAsUncompiled(): Observable<EventLocationSectionParametersForBE> {
-    return of({
-      descriptionParagraphs: [],
-      locationURL: 'NoData',
-      titleText: 'No data',
-      transferParagraphs: [],
-    })
+    return this.#readURLForUncompiled().pipe(
+      switchMap((url: string): Observable<EventLocationSectionParametersForBE> => {
+        return this.#readSectionParametersAsUncompiledByURL(url)
+      }),
+    )
+  }
+
+  #readSectionParametersAsUncompiledByURL(url: string): Observable<EventLocationSectionParametersForBE> {
+    return this.#httpClient.get<EventLocationSectionParametersForBE>(url)
+  }
+
+  #readURLForUncompiled(): Observable<string> {
+    return this.#backendAPIConfigurationService.readURL('sections/eventLocation')
   }
 }

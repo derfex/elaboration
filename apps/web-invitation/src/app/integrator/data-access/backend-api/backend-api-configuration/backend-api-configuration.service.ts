@@ -20,6 +20,7 @@ export class BackendAPIConfigurationService {
     ['appSectionsRelativeURL', 'sections/app'],
     ['eventDaySectionRelativeURL', 'sections/eventDay'],
     ['eventDetailsSectionRelativeURL', 'sections/eventDetails'],
+    ['eventLocationSectionRelativeURL', 'sections/eventLocation'],
   ])
 
   readonly #urlMap$: Observable<ReadonlyMap<BackendAPIURLCodename, string>> = this.#readConfiguration(
