@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core'
-import { map, type Observable, of, shareReplay } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
+import { inject, Injectable } from '@angular/core'
+import { map, type Observable, shareReplay, switchMap } from 'rxjs'
 import type { AppSectionsParametersForBE } from '~be/app/app-sections-for-be.type'
 import { prepareWebInvitationDataCDNURL } from '~be/backend-api-configuration/backend-api-configuration'
+import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-footer-section/app-footer-section.type'
 import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-section/app-hero-section.type'
 
@@ -9,6 +11,9 @@ import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-sec
   providedIn: 'root',
 })
 export class AppSectionsMediatorService {
+  readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
+  readonly #httpClient = inject(HttpClient)
+
   readonly #sectionsParameters$: Observable<AppSectionsParametersForBE> =
     this.#readSectionsParametersAsUncompiled().pipe(shareReplay(1))
 
@@ -41,19 +46,18 @@ export class AppSectionsMediatorService {
   }
 
   #readSectionsParametersAsUncompiled(): Observable<AppSectionsParametersForBE> {
-    return of({
-      footer: {
-        appealText: 'No data.',
-        copyrightText: 'No data',
-        craftedWithText: 'No data',
-      },
-      hero: {
-        illustrationImageAltText: 'No data',
-        illustrationImageHeight: 0,
-        illustrationImageRelativeURL: 'NoData',
-        illustrationImageWidth: 0,
-        phraseText: 'No data.',
-      },
-    })
+    return this.#readURLForUncompiled().pipe(
+      switchMap((url: string): Observable<AppSectionsParametersForBE> => {
+        return this.#readSectionParametersAsUncompiledByURL(url)
+      }),
+    )
+  }
+
+  #readSectionParametersAsUncompiledByURL(url: string): Observable<AppSectionsParametersForBE> {
+    return this.#httpClient.get<AppSectionsParametersForBE>(url)
+  }
+
+  #readURLForUncompiled(): Observable<string> {
+    return this.#backendAPIConfigurationService.readURL('sections/app')
   }
 }

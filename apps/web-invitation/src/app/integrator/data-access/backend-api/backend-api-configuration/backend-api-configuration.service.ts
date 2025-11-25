@@ -17,6 +17,7 @@ export class BackendAPIConfigurationService {
     BackendAPIRelativeURLCodenameForBE,
     BackendAPIURLCodename
   >([
+    ['appSectionsRelativeURL', 'sections/app'],
     ['eventDaySectionRelativeURL', 'sections/eventDay'],
     ['eventDetailsSectionRelativeURL', 'sections/eventDetails'],
   ])
