@@ -9,7 +9,6 @@ export interface EventProgramStageForBE {
 
 export interface EventProgramSectionParametersForBE {
   readonly list: {
-    readonly emptyStateText: string
     readonly sourceRelativeURL: string
   }
   readonly titleText: string

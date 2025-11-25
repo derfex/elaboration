@@ -3,6 +3,7 @@ export interface BackendAPIConfigurationForBE {
   readonly eventDaySectionRelativeURL: string
   readonly eventDetailsSectionRelativeURL: string
   readonly eventLocationSectionRelativeURL: string
+  readonly eventProgramSectionRelativeURL: string
 }
 
 export type BackendAPIRelativeURLCodenameForBE = keyof BackendAPIConfigurationForBE
