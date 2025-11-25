@@ -15,3 +15,4 @@ export type BackendAPIURLCodename =
   | 'sections/eventLocation'
   | 'sections/eventOrganization'
   | 'sections/eventProgram'
+  | 'sections/guestQuestionnaire'
