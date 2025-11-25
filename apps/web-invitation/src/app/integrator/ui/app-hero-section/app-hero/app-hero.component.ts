@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-layout-hero',
-  styleUrl: './layout-hero.component.sass',
-  templateUrl: './layout-hero.component.html',
+  selector: 'app-hero',
+  styleUrl: './app-hero.component.sass',
+  templateUrl: './app-hero.component.html',
 })
-export class LayoutHeroComponent {
+export class AppHeroComponent {
   public readonly phraseText = input.required<string>()
 }

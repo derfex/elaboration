@@ -10,7 +10,7 @@ describe('AppHeroSectionComponent', (): void => {
     await TestBed.configureTestingModule({
       imports: [
         // Stubs.
-        LayoutHeroStubComponent,
+        AppHeroStubComponent,
       ],
     }).compileComponents()
 
@@ -24,5 +24,5 @@ describe('AppHeroSectionComponent', (): void => {
   })
 })
 
-@Component({ selector: 'app-layout-hero', template: '' })
-class LayoutHeroStubComponent {}
+@Component({ selector: 'app-hero', template: '' })
+class AppHeroStubComponent {}
