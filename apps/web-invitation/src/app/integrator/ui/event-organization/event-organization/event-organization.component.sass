@@ -16,11 +16,7 @@
 
 .app-contacts
   @include reset.app-reset_ul-mixin
-
-  display: grid
-  grid-auto-flow: dense
-  grid-gap: 16px
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(260px, 16px)
 
 .app-paragraphs
   @include layout.app-layout_flex-column-mixin(8px)
