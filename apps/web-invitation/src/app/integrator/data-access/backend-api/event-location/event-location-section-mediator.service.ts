@@ -29,6 +29,7 @@ export class EventLocationSectionMediatorService {
     illustrationImageRelativeURL,
     illustrationImageWidth,
     locationURL,
+    ornament,
     titleText,
     transferParagraphs,
   }: EventLocationSectionParametersForBE): EventLocationSectionParameters {
@@ -40,6 +41,7 @@ export class EventLocationSectionMediatorService {
       illustrationImageURL: prepareWebInvitationDataCDNURL(illustrationImageRelativeURL),
       illustrationImageWidth,
       locationURL,
+      ornament,
       titleText,
       transferParagraphs,
     }

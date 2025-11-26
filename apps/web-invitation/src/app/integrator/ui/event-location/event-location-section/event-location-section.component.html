@@ -1,4 +1,10 @@
 <div class="app-section">
+  <div
+    class="app-text-ornament-component-container"
+    [style]="textOrnamentComponentContainerStyle()"
+  >
+    <app-text-ornament [texts]="textOrnamentComponentTexts()" />
+  </div>
   <div class="app-section__wrapper">
     <div class="app-description-and-illustration-and-title">
       <h2 class="app-title">{{sectionParameters().titleText}}</h2>

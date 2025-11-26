@@ -6,6 +6,14 @@ export interface EventLocationSectionParametersForBE {
   readonly illustrationImageRelativeURL: string
   readonly illustrationImageWidth: number
   readonly locationURL: string
+  readonly ornament: EventLocationSectionParametersOrnamentForBE
   readonly titleText: string
   readonly transferParagraphs: readonly string[]
+}
+
+export interface EventLocationSectionParametersOrnamentForBE {
+  readonly columnMinWidth: number
+  readonly count: number
+  readonly fontSize: number
+  readonly text: string
 }

@@ -1,7 +1,8 @@
 import { NgOptimizedImage } from '@angular/common'
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, type OnInit, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { EventLocationSectionMediatorService } from '~be/event-location/event-location-section-mediator.service'
+import { TextOrnamentComponent } from '~ui-kit/text-ornament/text-ornament.component'
 import type { EventLocationSectionParameters } from '~ui/event-location/event-location-section/event-location-section.type'
 import { GoogleMapComponent } from '~ui/event-location/google-map/google-map.component'
 
@@ -12,6 +13,7 @@ import { GoogleMapComponent } from '~ui/event-location/google-map/google-map.com
 
     // Provided by the app.
     GoogleMapComponent,
+    TextOrnamentComponent,
   ],
   selector: 'app-event-location-section',
   styleUrl: './event-location-section.component.sass',
@@ -30,8 +32,24 @@ export class EventLocationSectionComponent implements OnInit {
     illustrationImageURL: 'NoData',
     illustrationImageWidth: 0,
     locationURL: 'NoData',
+    ornament: {
+      columnMinWidth: 0,
+      count: 0,
+      fontSize: 0,
+      text: 'No data',
+    },
     titleText: 'No data',
     transferParagraphs: [],
+  })
+  protected readonly textOrnamentComponentContainerStyle = computed<string>(() => {
+    const { ornament: { columnMinWidth, fontSize } } = this.sectionParameters()
+    const columnMinWidthStyle = `--app-text-ornament-component-column-min-width: ${columnMinWidth}px`
+    const fontSizeStyle = `font-size: ${fontSize}px`
+    return `${columnMinWidthStyle};${fontSizeStyle}`
+  })
+  protected readonly textOrnamentComponentTexts = computed<readonly string[]>(() => {
+    const { ornament: { count, text } } = this.sectionParameters()
+    return Array(count).fill(text)
   })
 
   public ngOnInit(): void {

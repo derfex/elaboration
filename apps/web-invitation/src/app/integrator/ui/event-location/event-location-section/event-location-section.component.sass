@@ -13,6 +13,8 @@ $_app-vertical-space-between-paragraphs:4px
 .app-section
   @include layout.app-layout_padding-block-mixin
 
+  position: relative
+
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin
 
@@ -79,6 +81,14 @@ $_app-vertical-space-between-paragraphs:4px
   margin-inline: auto
   width: 100%
   height: auto
+
+.app-text-ornament-component-container
+  position: absolute
+  inset: 0
+  z-index: -1
+  overflow: hidden
+  opacity: .1
+  pointer-events: none
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin

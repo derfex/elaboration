@@ -5,10 +5,11 @@
   display: block
 
 .app-ornament
-  @include layout.app-layout_grid-repeat-auto-fit-mixin(100px, 20px)
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(var(--app-text-ornament-component-column-min-width), 8px)
+
+  text-align: center
 
 .app-text
   @include fonts.app-fonts_geometric-mixin(700)
 
-  font-size: 20px
-  text-align: center
+  padding: 8px

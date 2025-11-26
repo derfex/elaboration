@@ -4,7 +4,15 @@
   display: block
 
 .app-section
-  background: rgba(255, 255, 255, 0.01)
+  position: relative
 
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin
+
+.app-text-ornament-component-container
+  position: absolute
+  inset: 0
+  z-index: -1
+  overflow: hidden
+  opacity: .1
+  pointer-events: none

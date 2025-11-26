@@ -3,5 +3,13 @@ export interface EventDaySectionParametersForBE {
   readonly authorsSignatureLines: readonly string[]
   readonly eventDateCaptionText: string
   readonly eventDateValueText: string
+  readonly ornament: EventDaySectionParametersOrnamentForBE
   readonly titleText: string
+}
+
+export interface EventDaySectionParametersOrnamentForBE {
+  readonly columnMinWidth: number
+  readonly count: number
+  readonly fontSize: number
+  readonly text: string
 }

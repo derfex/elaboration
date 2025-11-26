@@ -1,4 +1,10 @@
 <section class="app-section">
+  <div
+    class="app-text-ornament-component-container"
+    [style]="textOrnamentComponentContainerStyle()"
+  >
+    <app-text-ornament [texts]="textOrnamentComponentTexts()" />
+  </div>
   <div class="app-section__wrapper">
     <app-event-day
       [appealText]="sectionParameters().appealText"
