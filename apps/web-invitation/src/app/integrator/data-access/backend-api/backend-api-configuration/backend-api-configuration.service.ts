@@ -21,8 +21,8 @@ export class BackendAPIConfigurationService {
     ['eventDaySectionRelativeURL', 'sections/eventDay'],
     ['eventDetailsSectionRelativeURL', 'sections/eventDetails'],
     ['eventLocationSectionRelativeURL', 'sections/eventLocation'],
-    ['eventProgramSectionRelativeURL', 'sections/eventProgram'],
     ['eventOrganizationSectionRelativeURL', 'sections/eventOrganization'],
+    ['eventProgramSectionRelativeURL', 'sections/eventProgram'],
     ['guestQuestionnaireSectionRelativeURL', 'sections/guestQuestionnaire'],
   ])
 
