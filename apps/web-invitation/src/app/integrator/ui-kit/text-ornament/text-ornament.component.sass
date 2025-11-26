@@ -1,0 +1,14 @@
+@use '../identity/fonts'
+@use '../layout/layout'
+
+:host
+  display: block
+
+.app-ornament
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(100px, 20px)
+
+.app-text
+  @include fonts.app-fonts_geometric-mixin(700)
+
+  font-size: 20px
+  text-align: center
