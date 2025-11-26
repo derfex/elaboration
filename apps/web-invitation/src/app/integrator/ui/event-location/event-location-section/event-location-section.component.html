@@ -4,7 +4,7 @@
       <h2 class="app-title">{{sectionParameters().titleText}}</h2>
       <div class="app-description-and-illustration">
         <div class="app-illustration">
-          <div class="app-illustration__frame">
+          <figure class="app-illustration__frame">
             @if (illustrationIsShown()) {
               <img
                 class="app-illustration__img"
@@ -14,11 +14,11 @@
                 [width]="sectionParameters().illustrationImageWidth"
                 priority
               />
-              <p class="app-illustration__caption">
+              <figcaption class="app-illustration__caption">
                 <span>{{sectionParameters().illustrationCaptionText}}</span>
-              </p>
+              </figcaption>
             }
-          </div>
+          </figure>
         </div>
         <div class="app-description">
           @for (descriptionText of sectionParameters().descriptionParagraphs; track descriptionText) {
