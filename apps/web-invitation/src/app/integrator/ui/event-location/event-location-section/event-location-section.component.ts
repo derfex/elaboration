@@ -24,6 +24,7 @@ export class EventLocationSectionComponent implements OnInit {
   protected readonly illustrationIsShown = signal<boolean>(false)
   protected readonly sectionParameters = signal<EventLocationSectionParameters>({
     descriptionParagraphs: [],
+    illustrationCaptionText: 'No data',
     illustrationImageAltText: 'No data',
     illustrationImageHeight: 0,
     illustrationImageURL: 'NoData',

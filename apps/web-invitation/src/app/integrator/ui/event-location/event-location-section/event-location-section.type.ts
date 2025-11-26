@@ -1,5 +1,6 @@
 export interface EventLocationSectionParameters {
   readonly descriptionParagraphs: readonly string[]
+  readonly illustrationCaptionText: string
   readonly illustrationImageAltText: string
   readonly illustrationImageHeight: number
   readonly illustrationImageURL: string

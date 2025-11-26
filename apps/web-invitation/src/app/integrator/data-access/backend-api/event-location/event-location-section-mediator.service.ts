@@ -23,6 +23,7 @@ export class EventLocationSectionMediatorService {
 
   #convertSectionParameters({
     descriptionParagraphs,
+    illustrationCaptionText,
     illustrationImageAltText,
     illustrationImageHeight,
     illustrationImageRelativeURL,
@@ -33,6 +34,7 @@ export class EventLocationSectionMediatorService {
   }: EventLocationSectionParametersForBE): EventLocationSectionParameters {
     return {
       descriptionParagraphs,
+      illustrationCaptionText,
       illustrationImageAltText,
       illustrationImageHeight,
       illustrationImageURL: prepareWebInvitationDataCDNURL(illustrationImageRelativeURL),

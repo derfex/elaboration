@@ -15,12 +15,29 @@
   width: 100%
 
 
-.app-description
-  @include layout.app-layout_flex-column-mixin(4px)
+.app-grid-content
   @include layout.app-layout_padding-inline-mixin
 
+  display: grid
+  gap: 20px
+
+@media (layout.$app-device-width-medium <= width)
+  .app-grid-content
+    grid-template-areas: 'description illustration'
+    grid-template-columns: 68fr 32fr
+
+  .app-description
+    grid-area: description
+
+  .app-illustration
+    grid-area: illustration
+
+
+.app-description
+  @include layout.app-layout_flex-column-mixin(4px)
+
 .app-description__paragraph
-  @include  ui-kit.app-ui-kit_p-mixin
+  @include ui-kit.app-ui-kit_p-mixin
 
 .app-google-map-container
   width: 100%
@@ -37,11 +54,23 @@
   display: flex
   padding: 16px
 
+
+.app-illustration__caption
+  @include ui-kit.app-ui-kit_p-mixin
+
+  padding-block: 20px
+  text-align: center
+  font-style: italic
+  color: var(--app-light-surface-text-color)
+
 .app-illustration__frame
   margin: auto
-  padding: 40px 20px 60px
+  padding: 40px 20px 0
   transform: rotate(5deg)
-  background: #d9d9d9
+  background: var(--app-light-surface-bg-color)
+
+  @media (layout.$app-device-width-medium <= width)
+    width: 100%
 
 .app-illustration__img
   display: block
@@ -60,4 +89,4 @@
   @include layout.app-layout_padding-inline-mixin
 
 .app-transfer__paragraph
-  @include  ui-kit.app-ui-kit_p-mixin
+  @include ui-kit.app-ui-kit_p-mixin
