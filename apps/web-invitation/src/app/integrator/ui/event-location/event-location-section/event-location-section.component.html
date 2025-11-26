@@ -3,6 +3,22 @@
     <h2 class="app-title">{{sectionParameters().titleText}}</h2>
   </div>
   <div class="app-section__wrapper">
+    <div class="app-illustration">
+      <div class="app-illustration__frame">
+        @if (illustrationIsShown()) {
+          <img
+            class="app-illustration__img"
+            [alt]="sectionParameters().illustrationImageAltText"
+            [height]="sectionParameters().illustrationImageHeight"
+            [ngSrc]="sectionParameters().illustrationImageURL"
+            [width]="sectionParameters().illustrationImageWidth"
+            priority
+          />
+        }
+      </div>
+    </div>
+  </div>
+  <div class="app-section__wrapper">
     <div class="app-description">
       @for (descriptionText of sectionParameters().descriptionParagraphs; track descriptionText) {
         <p class="app-description__paragraph">{{descriptionText}}</p>
