@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 
+// TODO: unused.
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-layout-article-with-paragraphs',
