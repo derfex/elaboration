@@ -1,0 +1,13 @@
+<article class="app-event-details">
+  <h2 class="app-title">{{titleText()}}</h2>
+  <div class="app-description-paragraphs">
+    @for (paragraph of descriptionParagraphs(); track paragraph) {
+      <p class="app-description__paragraph">{{paragraph}}</p>
+    }
+  </div>
+  <div class="app-wishes">
+    @for (wish of wishes(); track wish) {
+      <p class="app-wishes__item">{{wish}}</p>
+    }
+  </div>
+</article>

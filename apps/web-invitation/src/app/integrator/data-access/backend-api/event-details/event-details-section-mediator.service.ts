@@ -15,9 +15,10 @@ export class EventDetailsSectionMediatorService {
   public readSectionParameters(): Observable<EventDetailsSectionParameters> {
     return this.#readSectionParametersAsUncompiled().pipe(
       map<EventDetailsSectionParametersForBE, EventDetailsSectionParameters>(
-        ({ descriptionParagraphs: paragraphs, titleText }) => ({
-          paragraphs,
+        ({ descriptionParagraphs, titleText, wishes }) => ({
+          descriptionParagraphs,
           titleText,
+          wishes,
         }),
       ),
     )

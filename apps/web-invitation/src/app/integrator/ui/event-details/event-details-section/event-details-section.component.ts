@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { EventDetailsSectionMediatorService } from '~be/event-details/event-details-section-mediator.service'
-import { LayoutArticleWithParagraphsComponent } from '~ui-kit/layout/layout-article-with-paragraphs/layout-article-with-paragraphs.component'
 import type { EventDetailsSectionParameters } from '~ui/event-details/event-details-section/event-details-section.type'
+import { EventDetailsComponent } from '~ui/event-details/event-details/event-details.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LayoutArticleWithParagraphsComponent],
+  imports: [EventDetailsComponent],
   selector: 'app-event-details-section',
   styleUrl: './event-details-section.component.sass',
   templateUrl: './event-details-section.component.html',
@@ -16,19 +16,17 @@ export class EventDetailsSectionComponent implements OnInit {
   readonly #eventDetailsSectionMediatorService = inject(EventDetailsSectionMediatorService)
 
   protected readonly sectionParameters = signal<EventDetailsSectionParameters>({
-    paragraphs: [],
+    descriptionParagraphs: [],
     titleText: 'No data',
+    wishes: [],
   })
 
   public ngOnInit(): void {
     this.#eventDetailsSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))
-      .subscribe(({ paragraphs, titleText }: EventDetailsSectionParameters): void => {
-        this.sectionParameters.set({
-          paragraphs,
-          titleText,
-        })
+      .subscribe((parameters: EventDetailsSectionParameters): void => {
+        this.sectionParameters.set(parameters)
       })
   }
 }

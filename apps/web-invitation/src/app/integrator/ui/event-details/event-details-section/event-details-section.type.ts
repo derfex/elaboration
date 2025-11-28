@@ -1,4 +1,5 @@
 export interface EventDetailsSectionParameters {
-  readonly paragraphs: readonly string[]
+  readonly descriptionParagraphs: readonly string[]
   readonly titleText: string
+  readonly wishes: readonly string[]
 }
