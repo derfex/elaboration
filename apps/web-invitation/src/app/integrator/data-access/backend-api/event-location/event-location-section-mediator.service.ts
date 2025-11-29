@@ -30,6 +30,7 @@ export class EventLocationSectionMediatorService {
     illustrationImageWidth,
     locationURL,
     ornament,
+    showMapButtonText,
     titleText,
     transferParagraphs,
   }: EventLocationSectionParametersForBE): EventLocationSectionParameters {
@@ -42,6 +43,7 @@ export class EventLocationSectionMediatorService {
       illustrationImageWidth,
       locationURL,
       ornament,
+      showMapButtonText,
       titleText,
       transferParagraphs,
     }

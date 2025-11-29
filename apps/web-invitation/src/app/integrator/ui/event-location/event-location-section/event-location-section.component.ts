@@ -39,6 +39,7 @@ export class EventLocationSectionComponent implements OnInit {
       fontSize: 0,
       text: 'No data',
     },
+    showMapButtonText: 'No data',
     titleText: 'No data',
     transferParagraphs: [],
   })
