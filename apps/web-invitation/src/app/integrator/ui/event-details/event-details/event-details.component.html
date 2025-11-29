@@ -6,8 +6,13 @@
     }
   </div>
   <div class="app-wishes">
-    @for (wish of wishes(); track wish) {
-      <p class="app-wishes__item">{{wish}}</p>
+    @for (wish of wishesForTemplate(); track wish.text) {
+      <p class="app-wishes__item">
+        <span>{{wish.text}}</span>
+        @if (wish.isonIsShown) {
+          <span class="app-wishes__icon" [style]="wish.style"></span>
+        }
+      </p>
     }
   </div>
 </article>

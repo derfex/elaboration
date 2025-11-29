@@ -20,10 +20,22 @@
 .app-wishes
   @include layout.app-layout_flex-column-mixin(8px)
 
+.app-wishes__icon
+  $_size: 52px
+
+  flex-basis: $_size
+  flex-shrink: 0
+  height: $_size
+  background-position: top right
+  background-repeat: no-repeat
+  background-size: contain
+
 .app-wishes__item
   @include ui-kit.app-ui-kit_p-mixin
   @include ui-kit.app-ui-kit_glass-mixin
 
+  display: flex
+  column-gap: 20px
   border: 1px solid var(--app-color-accent)
   border-radius: 8px
   padding: 20px
