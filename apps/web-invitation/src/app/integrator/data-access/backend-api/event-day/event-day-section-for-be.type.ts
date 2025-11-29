@@ -7,7 +7,8 @@ export interface EventDaySectionParametersForBE {
   readonly titleText: string
 }
 
-export interface EventDaySectionParametersOrnamentForBE {
+// Expected value for `count`: a non-negative integer.
+interface EventDaySectionParametersOrnamentForBE {
   readonly columnMinWidth: number
   readonly count: number
   readonly fontSize: number

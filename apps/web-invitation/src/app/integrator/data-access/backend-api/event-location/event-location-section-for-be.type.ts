@@ -12,7 +12,8 @@ export interface EventLocationSectionParametersForBE {
   readonly transferParagraphs: readonly string[]
 }
 
-export interface EventLocationSectionParametersOrnamentForBE {
+// Expected value for `count`: a non-negative integer.
+interface EventLocationSectionParametersOrnamentForBE {
   readonly columnMinWidth: number
   readonly count: number
   readonly fontSize: number
