@@ -46,20 +46,20 @@ $_app-vertical-space-between-paragraphs:4px
 
 @media (layout.$app-device-width-medium <= width)
   .app-description-and-illustration
-    grid-template-areas: 'description illustration'
+    grid-template-areas: 'map-description illustration'
     grid-template-columns: 68fr 32fr
 
-  .app-description
-    grid-area: description
+  .app-map-description
+    grid-area: map-description
 
   .app-illustration
     grid-area: illustration
 
 
-.app-description
+.app-map-description
   @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-paragraphs)
 
-.app-description__paragraph
+.app-map-description__paragraph
   @include ui-kit.app-ui-kit_p-mixin
 
 .app-description-and-illustration-and-title
