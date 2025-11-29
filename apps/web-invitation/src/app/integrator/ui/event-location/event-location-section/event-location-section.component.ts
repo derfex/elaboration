@@ -24,7 +24,10 @@ export class EventLocationSectionComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
   readonly #eventLocationSectionMediatorService = inject(EventLocationSectionMediatorService)
 
+  protected readonly endSubsectionIsShown = computed<boolean>(() => this.#mapMode())
   protected readonly illustrationIsShown = signal<boolean>(false)
+  protected readonly mapIsShown = computed<boolean>(() => this.#mapMode())
+  protected readonly showMapButtonIsShown = computed<boolean>(() => !this.#mapMode())
   protected readonly sectionParameters = signal<EventLocationSectionParameters>({
     illustrationCaptionText: 'No data',
     illustrationImageAltText: 'No data',
@@ -57,6 +60,9 @@ export class EventLocationSectionComponent implements OnInit {
     } = this.sectionParameters()
     return TextOrnamentUtil.generateTexts(text, count)
   })
+  protected readonly transferIsShown = computed<boolean>(() => !this.#mapMode())
+
+  readonly #mapMode = signal<boolean>(false)
 
   public ngOnInit(): void {
     this.#eventLocationSectionMediatorService
@@ -66,5 +72,9 @@ export class EventLocationSectionComponent implements OnInit {
         this.sectionParameters.set(parameters)
         this.illustrationIsShown.set(true)
       })
+  }
+
+  public showMapButtonClickHandler(): void {
+    this.#mapMode.set(true)
   }
 }

@@ -56,6 +56,11 @@ $_app-vertical-space-between-paragraphs:4px
     grid-area: illustration
 
 
+.app-content
+  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-blocks)
+
+  align-items: flex-start
+
 .app-content-and-illustration-and-title
   @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-blocks)
 
@@ -101,6 +106,13 @@ $_app-vertical-space-between-paragraphs:4px
 
 .app-map-description__paragraph
   @include ui-kit.app-ui-kit_p-mixin
+
+.app-show-map-button
+  @include ui-kit.app-ui-kit_button-primary-mixin
+
+  font-family: inherit
+  font-size: inherit
+  cursor: pointer
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin

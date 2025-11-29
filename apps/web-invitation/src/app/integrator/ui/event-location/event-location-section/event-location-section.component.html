@@ -35,6 +35,21 @@
                     <p class="app-map-description__paragraph">{{descriptionText}}</p>
                   }
                 </div>
+                @if (showMapButtonIsShown()) {
+                  <button
+                    class="app-show-map-button"
+                    (click)="showMapButtonClickHandler()"
+                  >
+                    {{sectionParameters().showMapButtonText}}
+                  </button>
+                }
+                @if (transferIsShown()) {
+                  <div class="app-transfer">
+                    @for (transferText of sectionParameters().transferParagraphs; track transferText) {
+                      <p class="app-transfer__paragraph">{{transferText}}</p>
+                    }
+                  </div>
+                }
               </div>
             </div>
           </div>
@@ -42,26 +57,30 @@
       </div>
     </div>
   </div>
-  <div class="app-google-map-container">
-    <app-google-map [locationURL]="sectionParameters().locationURL" />
-  </div>
-  <div class="app-section__end-subsection">
-    <div
-      class="app-text-ornament-component-container"
-      [style]="textOrnamentComponentContainerStyle()"
-    >
-      <app-text-ornament [texts]="textOrnamentComponentTexts()" />
+  @if (mapIsShown()) {
+    <div class="app-google-map-container">
+      <app-google-map [locationURL]="sectionParameters().locationURL" />
     </div>
-    <div class="app-section__wrapper">
-      <div class="app-section__panel-wrapper">
-        <div class="app-section__panel">
-          <div class="app-transfer">
-            @for (transferText of sectionParameters().transferParagraphs; track transferText) {
-              <p class="app-transfer__paragraph">{{transferText}}</p>
-            }
+  }
+  @if (endSubsectionIsShown()) {
+    <div class="app-section__end-subsection">
+      <div
+        class="app-text-ornament-component-container"
+        [style]="textOrnamentComponentContainerStyle()"
+      >
+        <app-text-ornament [texts]="textOrnamentComponentTexts()" />
+      </div>
+      <div class="app-section__wrapper">
+        <div class="app-section__panel-wrapper">
+          <div class="app-section__panel">
+            <div class="app-transfer">
+              @for (transferText of sectionParameters().transferParagraphs; track transferText) {
+                <p class="app-transfer__paragraph">{{transferText}}</p>
+              }
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 </section>
