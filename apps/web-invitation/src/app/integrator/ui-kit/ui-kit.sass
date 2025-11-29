@@ -18,13 +18,30 @@
   @include typography.app-typography_p-mixin
 
 
-@mixin app-ui-kit_button-secondary-mixin
+@mixin _app-button-mixin
   border: 0
+  border-radius: 4px
   padding: 8px 20px
   line-height: initial
   text-align: center
+
+@mixin app-ui-kit_button-primary-mixin
+  @include _app-button-mixin
+
+  background: var(--app-button-primary-bg-color)
+  color: var(--app-button-primary-text-color)
+
+  @include transitions.app-transitions_transition-mixin(background)
+
+  &:hover
+    background: var(--app-button-primary-hover-bg-color)
+
+
+@mixin app-ui-kit_button-secondary-mixin
+  @include _app-button-mixin
+
   background: var(--app-button-secondary-bg-color)
-  color: var(--app-button-secondary-color)
+  color: var(--app-button-secondary-text-color)
 
   @include transitions.app-transitions_transition-mixin(background)
 
