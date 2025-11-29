@@ -3,6 +3,7 @@
 @use '../../../ui-kit/ui-kit'
 
 
+$_app-section-padding-block: 60px
 $_app-vertical-space-between-blocks: 8px
 $_app-vertical-space-between-paragraphs:4px
 
@@ -10,13 +11,33 @@ $_app-vertical-space-between-paragraphs:4px
 :host
   display: block
 
-.app-section
-  @include layout.app-layout_padding-block-mixin
-
+.app-section__begin-subsection
   position: relative
+  padding-top: $_app-section-padding-block
+
+.app-section__end-subsection
+  position: relative
+  padding-bottom: $_app-section-padding-block
+
+.app-section__panel
+  border-radius: 8px
+
+  @include layout.app-layout_paddings-mixin
+  @include ui-kit.app-ui-kit_glass-mixin
+
+.app-section__panel-wrapper
+  @include layout.app-layout_padding-inline-mixin
 
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin
+
+.app-text-ornament-component-container
+  position: absolute
+  inset: 0
+  z-index: -1
+  overflow: hidden
+  pointer-events: none
+  color: var(--app-ornament-text-color)
 
 
 .app-description-and-illustration
@@ -43,7 +64,6 @@ $_app-vertical-space-between-paragraphs:4px
 
 .app-description-and-illustration-and-title
   @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-blocks)
-  @include layout.app-layout_padding-inline-mixin
 
 .app-google-map-container
   margin-block: $_app-vertical-space-between-blocks
@@ -82,20 +102,11 @@ $_app-vertical-space-between-paragraphs:4px
   width: 100%
   height: auto
 
-.app-text-ornament-component-container
-  position: absolute
-  inset: 0
-  z-index: -1
-  overflow: hidden
-  pointer-events: none
-  color: var(--app-ornament-text-color)
-
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
 
 .app-transfer
   @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-paragraphs)
-  @include layout.app-layout_padding-inline-mixin
 
 .app-transfer__paragraph
   @include ui-kit.app-ui-kit_p-mixin
