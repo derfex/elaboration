@@ -1,11 +1,11 @@
 export interface EventLocationSectionParametersForBE {
-  readonly descriptionParagraphs: readonly string[]
   readonly illustrationCaptionText: string
   readonly illustrationImageAltText: string
   readonly illustrationImageHeight: number
   readonly illustrationImageRelativeURL: string
   readonly illustrationImageWidth: number
   readonly locationURL: string
+  readonly mapDescriptionParagraphs: readonly string[]
   readonly ornament: EventLocationSectionParametersOrnamentForBE
   readonly showMapButtonText: string
   readonly titleText: string
