@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, type 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { EventDaySectionMediatorService } from '~be/event-day/event-day-section-mediator.service'
 import { TextOrnamentComponent } from '~ui-kit/text-ornament/text-ornament.component'
+import { TextOrnamentUtil } from '~ui-kit/text-ornament/text-ornament.util'
 import type { EventDaySectionParameters } from '~ui/event-day/event-day-section/event-day-section.type'
 import { EventDayComponent } from '~ui/event-day/event-day/event-day.component'
 
@@ -37,7 +38,7 @@ export class EventDaySectionComponent implements OnInit {
   })
   protected readonly textOrnamentComponentTexts = computed<readonly string[]>(() => {
     const { ornament: { count, text } } = this.sectionParameters()
-    return Array(count).fill(text)
+    return TextOrnamentUtil.generateTexts(text, count)
   })
 
   public ngOnInit(): void {
