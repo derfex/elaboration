@@ -9,9 +9,9 @@
     <div class="app-section__wrapper">
       <div class="app-section__panel-wrapper">
         <div class="app-section__panel">
-          <div class="app-description-and-illustration-and-title">
+          <div class="app-content-and-illustration-and-title">
             <h2 class="app-title">{{sectionParameters().titleText}}</h2>
-            <div class="app-description-and-illustration">
+            <div class="app-content-and-illustration">
               <div class="app-illustration">
                 <figure class="app-illustration__frame">
                   @if (illustrationIsShown()) {
@@ -29,10 +29,12 @@
                   }
                 </figure>
               </div>
-              <div class="app-map-description">
-                @for (descriptionText of sectionParameters().mapDescriptionParagraphs; track descriptionText) {
-                  <p class="app-map-description__paragraph">{{descriptionText}}</p>
-                }
+              <div class="app-content">
+                <div class="app-map-description">
+                  @for (descriptionText of sectionParameters().mapDescriptionParagraphs; track descriptionText) {
+                    <p class="app-map-description__paragraph">{{descriptionText}}</p>
+                  }
+                </div>
               </div>
             </div>
           </div>

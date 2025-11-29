@@ -40,29 +40,23 @@ $_app-vertical-space-between-paragraphs:4px
   color: var(--app-ornament-text-color)
 
 
-.app-description-and-illustration
+.app-content-and-illustration
   display: grid
   gap: 20px
 
 @media (layout.$app-device-width-medium <= width)
-  .app-description-and-illustration
-    grid-template-areas: 'map-description illustration'
+  .app-content-and-illustration
+    grid-template-areas: 'content illustration'
     grid-template-columns: 68fr 32fr
 
-  .app-map-description
-    grid-area: map-description
+  .app-content
+    grid-area: content
 
   .app-illustration
     grid-area: illustration
 
 
-.app-map-description
-  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-paragraphs)
-
-.app-map-description__paragraph
-  @include ui-kit.app-ui-kit_p-mixin
-
-.app-description-and-illustration-and-title
+.app-content-and-illustration-and-title
   @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-blocks)
 
 .app-google-map-container
@@ -101,6 +95,12 @@ $_app-vertical-space-between-paragraphs:4px
   margin-inline: auto
   width: 100%
   height: auto
+
+.app-map-description
+  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-paragraphs)
+
+.app-map-description__paragraph
+  @include ui-kit.app-ui-kit_p-mixin
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
