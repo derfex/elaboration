@@ -2,9 +2,6 @@
 @use '../../../ui-kit/ui-kit'
 
 
-$_app-tint-border-radius: 8px
-
-
 :host
   display: block
 
@@ -25,14 +22,13 @@ $_app-tint-border-radius: 8px
   @include layout.app-layout_flex-column-mixin(8px)
 
   justify-content: stretch
+  border-radius: 8px
+  padding: 8px
 
   @include ui-kit.app-ui-kit_glass-mixin
 
-  border-radius: $_app-tint-border-radius
-  padding: $_app-tint-border-radius
-
 .app-tints__sample
-  border-radius: $_app-tint-border-radius
+  border-radius: 4px
   height: 60px
 
 .app-tints__text
