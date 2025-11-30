@@ -1,5 +1,6 @@
 export interface BackendAPIConfigurationForBE {
   readonly appSectionsRelativeURL: string
+  readonly dressCodeSectionRelativeURL: string
   readonly eventDaySectionRelativeURL: string
   readonly eventDetailsSectionRelativeURL: string
   readonly eventLocationSectionRelativeURL: string
@@ -12,6 +13,7 @@ export type BackendAPIRelativeURLCodenameForBE = keyof BackendAPIConfigurationFo
 
 export type BackendAPIURLCodename =
   | 'sections/app'
+  | 'sections/dressCode'
   | 'sections/eventDay'
   | 'sections/eventDetails'
   | 'sections/eventLocation'
