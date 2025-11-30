@@ -1,5 +1,16 @@
 <article class="app-dress-code">
   <h2 class="app-title">{{titleText()}}</h2>
+  <div class="app-illustration__container">
+    @if (illustrationIsShown()) {
+      <img
+        class="app-illustration__img"
+        [alt]="illustrationImageAltText()"
+        [height]="illustrationImageHeight()"
+        [ngSrc]="illustrationImageURL()"
+        [width]="illustrationImageWidth()"
+      />
+    }
+  </div>
   <div class="app-description-paragraphs">
     @for (paragraph of descriptionParagraphs(); track paragraph) {
       <p class="app-description__paragraph">{{paragraph}}</p>

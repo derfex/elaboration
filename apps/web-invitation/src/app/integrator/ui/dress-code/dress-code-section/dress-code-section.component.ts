@@ -17,6 +17,12 @@ export class DressCodeSectionComponent implements OnInit {
 
   protected readonly sectionParameters = signal<DressCodeSectionParameters>({
     descriptionParagraphs: [],
+    illustration: {
+      imageAltText: 'No data',
+      imageHeight: 0,
+      imageURL: 'NoData',
+      imageWidth: 0,
+    },
     tints: [],
     titleText: 'No data',
   })
