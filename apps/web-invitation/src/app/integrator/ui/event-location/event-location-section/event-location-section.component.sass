@@ -67,14 +67,16 @@ $_app-vertical-space-between-paragraphs:4px
 .app-google-map-container
   margin-block: $_app-vertical-space-between-blocks
   width: 100%
-  filter: grayscale(1)
-  opacity: 0.2
 
-  @include transitions.app-transitions_transition-mixin('filter, opacity')
+  @media (hover: hover)
+    filter: grayscale(1)
+    opacity: 0.2
 
-  .app-section:hover &
-    filter: grayscale(0)
-    opacity: 1
+    @include transitions.app-transitions_transition-mixin('filter, opacity')
+
+    .app-section:hover &
+      filter: grayscale(0)
+      opacity: 1
 
 // TODO: Extract the component for the illustration.
 .app-illustration
