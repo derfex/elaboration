@@ -13,9 +13,9 @@ describe('LayoutFooterComponent', (): void => {
   })
 
   it('should create', (): void => {
-    fixture.componentRef.setInput('appealText', 'No data')
-    fixture.componentRef.setInput('copyrightText', 'No data')
-    fixture.componentRef.setInput('craftedWithText', 'No data')
+    fixture.componentRef.setInput('appealText', 'Test data')
+    fixture.componentRef.setInput('copyrightText', 'Test data')
+    fixture.componentRef.setInput('craftedWithText', 'Test data')
     // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })

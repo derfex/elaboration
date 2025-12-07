@@ -34,9 +34,9 @@ class LayoutFooterStubComponent {}
 class AppSectionsMediatorStubService {
   public readAppFooterSectionParameters(): Observable<AppFooterSectionParameters> {
     return of({
-      appealText: 'No data',
-      copyrightText: 'No data',
-      craftedWithText: 'No data',
+      appealText: 'Test data',
+      copyrightText: 'Test data',
+      craftedWithText: 'Test data',
     })
   }
 }

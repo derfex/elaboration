@@ -34,11 +34,11 @@ class AppHeroStubComponent {}
 class AppSectionsMediatorStubService {
   public readAppHeroSectionParameters(): Observable<AppHeroSectionParameters> {
     return of({
-      illustrationImageAltText: 'No data',
+      illustrationImageAltText: 'Test data',
       illustrationImageHeight: 0,
-      illustrationImageURL: 'NoData',
+      illustrationImageURL: 'TestData',
       illustrationImageWidth: 0,
-      phraseText: 'No data',
+      phraseText: 'Test data',
     })
   }
 }

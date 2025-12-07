@@ -14,10 +14,10 @@ describe('EventOrganizationComponent', (): void => {
   })
 
   it('should create', (): void => {
-    const contacts: readonly EventOrganizationContact[] = [{ hRef: 'NoData', titleText: 'No data' }]
+    const contacts: readonly EventOrganizationContact[] = [{ hRef: 'TestData', titleText: 'Test data' }]
     fixture.componentRef.setInput('contacts', contacts)
-    fixture.componentRef.setInput('descriptionParagraphs', ['No data'])
-    fixture.componentRef.setInput('titleText', 'No data')
+    fixture.componentRef.setInput('descriptionParagraphs', ['Test data'])
+    fixture.componentRef.setInput('titleText', 'Test data')
     // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })

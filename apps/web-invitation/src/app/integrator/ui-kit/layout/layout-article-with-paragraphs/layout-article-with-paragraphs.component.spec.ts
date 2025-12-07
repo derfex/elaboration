@@ -13,8 +13,8 @@ describe('LayoutArticleWithParagraphsComponent', (): void => {
   })
 
   it('should create', (): void => {
-    fixture.componentRef.setInput('paragraphs', ['No data', 'No data'])
-    fixture.componentRef.setInput('titleText', 'No data')
+    fixture.componentRef.setInput('paragraphs', ['Test data', 'Test data'])
+    fixture.componentRef.setInput('titleText', 'Test data')
     // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
