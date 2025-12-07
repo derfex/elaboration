@@ -1,5 +1,8 @@
 import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
+import { type Observable, of } from 'rxjs'
+import { AppSectionsMediatorService } from '~be/app/app-sections-mediator.service'
+import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-footer-section/app-footer-section.type'
 import { AppFooterSectionComponent } from './app-footer-section.component'
 
 describe('AppFooterSectionComponent', (): void => {
@@ -12,6 +15,7 @@ describe('AppFooterSectionComponent', (): void => {
         // Stubs.
         LayoutFooterStubComponent,
       ],
+      providers: [{ provide: AppSectionsMediatorService, useClass: AppSectionsMediatorStubService }],
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppFooterSectionComponent)
@@ -26,3 +30,13 @@ describe('AppFooterSectionComponent', (): void => {
 
 @Component({ selector: 'app-layout-footer', template: '' })
 class LayoutFooterStubComponent {}
+
+class AppSectionsMediatorStubService {
+  public readAppFooterSectionParameters(): Observable<AppFooterSectionParameters> {
+    return of({
+      appealText: 'No data',
+      copyrightText: 'No data',
+      craftedWithText: 'No data',
+    })
+  }
+}
