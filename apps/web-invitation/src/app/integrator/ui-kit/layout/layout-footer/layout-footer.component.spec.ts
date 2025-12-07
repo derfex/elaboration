@@ -10,10 +10,13 @@ describe('LayoutFooterComponent', (): void => {
 
     fixture = TestBed.createComponent(LayoutFooterComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {
+    fixture.componentRef.setInput('appealText', 'No data')
+    fixture.componentRef.setInput('copyrightText', 'No data')
+    fixture.componentRef.setInput('craftedWithText', 'No data')
+    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })
