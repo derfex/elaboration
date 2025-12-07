@@ -1,5 +1,8 @@
 import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
+import { type Observable, of } from 'rxjs'
+import { AppSectionsMediatorService } from '~be/app/app-sections-mediator.service'
+import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-section/app-hero-section.type'
 import { AppHeroSectionComponent } from './app-hero-section.component'
 
 describe('AppHeroSectionComponent', (): void => {
@@ -12,6 +15,7 @@ describe('AppHeroSectionComponent', (): void => {
         // Stubs.
         AppHeroStubComponent,
       ],
+      providers: [{ provide: AppSectionsMediatorService, useClass: AppSectionsMediatorStubService }],
     }).compileComponents()
 
     fixture = TestBed.createComponent(AppHeroSectionComponent)
@@ -26,3 +30,15 @@ describe('AppHeroSectionComponent', (): void => {
 
 @Component({ selector: 'app-hero', template: '' })
 class AppHeroStubComponent {}
+
+class AppSectionsMediatorStubService {
+  public readAppHeroSectionParameters(): Observable<AppHeroSectionParameters> {
+    return of({
+      illustrationImageAltText: 'No data',
+      illustrationImageHeight: 0,
+      illustrationImageURL: 'NoData',
+      illustrationImageWidth: 0,
+      phraseText: 'No data',
+    })
+  }
+}
