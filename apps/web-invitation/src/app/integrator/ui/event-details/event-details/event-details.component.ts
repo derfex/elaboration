@@ -14,16 +14,16 @@ export class EventDetailsComponent {
 
   protected readonly wishesForTemplate = computed<readonly WishForTemplate[]>(() => {
     return this.wishes().map(({ iconImageURL, text }) => {
-      const isonIsShown = !!iconImageURL
-      if (!isonIsShown) {
+      const iconIsShown = !!iconImageURL
+      if (!iconIsShown) {
         return {
-          isonIsShown,
+          iconIsShown,
           text,
         }
       }
       const style = `background-image: url(${iconImageURL})`
       return {
-        isonIsShown,
+        iconIsShown,
         style,
         text,
       }
@@ -34,12 +34,12 @@ export class EventDetailsComponent {
 type WishForTemplate = WishForTemplateWithIcon | WishForTemplateWithoutIcon
 
 interface WishForTemplateWithIcon {
-  readonly isonIsShown: true
+  readonly iconIsShown: true
   readonly style: string
   readonly text: string
 }
 
 interface WishForTemplateWithoutIcon {
-  readonly isonIsShown: false
+  readonly iconIsShown: false
   readonly text: string
 }

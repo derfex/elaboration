@@ -9,7 +9,7 @@
     @for (wish of wishesForTemplate(); track wish.text) {
       <p class="app-wishes__item">
         <span>{{wish.text}}</span>
-        @if (wish.isonIsShown) {
+        @if (wish.iconIsShown) {
           <span class="app-wishes__icon" [style]="wish.style"></span>
         }
       </p>
