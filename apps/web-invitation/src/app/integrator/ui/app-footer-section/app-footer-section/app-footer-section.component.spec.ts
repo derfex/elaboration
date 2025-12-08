@@ -37,6 +37,6 @@ class AppSectionsMediatorStubService {
       appealText: 'Test data',
       copyrightText: 'Test data',
       craftedWithText: 'Test data',
-    })
+    } satisfies AppFooterSectionParameters)
   }
 }

@@ -40,6 +40,6 @@ class GuestQuestionnaireSectionMediatorStubService {
       googleFormHeight: 42,
       googleFormURL: 'TestData',
       titleText: 'Test data',
-    })
+    } satisfies GuestQuestionnaireSectionParameters)
   }
 }

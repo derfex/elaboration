@@ -37,6 +37,6 @@ class EventDetailsSectionMediatorStubService {
       descriptionParagraphs: ['Test data.'],
       titleText: 'Test data',
       wishes: [],
-    })
+    } satisfies EventDetailsSectionParameters)
   }
 }

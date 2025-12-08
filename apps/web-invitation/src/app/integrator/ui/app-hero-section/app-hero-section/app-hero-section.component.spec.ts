@@ -39,6 +39,6 @@ class AppSectionsMediatorStubService {
       illustrationImageURL: 'TestData',
       illustrationImageWidth: 0,
       phraseText: 'Test data',
-    })
+    } satisfies AppHeroSectionParameters)
   }
 }
