@@ -7,4 +7,4 @@ export interface EventProgramStage {
   readonly title: string
 }
 
-export type EventProgramStageCodename = Brand<string, 'event item codename'>
+export type EventProgramStageCodename = Brand<string, 'event program stage codename'>
