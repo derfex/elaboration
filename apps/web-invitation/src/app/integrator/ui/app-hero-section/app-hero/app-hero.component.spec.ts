@@ -17,7 +17,7 @@ describe('AppHeroComponent', (): void => {
     fixture.componentRef.setInput('illustrationImageHeight', 42)
     fixture.componentRef.setInput('illustrationImageURL', 'TestData')
     fixture.componentRef.setInput('illustrationImageWidth', 42)
-    fixture.componentRef.setInput('phraseText', 'No data.')
+    fixture.componentRef.setInput('phraseText', 'Test data.')
     // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
