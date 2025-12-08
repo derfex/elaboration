@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
-import { type Observable, switchMap } from 'rxjs'
+import { map, type Observable, switchMap } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import type { GuestQuestionnaireSectionParametersForBE } from '~be/guest-questionnaire/guest-questionnaire-section-for-be.type'
 import type { GuestQuestionnaireSectionParameters } from '~ui/guest-questionnaire/guest-questionnaire-section/guest-questionnaire-section.type'
@@ -13,7 +13,27 @@ export class GuestQuestionnaireSectionMediatorService {
   readonly #httpClient = inject(HttpClient)
 
   public readSectionParameters(): Observable<GuestQuestionnaireSectionParameters> {
-    return this.#readSectionParametersAsUncompiled()
+    return this.#readSectionParametersAsUncompiled().pipe(
+      map<GuestQuestionnaireSectionParametersForBE, GuestQuestionnaireSectionParameters>(
+        this.#convertSectionParameters.bind(this),
+      ),
+    )
+  }
+
+  #convertSectionParameters({
+    descriptionParagraphs,
+    googleFormHeight,
+    googleFormLoadingText,
+    googleFormURL,
+    titleText,
+  }: GuestQuestionnaireSectionParametersForBE): GuestQuestionnaireSectionParameters {
+    return {
+      descriptionParagraphs,
+      googleFormHeight,
+      googleFormLoadingText,
+      googleFormURL,
+      titleText,
+    }
   }
 
   #readSectionParametersAsUncompiled(): Observable<GuestQuestionnaireSectionParametersForBE> {

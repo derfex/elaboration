@@ -11,9 +11,8 @@ export class GoogleFormComponent {
   readonly #domSanitizer = inject(DomSanitizer)
 
   public readonly height = input.required<number>()
+  public readonly loadingText = input.required<string>()
   public readonly url = input.required<string>()
-
-  protected readonly loadingText = 'Загрузка…'
 
   protected readonly src = computed<SafeResourceUrl>(() => {
     return this.#domSanitizer.bypassSecurityTrustResourceUrl(this.url())

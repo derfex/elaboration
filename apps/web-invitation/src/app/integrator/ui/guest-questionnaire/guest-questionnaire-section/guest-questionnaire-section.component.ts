@@ -18,6 +18,7 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
   protected readonly sectionParameters = signal<GuestQuestionnaireSectionParameters>({
     descriptionParagraphs: [],
     googleFormHeight: 0,
+    googleFormLoadingText: 'Loading…',
     googleFormURL: 'NoData',
     titleText: 'No data',
   })
@@ -34,12 +35,14 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
         ({
           descriptionParagraphs,
           googleFormHeight,
+          googleFormLoadingText,
           googleFormURL,
           titleText,
         }: GuestQuestionnaireSectionParameters): void => {
           this.sectionParameters.set({
             descriptionParagraphs,
             googleFormHeight,
+            googleFormLoadingText,
             googleFormURL,
             titleText,
           })
