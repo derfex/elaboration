@@ -35,14 +35,14 @@ class EventDetailsStubComponent {}
 class EventDetailsSectionMediatorStubService {
   public readSectionParameters(): Observable<EventDetailsSectionParameters> {
     const wishes: readonly EventDetailsWish[] = [
-    {
-      text: 'Test data',
-    },
-    {
-      iconImageURL: 'TestData',
-      text: 'Test data',
-    },
-  ]
+      {
+        text: 'Test data',
+      },
+      {
+        iconImageURL: 'TestData',
+        text: 'Test data',
+      },
+    ]
     return of({
       descriptionParagraphs: ['Test data.'],
       titleText: 'Test data',
