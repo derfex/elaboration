@@ -65,6 +65,14 @@ export class EventLocationSectionComponent implements OnInit {
   readonly #mapMode = signal<boolean>(false)
 
   public ngOnInit(): void {
+    this.#readSectionParameters()
+  }
+
+  public showMapButtonClickHandler(): void {
+    this.#mapMode.set(true)
+  }
+
+  #readSectionParameters(): void {
     this.#eventLocationSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))
@@ -72,9 +80,5 @@ export class EventLocationSectionComponent implements OnInit {
         this.sectionParameters.set(parameters)
         this.illustrationIsShown.set(true)
       })
-  }
-
-  public showMapButtonClickHandler(): void {
-    this.#mapMode.set(true)
   }
 }

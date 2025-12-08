@@ -22,6 +22,10 @@ export class EventOrganizationSectionComponent implements OnInit {
   })
 
   public ngOnInit(): void {
+    this.#readSectionParameters()
+  }
+
+  #readSectionParameters(): void {
     this.#eventOrganizationSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))

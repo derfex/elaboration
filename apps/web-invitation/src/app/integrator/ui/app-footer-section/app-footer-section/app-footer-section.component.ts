@@ -22,6 +22,10 @@ export class AppFooterSectionComponent implements OnInit {
   })
 
   public ngOnInit(): void {
+    this.#readSectionParameters()
+  }
+
+  #readSectionParameters(): void {
     this.#appSectionsMediatorService
       .readAppFooterSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))

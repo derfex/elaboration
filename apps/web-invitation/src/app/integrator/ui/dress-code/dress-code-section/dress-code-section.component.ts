@@ -28,6 +28,10 @@ export class DressCodeSectionComponent implements OnInit {
   })
 
   public ngOnInit(): void {
+    this.#readSectionParameters()
+  }
+
+  #readSectionParameters(): void {
     this.#dressCodeSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))

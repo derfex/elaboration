@@ -23,13 +23,10 @@ export class GuestQuestionnaireSectionComponent implements OnInit {
   })
 
   public ngOnInit(): void {
-    this.sectionParameters.set({
-      descriptionParagraphs: [],
-      googleFormHeight: 0,
-      googleFormURL: 'NoData',
-      titleText: 'No data',
-    })
+    this.#readSectionParameters()
+  }
 
+  #readSectionParameters(): void {
     this.#guestQuestionnaireSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))

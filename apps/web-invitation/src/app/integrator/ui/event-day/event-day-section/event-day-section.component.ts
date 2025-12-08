@@ -42,6 +42,10 @@ export class EventDaySectionComponent implements OnInit {
   })
 
   public ngOnInit(): void {
+    this.#readSectionParameters()
+  }
+
+  #readSectionParameters(): void {
     this.#eventDaySectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))

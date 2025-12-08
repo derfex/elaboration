@@ -25,6 +25,10 @@ export class EventProgramSectionComponent implements OnInit {
   protected readonly stages = signal<readonly EventProgramStagesListItem[]>([])
 
   public ngOnInit(): void {
+    this.#readSectionParametersAndList()
+  }
+
+  #readSectionParametersAndList(): void {
     this.#eventProgramSectionMediatorService
       .readSectionParametersAndList()
       .pipe(takeUntilDestroyed(this.#destroyRef))

@@ -24,6 +24,10 @@ export class AppHeroSectionComponent implements OnInit {
   })
 
   public ngOnInit(): void {
+    this.#readSectionParameters()
+  }
+
+  #readSectionParameters(): void {
     this.#appSectionsMediatorService
       .readAppHeroSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))
