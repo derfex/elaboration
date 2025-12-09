@@ -1,11 +1,11 @@
 @use './identity/identity-foundation'
 @use './reset-foundation'
-@use './theming/theming'
+@use './theming/theming-foundation'
 
 @mixin app-ui-kit-foundation_styles-mixin
   @include reset-foundation.app-reset-foundation_styles-mixin
   @include identity-foundation.app-identity-foundation_styles-mixin
-  @include theming.app-theming_styles-mixin
+  @include theming-foundation.app-theming-foundation_styles-mixin
 
 
   // ## Primitive
