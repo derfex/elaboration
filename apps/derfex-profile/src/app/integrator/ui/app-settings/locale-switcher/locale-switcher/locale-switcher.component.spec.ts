@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'

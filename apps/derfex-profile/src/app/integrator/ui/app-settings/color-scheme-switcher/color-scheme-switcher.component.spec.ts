@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { AppThemeSwitcherService } from '~ui-kit/theming/app-theme-switcher.service'
 import { ColorSchemeSwitcherComponent } from './color-scheme-switcher.component'
 

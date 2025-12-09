@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { PetShopComponent } from './pet-shop.component'
 
 // TODO: Explore the tests, refactor, {migrate to `vitest`?}.

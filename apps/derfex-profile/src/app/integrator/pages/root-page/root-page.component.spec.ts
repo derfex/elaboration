@@ -1,7 +1,7 @@
 import { provideHttpClient } from '@angular/common/http'
 import { provideHttpClientTesting } from '@angular/common/http/testing'
 import { Component } from '@angular/core'
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { RootPageComponent } from './root-page.component'

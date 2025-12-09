@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { NodeJSLogotypeComponent } from './node-js-logotype.component'
 
 describe('NodeJSLogotypeComponent', (): void => {

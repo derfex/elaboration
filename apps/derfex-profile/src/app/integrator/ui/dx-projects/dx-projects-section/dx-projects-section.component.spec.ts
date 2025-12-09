@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { DXProjectsSectionComponent } from './dx-projects-section.component'
 
 describe('DXProjectsSectionComponent', (): void => {

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { GitHubInvertocatLogotypeComponent } from './github-invertocat-logotype.component'
 
 describe('GitHubInvertocatLogotypeComponent', (): void => {

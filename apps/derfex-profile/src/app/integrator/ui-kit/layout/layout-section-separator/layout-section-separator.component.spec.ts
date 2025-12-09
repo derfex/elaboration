@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { LayoutSectionSeparatorComponent } from './layout-section-separator.component'
 
 describe('LayoutSectionSeparatorComponent', (): void => {

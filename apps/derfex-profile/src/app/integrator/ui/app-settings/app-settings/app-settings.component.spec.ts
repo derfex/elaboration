@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { AppSettingsService } from '~ui/app-settings/app-settings/app-settings.service'
 import { AppSettingsComponent } from './app-settings.component'

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { HTML5LogotypeComponent } from './html5-logotype.component'
 
 describe('HTML5LogotypeComponent', (): void => {

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { DXActivityCardComponent } from './dx-activity-card.component'
 
 describe('DXActivityCardComponent', (): void => {

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { SASSLogotypeComponent } from './sass-logotype.component'
 
 describe('SASSLogotypeComponent', (): void => {
