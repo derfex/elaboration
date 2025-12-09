@@ -1,8 +1,8 @@
 @use './color-palette-foundation'
-@use './fonts'
+@use './fonts-foundation'
 @use './transitions'
 
 @mixin app-identity-foundation_styles-mixin
   @include color-palette-foundation.app-color-palette-foundation_custom-properties-mixin
-  @include fonts.app-fonts_styles-mixin
+  @include fonts-foundation.app-fonts-foundation_styles-mixin
   @include transitions.app-transitions_styles-mixin
