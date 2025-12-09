@@ -11,8 +11,8 @@
   // ## Primitive
 
   :root
-    --dx-color-crayola-dark-blue--to-surface--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-surface-color))
-    --dx-color-crayola-dark-blue--to-text--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-text-color))
+    --dx-color-crayola-dark-blue--to-surface--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-root-surface-bg-color))
+    --dx-color-crayola-dark-blue--to-text--500: color-mix(in oklch, var(--dx-color-crayola-dark-blue), var(--app-root-surface-text-color))
 
   // ## Semantic
 
@@ -32,5 +32,5 @@
   // ## Init
 
   :root
-    background: var(--app-surface-color)
-    color: var(--app-text-color)
+    background: var(--app-root-surface-bg-color)
+    color: var(--app-root-surface-text-color)
