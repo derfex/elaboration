@@ -1,3 +1,4 @@
+@use '../../identity/transitions'
 @use '../layout'
 
 :host
@@ -14,12 +15,14 @@
 
   .app-logotype-container
     $_transition-duration: var(--app-transition-duration)
+    $_transition-timing-function: var(--app-transition-timing-function)
 
-    --dx-logotype-transition-duration: $_transition-duration
+    --dx-logotype-transition-duration: #{$_transition-duration}
+    --dx-logotype-transition-timing-function: #{$_transition-timing-function}
     --dx-logotype-v-fill: #ddd
     --dx-logotype-z-fill: #ddd
 
-    transition: $_transition-duration
+    @include transitions.app-transitions_transition-mixin(rotate)
 
   &:hover .app-logotype-container
     --dx-logotype-v-fill: var(--dx-color-accent)
