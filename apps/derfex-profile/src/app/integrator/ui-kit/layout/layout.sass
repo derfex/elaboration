@@ -10,6 +10,11 @@ $app-device-width-extra-extra-large: 1400px
   flex-direction: column
   row-gap: $_row-gap
 
+@mixin app-layout_grid-repeat-auto-fit-mixin($_column-min-width, $_grid-gap)
+  display: grid
+  grid-gap: $_grid-gap
+  grid-template-columns: repeat(auto-fit, minmax($_column-min-width, 1fr))
+
 // # Padding
 // TODO: reorganize.
 

@@ -21,12 +21,10 @@
   color: var(--app-text-color--444)
 
 .app-skills
-  display: grid
-  grid-auto-flow: dense
-  grid-gap: 4px
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
-
   @include reset.app-reset_ul-mixin
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(120px, 4px)
+
+  //grid-auto-flow: dense // TODO?: Do we need it?
 
 .app-skills__item
   border: 1px solid var(--app-decor-color--eee)
