@@ -1,0 +1,15 @@
+<section class="app-hero">
+  <p class="app-phrase">{{phraseText()}}</p>
+  <div>
+    @if (illustrationIsShown()) {
+      <img
+        class="app-illustration-img"
+        [alt]="illustrationImageAltText()"
+        [height]="illustrationImageHeight()"
+        [ngSrc]="illustrationImageURL()"
+        [width]="illustrationImageWidth()"
+        priority
+      />
+    }
+  </div>
+</section>

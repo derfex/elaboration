@@ -1,0 +1,13 @@
+<article class="app-event-program-stage-card">
+  <div class="app-period-from-container">
+    <span class="app-period-from">{{periodFrom()}}</span>
+  </div>
+  <div class="app-text-container">
+    <h3 class="app-title">{{title()}}</h3>
+    <div class="app-description">
+      @for (description of descriptionParagraphs(); track description) {
+        <p class="app-description__paragraph">{{description}}</p>
+      }
+    </div>
+  </div>
+</article>

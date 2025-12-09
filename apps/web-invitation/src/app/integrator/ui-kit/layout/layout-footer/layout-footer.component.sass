@@ -1,0 +1,52 @@
+@use '../../identity/fonts'
+@use '../../ui-kit'
+@use '../layout'
+
+:host
+  display: block
+
+.app-footer
+  @include layout.app-layout_paddings-mixin
+  @include layout.app-layout_flex-column-mixin(16px)
+
+
+.app-highlight
+  @include ui-kit.app-ui-kit_neon-mixin
+  @include fonts.app-fonts_geometric-mixin
+
+  line-height: initial
+
+  @media (layout.$app-device-width-small <= width)
+    font-size: 32px
+
+  @media (layout.$app-device-width-medium <= width)
+    font-size: 40px
+
+  @media (layout.$app-device-width-large <= width)
+    font-size: 60px
+
+
+.app-paragraph
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-with-love
+  @include ui-kit.app-ui-kit_p-mixin
+
+  display: flex
+  align-items: center
+  gap: 4px
+
+.app-with-love__path
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-width: 2
+
+.app-with-love__svg
+  $_size: 20px
+
+  display: inline
+  stroke: none
+  width: $_size
+  height: $_size
+  fill: currentColor
+  color: var(--app-color-accent)

@@ -1,0 +1,19 @@
+<section class="app-section">
+  <div class="app-section__wrapper">
+    <div class="app-text-container">
+      <h2 class="app-title">{{sectionParameters().titleText}}</h2>
+      <div class="app-description">
+        @for (description of sectionParameters().descriptionParagraphs; track description) {
+          <p class="app-description__paragraph">{{description}}</p>
+        }
+      </div>
+    </div>
+    <div class="app-google-form-component-container">
+      <app-google-form
+        [height]="sectionParameters().googleFormHeight"
+        [loadingText]="sectionParameters().googleFormLoadingText"
+        [url]="sectionParameters().googleFormURL"
+      />
+    </div>
+  </div>
+</section>

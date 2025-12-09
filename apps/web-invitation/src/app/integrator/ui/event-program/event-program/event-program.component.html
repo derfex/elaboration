@@ -1,0 +1,14 @@
+<article class="app-event-program">
+  <h2 class="app-title">{{titleText()}}</h2>
+  <ul class="app-stages">
+    @for (stage of stages(); track stage.codename) {
+      <li>
+        <app-event-program-stage-card
+          [descriptionParagraphs]="stage.descriptionParagraphs"
+          [periodFrom]="stage.periodFrom"
+          [title]="stage.title"
+        />
+      </li>
+    }
+  </ul>
+</article>

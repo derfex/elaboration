@@ -1,0 +1,18 @@
+@use '../../../ui-kit/layout/layout'
+
+:host
+  display: block
+
+.app-section
+  position: relative
+
+.app-section__wrapper
+  @include layout.app-layout_section-wrapper-mixin
+
+.app-text-ornament-component-container
+  position: absolute
+  inset: 0
+  z-index: -1
+  overflow: hidden
+  pointer-events: none
+  color: var(--app-ornament-text-color)

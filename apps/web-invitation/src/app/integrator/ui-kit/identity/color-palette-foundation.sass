@@ -1,0 +1,43 @@
+@mixin app-color-palette-foundation_custom-properties-mixin
+  // # Colors, shades, tints, tones
+
+  // ## Primitive
+
+  :root
+    --app-color-cyan: #00f0ff
+
+    --app-color-black: #020202
+    --app-color-gray-light: #d9d9d9
+    --app-color-white: #fefefe
+
+    --app-color-cyan--dark-50: color-mix(in oklch, var(--app-color-cyan), var(--app-color-black))
+    --app-color-cyan--dark-75: color-mix(in oklch, var(--app-color-cyan), var(--app-color-black) 75%)
+
+    --app-color-white--dark-80: color-mix(in oklch, var(--app-color-white), var(--app-color-black) 80%)
+    --app-color-white--transparent-50: color-mix(in oklch, var(--app-color-white), #0000)
+
+  // ## Semantic
+
+  :root
+    --app-color-accent: var(--app-color-cyan)
+    --app-dark-surface-bg-color: var(--app-color-black)
+    --app-dark-surface-text-color: var(--app-color-white)
+    --app-heading-text-color: var(--app-color-cyan)
+    --app-light-surface-bg-color: var(--app-color-gray-light)
+    --app-light-surface-text-color: var(--app-color-cyan--dark-50)
+
+  // ## Component
+
+  :root
+    --app-button-primary-bg-color: var(--app-color-cyan)
+    --app-button-primary-text-color: var(--app-color-black)
+    --app-button-primary-hover-bg-color: var(--app-color-cyan--dark-50)
+
+    --app-button-secondary-bg-color: var(--app-color-cyan--dark-50)
+    --app-button-secondary-text-color: var(--app-color-white)
+    --app-button-secondary-hover-bg-color: var(--app-color-cyan--dark-75)
+
+    --app-ornament-text-color: var(--app-color-white--dark-80)
+
+    --app-selection-bg-color: var(--app-color-white--transparent-50)
+    --app-selection-text-color: var(--app-color-accent)

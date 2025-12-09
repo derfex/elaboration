@@ -1,0 +1,41 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-event-details
+  @include layout.app-layout_flex-column-mixin(16px)
+  @include layout.app-layout_paddings-mixin
+
+.app-description
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-description__paragraph
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+
+.app-wishes
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-wishes__icon
+  $_size: 52px
+
+  flex-basis: $_size
+  flex-shrink: 0
+  height: $_size
+  background-position: top right
+  background-repeat: no-repeat
+  background-size: contain
+
+.app-wishes__item
+  @include ui-kit.app-ui-kit_p-mixin
+  @include ui-kit.app-ui-kit_glass-mixin
+
+  display: flex
+  column-gap: 20px
+  border: 1px solid var(--app-color-accent)
+  border-radius: 8px
+  padding: 20px

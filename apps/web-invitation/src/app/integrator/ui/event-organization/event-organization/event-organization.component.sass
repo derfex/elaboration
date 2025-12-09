@@ -1,0 +1,33 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/reset'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-event-organization
+  @include layout.app-layout_flex-column-mixin(16px)
+  @include layout.app-layout_paddings-mixin
+
+
+.app-contact
+  @include ui-kit.app-ui-kit_button-secondary-mixin
+
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+  text-decoration: none
+
+.app-contacts
+  @include reset.app-reset_ul-mixin
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(260px, 16px)
+
+.app-paragraphs
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-paragraphs__item
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin

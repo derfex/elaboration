@@ -1,0 +1,41 @@
+{
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "typeCheckHostBindings": true
+  },
+  "compilerOptions": {
+    "emitDecoratorMetadata": false,
+    "isolatedModules": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "~app/*": ["apps/web-invitation/src/app/*"],
+      "~be/*": ["apps/web-invitation/src/app/integrator/data-access/backend-api/*"],
+      "~entities/*": ["apps/web-invitation/src/architecture/entities/*"],
+      "~integrator/*": ["apps/web-invitation/src/app/integrator/*"],
+      "~pages/*": ["apps/web-invitation/src/app/integrator/pages/*"],
+      "~ui/*": ["apps/web-invitation/src/app/integrator/ui/*"],
+      "~ui-kit/*": ["apps/web-invitation/src/app/integrator/ui-kit/*"],
+    },
+    "strict": true,
+    "target": "es2022"
+  },
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
