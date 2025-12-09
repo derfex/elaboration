@@ -1,4 +1,5 @@
 @use 'sass:math'
+@use '../../../ui-kit/identity/transitions'
 @use '../../../ui-kit/layout/layout'
 @use '../../../ui-kit/typography/typography'
 
@@ -6,16 +7,15 @@
   display: block
 
 .app-card
-  $_transition-duration: var(--app-transition-duration)
-
   display: flex
   align-items: center
   place-content: center
   padding: 20px
 
+  @include transitions.app-transitions_transition-mixin('filter, opacity')
+
   filter: grayscale(1)
   opacity: .7
-  transition: $_transition-duration
 
   &:hover
     filter: grayscale(0)
