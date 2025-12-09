@@ -1,0 +1,15 @@
+@use '../identity/fonts'
+@use '../layout/layout'
+
+:host
+  display: block
+
+.app-ornament
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(var(--app-text-ornament-component-column-min-width), 8px)
+
+  text-align: center
+
+.app-text
+  @include fonts.app-fonts_geometric-mixin(700)
+
+  padding: 8px

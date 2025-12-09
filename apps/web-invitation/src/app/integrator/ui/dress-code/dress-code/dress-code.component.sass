@@ -1,0 +1,41 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/ui-kit'
+
+
+:host
+  display: block
+
+.app-dress-code
+  @include layout.app-layout_flex-column-mixin(16px)
+  @include layout.app-layout_paddings-mixin
+
+.app-description
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-description__paragraph
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-illustration__img
+  display: block
+  margin-inline: auto
+  max-width: 100%
+  height: auto
+
+.app-tints
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(200px, 20px)
+
+.app-tints__item
+  @include layout.app-layout_flex-column-mixin(8px)
+
+  justify-content: stretch
+  border-radius: 8px
+  padding: 8px
+
+  @include ui-kit.app-ui-kit_glass-mixin
+
+.app-tints__sample
+  border-radius: 4px
+  height: 60px
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin

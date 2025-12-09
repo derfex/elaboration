@@ -1,0 +1,21 @@
+<article class="app-event-organization">
+  <h2 class="app-title">{{titleText()}}</h2>
+  <div class="app-paragraphs">
+    @for (paragraph of descriptionParagraphs(); track paragraph) {
+      <p class="app-paragraphs__item">{{paragraph}}</p>
+    }
+  </div>
+  <ul class="app-contacts">
+    @for (contact of contacts(); track contact.hRef) {
+      <li>
+        <a
+          class="app-contact"
+          [href]="contact.hRef"
+          target="_blank"
+        >
+          {{contact.titleText}}
+        </a>
+      </li>
+    }
+  </ul>
+</article>

@@ -1,0 +1,26 @@
+<article class="app-dress-code">
+  <h2 class="app-title">{{titleText()}}</h2>
+  <div class="app-illustration__container">
+    @if (illustrationIsShown()) {
+      <img
+        class="app-illustration__img"
+        [alt]="illustrationImageAltText()"
+        [height]="illustrationImageHeight()"
+        [ngSrc]="illustrationImageURL()"
+        [width]="illustrationImageWidth()"
+      />
+    }
+  </div>
+  <div class="app-description">
+    @for (paragraph of descriptionParagraphs(); track paragraph) {
+      <p class="app-description__paragraph">{{paragraph}}</p>
+    }
+  </div>
+  <div class="app-tints">
+    @for (tint of tintsForTemplate(); track tint.text) {
+      <div class="app-tints__item">
+        <div class="app-tints__sample" [style]="tint.style"></div>
+      </div>
+    }
+  </div>
+</article>

@@ -1,0 +1,127 @@
+@use '../../../ui-kit/identity/transitions'
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/ui-kit'
+
+
+$_app-section-padding-block: 60px
+$_app-vertical-space-between-blocks: 8px
+$_app-vertical-space-between-paragraphs:4px
+
+
+:host
+  display: block
+
+.app-section__begin-subsection
+  position: relative
+  padding-top: $_app-section-padding-block
+
+.app-section__end-subsection
+  position: relative
+  padding-bottom: $_app-section-padding-block
+
+.app-section__panel
+  border-radius: 8px
+
+  @include layout.app-layout_paddings-mixin
+  @include ui-kit.app-ui-kit_glass-mixin
+
+.app-section__panel-wrapper
+  @include layout.app-layout_padding-inline-mixin
+
+.app-section__wrapper
+  @include layout.app-layout_section-wrapper-mixin
+
+.app-text-ornament-component-container
+  position: absolute
+  inset: 0
+  z-index: -1
+  overflow: hidden
+  pointer-events: none
+  color: var(--app-ornament-text-color)
+
+
+.app-content-and-illustration
+  display: grid
+  gap: 20px
+
+@media (layout.$app-device-width-medium <= width)
+  .app-content-and-illustration
+    grid-template-areas: 'content illustration'
+    grid-template-columns: 68fr 32fr
+
+  .app-content
+    grid-area: content
+
+  .app-illustration
+    grid-area: illustration
+
+
+.app-content
+  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-blocks)
+
+  align-items: flex-start
+
+.app-content-and-illustration-and-title
+  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-blocks)
+
+.app-google-map-container
+  margin-block: $_app-vertical-space-between-blocks
+  width: 100%
+
+  @media (hover: hover)
+    filter: grayscale(1)
+    opacity: 0.2
+
+    @include transitions.app-transitions_transition-mixin('filter, opacity')
+
+    .app-section:hover &
+      filter: grayscale(0)
+      opacity: 1
+
+// TODO: Extract the component for the illustration.
+.app-illustration
+  display: flex
+  padding: 16px
+
+.app-illustration__caption
+  padding-block: 20px
+  text-align: center
+  font-style: italic
+  color: var(--app-light-surface-text-color)
+
+.app-illustration__frame
+  margin: auto
+  padding: 40px 20px 0
+  transform: rotate(5deg)
+  background: var(--app-light-surface-bg-color)
+
+  @media (layout.$app-device-width-medium <= width)
+    width: 100%
+
+.app-illustration__img
+  display: block
+  margin-inline: auto
+  width: 100%
+  height: auto
+
+.app-map-description
+  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-paragraphs)
+
+.app-map-description__paragraph
+  @include ui-kit.app-ui-kit_p-mixin
+
+.app-show-map-button
+  @include ui-kit.app-ui-kit_button-primary-mixin
+
+  font-family: inherit
+  font-size: inherit
+  cursor: pointer
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+
+.app-transfer
+  @include layout.app-layout_flex-column-mixin($_app-vertical-space-between-paragraphs)
+
+.app-transfer__paragraph
+  @include ui-kit.app-ui-kit_p-mixin

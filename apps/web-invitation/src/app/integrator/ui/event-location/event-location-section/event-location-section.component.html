@@ -1,0 +1,85 @@
+<section class="app-section">
+  <div class="app-section__begin-subsection">
+    <div
+      class="app-text-ornament-component-container"
+      [style]="textOrnamentComponentContainerStyle()"
+    >
+      <app-text-ornament [texts]="textOrnamentComponentTexts()" />
+    </div>
+    <div class="app-section__wrapper">
+      <div class="app-section__panel-wrapper">
+        <div class="app-section__panel">
+          <div class="app-content-and-illustration-and-title">
+            <h2 class="app-title">{{sectionParameters().titleText}}</h2>
+            <div class="app-content-and-illustration">
+              <div class="app-illustration">
+                <figure class="app-illustration__frame">
+                  @if (illustrationIsShown()) {
+                    <img
+                      class="app-illustration__img"
+                      [alt]="sectionParameters().illustrationImageAltText"
+                      [height]="sectionParameters().illustrationImageHeight"
+                      [ngSrc]="sectionParameters().illustrationImageURL"
+                      [width]="sectionParameters().illustrationImageWidth"
+                    />
+                    <figcaption class="app-illustration__caption">
+                      <span>{{sectionParameters().illustrationCaptionText}}</span>
+                    </figcaption>
+                  }
+                </figure>
+              </div>
+              <div class="app-content">
+                <div class="app-map-description">
+                  @for (descriptionText of sectionParameters().mapDescriptionParagraphs; track descriptionText) {
+                    <p class="app-map-description__paragraph">{{descriptionText}}</p>
+                  }
+                </div>
+                @if (showMapButtonIsShown()) {
+                  <button
+                    class="app-show-map-button"
+                    (click)="showMapButtonClickHandler()"
+                  >
+                    {{sectionParameters().showMapButtonText}}
+                  </button>
+                }
+                @if (transferIsShown()) {
+                  <div class="app-transfer">
+                    @for (transferText of sectionParameters().transferParagraphs; track transferText) {
+                      <p class="app-transfer__paragraph">{{transferText}}</p>
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  @if (mapIsShown()) {
+    <div class="app-google-map-container">
+      <app-google-map [locationURL]="sectionParameters().locationURL" />
+    </div>
+  }
+  @if (endSubsectionIsShown()) {
+    <div class="app-section__end-subsection">
+      <div
+        class="app-text-ornament-component-container"
+        [style]="textOrnamentComponentContainerStyle()"
+      >
+        <app-text-ornament [texts]="textOrnamentComponentTexts()" />
+      </div>
+      <div class="app-section__wrapper">
+        <div class="app-section__panel-wrapper">
+          <div class="app-section__panel">
+            <div class="app-transfer">
+              @for (transferText of sectionParameters().transferParagraphs; track transferText) {
+                <p class="app-transfer__paragraph">{{transferText}}</p>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>
