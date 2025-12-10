@@ -1,3 +1,9 @@
 # Automatically generated sample application using Nx, Vue 3, `e2e`
 
-`npx nx e2e nx-welcome-vue-e2e` does not work.
+## Publicity
+
+It has no value.
+
+## Launch
+
+To run `e2e` test of `nx-welcome-vue` the application run `nx run nx-welcome-vue-e2e:e2e`.
