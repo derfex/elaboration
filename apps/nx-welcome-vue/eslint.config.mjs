@@ -14,8 +14,6 @@ export default [
   },
   {
     files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx', '**/*.vue'],
-    rules: {
-      'vue/multi-word-component-names': 'off',
-    },
+    rules: {},
   },
 ]
