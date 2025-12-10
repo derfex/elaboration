@@ -38,7 +38,7 @@
     "@playwright/test": "^1.56.1",
     "@schematics/angular": "20.2.2",
     "@swc-node/register": "~1.9.1",
-    "@swc/core": "1.6.7",
+    "@swc/core": "1.13.5",
     "@swc/helpers": "~0.5.11",
     "@types/node": "24.0.1",
     "@typescript-eslint/utils": "^8.40.0",
