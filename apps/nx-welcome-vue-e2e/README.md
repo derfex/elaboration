@@ -6,4 +6,4 @@ It has no value.
 
 ## Launch
 
-To run `e2e` test of `nx-welcome-vue` the application run `nx run nx-welcome-vue-e2e:e2e`.
+To run `e2e` tests of `nx-welcome-vue` the application run `nx run nx-welcome-vue-e2e:e2e`.
