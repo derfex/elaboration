@@ -13,7 +13,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      component: (): Promise<VueComponent> => import('../views/AboutView.vue'),
       name: 'about',
       path: '/about',
     },
@@ -21,3 +21,5 @@ const router = createRouter({
 })
 
 export default router
+
+type VueComponent = typeof import('*.vue')
