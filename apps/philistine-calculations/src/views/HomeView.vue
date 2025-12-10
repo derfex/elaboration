@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import NxWelcome from '../app/NxWelcome.vue'
+import AccrualsOnBankDeposits from '../integrator/ui/AccrualsOnBankDeposits.vue'
 </script>
 
 <template>
   <main>
-    <NxWelcome title="philistine-calculations" />
+    <AccrualsOnBankDeposits />
   </main>
 </template>
