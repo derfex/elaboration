@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "paths": {
+      "|ui/*": ["./src/integrator/ui/*"],
+      "|ui-kit/*": ["./src/integrator/ui-kit/*"],
+      "||/*": ["./src/*"]
+    },
     "types": ["vite/client"]
   },
   "exclude": [

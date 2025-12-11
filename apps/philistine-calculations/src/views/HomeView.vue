@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AccrualsOnBankDeposits from '../integrator/ui/AccrualsOnBankDeposits.vue'
+import AccrualsOnBankDeposits from '|ui/AccrualsOnBankDeposits.vue'
 </script>
 
 <template>

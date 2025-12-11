@@ -2,8 +2,10 @@
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 
+// https://vitejs.dev/config
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/philistine-calculations',
@@ -27,6 +29,13 @@ export default defineConfig(() => ({
     emptyOutDir: true,
     outDir: '../../dist/apps/philistine-calculations',
     reportCompressedSize: true,
+  },
+  resolve: {
+    alias: {
+      '||': fileURLToPath(new URL('./src', import.meta.url)),
+      '|ui': fileURLToPath(new URL('./src/integrator/ui', import.meta.url)),
+      '|ui-kit': fileURLToPath(new URL('./src/integrator/ui-kit', import.meta.url)),
+    },
   },
   test: {
     coverage: {
