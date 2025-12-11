@@ -1,30 +1,43 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
 import AccrualsOnBankDeposits from './AccrualsOnBankDeposits.vue'
-
-// # Private configuration
 
 // # Uses in the template
 
-const amountAtBeginningOfPeriod = ref(50000)
-const leapYear = ref(false)
-const numberOfDaysInPeriod = ref(1)
-const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365))
-const rate = ref(14.5)
-
-
-
-// # Life cycle hooks
+const accrualLabelText = 'Начисление'
+const amountAtBeginningOfPeriod = 50000
+const amountAtBeginningOfPeriodLabelText = 'Начальная сумма'
+const leapYear = checkIfCurrentYearLeap()
+const leapYearLabelText = 'Високосный год'
+const numberOfDaysInPeriod = 1
+const numberOfDaysInPeriodLabelText = 'Срок в днях'
+const numberOfDaysOfYearLabelText = 'Количество дней в году'
+const rate = 14.5
+const rateLabelText = 'Ставка'
 
 // # Private
 
+function checkIfCurrentYearLeap(): boolean {
+  const year = new Date().getFullYear()
+  return new Date(year, 2, 0).getDate() === 29
+}
 </script>
 
 <template>
   <div>
     <div class="app-component-independent-root">
       <div class="app-section__wrapper">
-        <AccrualsOnBankDeposits />
+        <AccrualsOnBankDeposits
+          :accrual-label-text="accrualLabelText"
+          :amount-at-beginning-of-period="amountAtBeginningOfPeriod"
+          :amount-at-beginning-of-period-label-text="amountAtBeginningOfPeriodLabelText"
+          :leap-year="leapYear"
+          :leap-year-label-text="leapYearLabelText"
+          :number-of-days-in-period="numberOfDaysInPeriod"
+          :number-of-days-in-period-label-text="numberOfDaysInPeriodLabelText"
+          :number-of-days-of-year-label-text="numberOfDaysOfYearLabelText"
+          :rate="rate"
+          :rate-label-text="rateLabelText"
+        />
       </div>
     </div>
   </div>
