@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import AccrualsOnBankDeposits from '|ui/AccrualsOnBankDeposits.vue'
+import AccrualsOnBankDepositsSection from '|ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'
 </script>
 
 <template>
   <main>
-    <AccrualsOnBankDeposits />
+    <AccrualsOnBankDepositsSection />
   </main>
 </template>
