@@ -50,28 +50,28 @@ function roundAccrual(accrual: number): number {
 <template>
   <div>
     <div class="app-component-independent-root">
-      <form>
-        <label>
+      <form class="app-form">
+        <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
           <input v-model="amountAtBeginningOfPeriod" placeholder="50000" type="number" />
         </label>
-        <label>
+        <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
           <input v-model="numberOfDaysInPeriod" placeholder="1" type="number" />
         </label>
-        <label>
+        <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
           <input v-model="rate" placeholder="14.5" type="number" />
         </label>
-        <label>
+        <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
           <input v-model="leapYear" type="checkbox" />
         </label>
-        <label>
+        <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
           <input v-model="numberOfDaysOfYear" disabled type="number" />
         </label>
-        <label>
+        <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
           <input v-model="accrual" disabled type="number" />
         </label>
@@ -80,18 +80,15 @@ function roundAccrual(accrual: number): number {
   </div>
 </template>
 
-<style scoped>
-.app-component-independent-root {
-}
+<style lang="sass" scoped>
+// .app-component-independent-root
 
-form {
-  display: grid;
-  grid-template-columns: auto auto;
-}
+.app-control-container
+  display: grid
+  grid-column: 1 / 3
+  grid-template-columns: subgrid
 
-label {
-  display: grid;
-  grid-column: 1 / 3;
-  grid-template-columns: subgrid;
-}
+.app-form
+  display: grid
+  grid-template-columns: auto auto
 </style>
