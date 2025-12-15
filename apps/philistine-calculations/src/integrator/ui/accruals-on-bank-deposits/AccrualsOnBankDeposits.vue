@@ -71,11 +71,11 @@ function roundAccrual(accrual: number): number {
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
-          <input class="app-textbox" v-model="numberOfDaysOfYear" disabled type="number" />
+          <input class="app-textbox" v-model="numberOfDaysOfYear" disabled />
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
-          <input class="app-accrual-textbox" v-model="accrual" disabled type="number" />
+          <input class="app-accrual-textbox" v-model="accrual" disabled />
         </label>
       </form>
     </div>
