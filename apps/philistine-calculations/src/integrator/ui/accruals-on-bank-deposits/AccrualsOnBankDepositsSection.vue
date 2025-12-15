@@ -48,7 +48,8 @@ function checkIfCurrentYearLeap(): boolean {
 <style lang="sass" scoped>
 @use '../../ui-kit/layout/layout'
 
-//.app-component-independent-root
+.app-component-independent-root
+  padding-block: 20px
 
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin

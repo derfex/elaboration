@@ -75,7 +75,7 @@ function roundAccrual(accrual: number): number {
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
-          <input class="app-textbox" v-model="accrual" disabled type="number" />
+          <input class="app-accrual-textbox" v-model="accrual" disabled type="number" />
         </label>
       </form>
     </div>
@@ -99,16 +99,26 @@ $_app-padding: $_app-gap
   padding: $_app-padding
 
 
+.app-accrual-textbox
+  @include ui-kit.app-ui-kit_textbox-mixin
+
+  color: var(--app-color-accent)
+
 .app-control-container
   display: grid
   gap: $_app-gap
   grid-column: 1 / 3
-  grid-template-columns: subgrid
+
+  @media (layout.$app-device-width-medium <= width)
+    grid-template-columns: subgrid
 
 .app-form
   display: grid
   gap: $_app-gap
-  grid-template-columns: auto auto
+  grid-template-columns: auto
+
+  @media (layout.$app-device-width-medium <= width)
+    grid-template-columns: auto auto
 
 .app-textbox
   @include ui-kit.app-ui-kit_textbox-mixin
