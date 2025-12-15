@@ -55,15 +55,15 @@ function roundAccrual(accrual: number): number {
       <form class="app-form">
         <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
-          <input v-model="amountAtBeginningOfPeriod" placeholder="50000" type="number" />
+          <input class="app-textbox" v-model="amountAtBeginningOfPeriod" placeholder="50000" type="number" />
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
-          <input v-model="numberOfDaysInPeriod" placeholder="1" type="number" />
+          <input class="app-textbox" v-model="numberOfDaysInPeriod" placeholder="1" type="number" />
         </label>
         <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
-          <input v-model="rate" placeholder="14.5" type="number" />
+          <input class="app-textbox" v-model="rate" placeholder="14.5" type="number" />
         </label>
         <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
@@ -71,11 +71,11 @@ function roundAccrual(accrual: number): number {
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
-          <input v-model="numberOfDaysOfYear" disabled type="number" />
+          <input class="app-textbox" v-model="numberOfDaysOfYear" disabled type="number" />
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
-          <input v-model="accrual" disabled type="number" />
+          <input class="app-textbox" v-model="accrual" disabled type="number" />
         </label>
       </form>
     </div>
@@ -83,17 +83,35 @@ function roundAccrual(accrual: number): number {
 </template>
 
 <style lang="sass" scoped>
-// .app-component-independent-root
+@use '../../ui-kit/layout/layout'
 @use '../../ui-kit/ui-kit'
+
+
+$_app-gap: 20px
+$_app-padding: $_app-gap
+
+
+.app-component-independent-root
+  @include layout.app-layout_flex-column-mixin($_app-gap)
+  @include ui-kit.app-ui-kit_glass-mixin
+
+  border-radius: 4px
+  padding: $_app-padding
+
 
 .app-control-container
   display: grid
+  gap: $_app-gap
   grid-column: 1 / 3
   grid-template-columns: subgrid
 
 .app-form
   display: grid
+  gap: $_app-gap
   grid-template-columns: auto auto
+
+.app-textbox
+  @include ui-kit.app-ui-kit_textbox-mixin
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
