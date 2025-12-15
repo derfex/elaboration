@@ -76,3 +76,13 @@
 
 @mixin app-ui-kit_neon-mixin
   text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)
+
+@mixin app-ui-kit_textbox-mixin
+  @include app-ui-kit_glass-mixin
+
+  border: 0
+  border-radius: 4px
+  padding: 8px
+  font-family: monospace
+  font-size: 2em
+  background: #0000

@@ -3,16 +3,17 @@ import AccrualsOnBankDeposits from './AccrualsOnBankDeposits.vue'
 
 // # Uses in the template
 
-const accrualLabelText = 'Начисление'
+const accrualLabelText = 'Accrual'
 const amountAtBeginningOfPeriod = 50000
-const amountAtBeginningOfPeriodLabelText = 'Начальная сумма'
+const amountAtBeginningOfPeriodLabelText = 'Amount at the beginning of the period'
 const leapYear = checkIfCurrentYearLeap()
-const leapYearLabelText = 'Високосный год'
+const leapYearLabelText = 'Leap year'
 const numberOfDaysInPeriod = 1
-const numberOfDaysInPeriodLabelText = 'Срок в днях'
-const numberOfDaysOfYearLabelText = 'Количество дней в году'
+const numberOfDaysInPeriodLabelText = 'Number of days in the period'
+const numberOfDaysOfYearLabelText = 'Number of days of the year'
 const rate = 14.5
-const rateLabelText = 'Ставка'
+const rateLabelText = 'Rate'
+const titleText = 'Accruals on a bank deposit'
 
 // # Private
 
@@ -37,6 +38,7 @@ function checkIfCurrentYearLeap(): boolean {
           :number-of-days-of-year-label-text="numberOfDaysOfYearLabelText"
           :rate="rate"
           :rate-label-text="rateLabelText"
+          :title-text="titleText"
         />
       </div>
     </div>

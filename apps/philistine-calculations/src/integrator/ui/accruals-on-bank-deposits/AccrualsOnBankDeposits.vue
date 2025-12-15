@@ -4,16 +4,17 @@ import { computed, ref } from 'vue'
 // # API
 
 const props = defineProps<{
-  accrualLabelText: string
-  amountAtBeginningOfPeriod: number
-  amountAtBeginningOfPeriodLabelText: string
-  leapYear: boolean
-  leapYearLabelText: string
-  numberOfDaysInPeriod: number
-  numberOfDaysInPeriodLabelText: string
-  numberOfDaysOfYearLabelText: string
-  rate: number
-  rateLabelText: string
+  readonly accrualLabelText: string
+  readonly amountAtBeginningOfPeriod: number
+  readonly amountAtBeginningOfPeriodLabelText: string
+  readonly leapYear: boolean
+  readonly leapYearLabelText: string
+  readonly numberOfDaysInPeriod: number
+  readonly numberOfDaysInPeriodLabelText: string
+  readonly numberOfDaysOfYearLabelText: string
+  readonly rate: number
+  readonly rateLabelText: string
+  readonly titleText: string
 }>()
 
 // # Uses in the template
@@ -50,6 +51,7 @@ function roundAccrual(accrual: number): number {
 <template>
   <div>
     <div class="app-component-independent-root">
+      <h2 class="app-title">{{ props.titleText }}</h2>
       <form class="app-form">
         <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
@@ -82,6 +84,7 @@ function roundAccrual(accrual: number): number {
 
 <style lang="sass" scoped>
 // .app-component-independent-root
+@use '../../ui-kit/ui-kit'
 
 .app-control-container
   display: grid
@@ -91,4 +94,8 @@ function roundAccrual(accrual: number): number {
 .app-form
   display: grid
   grid-template-columns: auto auto
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+  @include ui-kit.app-ui-kit_neon-mixin
 </style>
