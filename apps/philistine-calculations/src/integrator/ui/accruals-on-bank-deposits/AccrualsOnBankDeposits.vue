@@ -92,7 +92,7 @@ $_app-padding: $_app-gap
 
 
 .app-component-independent-root
-  @include layout.app-layout_flex-column-mixin($_app-gap)
+  @include layout.app-layout_flex-column-mixin($_app-gap * 2)
   @include ui-kit.app-ui-kit_glass-mixin
 
   border-radius: 4px
