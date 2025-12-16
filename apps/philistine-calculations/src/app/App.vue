@@ -14,19 +14,20 @@ const titleText = 'Philistine calculations'
           <h1 class="app-title">{{ titleText }}</h1>
         </div>
       </div>
+      <RouterView />
     </div>
   </div>
-  <RouterView />
 </template>
 
 <style lang="sass" scoped>
 @use '../integrator/ui-kit/layout/layout'
 @use '../integrator/ui-kit/ui-kit'
 
-//.app-component-independent-root
+.app-component-independent-root
+  padding-block: 20px
 
 .app-section__content
-  padding: 20px
+  padding-inline: 20px
 
 .app-section__wrapper
   @include layout.app-layout_section-wrapper-mixin
