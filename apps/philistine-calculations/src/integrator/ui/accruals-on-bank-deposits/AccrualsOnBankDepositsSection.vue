@@ -12,7 +12,7 @@ const numberOfDaysInPeriod = 1
 const numberOfDaysInPeriodLabelText = 'Number of days in the period'
 const numberOfDaysOfYearLabelText = 'Number of days of the year'
 const rate = 14.5
-const rateLabelText = 'Rate'
+const rateLabelText = 'Rate, %'
 const titleText = 'Accruals on a bank deposit'
 
 // # Private
