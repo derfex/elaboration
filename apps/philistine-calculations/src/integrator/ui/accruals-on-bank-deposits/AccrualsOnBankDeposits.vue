@@ -67,7 +67,7 @@ function roundAccrual(accrual: number): number {
         </label>
         <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
-          <input v-model="leapYear" type="checkbox" />
+          <input class="app-checkbox" v-model="leapYear" type="checkbox" />
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
@@ -100,9 +100,13 @@ $_app-padding: $_app-gap
 
 
 .app-accrual-textbox
-  @include ui-kit.app-ui-kit_textbox-mixin
+  @include ui-kit.app-ui-kit_form-textbox-mixin
 
+  font-family: monospace
   color: var(--app-color-accent)
+
+.app-checkbox
+  @include ui-kit.app-ui-kit_form-checkbox-mixin
 
 .app-control-container
   display: grid
@@ -121,7 +125,9 @@ $_app-padding: $_app-gap
     grid-template-columns: auto auto
 
 .app-textbox
-  @include ui-kit.app-ui-kit_textbox-mixin
+  @include ui-kit.app-ui-kit_form-textbox-mixin
+
+  font-family: monospace
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
