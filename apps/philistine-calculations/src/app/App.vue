@@ -33,5 +33,6 @@ const titleText = 'Philistine calculations'
   @include layout.app-layout_section-wrapper-mixin
 
 .app-title
-  @include ui-kit.app-ui-kit_h2-mixin
+  @include ui-kit.app-ui-kit_h1-mixin
+  @include ui-kit.app-ui-kit_neon-mixin
 </style>
