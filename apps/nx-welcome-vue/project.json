@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "nx-welcome-vue",
+  "projectType": "application",
+  "sourceRoot": "apps/nx-welcome-vue/src",
+  "// targets": "to see all targets run: nx show project nx-welcome-vue --web",
+  "targets": {}
+}

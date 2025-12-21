@@ -1,0 +1,100 @@
+@use './identity/transitions'
+@use './typography/typography'
+
+@mixin app-ui-kit_h1-mixin
+  @include typography.app-typography_h1-mixin
+
+@mixin app-ui-kit_h2-mixin
+  @include typography.app-typography_h2-mixin
+
+  color: var(--app-heading-text-color)
+
+// TODO: `app-ui-kit_h3-mixin` is unused.
+//@mixin app-ui-kit_h3-mixin
+//  @include typography.app-typography_h2-mixin
+//
+//  color: var(--app-heading-text-color)
+
+// TODO: `app-ui-kit_p-mixin` is unused.
+//@mixin app-ui-kit_p-mixin
+//  @include typography.app-typography_p-mixin
+
+
+// TODO: `_app-button-mixin` is unused.
+//@mixin _app-button-mixin
+//  border: 0
+//  border-radius: 4px
+//  padding: 8px 20px
+//  line-height: initial
+//  text-align: center
+
+// TODO: `app-ui-kit_button-primary-mixin` is unused.
+//@mixin app-ui-kit_button-primary-mixin
+//  @include _app-button-mixin
+//
+//  background: var(--app-button-primary-bg-color)
+//  color: var(--app-button-primary-text-color)
+//
+//  @include transitions.app-transitions_transition-mixin(background)
+//
+//  &:hover
+//    background: var(--app-button-primary-hover-bg-color)
+
+// TODO: `app-ui-kit_button-secondary-mixin` is unused.
+//@mixin app-ui-kit_button-secondary-mixin
+//  @include _app-button-mixin
+//
+//  background: var(--app-button-secondary-bg-color)
+//  color: var(--app-button-secondary-text-color)
+//
+//  @include transitions.app-transitions_transition-mixin(background)
+//
+//  &:hover
+//    background: var(--app-button-secondary-hover-bg-color)
+
+
+// TODO: `app-ui-kit_background-clip-mixin` is unused.
+// @mixin app-ui-kit_background-clip-mixin($_bg-image)
+//   background-clip: text
+//   background-image: $_bg-image
+//   color: #0000
+
+@mixin app-ui-kit_glass-mixin
+  // Inspired by https://habr.com/ru/articles/861290
+
+  // Bottom and right deep effect
+  $_effect-b-r: inset -0.75px -0.5px rgba(255, 255, 255, 0.1)
+  // Top and left deep effect
+  $_effect-t-l: inset 0.75px 0.5px rgba(255, 255, 255, 0.025)
+  // Shadow effect
+  $_effect-shadow: 3px 2px 10px rgba(0, 0, 0, 0.25)
+  // Short subsurface effect
+  $_effect-short-subsurface: inset 0px 0px 10px 5px rgba(255, 255, 255, 0.025)
+  // Long subsurface effect
+  $_effect-long-subsurface: inset 0px 0px 40px 5px rgba(255, 255, 255, 0.025)
+
+  $_box-shadow: $_effect-b-r, $_effect-t-l, $_effect-shadow, $_effect-short-subsurface, $_effect-long-subsurface
+
+  backdrop-filter: blur(10px)
+  box-shadow: $_box-shadow
+
+@mixin app-ui-kit_neon-mixin
+  text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)
+
+@mixin app-ui-kit_form-checkbox-mixin
+  $_size: 28px
+
+  width: $_size
+  height: $_size
+  accent-color: var(--app-color-accent)
+  cursor: pointer
+
+@mixin app-ui-kit_form-textbox-mixin
+  @include app-ui-kit_glass-mixin
+
+  border: 0
+  border-radius: 4px
+  padding: 8px
+  font-size: 2em
+  background: #0000
+  accent-color: var(--app-color-accent)

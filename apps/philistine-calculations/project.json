@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "philistine-calculations",
+  "projectType": "application",
+  "sourceRoot": "apps/philistine-calculations/src",
+  "// targets": "to see all targets run: nx show project philistine-calculations --web",
+  "targets": {}
+}

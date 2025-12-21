@@ -39,6 +39,20 @@
         "targetName": "lint"
       },
       "plugin": "@nx/eslint/plugin"
+    },
+    {
+      "options": {
+        "buildDepsTargetName": "build-deps",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static",
+        "serveTargetName": "serve",
+        "testTargetName": "vite:test",
+        "typecheckTargetName": "typecheck",
+        "watchDepsTargetName": "watch-deps"
+      },
+      "plugin": "@nx/vite/plugin"
     }
   ],
   "targetDefaults": {
