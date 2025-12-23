@@ -3,12 +3,12 @@
     {
       "console": "integratedTerminal",
       "env": {
-        "NODE_OPTIONS": "--inspect=9229"
+        "NODE_OPTIONS": "--inspect=9230"
       },
       "internalConsoleOptions": "neverOpen",
       "name": "Debug derfex-profile-data-server with Nx",
       "outFiles": [
-        "${workspaceFolder}/derfex-profile-data-server/dist/**/*.(m|c|)js",
+        "${workspaceFolder}/apps/derfex-profile-data-server/dist/**/*.(m|c|)js",
         "!**/node_modules/**"
       ],
       "request": "launch",
