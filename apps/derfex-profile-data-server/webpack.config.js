@@ -4,7 +4,7 @@ const { join } = require('path')
 module.exports = {
   output: {
     clean: true,
-    path: join(__dirname, '../dist/derfex-profile-data-server'),
+    path: join(__dirname, '../../dist/apps/derfex-profile-data-server'),
     ...(process.env.NODE_ENV !== 'production' && {
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
     }),
