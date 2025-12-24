@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
+import { SaveDataService } from './save-data/save-data.service'
 
 describe('AppController', (): void => {
   let app: TestingModule
@@ -8,7 +9,7 @@ describe('AppController', (): void => {
   beforeAll(async (): Promise<void> => {
     app = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [AppService, SaveDataService],
     }).compile()
   })
 
