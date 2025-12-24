@@ -1,0 +1,85 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "derfex-profile-data-server",
+  "projectType": "application",
+  "sourceRoot": "apps/derfex-profile-data-server/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "configurations": {
+        "development": {
+          "args": [
+            "--node-env=development"
+          ]
+        }
+      },
+      "executor": "nx:run-commands",
+      "options": {
+        "args": [
+          "--node-env=production"
+        ],
+        "command": "webpack-cli build",
+        "cwd": "apps/derfex-profile-data-server"
+      }
+    },
+    "copy-workspace-modules": {
+      "cache": true,
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:copy-workspace-modules",
+      "options": {
+        "buildTarget": "build"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/derfex-profile-data-server/workspace_modules"
+      ]
+    },
+    "prune": {
+      "dependsOn": [
+        "prune-lockfile",
+        "copy-workspace-modules"
+      ],
+      "executor": "nx:noop"
+    },
+    "prune-lockfile": {
+      "cache": true,
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:prune-lockfile",
+      "options": {
+        "buildTarget": "build"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/derfex-profile-data-server/package.json",
+        "{workspaceRoot}/dist/apps/derfex-profile-data-server/package-lock.json"
+      ]
+    },
+    "serve": {
+      "configurations": {
+        "development": {
+          "buildTarget": "derfex-profile-data-server:build:development"
+        },
+        "production": {
+          "buildTarget": "derfex-profile-data-server:build:production"
+        }
+      },
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "derfex-profile-data-server:build",
+        "runBuildTargetDependencies": false
+      }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    }
+  }
+}

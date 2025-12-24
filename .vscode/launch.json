@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_OPTIONS": "--inspect=9230"
+      },
+      "internalConsoleOptions": "neverOpen",
+      "name": "Debug derfex-profile-data-server with Nx",
+      "outFiles": [
+        "${workspaceFolder}/apps/derfex-profile-data-server/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ],
+      "request": "launch",
+      "runtimeArgs": [
+        "nx",
+        "serve",
+        "derfex-profile-data-server"
+      ],
+      "runtimeExecutable": "npx",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "sourceMaps": true,
+      "type": "node"
+    }
+  ],
+  "version": "0.2.0"
+}
