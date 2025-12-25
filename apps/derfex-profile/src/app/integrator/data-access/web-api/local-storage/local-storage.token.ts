@@ -10,10 +10,13 @@ export const LOCAL_STORAGE = new InjectionToken<Storage>('An abstraction over wi
     return {
       // eslint-disable-next-line @typescript-eslint/no-empty-function
       clear(): void {},
-      getItem(key: string): string | null { return null },
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      getItem(key: string): string | null {
+        return null
+      },
+      // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
       removeItem(key: string): void {},
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      // eslint-disable-next-line @typescript-eslint/no-empty-function,@typescript-eslint/no-unused-vars
       setItem(key: string, value: string): void {},
     } as Storage
   },
