@@ -1,2 +1,2 @@
-export const appThemeColorSchemeDarkCSSClass = 'js-app-color-scheme--dark'
-export const appThemeColorSchemeLightCSSClass = 'js-app-color-scheme--light'
+export const appThemeColorSchemeDarkCSSClass = 'app-js-color-scheme--dark'
+export const appThemeColorSchemeLightCSSClass = 'app-js-color-scheme--light'
