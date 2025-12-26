@@ -19,14 +19,14 @@
 
     --dx-logotype-transition-duration: #{$_transition-duration}
     --dx-logotype-transition-timing-function: #{$_transition-timing-function}
-    --dx-logotype-v-fill: #ddd
-    --dx-logotype-z-fill: #ddd
+    --dx-logotype-v-fill: var(--app-color--foreground--neutral)
+    --dx-logotype-z-fill: var(--app-color--foreground--neutral)
 
     @include transitions.app-transitions_transition-mixin(rotate)
 
   &:hover .app-logotype-container
-    --dx-logotype-v-fill: var(--dx-color-accent)
-    --dx-logotype-z-fill: var(--dx-color-accent)
+    --dx-logotype-v-fill: var(--app-color--foreground--brand)
+    --dx-logotype-z-fill: var(--app-color--foreground--brand)
 
     rotate: 540deg
 
