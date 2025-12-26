@@ -1,10 +1,31 @@
 @mixin app-color-palette-foundation_custom-properties-mixin
   // # Colors, shades, tints, tones
 
+  // ## Investigation
+
+  // ### `color-mix`
+
+  // `$method: %any from [hsl, oklch, srgb, srgb-linear]% // color-interpolation-method`
+  // `$black: #000`
+  // `$white: #fff`
+  // `$percent1: %any number from 1 to 99`
+  // `$percent2: 100 - $percent1`
+  // Option 1: `color-mix(in #{$method}, #{$black} #{$percent1}%, #{white})
+  // Option 2: `color-mix(in #{$method}, #{$black}, #{white} #{$percent2}%)
+  // Option 3: `color-mix(in #{$method}, #{$white} #{$percent1}%, #{black})
+  // Option 4: `color-mix(in #{$method}, #{$white}, #{black} #{$percent2}%)
+  //
+  // Summary: options 1, 2, 3, 4 are equal.
+
+
+  $_color-interpolation-method: display-p3
+
   // ## Primitive
 
   :root
     --dx-color-crayola-dark-blue: #16d
+
+    --app-primitive-color--white: #fff
 
   // ## Semantic
 
@@ -15,7 +36,7 @@
 
   :root
     --app-gradient-color-from: var(--dx-color-accent)
-    --app-gradient-color-to: color-mix(in oklch, var(--app-gradient-color-from), #fff)
+    --app-gradient-color-to: color-mix(in #{$_color-interpolation-method}, var(--app-gradient-color-from), var(--app-primitive-color--white))
     --app-gradient-diagonal: linear-gradient(135deg, var(--app-gradient-color-from) 0%, var(--app-gradient-color-to) 100%)
 
   // The colors have been defined in `theming` folder and is `*component.sass` files.
