@@ -1,0 +1,42 @@
+@use '../../layout/layout'
+@use '../../typography/typography'
+@use '../../ui-kit'
+
+:host
+  display: block
+
+.app-article
+  @include layout.app-layout_flex-column-mixin(16px)
+
+  justify-content: space-between
+
+  @include layout.app-layout_padding-inline-mixin
+
+  padding-block: 20px
+
+.app-description
+  @include typography.app-typography_p-mixin
+
+  color: var(--app-text-color--444)
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+
+// # Subsections
+
+// ## Headings
+
+.app-headings__heading-2
+  @include ui-kit.app-ui-kit_h2-mixin
+
+.app-headings__heading-3
+  @include ui-kit.app-ui-kit_h3-mixin
+
+.app-headings__heading-4
+  @include ui-kit.app-ui-kit_h4-mixin
+
+.app-headings__paragraph
+  @include typography.app-typography_p-mixin
+
+.app-headings__title
+  @include ui-kit.app-ui-kit_h3-mixin
