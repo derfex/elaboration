@@ -20,6 +20,13 @@ export class UIKitPresentationComponent {
     }
   }
 
+  #generateColorsSubsectionPrimitiveBlackCard(): ColorsSubsectionCard {
+    return {
+      cssClass: `app-js-colors__primitive-black-card`,
+      text: 'black',
+    }
+  }
+
   #generateColorsSubsectionPrimitiveGrayCard(grayCode: string): ColorsSubsectionCard {
     return {
       cssClass: `app-js-colors__primitive-${grayCode}-card`,
@@ -42,6 +49,7 @@ export class UIKitPresentationComponent {
       const grayCode = `gray-0${percent}`
       cards.push(this.#generateColorsSubsectionPrimitiveGrayCard(grayCode))
     }
+    cards.push(this.#generateColorsSubsectionPrimitiveBlackCard())
     return cards
   }
 
@@ -57,7 +65,7 @@ export class UIKitPresentationComponent {
       heading2: 'Title text level 2',
       heading3: 'Title text level 3',
       heading4: 'Title text level 4',
-      paragraph: 'Paragraph long text.'.repeat(20),
+      paragraph: 'Paragraph long text. '.repeat(20),
       title: 'Headings',
     }
   }
