@@ -14,5 +14,14 @@
     <h6 class="app-headings__heading-4">{{headingsSubsection.heading4}}</h6>
     <p class="app-headings__paragraph">{{headingsSubsection.paragraph}}</p>
   </article>
+  <article>
+    <h3 class="app-colors__title">{{colorsSubsection.title}}</h3>
+    <div class="app-colors__cards">
+      @for (card of colorsSubsection.grayCards; track card.cssClass) {
+        <div>{{card.text}}</div>
+        <div [class]="card.cssClass"></div>
+      }
+    </div>
+  </article>
 </article>
 

@@ -10,7 +10,47 @@ export class UIKitPresentationComponent {
   protected readonly descriptionText = 'Examples of the UI kit elements.'
   protected readonly titleText = 'UI kit presentation'
 
+  protected readonly colorsSubsection = this.#generateColorsSubsection()
   protected readonly headingsSubsection = this.#generateHeadingsSubsection()
+
+  #generateColorsSubsection(): ColorsSubsection {
+    return {
+      grayCards: this.#generateColorsSubsectionPrimitiveGrayCards(),
+      title: 'Colors',
+    }
+  }
+
+  #generateColorsSubsectionPrimitiveGrayCard(grayCode: string): ColorsSubsectionCard {
+    return {
+      cssClass: `app-js-colors__primitive-${grayCode}-card`,
+      text: grayCode,
+    }
+  }
+
+  #generateColorsSubsectionPrimitiveGrayCards(): readonly ColorsSubsectionCard[] {
+    const cards: ColorsSubsectionCard[] = []
+    cards.push(this.#generateColorsSubsectionPrimitiveWhiteCard())
+    for (let percent = 1; percent <= 9; percent += 1) {
+      const grayCode = `gray-00${percent}`
+      cards.push(this.#generateColorsSubsectionPrimitiveGrayCard(grayCode))
+    }
+    for (let percent = 10; percent <= 90; percent += 10) {
+      const grayCode = `gray-0${percent}`
+      cards.push(this.#generateColorsSubsectionPrimitiveGrayCard(grayCode))
+    }
+    for (let percent = 91; percent <= 99; percent += 1) {
+      const grayCode = `gray-0${percent}`
+      cards.push(this.#generateColorsSubsectionPrimitiveGrayCard(grayCode))
+    }
+    return cards
+  }
+
+  #generateColorsSubsectionPrimitiveWhiteCard(): ColorsSubsectionCard {
+    return {
+      cssClass: `app-js-colors__primitive-white-card`,
+      text: 'white',
+    }
+  }
 
   #generateHeadingsSubsection(): HeadingsSubsection {
     return {
@@ -21,6 +61,16 @@ export class UIKitPresentationComponent {
       title: 'Headings',
     }
   }
+}
+
+interface ColorsSubsection {
+  readonly grayCards: readonly ColorsSubsectionCard[]
+  readonly title: string
+}
+
+interface ColorsSubsectionCard {
+  readonly cssClass: string
+  readonly text: string
 }
 
 interface HeadingsSubsection {
