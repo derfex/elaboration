@@ -7,20 +7,14 @@
   @include identity-foundation.app-identity-foundation_styles-mixin
   @include theming-foundation.app-theming-foundation_styles-mixin
 
-
-  // ## Primitive
-
   :root
-    --dx-color-crayola-dark-blue--to-surface--500: color-mix(in oklch, var(--dx-color-primitive--crayola-dark-blue), var(--app-root-surface-bg-color))
+    // ## Semantic. Auxiliary
 
-  // ## Semantic
+    --app-color-auxiliary--brand--to--background--theme--050: color-mix(in display-p3, var(--dx-color-primitive--crayola-dark-blue), var(--app-color--background--theme))
+    --app-color-auxiliary--foreground--brand--to--background--theme--050: var(--app-color-auxiliary--brand--to--background--theme--050)
 
-  :root
-    --dx-color-accent--to-surface--500: var(--dx-color-crayola-dark-blue--to-surface--500)
+    // ## Component
 
-  // ## Component
-
-  :root
     // ### Heading
 
     --app-heading--fg-color: var(--app-color--foreground--brand)
@@ -31,8 +25,8 @@
 
     // ### Link
 
-    --app-link-color: var(--dx-color-accent--to-surface--500)
-    --app-link-color-hover: var(--dx-color-accent)
+    --app-link-color: var(--app-color-auxiliary--foreground--brand--to--background--theme--050)
+    --app-link-color-hover: var(--app-color--foreground--brand)
 
   // ## Init
 
