@@ -1,3 +1,4 @@
+import type { Renderer2 } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { AppSettingsService } from '~ui/app-settings/app-settings/app-settings.service'
@@ -24,7 +25,8 @@ describe('AppSettingsComponent', (): void => {
 })
 
 class AppSettingsStubService {
-  public get initAndObserve(): Observable<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public initAndObserve(renderer: Renderer2): Observable<void> {
     return of()
   }
 }

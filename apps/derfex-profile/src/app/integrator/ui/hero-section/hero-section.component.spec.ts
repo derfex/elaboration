@@ -1,4 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
+import { type Observable, of } from 'rxjs'
+import { HeroSectionMediatorService } from '~be/hero/hero-section-mediator.service'
+import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
 import { HeroSectionComponent } from './hero-section.component'
 
 describe('HeroSectionComponent', (): void => {
@@ -6,7 +9,9 @@ describe('HeroSectionComponent', (): void => {
   let fixture: ComponentFixture<HeroSectionComponent>
 
   beforeEach(async (): Promise<void> => {
-    await TestBed.configureTestingModule({}).compileComponents()
+    await TestBed.configureTestingModule({
+      providers: [{ provide: HeroSectionMediatorService, useClass: HeroSectionMediatorStubService }],
+    }).compileComponents()
 
     fixture = TestBed.createComponent(HeroSectionComponent)
     component = fixture.componentInstance
@@ -17,3 +22,15 @@ describe('HeroSectionComponent', (): void => {
     expect(component).toBeTruthy()
   })
 })
+
+class HeroSectionMediatorStubService {
+  public readSectionParameters(): Observable<HeroSectionParameters> {
+    const sectionParameters: HeroSectionParameters = {
+      contactGitHubURL: 'TestData',
+      contactTelegramURL: 'TestData',
+      nameText: 'Test data',
+      titleXML: 'Test <highlight>data</highlight>',
+    }
+    return of(sectionParameters)
+  }
+}

@@ -1,3 +1,4 @@
+import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { DXProjectsSectionComponent } from './dx-projects-section.component'
 
@@ -6,7 +7,12 @@ describe('DXProjectsSectionComponent', (): void => {
   let fixture: ComponentFixture<DXProjectsSectionComponent>
 
   beforeEach(async (): Promise<void> => {
-    await TestBed.configureTestingModule({}).compileComponents()
+    await TestBed.configureTestingModule({
+      imports: [
+        // Stubs.
+        DXProjectsStubComponent,
+      ],
+    }).compileComponents()
 
     fixture = TestBed.createComponent(DXProjectsSectionComponent)
     component = fixture.componentInstance
@@ -18,3 +24,6 @@ describe('DXProjectsSectionComponent', (): void => {
     expect(component).toBeTruthy()
   })
 })
+
+@Component({ selector: 'app-dx-projects', template: '' })
+class DXProjectsStubComponent {}
