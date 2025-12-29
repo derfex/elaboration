@@ -40,6 +40,8 @@
 
 .app-name
   margin-block: 0
+  font-size: var(--app-h2--font-size)
+  line-height: initial
 
 .app-title
   margin-block: 0
@@ -51,6 +53,9 @@
 
   @media (layout.$app-device-width-medium <= width)
     font-size: 56px
+
+  @media (layout.$app-device-width-large <= width)
+    font-size: 68px
 
 .app-highlight
   background: var(--app-gradient-diagonal)

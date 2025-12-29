@@ -1,0 +1,22 @@
+@use 'sass:math'
+
+@mixin app-typography-foundation_styles-mixin
+  // Inspiration: https://design.profi.travel/typemetric.
+  $_coefficient: 1.618
+  $_text-default-font-size: 16px
+  $_text-subheading-font-size: math.round($_text-default-font-size * $_coefficient)
+  $_text-heading-font-size: math.round($_text-subheading-font-size * $_coefficient)
+  $_text-title-font-size: math.round($_text-heading-font-size * $_coefficient)
+  $_text-interlinear-font-size: math.round(math.div($_text-default-font-size, $_coefficient))
+
+  :root
+    // ## Component
+
+    // ### Heading
+
+    --app-h2--font-size: #{$_text-heading-font-size}
+    --app-h3--font-size: #{$_text-subheading-font-size}
+    --app-h4--font-size: #{$_text-default-font-size}
+    --app-h5--font-size: #{$_text-interlinear-font-size}
+
+    --app-text-default--font-size: #{$_text-default-font-size}
