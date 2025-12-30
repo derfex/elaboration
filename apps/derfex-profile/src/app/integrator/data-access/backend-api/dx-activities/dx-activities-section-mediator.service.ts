@@ -277,7 +277,7 @@ interface DXActivitiesSectionMediatorListItem {
   readonly period: string
   readonly periodFrom: number
   readonly periodTo: number
-  readonly results: DXActivity['results']
+  readonly results: DXActivity['achievements']
   readonly role: DXActivity['role']
   readonly shortDescription: DXActivity['shortDescription']
   readonly skills: readonly string[]

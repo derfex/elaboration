@@ -1,10 +1,10 @@
 import type { Brand } from '../../brand-type.util'
 
 export interface DXActivity {
+  readonly achievements: readonly string[]
   readonly codename: DXActivityCodename
   readonly periodFrom: Date
   readonly periodTo: Date | null
-  readonly results: readonly string[]
   readonly role: string
   readonly shortDescription: string
   readonly skillsSet: ReadonlySet<DXActivitySkillCodename>

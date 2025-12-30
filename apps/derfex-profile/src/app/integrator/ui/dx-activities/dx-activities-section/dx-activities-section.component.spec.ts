@@ -54,17 +54,17 @@ class DXActivitiesSectionMediatorStubService {
     }
     const dxActivities: readonly DXActivitiesListItem[] = [
       {
+        achievements: ['Test data.'],
         codename: 'act-1' as DXActivityCodename,
         period: '2020-02 – 2020-02',
-        results: ['result 1'],
         role: 'No data',
         shortDescription: 'short description 1',
         skills: ['CSS', 'Git'],
       },
       {
+        achievements: ['Test data.'],
         codename: 'act-2' as DXActivityCodename,
         period: '2020-05 – 2020-08',
-        results: ['result 4'],
         role: 'No data',
         shortDescription: 'short description 2',
         skills: ['Angular', 'CSS', 'Git'],

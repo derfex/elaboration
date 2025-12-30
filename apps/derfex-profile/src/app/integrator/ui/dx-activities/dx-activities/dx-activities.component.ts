@@ -27,9 +27,9 @@ export class DXActivitiesComponent {
 
   // TODO: Do we need `DXActivityForTemplate` and `#prepareDXActivityForTemplate(1)`?
   #prepareDXActivityForTemplate({
+    achievements,
     codename,
     period,
-    results: achievements,
     role,
     shortDescription,
     skills,
