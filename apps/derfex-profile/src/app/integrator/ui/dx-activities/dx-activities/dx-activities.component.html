@@ -5,8 +5,9 @@
     @for (activity of activitiesForTemplate(); track activity.codename) {
       <li class="app-list__item">
         <app-dx-activity-card
+          [achievementsTitleText]="activityAchievementsTitleText()"
+          [achievements]="activity.achievements"
           [period]="activity.period"
-          [results]="activity.results"
           [role]="activity.role"
           [shortDescription]="activity.shortDescription"
           [skillsTitleText]="activitySkillsTitleText()"
