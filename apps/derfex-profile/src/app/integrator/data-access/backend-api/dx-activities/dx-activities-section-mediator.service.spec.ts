@@ -4,6 +4,7 @@ import { TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import { DXActivitiesCompiledForBEService } from '~be/dx-activities/dx-activities-compiled-for-be.service'
+import type { DXActivitiesCompiledSectionParametersForBE, DXActivityCompiledForBE } from '~be/dx-activities/dx-activities-compiled-for-be.type'
 import { DXActivitiesForBEService } from '~be/dx-activities/dx-activities-for-be.service'
 import type { DXActivityForBE } from '~be/dx-activities/dx-activities-for-be.type'
 import { DXActivitySkillsForBEService } from '~be/dx-activities/dx-activity-skills-for-be.service'
@@ -55,31 +56,42 @@ class BackendAPIConfigurationStubService {
   }
 }
 
-class DXActivitiesCompiledForBE {}
-
 class DXActivitiesCompiledForBEStubService {
-  public readList(): Observable<readonly DXActivitiesCompiledForBE[]> {
-    const dxActivities: readonly DXActivitiesCompiledForBE[] = [
+  public readList(): Observable<readonly DXActivityCompiledForBE[]> {
+    const dxActivities: readonly DXActivityCompiledForBE[] = [
       {
+        achievements: ['result 1'],
         codename: 'act-1',
-        periodFrom: '2020-02',
-        periodTo: '2020-02',
-        results: ['result 1'],
+        period: 'Test data, 2020-02',
         role: 'No data',
         shortDescription: 'short description 1',
-        skillCodenames: ['CSS', 'Git'],
+        skills: ['CSS', 'Git'],
       },
       {
+        achievements: ['result 4'],
         codename: 'act-2',
-        periodFrom: '2020-05',
-        periodTo: '2020-08',
-        results: ['result 4'],
+        period: 'Test data, 2020-08',
         role: 'No data',
         shortDescription: 'short description 2',
-        skillCodenames: ['Angular', 'CSS', 'Git'],
+        skills: ['Angular', 'CSS', 'Git'],
       },
     ]
     return of(dxActivities)
+  }
+
+  public readSectionParameters(): Observable<DXActivitiesCompiledSectionParametersForBE> {
+    return of({
+      descriptionText: 'Test data.',
+      list: {
+        emptyStateText: 'Test data.',
+        item: {
+          achievementsTitleText: 'Test data',
+          skillsTitleText: 'Test data',
+        },
+        sourceRelativeURL: 'TestData',
+      },
+      titleText: 'Test data',
+    } satisfies DXActivitiesCompiledSectionParametersForBE)
   }
 }
 
@@ -87,19 +99,19 @@ class DXActivitiesForBEStubService {
   public readList(): Observable<readonly DXActivityForBE[]> {
     const dxActivities: readonly DXActivityForBE[] = [
       {
+        achievements: ['Test data.'],
         codename: 'act-1',
         periodFrom: '2020-02',
         periodTo: '2020-02',
-        results: ['result 1'],
         role: 'No data',
         shortDescription: 'short description 1',
         skillCodenames: ['CSS', 'Git'],
       },
       {
+        achievements: ['Test data.'],
         codename: 'act-2',
         periodFrom: '2020-05',
         periodTo: '2020-08',
-        results: ['result 4'],
         role: 'No data',
         shortDescription: 'short description 2',
         skillCodenames: ['Angular', 'CSS', 'Git'],

@@ -1,9 +1,10 @@
 export interface DXActivityCompiledForBE {
+  readonly achievements: readonly string[]
   readonly codename: string
   readonly period: string
-  readonly periodFrom: number
-  readonly periodTo: number | null
-  readonly results: readonly string[]
+  // TODO: Do we need `periodFrom` and `periodTo` for sorting?
+  // readonly periodFrom: number
+  // readonly periodTo: number | null
   readonly role: string
   readonly shortDescription: string
   readonly skills: readonly string[]

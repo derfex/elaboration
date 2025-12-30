@@ -97,13 +97,13 @@ export class DXActivitiesSectionMediatorService {
             return skillTitle
           })
           .sort()
-        const { results, role, shortDescription } = activityForBE
+        const { achievements, role, shortDescription } = activityForBE
         return {
+          achievements,
           codename,
           period,
           periodFrom,
           periodTo,
-          results,
           role,
           shortDescription,
           skills,
@@ -115,8 +115,8 @@ export class DXActivitiesSectionMediatorService {
         const periodToDelta = b.periodTo - a.periodTo
         return !Number.isNaN(periodToDelta) ? periodToDelta : 0
       })
-      .map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
-        achievements: results,
+      .map<DXActivitiesListItem>(({ achievements, codename, period, role, shortDescription, skills }) => ({
+        achievements,
         codename,
         period,
         role,
@@ -174,8 +174,8 @@ export class DXActivitiesSectionMediatorService {
       map<SectionParametersAndList, DXActivitiesSectionParametersAndList>(
         ([parametersFromBEAPI, dxActivities]): DXActivitiesSectionParametersAndList => {
           const list = dxActivities.map<DXActivitiesListItem>(
-            ({ codename, period, results, role, shortDescription, skills }) => ({
-              achievements: results,
+            ({ achievements, codename, period, role, shortDescription, skills }) => ({
+              achievements,
               codename: codename as DXActivityCodename,
               period,
               role,
@@ -275,11 +275,11 @@ type DXActivitySkillsForBE = readonly DXActivitySkillForBE[]
 type GetPeriodTextFn = (start: string, end: string | null) => string
 
 interface DXActivitiesSectionMediatorListItem {
+  readonly achievements: DXActivity['achievements']
   readonly codename: DXActivityCodename
   readonly period: string
   readonly periodFrom: number
   readonly periodTo: number
-  readonly results: DXActivity['achievements']
   readonly role: DXActivity['role']
   readonly shortDescription: DXActivity['shortDescription']
   readonly skills: readonly string[]
