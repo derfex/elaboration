@@ -3,9 +3,10 @@
     <h3 class="app-role">{{role()}}</h3>
     <p class="app-short-description">{{shortDescription()}}</p>
     <p class="app-period">{{period()}}</p>
+    <h4 class="app-achievements-title">{{achievementsTitleText()}}</h4>
     <ul>
-      @for (result of results(); track result) {
-        <li>{{result}}</li>
+      @for (achievement of achievements(); track achievement) {
+        <li>{{achievement}}</li>
       }
     </ul>
     <h4 class="app-skills-title">{{skillsTitleText()}}</h4>

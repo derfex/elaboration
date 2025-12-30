@@ -11,6 +11,10 @@
 .app-content
   @include layout.app-layout_flex-column-mixin(8px)
 
+
+.app-achievements-title
+  @include ui-kit.app-ui-kit_h4-mixin
+
 .app-period
   @include typography.app-typography_p-mixin
 
@@ -28,7 +32,7 @@
 .app-skills-list
   display: flex
   flex-wrap: wrap
-  gap: 4px
+  gap: 4px 8px
   padding-left: 0
   list-style: none
 
