@@ -14,6 +14,7 @@ export interface DXActivitiesCompiledSectionParametersForBE {
   readonly list: {
     readonly emptyStateText: string
     readonly item: {
+      readonly achievementsTitleText: string
       readonly skillsTitleText: string
     }
     readonly sourceRelativeURL: string

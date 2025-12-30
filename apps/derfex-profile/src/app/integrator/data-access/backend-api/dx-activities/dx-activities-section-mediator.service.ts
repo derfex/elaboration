@@ -188,7 +188,7 @@ export class DXActivitiesSectionMediatorService {
             list: {
               emptyStateText: parametersFromBEAPI.list.emptyStateText,
               item: {
-                achievementsTitleText: 'Achievements', // TODO.
+                achievementsTitleText: parametersFromBEAPI.list.item.achievementsTitleText,
                 skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
               },
             },
@@ -240,7 +240,7 @@ export class DXActivitiesSectionMediatorService {
             list: {
               emptyStateText: parametersFromBEAPI.list.emptyStateText,
               item: {
-                achievementsTitleText: 'Achievements', // TODO.
+                achievementsTitleText: parametersFromBEAPI.list.item.achievementsTitleText,
                 skillsTitleText: parametersFromBEAPI.list.item.skillsTitleText,
               },
             },
