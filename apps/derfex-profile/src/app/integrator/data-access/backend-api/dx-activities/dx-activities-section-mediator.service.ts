@@ -116,9 +116,9 @@ export class DXActivitiesSectionMediatorService {
         return !Number.isNaN(periodToDelta) ? periodToDelta : 0
       })
       .map<DXActivitiesListItem>(({ codename, period, results, role, shortDescription, skills }) => ({
+        achievements: results,
         codename,
         period,
-        results,
         role,
         shortDescription,
         skills,
@@ -175,9 +175,9 @@ export class DXActivitiesSectionMediatorService {
         ([parametersFromBEAPI, dxActivities]): DXActivitiesSectionParametersAndList => {
           const list = dxActivities.map<DXActivitiesListItem>(
             ({ codename, period, results, role, shortDescription, skills }) => ({
+              achievements: results,
               codename: codename as DXActivityCodename,
               period,
-              results,
               role,
               shortDescription,
               skills,
