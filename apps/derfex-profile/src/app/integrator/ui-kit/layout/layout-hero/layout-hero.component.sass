@@ -40,8 +40,11 @@
 
 .app-name
   margin-block: 0
-  font-size: var(--app-h2--font-size)
+  font-size: 20px
   line-height: initial
+
+  @media (layout.$app-device-width-medium <= width)
+    font-size: var(--app-h2--font-size)
 
 .app-title
   margin-block: 0
