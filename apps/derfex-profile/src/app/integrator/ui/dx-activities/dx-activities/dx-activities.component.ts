@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
 import type { DXActivityCodename } from '~entities/dx-activities/dx-activities.type'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-activity-card.component'
@@ -15,7 +15,7 @@ import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-a
 })
 export class DXActivitiesComponent {
   public readonly activities = input.required<readonly DXActivitiesListItem[]>()
-  public readonly activityAchievementsTitleText = signal<string>('') // TODO: replace.
+  public readonly activityAchievementsTitleText = input.required<string>()
   public readonly activitySkillsTitleText = input.required<string>()
   public readonly descriptionText = input.required<string>()
   public readonly emptyStateText = input.required<string>()

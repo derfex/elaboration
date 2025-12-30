@@ -31,6 +31,7 @@ export class DXActivitiesSectionComponent implements OnInit {
   protected readonly numberText = computed<string>(() => LayoutSectionUtil.convertNumber(this.number()))
   protected readonly sectionParameters = signal({
     activities: [] as readonly DXActivitiesListItem[],
+    activityAchievementsTitleText: 'No data',
     activitySkillsTitleText: 'No data',
     descriptionText: 'No data',
     emptyStateText: 'No data',
@@ -44,6 +45,7 @@ export class DXActivitiesSectionComponent implements OnInit {
       .subscribe(({ list, sectionParameters }: DXActivitiesSectionParametersAndList): void => {
         this.sectionParameters.set({
           activities: list,
+          activityAchievementsTitleText: 'sectionParameters.list.item.achievementsTitleText', // TODO.
           activitySkillsTitleText: sectionParameters.list.item.skillsTitleText,
           descriptionText: sectionParameters.descriptionText,
           emptyStateText: sectionParameters.list.emptyStateText,
