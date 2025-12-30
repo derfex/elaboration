@@ -5,6 +5,7 @@ export interface DXActivitiesSectionParameters {
   readonly list: {
     readonly emptyStateText: string
     readonly item: {
+      readonly achievementsTitleText: string
       readonly skillsTitleText: string
     }
   }

@@ -43,14 +43,15 @@ class DXActivitiesStubComponent {}
 class DXActivitiesSectionMediatorStubService {
   public readSectionParametersAndList(): Observable<DXActivitiesSectionParametersAndList> {
     const sectionParameters: DXActivitiesSectionParameters = {
-      descriptionText: 'No data',
+      descriptionText: 'Test data.',
       list: {
-        emptyStateText: 'No data.',
+        emptyStateText: 'Test data.',
         item: {
-          skillsTitleText: 'No data',
+          achievementsTitleText: 'Test data',
+          skillsTitleText: 'Test data',
         },
       },
-      titleText: 'No data',
+      titleText: 'Test data',
     }
     const dxActivities: readonly DXActivitiesListItem[] = [
       {

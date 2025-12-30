@@ -45,7 +45,7 @@ export class DXActivitiesSectionComponent implements OnInit {
       .subscribe(({ list, sectionParameters }: DXActivitiesSectionParametersAndList): void => {
         this.sectionParameters.set({
           activities: list,
-          activityAchievementsTitleText: 'sectionParameters.list.item.achievementsTitleText', // TODO.
+          activityAchievementsTitleText: sectionParameters.list.item.achievementsTitleText,
           activitySkillsTitleText: sectionParameters.list.item.skillsTitleText,
           descriptionText: sectionParameters.descriptionText,
           emptyStateText: sectionParameters.list.emptyStateText,
