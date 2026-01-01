@@ -38,6 +38,7 @@
             "input": "apps/derfex-profile/public"
           }
         ],
+        "baseHref": "/derfex-profile/",
         "browser": "apps/derfex-profile/src/main.ts",
         "inlineStyleLanguage": "sass",
         "outputPath": "dist/apps/derfex-profile",
