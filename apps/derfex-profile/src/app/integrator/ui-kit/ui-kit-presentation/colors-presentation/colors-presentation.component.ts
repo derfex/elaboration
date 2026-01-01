@@ -17,15 +17,17 @@ export class ColorsPresentationComponent {
   }
 
   #generateColorsSubsectionPrimitiveBlackCard(): ColorsSubsectionCard {
+    const sampleElementCSSClass = 'app-js-colors__sample'
     return {
-      cssClass: `app-js-colors__primitive-black-card`,
+      sampleCSSClass: `${sampleElementCSSClass} ${sampleElementCSSClass}--primitive-black`,
       text: 'black',
     }
   }
 
   #generateColorsSubsectionPrimitiveGrayCard(grayCode: string): ColorsSubsectionCard {
+    const sampleElementCSSClass = 'app-js-colors__sample'
     return {
-      cssClass: `app-js-colors__primitive-${grayCode}-card`,
+      sampleCSSClass: `${sampleElementCSSClass} ${sampleElementCSSClass}--primitive-${grayCode}`,
       text: grayCode,
     }
   }
@@ -50,8 +52,9 @@ export class ColorsPresentationComponent {
   }
 
   #generateColorsSubsectionPrimitiveWhiteCard(): ColorsSubsectionCard {
+    const sampleElementCSSClass = 'app-js-colors__sample'
     return {
-      cssClass: `app-js-colors__primitive-white-card`,
+      sampleCSSClass: `${sampleElementCSSClass} ${sampleElementCSSClass}--primitive-white`,
       text: 'white',
     }
   }
@@ -63,6 +66,6 @@ interface ColorsSubsection {
 }
 
 interface ColorsSubsectionCard {
-  readonly cssClass: string
+  readonly sampleCSSClass: string
   readonly text: string
 }

@@ -28,36 +28,29 @@
     inset: 0
     border: 1px solid $_border-inside-color
 
+.app-js-colors__sample
+  @include _sample
+
 @for $_i from 1 through 9
   $_percent: $_i
 
-  .app-js-colors__primitive-gray-00#{$_percent}-card
-    @include _sample
-
+  .app-js-colors__sample--primitive-gray-00#{$_percent}
     background: var(--app-color-primitive--gray-00#{$_percent})
 
 @for $_i from 1 through 9
   $_percent: $_i * 10
 
-  .app-js-colors__primitive-gray-0#{$_percent}-card
-    @include _sample
-
+  .app-js-colors__sample--primitive-gray-0#{$_percent}
     background: var(--app-color-primitive--gray-0#{$_percent})
 
 @for $_i from 1 through 9
   $_percent: 90 + $_i
 
-  .app-js-colors__primitive-gray-0#{$_percent}-card
-    @include _sample
-
+  .app-js-colors__sample--primitive-gray-0#{$_percent}
     background: var(--app-color-primitive--gray-0#{$_percent})
 
-.app-js-colors__primitive-black-card
-  @include _sample
-
+.app-js-colors__sample--primitive-black
   background: var(--app-color-primitive--black)
 
-.app-js-colors__primitive-white-card
-  @include _sample
-
+.app-js-colors__sample--primitive-white
   background: var(--app-color-primitive--white)

@@ -1,9 +1,9 @@
 <article>
   <h3 class="app-colors__title">{{colorsSubsection.title}}</h3>
   <div class="app-colors__cards">
-    @for (card of colorsSubsection.grayCards; track card.cssClass) {
+    @for (card of colorsSubsection.grayCards; track card.sampleCSSClass) {
       <div>{{card.text}}</div>
-      <div [class]="card.cssClass"></div>
+      <div [class]="card.sampleCSSClass"></div>
     }
   </div>
 </article>
