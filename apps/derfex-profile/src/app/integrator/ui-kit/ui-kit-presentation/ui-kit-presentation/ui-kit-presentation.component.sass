@@ -24,64 +24,6 @@
 
 // # Subsections
 
-// ## Colors
-
-.app-colors__cards
-  display: grid
-  gap: 4px
-  grid-template-columns: max-content max-content
-
-.app-colors__title
-  @include ui-kit.app-ui-kit_h3-mixin
-
-// ### Cards
-
-@mixin _sample
-  position: relative
-  border: 1px solid #fff
-  width: 100px
-  height: 24px
-
-  &::before
-    content: ''
-    position: absolute
-    inset: 0
-    border: 1px solid #000
-
-@for $_i from 1 through 9
-  $_percent: $_i
-
-  .app-js-colors__primitive-gray-00#{$_percent}-card
-    @include _sample
-
-    background: var(--app-color-primitive--gray-00#{$_percent})
-
-@for $_i from 1 through 9
-  $_percent: $_i * 10
-
-  .app-js-colors__primitive-gray-0#{$_percent}-card
-    @include _sample
-
-    background: var(--app-color-primitive--gray-0#{$_percent})
-
-@for $_i from 1 through 9
-  $_percent: 90 + $_i
-
-  .app-js-colors__primitive-gray-0#{$_percent}-card
-    @include _sample
-
-    background: var(--app-color-primitive--gray-0#{$_percent})
-
-.app-js-colors__primitive-black-card
-  @include _sample
-
-  background: var(--app-color-primitive--black)
-
-.app-js-colors__primitive-white-card
-  @include _sample
-
-  background: var(--app-color-primitive--white)
-
 // ## Headings
 
 .app-headings__heading-2
