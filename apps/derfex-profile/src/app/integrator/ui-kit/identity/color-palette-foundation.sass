@@ -78,7 +78,8 @@
   // ## Semantic
 
   :root
-    --dx-color-accent: var(--dx-color-primitive--crayola-dark-blue)
+    // `--dx-color-accent` is unused.
+    // --dx-color-accent: var(--dx-color-primitive--crayola-dark-blue)
 
     --app-color--foreground--brand: var(--dx-color-primitive--crayola-dark-blue)
     --app-color--foreground--neutral: var(--app-color-primitive--gray-050)
@@ -86,7 +87,7 @@
   // ## Component
 
   :root
-    --app-gradient-color-from: var(--dx-color-accent)
+    --app-gradient-color-from: var(--app-color--foreground--brand)
     --app-gradient-color-to: color-mix(in #{$_color-interpolation-method}, var(--app-gradient-color-from), var(--app-color-primitive--white))
     --app-gradient-diagonal: linear-gradient(135deg, var(--app-gradient-color-from) 0%, var(--app-gradient-color-to) 100%)
 
