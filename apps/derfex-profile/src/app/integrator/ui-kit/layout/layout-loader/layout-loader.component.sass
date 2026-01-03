@@ -1,4 +1,5 @@
-@use '../../../ui-kit/layout/layout'
+@use '../../identity/color-palette-util'
+@use '../../layout/layout'
 
 :host
   display: block
@@ -39,4 +40,4 @@ $_app-rotation-to-degree: 270deg
   position: fixed
   inset: 0
   display: flex
-  background: color-mix(in oklch, var(--app-root-surface-bg-color), #0000 16%)
+  background: color-palette-util.app-color-palette_color-mix(84, var(--app-root-surface-bg-color), #0000)
