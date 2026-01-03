@@ -1,3 +1,36 @@
+// @use 'color-palette-util'
+
+$_color-interpolation-method: display-p3
+
+@function _app-color-mix($_color1, $_percent1: null, $_color2, $_percent2: null)
+  @if ($_percent2 == null)
+    @if ($_percent1 != null)
+      $_percent: $_percent1 * 1%
+      @return color-mix(in $_color-interpolation-method, $_color1 $_percent, $_color2)
+    @else
+      @return color-mix(in $_color-interpolation-method, $_color1, $_color2)
+  @else
+    @if ($_percent2 == null)
+      $_percent: $_percent1 * 1%
+      @return color-mix(in $_color-interpolation-method, $_color1, $_color2 $_percent)
+    @else
+      $_p1: $_percent1 * 1%
+      $_p2: $_percent2 * 1%
+      @return color-mix(in $_color-interpolation-method, $_color1 $_p1, $_color2 $_p2)
+
+@function _app-color-mix-bw-1($_percent)
+  @return _app-color-mix(var(--app-color-primitive--black), $_percent, var(--app-color-primitive--white))
+
+@function _app-color-mix-bw-2($_percent)
+  @return _app-color-mix(var(--app-color-primitive--black), null, var(--app-color-primitive--white), $_percent)
+
+@function _app-color-mix-bw-3($_percent)
+  @return _app-color-mix(var(--app-color-primitive--white), $_percent, var(--app-color-primitive--black))
+
+@function _app-color-mix-bw-4($_percent)
+  @return _app-color-mix(var(--app-color-primitive--white), null, var(--app-color-primitive--black), $_percent)
+
+
 // TODO: `@mixin app-color-palette-foundation_custom-properties-mixin--dev` is unused.
 @mixin app-color-palette-foundation_custom-properties-mixin--dev
   // # Colors, shades, tints, tones
@@ -19,8 +52,6 @@
   // Summary: options 1, 2, 3, 4 are equal.
 
 
-  $_color-interpolation-method: display-p3
-
   // ## Primitive
 
   // :root
@@ -29,56 +60,53 @@
     //  --app-color-primitive--black: #000
     //  --app-color-primitive--white: #fff
 
-    //  $_color-interpolation-method: display-p3
+    //  @for $_i from 1 through 9
+    //    $_percent: $_i
+    //    --app-color-primitive--gray1-00#{$_percent}: #{_app-color-mix-bw-1($_percent)}
+
+    //  @for $_i from 1 through 9
+    //    $_percent: $_i * 10
+    //    --app-color-primitive--gray1-0#{$_percent}: #{_app-color-mix-bw-1($_percent)}
+    //
+    //  @for $_i from 1 through 9
+    //    $_percent: $_i + 90
+    //    --app-color-primitive--gray1-0#{$_percent}: #{_app-color-mix-bw-1($_percent)}
     //
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i
-    //    --app-color-primitive--gray1-00#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black) #{$_percent}%, var(--app-color-primitive--white))
+    //    --app-color-primitive--gray2-00#{$_percent}: #{_app-color-mix-bw-2($_percent)}
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i * 10
-    //    --app-color-primitive--gray1-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black) #{$_percent}%, var(--app-color-primitive--white))
+    //    --app-color-primitive--gray2-0#{$_percent}: #{_app-color-mix-bw-2($_percent)}
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i + 90
-    //    --app-color-primitive--gray1-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black) #{$_percent}%, var(--app-color-primitive--white))
+    //    --app-color-primitive--gray2-0#{$_percent}: #{_app-color-mix-bw-2($_percent)}
     //
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i
-    //    --app-color-primitive--gray2-00#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black), var(--app-color-primitive--white) #{$_percent}%)
+    //    --app-color-primitive--gray3-00#{$_percent}: #{_app-color-mix-bw-3($_percent)}
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i * 10
-    //    --app-color-primitive--gray2-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black), var(--app-color-primitive--white) #{$_percent}%)
+    //    --app-color-primitive--gray3-0#{$_percent}: #{_app-color-mix-bw-3($_percent)}
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i + 90
-    //    --app-color-primitive--gray2-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black), var(--app-color-primitive--white) #{$_percent}%)
+    //    --app-color-primitive--gray3-0#{$_percent}: #{_app-color-mix-bw-3($_percent)}
     //
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i
-    //    --app-color-primitive--gray3-00#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--white) #{$_percent}%, var(--app-color-primitive--black))
+    //    --app-color-primitive--gray4-00#{$_percent}: #{_app-color-mix-bw-4($_percent)}
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i * 10
-    //    --app-color-primitive--gray3-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--white) #{$_percent}%, var(--app-color-primitive--black))
+    //    --app-color-primitive--gray4-0#{$_percent}: #{_app-color-mix-bw-4($_percent)}
     //
     //  @for $_i from 1 through 9
     //    $_percent: $_i + 90
-    //    --app-color-primitive--gray3-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--white) #{$_percent}%, var(--app-color-primitive--black))
-    //
-    //
-    //  @for $_i from 1 through 9
-    //    $_percent: $_i
-    //    --app-color-primitive--gray4-00#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--white), var(--app-color-primitive--black) #{$_percent}%)
-    //
-    //  @for $_i from 1 through 9
-    //    $_percent: $_i * 10
-    //    --app-color-primitive--gray4-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--white), var(--app-color-primitive--black) #{$_percent}%)
-    //
-    //  @for $_i from 1 through 9
-    //    $_percent: $_i + 90
-    //    --app-color-primitive--gray4-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--white), var(--app-color-primitive--black) #{$_percent}%)
+    //    --app-color-primitive--gray4-0#{$_percent}: #{_app-color-mix-bw-4($_percent)}

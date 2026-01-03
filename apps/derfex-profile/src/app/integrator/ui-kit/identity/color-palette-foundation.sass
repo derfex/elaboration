@@ -1,3 +1,8 @@
+@use 'color-palette-util'
+
+@function _app-color-mix-bw($_percent)
+  @return color-palette-util.app-color-palette_color-mix-vars($_percent, --app-color-primitive--black, --app-color-primitive--white)
+
 @mixin app-color-palette-foundation_custom-properties-mixin
   // # Colors, shades, tints, tones
 
@@ -18,8 +23,6 @@
   // Summary: options 1, 2, 3, 4 are equal.
 
 
-  $_color-interpolation-method: display-p3
-
   // ## Primitive
 
   :root
@@ -35,17 +38,17 @@
     // 001..009
     @for $_i from 1 through 9
       $_percent: $_i
-      --app-color-primitive--gray-00#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black) #{$_percent}%, var(--app-color-primitive--white))
+      --app-color-primitive--gray-00#{$_percent}: #{_app-color-mix-bw($_percent)}
 
     // 010..090 (step: 10)
     @for $_i from 1 through 9
       $_percent: $_i * 10
-      --app-color-primitive--gray-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black) #{$_percent}%, var(--app-color-primitive--white))
+      --app-color-primitive--gray-0#{$_percent}: #{_app-color-mix-bw($_percent)}
 
     // 091..099
     @for $_i from 1 through 9
       $_percent: $_i + 90
-      --app-color-primitive--gray-0#{$_percent}: color-mix(in #{$_color-interpolation-method}, var(--app-color-primitive--black) #{$_percent}%, var(--app-color-primitive--white))
+      --app-color-primitive--gray-0#{$_percent}: #{_app-color-mix-bw($_percent)}
 
     // 001 — unused
     // 002 — used
@@ -88,7 +91,7 @@
 
   :root
     --app-gradient-color-from: var(--app-color--foreground--brand)
-    --app-gradient-color-to: color-mix(in #{$_color-interpolation-method}, var(--app-gradient-color-from), var(--app-color-primitive--white))
+    --app-gradient-color-to: #{color-palette-util.app-color-palette_color-mix-50-vars(--app-gradient-color-from, --app-color-primitive--white)}
     --app-gradient-diagonal: linear-gradient(135deg, var(--app-gradient-color-from) 0%, var(--app-gradient-color-to) 100%)
 
   // The colors have been defined in `theming` folder and is `*component.sass` files.
