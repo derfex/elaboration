@@ -1,3 +1,5 @@
+@use '../identity/color-palette-util'
+
 @mixin app-theming-foundation_styles-mixin
   $_app-color-scheme-dark-selector: '.app-js-color-scheme--dark'
   $_app-color-scheme-light-selector: '.app-js-color-scheme--light'
@@ -69,6 +71,8 @@
 
     --app-root-surface-bg-color: var(--app-color--background--theme)
     --app-root-surface-text-color: var(--app-color--foreground--theme)
+
+    --app-overlay-bg-color: color-palette-util.app-color-palette_color-mix(84, var(--app-color--background--theme), #0000)
 
   #{$_app-color-scheme-dark-selector}
     --app-angular-logotype-fill-color: #fff
