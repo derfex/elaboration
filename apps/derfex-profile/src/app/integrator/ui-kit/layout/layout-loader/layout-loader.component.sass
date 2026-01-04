@@ -1,3 +1,5 @@
+@use '../layout'
+
 :host
   display: block
 
@@ -37,4 +39,5 @@ $_app-rotation-to-degree: 270deg
   position: fixed
   inset: 0
   display: flex
-  background: var(--app-overlay--bg-color)
+
+  @include layout.app-layout_overlay-back-mixin

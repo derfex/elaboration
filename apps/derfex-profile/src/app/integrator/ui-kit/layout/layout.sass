@@ -58,6 +58,11 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
     max-width: $_app-layout_section-max-width
 
 
+@mixin app-layout_overlay-back-mixin
+  background: var(--app-overlay--bg-color)
+  backdrop-filter: blur(10px)
+
+
 @mixin app-layout_section-with-codename-mixin($_wrapper-selector, $_label-selector, $_codename-selector, $_content-selector)
   --app-section-pattern-foreground-color: var(--app-decor-color--eee)
 
