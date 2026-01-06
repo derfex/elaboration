@@ -1,7 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { HeroSectionMediatorService } from '~be/hero/hero-section-mediator.service'
-import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
+import type { HeroSectionParameters } from '~ui/root-page/hero/hero-section/hero-section.type'
 import { HeroSectionComponent } from './hero-section.component'
 
 describe('HeroSectionComponent', (): void => {

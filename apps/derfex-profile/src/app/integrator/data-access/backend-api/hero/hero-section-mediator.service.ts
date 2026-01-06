@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core'
 import { type Observable, switchMap, tap } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
-import type { HeroSectionParameters } from '~ui/hero-section/hero-section.type'
+import type { HeroSectionParameters } from '~ui/root-page/hero/hero-section/hero-section.type'
 
 @Injectable({
   providedIn: 'root',

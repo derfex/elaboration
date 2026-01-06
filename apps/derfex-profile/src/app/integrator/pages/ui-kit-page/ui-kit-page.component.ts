@@ -5,7 +5,7 @@ import { LayoutLoaderComponent } from '~ui-kit/layout/layout-loader/layout-loade
 import { LayoutSectionSeparatorComponent } from '~ui-kit/layout/layout-section-separator/layout-section-separator.component'
 import { UIKitSectionComponent } from '~ui-kit/ui-kit-presentation/ui-kit-section/ui-kit-section.component'
 import { HeaderSectionComponent } from '~ui/header-section/header-section.component'
-import { HeroSectionComponent } from '~ui/hero-section/hero-section.component'
+import { HeroSectionComponent } from '~ui/root-page/hero/hero-section/hero-section.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
