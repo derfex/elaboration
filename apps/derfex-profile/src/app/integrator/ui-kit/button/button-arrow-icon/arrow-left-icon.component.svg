@@ -1,0 +1,11 @@
+<svg
+  class="app-svg"
+  role="presentation"
+  viewBox="0 0 14 14"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    class="app-path"
+    d="M0 7h12M6 1l6 6-6 6"
+  />
+</svg>
