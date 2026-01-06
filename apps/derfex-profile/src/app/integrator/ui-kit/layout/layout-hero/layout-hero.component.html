@@ -1,26 +1,3 @@
 <header class="app-header">
-  <h1 class="app-title">
-    {{titleStartText()}}
-    <span class="app-highlight">{{titleHighlightText()}}</span>
-    {{titleEndText()}}
-  </h1>
-  <h2 class="app-name">
-    {{nameText()}}
-  </h2>
-  <div class="app-contacts">
-    <a
-      class="app-contacts__item app-contacts__item--github"
-      [href]="contactGitHubURL()"
-      target="_blank"
-    >
-      <app-github-invertocat-logotype />
-    </a>
-    <a
-      class="app-contacts__item"
-      [href]="contactTelegramURL()"
-      target="_blank"
-    >
-      <app-telegram-logotype />
-    </a>
-  </div>
+  <ng-content />
 </header>

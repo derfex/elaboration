@@ -1,3 +1,4 @@
+import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { HeroSectionMediatorService } from '~be/hero/hero-section-mediator.service'
@@ -10,6 +11,11 @@ describe('HeroSectionComponent', (): void => {
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
+      imports: [
+        // Stubs.
+        LayoutHeroStubComponent,
+        RootPageHeroStubComponent,
+      ],
       providers: [{ provide: HeroSectionMediatorService, useClass: HeroSectionMediatorStubService }],
     }).compileComponents()
 
@@ -22,6 +28,12 @@ describe('HeroSectionComponent', (): void => {
     expect(component).toBeTruthy()
   })
 })
+
+@Component({ selector: 'app-layout-hero', template: '' })
+class LayoutHeroStubComponent {}
+
+@Component({ selector: 'app-root-page-hero', template: '' })
+class RootPageHeroStubComponent {}
 
 class HeroSectionMediatorStubService {
   public readSectionParameters(): Observable<HeroSectionParameters> {

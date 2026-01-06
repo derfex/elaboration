@@ -13,11 +13,6 @@ describe('LayoutHeroComponent', (): void => {
   })
 
   it('should create', (): void => {
-    fixture.componentRef.setInput('contactGitHubURL', 'No data')
-    fixture.componentRef.setInput('contactTelegramURL', 'No data')
-    fixture.componentRef.setInput('nameText', 'No data')
-    fixture.componentRef.setInput('titleXML', 'No data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })
