@@ -1,20 +1,37 @@
 <svg
   class="app-svg"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
+  aria-label="SVG logotype"
+  role="img"
   viewBox="0 0 300 300"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://www.w3.org/2000/svg"
 >
-  <g stroke-width="38.0086" stroke="#000">
-    <g id="svg-logotype-star" transform="translate(150, 150)">
+  <g
+    stroke-width="38.0086"
+    stroke="#000"
+  >
+    <g
+      id="app-svg-logotype__star"
+      transform="translate(150, 150)"
+    >
       <path
+        id="app-svg-logotype__bar"
         d="M-84.1487,-15.8513 a22.4171,22.4171 0 1 0 0,31.7026 h168.2974 a22.4171,22.4171 0 1 0 0,-31.7026 Z"
         fill="#ffb13b"
-        id="svg-logotype-bar"
       />
-      <use transform="rotate(45)" xlink:href="#svg-logotype-bar" />
-      <use transform="rotate(90)" xlink:href="#svg-logotype-bar" />
-      <use transform="rotate(135)" xlink:href="#svg-logotype-bar" />
+      <use
+        transform="rotate(45)"
+        xlink:href="#app-svg-logotype__bar"
+      />
+      <use
+        transform="rotate(90)"
+        xlink:href="#app-svg-logotype__bar"
+      />
+      <use
+        transform="rotate(135)"
+        xlink:href="#app-svg-logotype__bar"
+      />
     </g>
   </g>
-  <use xlink:href="#svg-logotype-star" />
+  <use xlink:href="#app-svg-logotype__star" />
 </svg>
