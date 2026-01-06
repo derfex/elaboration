@@ -1,0 +1,54 @@
+@use '../../../../ui-kit/identity/transitions'
+@use '../../../../ui-kit/layout/layout'
+
+:host
+  display: block
+
+.app-contacts
+  display: flex
+  column-gap: 8px
+
+  @include transitions.app-transitions_transition-mixin(filter, opacity)
+
+  filter: grayscale(1)
+  opacity: .7
+
+  .app-header:hover &
+    filter: grayscale(0)
+    opacity: 1
+
+.app-contacts__item
+  $_size: 40px
+
+  width: $_size
+  height: $_size
+
+.app-contacts__item--github
+  color: var(--app-github-invertocat-logotype-color)
+
+.app-name
+  margin-block: 0
+  font-size: 20px
+  line-height: initial
+
+  @media (layout.$app-device-width-medium <= width)
+    font-size: var(--app-h2--font-size)
+
+.app-title
+  margin-block: 0
+  font-size: 36px
+  line-height: initial
+
+  @media (layout.$app-device-width-small <= width)
+    font-size: 48px
+
+  @media (layout.$app-device-width-medium <= width)
+    font-size: 56px
+
+  @media (layout.$app-device-width-large <= width)
+    font-size: 68px
+
+.app-highlight
+  background: var(--app-gradient-diagonal)
+  background-clip: text
+  color: #0000
