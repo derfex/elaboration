@@ -1,5 +1,7 @@
 <svg
   class="app-svg"
+  aria-label="Vue.js logotype"
+  role="img"
   viewBox="0 0 196.32 170.02"
   xmlns="http://www.w3.org/2000/svg"
 >
