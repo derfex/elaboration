@@ -64,9 +64,9 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
 
 
 @mixin app-layout_section-with-codename-mixin($_wrapper-selector, $_label-selector, $_codename-selector, $_content-selector)
-  --app-section-pattern-foreground-color: var(--app-decor-color--eee)
+  --app-section-pattern--fg-color: var(--app-color--decor--foggy)
 
-  border-block: 1px solid var(--app-section-pattern-foreground-color)
+  border-block: 1px solid var(--app-section-pattern--fg-color)
 
   #{$_wrapper-selector}
     @include _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
@@ -75,9 +75,9 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
     @include _app-layout_section-codename-label-mixin
 
 @mixin app-layout_section-with-number-mixin($_wrapper-selector, $_label-selector, $_number-selector, $_content-selector)
-  --app-section-pattern-foreground-color: var(--app-decor-color--eee)
+  --app-section-pattern--fg-color: var(--app-color--decor--foggy)
 
-  border-block: 1px solid var(--app-section-pattern-foreground-color)
+  border-block: 1px solid var(--app-section-pattern--fg-color)
 
   #{$_wrapper-selector}
     @include _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
@@ -87,7 +87,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
 
 // # Section separator
 @mixin app-layout_section-separator-mixin
-  --app-section-pattern-foreground-color: var(--app-decor-color--eee)
+  --app-section-pattern--fg-color: var(--app-color--decor--foggy)
 
   display: grid
   grid-template-areas: '.'
@@ -161,7 +161,7 @@ $_app-layout_section-label-padding: 8px
 $_app-layout_section-label-line-height: $_app-layout_section-label-size - 2 * ($_app-layout_section-label-border-width + $_app-layout_section-label-padding)
 
 @mixin _app-layout_section-label-mixin
-  border: $_app-layout_section-label-border-width solid var(--app-section-pattern-foreground-color)
+  border: $_app-layout_section-label-border-width solid var(--app-section-pattern--fg-color)
   padding: $_app-layout_section-label-padding
   font-family: monospace
   line-height: $_app-layout_section-label-line-height
@@ -186,7 +186,7 @@ $_app-layout_section-label-line-height: $_app-layout_section-label-size - 2 * ($
 
 @mixin _app-layout_section-pattern-slanted-lines-background-mixin
   background-attachment: fixed
-  background-image: repeating-linear-gradient(135deg, var(--app-section-pattern-foreground-color) 0, var(--app-section-pattern-foreground-color) 1px, #0000 0, #0000 50%)
+  background-image: repeating-linear-gradient(135deg, var(--app-section-pattern--fg-color) 0, var(--app-section-pattern--fg-color) 1px, #0000 0, #0000 50%)
   background-size: 8px 8px
 
 @mixin app-layout_section-pattern-checkered-background-mixin
@@ -199,6 +199,6 @@ $_app-layout_section-label-line-height: $_app-layout_section-label-size - 2 * ($
   background-size: 8px 8px
 
 @mixin _app-layout_section-with-background-mixin
-  border-inline: 1px solid var(--app-section-pattern-foreground-color)
+  border-inline: 1px solid var(--app-section-pattern--fg-color)
 
   @include _app-layout_section-pattern-slanted-lines-background-mixin
