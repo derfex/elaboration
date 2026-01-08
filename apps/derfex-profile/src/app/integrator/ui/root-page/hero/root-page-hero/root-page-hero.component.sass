@@ -18,15 +18,12 @@
   color: #0000
 
 .app-name
-  //margin-block: 0
-  font-size: 20px
+  margin-block: 0.5em 1em
+  font-size: var(--app-hero-name--font-size)
   line-height: initial
 
-  @media (layout.$app-device-width-medium <= width)
-    font-size: var(--app-h2--font-size)
-
 .app-title
-  margin-top: 0
+  margin-block: 0
   font-size: var(--app-hero-title--font-size)
   line-height: initial
 
@@ -139,7 +136,7 @@ $_button-translate-x: math.div($_button-gap + $_button-arrow-size, 2)
 
 .app-secondary-contacts__list
   display: flex
-  column-gap: 8px
+  column-gap: 16px
 
 .app-secondary-contacts__title
   @include ui-kit.app-ui-kit_h3-mixin

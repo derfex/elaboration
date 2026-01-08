@@ -28,8 +28,6 @@
     @media (layout.$app-device-width-large <= width)
       --app-hero-title--font-size: #{$_text-title-font-size}
 
-    // ### Text
-
     // Use `&` to avoid
     // “
     // Sass's behavior for declarations that appear after nested
@@ -39,6 +37,13 @@
     //
     // More info: https://sass-lang.com/d/mixed-decls
     // ”
+
+    &
+      --app-hero-name--font-size: #{$_text-subheading-font-size}
+      @media (layout.$app-device-width-medium <= width)
+        --app-hero-name--font-size: #{$_text-heading-font-size}
+
+    // ### Text
 
     &
       --app-text-default--font-size: #{$_text-default-font-size}
