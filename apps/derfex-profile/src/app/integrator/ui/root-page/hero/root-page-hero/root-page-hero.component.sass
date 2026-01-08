@@ -29,12 +29,14 @@
 
 // # Contacts
 
+$_app-contacts-frame-color: var(--app-color--decor--fuzzy)
+
 .app-contacts
   $_border-width: 8px
 
   display: grid
   grid-template-rows: auto $_border-width auto
-  border: 8px solid var(--app-decor-color--eee)
+  border: 8px solid $_app-contacts-frame-color
 
   @media (layout.$app-device-width-large <= width)
     grid-template-columns: auto $_border-width auto
@@ -61,7 +63,7 @@
 // ↑ Gmail
 
 .app-contacts__separator
-  background: var(--app-decor-color--eee)
+  background: $_app-contacts-frame-color
 
 // ## Primary contacts
 
