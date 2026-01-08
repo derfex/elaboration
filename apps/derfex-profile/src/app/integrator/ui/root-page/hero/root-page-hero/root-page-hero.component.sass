@@ -4,28 +4,6 @@
 :host
   display: block
 
-.app-contacts
-  display: flex
-  column-gap: 8px
-
-  @include transitions.app-transitions_transition-mixin(filter, opacity)
-
-  filter: grayscale(1)
-  opacity: .7
-
-  .app-header:hover &
-    filter: grayscale(0)
-    opacity: 1
-
-.app-contacts__item
-  $_size: 40px
-
-  width: $_size
-  height: $_size
-
-.app-contacts__item--github
-  color: var(--app-github-invertocat-logotype-color)
-
 .app-name
   //margin-block: 0
   font-size: 20px
@@ -43,3 +21,43 @@
   background: var(--app-gradient-diagonal)
   background-clip: text
   color: #0000
+
+
+.app-contacts
+  $_border-width: 8px
+
+  display: grid
+  grid-template-rows: auto $_border-width auto
+  border: 8px solid var(--app-decor-color--eee)
+
+  @media (layout.$app-device-width-large <= width)
+    grid-template-columns: auto $_border-width auto
+    grid-template-rows: auto
+
+.app-contacts__item
+  $_size: 40px
+
+  width: $_size
+  height: $_size
+
+.app-contacts__item--github
+  color: var(--app-github-invertocat-logotype-color)
+
+.app-contacts__primary
+  display: flex
+
+.app-contacts__secondary
+  display: flex
+  column-gap: 8px
+
+  @include transitions.app-transitions_transition-mixin(filter, opacity)
+
+  filter: grayscale(1)
+  opacity: .7
+
+  .app-contacts:hover &
+    filter: grayscale(0)
+    opacity: 1
+
+.app-contacts__separator
+  background: var(--app-decor-color--eee)

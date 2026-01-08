@@ -7,18 +7,23 @@
   {{nameText()}}
 </h2>
 <div class="app-contacts">
-  <a
-    class="app-contacts__item app-contacts__item--github"
-    [href]="contactGitHubURL()"
-    target="_blank"
-  >
-    <app-github-invertocat-logotype />
-  </a>
-  <a
-    class="app-contacts__item"
-    [href]="contactTelegramURL()"
-    target="_blank"
-  >
-    <app-telegram-logotype />
-  </a>
+  <div class="app-contacts__primary">
+    <a
+      class="app-contacts__item"
+      [href]="contactTelegramURL()"
+      target="_blank"
+    >
+      <app-telegram-logotype />
+    </a>
+  </div>
+  <div class="app-contacts__separator" role="none"></div>
+  <div class="app-contacts__secondary">
+    <a
+      class="app-contacts__item app-contacts__item--github"
+      [href]="contactGitHubURL()"
+      target="_blank"
+    >
+      <app-github-invertocat-logotype />
+    </a>
+  </div>
 </div>
