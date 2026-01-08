@@ -21,6 +21,7 @@ export class HeroSectionComponent implements OnInit {
     contactGitHubURL: 'No data',
     contactGmailURL: 'No data',
     contactTelegramURL: 'No data',
+    contactsText: 'No data',
     nameText: 'No data',
     titleXML: '<highlight>No data</highlight>',
   })
@@ -34,6 +35,7 @@ export class HeroSectionComponent implements OnInit {
           contactGitHubURL,
           contactGmailURL: 'No data',
           contactTelegramURL,
+          contactsText: 'No data',
           nameText,
           titleXML,
         })

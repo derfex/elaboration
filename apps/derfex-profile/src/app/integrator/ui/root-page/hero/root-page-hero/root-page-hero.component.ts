@@ -14,6 +14,7 @@ export class RootPageHeroComponent {
   public readonly contactGitHubURL = input.required<string>()
   public readonly contactGmailURL = input.required<string>()
   public readonly contactTelegramURL = input.required<string>()
+  public readonly contactsText = input.required<string>()
   public readonly nameText = input.required<string>()
   public readonly titleXML = input.required<string>()
 

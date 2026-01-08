@@ -41,6 +41,7 @@ class HeroSectionMediatorStubService {
       contactGitHubURL: 'TestData',
       contactGmailURL: 'TestData',
       contactTelegramURL: 'TestData',
+      contactsText: 'Test data',
       nameText: 'Test data',
       titleXML: 'Test <highlight>data</highlight>',
     }
