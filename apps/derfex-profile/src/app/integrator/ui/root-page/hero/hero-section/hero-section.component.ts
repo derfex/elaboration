@@ -18,8 +18,10 @@ export class HeroSectionComponent implements OnInit {
 
   protected readonly codename = 'HERO'
   protected readonly sectionParameters = signal<HeroSectionParameters>({
+    callToActionText: 'No data',
     contactGitHubURL: 'No data',
     contactGmailURL: 'No data',
+    contactTelegramText: 'No data',
     contactTelegramURL: 'No data',
     contactsText: 'No data',
     nameText: 'No data',
@@ -32,8 +34,10 @@ export class HeroSectionComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.#destroyRef))
       .subscribe(({ contactGitHubURL, contactTelegramURL, nameText, titleXML }: HeroSectionParameters): void => {
         this.sectionParameters.set({
+          callToActionText: 'No data',
           contactGitHubURL,
           contactGmailURL: 'No data',
+          contactTelegramText: 'No data',
           contactTelegramURL,
           contactsText: 'No data',
           nameText,

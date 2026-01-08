@@ -21,9 +21,12 @@ describe('RootPageHeroComponent', (): void => {
   })
 
   it('should create', (): void => {
+    fixture.componentRef.setInput('callToActionText', 'Test data!')
     fixture.componentRef.setInput('contactGitHubURL', 'TestData')
     fixture.componentRef.setInput('contactGmailURL', 'TestData')
+    fixture.componentRef.setInput('contactTelegramText', 'Test data')
     fixture.componentRef.setInput('contactTelegramURL', 'TestData')
+    fixture.componentRef.setInput('contactsText', 'Test data')
     fixture.componentRef.setInput('nameText', 'Test data')
     fixture.componentRef.setInput('titleXML', 'Test <highlight>data</highlight>')
     // TODO?: fixture.detectChanges()

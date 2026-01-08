@@ -38,8 +38,10 @@ class RootPageHeroStubComponent {}
 class HeroSectionMediatorStubService {
   public readSectionParameters(): Observable<HeroSectionParameters> {
     const sectionParameters: HeroSectionParameters = {
+      callToActionText: 'Test data.',
       contactGitHubURL: 'TestData',
       contactGmailURL: 'TestData',
+      contactTelegramText: 'Test data',
       contactTelegramURL: 'TestData',
       contactsText: 'Test data',
       nameText: 'Test data',

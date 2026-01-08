@@ -11,8 +11,10 @@ import { TelegramLogotypeComponent } from '~ui/dx-contacts/logotypes/telegram-lo
   templateUrl: './root-page-hero.component.html',
 })
 export class RootPageHeroComponent {
+  public readonly callToActionText = input.required<string>()
   public readonly contactGitHubURL = input.required<string>()
   public readonly contactGmailURL = input.required<string>()
+  public readonly contactTelegramText = input.required<string>()
   public readonly contactTelegramURL = input.required<string>()
   public readonly contactsText = input.required<string>()
   public readonly nameText = input.required<string>()
