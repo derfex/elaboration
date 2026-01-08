@@ -1,5 +1,6 @@
 @use '../../../../ui-kit/identity/transitions'
 @use '../../../../ui-kit/layout/layout'
+@use '../../../../ui-kit/ui-kit'
 
 :host
   display: block
@@ -52,14 +53,15 @@
 .app-gmail-logotype-component-container
   margin: auto
 
+// ↑ Gmail
 
 .app-contacts__primary
   display: flex
   padding: 16px 8px
 
 .app-contacts__secondary
-  display: flex
-  column-gap: 8px
+  @include layout.app-layout_flex-column-mixin(16px)
+
   padding: 16px 8px
 
   @include transitions.app-transitions_transition-mixin(filter, opacity)
@@ -70,6 +72,13 @@
   .app-contacts:hover &
     filter: grayscale(0)
     opacity: 1
+
+.app-contacts__secondary-list
+  display: flex
+  column-gap: 8px
+
+.app-contacts__secondary-title
+  @include ui-kit.app-ui-kit_h3-mixin
 
 .app-contacts__separator
   background: var(--app-decor-color--eee)

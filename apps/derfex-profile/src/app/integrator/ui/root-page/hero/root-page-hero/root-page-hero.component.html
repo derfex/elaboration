@@ -18,22 +18,24 @@
   </div>
   <div class="app-contacts__separator" role="none"></div>
   <div class="app-contacts__secondary">
-    <h3>{{contactsText()}}</h3>
-    <a
-      class="app-contacts__item app-contacts__item--gmail"
-      [href]="contactGmailURL()"
-      target="_blank"
-    >
-      <div class="app-gmail-logotype-component-container">
-        <app-gmail-logotype />
-      </div>
-    </a>
-    <a
-      class="app-contacts__item app-contacts__item--github"
-      [href]="contactGitHubURL()"
-      target="_blank"
-    >
-      <app-github-invertocat-logotype />
-    </a>
+    <h3 class="app-contacts__secondary-title">{{contactsText()}}</h3>
+    <div class="app-contacts__secondary-list">
+      <a
+        class="app-contacts__item app-contacts__item--gmail"
+        [href]="contactGmailURL()"
+        target="_blank"
+      >
+        <div class="app-gmail-logotype-component-container">
+          <app-gmail-logotype />
+        </div>
+      </a>
+      <a
+        class="app-contacts__item app-contacts__item--github"
+        [href]="contactGitHubURL()"
+        target="_blank"
+      >
+        <app-github-invertocat-logotype />
+      </a>
+    </div>
   </div>
 </div>
