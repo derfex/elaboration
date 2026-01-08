@@ -19,6 +19,15 @@
   <div class="app-contacts__separator" role="none"></div>
   <div class="app-contacts__secondary">
     <a
+      class="app-contacts__item app-contacts__item--gmail"
+      [href]="contactGmailURL()"
+      target="_blank"
+    >
+      <div class="app-gmail-logotype-component-container">
+        <app-gmail-logotype />
+      </div>
+    </a>
+    <a
       class="app-contacts__item app-contacts__item--github"
       [href]="contactGitHubURL()"
       target="_blank"

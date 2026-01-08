@@ -22,6 +22,7 @@
   background-clip: text
   color: #0000
 
+// # Contacts
 
 .app-contacts
   $_border-width: 8px
@@ -43,12 +44,23 @@
 .app-contacts__item--github
   color: var(--app-github-invertocat-logotype-color)
 
+// ## Gmail
+
+.app-contacts__item--gmail
+  display: flex
+
+.app-gmail-logotype-component-container
+  margin: auto
+
+
 .app-contacts__primary
   display: flex
+  padding: 16px 8px
 
 .app-contacts__secondary
   display: flex
   column-gap: 8px
+  padding: 16px 8px
 
   @include transitions.app-transitions_transition-mixin(filter, opacity)
 

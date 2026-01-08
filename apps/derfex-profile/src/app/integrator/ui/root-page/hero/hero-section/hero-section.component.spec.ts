@@ -39,6 +39,7 @@ class HeroSectionMediatorStubService {
   public readSectionParameters(): Observable<HeroSectionParameters> {
     const sectionParameters: HeroSectionParameters = {
       contactGitHubURL: 'TestData',
+      contactGmailURL: 'TestData',
       contactTelegramURL: 'TestData',
       nameText: 'Test data',
       titleXML: 'Test <highlight>data</highlight>',
