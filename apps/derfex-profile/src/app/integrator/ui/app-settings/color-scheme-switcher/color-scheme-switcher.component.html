@@ -1,7 +1,7 @@
 <div role="radiogroup">
   @for (colorScheme of colorSchemes(); track colorScheme.codename) {
     <button
-      class="app-locale-item"
+      class="app-color-scheme-item"
       [attr.aria-checked]="colorScheme.ariaChecked"
       [disabled]="colorScheme.disabled"
       (click)="buttonClickHandler(colorScheme.codename)"
