@@ -10,12 +10,15 @@
   <div class="app-primary-contacts">
     <p class="app-primary-contacts__call-to-action">{{callToActionText()}}</p>
     <a
-      class="app-primary-contacts__link"
+      class="app-priority-method-of-communication"
       [href]="contactTelegramURL()"
       target="_blank"
     >
-      <span class="app-contacts__logotype">
-        <app-telegram-logotype />
+      <span class="app-priority-method-of-communication__content">
+        <span class="app-contacts__logotype">
+          <app-telegram-logotype />
+        </span>
+        <span>{{contactTelegramText()}}</span>
       </span>
     </a>
   </div>

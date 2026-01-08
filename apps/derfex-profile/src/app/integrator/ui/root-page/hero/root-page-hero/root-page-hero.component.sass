@@ -71,11 +71,24 @@
   font-size: var(--app-call-to-action-description--font-size)
   line-height: initial
 
-.app-primary-contacts__link
+.app-priority-method-of-communication
+  display: flex
+  border: 1px solid var(--app-color--foreground--brand)
+  padding: 8px
+  text-decoration: none
+  background: var(--app-color--foreground--brand)
+  color: inherit
+
+  @include transitions.app-transitions_transition-mixin(background)
+
+  &:hover
+    background: #0000
+
+.app-priority-method-of-communication__content
   display: flex
   align-items: center
-  text-decoration: none
-  color: inherit
+  column-gap: 8px
+  font-size: var(--app-call-to-action-button--font-size)
 
 // ## Secondary contacts
 
