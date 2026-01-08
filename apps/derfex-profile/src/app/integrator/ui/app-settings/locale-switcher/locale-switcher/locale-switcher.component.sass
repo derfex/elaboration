@@ -1,10 +1,7 @@
+@use '../../../../ui-kit/ui-kit'
+
 :host
   display: block
-  line-height: initial
 
 .app-locale-item
-  border: none
-  padding: 4px 8px
-
-  &:not(:disabled)
-    cursor: pointer
+  @include ui-kit.app-ui-kit_switch-button-mixin
