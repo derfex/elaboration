@@ -39,5 +39,11 @@
     //
     // More info: https://sass-lang.com/d/mixed-decls
     // ”
+
     &
       --app-text-default--font-size: #{$_text-default-font-size}
+
+    &
+      --app-call-to-action-description--font-size: 20px
+      @media (layout.$app-device-width-medium <= width)
+        --app-call-to-action-description--font-size: #{$_text-heading-font-size}

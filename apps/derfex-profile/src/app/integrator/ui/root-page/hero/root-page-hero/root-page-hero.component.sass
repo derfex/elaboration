@@ -61,8 +61,21 @@
 // ## Primary contacts
 
 .app-primary-contacts
-  display: flex
+  @include layout.app-layout_flex-column-mixin(16px)
+
+  align-items: flex-start
   padding: 16px 8px
+
+.app-primary-contacts__call-to-action
+  margin-block: 0
+  font-size: var(--app-call-to-action-description--font-size)
+  line-height: initial
+
+.app-primary-contacts__link
+  display: flex
+  align-items: center
+  text-decoration: none
+  color: inherit
 
 // ## Secondary contacts
 

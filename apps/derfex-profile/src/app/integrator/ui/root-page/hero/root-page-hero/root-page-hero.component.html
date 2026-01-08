@@ -8,12 +8,15 @@
 </h2>
 <div class="app-contacts">
   <div class="app-primary-contacts">
+    <p class="app-primary-contacts__call-to-action">{{callToActionText()}}</p>
     <a
-      class="app-contacts__logotype"
+      class="app-primary-contacts__link"
       [href]="contactTelegramURL()"
       target="_blank"
     >
-      <app-telegram-logotype />
+      <span class="app-contacts__logotype">
+        <app-telegram-logotype />
+      </span>
     </a>
   </div>
   <div class="app-contacts__separator" role="none"></div>
