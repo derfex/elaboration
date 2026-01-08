@@ -1,14 +1,7 @@
-@use '../../identity/transitions'
 @use '../layout'
 
 :host
   display: block
 
-.app-header
-  @include layout.app-layout_flex-column-mixin(16px)
-  @include layout.app-layout_padding-inline-mixin
-
-  padding-top: 20px
-  padding-bottom: 40px
-
+.app-container
   @include layout.app-layout_section-pattern-checkered-background-mixin

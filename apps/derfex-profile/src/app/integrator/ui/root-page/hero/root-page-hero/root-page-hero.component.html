@@ -1,50 +1,52 @@
-<h1 class="app-title">
-  {{titleStartText()}}
-  <span class="app-highlight">{{titleHighlightText()}}</span>
-  {{titleEndText()}}
-</h1>
-<h2 class="app-name">
-  {{nameText()}}
-</h2>
-<div class="app-contacts">
-  <div class="app-primary-contacts">
-    <p class="app-primary-contacts__call-to-action">{{callToActionText()}}</p>
-    <a
-      class="app-priority-method-of-communication"
-      [href]="contactTelegramURL()"
-      target="_blank"
-    >
-      <span class="app-priority-method-of-communication__content">
-        <span class="app-contacts__logotype">
-          <app-telegram-logotype />
+<header class="app-content">
+  <h1 class="app-title">
+    {{titleStartText()}}
+    <span class="app-highlight">{{titleHighlightText()}}</span>
+    {{titleEndText()}}
+  </h1>
+  <h2 class="app-name">
+    {{nameText()}}
+  </h2>
+  <div class="app-contacts">
+    <div class="app-primary-contacts">
+      <p class="app-primary-contacts__call-to-action">{{callToActionText()}}</p>
+      <a
+        class="app-priority-method-of-communication"
+        [href]="contactTelegramURL()"
+        target="_blank"
+      >
+        <span class="app-priority-method-of-communication__content">
+          <span class="app-contacts__logotype">
+            <app-telegram-logotype />
+          </span>
+          <span>{{contactTelegramText()}}</span>
         </span>
-        <span>{{contactTelegramText()}}</span>
-      </span>
-      <span class="app-arrow-left-icon-component-container">
-        <app-arrow-left-icon />
-      </span>
-    </a>
-  </div>
-  <div class="app-contacts__separator" role="none"></div>
-  <div class="app-secondary-contacts">
-    <h3 class="app-secondary-contacts__title">{{contactsText()}}</h3>
-    <div class="app-secondary-contacts__list">
-      <a
-        class="app-contacts__logotype app-contacts__logotype--gmail"
-        [href]="contactGmailURL()"
-        target="_blank"
-      >
-        <div class="app-gmail-logotype-component-container">
-          <app-gmail-logotype />
-        </div>
-      </a>
-      <a
-        class="app-contacts__logotype app-contacts__logotype--github"
-        [href]="contactGitHubURL()"
-        target="_blank"
-      >
-        <app-github-invertocat-logotype />
+        <span class="app-arrow-left-icon-component-container">
+          <app-arrow-left-icon />
+        </span>
       </a>
     </div>
+    <div class="app-contacts__separator" role="none"></div>
+    <div class="app-secondary-contacts">
+      <h3 class="app-secondary-contacts__title">{{contactsText()}}</h3>
+      <div class="app-secondary-contacts__list">
+        <a
+          class="app-contacts__logotype app-contacts__logotype--gmail"
+          [href]="contactGmailURL()"
+          target="_blank"
+        >
+          <div class="app-gmail-logotype-component-container">
+            <app-gmail-logotype />
+          </div>
+        </a>
+        <a
+          class="app-contacts__logotype app-contacts__logotype--github"
+          [href]="contactGitHubURL()"
+          target="_blank"
+        >
+          <app-github-invertocat-logotype />
+        </a>
+      </div>
+    </div>
   </div>
-</div>
+</header>
