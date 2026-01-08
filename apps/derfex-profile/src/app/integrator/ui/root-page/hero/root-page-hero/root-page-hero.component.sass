@@ -1,3 +1,4 @@
+@use 'sass:math'
 @use '../../../../ui-kit/identity/transitions'
 @use '../../../../ui-kit/layout/layout'
 @use '../../../../ui-kit/ui-kit'
@@ -39,6 +40,7 @@
 .app-contacts__logotype
   $_size: 40px
 
+  flex-shrink: 0
   width: $_size
   height: $_size
 
@@ -71,8 +73,14 @@
   font-size: var(--app-call-to-action-description--font-size)
   line-height: initial
 
+$_button-arrow-size: 20px
+$_button-gap: 16px
+$_button-translate-x: math.div($_button-gap + $_button-arrow-size, 2)
+
 .app-priority-method-of-communication
   display: flex
+  align-items: center
+  column-gap: $_button-gap
   border: 1px solid var(--app-color--foreground--brand)
   padding: 8px
   text-decoration: none
@@ -89,6 +97,23 @@
   align-items: center
   column-gap: 8px
   font-size: var(--app-call-to-action-button--font-size)
+
+  @include transitions.app-transitions_transition-mixin(translate)
+
+  .app-priority-method-of-communication:hover &
+    translate: $_button-translate-x
+
+.app-arrow-left-icon-component-container
+  flex-shrink: 0
+  width: $_button-arrow-size
+  height: $_button-arrow-size
+  stroke: currentColor
+
+  @include transitions.app-transitions_transition-mixin(opacity, translate)
+
+  .app-priority-method-of-communication:hover &
+    opacity: 0
+    translate: $_button-translate-x
 
 // ## Secondary contacts
 
