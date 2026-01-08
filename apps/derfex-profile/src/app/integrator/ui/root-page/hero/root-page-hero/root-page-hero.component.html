@@ -7,9 +7,9 @@
   {{nameText()}}
 </h2>
 <div class="app-contacts">
-  <div class="app-contacts__primary">
+  <div class="app-primary-contacts">
     <a
-      class="app-contacts__item"
+      class="app-contacts__logotype"
       [href]="contactTelegramURL()"
       target="_blank"
     >
@@ -17,11 +17,11 @@
     </a>
   </div>
   <div class="app-contacts__separator" role="none"></div>
-  <div class="app-contacts__secondary">
-    <h3 class="app-contacts__secondary-title">{{contactsText()}}</h3>
-    <div class="app-contacts__secondary-list">
+  <div class="app-secondary-contacts">
+    <h3 class="app-secondary-contacts__title">{{contactsText()}}</h3>
+    <div class="app-secondary-contacts__list">
       <a
-        class="app-contacts__item app-contacts__item--gmail"
+        class="app-contacts__logotype app-contacts__logotype--gmail"
         [href]="contactGmailURL()"
         target="_blank"
       >
@@ -30,7 +30,7 @@
         </div>
       </a>
       <a
-        class="app-contacts__item app-contacts__item--github"
+        class="app-contacts__logotype app-contacts__logotype--github"
         [href]="contactGitHubURL()"
         target="_blank"
       >

@@ -36,18 +36,18 @@
     grid-template-columns: auto $_border-width auto
     grid-template-rows: auto
 
-.app-contacts__item
+.app-contacts__logotype
   $_size: 40px
 
   width: $_size
   height: $_size
 
-.app-contacts__item--github
+.app-contacts__logotype--github
   color: var(--app-github-invertocat-logotype-color)
 
 // ## Gmail
 
-.app-contacts__item--gmail
+.app-contacts__logotype--gmail
   display: flex
 
 .app-gmail-logotype-component-container
@@ -55,11 +55,18 @@
 
 // ↑ Gmail
 
-.app-contacts__primary
+.app-contacts__separator
+  background: var(--app-decor-color--eee)
+
+// ## Primary contacts
+
+.app-primary-contacts
   display: flex
   padding: 16px 8px
 
-.app-contacts__secondary
+// ## Secondary contacts
+
+.app-secondary-contacts
   @include layout.app-layout_flex-column-mixin(16px)
 
   padding: 16px 8px
@@ -73,12 +80,9 @@
     filter: grayscale(0)
     opacity: 1
 
-.app-contacts__secondary-list
+.app-secondary-contacts__list
   display: flex
   column-gap: 8px
 
-.app-contacts__secondary-title
+.app-secondary-contacts__title
   @include ui-kit.app-ui-kit_h3-mixin
-
-.app-contacts__separator
-  background: var(--app-decor-color--eee)
