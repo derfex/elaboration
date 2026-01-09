@@ -3,6 +3,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
+import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { HeroSectionMediatorService } from './hero-section-mediator.service'
 
 describe('HeroSectionMediatorService', (): void => {
@@ -21,6 +22,7 @@ describe('HeroSectionMediatorService', (): void => {
 
         // Provided by the app.
         { provide: BackendAPIConfigurationService, useClass: BackendAPIConfigurationStubService },
+        { provide: LoadingNotifierService, useClass: LoadingNotifierStubService },
       ],
     })
     httpTestingController = TestBed.inject(HttpTestingController)
@@ -41,4 +43,9 @@ class BackendAPIConfigurationStubService {
   public readURL(urlCodename: string): Observable<string> {
     return of(urlCodename)
   }
+}
+
+class LoadingNotifierStubService {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  public setProcessLoading(processCodename: string, loading: boolean): void {}
 }

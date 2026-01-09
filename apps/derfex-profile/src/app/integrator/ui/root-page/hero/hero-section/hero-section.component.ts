@@ -32,17 +32,8 @@ export class HeroSectionComponent implements OnInit {
     this.#heroSectionMediatorService
       .readSectionParameters()
       .pipe(takeUntilDestroyed(this.#destroyRef))
-      .subscribe(({ contactGitHubURL, contactTelegramURL, nameText, titleXML }: HeroSectionParameters): void => {
-        this.sectionParameters.set({
-          callToActionText: 'No data',
-          contactGitHubURL,
-          contactGmailURL: 'No data',
-          contactTelegramText: 'No data',
-          contactTelegramURL,
-          contactsText: 'No data',
-          nameText,
-          titleXML,
-        })
+      .subscribe((parameters: HeroSectionParameters): void => {
+        this.sectionParameters.set(parameters)
       })
   }
 }
