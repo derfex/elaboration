@@ -1,6 +1,8 @@
 <article class="app-article">
-  <h2 class="app-title">{{titleText()}}</h2>
-  <p class="app-description">{{descriptionText()}}</p>
+  <div class="app-description-and-title-container">
+    <h2 class="app-title">{{titleText()}}</h2>
+    <p class="app-description">{{descriptionText()}}</p>
+  </div>
   <ul class="app-skills">
     @for (skill of skillsForTemplate(); track skill.codename) {
       <li class="app-skills__item">

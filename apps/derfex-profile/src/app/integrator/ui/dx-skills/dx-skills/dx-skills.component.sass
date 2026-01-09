@@ -7,7 +7,7 @@
   display: block
 
 .app-article
-  @include layout.app-layout_flex-column-mixin(16px)
+  @include layout.app-layout_flex-column-mixin(24px)
 
   justify-content: space-between
 
@@ -17,6 +17,9 @@
 
 .app-description
   @include typography.app-typography_p-mixin
+
+.app-description-and-title-container
+  @include layout.app-layout_flex-column-mixin(8px)
 
 .app-skills
   @include reset.app-reset_ul-mixin
