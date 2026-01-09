@@ -9,11 +9,18 @@
   padding: 16px
 
 .app-content
+  @include layout.app-layout_flex-column-mixin(24px)
+
+
+.app-achievements
   @include layout.app-layout_flex-column-mixin(8px)
 
-
-.app-achievements-title
+.app-achievements__title
   @include ui-kit.app-ui-kit_h4-mixin
+
+
+.app-period-and-role-and-short-description-container
+  @include layout.app-layout_flex-column-mixin(8px)
 
 .app-period
   @include typography.app-typography_p-mixin
@@ -29,19 +36,23 @@
 
   font-style: italic
 
-.app-skills-list
+
+.app-skills
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-skills__list
   display: flex
   flex-wrap: wrap
   gap: 4px 8px
   padding-left: 0
   list-style: none
 
-.app-skills-list__item
+.app-skills__list-item
   border-radius: 4px
   padding: 4px 8px
   background: var(--app-color--background--badge)
   color: var(--app-color--foreground--badge)
   white-space: nowrap
 
-.app-skills-title
+.app-skills__title
   @include ui-kit.app-ui-kit_h4-mixin
