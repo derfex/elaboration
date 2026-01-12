@@ -86,6 +86,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
     @include _app-layout_section-square-label-mixin
 
 // # Section separator
+
 @mixin app-layout_section-separator-mixin
   --app-section-pattern--fg-color: var(--app-color--decor--foggy)
 
@@ -118,6 +119,7 @@ $_app-layout_section-max-width: $app-device-width-extra-extra-large
     grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
 
 // # Section wrapper
+
 @mixin _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
   display: grid
   grid-template-areas: 'section-label' 'section-content'
