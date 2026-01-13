@@ -74,6 +74,7 @@ export class DXActivitiesSectionMediatorService {
     dxActivities: DXActivitiesForBE,
     dxActivitySkills: DXActivitySkillsForBE,
     locale: AppLocale,
+    queryItems: DXActivitiesSectionParametersForBE['list']['query']['items'],
   ): readonly DXActivitiesListItem[] {
     const dxActivitySkillsMap: ReadonlyMap<DXActivitySkillForBE['codename'], DXActivitySkillForBE['title']> = new Map(
       dxActivitySkills.map<[DXActivitySkillForBE['codename'], DXActivitySkillForBE['title']]>(({ codename, title }) => [
@@ -81,7 +82,7 @@ export class DXActivitiesSectionMediatorService {
         title,
       ]),
     )
-    return dxActivities
+    return this.#queryDXActivities(dxActivities, queryItems)
       .map((activityForBE: DXActivityForBE): DXActivitiesSectionMediatorListItem => {
         const codename = activityForBE.codename as DXActivityCodename
         const period = this.#chooseGetPeriodTextFn(locale)(activityForBE.periodFrom, activityForBE.periodTo)
@@ -123,6 +124,28 @@ export class DXActivitiesSectionMediatorService {
         shortDescription,
         skills,
       }))
+  }
+
+  #queryDXActivities(
+    dxActivities: DXActivitiesForBE,
+    queryItems: DXActivitiesSectionParametersForBE['list']['query']['items'],
+  ): DXActivitiesForBE {
+    const dxActivitiesMap: ReadonlyMap<DXActivityForBE['codename'], DXActivityForBE> = new Map(
+      dxActivities.map<[DXActivityForBE['codename'], DXActivityForBE]>((dxActivity) => [
+        dxActivity.codename,
+        dxActivity,
+      ]),
+    )
+    return queryItems.map(
+      ({ codename }: DXActivitiesSectionParametersForBE['list']['query']['items'][number]): DXActivityForBE => {
+        const dxActivity = dxActivitiesMap.get(codename)
+        assertDefined<DXActivityForBE>(
+          dxActivity,
+          `[DXActivitiesSectionMediatorService] Wrong data. The codename ('${codename}') does not exist.`,
+        )
+        return dxActivity
+      },
+    )
   }
 
   #readDXActivitiesAsCompiled(dxActivitiesURL: string): Observable<DXActivitiesCompiledForBE> {
@@ -234,7 +257,7 @@ export class DXActivitiesSectionMediatorService {
     return zip([this.#localeSwitcherService.locale, sectionParametersAndLists]).pipe(
       map<[AppLocale, SectionParametersAndLists], DXActivitiesSectionParametersAndList>(
         ([locale, [parametersFromBEAPI, dxActivities, dxActivitySkills]]): DXActivitiesSectionParametersAndList => {
-          const list = this.#prepareList(dxActivities, dxActivitySkills, locale)
+          const list = this.#prepareList(dxActivities, dxActivitySkills, locale, parametersFromBEAPI.list.query.items)
           const sectionParameters: DXActivitiesSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             list: {

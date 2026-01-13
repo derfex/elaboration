@@ -18,6 +18,7 @@ export interface DXActivitiesSectionParametersForBE {
       readonly skillsTitleText: string
     }
     readonly query: {
+      readonly items: readonly DXActivitiesSectionParametersListQueryItemForBE[]
       readonly skills: {
         readonly sourceRelativeURL: string
       }
@@ -25,4 +26,9 @@ export interface DXActivitiesSectionParametersForBE {
     readonly sourceRelativeURL: string
   }
   readonly titleText: string
+}
+
+
+interface DXActivitiesSectionParametersListQueryItemForBE {
+  readonly codename: string
 }
