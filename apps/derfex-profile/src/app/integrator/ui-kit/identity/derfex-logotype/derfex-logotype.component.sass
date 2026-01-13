@@ -1,8 +1,4 @@
-@mixin _app-transition-mixin
-  transition-duration: var(--dx-logotype-transition-duration)
-  transition-property: fill
-  transition-timing-function: var(--dx-logotype-transition-timing-function)
-
+@use '../transitions'
 
 :host
   display: block
@@ -14,9 +10,9 @@
 .app-v-path
   fill: var(--dx-logotype-v-fill)
 
-  @include _app-transition-mixin
+  @include transitions.app-transitions_transition-mixin(fill)
 
 .app-z-path
   fill: var(--dx-logotype-z-fill)
 
-  @include _app-transition-mixin
+  @include transitions.app-transitions_transition-mixin(fill)
