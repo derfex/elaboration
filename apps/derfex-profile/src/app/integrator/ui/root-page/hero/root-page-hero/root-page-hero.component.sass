@@ -81,13 +81,15 @@ $_button-gap: 16px
 $_button-translate-x: math.div($_button-gap + $_button-arrow-size, 2)
 
 .app-priority-method-of-communication
+  $_bg-color: var(--app-color--accent--brand)
+
   display: flex
   align-items: center
   column-gap: $_button-gap
-  border: 1px solid var(--app-color--foreground--brand)
+  border: 1px solid $_bg-color
   padding: 16px
   text-decoration: none
-  background: var(--app-color--foreground--brand)
+  background: $_bg-color
   color: inherit
 
   @include transitions.app-transitions_transition-mixin(background)
