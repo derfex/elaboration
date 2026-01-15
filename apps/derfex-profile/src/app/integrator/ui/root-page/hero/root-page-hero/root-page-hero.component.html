@@ -5,7 +5,7 @@
     {{titleEndText()}}
   </h1>
   <h2 class="app-name">
-    {{nameText()}}
+    <span class="app-highlight">{{nameText()}}</span>
   </h2>
   <div class="app-contacts">
     <div class="app-primary-contacts">
@@ -28,7 +28,8 @@
     </div>
     <div class="app-contacts__separator" role="none"></div>
     <div class="app-secondary-contacts">
-      <h3 class="app-secondary-contacts__title">{{contactsText()}}</h3>
+      <h3 class="app-secondary-contacts__title">
+        <span class="app-secondary-contacts__title-span">{{contactsText()}}</span></h3>
       <div class="app-secondary-contacts__list">
         <a
           class="app-contacts__logotype app-contacts__logotype--gmail"
