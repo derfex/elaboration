@@ -1,19 +1,20 @@
 @use './identity/identity-foundation'
 @use './reset-foundation'
+@use './theming/theming-foundation'
 
 @mixin app-ui-kit-foundation_styles-mixin
   @include reset-foundation.app-reset-foundation_styles-mixin
   @include identity-foundation.app-identity-foundation_styles-mixin
+  @include theming-foundation.app-theming-foundation_styles-mixin
 
   // ## Init
 
   :root
-    background: var(--app-dark-surface-bg-color)
-    color: var(--app-dark-surface-text-color)
-    color-scheme: dark
+    background: var(--app-root-surface--bg-color)
+    color: var(--app-root-surface--fg-color)
     scrollbar-width: thin
 
   ::selection
-    background: var(--app-selection-bg-color)
-    color: var(--app-selection-text-color)
+    background: var(--app-selection--bg-color)
+    color: var(--app-selection--fg-color)
     text-shadow: none
