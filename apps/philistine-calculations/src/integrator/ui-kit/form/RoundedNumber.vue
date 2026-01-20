@@ -59,5 +59,5 @@ function calculateRoundedNumberParts(
   font-family: monospace
 
 .app-number-minor
-  opacity: .5
+  color: color-mix(in display-p3, currentColor, #0000)
 </style>
