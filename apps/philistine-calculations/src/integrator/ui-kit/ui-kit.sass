@@ -79,14 +79,14 @@
   box-shadow: $_box-shadow
 
 @mixin app-ui-kit_neon-mixin
-  text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)
+  text-shadow: 0 0 10px var(--app-color--accent--brand), 0 0 800px var(--app-color--accent--brand)
 
 @mixin app-ui-kit_form-checkbox-mixin
   $_size: 28px
 
   width: $_size
   height: $_size
-  accent-color: var(--app-color-accent)
+  accent-color: var(--app-color--accent--brand)
   cursor: pointer
 
 @mixin app-ui-kit_form-textbox-mixin
@@ -97,4 +97,4 @@
   padding: 8px
   font-size: 2em
   background: #0000
-  accent-color: var(--app-color-accent)
+  accent-color: var(--app-color--accent--brand)

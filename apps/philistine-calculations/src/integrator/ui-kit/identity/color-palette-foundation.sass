@@ -20,7 +20,8 @@
   // ## Semantic
 
   :root
-    --app-color-accent: var(--app-color-primitive--cyan)
+    // TODO: Do we need to use `accent` in `--app-color--accent--brand`?
+    --app-color--accent--brand: var(--app-color-primitive--cyan)
     --app-dark-surface-bg-color: var(--app-color-primitive--black)
     --app-dark-surface-text-color: var(--app-color-primitive--white)
 
@@ -45,4 +46,4 @@
     --app-ornament-text-color: var(--app-color-primitive--white--dark-800)
 
     --app-selection-bg-color: var(--app-color-primitive--white--transparent-500)
-    --app-selection-text-color: var(--app-color-accent)
+    --app-selection-text-color: var(--app-color--accent--brand)

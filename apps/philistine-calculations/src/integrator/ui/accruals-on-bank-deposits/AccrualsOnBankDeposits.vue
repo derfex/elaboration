@@ -103,7 +103,7 @@ $_app-padding: $_app-gap
   @include ui-kit.app-ui-kit_form-textbox-mixin
 
   font-family: monospace
-  color: var(--app-color-accent)
+  color: var(--app-color--accent--brand)
 
 .app-checkbox
   @include ui-kit.app-ui-kit_form-checkbox-mixin
