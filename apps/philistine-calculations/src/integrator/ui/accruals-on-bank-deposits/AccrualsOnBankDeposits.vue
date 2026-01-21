@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { calculateAccrual } from '../../../architecture/logic/accruals-on-bank-deposits'
-import RoundedNumber from '../../ui-kit/form/RoundedNumber.vue'
+import { calculateAccrual } from '|logic/accruals-on-bank-deposits'
+import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
 // # API
 
