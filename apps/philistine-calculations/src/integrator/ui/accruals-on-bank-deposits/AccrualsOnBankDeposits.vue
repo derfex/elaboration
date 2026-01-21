@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
+import { calculateAccrual } from '../../../architecture/logic/accruals-on-bank-deposits'
 import RoundedNumber from '../../ui-kit/form/RoundedNumber.vue'
 
 // # API
@@ -33,15 +34,6 @@ const accrual = computed(() => {
 })
 
 // # Private
-
-function calculateAccrual(
-  amountAtBeginningOfPeriod: number,
-  numberOfDaysInPeriod: number,
-  rate: number,
-  numberOfDaysOfYear: number,
-): number {
-  return (amountAtBeginningOfPeriod * numberOfDaysInPeriod * rate) / 100 / numberOfDaysOfYear
-}
 
 function roundAccrual(accrual: number): number {
   const coefficient = 1000
