@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
+import RoundedNumber from '../../ui-kit/form/RoundedNumber.vue'
 
 // # API
 
@@ -75,7 +76,11 @@ function roundAccrual(accrual: number): number {
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
-          <input class="app-accrual-textbox" v-model="accrual" disabled />
+          <RoundedNumber
+            class="app-accrual-textbox"
+            :number="accrual"
+            :number-of-digits-after-decimal-point="{ essential: 2, minor: 1 }"
+          />
         </label>
       </form>
     </div>
@@ -103,6 +108,7 @@ $_app-padding: $_app-gap
   @include ui-kit.app-ui-kit_form-textbox-mixin
 
   font-family: monospace
+  line-height: normal
   color: var(--app-color--accent--brand)
 
 .app-checkbox
