@@ -28,17 +28,14 @@ const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365
 const rate = ref(props.rate)
 
 const accrual = computed(() => {
-  return roundAccrual(
-    calculateAccrual(amountAtBeginningOfPeriod.value, numberOfDaysInPeriod.value, rate.value, numberOfDaysOfYear.value),
+  return calculateAccrual(
+    amountAtBeginningOfPeriod.value,
+    numberOfDaysInPeriod.value,
+    rate.value,
+    numberOfDaysOfYear.value,
   )
 })
-
-// # Private
-
-function roundAccrual(accrual: number): number {
-  const coefficient = 1000
-  return Math.round(accrual * coefficient) / coefficient
-}
+const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 2 } as const
 </script>
 
 <template>
@@ -71,7 +68,7 @@ function roundAccrual(accrual: number): number {
           <RoundedNumber
             class="app-accrual-textbox"
             :number="accrual"
-            :number-of-digits-after-decimal-point="{ essential: 2, minor: 1 }"
+            :number-of-digits-after-decimal-point="accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint"
           />
         </label>
       </form>
