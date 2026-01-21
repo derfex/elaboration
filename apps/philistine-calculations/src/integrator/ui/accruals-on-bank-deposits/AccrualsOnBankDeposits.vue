@@ -8,13 +8,16 @@ import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 const props = defineProps<{
   readonly accrualLabelText: string
   readonly amountAtBeginningOfPeriod: number
+  readonly amountAtBeginningOfPeriodInputPlaceholder: string
   readonly amountAtBeginningOfPeriodLabelText: string
   readonly leapYear: boolean
   readonly leapYearLabelText: string
   readonly numberOfDaysInPeriod: number
+  readonly numberOfDaysInPeriodInputPlaceholder: string
   readonly numberOfDaysInPeriodLabelText: string
   readonly numberOfDaysOfYearLabelText: string
   readonly rate: number
+  readonly rateInputPlaceholder: string
   readonly rateLabelText: string
   readonly titleText: string
 }>()
@@ -41,27 +44,39 @@ const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential
 <template>
   <div>
     <div class="app-component-independent-root">
-      <h2 class="app-title">{{ props.titleText }}</h2>
+      <h2 class="app-title">
+        {{ props.titleText }}
+      </h2>
       <form class="app-form">
         <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
-          <input class="app-textbox" v-model="amountAtBeginningOfPeriod" placeholder="50000" type="number" />
+          <input
+            v-model="amountAtBeginningOfPeriod"
+            :placeholder="amountAtBeginningOfPeriodInputPlaceholder"
+            class="app-textbox"
+            type="number"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
-          <input class="app-textbox" v-model="numberOfDaysInPeriod" placeholder="1" type="number" />
+          <input
+            v-model="numberOfDaysInPeriod"
+            :placeholder="numberOfDaysInPeriodInputPlaceholder"
+            class="app-textbox"
+            type="number"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
-          <input class="app-textbox" v-model="rate" placeholder="14.5" type="number" />
+          <input v-model="rate" :placeholder="rateInputPlaceholder" class="app-textbox" type="number" />
         </label>
         <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
-          <input class="app-checkbox" v-model="leapYear" type="checkbox" />
+          <input v-model="leapYear" class="app-checkbox" type="checkbox" />
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
-          <input class="app-textbox" v-model="numberOfDaysOfYear" disabled />
+          <input v-model="numberOfDaysOfYear" class="app-textbox" disabled />
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
