@@ -35,12 +35,20 @@ function calculateRoundedNumberParts(
   afterPointEssentialCount: number,
   afterPointMinorCount: number,
 ): RoundedNumberParts {
-  const coefficient = 10 ** (afterPointEssentialCount + afterPointMinorCount)
+  const point = '.'
+  if (number === 0) {
+    const essential = `0${point}${'0'.repeat(afterPointEssentialCount)}`
+    const minor = '0'.repeat(afterPointMinorCount)
+    return { essential, minor }
+  }
+  const afterPointCount = afterPointEssentialCount + afterPointMinorCount
+  const coefficient = 10 ** afterPointCount
   const text = '' + Math.round(number * coefficient)
-  const whole = text.substring(0, text.length - afterPointEssentialCount - afterPointMinorCount)
-  const essentialAfterPoint = text.substring(whole.length, text.length - afterPointMinorCount)
+  const wholeCount = text.length - afterPointCount
+  const whole = wholeCount > 0 ? text.substring(0, wholeCount) : '0'
+  const essentialAfterPoint = text.substring(wholeCount, text.length - afterPointMinorCount)
   const minor = text.substring(text.length - afterPointMinorCount)
-  const essential = `${whole}.${essentialAfterPoint}`
+  const essential = `${whole}${point}${essentialAfterPoint}`
   return { essential, minor }
 }
 </script>
