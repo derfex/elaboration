@@ -33,6 +33,7 @@ export default defineConfig(() => ({
   resolve: {
     alias: {
       '||': fileURLToPath(new URL('./src', import.meta.url)),
+      '|integrator': fileURLToPath(new URL('./src/integrator', import.meta.url)),
       '|logic': fileURLToPath(new URL('./src/architecture/logic', import.meta.url)),
       '|ui': fileURLToPath(new URL('./src/integrator/ui', import.meta.url)),
       '|ui-kit': fileURLToPath(new URL('./src/integrator/ui-kit', import.meta.url)),
