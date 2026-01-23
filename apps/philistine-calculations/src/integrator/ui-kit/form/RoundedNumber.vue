@@ -42,7 +42,9 @@ function calculateRoundedNumberParts(
   const absValue = Math.abs(number)
   const afterPointCount = afterPointEssentialCount + afterPointMinorCount
   const coefficient = 10 ** afterPointCount
-  const text = ('' + Math.round(absValue * coefficient)).padStart(afterPointCount + 1, '0')
+  const roundedAbsValueAsString = '' + Math.round(absValue * coefficient)
+  const wholeMinCount = 1
+  const text = roundedAbsValueAsString.padStart(wholeMinCount + afterPointCount, '0')
   const wholeCount = text.length - afterPointCount
   const whole = wholeCount > 0 ? text.substring(0, wholeCount) : '0'
   const whole = text.substring(0, wholeCount)
