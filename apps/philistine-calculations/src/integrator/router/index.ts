@@ -5,6 +5,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      children: [
+        {
+          component: (): Promise<VueComponent> => import('../ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'),
+          name: 'accruals-on-bank-deposits',
+          path: 'accruals-on-bank-deposits',
+        },
+      ],
       component: HomeView,
       name: 'home',
       path: '/',

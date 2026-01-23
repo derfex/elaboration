@@ -1,45 +1,51 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import AccrualsOnBankDepositsSection from '|ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'
+import { RouterView } from 'vue-router'
 
 // # Uses in the template
 
-const accrualsOnBankDepositsSectionIsShown = ref(false)
-function accrualsOnBankDepositsSectionTitleContainerClickHandler(): void {
-  accrualsOnBankDepositsSectionIsShown.value = true
-}
-const accrualsOnBankDepositsSectionTitleText = 'Accruals on a bank deposit'
+const navLinks = [
+  {
+    captionText: 'Accruals on a bank deposit',
+    routeName: 'accruals-on-bank-deposits',
+  },
+]
 </script>
 
 <template>
   <main>
-    <template v-if="accrualsOnBankDepositsSectionIsShown">
-      <AccrualsOnBankDepositsSection />
-    </template>
-    <template v-else>
-      <div class="app-title-container" @click="accrualsOnBankDepositsSectionTitleContainerClickHandler">
-        <h2 class="app-title">
-          {{ accrualsOnBankDepositsSectionTitleText }}
-        </h2>
-      </div>
-    </template>
+    <nav>
+      <ul>
+        <template
+          v-for="item in navLinks"
+          :key="item.routeName"
+        >
+          <li>
+            <RouterLink
+              class="app-nav-link"
+              :to="{ name: item.routeName }"
+              exact-active-class="app-nav-link--exact-active"
+            >
+              {{ item.captionText }}
+            </RouterLink>
+          </li>
+        </template>
+      </ul>
+    </nav>
+    <RouterView />
   </main>
 </template>
 
 <style lang="sass" scoped>
 @use '../ui-kit/ui-kit'
 
+.app-nav-link
+  color: var(--app-color--accent--brand)
 
-$_app-padding: 20px
+  &:hover
+    @include ui-kit.app-ui-kit_neon-mixin
 
-
-.app-title-container
-  @include ui-kit.app-ui-kit_glass-mixin
-
-  margin-block: $_app-padding
-  border-radius: 4px
-  padding: $_app-padding
-  cursor: pointer
+.app-nav-link--exact-active::before
+  content: '→ '
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
