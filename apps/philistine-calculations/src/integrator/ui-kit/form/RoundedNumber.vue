@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
+import { calculateRoundedNumberParts } from '|logic/rounded-number/rounded-number'
 
 // # API
 
@@ -23,36 +24,6 @@ const numberParts = computed(() => {
 const essential = computed(() => numberParts.value.essential)
 const hintText = computed(() => props.number + '')
 const minor = computed(() => numberParts.value.minor)
-
-// # Private
-
-interface RoundedNumberParts {
-  readonly essential: string
-  readonly minor: string
-}
-
-function calculateRoundedNumberParts(
-  number: number,
-  afterPointEssentialCount: number,
-  afterPointMinorCount: number,
-): RoundedNumberParts {
-  const point = '.'
-  const minus = '–'
-  const wholeSign = number >= 0 ? '' : minus
-  const absValue = Math.abs(number)
-  const afterPointCount = afterPointEssentialCount + afterPointMinorCount
-  const coefficient = 10 ** afterPointCount
-  const roundedAbsValueAsString = '' + Math.round(absValue * coefficient)
-  const wholeMinCount = 1
-  const text = roundedAbsValueAsString.padStart(wholeMinCount + afterPointCount, '0')
-  const wholeCount = text.length - afterPointCount
-  const whole = text.substring(0, wholeCount)
-  const minorStart = text.length - afterPointMinorCount
-  const essentialAfterPoint = text.substring(wholeCount, minorStart)
-  const minor = text.substring(minorStart)
-  const essential = `${wholeSign}${whole}${point}${essentialAfterPoint}`
-  return { essential, minor }
-}
 </script>
 
 <template>
