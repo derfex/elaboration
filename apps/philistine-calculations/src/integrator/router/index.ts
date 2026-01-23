@@ -11,6 +11,11 @@ const router = createRouter({
           name: 'accruals-on-bank-deposits',
           path: 'accruals-on-bank-deposits',
         },
+        {
+          component: (): Promise<VueComponent> => import('../ui/price-comparison/PriceComparisonSection.vue'),
+          name: 'price-comparison',
+          path: 'price-comparison',
+        },
       ],
       component: HomeView,
       name: 'home',

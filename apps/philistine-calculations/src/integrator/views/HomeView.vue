@@ -8,6 +8,10 @@ const navLinks = [
     captionText: 'Accruals on a bank deposit',
     routeName: 'accruals-on-bank-deposits',
   },
+  {
+    captionText: 'Price comparison',
+    routeName: 'price-comparison',
+  },
 ]
 </script>
 
