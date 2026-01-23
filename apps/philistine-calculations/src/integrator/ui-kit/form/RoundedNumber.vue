@@ -21,6 +21,7 @@ const numberParts = computed(() => {
 // # Uses in the template
 
 const essential = computed(() => numberParts.value.essential)
+const hintText = computed(() => props.number + '')
 const minor = computed(() => numberParts.value.minor)
 
 // # Private
@@ -54,7 +55,7 @@ function calculateRoundedNumberParts(
 
 <template>
   <div>
-    <div class="app-component-independent-root">
+    <div class="app-component-independent-root" :title="hintText">
       <span>{{ essential }}</span>
       <span class="app-number-minor">{{ minor }}</span>
     </div>
