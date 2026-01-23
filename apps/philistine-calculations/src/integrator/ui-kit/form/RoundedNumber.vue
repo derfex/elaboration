@@ -56,7 +56,10 @@ function calculateRoundedNumberParts(
 
 <template>
   <div>
-    <div class="app-component-independent-root" :title="hintText">
+    <div
+      class="app-component-independent-root"
+      :title="hintText"
+    >
       <span>{{ essential }}</span>
       <span class="app-number-minor">{{ minor }}</span>
     </div>
