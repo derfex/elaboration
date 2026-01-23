@@ -7,7 +7,8 @@ const router = createRouter({
     {
       children: [
         {
-          component: (): Promise<VueComponent> => import('../ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'),
+          component: (): Promise<VueComponent> =>
+            import('../ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'),
           name: 'accruals-on-bank-deposits',
           path: 'accruals-on-bank-deposits',
         },
