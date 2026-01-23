@@ -55,7 +55,7 @@ const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential
             :placeholder="amountAtBeginningOfPeriodInputPlaceholder"
             class="app-textbox"
             type="number"
-          />
+          >
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
@@ -64,19 +64,32 @@ const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential
             :placeholder="numberOfDaysInPeriodInputPlaceholder"
             class="app-textbox"
             type="number"
-          />
+          >
         </label>
         <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
-          <input v-model="rate" :placeholder="rateInputPlaceholder" class="app-textbox" type="number" />
+          <input
+            v-model="rate"
+            :placeholder="rateInputPlaceholder"
+            class="app-textbox"
+            type="number"
+          >
         </label>
         <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
-          <input v-model="leapYear" class="app-checkbox" type="checkbox" />
+          <input
+            v-model="leapYear"
+            class="app-checkbox"
+            type="checkbox"
+          >
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
-          <input v-model="numberOfDaysOfYear" class="app-textbox" disabled />
+          <input
+            v-model="numberOfDaysOfYear"
+            class="app-textbox"
+            disabled
+          >
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
