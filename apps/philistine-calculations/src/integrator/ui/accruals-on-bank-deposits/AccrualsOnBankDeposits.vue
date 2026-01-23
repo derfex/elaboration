@@ -113,6 +113,7 @@ $_app-padding: $_app-gap
 
   font-family: monospace
   line-height: normal
+  text-align: end
   color: var(--app-color--accent--brand)
 
 .app-checkbox
