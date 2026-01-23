@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { calculateAccrual } from '|logic/accruals-on-bank-deposits'
 import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
@@ -24,11 +24,11 @@ const props = defineProps<{
 
 // # Uses in the template
 
-const amountAtBeginningOfPeriod = ref(props.amountAtBeginningOfPeriod)
-const leapYear = ref(props.leapYear)
-const numberOfDaysInPeriod = ref(props.numberOfDaysInPeriod)
+const amountAtBeginningOfPeriod = computed(() => props.amountAtBeginningOfPeriod)
+const leapYear = computed(() => props.leapYear)
+const numberOfDaysInPeriod = computed(() => props.numberOfDaysInPeriod)
 const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365))
-const rate = ref(props.rate)
+const rate = computed(() => props.rate)
 
 const accrual = computed(() => {
   return calculateAccrual(
