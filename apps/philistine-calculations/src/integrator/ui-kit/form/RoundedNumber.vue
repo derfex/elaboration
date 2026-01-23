@@ -46,7 +46,6 @@ function calculateRoundedNumberParts(
   const wholeMinCount = 1
   const text = roundedAbsValueAsString.padStart(wholeMinCount + afterPointCount, '0')
   const wholeCount = text.length - afterPointCount
-  const whole = wholeCount > 0 ? text.substring(0, wholeCount) : '0'
   const whole = text.substring(0, wholeCount)
   const essentialAfterPoint = text.substring(wholeCount, text.length - afterPointMinorCount)
   const minor = text.substring(text.length - afterPointMinorCount)
