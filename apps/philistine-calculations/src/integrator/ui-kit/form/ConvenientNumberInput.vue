@@ -23,6 +23,7 @@ function modifierIncreaseButtonClickHandler(operand: number): void {
 const modifiersAreShown = ref(true)
 
 const text = ref('0')
+const textInputPattern = '[\\d\.-]+'
 
 watchEffect((): void => {
   text.value = model.value + ''
@@ -80,21 +81,23 @@ type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null
     <div class="app-component-independent-root">
       <button
         class="app-toggle-button"
+        type="button"
         @click="toggleButtonClickHandler"
       >
         <span class="pi pi-pencil" />
       </button>
       <button
         class="app-clear-button"
+        type="button"
         @click="clearButtonClickHandler"
       >
         <span class="pi pi-eraser" />
       </button>
       <input
+        :pattern="textInputPattern"
         :placeholder="props.inputPlaceholder"
         :value="text"
         class="app-textbox"
-        pattern="\d+"
         @input="textInputUpdateHandler($event)"
       >
       <template v-if="modifiersAreShown">
@@ -106,6 +109,7 @@ type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null
             <div class="app-modifier">
               <button
                 class="app-modifier__button"
+                type="button"
                 :disabled="modifierDecreaseButtonDisabled"
                 @click="modifierDecreaseButtonClickHandler(operand)"
               >
@@ -113,6 +117,7 @@ type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null
               </button>
               <button
                 class="app-modifier__button"
+                type="button"
                 :disabled="modifierIncreaseButtonDisabled"
                 @click="modifierIncreaseButtonClickHandler(operand)"
               >
