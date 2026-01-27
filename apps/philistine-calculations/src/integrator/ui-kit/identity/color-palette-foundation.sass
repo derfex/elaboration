@@ -7,6 +7,7 @@
     // ### Brand
 
     --app-color-primitive--cyan: #0ff
+    --app-color-primitive--orange: orange
 
     // ### Black, gray, white
 
@@ -35,6 +36,8 @@
 
     --app-color--foreground--heading: var(--app-color--accent--brand)
 
+    --app-color--border--warning: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--orange) 75%)
+
   // ## Component
 
   :root
@@ -52,6 +55,8 @@
     // TODO: `--app-button-secondary--hover--bg-color` is unused.
     --app-button-secondary--hover--bg-color: var(--app-color-primitive--cyan--dark-750)
     --app-button-secondary--disabled--bg-color: var(--app-color-primitive--cyan--dark-900)
+
+    --app-input--invalid--outline-color: var(--app-color--border--warning)
 
     --app-heading--fg-color: var(--app-color--foreground--heading)
 
