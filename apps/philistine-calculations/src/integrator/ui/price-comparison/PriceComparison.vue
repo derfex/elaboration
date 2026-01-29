@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
+import ConvenientNumberInput from '|ui-kit/form/ConvenientNumberInput.vue'
 import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
 // # API
@@ -58,22 +59,16 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <span>{{ props.costPerUnitTitleText }}</span>
         </div>
         <div class="app-product">
-          <label>
-            <input
-              v-model="r0Price"
-              :placeholder="props.priceInputPlaceholder"
-              class="app-textbox"
-              type="number"
-            >
-          </label>
-          <label>
-            <input
-              v-model="r0PackageSize"
-              :placeholder="packageSizeInputPlaceholder"
-              class="app-textbox"
-              type="number"
-            >
-          </label>
+          <ConvenientNumberInput
+            v-model="r0Price"
+            :input-placeholder="props.priceInputPlaceholder"
+            :operands="[0.01, 100]"
+          />
+          <ConvenientNumberInput
+            v-model="r0PackageSize"
+            :input-placeholder="props.packageSizeInputPlaceholder"
+            :operands="[0.01, 0.1]"
+          />
           <div class="app-rounded-number-box">
             <RoundedNumber
               :number="r0CostPerUnit"
@@ -82,22 +77,16 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           </div>
         </div>
         <div class="app-product">
-          <label>
-            <input
-              v-model="r1Price"
-              :placeholder="props.priceInputPlaceholder"
-              class="app-textbox"
-              type="number"
-            >
-          </label>
-          <label>
-            <input
-              v-model="r1PackageSize"
-              :placeholder="packageSizeInputPlaceholder"
-              class="app-textbox"
-              type="number"
-            >
-          </label>
+          <ConvenientNumberInput
+            v-model="r1Price"
+            :input-placeholder="props.priceInputPlaceholder"
+            :operands="[0.01, 100]"
+          />
+          <ConvenientNumberInput
+            v-model="r1PackageSize"
+            :input-placeholder="props.packageSizeInputPlaceholder"
+            :operands="[0.01, 0.1]"
+          />
           <div class="app-rounded-number-box">
             <RoundedNumber
               :number="r1CostPerUnit"
@@ -106,22 +95,16 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           </div>
         </div>
         <div class="app-product">
-          <label>
-            <input
-              v-model="r2Price"
-              :placeholder="props.priceInputPlaceholder"
-              class="app-textbox"
-              type="number"
-            >
-          </label>
-          <label>
-            <input
-              v-model="r2PackageSize"
-              :placeholder="packageSizeInputPlaceholder"
-              class="app-textbox"
-              type="number"
-            >
-          </label>
+          <ConvenientNumberInput
+            v-model="r2Price"
+            :input-placeholder="props.priceInputPlaceholder"
+            :operands="[0.01, 100]"
+          />
+          <ConvenientNumberInput
+            v-model="r2PackageSize"
+            :input-placeholder="props.packageSizeInputPlaceholder"
+            :operands="[0.01, 0.1]"
+          />
           <div class="app-rounded-number-box">
             <RoundedNumber
               :number="r2CostPerUnit"
@@ -161,6 +144,7 @@ $_app-padding: $_app-gap
 
 .app-product
   display: grid
+  align-items: start
   gap: $_app-gap
   grid-column: 1 / 4
 
@@ -172,12 +156,6 @@ $_app-padding: $_app-gap
 
   line-height: normal
   text-align: end
-
-.app-textbox
-  @include ui-kit.app-ui-kit_form-textbox-mixin
-
-  width: 100%
-  font-family: monospace
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
