@@ -92,11 +92,14 @@ const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
-          <input
-            v-model="numberOfDaysOfYear"
-            class="app-textbox"
-            disabled
-          >
+          <div class="app-number-of-days-of-year-textbox">
+            <RoundedNumber
+              :number="numberOfDaysOfYear"
+              :number-of-digits-after-decimal-point="
+                numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint
+              "
+            />
+          </div>
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
@@ -147,6 +150,14 @@ $_app-padding: $_app-gap
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: subgrid
 
+.app-number-of-days-of-year-textbox
+  @include ui-kit.app-ui-kit_form-textbox-mixin
+
+  font-family: monospace
+  line-height: normal
+  text-align: end
+  color: var(--app-text--disabled--color)
+
 .app-form
   display: grid
   gap: $_app-gap
@@ -159,6 +170,7 @@ $_app-padding: $_app-gap
   @include ui-kit.app-ui-kit_form-textbox-mixin
 
   font-family: monospace
+  text-align: end
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
