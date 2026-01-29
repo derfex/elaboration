@@ -15,14 +15,16 @@ const props = defineProps<{
 const modifierDecreaseButtonDisabled = ref(false)
 function modifierDecreaseButtonClickHandler(operand: number): void {
   text.value = calculateSum(text.value, -operand)
+  model.value = +text.value
 }
 const modifierIncreaseButtonDisabled = ref(false)
 function modifierIncreaseButtonClickHandler(operand: number): void {
   text.value = calculateSum(text.value, operand)
+  model.value = +text.value
 }
 const modifiersAreShown = ref(true)
 
-const text = ref('0')
+const text = ref('')
 const textInputPattern = '[\\d\.-]+'
 
 watchEffect((): void => {
