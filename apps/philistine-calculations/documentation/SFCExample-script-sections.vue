@@ -8,4 +8,6 @@
 
 // # Private
 
+// # Notes for the template's development and support
+
 </script>

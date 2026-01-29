@@ -77,7 +77,7 @@ function convertTextToNumber(text: string): ConvertTextToNumberReport {
 
 type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null]
 
-// # Note for the template's development and support
+// # Notes for the template's development and support
 
 // Note: the `<input>` should be the first (focusable?) element to allow wrapping the component into a `<label>`.
 </script>
