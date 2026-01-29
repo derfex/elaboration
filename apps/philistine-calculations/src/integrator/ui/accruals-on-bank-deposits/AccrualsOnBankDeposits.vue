@@ -47,7 +47,10 @@ const accrual = computed(() => {
   )
 })
 const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 2 } as const
+const amountAtBeginningOfPeriodConvenientNumberInputOperands = [1000, 10000] as const
+const numberOfDaysInPeriodConvenientNumberInputOperands = [10, 30] as const
 const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 0, minor: 0 } as const
+const rateConvenientNumberInputOperands = [0.5, 1] as const
 </script>
 
 <template>
@@ -62,7 +65,7 @@ const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = 
           <ConvenientNumberInput
             v-model="amountAtBeginningOfPeriod"
             :input-placeholder="props.amountAtBeginningOfPeriodInputPlaceholder"
-            :operands="[1000, 10000]"
+            :operands="amountAtBeginningOfPeriodConvenientNumberInputOperands"
           />
         </label>
         <label class="app-control-container">
@@ -70,7 +73,7 @@ const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = 
           <ConvenientNumberInput
             v-model="numberOfDaysInPeriod"
             :input-placeholder="props.numberOfDaysInPeriodInputPlaceholder"
-            :operands="[10, 30]"
+            :operands="numberOfDaysInPeriodConvenientNumberInputOperands"
           />
         </label>
         <label class="app-control-container">
@@ -78,7 +81,7 @@ const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = 
           <ConvenientNumberInput
             v-model="rate"
             :input-placeholder="props.rateInputPlaceholder"
-            :operands="[.5, 1]"
+            :operands="rateConvenientNumberInputOperands"
           />
         </label>
         <label class="app-control-container">
