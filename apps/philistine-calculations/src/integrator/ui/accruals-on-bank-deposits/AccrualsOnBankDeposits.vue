@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
 import { calculateAccrual } from '|logic/accruals-on-bank-deposits'
+import ConvenientNumberInput from '|ui-kit/form/ConvenientNumberInput.vue'
 import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
 // # API
@@ -58,30 +59,27 @@ const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = 
       <form class="app-form">
         <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
-          <input
+          <ConvenientNumberInput
             v-model="amountAtBeginningOfPeriod"
-            :placeholder="amountAtBeginningOfPeriodInputPlaceholder"
-            class="app-textbox"
-            type="number"
-          >
+            :input-placeholder="props.amountAtBeginningOfPeriodInputPlaceholder"
+            :operands="[1000, 10000]"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
-          <input
+          <ConvenientNumberInput
             v-model="numberOfDaysInPeriod"
-            :placeholder="numberOfDaysInPeriodInputPlaceholder"
-            class="app-textbox"
-            type="number"
-          >
+            :input-placeholder="props.numberOfDaysInPeriodInputPlaceholder"
+            :operands="[10, 30]"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
-          <input
+          <ConvenientNumberInput
             v-model="rate"
-            :placeholder="rateInputPlaceholder"
-            class="app-textbox"
-            type="number"
-          >
+            :input-placeholder="props.rateInputPlaceholder"
+            :operands="[.5, 1]"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
@@ -166,12 +164,6 @@ $_app-padding: $_app-gap
 
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: auto auto
-
-.app-textbox
-  @include ui-kit.app-ui-kit_form-textbox-mixin
-
-  font-family: monospace
-  text-align: end
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
