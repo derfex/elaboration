@@ -37,6 +37,8 @@ watch(props, (): void => {
   r2Price.value = props.price
 })
 
+const packageSizeConvenientNumberInputOperands = [0.01, 0.1] as const
+const priceConvenientNumberInputOperands = [0.01, 100] as const
 const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 4 } as const
 
 // # Private
@@ -62,12 +64,12 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <ConvenientNumberInput
             v-model="r0Price"
             :input-placeholder="props.priceInputPlaceholder"
-            :operands="[0.01, 100]"
+            :operands="priceConvenientNumberInputOperands"
           />
           <ConvenientNumberInput
             v-model="r0PackageSize"
             :input-placeholder="props.packageSizeInputPlaceholder"
-            :operands="[0.01, 0.1]"
+            :operands="packageSizeConvenientNumberInputOperands"
           />
           <div class="app-rounded-number-box">
             <RoundedNumber
@@ -80,12 +82,12 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <ConvenientNumberInput
             v-model="r1Price"
             :input-placeholder="props.priceInputPlaceholder"
-            :operands="[0.01, 100]"
+            :operands="priceConvenientNumberInputOperands"
           />
           <ConvenientNumberInput
             v-model="r1PackageSize"
             :input-placeholder="props.packageSizeInputPlaceholder"
-            :operands="[0.01, 0.1]"
+            :operands="packageSizeConvenientNumberInputOperands"
           />
           <div class="app-rounded-number-box">
             <RoundedNumber
@@ -98,12 +100,12 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <ConvenientNumberInput
             v-model="r2Price"
             :input-placeholder="props.priceInputPlaceholder"
-            :operands="[0.01, 100]"
+            :operands="priceConvenientNumberInputOperands"
           />
           <ConvenientNumberInput
             v-model="r2PackageSize"
             :input-placeholder="props.packageSizeInputPlaceholder"
-            :operands="[0.01, 0.1]"
+            :operands="packageSizeConvenientNumberInputOperands"
           />
           <div class="app-rounded-number-box">
             <RoundedNumber
