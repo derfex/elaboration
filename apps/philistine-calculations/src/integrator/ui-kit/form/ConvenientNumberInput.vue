@@ -176,7 +176,7 @@ $_button-size: $_row-height
   width: $_clear-button-size
   height: $_clear-button-size
 
-$_border-radius: 4px
+$_border-radius: form.$app-form_textbox_border-radius
 
 .app-textbox
   @include form.app-form_textbox_numeric-mixin
