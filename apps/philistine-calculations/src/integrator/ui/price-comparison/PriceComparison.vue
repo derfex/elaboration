@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
 // # API
@@ -17,15 +17,24 @@ const props = defineProps<{
 
 // # Uses in the template
 
-const r0PackageSize = computed(() => props.packageSize)
-const r0Price = computed(() => props.price)
+const r0PackageSize = ref(props.packageSize)
+const r0Price = ref(props.price)
 const r0CostPerUnit = computed(() => calculateCostPerUnit(r0Price.value, r0PackageSize.value))
-const r1PackageSize = computed(() => props.packageSize)
-const r1Price = computed(() => props.price)
+const r1PackageSize = ref(props.packageSize)
+const r1Price = ref(props.price)
 const r1CostPerUnit = computed(() => calculateCostPerUnit(r1Price.value, r1PackageSize.value))
-const r2PackageSize = computed(() => props.packageSize)
-const r2Price = computed(() => props.price)
+const r2PackageSize = ref(props.packageSize)
+const r2Price = ref(props.price)
 const r2CostPerUnit = computed(() => calculateCostPerUnit(r2Price.value, r2PackageSize.value))
+
+watch(props, (): void => {
+  r0PackageSize.value = props.packageSize
+  r0Price.value = props.price
+  r1PackageSize.value = props.packageSize
+  r1Price.value = props.price
+  r2PackageSize.value = props.packageSize
+  r2Price.value = props.price
+})
 
 const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 4 } as const
 
