@@ -1,3 +1,7 @@
+import { checkAll } from './rounded-number.unit-tests'
+
+checkAll()
+
 export function calculateRoundedNumberParts(
   number: number,
   afterPointEssentialCount: number,
@@ -8,6 +12,7 @@ export function calculateRoundedNumberParts(
   const wholeSign = number >= 0 ? '' : minus
   const absValue = Math.abs(number)
   const afterPointCount = afterPointEssentialCount + afterPointMinorCount
+  const pointSign = afterPointCount !== 0 ? point : ''
   const coefficient = 10 ** afterPointCount
   const roundedAbsValueAsString = '' + Math.round(absValue * coefficient)
   const wholeMinCount = 1
@@ -17,7 +22,7 @@ export function calculateRoundedNumberParts(
   const minorStart = text.length - afterPointMinorCount
   const essentialAfterPoint = text.substring(wholeCount, minorStart)
   const minor = text.substring(minorStart)
-  const essential = `${wholeSign}${whole}${point}${essentialAfterPoint}`
+  const essential = `${wholeSign}${whole}${pointSign}${essentialAfterPoint}`
   return { essential, minor }
 }
 
