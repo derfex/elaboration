@@ -164,7 +164,7 @@ type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null
 
 // # Textbox and its buttons
 
-$_row-height: 48px
+$_row-height: form.$app-form_textbox_row-height
 $_button-size: $_row-height
 
 .app-clear-button
@@ -177,7 +177,6 @@ $_button-size: $_row-height
   height: $_clear-button-size
 
 $_border-radius: 4px
-$_textbox-padding: 8px
 
 .app-textbox
   @include form.app-form_textbox_numeric-mixin
@@ -222,9 +221,7 @@ $_modifier-button-size: $_row-height - $_modifier-border-width * 4 - $_modifier-
   height: $_modifier-button-size
 
 .app-modifier__label
+  @include form.app-form_text_numeric-mixin
+
   flex-grow: 1
-  padding: $_textbox-padding
-  font-family: monospace
-  font-size: 1.2em
-  text-align: end
 </style>
