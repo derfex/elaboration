@@ -78,9 +78,18 @@ function convertTextToNumber(text: string): ConvertTextToNumberReport {
 type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null]
 </script>
 
+// Note: the `<input>` should be the first (focusable?) element to allow wrapping the component into a `<label>`.
+
 <template>
   <div>
     <div class="app-component-independent-root">
+      <input
+        :pattern="textInputPattern"
+        :placeholder="props.inputPlaceholder"
+        :value="text"
+        class="app-textbox"
+        @input="textInputUpdateHandler($event)"
+      >
       <button
         class="app-toggle-button"
         type="button"
@@ -95,13 +104,6 @@ type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null
       >
         <span class="pi pi-eraser" />
       </button>
-      <input
-        :pattern="textInputPattern"
-        :placeholder="props.inputPlaceholder"
-        :value="text"
-        class="app-textbox"
-        @input="textInputUpdateHandler($event)"
-      >
       <template v-if="modifiersAreShown">
         <div class="app-modifiers">
           <template
