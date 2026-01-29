@@ -24,6 +24,7 @@ const numberParts = computed(() => {
 const essential = computed(() => numberParts.value.essential)
 const hintText = computed(() => props.number + '')
 const minor = computed(() => numberParts.value.minor)
+const minorIsShown = computed(() => minor.value !== '')
 </script>
 
 <template>
@@ -33,7 +34,9 @@ const minor = computed(() => numberParts.value.minor)
       :title="hintText"
     >
       <span>{{ essential }}</span>
-      <span class="app-number-minor">{{ minor }}</span>
+      <template v-if="minorIsShown">
+        <span class="app-number-minor">{{ minor }}</span>
+      </template>
     </div>
   </div>
 </template>
