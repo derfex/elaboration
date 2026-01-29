@@ -25,7 +25,7 @@ function modifierIncreaseButtonClickHandler(operand: number): void {
 const modifiersAreShown = ref(true)
 
 const text = ref('')
-const textInputPattern = '[\\d\.-]+'
+const textInputPattern = '(-)?\\d+(\\.\\d+)?'
 
 watchEffect((): void => {
   text.value = model.value + ''
