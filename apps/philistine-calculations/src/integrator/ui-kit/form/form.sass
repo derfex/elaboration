@@ -1,9 +1,21 @@
 $app-form_textbox_row-height: 48px
 
+
 // `16px * 1.5`
 $_app-form_textbox_font-size_default: 24px
 $_app-form_textbox_font-size_small: 16px
 $_app-form_textbox_padding: 8px
+
+@mixin _numeric_font-mixin
+  font-family: monospace
+  text-align: end
+
+
+@mixin app-form_text_numeric-mixin
+  @include _numeric_font-mixin
+
+  padding: $_app-form_textbox_padding
+  font-size: $_app-form_textbox_font-size_small
 
 // `textbox`, `textarea`, output components.
 @mixin app-form_textbox-like_general-mixin
@@ -15,14 +27,4 @@ $_app-form_textbox_padding: 8px
 
 @mixin app-form_textbox_numeric-mixin
   @include app-form_textbox-like_general-mixin
-
-  font-family: monospace
-  text-align: end
-
-@mixin app-form_text_numeric-mixin
-  @include app-form_textbox-like_general-mixin
-
-  padding: $_app-form_textbox_padding
-  font-family: monospace
-  font-size: $_app-form_textbox_font-size_small
-  text-align: end
+  @include _numeric_font-mixin
