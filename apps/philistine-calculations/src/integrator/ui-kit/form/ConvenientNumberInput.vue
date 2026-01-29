@@ -136,6 +136,7 @@ type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null
 
 <style lang="sass" scoped>
 @use '../ui-kit'
+@use 'form'
 
 .app-component-independent-root
   display: grid
@@ -171,7 +172,7 @@ $_button-size: $_row-height
 
   @include ui-kit.app-ui-kit_button-secondary-custom-mixin
 
-  border-radius: 50%
+  border-radius: 8px
   width: $_clear-button-size
   height: $_clear-button-size
 
@@ -179,17 +180,12 @@ $_border-radius: 4px
 $_textbox-padding: 8px
 
 .app-textbox
+  @include form.app-form_textbox_numeric-mixin
+
   position: relative
-  border: 0
   border-top-right-radius: $_border-radius
-  padding: $_textbox-padding
   width: 100%
   height: $_row-height
-  font-family: monospace
-  font-size: 2em
-  text-align: end
-  background: #0000
-  accent-color: var(--app-color--accent--brand)
 
   &:invalid
     outline: 2px solid var(--app-input--invalid--outline-color)
