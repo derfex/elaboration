@@ -46,6 +46,7 @@ const accrual = computed(() => {
   )
 })
 const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 2 } as const
+const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 0, minor: 0 } as const
 </script>
 
 <template>
