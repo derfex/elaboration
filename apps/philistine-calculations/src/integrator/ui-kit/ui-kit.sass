@@ -40,8 +40,9 @@
 //
 //  @include transitions.app-transitions_transition-mixin(background)
 //
-//  &:not(:disabled):hover
-//    background: var(--app-button-primary--hover--bg-color)
+//  @media (hover: hover)
+//    &:not(:disabled):hover
+//      background: var(--app-button-primary--hover--bg-color)
 
 // TODO: `app-ui-kit_button-secondary-mixin` is unused.
 //@mixin app-ui-kit_button-secondary-mixin
@@ -54,8 +55,9 @@
 //
 //  @include transitions.app-transitions_transition-mixin(background)
 //
-//  &:not(:disabled):hover
-//    background: var(--app-button-secondary--hover--bg-color)
+//  @media (hover: hover)
+//    &:not(:disabled):hover
+//      background: var(--app-button-secondary--hover--bg-color)
 
 @mixin app-ui-kit_button-secondary-custom-mixin
   @include _app-button-mixin
@@ -65,8 +67,9 @@
 
   @include transitions.app-transitions_transition-mixin(background)
 
-  &:not(:disabled):hover
-    background: var(--app-button-secondary--hover--bg-color)
+  @media (hover: hover)
+    &:not(:disabled):hover
+      background: var(--app-button-secondary--hover--bg-color)
 
   &:disabled
     background: var(--app-button-secondary--disabled--bg-color)

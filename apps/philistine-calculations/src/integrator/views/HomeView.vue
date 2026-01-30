@@ -63,8 +63,9 @@ const navLinks = [
 .app-nav-link
   color: var(--app-color--accent--brand)
 
-  &:hover
-    @include ui-kit.app-ui-kit_neon-mixin
+  @media (hover: hover)
+    &:hover
+      @include ui-kit.app-ui-kit_neon-mixin
 
 .app-nav-link--exact-active::before
   content: '→ '
