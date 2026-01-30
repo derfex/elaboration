@@ -37,7 +37,6 @@ watch(props, (): void => {
   rate.value = props.rate
 })
 
-const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365))
 const accrual = computed(() => {
   return calculateAccrual(
     amountAtBeginningOfPeriod.value,
@@ -49,6 +48,7 @@ const accrual = computed(() => {
 const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 2 } as const
 const amountAtBeginningOfPeriodConvenientNumberInputOperands = [1000, 10000] as const
 const numberOfDaysInPeriodConvenientNumberInputOperands = [10, 30] as const
+const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365))
 const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 0, minor: 0 } as const
 const rateConvenientNumberInputOperands = [0.5, 1] as const
 </script>
