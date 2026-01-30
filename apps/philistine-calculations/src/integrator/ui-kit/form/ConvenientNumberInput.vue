@@ -72,6 +72,7 @@ function convertTextToNumber(text: string): ConvertTextToNumberReport {
   const trimmedText = text.trim()
   if (trimmedText === '') return [false, null]
   const number = +trimmedText
+  // TODO: Handle `Infinity`.
   return !Number.isNaN(number) ? [true, number] : [false, null]
 }
 
