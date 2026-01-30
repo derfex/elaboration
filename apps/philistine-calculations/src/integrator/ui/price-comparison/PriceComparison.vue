@@ -61,57 +61,84 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <span>{{ props.costPerUnitTitleText }}</span>
         </div>
         <div class="app-form-table__row">
-          <ConvenientNumberInput
-            v-model="r0Price"
-            :input-placeholder="props.priceInputPlaceholder"
-            :operands="priceConvenientNumberInputOperands"
-          />
-          <ConvenientNumberInput
-            v-model="r0PackageSize"
-            :input-placeholder="props.packageSizeInputPlaceholder"
-            :operands="packageSizeConvenientNumberInputOperands"
-          />
-          <div class="app-rounded-number-box">
-            <RoundedNumber
-              :number="r0CostPerUnit"
-              :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          <label class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+            <ConvenientNumberInput
+              v-model="r0Price"
+              :input-placeholder="props.priceInputPlaceholder"
+              :operands="priceConvenientNumberInputOperands"
             />
+          </label>
+          <label class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+            <ConvenientNumberInput
+              v-model="r0PackageSize"
+              :input-placeholder="props.packageSizeInputPlaceholder"
+              :operands="packageSizeConvenientNumberInputOperands"
+            />
+          </label>
+          <div class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+            <div class="app-rounded-number-box">
+              <RoundedNumber
+                :number="r0CostPerUnit"
+                :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+              />
+            </div>
           </div>
         </div>
         <div class="app-form-table__row">
-          <ConvenientNumberInput
-            v-model="r1Price"
-            :input-placeholder="props.priceInputPlaceholder"
-            :operands="priceConvenientNumberInputOperands"
-          />
-          <ConvenientNumberInput
-            v-model="r1PackageSize"
-            :input-placeholder="props.packageSizeInputPlaceholder"
-            :operands="packageSizeConvenientNumberInputOperands"
-          />
-          <div class="app-rounded-number-box">
-            <RoundedNumber
-              :number="r1CostPerUnit"
-              :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          <label class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+            <ConvenientNumberInput
+              v-model="r1Price"
+              :input-placeholder="props.priceInputPlaceholder"
+              :operands="priceConvenientNumberInputOperands"
             />
+          </label>
+          <label class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+            <ConvenientNumberInput
+              v-model="r1PackageSize"
+              :input-placeholder="props.packageSizeInputPlaceholder"
+              :operands="packageSizeConvenientNumberInputOperands"
+            />
+          </label>
+          <div class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+            <div class="app-rounded-number-box">
+              <RoundedNumber
+                :number="r1CostPerUnit"
+                :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+              />
+            </div>
           </div>
         </div>
         <div class="app-form-table__row">
-          <ConvenientNumberInput
-            v-model="r2Price"
-            :input-placeholder="props.priceInputPlaceholder"
-            :operands="priceConvenientNumberInputOperands"
-          />
-          <ConvenientNumberInput
-            v-model="r2PackageSize"
-            :input-placeholder="props.packageSizeInputPlaceholder"
-            :operands="packageSizeConvenientNumberInputOperands"
-          />
-          <div class="app-rounded-number-box">
-            <RoundedNumber
-              :number="r2CostPerUnit"
-              :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          <label class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+            <ConvenientNumberInput
+              v-model="r2Price"
+              :input-placeholder="props.priceInputPlaceholder"
+              :operands="priceConvenientNumberInputOperands"
             />
+          </label>
+          <label class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+            <ConvenientNumberInput
+              v-model="r2PackageSize"
+              :input-placeholder="props.packageSizeInputPlaceholder"
+              :operands="packageSizeConvenientNumberInputOperands"
+            />
+          </label>
+          <div class="app-form-table__value-container">
+            <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+            <div class="app-rounded-number-box">
+              <RoundedNumber
+                :number="r2CostPerUnit"
+                :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+              />
+            </div>
           </div>
         </div>
       </form>
@@ -146,12 +173,13 @@ $_root_padding: $_form_gap
     grid-template-columns: auto auto auto
 
 .app-form-table__header-row
-  display: grid
+  display: none
   align-items: start
   gap: $_form_gap
   grid-column: 1 / 4
 
   @media (layout.$app-device-width-medium <= width)
+    display: grid
     grid-template-columns: subgrid
 
 .app-form-table__row
@@ -162,6 +190,14 @@ $_root_padding: $_form_gap
 
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: subgrid
+
+.app-form-table__value-container
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-form-table__value-title
+  @media (layout.$app-device-width-medium <= width)
+    display: none
+
 
 .app-rounded-number-box
   @include ui-kit.app-ui-kit_form-textbox-mixin
