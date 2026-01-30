@@ -211,13 +211,13 @@ $_modifier-padding: $_modifier-gap
 $_modifier-button-size: $_row-height - $_modifier-border-width * 4 - $_modifier-padding * 2
 
 .app-modifiers
-  border: $_modifier-border-width solid var(--app-button-secondary--hover--bg-color)
+  border: $_modifier-border-width solid var(--app-decor--border-color)
 
 
 .app-modifier
   display: flex
   gap: $_modifier-gap
-  border: $_modifier-border-width solid var(--app-button-secondary--hover--bg-color)
+  border: $_modifier-border-width solid var(--app-decor--border-color)
   padding: $_modifier-padding
 
 .app-modifier__button
