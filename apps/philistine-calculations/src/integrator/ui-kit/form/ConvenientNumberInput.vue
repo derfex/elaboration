@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 // # API
 
@@ -27,8 +27,8 @@ const modifiersAreShown = ref(true)
 const text = ref('')
 const textInputPattern = '(-)?\\d+(\\.\\d+)?'
 
-watch(model, (modelValue: number): void => {
-  text.value = modelValue + ''
+watchEffect((): void => {
+  text.value = model.value + ''
 })
 
 function textInputUpdateHandler(event: InputEvent): void {
