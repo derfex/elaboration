@@ -12,7 +12,7 @@ As a buyer, I want to know the unit prices of goods so I can make a better purch
 
 ## Deploy
 
-Specify the `base` parameter in the `vite` file. It will be used as a prefix for the files.
+Specify the `base` parameter in the `vite.config.ts` file. It will be used as a prefix for the files.
 For example:
 ```typescript
 export default defineConfig(() => ({
