@@ -54,13 +54,13 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
       <h2 class="app-title">
         {{ props.titleText }}
       </h2>
-      <form class="app-form">
-        <div class="app-product">
+      <form class="app-form-table">
+        <div class="app-form-table__header-row">
           <span>{{ props.priceTitleText }}</span>
           <span>{{ props.packageSizeTitleText }}</span>
           <span>{{ props.costPerUnitTitleText }}</span>
         </div>
-        <div class="app-product">
+        <div class="app-form-table__row">
           <ConvenientNumberInput
             v-model="r0Price"
             :input-placeholder="props.priceInputPlaceholder"
@@ -78,7 +78,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
             />
           </div>
         </div>
-        <div class="app-product">
+        <div class="app-form-table__row">
           <ConvenientNumberInput
             v-model="r1Price"
             :input-placeholder="props.priceInputPlaceholder"
@@ -96,7 +96,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
             />
           </div>
         </div>
-        <div class="app-product">
+        <div class="app-form-table__row">
           <ConvenientNumberInput
             v-model="r2Price"
             :input-placeholder="props.priceInputPlaceholder"
@@ -137,7 +137,7 @@ $_root_padding: $_form_gap
   padding: $_root_padding
 
 
-.app-form
+.app-form-table
   display: grid
   gap: $_form_gap
   grid-template-columns: auto
@@ -145,7 +145,16 @@ $_root_padding: $_form_gap
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: auto auto auto
 
-.app-product
+.app-form-table__header-row
+  display: grid
+  align-items: start
+  gap: $_form_gap
+  grid-column: 1 / 4
+
+  @media (layout.$app-device-width-medium <= width)
+    grid-template-columns: subgrid
+
+.app-form-table__row
   display: grid
   align-items: start
   gap: $_form_gap
