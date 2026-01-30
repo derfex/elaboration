@@ -3,6 +3,7 @@ export function calculateRoundedNumberParts(
   afterPointEssentialCount: number,
   afterPointMinorCount: number,
 ): RoundedNumberParts {
+  // TODO: Handle `Infinity`.
   const point = '.'
   const minus = '–'
   const wholeSign = number >= 0 ? '' : minus
