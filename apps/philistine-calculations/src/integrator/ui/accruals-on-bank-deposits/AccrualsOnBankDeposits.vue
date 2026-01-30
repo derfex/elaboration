@@ -121,22 +121,22 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
 @use '../../ui-kit/ui-kit'
 
 
-$_app-gap: 20px
-$_app-padding: $_app-gap
+$_form_gap: 20px
+$_root_gap: $_form_gap * 2
+$_root_padding: $_form_gap
 
 
 .app-component-independent-root
-  @include layout.app-layout_flex-column-mixin($_app-gap * 2)
+  @include layout.app-layout_flex-column-mixin($_root_gap)
   @include ui-kit.app-ui-kit_glass-mixin
 
   border-radius: 4px
-  padding: $_app-padding
+  padding: $_root_padding
 
 
 .app-accrual-textbox
   @include ui-kit.app-ui-kit_form-textbox-mixin
 
-  font-family: monospace
   line-height: normal
   text-align: end
   color: var(--app-color--accent--brand)
@@ -146,7 +146,7 @@ $_app-padding: $_app-gap
 
 .app-control-container
   display: grid
-  gap: $_app-gap
+  gap: $_form_gap
   grid-column: 1 / 3
 
   @media (layout.$app-device-width-medium <= width)
@@ -155,14 +155,13 @@ $_app-padding: $_app-gap
 .app-number-of-days-of-year-textbox
   @include ui-kit.app-ui-kit_form-textbox-mixin
 
-  font-family: monospace
   line-height: normal
   text-align: end
   color: var(--app-text--disabled--color)
 
 .app-form
   display: grid
-  gap: $_app-gap
+  gap: $_form_gap
   grid-template-columns: auto
 
   @media (layout.$app-device-width-medium <= width)
