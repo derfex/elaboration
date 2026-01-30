@@ -124,21 +124,22 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
 @use '../../ui-kit/ui-kit'
 
 
-$_app-gap: 20px
-$_app-padding: $_app-gap
+$_form_gap: 20px
+$_root_gap: $_form_gap * 2
+$_root_padding: $_form_gap
 
 
 .app-component-independent-root
-  @include layout.app-layout_flex-column-mixin($_app-gap * 2)
+  @include layout.app-layout_flex-column-mixin($_root_gap)
   @include ui-kit.app-ui-kit_glass-mixin
 
   border-radius: 4px
-  padding: $_app-padding
+  padding: $_root_padding
 
 
 .app-form
   display: grid
-  gap: $_app-gap
+  gap: $_form_gap
   grid-template-columns: auto
 
   @media (layout.$app-device-width-medium <= width)
@@ -147,7 +148,7 @@ $_app-padding: $_app-gap
 .app-product
   display: grid
   align-items: start
-  gap: $_app-gap
+  gap: $_form_gap
   grid-column: 1 / 4
 
   @media (layout.$app-device-width-medium <= width)
