@@ -22,7 +22,10 @@ const navLinks = [
         <div class="app-section__content">
           <nav>
             <ul class="app-nav-list">
-              <template v-for="item in navLinks" :key="item.routeName">
+              <template
+                v-for="item in navLinks"
+                :key="item.routeName"
+              >
                 <li>
                   <RouterLink
                     class="app-nav-link"
