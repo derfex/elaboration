@@ -146,6 +146,7 @@ $_root_padding: $_form_gap
 
 .app-control-container
   display: grid
+  align-items: start
   gap: $_form_gap
   grid-column: 1 / 3
 
