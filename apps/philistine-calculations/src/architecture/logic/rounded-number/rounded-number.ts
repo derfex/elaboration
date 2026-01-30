@@ -1,7 +1,3 @@
-import { checkAll } from './rounded-number.unit-tests'
-
-checkAll()
-
 export function calculateRoundedNumberParts(
   number: number,
   afterPointEssentialCount: number,
