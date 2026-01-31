@@ -62,11 +62,12 @@ function calculateDecimalPlaces(numericString: string): number {
 }
 
 // `text` should be numeric.
+// Dev note: we use `Math.round` because `550.06 * 100 → 55005.99999999999`.
 function calculateSum(text: string, addendum: number): number {
   const addendumDecimalPlaces = calculateDecimalPlaces('' + addendum)
   const textDecimalPlaces = calculateDecimalPlaces(text)
   const coefficient = 10 ** Math.max(addendumDecimalPlaces, textDecimalPlaces)
-  return (+text * coefficient + addendum * coefficient) / coefficient
+  return Math.round(+text * coefficient + addendum * coefficient) / coefficient
 }
 
 function convertTextToNumber(text: string): ConvertTextToNumberReport {
