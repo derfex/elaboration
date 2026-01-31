@@ -63,7 +63,7 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
         <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
           <ConvenientNumberInput
-            v-model="amountAtBeginningOfPeriod"
+            v-model:number="amountAtBeginningOfPeriod"
             :input-placeholder="props.amountAtBeginningOfPeriodInputPlaceholder"
             :operands="amountAtBeginningOfPeriodConvenientNumberInputOperands"
           />
@@ -71,7 +71,7 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
         <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
           <ConvenientNumberInput
-            v-model="numberOfDaysInPeriod"
+            v-model:number="numberOfDaysInPeriod"
             :input-placeholder="props.numberOfDaysInPeriodInputPlaceholder"
             :operands="numberOfDaysInPeriodConvenientNumberInputOperands"
           />
@@ -79,7 +79,7 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
         <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
           <ConvenientNumberInput
-            v-model="rate"
+            v-model:number="rate"
             :input-placeholder="props.rateInputPlaceholder"
             :operands="rateConvenientNumberInputOperands"
           />

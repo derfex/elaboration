@@ -64,7 +64,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <label class="app-form-table__value-container">
             <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
             <ConvenientNumberInput
-              v-model="r0Price"
+              v-model:number="r0Price"
               :input-placeholder="props.priceInputPlaceholder"
               :operands="priceConvenientNumberInputOperands"
             />
@@ -72,7 +72,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <label class="app-form-table__value-container">
             <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
             <ConvenientNumberInput
-              v-model="r0PackageSize"
+              v-model:number="r0PackageSize"
               :input-placeholder="props.packageSizeInputPlaceholder"
               :operands="packageSizeConvenientNumberInputOperands"
             />
@@ -91,7 +91,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <label class="app-form-table__value-container">
             <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
             <ConvenientNumberInput
-              v-model="r1Price"
+              v-model:number="r1Price"
               :input-placeholder="props.priceInputPlaceholder"
               :operands="priceConvenientNumberInputOperands"
             />
@@ -99,7 +99,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <label class="app-form-table__value-container">
             <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
             <ConvenientNumberInput
-              v-model="r1PackageSize"
+              v-model:number="r1PackageSize"
               :input-placeholder="props.packageSizeInputPlaceholder"
               :operands="packageSizeConvenientNumberInputOperands"
             />
@@ -118,7 +118,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <label class="app-form-table__value-container">
             <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
             <ConvenientNumberInput
-              v-model="r2Price"
+              v-model:number="r2Price"
               :input-placeholder="props.priceInputPlaceholder"
               :operands="priceConvenientNumberInputOperands"
             />
@@ -126,7 +126,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
           <label class="app-form-table__value-container">
             <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
             <ConvenientNumberInput
-              v-model="r2PackageSize"
+              v-model:number="r2PackageSize"
               :input-placeholder="props.packageSizeInputPlaceholder"
               :operands="packageSizeConvenientNumberInputOperands"
             />

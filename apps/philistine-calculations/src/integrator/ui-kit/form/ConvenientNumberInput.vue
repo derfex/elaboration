@@ -3,7 +3,7 @@ import { ref, watchEffect } from 'vue'
 
 // # API
 
-const numberModel = defineModel<number>({ required: true })
+const numberModel = defineModel<number>('number', { required: true })
 
 const props = defineProps<{
   readonly inputPlaceholder: string
