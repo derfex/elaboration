@@ -45,18 +45,10 @@
 //      background: var(--app-button-primary--hover--bg-color)
 
 @mixin app-ui-kit_button-secondary-mixin
-  @include _app-button-mixin
+  @include app-ui-kit_button-secondary-custom-mixin
 
   border-radius: 4px
   padding: 8px 20px
-  background: var(--app-button-secondary--bg-color)
-  color: var(--app-button-secondary--fg-color)
-
-  @include transitions.app-transitions_transition-mixin(background)
-
-  @media (hover: hover)
-    &:not(:disabled):hover
-      background: var(--app-button-secondary--hover--bg-color)
 
 @mixin app-ui-kit_button-secondary-custom-mixin
   @include _app-button-mixin
