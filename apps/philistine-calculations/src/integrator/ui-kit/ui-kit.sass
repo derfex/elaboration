@@ -21,51 +21,6 @@
 //  @include typography.app-typography_p-mixin
 
 
-@mixin _app-button-mixin
-  border: 0
-  line-height: initial
-  text-align: center
-
-  &:not(:disabled)
-    cursor: pointer
-
-// TODO: `app-ui-kit_button-primary-mixin` is unused.
-//@mixin app-ui-kit_button-primary-mixin
-//  @include _app-button-mixin
-//
-//  border-radius: 4px
-//  padding: 8px 20px
-//  background: var(--app-button-primary--bg-color)
-//  color: var(--app-button-primary--fg-color)
-//
-//  @include transitions.app-transitions_transition-mixin(background)
-//
-//  @media (hover: hover)
-//    &:not(:disabled):hover
-//      background: var(--app-button-primary--hover--bg-color)
-
-@mixin app-ui-kit_button-secondary-mixin
-  @include app-ui-kit_button-secondary-custom-mixin
-
-  border-radius: 4px
-  padding: 8px 20px
-
-@mixin app-ui-kit_button-secondary-custom-mixin
-  @include _app-button-mixin
-
-  background: var(--app-button-secondary--bg-color)
-  color: var(--app-button-secondary--fg-color)
-
-  @include transitions.app-transitions_transition-mixin(background)
-
-  @media (hover: hover)
-    &:not(:disabled):hover
-      background: var(--app-button-secondary--hover--bg-color)
-
-  &:disabled
-    background: var(--app-button-secondary--disabled--bg-color)
-
-
 // TODO: `app-ui-kit_background-clip-mixin` is unused.
 // @mixin app-ui-kit_background-clip-mixin($_bg-image)
 //   background-clip: text

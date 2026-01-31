@@ -180,6 +180,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
 </template>
 
 <style lang="sass" scoped>
+@use '../../ui-kit/form/buttons'
 @use '../../ui-kit/layout/layout'
 @use '../../ui-kit/ui-kit'
 
@@ -243,7 +244,7 @@ $_root_padding: $_form-table_gap
 
 
 .app-clear-form-button
-  @include ui-kit.app-ui-kit_button-secondary-mixin
+  @include buttons.app-form-buttons_button-secondary-mixin
 
 .app-rounded-number-box
   @include ui-kit.app-ui-kit_form-textbox-mixin

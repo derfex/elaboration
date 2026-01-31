@@ -154,6 +154,7 @@ function updateModels(number: number): void {
 
 <style lang="sass" scoped>
 @use '../ui-kit'
+@use 'buttons'
 @use 'form'
 
 .app-component-independent-root
@@ -188,7 +189,7 @@ $_button-size: $_row-height
 .app-clear-button
   $_clear-button-size: $_button-size * 0.75
 
-  @include ui-kit.app-ui-kit_button-secondary-custom-mixin
+  @include buttons.app-form-buttons_button-secondary-custom-mixin
 
   border-radius: 8px
   width: $_clear-button-size
@@ -208,7 +209,7 @@ $_border-radius: form.$app-form_textbox_border-radius
     outline: 2px solid var(--app-input--invalid--outline-color)
 
 .app-toggle-button
-  @include ui-kit.app-ui-kit_button-secondary-custom-mixin
+  @include buttons.app-form-buttons_button-secondary-custom-mixin
 
   border-top-left-radius: $_border-radius
   width: $_button-size
@@ -233,7 +234,7 @@ $_modifier-button-size: $_row-height - $_modifier-border-width * 4 - $_modifier-
   padding: $_modifier-padding
 
 .app-modifier__button
-  @include ui-kit.app-ui-kit_button-secondary-custom-mixin
+  @include buttons.app-form-buttons_button-secondary-custom-mixin
 
   width: $_modifier-button-size
   height: $_modifier-button-size
