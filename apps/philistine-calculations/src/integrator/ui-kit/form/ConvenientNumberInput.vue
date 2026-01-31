@@ -35,6 +35,9 @@ watchEffect((): void => {
 })
 watchEffect((): void => {
   text.value = stringModel.value
+  const [numeric] = convertTextToNumber(stringModel.value)
+  modifierDecreaseButtonDisabled.value = !numeric
+  modifierIncreaseButtonDisabled.value = !numeric
 })
 
 function textInputUpdateHandler(event: InputEvent): void {
