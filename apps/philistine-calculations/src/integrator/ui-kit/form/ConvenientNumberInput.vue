@@ -64,7 +64,7 @@ function calculateSum(text: string, addendum: number): string {
   const addendumDecimalPlaces = calculateDecimalPlaces('' + addendum)
   const textDecimalPlaces = calculateDecimalPlaces(text)
   const coefficient = 10 ** Math.max(addendumDecimalPlaces, textDecimalPlaces)
-  const sum = Math.round(+text * coefficient + addendum * coefficient) / coefficient
+  const sum = (+text * coefficient + addendum * coefficient) / coefficient
   return '' + sum
 }
 
