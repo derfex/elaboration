@@ -60,7 +60,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
       <h2 class="app-title">
         {{ props.titleText }}
       </h2>
-      <form>
+      <form class="app-form">
         <div class="app-form-table">
           <div class="app-form-table__header-row">
             <span>{{ props.priceTitleText }}</span>
@@ -165,9 +165,10 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
 @use '../../ui-kit/ui-kit'
 
 
-$_form_gap: 20px
-$_root_gap: $_form_gap * 2
-$_root_padding: $_form_gap
+$_form_gap: 24px
+$_form-table_gap: 20px
+$_root_gap: $_form-table_gap * 2
+$_root_padding: $_form-table_gap
 
 
 .app-component-independent-root
@@ -178,9 +179,18 @@ $_root_padding: $_form_gap
   padding: $_root_padding
 
 
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+  @include ui-kit.app-ui-kit_neon-mixin
+
+
+.app-form
+  @include layout.app-layout_flex-column-mixin($_form_gap)
+
+
 .app-form-table
   display: grid
-  gap: $_form_gap
+  gap: $_form-table_gap
   grid-template-columns: auto
 
   @media (layout.$app-device-width-medium <= width)
@@ -189,7 +199,7 @@ $_root_padding: $_form_gap
 .app-form-table__header-row
   display: none
   align-items: start
-  gap: $_form_gap
+  gap: $_form-table_gap
   grid-column: 1 / 4
 
   @media (layout.$app-device-width-medium <= width)
@@ -199,7 +209,7 @@ $_root_padding: $_form_gap
 .app-form-table__row
   display: grid
   align-items: start
-  gap: $_form_gap
+  gap: $_form-table_gap
   grid-column: 1 / 4
 
   @media (layout.$app-device-width-medium <= width)
@@ -218,8 +228,4 @@ $_root_padding: $_form_gap
 
   line-height: normal
   text-align: end
-
-.app-title
-  @include ui-kit.app-ui-kit_h2-mixin
-  @include ui-kit.app-ui-kit_neon-mixin
 </style>
