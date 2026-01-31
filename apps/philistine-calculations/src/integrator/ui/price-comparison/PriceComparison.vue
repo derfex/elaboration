@@ -60,96 +60,98 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
       <h2 class="app-title">
         {{ props.titleText }}
       </h2>
-      <form class="app-form-table">
-        <div class="app-form-table__header-row">
-          <span>{{ props.priceTitleText }}</span>
-          <span>{{ props.packageSizeTitleText }}</span>
-          <span>{{ props.costPerUnitTitleText }}</span>
-        </div>
-        <div class="app-form-table__row">
-          <label class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
-            <ConvenientNumberInput
-              v-model:number="r0Price"
-              v-model:string="r0PriceString"
-              :input-placeholder="props.priceInputPlaceholder"
-              :operands="priceConvenientNumberInputOperands"
-            />
-          </label>
-          <label class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
-            <ConvenientNumberInput
-              v-model:number="r0PackageSize"
-              v-model:string="r0PackageSizeString"
-              :input-placeholder="props.packageSizeInputPlaceholder"
-              :operands="packageSizeConvenientNumberInputOperands"
-            />
-          </label>
-          <div class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
-            <div class="app-rounded-number-box">
-              <RoundedNumber
-                :number="r0CostPerUnit"
-                :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+      <form>
+        <div class="app-form-table">
+          <div class="app-form-table__header-row">
+            <span>{{ props.priceTitleText }}</span>
+            <span>{{ props.packageSizeTitleText }}</span>
+            <span>{{ props.costPerUnitTitleText }}</span>
+          </div>
+          <div class="app-form-table__row">
+            <label class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+              <ConvenientNumberInput
+                v-model:number="r0Price"
+                v-model:string="r0PriceString"
+                :input-placeholder="props.priceInputPlaceholder"
+                :operands="priceConvenientNumberInputOperands"
               />
+            </label>
+            <label class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+              <ConvenientNumberInput
+                v-model:number="r0PackageSize"
+                v-model:string="r0PackageSizeString"
+                :input-placeholder="props.packageSizeInputPlaceholder"
+                :operands="packageSizeConvenientNumberInputOperands"
+              />
+            </label>
+            <div class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+              <div class="app-rounded-number-box">
+                <RoundedNumber
+                  :number="r0CostPerUnit"
+                  :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="app-form-table__row">
-          <label class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
-            <ConvenientNumberInput
-              v-model:number="r1Price"
-              v-model:string="r1PriceString"
-              :input-placeholder="props.priceInputPlaceholder"
-              :operands="priceConvenientNumberInputOperands"
-            />
-          </label>
-          <label class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
-            <ConvenientNumberInput
-              v-model:number="r1PackageSize"
-              v-model:string="r1PackageSizeString"
-              :input-placeholder="props.packageSizeInputPlaceholder"
-              :operands="packageSizeConvenientNumberInputOperands"
-            />
-          </label>
-          <div class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
-            <div class="app-rounded-number-box">
-              <RoundedNumber
-                :number="r1CostPerUnit"
-                :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          <div class="app-form-table__row">
+            <label class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+              <ConvenientNumberInput
+                v-model:number="r1Price"
+                v-model:string="r1PriceString"
+                :input-placeholder="props.priceInputPlaceholder"
+                :operands="priceConvenientNumberInputOperands"
               />
+            </label>
+            <label class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+              <ConvenientNumberInput
+                v-model:number="r1PackageSize"
+                v-model:string="r1PackageSizeString"
+                :input-placeholder="props.packageSizeInputPlaceholder"
+                :operands="packageSizeConvenientNumberInputOperands"
+              />
+            </label>
+            <div class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+              <div class="app-rounded-number-box">
+                <RoundedNumber
+                  :number="r1CostPerUnit"
+                  :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="app-form-table__row">
-          <label class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
-            <ConvenientNumberInput
-              v-model:number="r2Price"
-              v-model:string="r2PriceString"
-              :input-placeholder="props.priceInputPlaceholder"
-              :operands="priceConvenientNumberInputOperands"
-            />
-          </label>
-          <label class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
-            <ConvenientNumberInput
-              v-model:number="r2PackageSize"
-              v-model:string="r2PackageSizeString"
-              :input-placeholder="props.packageSizeInputPlaceholder"
-              :operands="packageSizeConvenientNumberInputOperands"
-            />
-          </label>
-          <div class="app-form-table__value-container">
-            <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
-            <div class="app-rounded-number-box">
-              <RoundedNumber
-                :number="r2CostPerUnit"
-                :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          <div class="app-form-table__row">
+            <label class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+              <ConvenientNumberInput
+                v-model:number="r2Price"
+                v-model:string="r2PriceString"
+                :input-placeholder="props.priceInputPlaceholder"
+                :operands="priceConvenientNumberInputOperands"
               />
+            </label>
+            <label class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+              <ConvenientNumberInput
+                v-model:number="r2PackageSize"
+                v-model:string="r2PackageSizeString"
+                :input-placeholder="props.packageSizeInputPlaceholder"
+                :operands="packageSizeConvenientNumberInputOperands"
+              />
+            </label>
+            <div class="app-form-table__value-container">
+              <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+              <div class="app-rounded-number-box">
+                <RoundedNumber
+                  :number="r2CostPerUnit"
+                  :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+                />
+              </div>
             </div>
           </div>
         </div>
