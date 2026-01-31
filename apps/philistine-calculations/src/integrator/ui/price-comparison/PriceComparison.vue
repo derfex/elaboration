@@ -43,6 +43,15 @@ watch(props, (): void => {
   r2Price.value = props.price
 })
 
+const clearFormButtonText = 'Clear all “Price” and “Package size”'
+function clearFormButtonClickHandler(): void {
+  r0PackageSizeString.value = ''
+  r0PriceString.value = ''
+  r1PackageSizeString.value = ''
+  r1PriceString.value = ''
+  r2PackageSizeString.value = ''
+  r2PriceString.value = ''
+}
 const packageSizeConvenientNumberInputOperands = [0.01, 0.1] as const
 const priceConvenientNumberInputOperands = [0.01, 100] as const
 const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 4 } as const
@@ -61,6 +70,16 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
         {{ props.titleText }}
       </h2>
       <form class="app-form">
+        <div>
+          <button
+            class="app-clear-form-button"
+            type="button"
+            @click="clearFormButtonClickHandler"
+          >
+            <span class="pi pi-eraser"></span>
+            {{ clearFormButtonText }}
+          </button>
+        </div>
         <div class="app-form-table">
           <div class="app-form-table__header-row">
             <span>{{ props.priceTitleText }}</span>
@@ -222,6 +241,9 @@ $_root_padding: $_form-table_gap
   @media (layout.$app-device-width-medium <= width)
     display: none
 
+
+.app-clear-form-button
+  @include ui-kit.app-ui-kit_button-secondary-mixin
 
 .app-rounded-number-box
   @include ui-kit.app-ui-kit_form-textbox-mixin

@@ -33,6 +33,9 @@ const textInputPattern = '(-)?\\d+(\\.\\d+)?'
 watchEffect((): void => {
   text.value = numberModel.value + ''
 })
+watchEffect((): void => {
+  text.value = stringModel.value
+})
 
 function textInputUpdateHandler(event: InputEvent): void {
   const { value } = event.target as HTMLInputElement
