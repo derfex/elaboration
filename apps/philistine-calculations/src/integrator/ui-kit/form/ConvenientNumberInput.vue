@@ -3,7 +3,7 @@ import { ref, watchEffect } from 'vue'
 
 // # API
 
-const model = defineModel<number>({ required: true })
+const numberModel = defineModel<number>({ required: true })
 
 const props = defineProps<{
   readonly inputPlaceholder: string
@@ -14,13 +14,15 @@ const props = defineProps<{
 
 const modifierDecreaseButtonDisabled = ref(false)
 function modifierDecreaseButtonClickHandler(operand: number): void {
-  text.value = calculateSum(text.value, -operand)
-  model.value = +text.value
+  const sum = calculateSum(text.value, -operand)
+  text.value = '' + sum
+  updateModel(sum)
 }
 const modifierIncreaseButtonDisabled = ref(false)
 function modifierIncreaseButtonClickHandler(operand: number): void {
-  text.value = calculateSum(text.value, operand)
-  model.value = +text.value
+  const sum = calculateSum(text.value, operand)
+  text.value = '' + sum
+  updateModel(sum)
 }
 const modifiersAreShown = ref(true)
 
@@ -28,14 +30,14 @@ const text = ref('')
 const textInputPattern = '(-)?\\d+(\\.\\d+)?'
 
 watchEffect((): void => {
-  text.value = model.value + ''
+  text.value = numberModel.value + ''
 })
 
 function textInputUpdateHandler(event: InputEvent): void {
   const { value } = event.target as HTMLInputElement
   const [numeric, number] = convertTextToNumber(value)
   if (numeric) {
-    model.value = number
+    updateModel(number)
   }
   modifierDecreaseButtonDisabled.value = !numeric
   modifierIncreaseButtonDisabled.value = !numeric
@@ -60,12 +62,11 @@ function calculateDecimalPlaces(numericString: string): number {
 }
 
 // `text` should be numeric.
-function calculateSum(text: string, addendum: number): string {
+function calculateSum(text: string, addendum: number): number {
   const addendumDecimalPlaces = calculateDecimalPlaces('' + addendum)
   const textDecimalPlaces = calculateDecimalPlaces(text)
   const coefficient = 10 ** Math.max(addendumDecimalPlaces, textDecimalPlaces)
-  const sum = (+text * coefficient + addendum * coefficient) / coefficient
-  return '' + sum
+  return (+text * coefficient + addendum * coefficient) / coefficient
 }
 
 function convertTextToNumber(text: string): ConvertTextToNumberReport {
@@ -77,6 +78,10 @@ function convertTextToNumber(text: string): ConvertTextToNumberReport {
 }
 
 type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null]
+
+function updateModel(number: number): void {
+  numberModel.value = number
+}
 
 // # Notes for the template's development and support
 
