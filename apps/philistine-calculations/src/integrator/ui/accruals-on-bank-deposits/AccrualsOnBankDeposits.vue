@@ -26,9 +26,12 @@ const props = defineProps<{
 // # Uses in the template
 
 const amountAtBeginningOfPeriod = ref(props.amountAtBeginningOfPeriod)
+const amountAtBeginningOfPeriodString = ref('' + props.amountAtBeginningOfPeriod)
 const leapYear = ref(props.leapYear)
 const numberOfDaysInPeriod = ref(props.numberOfDaysInPeriod)
+const numberOfDaysInPeriodString = ref('' + props.numberOfDaysInPeriod)
 const rate = ref(props.rate)
+const rateString = ref('' + props.rate)
 
 watch(props, (): void => {
   amountAtBeginningOfPeriod.value = props.amountAtBeginningOfPeriod
@@ -64,6 +67,7 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
           <ConvenientNumberInput
             v-model:number="amountAtBeginningOfPeriod"
+            v-model:string="amountAtBeginningOfPeriodString"
             :input-placeholder="props.amountAtBeginningOfPeriodInputPlaceholder"
             :operands="amountAtBeginningOfPeriodConvenientNumberInputOperands"
           />
@@ -72,6 +76,7 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
           <ConvenientNumberInput
             v-model:number="numberOfDaysInPeriod"
+            v-model:string="numberOfDaysInPeriodString"
             :input-placeholder="props.numberOfDaysInPeriodInputPlaceholder"
             :operands="numberOfDaysInPeriodConvenientNumberInputOperands"
           />
@@ -80,6 +85,7 @@ const rateConvenientNumberInputOperands = [0.5, 1] as const
           <span>{{ props.rateLabelText }}</span>
           <ConvenientNumberInput
             v-model:number="rate"
+            v-model:string="rateString"
             :input-placeholder="props.rateInputPlaceholder"
             :operands="rateConvenientNumberInputOperands"
           />

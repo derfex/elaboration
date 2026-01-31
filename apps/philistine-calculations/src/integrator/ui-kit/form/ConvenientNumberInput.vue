@@ -4,6 +4,7 @@ import { ref, watchEffect } from 'vue'
 // # API
 
 const numberModel = defineModel<number>('number', { required: true })
+const stringModel = defineModel<string>('string', { required: true })
 
 const props = defineProps<{
   readonly inputPlaceholder: string
@@ -16,13 +17,13 @@ const modifierDecreaseButtonDisabled = ref(false)
 function modifierDecreaseButtonClickHandler(operand: number): void {
   const sum = calculateSum(text.value, -operand)
   text.value = '' + sum
-  updateModel(sum)
+  updateModels(sum)
 }
 const modifierIncreaseButtonDisabled = ref(false)
 function modifierIncreaseButtonClickHandler(operand: number): void {
   const sum = calculateSum(text.value, operand)
   text.value = '' + sum
-  updateModel(sum)
+  updateModels(sum)
 }
 const modifiersAreShown = ref(true)
 
@@ -37,7 +38,7 @@ function textInputUpdateHandler(event: InputEvent): void {
   const { value } = event.target as HTMLInputElement
   const [numeric, number] = convertTextToNumber(value)
   if (numeric) {
-    updateModel(number)
+    updateModels(number)
   }
   modifierDecreaseButtonDisabled.value = !numeric
   modifierIncreaseButtonDisabled.value = !numeric
@@ -80,8 +81,9 @@ function convertTextToNumber(text: string): ConvertTextToNumberReport {
 
 type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null]
 
-function updateModel(number: number): void {
+function updateModels(number: number): void {
   numberModel.value = number
+  stringModel.value = '' + number
 }
 
 // # Notes for the template's development and support
