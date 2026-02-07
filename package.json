@@ -21,7 +21,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
     "vue": "3.5.27",
-    "vue-router": "^4.5.0",
+    "vue-router": "5.0.2",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
