@@ -4,6 +4,10 @@
 
 [List of applications](documentation/applications.md)
 
+## Migrations
+
+[Migrations](documentation/migrations.md)
+
 ## Nx
 
 <a href="https://nx.dev" rel="noreferrer" target="_blank">
