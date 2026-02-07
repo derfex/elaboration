@@ -6,8 +6,8 @@
 
 ## Nx
 
-<a alt="Nx logo" href="https://nx.dev" rel="noreferrer" target="_blank">
-  <img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45">
+<a href="https://nx.dev" rel="noreferrer" target="_blank">
+  <img alt="Nx logo" src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45">
 </a>
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
