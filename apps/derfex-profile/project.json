@@ -42,17 +42,11 @@
         "browser": "apps/derfex-profile/src/main.ts",
         "inlineStyleLanguage": "sass",
         "outputPath": "dist/apps/derfex-profile",
-        "polyfills": [
-          "zone.js"
-        ],
-        "styles": [
-          "apps/derfex-profile/src/styles.sass"
-        ],
+        "polyfills": ["zone.js"],
+        "styles": ["apps/derfex-profile/src/styles.sass"],
         "tsConfig": "apps/derfex-profile/tsconfig.app.json"
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
@@ -87,13 +81,11 @@
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "options": {
         "reportsDirectory": "../../coverage/apps/derfex-profile"
       },
-      "outputs": [
-        "{options.reportsDirectory}"
-      ]
+      "outputs": ["{options.reportsDirectory}"]
     }
   }
 }
