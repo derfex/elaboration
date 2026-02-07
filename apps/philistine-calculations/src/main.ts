@@ -1,8 +1,8 @@
 import './styles.sass'
 
 import { createApp } from 'vue'
+import router from '|integrator/router'
 import App from './app/App.vue'
-import router from './router'
 
 const app = createApp(App)
 app.use(router)

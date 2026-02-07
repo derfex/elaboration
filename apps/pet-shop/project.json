@@ -42,9 +42,7 @@
         "index": "apps/pet-shop/src/index.html",
         "inlineStyleLanguage": "scss",
         "outputPath": "dist/apps/pet-shop",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "scripts": [],
         "styles": [
           "@angular/material/prebuilt-themes/azure-blue.css",
@@ -52,9 +50,7 @@
         ],
         "tsConfig": "apps/pet-shop/tsconfig.app.json"
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
@@ -89,13 +85,11 @@
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "options": {
         "reportsDirectory": "../../coverage/apps/pet-shop"
       },
-      "outputs": [
-        "{options.reportsDirectory}"
-      ]
+      "outputs": ["{options.reportsDirectory}"]
     }
   }
 }

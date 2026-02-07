@@ -41,7 +41,7 @@ To make the sequence more unique, `||` is used.
 ```vue
 <script lang="ts" setup>
 import { computed } from 'vue'
-import XMarketplaceChip from '||/integrator/x-marketplaces/XMarketplaceChip.vue'
+import AppUser from '||/integrator/ui/app-users/AppUser.vue'
   
 // …
 </script>

@@ -4,45 +4,66 @@
   // ## Primitive
 
   :root
-    --app-color-cyan: #0ff
+    // ### Brand
 
-    --app-color-black: #000
-    --app-color-gray-light: #d9d9d9
-    --app-color-white: #fff
+    --app-color-primitive--cyan: #0ff
+    --app-color-primitive--orange: orange
 
-    --app-color-cyan--dark-500: color-mix(in oklch, var(--app-color-cyan), var(--app-color-black))
-    --app-color-cyan--dark-750: color-mix(in oklch, var(--app-color-cyan), var(--app-color-black) 75%)
+    // ### Black, gray, white
 
-    --app-color-white--dark-155: color-mix(in oklch, var(--app-color-white), var(--app-color-black) 15.5%)
-    --app-color-white--dark-800: color-mix(in oklch, var(--app-color-white), var(--app-color-black) 80%)
-    --app-color-white--transparent-500: color-mix(in oklch, var(--app-color-white), #0000)
+    --app-color-primitive--black: #000
+    --app-color-primitive--gray: #888
+    --app-color-primitive--white: #fff
+
+    --app-color-primitive--cyan--dark-500: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black))
+    --app-color-primitive--cyan--dark-750: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 75%)
+    --app-color-primitive--cyan--dark-900: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 90%)
+
+    --app-color-primitive--white--dark-155: color-mix(in display-p3, var(--app-color-primitive--white), var(--app-color-primitive--black) 15.5%)
+    --app-color-primitive--white--dark-800: color-mix(in display-p3, var(--app-color-primitive--white), var(--app-color-primitive--black) 80%)
+    --app-color-primitive--white--transparent-500: color-mix(in display-p3, var(--app-color-primitive--white), #0000)
 
   // ## Semantic
 
   :root
-    --app-color-accent: var(--app-color-cyan)
-    --app-dark-surface-bg-color: var(--app-color-black)
-    --app-dark-surface-text-color: var(--app-color-white)
+    // TODO: Do we need to use `accent` in `--app-color--accent--brand`?
+    --app-color--accent--brand: var(--app-color-primitive--cyan)
 
-    --app-root-surface-bg-color: var(--app-color-black)
-    --app-root-surface-text-color: var(--app-color-white--dark-155)
+    // TODO: `--app-root-surface-bg-color` is unused.
+    // --app-root-surface-bg-color: var(--app-color-primitive--black)
+    // TODO: `--app-root-surface-text-color` is unused.
+    // --app-root-surface-text-color: var(--app-color-primitive--white--dark-155)
 
-    --app-heading-text-color: var(--app-color-cyan)
-    --app-light-surface-bg-color: var(--app-color-gray-light)
-    --app-light-surface-text-color: var(--app-color-cyan--dark-500)
+    --app-color--foreground--heading: var(--app-color--accent--brand)
+
+    --app-color--border--warning: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--orange) 75%)
 
   // ## Component
 
   :root
-    --app-button-primary-bg-color: var(--app-color-cyan)
-    --app-button-primary-text-color: var(--app-color-black)
-    --app-button-primary-hover-bg-color: var(--app-color-cyan--dark-500)
+    // TODO: `--app-button-primary--bg-color` is unused.
+    //--app-button-primary--bg-color: var(--app-color-primitive--cyan)
+    // TODO: `--app-button-primary--fg-color` is unused.
+    //--app-button-primary--fg-color: var(--app-color-primitive--black)
+    // TODO: `--app-button-primary-hover-bg-color` is unused.
+    //--app-button-primary--hover--bg-color: var(--app-color-primitive--cyan--dark-500)
 
-    --app-button-secondary-bg-color: var(--app-color-cyan--dark-500)
-    --app-button-secondary-text-color: var(--app-color-white)
-    --app-button-secondary-hover-bg-color: var(--app-color-cyan--dark-750)
+    --app-button-secondary--bg-color: var(--app-color-primitive--cyan--dark-500)
+    --app-button-secondary--fg-color: var(--app-color-primitive--white)
+    --app-button-secondary--disabled--bg-color: var(--app-color-primitive--cyan--dark-900)
+    --app-button-secondary--hover--bg-color: var(--app-color-primitive--cyan--dark-750)
 
-    --app-ornament-text-color: var(--app-color-white--dark-800)
+    --app-decor--border-color: var(--app-color-primitive--cyan--dark-750)
 
-    --app-selection-bg-color: var(--app-color-white--transparent-500)
-    --app-selection-text-color: var(--app-color-accent)
+    --app-input--invalid--outline-color: var(--app-color--border--warning)
+
+    --app-heading--fg-color: var(--app-color--foreground--heading)
+
+    // TODO: `--app-ornament-text-color` is unused.
+    // --app-ornament-text-color: var(--app-color-primitive--white--dark-800)
+
+    --app-selection--bg-color: var(--app-color-primitive--white--transparent-500)
+    --app-selection--fg-color: var(--app-color--accent--brand)
+
+    --app-text--disabled--color: var(--app-color-primitive--gray)
+

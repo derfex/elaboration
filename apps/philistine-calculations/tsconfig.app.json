@@ -2,6 +2,8 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "paths": {
+      "|integrator/*": ["./src/integrator/*"],
+      "|logic/*": ["./src/architecture/logic/*"],
       "|ui/*": ["./src/integrator/ui/*"],
       "|ui-kit/*": ["./src/integrator/ui-kit/*"],
       "||/*": ["./src/*"]
