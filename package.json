@@ -15,7 +15,7 @@
     "@angular/router": "20.3.15",
     "@nestjs/common": "11.1.13",
     "@nestjs/core": "11.1.13",
-    "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/platform-express": "11.1.13",
     "fs-extra": "^11.3.3",
     "primeicons": "^7.0.0",
     "reflect-metadata": "^0.1.13",
