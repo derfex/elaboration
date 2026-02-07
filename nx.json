@@ -48,11 +48,16 @@
         "previewTargetName": "preview",
         "serveStaticTargetName": "serve-static",
         "serveTargetName": "serve",
-        "testTargetName": "vite:test",
         "typecheckTargetName": "typecheck",
         "watchDepsTargetName": "watch-deps"
       },
       "plugin": "@nx/vite/plugin"
+    },
+    {
+      "plugin": "@nx/vitest",
+      "options": {
+        "testTargetName": "vite:test"
+      }
     }
   ],
   "targetDefaults": {
@@ -75,7 +80,7 @@
         "{workspaceRoot}/eslint.config.mjs"
       ]
     },
-    "@nx/vite:test": {
+    "@nx/vitest:test": {
       "cache": true,
       "inputs": ["default", "^production"]
     }

@@ -80,7 +80,7 @@
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
+      "executor": "@nx/vitest:test",
       "options": {
         "reportsDirectory": "../../coverage/apps/web-invitation"
       },
