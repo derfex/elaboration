@@ -1,0 +1,16 @@
+@mixin app-theming-foundation_styles-mixin
+  :root
+    color-scheme: dark
+
+    // ## Semantic
+
+    --app-color--background--theme: var(--app-color-primitive--black)
+    --app-color--foreground--theme: var(--app-color-primitive--white)
+    // TODO: `--app-color--on-background--theme` is unused.
+    // --app-color--on-background--theme: var(--app-color-primitive--white)
+
+  :root
+    // ## Semantic // Or Component?
+
+    --app-root-surface--bg-color: var(--app-color--background--theme)
+    --app-root-surface--fg-color: var(--app-color--foreground--theme)

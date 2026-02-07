@@ -1,18 +1,24 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
+import { calculateAccrual } from '|logic/accruals-on-bank-deposits'
+import ConvenientNumberInput from '|ui-kit/form/ConvenientNumberInput.vue'
+import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
 // # API
 
 const props = defineProps<{
   readonly accrualLabelText: string
   readonly amountAtBeginningOfPeriod: number
+  readonly amountAtBeginningOfPeriodInputPlaceholder: string
   readonly amountAtBeginningOfPeriodLabelText: string
   readonly leapYear: boolean
   readonly leapYearLabelText: string
   readonly numberOfDaysInPeriod: number
+  readonly numberOfDaysInPeriodInputPlaceholder: string
   readonly numberOfDaysInPeriodLabelText: string
   readonly numberOfDaysOfYearLabelText: string
   readonly rate: number
+  readonly rateInputPlaceholder: string
   readonly rateLabelText: string
   readonly titleText: string
 }>()
@@ -20,62 +26,96 @@ const props = defineProps<{
 // # Uses in the template
 
 const amountAtBeginningOfPeriod = ref(props.amountAtBeginningOfPeriod)
+const amountAtBeginningOfPeriodString = ref('' + props.amountAtBeginningOfPeriod)
 const leapYear = ref(props.leapYear)
 const numberOfDaysInPeriod = ref(props.numberOfDaysInPeriod)
-const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365))
+const numberOfDaysInPeriodString = ref('' + props.numberOfDaysInPeriod)
 const rate = ref(props.rate)
+const rateString = ref('' + props.rate)
 
-const accrual = computed(() => {
-  return roundAccrual(
-    calculateAccrual(amountAtBeginningOfPeriod.value, numberOfDaysInPeriod.value, rate.value, numberOfDaysOfYear.value),
-  )
+watch(props, (): void => {
+  amountAtBeginningOfPeriod.value = props.amountAtBeginningOfPeriod
+  leapYear.value = props.leapYear
+  numberOfDaysInPeriod.value = props.numberOfDaysInPeriod
+  rate.value = props.rate
 })
 
-// # Private
-
-function calculateAccrual(
-  amountAtBeginningOfPeriod: number,
-  numberOfDaysInPeriod: number,
-  rate: number,
-  numberOfDaysOfYear: number,
-): number {
-  return (amountAtBeginningOfPeriod * numberOfDaysInPeriod * rate) / 100 / numberOfDaysOfYear
-}
-
-function roundAccrual(accrual: number): number {
-  const coefficient = 1000
-  return Math.round(accrual * coefficient) / coefficient
-}
+const accrual = computed(() => {
+  return calculateAccrual(
+    amountAtBeginningOfPeriod.value,
+    numberOfDaysInPeriod.value,
+    rate.value,
+    numberOfDaysOfYear.value,
+  )
+})
+const accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 2 } as const
+const amountAtBeginningOfPeriodConvenientNumberInputOperands = [1000, 10000] as const
+const numberOfDaysInPeriodConvenientNumberInputOperands = [10, 30] as const
+const numberOfDaysOfYear = computed<365 | 366>(() => (leapYear.value ? 366 : 365))
+const numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 0, minor: 0 } as const
+const rateConvenientNumberInputOperands = [0.5, 1] as const
 </script>
 
 <template>
   <div>
     <div class="app-component-independent-root">
-      <h2 class="app-title">{{ props.titleText }}</h2>
+      <h2 class="app-title">
+        {{ props.titleText }}
+      </h2>
       <form class="app-form">
         <label class="app-control-container">
           <span>{{ props.amountAtBeginningOfPeriodLabelText }}</span>
-          <input class="app-textbox" v-model="amountAtBeginningOfPeriod" placeholder="50000" type="number" />
+          <ConvenientNumberInput
+            v-model:number="amountAtBeginningOfPeriod"
+            v-model:string="amountAtBeginningOfPeriodString"
+            :input-placeholder="props.amountAtBeginningOfPeriodInputPlaceholder"
+            :operands="amountAtBeginningOfPeriodConvenientNumberInputOperands"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysInPeriodLabelText }}</span>
-          <input class="app-textbox" v-model="numberOfDaysInPeriod" placeholder="1" type="number" />
+          <ConvenientNumberInput
+            v-model:number="numberOfDaysInPeriod"
+            v-model:string="numberOfDaysInPeriodString"
+            :input-placeholder="props.numberOfDaysInPeriodInputPlaceholder"
+            :operands="numberOfDaysInPeriodConvenientNumberInputOperands"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.rateLabelText }}</span>
-          <input class="app-textbox" v-model="rate" placeholder="14.5" type="number" />
+          <ConvenientNumberInput
+            v-model:number="rate"
+            v-model:string="rateString"
+            :input-placeholder="props.rateInputPlaceholder"
+            :operands="rateConvenientNumberInputOperands"
+          />
         </label>
         <label class="app-control-container">
           <span>{{ props.leapYearLabelText }}</span>
-          <input class="app-checkbox" v-model="leapYear" type="checkbox" />
+          <input
+            v-model="leapYear"
+            class="app-checkbox"
+            type="checkbox"
+          >
         </label>
         <label class="app-control-container">
           <span>{{ props.numberOfDaysOfYearLabelText }}</span>
-          <input class="app-textbox" v-model="numberOfDaysOfYear" disabled />
+          <div class="app-number-of-days-of-year-textbox">
+            <RoundedNumber
+              :number="numberOfDaysOfYear"
+              :number-of-digits-after-decimal-point="
+                numberOfDaysOfYearRoundedNumberComponentNumberOfDigitsAfterDecimalPoint
+              "
+            />
+          </div>
         </label>
         <label class="app-control-container">
           <span>{{ props.accrualLabelText }}</span>
-          <input class="app-accrual-textbox" v-model="accrual" disabled />
+          <RoundedNumber
+            class="app-accrual-textbox"
+            :number="accrual"
+            :number-of-digits-after-decimal-point="accrualRoundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          />
         </label>
       </form>
     </div>
@@ -87,47 +127,52 @@ function roundAccrual(accrual: number): number {
 @use '../../ui-kit/ui-kit'
 
 
-$_app-gap: 20px
-$_app-padding: $_app-gap
+$_form_gap: 20px
+$_root_gap: $_form_gap * 2
+$_root_padding: $_form_gap
 
 
 .app-component-independent-root
-  @include layout.app-layout_flex-column-mixin($_app-gap * 2)
+  @include layout.app-layout_flex-column-mixin($_root_gap)
   @include ui-kit.app-ui-kit_glass-mixin
 
   border-radius: 4px
-  padding: $_app-padding
+  padding: $_root_padding
 
 
 .app-accrual-textbox
   @include ui-kit.app-ui-kit_form-textbox-mixin
 
-  font-family: monospace
-  color: var(--app-color-accent)
+  line-height: normal
+  text-align: end
+  color: var(--app-color--accent--brand)
 
 .app-checkbox
   @include ui-kit.app-ui-kit_form-checkbox-mixin
 
 .app-control-container
   display: grid
-  gap: $_app-gap
+  align-items: start
+  gap: $_form_gap
   grid-column: 1 / 3
 
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: subgrid
 
+.app-number-of-days-of-year-textbox
+  @include ui-kit.app-ui-kit_form-textbox-mixin
+
+  line-height: normal
+  text-align: end
+  color: var(--app-text--disabled--color)
+
 .app-form
   display: grid
-  gap: $_app-gap
+  gap: $_form_gap
   grid-template-columns: auto
 
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: auto auto
-
-.app-textbox
-  @include ui-kit.app-ui-kit_form-textbox-mixin
-
-  font-family: monospace
 
 .app-title
   @include ui-kit.app-ui-kit_h2-mixin
