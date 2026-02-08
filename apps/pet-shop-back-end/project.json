@@ -1,0 +1,90 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "pet-shop-back-end",
+  "projectType": "application",
+  "sourceRoot": "apps/pet-shop-back-end/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "configurations": {
+        "development": {
+          "args": [
+            "--node-env=development"
+          ]
+        }
+      },
+      "executor": "nx:run-commands",
+      "options": {
+        "args": [
+          "--node-env=production"
+        ],
+        "command": "webpack-cli build",
+        "cwd": "apps/pet-shop-back-end"
+      }
+    },
+    "prune-lockfile": {
+      "cache": true,
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:prune-lockfile",
+      "options": {
+        "buildTarget": "build"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/pet-shop-back-end/package.json",
+        "{workspaceRoot}/dist/apps/pet-shop-back-end/package-lock.json"
+      ]
+    },
+    "copy-workspace-modules": {
+      "cache": true,
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:copy-workspace-modules",
+      "options": {
+        "buildTarget": "build"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/pet-shop-back-end/workspace_modules"
+      ]
+    },
+    "prune": {
+      "dependsOn": [
+        "prune-lockfile",
+        "copy-workspace-modules"
+      ],
+      "executor": "nx:noop"
+    },
+    "serve": {
+      "configurations": {
+        "development": {
+          "buildTarget": "pet-shop-back-end:build:development"
+        },
+        "production": {
+          "buildTarget": "pet-shop-back-end:build:production"
+        }
+      },
+      "continuous": true,
+      "defaultConfiguration": "development",
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "pet-shop-back-end:build",
+        "runBuildTargetDependencies": false
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/pet-shop-back-end/jest.config.cts",
+        "passWithNoTests": true
+      },
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ]
+    }
+  }
+}

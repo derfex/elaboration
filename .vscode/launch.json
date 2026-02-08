@@ -18,6 +18,28 @@
         "derfex-profile-data-server"
       ],
       "runtimeExecutable": "npx",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "type": "node"
+    },
+    {
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_OPTIONS": "--inspect=9231"
+      },
+      "internalConsoleOptions": "neverOpen",
+      "name": "Debug pet-shop-back-end with Nx",
+      "outFiles": [
+        "${workspaceFolder}/apps/pet-shop-back-end/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ],
+      "request": "launch",
+      "runtimeArgs": [
+        "nx",
+        "serve",
+        "pet-shop-back-end"
+      ],
+      "runtimeExecutable": "npx",
       "skipFiles": [
         "<node_internals>/**"
       ],

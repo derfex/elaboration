@@ -1,0 +1,24 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": [
+    "pet-shop-back-end"
+  ],
+  "name": "pet-shop-back-end-e2e",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "dependsOn": [
+        "pet-shop-back-end:build",
+        "pet-shop-back-end:serve"
+      ],
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "apps/pet-shop-back-end-e2e/jest.config.cts",
+        "passWithNoTests": true
+      },
+      "outputs": [
+        "{workspaceRoot}/coverage/{e2eProjectRoot}"
+      ]
+    }
+  }
+}
