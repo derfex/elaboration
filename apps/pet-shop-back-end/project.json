@@ -22,20 +22,6 @@
         "cwd": "apps/pet-shop-back-end"
       }
     },
-    "prune-lockfile": {
-      "cache": true,
-      "dependsOn": [
-        "build"
-      ],
-      "executor": "@nx/js:prune-lockfile",
-      "options": {
-        "buildTarget": "build"
-      },
-      "outputs": [
-        "{workspaceRoot}/dist/apps/pet-shop-back-end/package.json",
-        "{workspaceRoot}/dist/apps/pet-shop-back-end/package-lock.json"
-      ]
-    },
     "copy-workspace-modules": {
       "cache": true,
       "dependsOn": [
@@ -55,6 +41,20 @@
         "copy-workspace-modules"
       ],
       "executor": "nx:noop"
+    },
+    "prune-lockfile": {
+      "cache": true,
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/js:prune-lockfile",
+      "options": {
+        "buildTarget": "build"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/pet-shop-back-end/package.json",
+        "{workspaceRoot}/dist/apps/pet-shop-back-end/package-lock.json"
+      ]
     },
     "serve": {
       "configurations": {

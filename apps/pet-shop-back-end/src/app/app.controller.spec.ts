@@ -13,7 +13,7 @@ describe('AppController', (): void => {
   })
 
   describe('getData', (): void => {
-    it('should return "Hello API"', () => {
+    it('should return "Hello API"', (): void => {
       const appController = app.get<AppController>(AppController)
       expect(appController.getData()).toEqual({ message: 'Hello API' })
     })

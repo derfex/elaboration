@@ -13,7 +13,7 @@ describe('AppService', (): void => {
   })
 
   describe('getData', (): void => {
-    it('should return "Hello API"', () => {
+    it('should return "Hello API"', (): void => {
       expect(service.getData()).toEqual({ message: 'Hello API' })
     })
   })
