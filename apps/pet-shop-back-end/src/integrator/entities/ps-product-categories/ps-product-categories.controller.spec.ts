@@ -14,7 +14,6 @@ describe('PSProductCategoriesController', (): void => {
     controller = module.get<PSProductCategoriesController>(PSProductCategoriesController)
   })
 
-  // FIXME.
   it('should be defined', (): void => {
     expect(controller).toBeDefined()
   })
