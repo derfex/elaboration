@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "vehicles-registry-front-end",
+  "projectType": "application",
+  "sourceRoot": "apps/vehicles-registry-front-end/src",
+  "// targets": "to see all targets run: nx show project vehicles-registry-front-end --web",
+  "targets": {}
+}
