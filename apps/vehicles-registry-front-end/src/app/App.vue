@@ -1,7 +1,6 @@
-<script setup lang="ts">
-import NxWelcome from './NxWelcome.vue'
+<script lang="ts" setup>
 </script>
 
 <template>
-  <NxWelcome title="vehicles-registry-front-end" />
+  <h1>Welcome</h1>
 </template>
