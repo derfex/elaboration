@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { VApp } from 'vuetify/components/VApp'
 import { VAppBar, VAppBarNavIcon } from 'vuetify/components/VAppBar'
+import { VIcon } from 'vuetify/components/VIcon'
 import { VList, VListItem, VListItemTitle } from 'vuetify/components/VList'
 import { VMain } from 'vuetify/components/VMain'
 import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
@@ -19,6 +20,7 @@ const vNavigationDrawerVisible = ref(false)
 
 const navigationItems = [
   {
+    icon: 'mdi-table',
     path: '/',
     title: 'Home',
     value: 'home',
@@ -48,6 +50,10 @@ const navigationItems = [
               :value="item"
               color="primary"
             >
+              <template #prepend>
+                <VIcon :icon="item.icon" />
+              </template>
+
               <VListItemTitle>{{ item.title }}</VListItemTitle>
             </VListItem>
           </VList>
