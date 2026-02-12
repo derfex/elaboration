@@ -20,10 +20,10 @@ const vNavigationDrawerVisible = ref(false)
 
 const navigationItems = [
   {
-    icon: 'mdi-table',
+    icon: 'mdi-table-large',
     path: '/',
-    title: 'Home',
-    value: 'home',
+    title: 'Registry',
+    value: 'registry',
   },
 ]
 </script>
