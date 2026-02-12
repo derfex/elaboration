@@ -24,16 +24,21 @@ const tableHeaders: VuetifyVDataTableHeaders = [
     title: 'Name',
   },
   {
-    align: 'end',
-    key: 'price',
-    sortable: true,
-    title: 'Price',
+    key: 'model',
+    sortable: false,
+    title: 'Model',
   },
   {
     align: 'end',
     key: 'year',
     sortable: true,
     title: 'Year',
+  },
+  {
+    align: 'end',
+    key: 'price',
+    sortable: true,
+    title: 'Price',
   },
 ]
 
