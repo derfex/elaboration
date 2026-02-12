@@ -5,8 +5,7 @@ export class PassengerVehiclesMediatorService {
   public readList(): Promise<readonly PassengerVehicleForDataTable[]> {
     const listForBE = [] as const satisfies readonly PassengerVehicleForBE[]
     const list: readonly PassengerVehicleForDataTable[] = listForBE.map(
-      ({ color, id, model, name, price, year }: PassengerVehicleForBE) => ({
-        color,
+      ({ id, model, name, price, year }: PassengerVehicleForBE): PassengerVehicleForDataTable => ({
         id,
         model,
         name,
