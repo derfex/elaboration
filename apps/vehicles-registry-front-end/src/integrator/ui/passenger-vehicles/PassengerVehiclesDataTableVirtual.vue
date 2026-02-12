@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { VDataTableVirtual } from 'vuetify/components/VDataTable'
-import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
+import type { PassengerVehicleForDataTable } from './passenger-vehicles-for-data-table.type'
 
 // # API
 
@@ -9,8 +9,8 @@ const emit = defineEmits<{
   'click:row': [itemID: number]
 }>()
 const props = defineProps<{
-  loading: boolean
   list: readonly PassengerVehicleForDataTable[]
+  loading: boolean
 }>()
 
 // # Uses in the template
@@ -74,8 +74,6 @@ type VuetifyVDataTableHeader = Readonly<{
 interface VuetifyVDataTableRow {
   item: PassengerVehicleForDataTable
 }
-
-type PassengerVehicleForDataTable = PassengerVehicle
 </script>
 
 <template>
