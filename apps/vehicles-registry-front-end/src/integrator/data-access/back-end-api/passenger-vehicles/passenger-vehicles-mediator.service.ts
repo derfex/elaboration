@@ -1,11 +1,12 @@
-import type { PassengerVehicleForDataTable } from '../../../ui/passenger-vehicles/passenger-vehicles-for-data-table.type'
+import type { PassengerVehicle } from '../../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import type { PassengerVehicleForBE } from './passenger-vehicles-for-be.type'
 
 export class PassengerVehiclesMediatorService {
-  public readList(): Promise<readonly PassengerVehicleForDataTable[]> {
+  public readList(): Promise<readonly PassengerVehicle[]> {
     const listForBE = [] as const satisfies readonly PassengerVehicleForBE[]
-    const list: readonly PassengerVehicleForDataTable[] = listForBE.map(
-      ({ id, model, name, price, year }: PassengerVehicleForBE): PassengerVehicleForDataTable => ({
+    const list: readonly PassengerVehicle[] = listForBE.map(
+      ({ color, id, model, name, price, year }: PassengerVehicleForBE): PassengerVehicle => ({
+        color,
         id,
         model,
         name,
