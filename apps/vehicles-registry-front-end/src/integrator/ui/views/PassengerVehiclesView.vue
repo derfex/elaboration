@@ -3,6 +3,7 @@ import { computed, onBeforeMount, shallowRef } from 'vue'
 import { VTextField } from 'vuetify/components/VTextField'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
+import { DevUtility } from '../../dev.utility'
 import type { PassengerVehicleForDataTable } from '../passenger-vehicles/passenger-vehicles-for-data-table.type'
 import PassengerVehiclesDataTableVirtual from '../passenger-vehicles/PassengerVehiclesDataTableVirtual.vue'
 
@@ -17,6 +18,10 @@ const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
   convertToPassengerVehiclesForDataTable(passengerVehiclesStore.list),
 )
 const tableLoading = shallowRef(true)
+
+function tableRowClickHandler(vehicleID: number): void {
+  DevUtility.info({ vehicleID })
+}
 
 // # Life cycle hooks
 
@@ -62,6 +67,7 @@ function convertToPassengerVehiclesForDataTable(
       <PassengerVehiclesDataTableVirtual
         :list="tableList"
         :loading="tableLoading"
+        @click:row="tableRowClickHandler"
       />
     </div>
   </div>
