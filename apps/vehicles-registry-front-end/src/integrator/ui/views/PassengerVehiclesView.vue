@@ -27,12 +27,9 @@ onBeforeMount((): void => {
 // # Private
 
 async function readList(): Promise<void> {
+  // TODO: Implement.
   tableLoading.value = true
-  try {
-    await passengerVehiclesStore.readList()
-  } finally {
-    tableLoading.value = false
-  }
+  tableLoading.value = false
 }
 
 function convertToPassengerVehiclesForDataTable(
