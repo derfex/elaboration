@@ -15,11 +15,11 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   const list = ref<VehiclesList>([])
 
-  function read(vehicleID: VehicleID): PassengerVehicle | null {
-    return _vehiclesMap.get(vehicleID) ?? null
-  }
+  const create = _createItem
+  const read =_readItem
 
   return {
+    create,
     list,
     read,
   }
@@ -35,7 +35,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
     vehicles.forEach((vehicle: PassengerVehicle): void => {
       _addItemToMapOnly(vehicle)
     })
-    list.value = _mapToArray(_vehiclesMap)
+    _syncList()
   }
 
   function _initStore(): void {
@@ -48,13 +48,38 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   function _mapToArray(map: VehiclesMap): VehiclesList {
     return Array.from(map.values())
   }
+
+  function _syncList(): void {
+    list.value = _mapToArray(_vehiclesMap)
+  }
+
+  // ## C. R. U. D.
+
+  function _createItem({ color, model, name, price, year }: VehicleForCreate): void {
+    const id = ++_vehicleID.value
+    _vehiclesMap.set(id, {
+      color,
+      id,
+      model,
+      name,
+      price,
+      year,
+    })
+    _syncList()
+  }
+
+  function _readItem(vehicleID: VehicleID): PassengerVehicle | null {
+    return _vehiclesMap.get(vehicleID) ?? null
+  }
 })
 
 interface PassengerVehiclesStoreAPI {
+  readonly create: (vehicleForCreate: VehicleForCreate) => void
   readonly list: Ref<VehiclesList>
   readonly read: (vehicleID: VehicleID) => PassengerVehicle | null
 }
 
+type VehicleForCreate = Omit<PassengerVehicle, 'id'>
 type VehicleID = PassengerVehicle['id']
 type VehiclesList = readonly PassengerVehicle[]
 type VehiclesMap = ReadonlyMap<VehicleID, PassengerVehicle>
