@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, onBeforeMount, shallowRef } from 'vue'
+import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
 import { VTextField } from 'vuetify/components/VTextField'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
@@ -13,6 +14,8 @@ const passengerVehiclesStore = usePassengerVehiclesStore()
 
 // # Uses in the template
 
+const detailDrawerIsOpened = shallowRef(false)
+const detailDrawerWidth = 900
 const searchFieldPlaceholder = 'Vehicle name'
 const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
   convertToPassengerVehiclesForDataTable(passengerVehiclesStore.list),
@@ -70,6 +73,14 @@ function convertToPassengerVehiclesForDataTable(
         :loading="tableLoading"
         @click:row="tableRowClickHandler"
       />
+
+      <VNavigationDrawer
+        v-model="detailDrawerIsOpened"
+        :width="detailDrawerWidth"
+        location="right"
+        temporary
+      >
+      </VNavigationDrawer>
     </div>
   </div>
 </template>
