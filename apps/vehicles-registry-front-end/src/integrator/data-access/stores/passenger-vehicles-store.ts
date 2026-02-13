@@ -10,7 +10,9 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', {
     },
   },
   getters: {
-    getByID: (): ((vehicleID: PassengerVehicle['id']) => PassengerVehicle | null) => {
+    map: (state) =>
+      new Map<PassengerVehicle['id'], PassengerVehicle>(state.list.map((vehicle) => [vehicle.id, vehicle])),
+    readByID: (): ((vehicleID: PassengerVehicle['id']) => PassengerVehicle | null) => {
       return (vehicleID: PassengerVehicle['id']): PassengerVehicle | null => {
         try {
           if (this) {
@@ -26,8 +28,6 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', {
         }
       }
     },
-    map: (state) =>
-      new Map<PassengerVehicle['id'], PassengerVehicle>(state.list.map((vehicle) => [vehicle.id, vehicle])),
   },
   state: (): PassengerVehiclesState => {
     return { list: [] }
