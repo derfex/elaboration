@@ -23,8 +23,8 @@ const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
 const tableLoading = shallowRef(true)
 
 function tableRowClickHandler(vehicleID: number): void {
-  const passengerVehicle = passengerVehiclesStore.read(vehicleID)
-  DevUtility.info({ passengerVehicle, vehicleID })
+  const vehicle = passengerVehiclesStore.read(vehicleID)
+  DevUtility.collapsedTable(`The vehicle (ID = ${vehicleID}) has been read.`)(vehicle)
 }
 
 // # Life cycle hooks
