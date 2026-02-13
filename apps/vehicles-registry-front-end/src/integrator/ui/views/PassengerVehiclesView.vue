@@ -20,7 +20,8 @@ const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
 const tableLoading = shallowRef(true)
 
 function tableRowClickHandler(vehicleID: number): void {
-  DevUtility.info({ vehicleID })
+  const passengerVehicle = passengerVehiclesStore.read(vehicleID)
+  DevUtility.info({ passengerVehicle, vehicleID })
 }
 
 // # Life cycle hooks
