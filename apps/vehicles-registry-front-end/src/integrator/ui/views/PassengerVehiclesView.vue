@@ -6,6 +6,8 @@ import type { PassengerVehicle } from '../../../architecture/entities/passenger-
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
 import { DevUtility } from '../../dev.utility'
 import type { PassengerVehicleForDataTable } from '../passenger-vehicles/passenger-vehicles-for-data-table.type'
+import type { PassengerVehicleForDetails } from '../passenger-vehicles/passenger-vehicles-for-details.type'
+import PassengerVehicleDetails from '../passenger-vehicles/PassengerVehicleDetails.vue'
 import PassengerVehiclesDataTableVirtual from '../passenger-vehicles/PassengerVehiclesDataTableVirtual.vue'
 
 // # Private configuration
@@ -16,7 +18,12 @@ const passengerVehiclesStore = usePassengerVehiclesStore()
 
 const detailDrawerIsOpened = shallowRef(false)
 const detailDrawerLocation = 'right'
+const detailDrawerVehicle = shallowRef<PassengerVehicleForDetails | null>(null)
 const detailDrawerWidth = 900
+function detailDrawerCloseButtonClickHandler(): void {
+  detailDrawerIsOpened.value = false
+}
+
 const searchFieldPlaceholder = 'Vehicle name'
 const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
   convertToPassengerVehiclesForDataTable(passengerVehiclesStore.list),
@@ -26,6 +33,9 @@ const tableLoading = shallowRef(true)
 function tableRowClickHandler(vehicleID: number): void {
   const vehicle = passengerVehiclesStore.read(vehicleID)
   DevUtility.collapsedTable(`The vehicle (ID = ${vehicleID}) has been read.`)(vehicle)
+  if (!vehicle) return
+  detailDrawerVehicle.value = convertToPassengerVehicleForDataTable(vehicle)
+  detailDrawerIsOpened.value = true
 }
 
 // # Life cycle hooks
@@ -55,6 +65,22 @@ function convertToPassengerVehiclesForDataTable(
     }),
   )
 }
+
+function convertToPassengerVehicleForDataTable({
+  id,
+  model,
+  name,
+  price,
+  year,
+}: PassengerVehicle): PassengerVehicleForDetails {
+  return {
+    id,
+    model,
+    name,
+    price,
+    year,
+  }
+}
 </script>
 
 <template>
@@ -81,6 +107,12 @@ function convertToPassengerVehiclesForDataTable(
         :width="detailDrawerWidth"
         temporary
       >
+        <template v-if="detailDrawerVehicle">
+          <PassengerVehicleDetails
+            :vehicle="detailDrawerVehicle"
+            @close-button-click="detailDrawerCloseButtonClickHandler"
+          />
+        </template>
       </VNavigationDrawer>
     </div>
   </div>
