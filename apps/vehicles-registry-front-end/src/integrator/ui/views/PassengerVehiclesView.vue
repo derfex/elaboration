@@ -15,6 +15,7 @@ const passengerVehiclesStore = usePassengerVehiclesStore()
 // # Uses in the template
 
 const detailDrawerIsOpened = shallowRef(false)
+const detailDrawerLocation = 'right'
 const detailDrawerWidth = 900
 const searchFieldPlaceholder = 'Vehicle name'
 const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
@@ -76,8 +77,8 @@ function convertToPassengerVehiclesForDataTable(
 
       <VNavigationDrawer
         v-model="detailDrawerIsOpened"
+        :location="detailDrawerLocation"
         :width="detailDrawerWidth"
-        location="right"
         temporary
       >
       </VNavigationDrawer>
