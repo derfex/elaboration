@@ -30,8 +30,10 @@ const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
 )
 const tableLoading = shallowRef(true)
 
-function tableRowClickHandler(vehicleID: number): void {
-  const vehicle = passengerVehiclesStore.read(vehicleID)
+async function tableRowClickHandler(vehicleID: number): Promise<void> {
+  tableLoading.value = true
+  const vehicle = await passengerVehiclesStore.read(vehicleID)
+  tableLoading.value = false
   DevUtility.collapsedTable(`The vehicle (ID = ${vehicleID}) has been read.`)(vehicle)
   if (!vehicle) return
   detailDrawerVehicle.value = convertToPassengerVehicleForDataTable(vehicle)

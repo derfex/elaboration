@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { type Ref, ref } from 'vue'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
+import { assertDefined } from '../../dev/dev-error.utility'
 import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
@@ -16,7 +17,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   const list = ref<VehiclesList>([])
 
   const create = _createItem
-  const read =_readItem
+  const read = _readItemAsPromise
 
   return {
     create,
@@ -49,6 +50,12 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
     return Array.from(map.values())
   }
 
+  function _valueToPromise<Type>(value: Type): Promise<Type> {
+    return new Promise((resolve): void => {
+      resolve(value)
+    })
+  }
+
   function _syncList(): void {
     list.value = _mapToArray(_vehiclesMap)
   }
@@ -68,15 +75,21 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
     _syncList()
   }
 
-  function _readItem(vehicleID: VehicleID): PassengerVehicle | null {
-    return _vehiclesMap.get(vehicleID) ?? null
+  function _readItem(vehicleID: VehicleID): PassengerVehicle {
+    const vehicle = _vehiclesMap.get(vehicleID)
+    assertDefined(vehicle, `Wrong data. The vehicle ID ('${vehicleID}') does not exist.`)
+    return vehicle
+  }
+
+  function _readItemAsPromise(vehicleID: VehicleID): Promise<PassengerVehicle> {
+    return _valueToPromise(_readItem(vehicleID))
   }
 })
 
 interface PassengerVehiclesStoreAPI {
   readonly create: (vehicleForCreate: VehicleForCreate) => void
   readonly list: Ref<VehiclesList>
-  readonly read: (vehicleID: VehicleID) => PassengerVehicle | null
+  readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>
 }
 
 type VehicleForCreate = Omit<PassengerVehicle, 'id'>
