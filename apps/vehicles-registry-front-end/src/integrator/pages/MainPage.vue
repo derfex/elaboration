@@ -7,7 +7,6 @@ import { VList, VListItem, VListItemTitle } from 'vuetify/components/VList'
 import { VMain } from 'vuetify/components/VMain'
 import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
 import { VToolbarTitle } from 'vuetify/components/VToolbar'
-import PassengerVehiclesView from '../ui/views/PassengerVehiclesView.vue'
 
 // # Uses in the template
 
@@ -60,7 +59,7 @@ const navigationItems = [
         </VNavigationDrawer>
 
         <VMain>
-          <PassengerVehiclesView />
+          <RouterView />
         </VMain>
       </VApp>
     </div>
