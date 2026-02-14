@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { type Ref, ref } from 'vue'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { assertDefined } from '../../dev/dev-error.utility'
+import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/passenger-vehicles-for-details.type'
 import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
@@ -18,11 +19,13 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   const create = _createItem
   const read = _readItemAsPromise
+  const update = _updateItemAsPromise
 
   return {
     create,
     list,
     read,
+    update,
   }
 
   // # Private logic
@@ -84,12 +87,26 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   function _readItemAsPromise(vehicleID: VehicleID): Promise<PassengerVehicle> {
     return _valueToPromise(_readItem(vehicleID))
   }
+
+  function _updateItem(vehicleID: VehicleID, { name, price }: PassengerVehicleForUpdate): void {
+    const vehicleOld = _vehiclesMap.get(vehicleID)
+    assertDefined(vehicleOld, `Wrong data. The vehicle ID ('${vehicleID}') does not exist.`)
+    const { color, id, model, year } = vehicleOld
+    _vehiclesMap.set(id, { color, id, model, name, price, year })
+  }
+
+  function _updateItemAsPromise(vehicleID: VehicleID, parameters: PassengerVehicleForUpdate): Promise<void> {
+    _updateItem(vehicleID, parameters)
+    _syncList()
+    return _valueToPromise(undefined)
+  }
 })
 
 interface PassengerVehiclesStoreAPI {
   readonly create: (vehicleForCreate: VehicleForCreate) => void
   readonly list: Ref<VehiclesList>
   readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>
+  readonly update: (vehicleID: VehicleID, parameters: PassengerVehicleForUpdate) => Promise<void>
 }
 
 type VehicleForCreate = Omit<PassengerVehicle, 'id'>

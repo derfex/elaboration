@@ -6,7 +6,10 @@ import type { PassengerVehicle } from '../../../architecture/entities/passenger-
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
 import { DevUtility } from '../../dev/dev.utility'
 import type { PassengerVehicleForDataTable } from '../passenger-vehicles/passenger-vehicles-for-data-table.type'
-import type { PassengerVehicleForDetails } from '../passenger-vehicles/passenger-vehicles-for-details.type'
+import type {
+  PassengerVehicleForDetails,
+  PassengerVehicleForUpdate,
+} from '../passenger-vehicles/passenger-vehicles-for-details.type'
 import PassengerVehicleDetails from '../passenger-vehicles/PassengerVehicleDetails.vue'
 import PassengerVehiclesDataTableVirtual from '../passenger-vehicles/PassengerVehiclesDataTableVirtual.vue'
 
@@ -22,6 +25,10 @@ const detailDrawerVehicle = shallowRef<PassengerVehicleForDetails | null>(null)
 const detailDrawerWidth = 900
 function detailDrawerCloseButtonClickHandler(): void {
   detailDrawerIsOpened.value = false
+}
+function detailDrawerUpdateButtonClickHandler(vehicleID: number, parameters: PassengerVehicleForUpdate): void {
+  detailDrawerIsOpened.value = false
+  passengerVehiclesStore.update(vehicleID, parameters)
 }
 
 const searchFieldPlaceholder = 'Vehicle name'
@@ -113,6 +120,7 @@ function convertToPassengerVehicleForDataTable({
           <PassengerVehicleDetails
             :vehicle="detailDrawerVehicle"
             @close-button-click="detailDrawerCloseButtonClickHandler"
+            @update-button-click="detailDrawerUpdateButtonClickHandler"
           />
         </template>
       </VNavigationDrawer>
