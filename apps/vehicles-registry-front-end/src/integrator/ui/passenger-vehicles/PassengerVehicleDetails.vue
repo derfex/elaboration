@@ -1,12 +1,15 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import { VNumberInput } from 'vuetify/components/VNumberInput'
 import { VBtn } from 'vuetify/components/VBtn'
-import type { PassengerVehicleForDetails } from './passenger-vehicles-for-details.type'
+import { VTextField } from 'vuetify/components/VTextField'
+import type { PassengerVehicleForDetails, PassengerVehicleForUpdate } from './passenger-vehicles-for-details.type'
 
 // # API
 
 const emit = defineEmits<{
   closeButtonClick: []
+  updateButtonClick: [vehicleID: number, parameters: PassengerVehicleForUpdate]
 }>()
 const props = defineProps<{
   vehicle: PassengerVehicleForDetails
@@ -14,15 +17,34 @@ const props = defineProps<{
 
 // # Uses in the template
 
+const vehicle = computed<PassengerVehicleForDetails>(() => props.vehicle)
+
+// ## Read
+
 const headerText = 'Details'
 const modelTitleText = 'Model'
 const priceTitleText = 'Price'
 const yearTitleText = 'Year'
 
-const vehicle = computed<PassengerVehicleForDetails>(() => props.vehicle)
-
 function closeButtonClickHandler(): void {
   emit('closeButtonClick')
+}
+
+// ## Update
+
+const editSectionTitleText = 'Edit'
+const updateButtonText = 'Update'
+const name = ref(vehicle.value.name)
+const nameLabelText = 'Name'
+const price = ref(vehicle.value.price)
+const priceLabelText = priceTitleText
+
+function updateButtonClickHandler(): void {
+  const parameters: PassengerVehicleForUpdate = {
+    name: name.value,
+    price: price.value,
+  }
+  emit('updateButtonClick', vehicle.value.id, parameters)
 }
 </script>
 
@@ -43,7 +65,7 @@ function closeButtonClickHandler(): void {
       <section class="app-title-container">
         <div>
           <h2 class="app-vehicle-title">
-            {{ vehicle.name }}
+            {{ name }}
           </h2>
         </div>
       </section>
@@ -69,9 +91,26 @@ function closeButtonClickHandler(): void {
             {{ priceTitleText }}
           </h3>
           <p class="app-detail__value">
-            {{ vehicle.price }}
+            {{ price }}
           </p>
         </section>
+      </section>
+      <section class="app-update-section">
+        <h3>{{ editSectionTitleText }}</h3>
+        <form>
+          <VTextField
+            v-model="name"
+            :label="nameLabelText"
+          />
+          <VNumberInput
+            v-model="price"
+            :label="priceLabelText"
+          />
+
+          <VBtn @click="updateButtonClickHandler">
+            {{ updateButtonText }}
+          </VBtn>
+        </form>
       </section>
     </div>
   </div>
@@ -130,4 +169,8 @@ function closeButtonClickHandler(): void {
   letter-spacing: 0.5px
 
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
+
+.app-update-section
+  @include _local-flex-column-mixin(16px)
+  @include _local-block-padding-inline-mixin
 </style>

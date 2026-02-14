@@ -7,3 +7,8 @@ export interface PassengerVehicleForDetails {
   readonly price: PassengerVehicle['price']
   readonly year: PassengerVehicle['year']
 }
+
+export interface PassengerVehicleForUpdate {
+  readonly name: PassengerVehicle['name']
+  readonly price: PassengerVehicle['price']
+}
