@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { VNumberInput } from 'vuetify/components/VNumberInput'
 import { VBtn } from 'vuetify/components/VBtn'
 import { VTextField } from 'vuetify/components/VTextField'
@@ -38,6 +38,11 @@ const name = ref(vehicle.value.name)
 const nameLabelText = 'Name'
 const price = ref(vehicle.value.price)
 const priceLabelText = priceTitleText
+
+watch(vehicle, (): void => {
+  name.value = vehicle.value.name
+  price.value = vehicle.value.price
+})
 
 function updateButtonClickHandler(): void {
   const parameters: PassengerVehicleForUpdate = {
