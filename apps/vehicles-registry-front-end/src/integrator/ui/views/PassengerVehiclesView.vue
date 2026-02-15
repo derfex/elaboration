@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onBeforeMount, shallowRef } from 'vue'
+import { computed, shallowRef } from 'vue'
 import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
 import { VTextField } from 'vuetify/components/VTextField'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
@@ -35,31 +35,17 @@ const searchFieldPlaceholder = 'Vehicle name'
 const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
   convertToPassengerVehiclesForDataTable(passengerVehiclesStore.list),
 )
-const tableLoading = shallowRef(true)
+const tableLoading = computed(() => passengerVehiclesStore.loading)
 
 async function tableRowClickHandler(vehicleID: number): Promise<void> {
-  tableLoading.value = true
   const vehicle = await passengerVehiclesStore.read(vehicleID)
-  tableLoading.value = false
   DevUtility.collapsedTable(`The vehicle (ID = ${vehicleID}) has been read.`)(vehicle)
   if (!vehicle) return
   detailDrawerVehicle.value = convertToPassengerVehicleForDataTable(vehicle)
   detailDrawerIsOpened.value = true
 }
 
-// # Life cycle hooks
-
-onBeforeMount((): void => {
-  readList()
-})
-
 // # Private
-
-async function readList(): Promise<void> {
-  // TODO: Implement.
-  tableLoading.value = true
-  tableLoading.value = false
-}
 
 function convertToPassengerVehiclesForDataTable(
   list: readonly PassengerVehicle[],

@@ -9,21 +9,23 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   const _vehicleID = shallowRef(0)
   const _vehiclesMap = new Map<VehicleID, PassengerVehicle>()
 
-  // # Init
-
-  _initStore()
-
   // # API
 
   const list = shallowRef<VehiclesList>([])
+  const loading = shallowRef(false)
 
   const create = _createItem
   const read = _readItemAsPromise
   const update = _updateItemAsPromise
 
+  // # Init
+
+  _initStore()
+
   return {
     create,
     list,
+    loading,
     read,
     update,
   }
@@ -44,8 +46,10 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   function _initStore(): void {
     const passengerVehiclesMediatorService = new PassengerVehiclesMediatorService()
+    loading.value = true
     passengerVehiclesMediatorService.readList().then((list: VehiclesList): void => {
       _addItemsToMap(list)
+      loading.value = false
     })
   }
 
@@ -85,7 +89,11 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   }
 
   function _readItemAsPromise(vehicleID: VehicleID): Promise<PassengerVehicle> {
-    return _valueToPromise(_readItem(vehicleID))
+    loading.value = true
+    return _valueToPromise(_readItem(vehicleID)).then((vehicle: PassengerVehicle): PassengerVehicle => {
+      loading.value = false
+      return vehicle
+    })
   }
 
   function _updateItem(vehicleID: VehicleID, { name, price }: PassengerVehicleForUpdate): void {
@@ -105,6 +113,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 interface PassengerVehiclesStoreAPI {
   readonly create: (vehicleForCreate: VehicleForCreate) => void
   readonly list: ShallowRef<VehiclesList>
+  readonly loading: ShallowRef<boolean>
   readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>
   readonly update: (vehicleID: VehicleID, parameters: PassengerVehicleForUpdate) => Promise<void>
 }
