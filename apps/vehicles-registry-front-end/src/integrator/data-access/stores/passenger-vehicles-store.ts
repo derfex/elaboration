@@ -6,7 +6,7 @@ import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/pass
 import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
-  const _vehicleID = shallowRef(0)
+  let _vehicleID = 0
   const _vehiclesMap = new Map<VehicleID, PassengerVehicle>()
 
   // # API
@@ -34,7 +34,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   function _addItemToMapOnly(vehicle: PassengerVehicle): void {
     _vehiclesMap.set(vehicle.id, vehicle)
-    _vehicleID.value = Math.max(_vehicleID.value, vehicle.id)
+    _vehicleID = Math.max(_vehicleID, vehicle.id)
   }
 
   function _addItemsToMap(vehicles: VehiclesList): void {
@@ -70,7 +70,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   // ## C. R. U. D.
 
   function _createItem({ color, model, name, price, year }: VehicleForCreate): void {
-    const id = ++_vehicleID.value
+    const id = ++_vehicleID
     _vehiclesMap.set(id, {
       color,
       id,
