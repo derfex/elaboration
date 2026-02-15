@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import { VApp } from 'vuetify/components/VApp'
 import { VAppBar, VAppBarNavIcon } from 'vuetify/components/VAppBar'
 import { VIcon } from 'vuetify/components/VIcon'
@@ -15,7 +15,7 @@ const appTitle = 'Vehicles registry application'
 function vAppBarNavIconClickHandler(): void {
   vNavigationDrawerVisible.value = !vNavigationDrawerVisible.value
 }
-const vNavigationDrawerVisible = ref(false)
+const vNavigationDrawerVisible = shallowRef(false)
 
 const navigationItems = [
   {

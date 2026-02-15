@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { type Ref, ref } from 'vue'
+import { type ShallowRef, shallowRef } from 'vue'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { assertDefined } from '../../dev/dev-error.utility'
 import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/passenger-vehicles-for-details.type'
 import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
-  const _vehicleID = ref(0)
+  const _vehicleID = shallowRef(0)
   const _vehiclesMap = new Map<VehicleID, PassengerVehicle>()
 
   // # Init
@@ -15,7 +15,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   // # API
 
-  const list = ref<VehiclesList>([])
+  const list = shallowRef<VehiclesList>([])
 
   const create = _createItem
   const read = _readItemAsPromise
@@ -104,7 +104,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
 interface PassengerVehiclesStoreAPI {
   readonly create: (vehicleForCreate: VehicleForCreate) => void
-  readonly list: Ref<VehiclesList>
+  readonly list: ShallowRef<VehiclesList>
   readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>
   readonly update: (vehicleID: VehicleID, parameters: PassengerVehicleForUpdate) => Promise<void>
 }

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
+import { computed, shallowRef, watch } from 'vue'
 import { VNumberInput } from 'vuetify/components/VNumberInput'
 import { VBtn } from 'vuetify/components/VBtn'
 import { VTextField } from 'vuetify/components/VTextField'
@@ -34,9 +34,9 @@ function closeButtonClickHandler(): void {
 
 const editSectionTitleText = 'Edit'
 const updateButtonText = 'Update'
-const name = ref(vehicle.value.name)
+const name = shallowRef(vehicle.value.name)
 const nameLabelText = 'Name'
-const price = ref(vehicle.value.price)
+const price = shallowRef(vehicle.value.price)
 const priceLabelText = priceTitleText
 
 watch(vehicle, (): void => {
