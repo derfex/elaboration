@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { type ShallowRef, shallowRef } from 'vue'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { assertDefined } from '../../dev/dev-error.utility'
+import type { PassengerVehicleForCreate } from '../../ui/passenger-vehicles/passenger-vehicles-for-create.type'
 import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/passenger-vehicles-for-details.type'
 import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
 
@@ -118,7 +119,7 @@ interface PassengerVehiclesStoreAPI {
   readonly update: (vehicleID: VehicleID, parameters: VehicleForUpdate) => Promise<void>
 }
 
-type VehicleForCreate = Omit<PassengerVehicle, 'id'>
+type VehicleForCreate = PassengerVehicleForCreate
 type VehicleForUpdate = PassengerVehicleForUpdate
 type VehicleID = PassengerVehicle['id']
 type VehiclesList = readonly PassengerVehicle[]
