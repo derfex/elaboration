@@ -24,6 +24,7 @@ const yearLabelText = 'Year'
 
 async function createButtonClickHandler(vehicleParameters: PassengerVehicleForCreate): Promise<void> {
   DevUtility.collapsedTable(`The vehicle parameters have been specified.`)(vehicleParameters)
+  passengerVehiclesStore.create(vehicleParameters)
 }
 </script>
 
