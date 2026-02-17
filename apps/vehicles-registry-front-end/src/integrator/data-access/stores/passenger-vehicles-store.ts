@@ -16,6 +16,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   const loading = shallowRef(false)
 
   const create = _createItem
+  const deleteFn = _deleteItemAsPromise
   const read = _readItemAsPromise
   const update = _updateItemAsPromise
 
@@ -25,6 +26,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   return {
     create,
+    delete: deleteFn,
     list,
     loading,
     read,
@@ -83,6 +85,16 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
     _syncList()
   }
 
+  function _deleteItem(vehicleID: VehicleID): void {
+    _vehiclesMap.delete(vehicleID)
+  }
+
+  function _deleteItemAsPromise(vehicleID: VehicleID): Promise<void> {
+    _deleteItem(vehicleID)
+    _syncList()
+    return _valueToPromise(undefined)
+  }
+
   function _readItem(vehicleID: VehicleID): PassengerVehicle {
     const vehicle = _vehiclesMap.get(vehicleID)
     assertDefined(vehicle, `Wrong data. The vehicle ID ('${vehicleID}') does not exist.`)
@@ -113,6 +125,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
 interface PassengerVehiclesStoreAPI {
   readonly create: (vehicleForCreate: VehicleForCreate) => void
+  readonly delete: (vehicleID: VehicleID) => Promise<void>
   readonly list: ShallowRef<VehiclesList>
   readonly loading: ShallowRef<boolean>
   readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>

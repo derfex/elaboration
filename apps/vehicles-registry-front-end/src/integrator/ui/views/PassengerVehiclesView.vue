@@ -26,6 +26,10 @@ const detailDrawerWidth = 900
 function detailDrawerCloseButtonClickHandler(): void {
   detailDrawerIsOpened.value = false
 }
+function detailDrawerDeleteButtonClickHandler(vehicleID: number): void {
+  detailDrawerIsOpened.value = false
+  passengerVehiclesStore.delete(vehicleID)
+}
 function detailDrawerUpdateButtonClickHandler(vehicleID: number, parameters: PassengerVehicleForUpdate): void {
   detailDrawerIsOpened.value = false
   passengerVehiclesStore.update(vehicleID, parameters)
@@ -106,6 +110,7 @@ function convertToPassengerVehicleForDataTable({
           <PassengerVehicleDetails
             :vehicle="detailDrawerVehicle"
             @close-button-click="detailDrawerCloseButtonClickHandler"
+            @delete-button-click="detailDrawerDeleteButtonClickHandler"
             @update-button-click="detailDrawerUpdateButtonClickHandler"
           />
         </template>
