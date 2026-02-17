@@ -10,6 +10,7 @@ import type { PassengerVehicleForDetails, PassengerVehicleForUpdate } from './pa
 
 const emit = defineEmits<{
   closeButtonClick: []
+  deleteButtonClick: [vehicleID: number]
   updateButtonClick: [vehicleID: number, parameters: PassengerVehicleForUpdate]
 }>()
 const props = defineProps<{
@@ -19,6 +20,15 @@ const props = defineProps<{
 // # Uses in the template
 
 const vehicle = computed<PassengerVehicleForDetails>(() => props.vehicle)
+
+// ## Delete
+
+const deleteSectionTitleText = 'Delete'
+const deleteButtonText = 'Delete'
+
+function deleteButtonClickHandler(): void {
+  emit('deleteButtonClick', vehicle.value.id)
+}
 
 // ## Read
 
@@ -119,6 +129,17 @@ function updateButtonClickHandler(): void {
           </VBtn>
         </form>
       </section>
+      <VDivider />
+      <section class="app-delete-section">
+        <h3>
+          {{ deleteSectionTitleText }}
+        </h3>
+        <div>
+          <VBtn color="error" @click="deleteButtonClickHandler">
+            {{ deleteButtonText }}
+          </VBtn>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -176,6 +197,10 @@ function updateButtonClickHandler(): void {
   letter-spacing: 0.5px
 
   color: rgba(var(--v-theme-on-surface), var(--v-high-emphasis-opacity))
+
+.app-delete-section
+  @include _local-flex-column-mixin(16px)
+  @include _local-block-padding-inline-mixin
 
 .app-update-section
   @include _local-flex-column-mixin(16px)
