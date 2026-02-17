@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { computed, shallowRef, watch } from 'vue'
-import { VNumberInput } from 'vuetify/components/VNumberInput'
 import { VBtn } from 'vuetify/components/VBtn'
+import { VDivider } from 'vuetify/components/VDivider'
+import { VNumberInput } from 'vuetify/components/VNumberInput'
 import { VTextField } from 'vuetify/components/VTextField'
 import type { PassengerVehicleForDetails, PassengerVehicleForUpdate } from './passenger-vehicles-for-details.type'
 
@@ -100,6 +101,7 @@ function updateButtonClickHandler(): void {
           </p>
         </section>
       </section>
+      <VDivider />
       <section class="app-update-section">
         <h3>{{ editSectionTitleText }}</h3>
         <form>
