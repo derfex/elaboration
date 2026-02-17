@@ -24,6 +24,12 @@ const navigationItems = [
     title: 'Registry',
     value: 'registry',
   },
+  {
+    icon: 'mdi-table-row-plus-after',
+    path: '/create',
+    title: 'Create new vehicle',
+    value: 'create',
+  },
 ]
 </script>
 
