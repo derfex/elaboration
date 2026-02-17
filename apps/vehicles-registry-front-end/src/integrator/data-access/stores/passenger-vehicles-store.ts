@@ -96,14 +96,14 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
     })
   }
 
-  function _updateItem(vehicleID: VehicleID, { name, price }: PassengerVehicleForUpdate): void {
+  function _updateItem(vehicleID: VehicleID, { name, price }: VehicleForUpdate): void {
     const vehicleOld = _vehiclesMap.get(vehicleID)
     assertDefined(vehicleOld, `Wrong data. The vehicle ID ('${vehicleID}') does not exist.`)
     const { color, id, model, year } = vehicleOld
     _vehiclesMap.set(id, { color, id, model, name, price, year })
   }
 
-  function _updateItemAsPromise(vehicleID: VehicleID, parameters: PassengerVehicleForUpdate): Promise<void> {
+  function _updateItemAsPromise(vehicleID: VehicleID, parameters: VehicleForUpdate): Promise<void> {
     _updateItem(vehicleID, parameters)
     _syncList()
     return _valueToPromise(undefined)
@@ -115,10 +115,11 @@ interface PassengerVehiclesStoreAPI {
   readonly list: ShallowRef<VehiclesList>
   readonly loading: ShallowRef<boolean>
   readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>
-  readonly update: (vehicleID: VehicleID, parameters: PassengerVehicleForUpdate) => Promise<void>
+  readonly update: (vehicleID: VehicleID, parameters: VehicleForUpdate) => Promise<void>
 }
 
 type VehicleForCreate = Omit<PassengerVehicle, 'id'>
+type VehicleForUpdate = PassengerVehicleForUpdate
 type VehicleID = PassengerVehicle['id']
 type VehiclesList = readonly PassengerVehicle[]
 type VehiclesMap = ReadonlyMap<VehicleID, PassengerVehicle>
