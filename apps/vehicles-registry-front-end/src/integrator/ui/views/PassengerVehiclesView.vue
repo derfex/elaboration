@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, shallowRef } from 'vue'
+import { VBtn } from 'vuetify/components/VBtn'
 import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
-import { VTextField } from 'vuetify/components/VTextField'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
 import { DevUtility } from '../../dev/dev.utility'
@@ -19,6 +19,8 @@ const passengerVehiclesStore = usePassengerVehiclesStore()
 
 // # Uses in the template
 
+const createRouteButtonText = 'Create new vehicle'
+
 const detailDrawerIsOpened = shallowRef(false)
 const detailDrawerLocation = 'right'
 const detailDrawerVehicle = shallowRef<PassengerVehicleForDetails | null>(null)
@@ -35,7 +37,6 @@ function detailDrawerUpdateButtonClickHandler(vehicleID: number, parameters: Pas
   passengerVehiclesStore.update(vehicleID, parameters)
 }
 
-const searchFieldPlaceholder = 'Vehicle name'
 const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
   convertToPassengerVehiclesForDataTable(passengerVehiclesStore.list),
 )
@@ -85,14 +86,13 @@ function convertToPassengerVehicleForDataTable({
 <template>
   <div>
     <div class="app-component-independent-root">
-      <div class="app-filters-container">
-        <div class="app-search-container">
-          <VTextField
-            :placeholder="searchFieldPlaceholder"
-            density="compact"
-            variant="outlined"
-          />
-        </div>
+      <div>
+        <RouterLink
+          to="/create"
+          class="app-control-panel-route-item"
+        >
+          <VBtn>{{ createRouteButtonText }}</VBtn>
+        </RouterLink>
       </div>
       <PassengerVehiclesDataTableVirtual
         :list="tableList"
@@ -120,14 +120,18 @@ function convertToPassengerVehicleForDataTable({
 </template>
 
 <style lang="sass" scoped>
+@mixin _local-flex-column-mixin($_row-gap)
+  display: flex
+  flex-direction: column
+  row-gap: $_row-gap
+
 .app-component-independent-root
-  padding: 24px 24px 0
+  @include _local-flex-column-mixin(16px)
+
+  padding: 24px
   height: 100%
 
-.app-filters-container
-  display: flex
-  justify-content: space-between
-
-.app-search-container
-  width: 285px
+.app-control-panel-route-item
+  display: inline-block
+  color: inherit
 </style>
