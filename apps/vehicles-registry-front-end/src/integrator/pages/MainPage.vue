@@ -49,7 +49,7 @@ const navigationItems = [
         >
           <VList nav>
             <template
-              v-for="(item) of navigationItems"
+              v-for="item of navigationItems"
               :key="item.value"
             >
               <VListItem
