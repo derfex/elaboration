@@ -30,7 +30,7 @@ const navigationItems = [
     title: 'Create new vehicle',
     value: 'create',
   },
-]
+] as const
 </script>
 
 <template>
@@ -48,19 +48,22 @@ const navigationItems = [
           app
         >
           <VList nav>
-            <VListItem
-              v-for="(item, i) of navigationItems"
-              :key="i"
-              :to="item.path"
-              :value="item"
-              color="primary"
+            <template
+              v-for="(item) of navigationItems"
+              :key="item.value"
             >
-              <template #prepend>
-                <VIcon :icon="item.icon" />
-              </template>
+              <VListItem
+                :to="item.path"
+                :value="item"
+                color="primary"
+              >
+                <template #prepend>
+                  <VIcon :icon="item.icon" />
+                </template>
 
-              <VListItemTitle>{{ item.title }}</VListItemTitle>
-            </VListItem>
+                <VListItemTitle>{{ item.title }}</VListItemTitle>
+              </VListItem>
+            </template>
           </VList>
         </VNavigationDrawer>
 
