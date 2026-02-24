@@ -35,47 +35,46 @@ const navigationItems = [
 
 <template>
   <div>
-    <div class="app-component-independent-root">
-      <VApp>
-        <VAppBar app>
-          <VAppBarNavIcon @click="vAppBarNavIconClickHandler" />
+    <VApp>
+      <VAppBar app>
+        <VAppBarNavIcon @click="vAppBarNavIconClickHandler" />
 
-          <VToolbarTitle>{{ appTitle }}</VToolbarTitle>
-        </VAppBar>
+        <VToolbarTitle>{{ appTitle }}</VToolbarTitle>
+      </VAppBar>
 
-        <VNavigationDrawer
-          v-model="vNavigationDrawerVisible"
-          app
-        >
-          <VList nav>
-            <template
-              v-for="item of navigationItems"
-              :key="item.value"
+      <VNavigationDrawer
+        v-model="vNavigationDrawerVisible"
+        app
+      >
+        <VList nav>
+          <template
+            v-for="item of navigationItems"
+            :key="item.value"
+          >
+            <VListItem
+              :to="item.path"
+              :value="item"
+              color="primary"
             >
-              <VListItem
-                :to="item.path"
-                :value="item"
-                color="primary"
-              >
-                <template #prepend>
-                  <VIcon :icon="item.icon" />
-                </template>
+              <template #prepend>
+                <VIcon :icon="item.icon" />
+              </template>
 
-                <VListItemTitle>{{ item.title }}</VListItemTitle>
-              </VListItem>
-            </template>
-          </VList>
-        </VNavigationDrawer>
+              <VListItemTitle>{{ item.title }}</VListItemTitle>
+            </VListItem>
+          </template>
+        </VList>
+      </VNavigationDrawer>
 
-        <VMain>
-          <RouterView />
-        </VMain>
-      </VApp>
-    </div>
+      <VMain>
+        <RouterView />
+      </VMain>
+    </VApp>
   </div>
 </template>
 
 <style lang="sass" scoped>
-.app-component-independent-root
-  height: 100%
+// Note about height.
+// `.app-component-independent-root` with `height: 100%` is not used.
+// A private `<div>` inside `VApp` has `min-height: 100dvh`.
 </style>
