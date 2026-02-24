@@ -29,7 +29,7 @@ async function createButtonClickHandler(vehicleParameters: PassengerVehicleForCr
 </script>
 
 <template>
-  <div class="app-component-root">
+  <div>
     <div class="app-component-independent-root">
       <PassengerVehicleCreation
         :color="color"
@@ -50,9 +50,6 @@ async function createButtonClickHandler(vehicleParameters: PassengerVehicleForCr
 </template>
 
 <style lang="sass" scoped>
-.app-component-root
-  height: 100%
-
 .app-component-independent-root
   padding: 24px
   height: 100%

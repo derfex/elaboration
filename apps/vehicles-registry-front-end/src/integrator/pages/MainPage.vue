@@ -67,7 +67,7 @@ const navigationItems = [
       </VNavigationDrawer>
 
       <VMain>
-        <RouterView />
+        <RouterView class="app-router-view-component-instance" />
       </VMain>
     </VApp>
   </div>
@@ -77,4 +77,7 @@ const navigationItems = [
 // Note about height.
 // `.app-component-independent-root` with `height: 100%` is not used.
 // A private `<div>` inside `VApp` has `min-height: 100dvh`.
+
+.app-router-view-component-instance
+  height: 100%
 </style>
