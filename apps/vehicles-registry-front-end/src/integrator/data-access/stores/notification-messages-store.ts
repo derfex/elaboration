@@ -31,11 +31,12 @@ export const useNotificationMessagesStore = defineStore('notification-messages',
   }
 })
 
-type List = readonly NotificationMessage[]
-interface NotificationMessage {
+export interface NotificationMessage {
   readonly color: 'error' | 'success'
   readonly text: string
 }
+
+type List = readonly NotificationMessage[]
 interface NotificationMessagesStoreAPI {
   readonly create: (message: NotificationMessage) => void
   readonly queue: ComputedRef<Queue>

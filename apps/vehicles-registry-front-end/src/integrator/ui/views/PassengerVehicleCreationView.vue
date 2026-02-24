@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useNotificationMessagesStore } from '../../data-access/stores/notification-messages-store'
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
 import { DevUtility } from '../../dev/dev.utility'
 import type { PassengerVehicleForCreate } from '../passenger-vehicles/passenger-vehicles-for-create.type'
@@ -6,6 +7,7 @@ import PassengerVehicleCreation from '../passenger-vehicles/PassengerVehicleCrea
 
 // # Private configuration
 
+const notificationMessagesStore = useNotificationMessagesStore()
 const passengerVehiclesStore = usePassengerVehiclesStore()
 
 // # Uses in the template
@@ -25,6 +27,14 @@ const yearLabelText = 'Year'
 async function createButtonClickHandler(vehicleParameters: PassengerVehicleForCreate): Promise<void> {
   DevUtility.collapsedTable(`The vehicle parameters have been specified.`)(vehicleParameters)
   passengerVehiclesStore.create(vehicleParameters)
+  addToNotificationMessageStore(vehicleParameters.name)
+}
+
+// # Private
+
+function addToNotificationMessageStore(name: PassengerVehicleForCreate['name']): void {
+  const text = `The vehicle with name “${name}” has been created.`
+  notificationMessagesStore.create({ color: 'success', text })
 }
 </script>
 

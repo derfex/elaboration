@@ -1,12 +1,21 @@
 <script lang="ts" setup>
-import { shallowRef } from 'vue'
+import { shallowRef, watch } from 'vue'
 import { VApp } from 'vuetify/components/VApp'
 import { VAppBar, VAppBarNavIcon } from 'vuetify/components/VAppBar'
 import { VIcon } from 'vuetify/components/VIcon'
 import { VList, VListItem, VListItemTitle } from 'vuetify/components/VList'
 import { VMain } from 'vuetify/components/VMain'
 import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
+import { VSnackbarQueue } from 'vuetify/components/VSnackbarQueue'
 import { VToolbarTitle } from 'vuetify/components/VToolbar'
+import {
+  type NotificationMessage,
+  useNotificationMessagesStore,
+} from '../data-access/stores/notification-messages-store'
+
+// # Private configuration
+
+const notificationMessagesStore = useNotificationMessagesStore()
 
 // # Uses in the template
 
@@ -31,6 +40,14 @@ const navigationItems = [
     value: 'create',
   },
 ] as const
+
+const snackbarQueueModel = shallowRef(notificationMessagesStore.queue)
+watch(notificationMessagesStore, (): void => {
+  snackbarQueueModel.value = notificationMessagesStore.queue
+})
+function snackbarQueueModelValueUpdateHandler(queue: readonly NotificationMessage[]): void {
+  notificationMessagesStore.setQueue(queue)
+}
 </script>
 
 <template>
@@ -68,6 +85,11 @@ const navigationItems = [
 
       <VMain>
         <RouterView class="app-router-view-component-instance" />
+
+        <VSnackbarQueue
+          :model-value="notificationMessagesStore.queue"
+          @update:model-value="snackbarQueueModelValueUpdateHandler"
+        />
       </VMain>
     </VApp>
   </div>
