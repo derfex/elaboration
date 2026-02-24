@@ -1,0 +1,48 @@
+import { defineStore } from 'pinia'
+import { computed, type ComputedRef, shallowRef } from 'vue'
+
+export const useNotificationMessagesStore = defineStore('notification-messages', (): NotificationMessagesStoreAPI => {
+  const list = shallowRef<List>([])
+
+  // # API
+
+  const create = _createItem
+  const queue = computed(() => _createQueue(list.value))
+  const setQueue = _setQueue
+
+  return {
+    create,
+    queue,
+    setQueue,
+  }
+
+  // # Private logic
+
+  function _createItem({ color, text }: NotificationMessage): void {
+    list.value = [...list.value, { color, text }]
+  }
+
+  function _createQueue(list: List): Queue {
+    return list.map(({ color, text }: NotificationMessage): QueueNotificationMessage => ({ color, text }))
+  }
+
+  function _setQueue(queue: Queue): void {
+    list.value = queue.map(({ color, text }: NotificationMessage): NotificationMessage => ({ color, text }))
+  }
+})
+
+type List = readonly NotificationMessage[]
+interface NotificationMessage {
+  readonly color: 'error' | 'success'
+  readonly text: string
+}
+interface NotificationMessagesStoreAPI {
+  readonly create: (message: NotificationMessage) => void
+  readonly queue: ComputedRef<Queue>
+  readonly setQueue: (queue: Queue) => void
+}
+interface QueueNotificationMessage {
+  readonly color: NotificationMessage['color']
+  readonly text: NotificationMessage['text']
+}
+type Queue = readonly QueueNotificationMessage[]
