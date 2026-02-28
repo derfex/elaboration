@@ -4,7 +4,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      component: (): RouteComponent => import('../ui/views/PassengerVehiclesView.vue'),
+      component: (): RouteComponent => import('../ui/views/PassengerVehiclesRegistryView.vue'),
       name: 'registry',
       path: '/',
     },
