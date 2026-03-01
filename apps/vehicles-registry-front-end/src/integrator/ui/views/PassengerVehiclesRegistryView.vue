@@ -3,8 +3,10 @@ import { computed, shallowRef } from 'vue'
 import { VBtn } from 'vuetify/components/VBtn'
 import { VNavigationDrawer } from 'vuetify/components/VNavigationDrawer'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
+import { useNotificationMessagesStore } from '../../data-access/stores/notification-messages-store'
 import { usePassengerVehiclesStore } from '../../data-access/stores/passenger-vehicles-store'
 import { DevUtility } from '../../dev/dev.utility'
+import type { PassengerVehicleForCreate } from '../passenger-vehicles/passenger-vehicles-for-create.type'
 import type { PassengerVehicleForDataTable } from '../passenger-vehicles/passenger-vehicles-for-data-table.type'
 import type {
   PassengerVehicleForDetails,
@@ -15,6 +17,7 @@ import PassengerVehiclesDataTableVirtual from '../passenger-vehicles/PassengerVe
 
 // # Private configuration
 
+const notificationMessagesStore = useNotificationMessagesStore()
 const passengerVehiclesStore = usePassengerVehiclesStore()
 
 // # Uses in the template
@@ -28,19 +31,22 @@ const detailDrawerWidth = 900
 function detailDrawerCloseButtonClickHandler(): void {
   detailDrawerIsOpened.value = false
 }
-function detailDrawerDeleteButtonClickHandler(vehicleID: number): void {
+async function detailDrawerDeleteButtonClickHandler(vehicleID: number): Promise<void> {
   detailDrawerIsOpened.value = false
-  passengerVehiclesStore.delete(vehicleID)
+  const { name } = await passengerVehiclesStore.read(vehicleID)
+  await passengerVehiclesStore.delete(vehicleID)
+  addToNotificationMessageStoreAboutDelete(name)
 }
 function detailDrawerUpdateButtonClickHandler(vehicleID: number, parameters: PassengerVehicleForUpdate): void {
   detailDrawerIsOpened.value = false
   passengerVehiclesStore.update(vehicleID, parameters)
+  addToNotificationMessageStoreAboutUpdate(parameters.name)
 }
 
 const tableList = computed<readonly PassengerVehicleForDataTable[]>(() =>
   convertToPassengerVehiclesForDataTable(passengerVehiclesStore.list),
 )
-const tableLoading = computed(() => passengerVehiclesStore.loading)
+const tableLoading = computed<boolean>(() => passengerVehiclesStore.loading)
 
 async function tableRowClickHandler(vehicleID: number): Promise<void> {
   const vehicle = await passengerVehiclesStore.read(vehicleID)
@@ -51,6 +57,16 @@ async function tableRowClickHandler(vehicleID: number): Promise<void> {
 }
 
 // # Private
+
+function addToNotificationMessageStoreAboutDelete(name: PassengerVehicleForCreate['name']): void {
+  const text = `The vehicle with name “${name}” has been deleted.`
+  notificationMessagesStore.create({ color: 'success', text })
+}
+
+function addToNotificationMessageStoreAboutUpdate(name: PassengerVehicleForCreate['name']): void {
+  const text = `The vehicle with name “${name}” has been updated.`
+  notificationMessagesStore.create({ color: 'success', text })
+}
 
 function convertToPassengerVehiclesForDataTable(
   list: readonly PassengerVehicle[],
