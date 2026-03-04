@@ -1,5 +1,6 @@
 import type { PassengerVehicle } from '../../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import type { PassengerVehicleForBE } from './passenger-vehicles-for-be.type'
+import { convertToPassengerVehicles } from './passenger-vehicles.utility'
 
 export class PassengerVehiclesMediatorService {
   public readList(): Promise<readonly PassengerVehicle[]> {
@@ -15,7 +16,7 @@ export class PassengerVehiclesMediatorService {
       }),
     )
     return new Promise((resolve): void => {
-      resolve(list)
+      resolve(convertToPassengerVehicles(listForBE))
     })
   }
 }
