@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { type ShallowRef, shallowRef } from 'vue'
+import { computed, type ComputedRef, shallowRef } from 'vue'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { assertDefined } from '../../dev/dev-error.utility'
 import type { PassengerVehicleForCreate } from '../../ui/passenger-vehicles/passenger-vehicles-for-create.type'
@@ -7,13 +7,15 @@ import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/pass
 import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
+  const _list = shallowRef<VehiclesList>([])
+  const _loading = shallowRef(false)
   let _vehicleID = 0
   const _vehiclesMap = new Map<VehicleID, PassengerVehicle>()
 
   // # API
 
-  const list = shallowRef<VehiclesList>([])
-  const loading = shallowRef(false)
+  const list = computed<VehiclesList>(() => _list.value)
+  const loading = computed<boolean>(() => _loading.value)
 
   const create = _createItem
   const deleteFn = _deleteItemAsPromise
@@ -49,10 +51,10 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 
   function _initStore(): void {
     const passengerVehiclesMediatorService = new PassengerVehiclesMediatorService()
-    loading.value = true
+    _loading.value = true
     passengerVehiclesMediatorService.readList().then((list: VehiclesList): void => {
       _addItemsToMap(list)
-      loading.value = false
+      _loading.value = false
     })
   }
 
@@ -67,7 +69,7 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   }
 
   function _syncList(): void {
-    list.value = _mapToArray(_vehiclesMap)
+    _list.value = _mapToArray(_vehiclesMap)
   }
 
   // ## C. R. U. D.
@@ -102,9 +104,9 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   }
 
   function _readItemAsPromise(vehicleID: VehicleID): Promise<PassengerVehicle> {
-    loading.value = true
+    _loading.value = true
     return _valueToPromise(_readItem(vehicleID)).then((vehicle: PassengerVehicle): PassengerVehicle => {
-      loading.value = false
+      _loading.value = false
       return vehicle
     })
   }
@@ -126,8 +128,8 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
 interface PassengerVehiclesStoreAPI {
   readonly create: (vehicleForCreate: VehicleForCreate) => void
   readonly delete: (vehicleID: VehicleID) => Promise<void>
-  readonly list: ShallowRef<VehiclesList>
-  readonly loading: ShallowRef<boolean>
+  readonly list: ComputedRef<VehiclesList>
+  readonly loading: ComputedRef<boolean>
   readonly read: (vehicleID: VehicleID) => Promise<PassengerVehicle>
   readonly update: (vehicleID: VehicleID, parameters: VehicleForUpdate) => Promise<void>
 }
