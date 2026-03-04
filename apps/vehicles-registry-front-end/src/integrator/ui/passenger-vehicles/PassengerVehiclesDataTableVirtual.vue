@@ -48,6 +48,7 @@ function tableRowClickHandler(event: PointerEvent, { item }: VuetifyVDataTableRo
 
 // # Private
 
+// TODO: Specify the types using corresponding API if they are correct.
 type VuetifyVDataTableHeaders = VuetifyVDataTableHeader[] | undefined
 type VuetifyVDataTableHeader = Readonly<{
   readonly key?: (string & {}) | 'data-table-group' | 'data-table-select' | 'data-table-expand' | undefined
