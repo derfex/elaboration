@@ -1,21 +1,23 @@
 import { defineStore } from 'pinia'
-import { computed, type ComputedRef, shallowRef } from 'vue'
+import { computed, type ComputedRef, shallowRef, watch } from 'vue'
 import type { PassengerVehicle } from '../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
 import { assertDefined } from '../../dev/dev-error.utility'
 import type { PassengerVehicleForCreate } from '../../ui/passenger-vehicles/passenger-vehicles-for-create.type'
 import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/passenger-vehicles-for-details.type'
-import { PassengerVehiclesMediatorService } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.service'
+import { usePassengerVehiclesMediator } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
+  const _errors = shallowRef<readonly (Error | null)[]>([])
   const _list = shallowRef<VehiclesList>([])
   const _loading = shallowRef(false)
+  const _mediatorLoading = shallowRef(false)
   let _vehicleID = 0
   const _vehiclesMap = new Map<VehicleID, PassengerVehicle>()
 
   // # API
 
   const list = computed<VehiclesList>(() => _list.value)
-  const loading = computed<boolean>(() => _loading.value)
+  const loading = computed<boolean>(() => _loading.value || _mediatorLoading.value)
 
   const create = _createItem
   const deleteFn = _deleteItemAsPromise
@@ -50,11 +52,16 @@ export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): P
   }
 
   function _initStore(): void {
-    const passengerVehiclesMediatorService = new PassengerVehiclesMediatorService()
-    _loading.value = true
-    passengerVehiclesMediatorService.readList().then((list: VehiclesList): void => {
+    const { error, list, loading } = usePassengerVehiclesMediator()
+    watch(error, (error: Error | null): void => {
+      _errors.value = [..._errors.value, error]
+    })
+    _mediatorLoading.value = loading.value
+    watch(loading, (loading: boolean): void => {
+      _mediatorLoading.value = loading
+    })
+    watch(list, (list: VehiclesList): void => {
       _addItemsToMap(list)
-      _loading.value = false
     })
   }
 
