@@ -3,8 +3,8 @@ import { useFetch } from '../use-fetch'
 import type { PassengerVehicleForBE } from './passenger-vehicles-for-be.type'
 
 export function usePassengerVehiclesForBEFromPrioritySource(): UsePassengerVehiclesForBEFromPrioritySourceResult {
-  const _url = ''
   const _vehiclesFetchResult = useFetch<VehiclesForBE, Error>(_url, [])
+  const _url = import.meta.env.VITE_PRIORITY_SOURCE_API_URL
 
   // # API
 
