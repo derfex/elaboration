@@ -13,6 +13,8 @@ export function useFetch<TData, TError>(url: string, initialValue: TData): UseFe
       _loading.value = false
     })
 
+  // # API
+
   const data = computed<TData>(() => _data.value)
   const error = computed<TError | null>(() => _error.value)
   const loading = computed(() => _loading.value)
