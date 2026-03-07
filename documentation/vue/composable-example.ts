@@ -1,3 +1,5 @@
+// `*.composable.ts` file.
+
 // TS modules imports.
 import { computed, type ComputedRef, shallowRef } from 'vue'
 
@@ -20,6 +22,7 @@ export function useSomething(): UseSomethingResult {
   }
 }
 
+// TS interfaces, types.
 interface UseSomethingResult {
   readonly something: ComputedRef<boolean>
 }
