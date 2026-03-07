@@ -1,9 +1,0 @@
-{
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": ["vehicles-registry-front-end"],
-  "name": "vehicles-registry-front-end-e2e",
-  "projectType": "application",
-  "sourceRoot": "apps/vehicles-registry-front-end-e2e/src",
-  "// targets": "to see all targets run: nx show project vehicles-registry-front-end-e2e --web",
-  "targets": {}
-}

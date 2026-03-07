@@ -60,7 +60,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx nx run vehicles-registry-front-end:preview',
+    command: 'npx nx run vehicles-registry-fe:preview',
     cwd: workspaceRoot,
     reuseExistingServer: true,
     url: 'http://localhost:4300',
