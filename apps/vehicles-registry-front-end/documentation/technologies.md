@@ -15,6 +15,11 @@
     - ES6 modules.
     - Promises.
 
+### SASS
+
+- `@include`
+- `@mixin`
+
 ### TypeScript
 
 - `as const`
@@ -30,8 +35,13 @@
 
 - Composition API
 - Composables
+
 - `<script lang="ts" setup>`
 - `<style lang="sass" scoped>`
+
+- `defineEmits`
+- `defineProps`
+
 - Reactivity API: Core
   - `computed` 
   - `watch` 
