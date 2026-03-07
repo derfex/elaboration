@@ -2,6 +2,8 @@
 
 ## Technologies
 
+### ECMAScript
+
 - ECMAScript 2017
     - `async`, `await`.
     - Trailing commas.
@@ -13,8 +15,28 @@
     - ES6 modules.
     - Promises.
 
-- Vite
-  - `import.meta.env.VITE_*`
+### TypeScript
+
+- `as const`
+- `asserts`
+- `readonly`
+- `satisfies`
+
+### Vite
+
+- `import.meta.env.VITE_*`
+
+### Vue
+
+- Composition API
+- Composables
+- `<script lang="ts" setup>`
+- `<style lang="sass" scoped>`
+- Reactivity API: Core
+  - `computed` 
+  - `watch` 
+- Reactivity API: Advanced
+  - `shallowRef`
 
 ## Dependencies
 
