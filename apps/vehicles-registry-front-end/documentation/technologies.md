@@ -6,12 +6,15 @@
     - `async`, `await`.
     - Trailing commas.
 - ECMAScript 2015 (6)
-    - `const`, `let`.
     - Arrow functions.
+    - `const`, `let`.
     - ES6 classes.
-    - ES6 modules.
     - ES6 collections: `Map`.
+    - ES6 modules.
     - Promises.
+
+- Vite
+  - `import.meta.env.VITE_*`
 
 ## Dependencies
 
