@@ -2,12 +2,12 @@ import { defineStore } from 'pinia'
 import { computed, type ComputedRef, shallowRef } from 'vue'
 
 export const useNotificationMessagesStore = defineStore('notification-messages', (): NotificationMessagesStoreAPI => {
-  const list = shallowRef<List>([])
+  const _list = shallowRef<List>([])
 
   // # API
 
   const create = _createItem
-  const queue = computed(() => _createQueue(list.value))
+  const queue = computed(() => _createQueue(_list.value))
   const setQueue = _setQueue
 
   return {
@@ -19,7 +19,7 @@ export const useNotificationMessagesStore = defineStore('notification-messages',
   // # Private logic
 
   function _createItem({ color, text }: NotificationMessage): void {
-    list.value = [...list.value, { color, text }]
+    _list.value = [..._list.value, { color, text }]
   }
 
   function _createQueue(list: List): Queue {
@@ -27,7 +27,7 @@ export const useNotificationMessagesStore = defineStore('notification-messages',
   }
 
   function _setQueue(queue: Queue): void {
-    list.value = queue.map(({ color, text }: NotificationMessage): NotificationMessage => ({ color, text }))
+    _list.value = queue.map(({ color, text }: NotificationMessage): NotificationMessage => ({ color, text }))
   }
 })
 
