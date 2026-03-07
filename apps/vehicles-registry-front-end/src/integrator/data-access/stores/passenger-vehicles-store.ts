@@ -4,7 +4,7 @@ import type { PassengerVehicle } from '../../../architecture/entities/passenger-
 import { assertDefined } from '../../dev/dev-error.utility'
 import type { PassengerVehicleForCreate } from '../../ui/passenger-vehicles/passenger-vehicles-for-create.type'
 import type { PassengerVehicleForUpdate } from '../../ui/passenger-vehicles/passenger-vehicles-for-details.type'
-import { usePassengerVehiclesMediator } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator'
+import { usePassengerVehiclesMediator } from '../back-end-api/passenger-vehicles/passenger-vehicles-mediator.composable'
 
 export const usePassengerVehiclesStore = defineStore('passenger-vehicles', (): PassengerVehiclesStoreAPI => {
   const _errors = shallowRef<readonly (Error | null)[]>([])

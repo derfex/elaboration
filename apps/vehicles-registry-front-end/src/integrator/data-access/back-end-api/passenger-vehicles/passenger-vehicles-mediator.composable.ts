@@ -1,7 +1,7 @@
 import { computed, type ComputedRef } from 'vue'
 import type { PassengerVehicle } from '../../../../architecture/entities/passenger-vehicles/passenger-vehicles.type'
-import { usePassengerVehiclesForBEFromPrioritySource } from './passenger-vehicles-for-be-from-priority-source'
-import { usePassengerVehiclesFromLocalSource } from './passenger-vehicles-from-local-source'
+import { usePassengerVehiclesForBEFromPrioritySource } from './passenger-vehicles-for-be-from-priority-source.composable'
+import { usePassengerVehiclesFromLocalSource } from './passenger-vehicles-from-local-source.composable'
 import { convertToPassengerVehicles } from './passenger-vehicles.utility'
 
 export function usePassengerVehiclesMediator(): UsePassengerVehiclesMediatorResult {

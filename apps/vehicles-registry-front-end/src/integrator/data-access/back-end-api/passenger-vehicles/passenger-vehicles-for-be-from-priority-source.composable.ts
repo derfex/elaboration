@@ -1,5 +1,5 @@
 import { computed, type ComputedRef } from 'vue'
-import { useFetch } from '../use-fetch'
+import { useFetch } from '../fetch.composable'
 import type { PassengerVehicleForBE } from './passenger-vehicles-for-be.type'
 
 export function usePassengerVehiclesForBEFromPrioritySource(): UsePassengerVehiclesForBEFromPrioritySourceResult {
