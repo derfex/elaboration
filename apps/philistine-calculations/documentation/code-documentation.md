@@ -1,4 +1,4 @@
-# ProjectX. Frontend
+# Philistine calculations
 
 ## Aliases
 
