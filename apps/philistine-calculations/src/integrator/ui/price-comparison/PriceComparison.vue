@@ -76,7 +76,7 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
             type="button"
             @click="clearFormButtonClickHandler"
           >
-            <span class="pi pi-eraser"></span>
+            <span class="pi pi-eraser" />
             {{ clearFormButtonText }}
           </button>
         </div>
