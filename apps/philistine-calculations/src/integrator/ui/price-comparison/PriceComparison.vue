@@ -3,6 +3,11 @@ import { computed, ref, watch } from 'vue'
 import ConvenientNumberInput from '|ui-kit/form/ConvenientNumberInput.vue'
 import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
+// # Private configuration
+
+let _inputGroupKey = 0
+const _inputGroupQuantity = 3
+
 // # API
 
 const props = defineProps<{
@@ -18,39 +23,26 @@ const props = defineProps<{
 
 // # Uses in the template
 
-const r0PackageSize = ref(props.packageSize)
-const r0PackageSizeString = ref('' + props.packageSize)
-const r0Price = ref(props.price)
-const r0PriceString = ref('' + props.price)
-const r0CostPerUnit = computed(() => calculateCostPerUnit(r0Price.value, r0PackageSize.value))
-const r1PackageSize = ref(props.packageSize)
-const r1PackageSizeString = ref('' + props.packageSize)
-const r1Price = ref(props.price)
-const r1PriceString = ref('' + props.price)
-const r1CostPerUnit = computed(() => calculateCostPerUnit(r1Price.value, r1PackageSize.value))
-const r2PackageSize = ref(props.packageSize)
-const r2PackageSizeString = ref('' + props.packageSize)
-const r2Price = ref(props.price)
-const r2PriceString = ref('' + props.price)
-const r2CostPerUnit = computed(() => calculateCostPerUnit(r2Price.value, r2PackageSize.value))
+const inputGroups = ref<InputGroupItem[]>(
+  _createInputGroups(props.packageSize, props.price, _inputGroupQuantity) as InputGroupItem[],
+)
+const costPerUnitList = computed<readonly number[]>(() => {
+  return inputGroups.value.map(({ packageSize, price }: InputGroupItem) => calculateCostPerUnit(price, packageSize))
+})
 
 watch(props, (): void => {
-  r0PackageSize.value = props.packageSize
-  r0Price.value = props.price
-  r1PackageSize.value = props.packageSize
-  r1Price.value = props.price
-  r2PackageSize.value = props.packageSize
-  r2Price.value = props.price
+  inputGroups.value.forEach((group: InputGroupItem): void => {
+    group.packageSize = props.packageSize
+    group.price = props.price
+  })
 })
 
 const clearFormButtonText = 'Clear all “Price” and “Package size”'
 function clearFormButtonClickHandler(): void {
-  r0PackageSizeString.value = ''
-  r0PriceString.value = ''
-  r1PackageSizeString.value = ''
-  r1PriceString.value = ''
-  r2PackageSizeString.value = ''
-  r2PriceString.value = ''
+  inputGroups.value.forEach((group: InputGroupItem): void => {
+    group.packageSizeString = ''
+    group.priceString = ''
+  })
 }
 const packageSizeConvenientNumberInputOperands = [0.01, 0.1] as const
 const priceConvenientNumberInputOperands = [0.01, 100] as const
@@ -60,6 +52,35 @@ const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, mi
 
 function calculateCostPerUnit(price: number, packageSize: number): number {
   return price / packageSize
+}
+
+function _createInputGroupItem(packageSize: number, price: number): InputGroupItem {
+  const key = ++_inputGroupKey
+  const packageSizeString = '' + packageSize
+  const priceString = '' + price
+  return {
+    key,
+    packageSize,
+    packageSizeString,
+    price,
+    priceString,
+  }
+}
+
+function _createInputGroups(packageSize: number, price: number, quantity: number): readonly InputGroupItem[] {
+  const groups = []
+  for (let i = 0; i < quantity; i++) {
+    groups.push(_createInputGroupItem(packageSize, price))
+  }
+  return groups
+}
+
+interface InputGroupItem {
+  readonly key: number
+  packageSize: number
+  packageSizeString: string
+  price: number
+  priceString: string
 }
 </script>
 
@@ -86,93 +107,37 @@ function calculateCostPerUnit(price: number, packageSize: number): number {
             <span>{{ props.packageSizeTitleText }}</span>
             <span>{{ props.costPerUnitTitleText }}</span>
           </div>
-          <div class="app-form-table__row">
-            <label class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
-              <ConvenientNumberInput
-                v-model:number="r0Price"
-                v-model:string="r0PriceString"
-                :input-placeholder="props.priceInputPlaceholder"
-                :operands="priceConvenientNumberInputOperands"
-              />
-            </label>
-            <label class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
-              <ConvenientNumberInput
-                v-model:number="r0PackageSize"
-                v-model:string="r0PackageSizeString"
-                :input-placeholder="props.packageSizeInputPlaceholder"
-                :operands="packageSizeConvenientNumberInputOperands"
-              />
-            </label>
-            <div class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
-              <div class="app-rounded-number-box">
-                <RoundedNumber
-                  :number="r0CostPerUnit"
-                  :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+          <template v-for="(item, index) in inputGroups" :key="item.key">
+            <div class="app-form-table__row">
+              <label class="app-form-table__value-container">
+                <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
+                <ConvenientNumberInput
+                  v-model:number="item.price"
+                  v-model:string="item.priceString"
+                  :input-placeholder="props.priceInputPlaceholder"
+                  :operands="priceConvenientNumberInputOperands"
                 />
+              </label>
+              <label class="app-form-table__value-container">
+                <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
+                <ConvenientNumberInput
+                  v-model:number="item.packageSize"
+                  v-model:string="item.packageSizeString"
+                  :input-placeholder="props.packageSizeInputPlaceholder"
+                  :operands="packageSizeConvenientNumberInputOperands"
+                />
+              </label>
+              <div class="app-form-table__value-container">
+                <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
+                <div class="app-rounded-number-box">
+                  <RoundedNumber
+                    :number="costPerUnitList[index]"
+                    :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="app-form-table__row">
-            <label class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
-              <ConvenientNumberInput
-                v-model:number="r1Price"
-                v-model:string="r1PriceString"
-                :input-placeholder="props.priceInputPlaceholder"
-                :operands="priceConvenientNumberInputOperands"
-              />
-            </label>
-            <label class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
-              <ConvenientNumberInput
-                v-model:number="r1PackageSize"
-                v-model:string="r1PackageSizeString"
-                :input-placeholder="props.packageSizeInputPlaceholder"
-                :operands="packageSizeConvenientNumberInputOperands"
-              />
-            </label>
-            <div class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
-              <div class="app-rounded-number-box">
-                <RoundedNumber
-                  :number="r1CostPerUnit"
-                  :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="app-form-table__row">
-            <label class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
-              <ConvenientNumberInput
-                v-model:number="r2Price"
-                v-model:string="r2PriceString"
-                :input-placeholder="props.priceInputPlaceholder"
-                :operands="priceConvenientNumberInputOperands"
-              />
-            </label>
-            <label class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.packageSizeTitleText }}</span>
-              <ConvenientNumberInput
-                v-model:number="r2PackageSize"
-                v-model:string="r2PackageSizeString"
-                :input-placeholder="props.packageSizeInputPlaceholder"
-                :operands="packageSizeConvenientNumberInputOperands"
-              />
-            </label>
-            <div class="app-form-table__value-container">
-              <span class="app-form-table__value-title">{{ props.costPerUnitTitleText }}</span>
-              <div class="app-rounded-number-box">
-                <RoundedNumber
-                  :number="r2CostPerUnit"
-                  :number-of-digits-after-decimal-point="roundedNumberComponentNumberOfDigitsAfterDecimalPoint"
-                />
-              </div>
-            </div>
-          </div>
+          </template>
         </div>
       </form>
     </div>
