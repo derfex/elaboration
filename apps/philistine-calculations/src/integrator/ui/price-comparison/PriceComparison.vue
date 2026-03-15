@@ -27,7 +27,7 @@ const inputGroups = ref<InputGroupItem[]>(
   _createInputGroups(props.packageSize, props.price, _inputGroupQuantity) as InputGroupItem[],
 )
 const costPerUnitList = computed<readonly number[]>(() => {
-  return inputGroups.value.map(({ packageSize, price }: InputGroupItem) => calculateCostPerUnit(price, packageSize))
+  return inputGroups.value.map(({ packageSize, price }: InputGroupItem) => _calculateCostPerUnit(price, packageSize))
 })
 
 watch(props, (): void => {
@@ -37,6 +37,10 @@ watch(props, (): void => {
   })
 })
 
+const addInputGroupButtonText = 'Add a new row'
+function addInputGroupButtonClickHandler(): void {
+  inputGroups.value.push(_createInputGroupItem(props.packageSize, props.price))
+}
 const clearFormButtonText = 'Clear all “Price” and “Package size”'
 function clearFormButtonClickHandler(): void {
   inputGroups.value.forEach((group: InputGroupItem): void => {
@@ -50,7 +54,7 @@ const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, mi
 
 // # Private
 
-function calculateCostPerUnit(price: number, packageSize: number): number {
+function _calculateCostPerUnit(price: number, packageSize: number): number {
   return price / packageSize
 }
 
@@ -91,7 +95,15 @@ interface InputGroupItem {
         {{ props.titleText }}
       </h2>
       <form class="app-form">
-        <div>
+        <div class="app-control-panel">
+          <button
+            class="app-add-input-group-form-button"
+            type="button"
+            @click="addInputGroupButtonClickHandler"
+          >
+            <span class="mdi mdi-eraser" />
+            {{ addInputGroupButtonText }}
+          </button>
           <button
             class="app-clear-form-button"
             type="button"
@@ -107,7 +119,10 @@ interface InputGroupItem {
             <span>{{ props.packageSizeTitleText }}</span>
             <span>{{ props.costPerUnitTitleText }}</span>
           </div>
-          <template v-for="(item, index) in inputGroups" :key="item.key">
+          <template
+            v-for="(item, index) in inputGroups"
+            :key="item.key"
+          >
             <div class="app-form-table__row">
               <label class="app-form-table__value-container">
                 <span class="app-form-table__value-title">{{ props.priceTitleText }}</span>
@@ -208,8 +223,15 @@ $_root_padding: $_form-table_gap
     display: none
 
 
+.app-add-input-group-form-button
+  @include buttons.app-form-buttons_button-secondary-mixin
+
 .app-clear-form-button
   @include buttons.app-form-buttons_button-secondary-mixin
+
+.app-control-panel
+  display: flex
+  gap: 8px
 
 .app-rounded-number-box
   @include ui-kit.app-ui-kit_form-textbox-mixin
