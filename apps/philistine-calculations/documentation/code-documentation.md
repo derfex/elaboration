@@ -62,7 +62,7 @@ import AppUser from '||/integrator/ui/app-users/AppUser.vue'
 
 Aliases must be configured in two files:
 1. `tsconfig.app.json` — for correct syntax highlighting.
-2. `vite.config.ts` — for correct code assembly.
+2. `vite.config.mts` or `vite.config.mts` — for correct code assembly.
 
 
 [vue-loader's transform rules]: https://vue-loader.vuejs.org/guide/asset-url.html#transform-rules
