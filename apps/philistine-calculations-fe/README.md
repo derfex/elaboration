@@ -23,7 +23,7 @@ export default defineConfig(() => ({
 
 Run
 ```shell
-nx run philistine-calculations:build
+nx run philistine-calculations-fe:build
 ```
 
 Find the corresponding compiled files in `dist/apps/philistine-calculations`.
