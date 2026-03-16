@@ -12,6 +12,8 @@ const _inputGroupQuantity = 3
 
 const props = defineProps<{
   readonly costPerUnitTitleText: string
+  readonly deleteInputGroupButtonHintText: string
+  readonly deleteInputGroupTitleText: string
   readonly packageSize: number
   readonly packageSizeInputPlaceholder: string
   readonly packageSizeTitleText: string
@@ -49,6 +51,10 @@ function clearFormButtonClickHandler(): void {
     group.packageSizeString = ''
     group.priceString = ''
   })
+}
+const deleteInputGroupButtonIconCSSClasses = 'mdi mdi-delete-forever'
+function deleteInputGroupButtonClickHandler(groupKey: number): void {
+  inputGroups.value = inputGroups.value.filter(({ key }: InputGroupItem) => key !== groupKey)
 }
 const packageSizeConvenientNumberInputOperands = [0.01, 0.1] as const
 const priceConvenientNumberInputOperands = [0.01, 100] as const
@@ -153,6 +159,17 @@ interface InputGroupItem {
                   />
                 </div>
               </div>
+              <div class="app-form-table__value-container">
+                <span class="app-form-table__value-title">{{ props.deleteInputGroupTitleText }}</span>
+                <button
+                  class="app-delete-input-group-button"
+                  :title="props.deleteInputGroupButtonHintText"
+                  type="button"
+                  @click="deleteInputGroupButtonClickHandler(item.key)"
+                >
+                  <span :class="deleteInputGroupButtonIconCSSClasses" />
+                </button>
+              </div>
             </div>
           </template>
         </div>
@@ -191,18 +208,20 @@ $_root_padding: $_form-table_gap
 
 
 .app-form-table
+  $_delete-input-group-button-container-width: 56px
+
   display: grid
   gap: $_form-table_gap
   grid-template-columns: auto
 
   @media (layout.$app-device-width-medium <= width)
-    grid-template-columns: auto auto auto
+    grid-template-columns: auto auto auto $_delete-input-group-button-container-width
 
 .app-form-table__header-row
   display: none
   align-items: start
   gap: $_form-table_gap
-  grid-column: 1 / 4
+  grid-column: 1 / 5
 
   @media (layout.$app-device-width-medium <= width)
     display: grid
@@ -212,7 +231,7 @@ $_root_padding: $_form-table_gap
   display: grid
   align-items: start
   gap: $_form-table_gap
-  grid-column: 1 / 4
+  grid-column: 1 / 5
 
   @media (layout.$app-device-width-medium <= width)
     grid-template-columns: subgrid
@@ -231,8 +250,18 @@ $_root_padding: $_form-table_gap
 .app-clear-form-button
   @include buttons.app-form-buttons_button-secondary-mixin
 
+.app-delete-input-group-button
+  @include buttons.app-form-buttons_button-secondary-mixin
+
+  @media (layout.$app-device-width-medium <= width)
+    $_cost-per-unit-rounded-number-height: 44px
+    $_delete-input-group-button-height: $_cost-per-unit-rounded-number-height
+
+    height: $_delete-input-group-button-height
+
 .app-control-panel
   display: flex
+  flex-wrap: wrap
   gap: 8px
 
 .app-rounded-number-box
