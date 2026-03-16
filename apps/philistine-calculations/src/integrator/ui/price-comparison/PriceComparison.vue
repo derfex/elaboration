@@ -11,6 +11,7 @@ const _inputGroupQuantity = 3
 // # API
 
 const props = defineProps<{
+  readonly clearFormButtonText: string
   readonly costPerUnitTitleText: string
   readonly deleteInputGroupButtonHintText: string
   readonly deleteInputGroupTitleText: string
@@ -45,7 +46,6 @@ function addInputGroupButtonClickHandler(): void {
   inputGroups.value.push(_createInputGroupItem(props.packageSize, props.price))
 }
 const clearFormButtonIconCSSClasses = 'mdi mdi-eraser'
-const clearFormButtonText = 'Clear all “Price” and “Package size”'
 function clearFormButtonClickHandler(): void {
   inputGroups.value.forEach((group: InputGroupItem): void => {
     group.packageSizeString = ''
@@ -118,7 +118,7 @@ interface InputGroupItem {
             @click="clearFormButtonClickHandler"
           >
             <span :class="clearFormButtonIconCSSClasses" />
-            {{ clearFormButtonText }}
+            {{ props.clearFormButtonText }}
           </button>
         </div>
         <div class="app-form-table">
