@@ -8,8 +8,8 @@ import { defineConfig, type UserConfig } from 'vite'
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
-    root: __dirname,
-    cacheDir: '../../node_modules/.vite/apps/philistine-calculations',
+    root: import.meta.dirname,
+    cacheDir: '../../node_modules/.vite/apps/philistine-calculations-fe',
     server: {
       host: 'localhost',
       port: 4200,
@@ -21,14 +21,14 @@ export default defineConfig(
     plugins: [vue(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
     // Uncomment this if you are using workers.
     // worker: {
-    //   plugins: [nxViteTsPaths()],
+    //   plugins: () => [nxViteTsPaths()],
     // },
     build: {
       commonjsOptions: {
         transformMixedEsModules: true,
       },
       emptyOutDir: true,
-      outDir: '../../dist/apps/philistine-calculations',
+      outDir: '../../dist/apps/philistine-calculations-fe',
       reportCompressedSize: true,
     },
     resolve: {
@@ -43,12 +43,12 @@ export default defineConfig(
     test: {
       coverage: {
         provider: 'v8' as const,
-        reportsDirectory: '../../coverage/apps/philistine-calculations',
+        reportsDirectory: '../../coverage/apps/philistine-calculations-fe',
       },
       environment: 'jsdom',
       globals: true,
       include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-      name: 'philistine-calculations',
+      name: 'philistine-calculations-fe',
       reporters: ['default'],
       watch: false,
     },
