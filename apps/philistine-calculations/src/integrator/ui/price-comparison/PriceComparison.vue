@@ -37,10 +37,12 @@ watch(props, (): void => {
   })
 })
 
+const addInputGroupButtonIconCSSClasses = 'mdi mdi-plus'
 const addInputGroupButtonText = 'Add a new row'
 function addInputGroupButtonClickHandler(): void {
   inputGroups.value.push(_createInputGroupItem(props.packageSize, props.price))
 }
+const clearFormButtonIconCSSClasses = 'mdi mdi-eraser'
 const clearFormButtonText = 'Clear all “Price” and “Package size”'
 function clearFormButtonClickHandler(): void {
   inputGroups.value.forEach((group: InputGroupItem): void => {
@@ -101,7 +103,7 @@ interface InputGroupItem {
             type="button"
             @click="addInputGroupButtonClickHandler"
           >
-            <span class="mdi mdi-eraser" />
+            <span :class="addInputGroupButtonIconCSSClasses" />
             {{ addInputGroupButtonText }}
           </button>
           <button
@@ -109,7 +111,7 @@ interface InputGroupItem {
             type="button"
             @click="clearFormButtonClickHandler"
           >
-            <span class="mdi mdi-eraser" />
+            <span :class="clearFormButtonIconCSSClasses" />
             {{ clearFormButtonText }}
           </button>
         </div>
