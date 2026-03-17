@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteComponent } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -7,13 +7,12 @@ const router = createRouter({
     {
       children: [
         {
-          component: (): Promise<VueComponent> =>
-            import('../ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'),
+          component: (): RouteComponent => import('../ui/accruals-on-bank-deposits/AccrualsOnBankDepositsSection.vue'),
           name: 'accruals-on-bank-deposits',
           path: 'accruals-on-bank-deposits',
         },
         {
-          component: (): Promise<VueComponent> => import('../ui/price-comparison/PriceComparisonSection.vue'),
+          component: (): RouteComponent => import('../ui/price-comparison/PriceComparisonSection.vue'),
           name: 'price-comparison',
           path: 'price-comparison',
         },
@@ -26,7 +25,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: (): Promise<VueComponent> => import('../views/AboutView.vue'),
+      component: (): RouteComponent => import('../views/AboutView.vue'),
       name: 'about',
       path: '/about',
     },
@@ -34,5 +33,3 @@ const router = createRouter({
 })
 
 export default router
-
-type VueComponent = typeof import('*.vue')

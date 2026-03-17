@@ -112,14 +112,14 @@ function updateModels(number: number): void {
         type="button"
         @click="toggleButtonClickHandler"
       >
-        <span class="pi pi-pencil" />
+        <span class="mdi mdi-pencil" />
       </button>
       <button
         class="app-clear-button"
         type="button"
         @click="clearButtonClickHandler"
       >
-        <span class="pi pi-eraser" />
+        <span class="mdi mdi-eraser" />
       </button>
       <template v-if="modifiersAreShown">
         <div class="app-modifiers">
