@@ -1,0 +1,13 @@
+<div class="app-header-section-container">
+  <app-header-section />
+</div>
+<div class="app-scrollable-container">
+  <app-layout-section-separator />
+  <app-hero-section />
+  <app-layout-section-separator />
+  <app-ui-kit-section [number]="1" />
+  <app-layout-section-separator />
+</div>
+@if (loading()) {
+  <app-layout-loader />
+}

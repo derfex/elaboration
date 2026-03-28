@@ -1,0 +1,62 @@
+@use 'sass:math'
+@use '../layout/layout'
+
+@mixin app-typography-foundation_styles-mixin
+  // Inspiration: https://design.profi.travel/typemetric.
+  $_coefficient: 1.618
+  $_text-default-font-size: 16px
+  $_text-subheading-font-size: math.round($_text-default-font-size * $_coefficient)
+  $_text-heading-font-size: math.round($_text-subheading-font-size * $_coefficient)
+  $_text-title-font-size: math.round($_text-heading-font-size * $_coefficient)
+  $_text-interlinear-font-size: math.round(math.div($_text-default-font-size, $_coefficient))
+
+  :root
+    // ## Component
+
+    // ### Heading
+
+    --app-h2--font-size: #{$_text-heading-font-size}
+    --app-h3--font-size: #{$_text-subheading-font-size}
+    --app-h4--font-size: #{$_text-default-font-size}
+    --app-h5--font-size: #{$_text-interlinear-font-size}
+
+    --app-hero-title--font-size: 36px
+    @media (layout.$app-device-width-small <= width)
+      --app-hero-title--font-size: 48px
+    @media (layout.$app-device-width-medium <= width)
+      --app-hero-title--font-size: 56px
+    @media (layout.$app-device-width-large <= width)
+      --app-hero-title--font-size: #{$_text-title-font-size}
+
+    // Use `&` to avoid
+    // “
+    // Sass's behavior for declarations that appear after nested
+    // rules will be changing to match the behavior specified by CSS in an upcoming
+    // version. To keep the existing behavior, move the declaration above the nested
+    // rule. To opt into the new behavior, wrap the declaration in `& {}`.
+    //
+    // More info: https://sass-lang.com/d/mixed-decls
+    // ”
+
+    &
+      --app-hero-name--font-size: #{$_text-subheading-font-size}
+      @media (layout.$app-device-width-medium <= width)
+        --app-hero-name--font-size: #{$_text-heading-font-size}
+
+    // ### Text
+
+    &
+      --app-text-default--font-size: #{$_text-default-font-size}
+
+    &
+      --app-text-interlinear--font-size: #{$_text-interlinear-font-size}
+
+    &
+      --app-call-to-action-button--font-size: #{$_text-default-font-size}
+      @media (layout.$app-device-width-small <= width)
+        --app-call-to-action-button--font-size: #{$_text-subheading-font-size}
+
+    &
+      --app-call-to-action-description--font-size: 20px
+      @media (layout.$app-device-width-medium <= width)
+        --app-call-to-action-description--font-size: #{$_text-heading-font-size}

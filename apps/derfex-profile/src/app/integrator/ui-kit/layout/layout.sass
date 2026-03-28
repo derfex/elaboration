@@ -1,0 +1,206 @@
+$app-device-width-extra-small: 360px
+$app-device-width-small: 576px // TODO: 512px?
+$app-device-width-medium: 768px
+$app-device-width-large: 992px
+$app-device-width-extra-large: 1200px
+$app-device-width-extra-extra-large: 1400px
+
+@mixin app-layout_flex-column-mixin($_row-gap)
+  display: flex
+  flex-direction: column
+  row-gap: $_row-gap
+
+@mixin app-layout_grid-repeat-auto-fit-mixin($_column-min-width, $_gap)
+  display: grid
+  gap: $_gap
+  grid-template-columns: repeat(auto-fit, minmax($_column-min-width, 1fr))
+
+// # Padding
+// TODO: reorganize.
+
+// TODO: `$_app-layout_block-padding` is unused.
+//$_app-layout_block-padding: 16px
+$_app-layout_inline-padding: 20px
+
+// TODO: `app-layout_padding-block-mixin` is unused.
+//@mixin app-layout_padding-block-mixin
+//  padding-block: $_app-layout_block-padding
+
+@mixin app-layout_padding-inline-mixin
+  padding-inline: $_app-layout_inline-padding
+
+// TODO: `app-layout_paddings-mixin` is unused.
+//@mixin app-layout_paddings-mixin
+//  padding: $_app-layout_block-padding $app-layout_horizontal-padding
+
+// # Section
+
+$_app-layout_section-slanted-lines-width-extra-small: 0
+$_app-layout_section-slanted-lines-width-small: 8px
+$_app-layout_section-slanted-lines-width-medium: 16px
+$_app-layout_section-slanted-lines-width-large: 40px
+
+$_app-layout_section-label-size: 40px
+
+$_app-layout_section-max-width: $app-device-width-extra-extra-large
+
+@mixin app-layout_header-paddings-mixin
+  @media ($app-device-width-small <= width)
+    padding-inline: $_app-layout_section-slanted-lines-width-small
+
+  @media ($app-device-width-medium <= width)
+    margin-inline: auto
+    padding-inline: $_app-layout_section-slanted-lines-width-medium
+
+  @media ($app-device-width-large <= width)
+    padding-left: $_app-layout_section-label-size + $_app-layout_section-slanted-lines-width-large
+    padding-right: $_app-layout_section-slanted-lines-width-large
+    max-width: $_app-layout_section-max-width
+
+
+@mixin app-layout_overlay-back-mixin
+  background: var(--app-overlay--bg-color)
+  backdrop-filter: blur(10px)
+
+
+@mixin app-layout_section-with-codename-mixin($_wrapper-selector, $_label-selector, $_codename-selector, $_content-selector)
+  --app-section-pattern--fg-color: var(--app-color--decor--foggy)
+
+  border-block: 1px solid var(--app-section-pattern--fg-color)
+
+  #{$_wrapper-selector}
+    @include _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
+
+  #{$_codename-selector}
+    @include _app-layout_section-codename-label-mixin
+
+@mixin app-layout_section-with-number-mixin($_wrapper-selector, $_label-selector, $_number-selector, $_content-selector)
+  --app-section-pattern--fg-color: var(--app-color--decor--foggy)
+
+  border-block: 1px solid var(--app-section-pattern--fg-color)
+
+  #{$_wrapper-selector}
+    @include _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
+
+  #{$_number-selector}
+    @include _app-layout_section-square-label-mixin
+
+// # Section separator
+
+@mixin app-layout_section-separator-mixin
+  --app-section-pattern--fg-color: var(--app-color--decor--foggy)
+
+  display: grid
+  grid-template-areas: '.'
+
+  @media ($app-device-width-small <= width)
+    grid-template-areas: 'section-pattern-left . section-pattern-right'
+    grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
+
+    &:before
+      grid-area: section-pattern-left
+
+    &:after
+      grid-area: section-pattern-right
+
+    &:before, &:after
+      content: ''
+      display: block
+
+      @include _app-layout_section-with-background-mixin
+
+  @media ($app-device-width-medium <= width)
+    grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
+    margin-inline: auto
+    max-width: $_app-layout_section-max-width
+
+  @media ($app-device-width-large <= width)
+    grid-template-areas: '. section-pattern-left . section-pattern-right'
+    grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
+
+// # Section wrapper
+
+@mixin _app-layout_section-wrapper-mixin($_label-selector, $_content-selector)
+  display: grid
+  grid-template-areas: 'section-label' 'section-content'
+
+  @media ($app-device-width-small <= width)
+    grid-template-areas: 'section-pattern-left section-label section-pattern-right' 'section-pattern-left section-content section-pattern-right'
+    grid-template-columns: $_app-layout_section-slanted-lines-width-small 1fr $_app-layout_section-slanted-lines-width-small
+
+    &:before
+      grid-area: section-pattern-left
+
+    &:after
+      grid-area: section-pattern-right
+
+    &:before, &:after
+      content: ''
+      display: block
+
+      @include _app-layout_section-with-background-mixin
+
+  @media ($app-device-width-medium <= width)
+    grid-template-columns: $_app-layout_section-slanted-lines-width-medium 1fr $_app-layout_section-slanted-lines-width-medium
+    margin-inline: auto
+    max-width: $_app-layout_section-max-width
+
+  @media ($app-device-width-large <= width)
+    grid-template-areas: 'section-label section-pattern-left section-content section-pattern-right'
+    grid-template-columns: $_app-layout_section-label-size $_app-layout_section-slanted-lines-width-large 1fr $_app-layout_section-slanted-lines-width-large
+
+  #{$_label-selector}
+    grid-area: section-label
+    display: flex
+
+  #{$_content-selector}
+    grid-area: section-content
+
+// # Section' label
+
+$_app-layout_section-label-border-width: 1px
+$_app-layout_section-label-padding: 8px
+$_app-layout_section-label-line-height: $_app-layout_section-label-size - 2 * ($_app-layout_section-label-border-width + $_app-layout_section-label-padding)
+
+@mixin _app-layout_section-label-mixin
+  border: $_app-layout_section-label-border-width solid var(--app-section-pattern--fg-color)
+  padding: $_app-layout_section-label-padding
+  font-family: monospace
+  line-height: $_app-layout_section-label-line-height
+
+@mixin _app-layout_section-codename-label-mixin
+  @include _app-layout_section-label-mixin
+
+  height: $_app-layout_section-label-size
+
+  @media ($app-device-width-large <= width)
+    font-size: 10px
+    // TODO:
+    // text-align: right
+    // rotate: -90deg
+
+@mixin _app-layout_section-square-label-mixin
+  @include _app-layout_section-label-mixin
+
+  width: $_app-layout_section-label-size
+  height: $_app-layout_section-label-size
+  text-align: center
+
+@mixin _app-layout_section-pattern-slanted-lines-background-mixin
+  background-attachment: fixed
+  background-image: repeating-linear-gradient(135deg, var(--app-section-pattern--fg-color) 0, var(--app-section-pattern--fg-color) 1px, #0000 0, #0000 50%)
+  background-size: 8px 8px
+
+@mixin app-layout_section-pattern-checkered-background-mixin
+  --app-section-pattern-checkered--bg-color: var(--app-color--decor--fuzzy)
+
+  $_color: var(--app-section-pattern-checkered--bg-color)
+
+  background-attachment: fixed
+  background-image: linear-gradient(90deg, $_color 1px, #0000 1px), linear-gradient($_color 1px, #0000 1px)
+  background-size: 8px 8px
+
+@mixin _app-layout_section-with-background-mixin
+  border-inline: 1px solid var(--app-section-pattern--fg-color)
+
+  @include _app-layout_section-pattern-slanted-lines-background-mixin

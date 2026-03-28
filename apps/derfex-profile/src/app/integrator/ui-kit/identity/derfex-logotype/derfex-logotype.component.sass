@@ -1,0 +1,18 @@
+@use '../transitions'
+
+:host
+  display: block
+
+.app-svg
+  display: block
+  width: 100%
+
+.app-v-path
+  fill: var(--dx-logotype-v-fill)
+
+  @include transitions.app-transitions_transition-mixin(fill)
+
+.app-z-path
+  fill: var(--dx-logotype-z-fill)
+
+  @include transitions.app-transitions_transition-mixin(fill)

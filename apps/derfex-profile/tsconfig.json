@@ -1,0 +1,41 @@
+{
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "typeCheckHostBindings": true
+  },
+  "compilerOptions": {
+    "emitDecoratorMetadata": false,
+    "isolatedModules": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "~app/*": ["apps/derfex-profile/src/app/*"],
+      "~be/*": ["apps/derfex-profile/src/app/integrator/data-access/backend-api/*"],
+      "~entities/*": ["apps/derfex-profile/src/architecture/entities/*"],
+      "~integrator/*": ["apps/derfex-profile/src/app/integrator/*"],
+      "~pages/*": ["apps/derfex-profile/src/app/integrator/pages/*"],
+      "~ui/*": ["apps/derfex-profile/src/app/integrator/ui/*"],
+      "~ui-kit/*": ["apps/derfex-profile/src/app/integrator/ui-kit/*"],
+    },
+    "strict": true,
+    "target": "es2022"
+  },
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

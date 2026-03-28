@@ -1,0 +1,23 @@
+<article class="app-article">
+  <div class="app-description-and-title-container">
+    <h2 class="app-title"><span class="app-title__span">{{titleText()}}</span></h2>
+    <p class="app-description">{{descriptionText()}}</p>
+  </div>
+  <ul class="app-skills">
+    @for (skill of skillsForTemplate(); track skill.codename) {
+      <li class="app-skills__item">
+        <app-dx-skill-card
+          [titleAttribute]="skill.name"
+          [url]="skill.url"
+        >
+          <ng-container *ngTemplateOutlet="skillTemplate; context: { $implicit: skill.logotypeComponent }" />
+        </app-dx-skill-card>
+      </li>
+    }
+  </ul>
+</article>
+
+
+<ng-template #skillTemplate let-logotypeComponent>
+  <ng-container *ngComponentOutlet="logotypeComponent" />
+</ng-template>

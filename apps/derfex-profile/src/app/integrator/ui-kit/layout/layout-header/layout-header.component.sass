@@ -1,0 +1,36 @@
+@use '../../identity/transitions'
+@use '../layout'
+
+:host
+  display: block
+
+.app-header
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+  @include layout.app-layout_padding-inline-mixin
+
+  height: 44px
+
+  .app-logotype-container
+    $_transition-duration: var(--app-transition-duration)
+    $_transition-timing-function: var(--app-transition-timing-function)
+
+    --dx-logotype-transition-duration: #{$_transition-duration}
+    --dx-logotype-transition-timing-function: #{$_transition-timing-function}
+    --dx-logotype-v-fill: var(--app-color--foreground--neutral)
+    --dx-logotype-z-fill: var(--app-color--foreground--neutral)
+
+    @include transitions.app-transitions_transition-mixin(rotate)
+
+  &:hover .app-logotype-container
+    --dx-logotype-v-fill: var(--app-color--foreground--brand)
+    --dx-logotype-z-fill: var(--app-color--foreground--brand)
+
+    rotate: 540deg
+
+.app-logotype-container
+  display: flex
+  padding: 6px 0
+  width: 30px

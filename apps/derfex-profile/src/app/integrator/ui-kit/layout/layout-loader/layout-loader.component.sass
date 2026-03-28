@@ -1,0 +1,43 @@
+@use '../layout'
+
+:host
+  display: block
+
+$_app-rotation-delay-step: 3
+$_app-rotation-from-degree: -90deg
+$_app-rotation-middle-degree: 90deg
+$_app-rotation-to-degree: 270deg
+
+@keyframes app-rotation
+  0%
+    transform: rotate($_app-rotation-from-degree)
+
+  #{0 + $_app-rotation-delay-step}%
+    transform: rotate($_app-rotation-from-degree)
+
+  #{50 - $_app-rotation-delay-step}%
+    transform: rotate($_app-rotation-middle-degree)
+
+  #{50 + $_app-rotation-delay-step}%
+    transform: rotate($_app-rotation-middle-degree)
+
+  #{100 - $_app-rotation-delay-step}%
+    transform: rotate($_app-rotation-to-degree)
+
+  100%
+    transform: rotate($_app-rotation-to-degree)
+
+.app-logotype-container
+  --dx-logotype-v-fill: var(--app-color--foreground--brand)
+  --dx-logotype-z-fill: var(--app-color--foreground--brand)
+
+  margin: auto
+  width: 100px
+  animation: app-rotation 2s ease-in-out infinite
+
+.app-overlay
+  position: fixed
+  inset: 0
+  display: flex
+
+  @include layout.app-layout_overlay-back-mixin

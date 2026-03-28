@@ -1,0 +1,41 @@
+@use '../../../ui-kit/layout/layout'
+@use '../../../ui-kit/reset'
+@use '../../../ui-kit/typography/typography'
+@use '../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-article
+  @include layout.app-layout_flex-column-mixin(24px)
+
+  justify-content: space-between
+
+  @include layout.app-layout_padding-inline-mixin
+
+  padding-block: 20px
+
+.app-description
+  @include typography.app-typography_p-mixin
+
+.app-description-and-title-container
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-empty-state
+  @include typography.app-typography_p-mixin
+
+.app-list
+  @include layout.app-layout_flex-column-mixin(24px)
+
+  margin: 0
+  padding-left: 0
+  list-style: none
+
+.app-list__item
+  border: 1px solid var(--app-color--border--foggy)
+
+.app-title
+  @include ui-kit.app-ui-kit_h2-mixin
+
+.app-title__span
+  @include ui-kit.app-ui-kit_h2-span-mixin

@@ -1,0 +1,29 @@
+@use './identity/identity-foundation'
+@use './reset-foundation'
+@use './theming/theming-foundation'
+@use './typography/typography-foundation'
+
+@mixin app-ui-kit-foundation_styles-mixin
+  @include reset-foundation.app-reset-foundation_styles-mixin
+  @include identity-foundation.app-identity-foundation_styles-mixin
+  @include theming-foundation.app-theming-foundation_styles-mixin
+  @include typography-foundation.app-typography-foundation_styles-mixin
+
+  :root
+    // ## Semantic. Auxiliary
+
+    --app-color-auxiliary--brand--to--background--theme--050: color-mix(in display-p3, var(--app-color--foreground--brand), var(--app-color--background--theme))
+    --app-color-auxiliary--foreground--brand--to--background--theme--050: var(--app-color-auxiliary--brand--to--background--theme--050)
+
+    // ## Component
+
+    // ### Link
+
+    --app-link--fg-color: var(--app-color-auxiliary--foreground--brand--to--background--theme--050)
+    --app-link--fg-color-hover: var(--app-color--foreground--brand)
+
+  // ## Init
+
+  :root
+    background: var(--app-root-surface--bg-color)
+    color: var(--app-root-surface--fg-color)
