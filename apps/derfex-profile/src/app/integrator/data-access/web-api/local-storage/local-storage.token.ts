@@ -5,7 +5,7 @@ export const LOCAL_STORAGE = new InjectionToken<Storage>('An abstraction over wi
   factory: (): Storage => {
     if (inject(PLATFORM_ID) === 'browser') {
       const windowRef = inject(WINDOW)
-      if (storageAvailable(windowRef)) return windowRef.localStorage
+      if (storageIsAvailable(windowRef)) return windowRef.localStorage
     }
     return {
       // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -23,7 +23,7 @@ export const LOCAL_STORAGE = new InjectionToken<Storage>('An abstraction over wi
   providedIn: 'root',
 })
 
-function storageAvailable(window: Window): boolean {
+function storageIsAvailable(window: Window): boolean {
   let storage
   try {
     storage = window.localStorage
