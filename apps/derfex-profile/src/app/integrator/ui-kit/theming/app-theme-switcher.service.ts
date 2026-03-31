@@ -14,7 +14,7 @@ export class AppThemeSwitcherService {
   readonly #htmlElementRef = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)
 
-  readonly #colorScheme = new BehaviorSubject<ThemeColorSchemeCodename>('normal')
+  readonly #colorScheme = new BehaviorSubject<ThemeColorSchemeCodename>('system')
   #colorSchemeIsDark = false
 
   public get colorScheme(): Observable<ThemeColorSchemeCodename> {

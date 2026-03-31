@@ -15,7 +15,7 @@ export class ColorSchemeSwitcherComponent implements OnInit {
   readonly #renderer = inject(Renderer2)
 
   readonly #colorSchemeListMap = this.#generateColorSchemeListMap()
-  protected readonly colorSchemes = signal(this.#colorSchemeListMap.get('normal') as ColorSchemesForTemplate)
+  protected readonly colorSchemes = signal(this.#colorSchemeListMap.get('system') as ColorSchemesForTemplate)
 
   public ngOnInit(): void {
     this.#appThemeSwitcherService.colorScheme
@@ -29,7 +29,7 @@ export class ColorSchemeSwitcherComponent implements OnInit {
     this.#appThemeSwitcherService.switchColorScheme(this.#renderer, colorScheme)
   }
 
-  #generateColorSchemeForTemplateList([darkChecked, lightChecked, normalChecked]: readonly [
+  #generateColorSchemeForTemplateList([darkChecked, lightChecked, systemChecked]: readonly [
     boolean,
     boolean,
     boolean,
@@ -42,9 +42,9 @@ export class ColorSchemeSwitcherComponent implements OnInit {
         label: 'Dark',
       },
       {
-        ariaChecked: normalChecked,
-        codename: 'normal',
-        disabled: normalChecked,
+        ariaChecked: systemChecked,
+        codename: 'system',
+        disabled: systemChecked,
         label: 'System',
       },
       {
@@ -60,7 +60,7 @@ export class ColorSchemeSwitcherComponent implements OnInit {
     return new Map<ThemeColorSchemeCodename, ColorSchemesForTemplate>([
       ['dark', this.#generateColorSchemeForTemplateList([true, false, false])],
       ['light', this.#generateColorSchemeForTemplateList([false, true, false])],
-      ['normal', this.#generateColorSchemeForTemplateList([false, false, true])],
+      ['system', this.#generateColorSchemeForTemplateList([false, false, true])],
     ])
   }
 }

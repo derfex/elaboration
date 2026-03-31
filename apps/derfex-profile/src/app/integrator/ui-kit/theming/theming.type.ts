@@ -1,1 +1,1 @@
-export type ThemeColorSchemeCodename = 'dark' | 'light' | 'normal'
+export type ThemeColorSchemeCodename = 'dark' | 'light' | 'system'
