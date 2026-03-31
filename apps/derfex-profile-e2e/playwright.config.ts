@@ -25,9 +25,9 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npx nx run derfex-profile:serve',
-    url: 'http://localhost:4200',
-    reuseExistingServer: true,
     cwd: workspaceRoot,
+    reuseExistingServer: true,
+    url: 'http://localhost:4200',
   },
   projects: [
     {
