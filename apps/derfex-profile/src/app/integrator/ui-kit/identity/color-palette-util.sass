@@ -1,0 +1,14 @@
+$_color-interpolation-method: display-p3
+
+@function app-color-palette_color-mix-50($_color1, $_color2)
+  @return color-mix(in $_color-interpolation-method, $_color1, $_color2)
+
+@function app-color-palette_color-mix-50-vars($_color-var1, $_color-var2)
+  @return app-color-palette_color-mix-50(var(#{$_color-var1}), var(#{$_color-var2}))
+
+@function app-color-palette_color-mix($_percent1, $_color1, $_color2)
+  $_percent: $_percent1 * 1%
+  @return color-mix(in $_color-interpolation-method, $_color1 $_percent, $_color2)
+
+@function app-color-palette_color-mix-vars($_percent1, $_color-var1, $_color-var2)
+  @return app-color-palette_color-mix($_percent1, var(#{$_color-var1}), var(#{$_color-var2}))

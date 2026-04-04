@@ -1,0 +1,25 @@
+<article class="app-card">
+  <div class="app-content">
+    <div class="app-period-and-role-and-short-description-container">
+      <h3 class="app-role"><span class="app-role__span">{{role()}}</span></h3>
+      <p class="app-short-description">{{shortDescription()}}</p>
+      <p class="app-period">{{period()}}</p>
+    </div>
+    <section class="app-achievements">
+      <h4 class="app-achievements__title">{{achievementsTitleText()}}</h4>
+      <ul>
+        @for (achievement of achievements(); track achievement) {
+          <li>{{achievement}}</li>
+        }
+      </ul>
+    </section>
+    <section class="app-skills">
+      <h4 class="app-skills__title">{{skillsTitleText()}}</h4>
+      <ul class="app-skills__list">
+        @for (skill of skills(); track skill) {
+          <li class="app-skills__list-item">{{skill}}</li>
+        }
+      </ul>
+    </section>
+  </div>
+</article>

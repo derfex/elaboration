@@ -1,0 +1,7 @@
+@use '../../layout/layout'
+
+:host
+  display: block
+
+.app-section
+  @include layout.app-layout_section-with-number-mixin('.app-section__wrapper', '.app-section__label', '.app-section__number', '.app-section__content')

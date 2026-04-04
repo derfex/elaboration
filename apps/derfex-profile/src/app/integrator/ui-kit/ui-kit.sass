@@ -1,0 +1,33 @@
+@use './typography/typography'
+
+@mixin app-ui-kit_h2-mixin
+  @include typography.app-typography_h2-mixin
+
+@mixin app-ui-kit_h2-span-mixin
+  @include app-ui-kit_text-gradient-mixin
+
+@mixin app-ui-kit_h3-mixin
+  @include typography.app-typography_h3-mixin
+
+@mixin app-ui-kit_h3-span-mixin
+  @include app-ui-kit_text-gradient-mixin
+
+@mixin app-ui-kit_h4-mixin
+  @include typography.app-typography_h4-mixin
+
+@mixin app-ui-kit_scrollbar-mixin
+  scroll-behavior: smooth
+  scrollbar-width: thin
+
+@mixin app-ui-kit_switch-button-mixin
+  border: none
+  padding: 4px 8px
+  line-height: initial
+
+  &:not(:disabled)
+    cursor: pointer
+
+@mixin app-ui-kit_text-gradient-mixin
+  background: var(--app-gradient-diagonal)
+  background-clip: text
+  color: #0000

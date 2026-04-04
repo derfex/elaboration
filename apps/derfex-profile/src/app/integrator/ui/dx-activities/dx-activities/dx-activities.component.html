@@ -1,0 +1,23 @@
+<article class="app-article">
+  <div class="app-description-and-title-container">
+    <h2 class="app-title"><span class="app-title__span">{{titleText()}}</span></h2>
+    <p class="app-description">{{descriptionText()}}</p>
+  </div>
+  <ul class="app-list">
+    @for (activity of activitiesForTemplate(); track activity.codename) {
+      <li class="app-list__item">
+        <app-dx-activity-card
+          [achievementsTitleText]="activityAchievementsTitleText()"
+          [achievements]="activity.achievements"
+          [period]="activity.period"
+          [role]="activity.role"
+          [shortDescription]="activity.shortDescription"
+          [skillsTitleText]="activitySkillsTitleText()"
+          [skills]="activity.skills"
+        />
+      </li>
+    } @empty {
+      <p class="app-empty-state">{{emptyStateText()}}</p>
+    }
+  </ul>
+</article>

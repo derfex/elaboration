@@ -1,0 +1,75 @@
+@use '../identity/color-palette-util'
+
+@mixin app-theming-foundation_styles-mixin
+  $_app-color-scheme-dark-selector: '.app-js-color-scheme--dark'
+  $_app-color-scheme-light-selector: '.app-js-color-scheme--light'
+
+  #{$_app-color-scheme-dark-selector}
+    color-scheme: dark
+
+    // ## Semantic
+
+    --app-color--background--theme: var(--app-color-primitive--black)
+    --app-color--foreground--theme: var(--app-color-primitive--gray-020)
+    // TODO: `--app-color--on-background--theme` is unused.
+    --app-color--on-background--theme: var(--app-color-primitive--white)
+
+    --app-color--background--badge: var(--app-color-primitive--gray-094)
+    --app-color--foreground--badge: var(--app-color-primitive--white)
+
+    --app-color--background--header: var(--app-color-primitive--gray-098)
+
+    --app-color--foreground--interlinear: var(--app-color-primitive--gray-050)
+
+    --app-color--border--foggy: var(--app-color-primitive--gray-094)
+
+    --app-color--decor--foggy: var(--app-color-primitive--gray-094)
+    --app-color--decor--fuzzy: var(--app-color-primitive--gray-097)
+
+  #{$_app-color-scheme-light-selector}
+    color-scheme: light
+
+    // ## Semantic
+
+    --app-color--background--theme: var(--app-color-primitive--white)
+    --app-color--foreground--theme: var(--app-color-primitive--gray-080)
+    // TODO: `--app-color--on-background--theme` is unused.
+    --app-color--on-background--theme: var(--app-color-primitive--black)
+
+    --app-color--background--badge: var(--app-color-primitive--gray-006)
+    --app-color--foreground--badge: var(--app-color-primitive--black)
+
+    --app-color--background--header: var(--app-color-primitive--gray-002)
+
+    --app-color--foreground--interlinear: var(--app-color-primitive--gray-050)
+
+    --app-color--border--foggy: var(--app-color-primitive--gray-006)
+
+    --app-color--decor--foggy: var(--app-color-primitive--gray-006)
+    --app-color--decor--fuzzy: var(--app-color-primitive--gray-003)
+
+  :root
+    // ## Semantic // Or Component?
+
+    --app-root-surface--bg-color: var(--app-color--background--theme)
+    --app-root-surface--fg-color: var(--app-color--foreground--theme)
+
+    --app-overlay--bg-color: #{color-palette-util.app-color-palette_color-mix(84, var(--app-color--background--theme), #0000)}
+
+  #{$_app-color-scheme-dark-selector}
+    --app-angular-logotype-fill-color: #fff
+    --app-git-logotype-sign-color: #fff
+    --app-git-logotype-text-color: #fff
+    --app-github-invertocat-logotype-color: #fff
+    --app-github-logotype-fill-color: #fff
+    --app-html5-logotype-text-fill-color: #fff
+    --app-node-js-logotype-text-fill-color: #fff
+
+  #{$_app-color-scheme-light-selector}
+    --app-angular-logotype-fill-color: #0f0f11
+    --app-git-logotype-sign-color: #f03c2e
+    --app-git-logotype-text-color: #362701
+    --app-github-invertocat-logotype-color: #24292f
+    --app-github-logotype-fill-color: #151013
+    --app-html5-logotype-text-fill-color: #000
+    --app-node-js-logotype-text-fill-color: #333

@@ -1,0 +1,96 @@
+@use 'color-palette-util'
+
+@function _app-color-mix-bw($_percent)
+  @return color-palette-util.app-color-palette_color-mix-vars($_percent, --app-color-primitive--black, --app-color-primitive--white)
+
+@mixin app-color-palette-foundation_custom-properties-mixin
+  // # Colors, shades, tints, tones
+
+  // ## Investigation
+
+  // ### `color-mix`
+
+  // `$method: %any from [hsl, oklch, srgb, srgb-linear]% // color-interpolation-method`
+  // `$black: #000`
+  // `$white: #fff`
+  // `$percent1: %any number from 1 to 99`
+  // `$percent2: 100 - $percent1`
+  // Option 1: `color-mix(in #{$method}, #{$black} #{$percent1}%, #{white})
+  // Option 2: `color-mix(in #{$method}, #{$black}, #{white} #{$percent2}%)
+  // Option 3: `color-mix(in #{$method}, #{$white} #{$percent1}%, #{black})
+  // Option 4: `color-mix(in #{$method}, #{$white}, #{black} #{$percent2}%)
+  //
+  // Summary: options 1, 2, 3, 4 are equal.
+
+
+  // ## Primitive
+
+  :root
+    // ### Brand
+
+    --dx-color-primitive--crayola-dark-blue: #16d
+
+    // ### Black, gray, white
+
+    --app-color-primitive--black: #000
+    --app-color-primitive--white: #fff
+
+    // 001..009
+    @for $_i from 1 through 9
+      $_percent: $_i
+      --app-color-primitive--gray-00#{$_percent}: #{_app-color-mix-bw($_percent)}
+
+    // 010..090 (step: 10)
+    @for $_i from 1 through 9
+      $_percent: $_i * 10
+      --app-color-primitive--gray-0#{$_percent}: #{_app-color-mix-bw($_percent)}
+
+    // 091..099
+    @for $_i from 1 through 9
+      $_percent: $_i + 90
+      --app-color-primitive--gray-0#{$_percent}: #{_app-color-mix-bw($_percent)}
+
+    // 001 — unused
+    // 002 — used
+    // 003 — used
+    // 004 — unused
+    // 005 — unused
+    // 006 — used
+    // 007 — unused
+    // 008 — unused
+    // 009 — unused
+    // 010 — unused
+    // 020 — used
+    // 030 — used
+    // 040 — unused
+    // 050 — used
+    // 060 — unused
+    // 070 — used
+    // 080 — used
+    // 090 — unused
+    // 091 — unused
+    // 092 — unused
+    // 093 — unused
+    // 094 — used
+    // 095 — unused
+    // 096 — unused
+    // 097 — used
+    // 098 — used
+    // 099 — unused
+
+  // ## Semantic
+
+  :root
+    // TODO: Do we need to use `accent` in `--app-color--accent--brand`?
+    --app-color--accent--brand: var(--dx-color-primitive--crayola-dark-blue)
+    --app-color--foreground--brand: var(--dx-color-primitive--crayola-dark-blue)
+    --app-color--foreground--neutral: var(--app-color-primitive--gray-050)
+
+  // ## Component
+
+  :root
+    --app-gradient-color-from: var(--app-color--foreground--brand)
+    --app-gradient-color-to: #{color-palette-util.app-color-palette_color-mix-50-vars(--app-gradient-color-from, --app-color-primitive--white)}
+    --app-gradient-diagonal: linear-gradient(135deg, var(--app-gradient-color-from) 0%, var(--app-gradient-color-to) 100%)
+
+  // The colors have been defined in `theming` folder and is `*component.sass` files.
