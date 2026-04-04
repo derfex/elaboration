@@ -1,14 +1,17 @@
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # compiled output
+
 dist
 tmp
 out-tsc
 
 # dependencies
+
 node_modules
 
 # IDEs and editors
+
 /.idea
 .project
 .classpath
@@ -18,6 +21,7 @@ node_modules
 *.sublime-workspace
 
 # IDE - VSCode
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -25,6 +29,7 @@ node_modules
 !.vscode/extensions.json
 
 # misc
+
 /.sass-cache
 /connect.lock
 /coverage
@@ -35,6 +40,7 @@ testem.log
 /typings
 
 # System Files
+
 .DS_Store
 Thumbs.db
 
@@ -48,3 +54,7 @@ vitest.config.*.timestamp*
 
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+
+# Applications
+
+apps/vehicles-registry-fe/.env.local

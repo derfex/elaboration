@@ -1,0 +1,142 @@
+@use '../../../../ui-kit/button/button'
+@use '../../../../ui-kit/identity/transitions'
+@use '../../../../ui-kit/layout/layout'
+@use '../../../../ui-kit/ui-kit'
+
+:host
+  display: block
+
+.app-content
+  @include layout.app-layout_padding-inline-mixin
+
+  padding-top: 20px
+  padding-bottom: 40px
+
+.app-highlight
+  @include ui-kit.app-ui-kit_text-gradient-mixin
+
+.app-name
+  margin-block: 0.5em 1em
+  font-size: var(--app-hero-name--font-size)
+  line-height: initial
+
+.app-title
+  margin-block: 0
+  font-size: var(--app-hero-title--font-size)
+  line-height: initial
+
+// # Contacts
+
+$_app-contacts-frame-color: var(--app-color--decor--fuzzy)
+
+.app-contacts
+  $_border-width: 8px
+
+  display: grid
+  grid-template-rows: auto $_border-width auto
+  border: 8px solid $_app-contacts-frame-color
+
+  @media (layout.$app-device-width-large <= width)
+    grid-template-columns: auto $_border-width auto
+    grid-template-rows: auto
+
+.app-contacts__logotype
+  $_size: 40px
+
+  flex-shrink: 0
+  width: $_size
+  height: $_size
+
+.app-contacts__logotype--github
+  color: var(--app-github-invertocat-logotype-color)
+
+// ## Gmail
+
+.app-contacts__logotype--gmail
+  display: flex
+
+.app-gmail-logotype-component-container
+  margin: auto
+
+// ↑ Gmail
+
+.app-contacts__separator
+  background: $_app-contacts-frame-color
+
+// ## Primary contacts
+
+.app-primary-contacts
+  @include layout.app-layout_flex-column-mixin(16px)
+
+  align-items: flex-start
+  padding: 16px 8px
+
+.app-primary-contacts__call-to-action
+  margin-block: 0
+  font-size: var(--app-call-to-action-description--font-size)
+  line-height: initial
+
+.app-priority-method-of-communication
+  display: flex
+  align-items: center
+  column-gap: button.$app-primary-button_gap
+  border: 1px solid button.$app-primary-button_border-color
+  padding: 16px
+  text-decoration: none
+  background: button.$app-primary-button_bg-color
+  color: button.$app-primary-button_fg-color
+
+  @include transitions.app-transitions_transition-mixin(background, color)
+
+  &:hover
+    background: #0000
+    color: inherit
+
+.app-priority-method-of-communication__content
+  display: flex
+  align-items: center
+  column-gap: 8px
+  font-size: var(--app-call-to-action-button--font-size)
+
+  @include transitions.app-transitions_transition-mixin(translate)
+
+  .app-priority-method-of-communication:hover &
+    translate: button.$app-primary-button_translate-x
+
+.app-arrow-left-icon-component-container
+  flex-shrink: 0
+  width: button.$app-primary-button_arrow-size
+  height: button.$app-primary-button_arrow-size
+  color: button.$app-primary-button_fg-color
+
+  @include transitions.app-transitions_transition-mixin(opacity, translate)
+
+  .app-priority-method-of-communication:hover &
+    opacity: 0
+    translate: button.$app-primary-button_translate-x
+
+// ## Secondary contacts
+
+.app-secondary-contacts
+  @include layout.app-layout_flex-column-mixin(16px)
+
+  padding: 16px 8px
+
+  @include transitions.app-transitions_transition-mixin(filter, opacity)
+
+  filter: grayscale(1)
+  opacity: .7
+
+  .app-contacts:hover &
+    filter: grayscale(0)
+    opacity: 1
+
+.app-secondary-contacts__list
+  display: flex
+  column-gap: 16px
+
+.app-secondary-contacts__title
+  @include ui-kit.app-ui-kit_h3-mixin
+
+.app-secondary-contacts__title-span
+  @include ui-kit.app-ui-kit_h3-span-mixin

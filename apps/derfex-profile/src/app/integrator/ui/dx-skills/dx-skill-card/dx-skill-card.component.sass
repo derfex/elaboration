@@ -1,0 +1,24 @@
+@use '../../../ui-kit/identity/transitions'
+
+:host
+  display: block
+
+.app-link
+  display: block
+  text-decoration: none
+
+.app-card
+  display: flex
+  align-items: center
+  place-content: center
+  padding: 20px
+  height: 80px
+
+  @include transitions.app-transitions_transition-mixin(filter, opacity)
+
+  filter: grayscale(1)
+  opacity: .7
+
+  &:hover
+    filter: grayscale(0)
+    opacity: 1

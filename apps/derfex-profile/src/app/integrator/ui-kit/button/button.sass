@@ -1,0 +1,10 @@
+@use 'sass:math'
+
+$app-primary-button_arrow-size: 20px
+$app-primary-button_gap: 16px
+$app-primary-button_translate-x: math.div($app-primary-button_gap + $app-primary-button_arrow-size, 2)
+
+$app-primary-button_bg-color: var(--app-color--accent--brand)
+$app-primary-button_border-color: $app-primary-button_bg-color
+// TODO: Do we allow us to use `--app-color-primitive*` in this file?
+$app-primary-button_fg-color: var(--app-color-primitive--white)
