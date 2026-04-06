@@ -87,7 +87,7 @@
     "test": {
       "executor": "@nx/vitest:test",
       "options": {
-        "reportsDirectory": "../../coverage/apps/pet-shop"
+        "reportsDirectory": "{projectRoot}/../../coverage/apps/pet-shop"
       },
       "outputs": ["{options.reportsDirectory}"]
     }

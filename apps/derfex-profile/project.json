@@ -83,7 +83,7 @@
     "test": {
       "executor": "@nx/vitest:test",
       "options": {
-        "reportsDirectory": "../../coverage/apps/derfex-profile"
+        "reportsDirectory": "{projectRoot}/../../coverage/apps/derfex-profile"
       },
       "outputs": ["{options.reportsDirectory}"]
     }
