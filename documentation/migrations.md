@@ -12,6 +12,8 @@ nx migrate <package>@<version>
 
 ## To do
 
+### `vitest`
+
 Upgrade `vitest` from `3.x.x` to `4.x.x`.
 
 ```json
@@ -22,3 +24,11 @@ Upgrade `vitest` from `3.x.x` to `4.x.x`.
 }
 ```
 [Migrate `vitest@4`](../tools/ai-migrations/MIGRATE_VITEST_4.md).
+
+### `zone.js`
+
+Delete / avoid / reduce usage of `zone.js`.
+
+https://angular.dev/guide/zoneless
+
+Do we need `@analogjs/vitest-angular/setup-zone`?
