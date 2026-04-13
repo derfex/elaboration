@@ -42,7 +42,6 @@
         "index": "apps/pet-shop/src/index.html",
         "inlineStyleLanguage": "scss",
         "outputPath": "dist/apps/pet-shop",
-        "polyfills": ["zone.js"],
         "scripts": [],
         "styles": [
           "@angular/material/prebuilt-themes/azure-blue.css",
