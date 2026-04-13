@@ -41,7 +41,6 @@
         "browser": "apps/web-invitation/src/main.ts",
         "inlineStyleLanguage": "sass",
         "outputPath": "dist/apps/web-invitation",
-        "polyfills": ["zone.js"],
         "styles": ["apps/web-invitation/src/styles.sass"],
         "tsConfig": "apps/web-invitation/tsconfig.app.json"
       },
