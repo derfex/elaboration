@@ -32,3 +32,5 @@ Delete / avoid / reduce usage of `zone.js`.
 https://angular.dev/guide/zoneless
 
 Do we need `@analogjs/vitest-angular/setup-zone`?
+
+`zone.js` imported from `…/node_modules/@analogjs/vitest-angular/setup-zone.js`.
