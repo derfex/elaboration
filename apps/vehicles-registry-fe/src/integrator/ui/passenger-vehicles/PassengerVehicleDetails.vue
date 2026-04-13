@@ -135,7 +135,10 @@ function updateButtonClickHandler(): void {
           {{ deleteSectionTitleText }}
         </h3>
         <div>
-          <VBtn color="error" @click="deleteButtonClickHandler">
+          <VBtn
+            color="error"
+            @click="deleteButtonClickHandler"
+          >
             {{ deleteButtonText }}
           </VBtn>
         </div>
