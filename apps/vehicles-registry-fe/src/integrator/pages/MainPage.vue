@@ -88,9 +88,9 @@ function snackbarQueueModelValueUpdateHandler(queue: readonly NotificationMessag
 
         <VSnackbarQueue
           :model-value="notificationMessagesStore.queue"
-          @update:model-value="snackbarQueueModelValueUpdateHandler"
           closable
           timer
+          @update:model-value="snackbarQueueModelValueUpdateHandler"
         />
       </VMain>
     </VApp>

@@ -16,7 +16,10 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -25,7 +28,9 @@
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/src/test-setup.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml"
+    ]
   },
   "nxCloudId": "68228e2c9cdd9f52509f04d9",
   "plugins": [
@@ -64,13 +69,23 @@
   "targetDefaults": {
     "@angular-devkit/build-angular:application": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "@angular/build:application": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "@nx/eslint:lint": {
       "cache": true,
@@ -83,7 +98,10 @@
     },
     "@nx/vitest:test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": [
+        "default",
+        "^production"
+      ]
     }
   }
 }

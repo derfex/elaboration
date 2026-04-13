@@ -11,7 +11,9 @@ const titleText = 'Philistine calculations'
     <div class="app-component-independent-root">
       <div class="app-section__wrapper">
         <div class="app-section__content">
-          <h1 class="app-title">{{ titleText }}</h1>
+          <h1 class="app-title">
+            {{ titleText }}
+          </h1>
         </div>
       </div>
       <RouterView />
