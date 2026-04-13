@@ -82,7 +82,7 @@
     "test": {
       "executor": "@nx/vitest:test",
       "options": {
-        "reportsDirectory": "{projectRoot}/../../coverage/apps/web-invitation"
+        "reportsDirectory": "../../coverage/apps/web-invitation"
       },
       "outputs": ["{options.reportsDirectory}"]
     }

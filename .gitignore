@@ -58,8 +58,3 @@ vitest.config.*.timestamp*
 # Applications
 
 apps/vehicles-registry-fe/.env.local
-
-# AI
-
-.claude/worktrees
-.claude/settings.local.json
