@@ -1,6 +1,4 @@
-@use 'sass:string'
-
-@mixin app-transitions_transition-mixin($_property)
+@mixin app-transitions_transition-mixin($_properties...)
   transition-duration: var(--app-transition-duration)
-  transition-property: string.unquote($_property)
+  transition-property: $_properties
   transition-timing-function: var(--app-transition-timing-function)
