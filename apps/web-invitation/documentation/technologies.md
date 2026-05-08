@@ -45,7 +45,6 @@
 - @angular/common
 - @angular/compiler
 - @angular/core
-- @angular/forms
 - @angular/platform-browser
 - @angular/router
 - rxjs
@@ -67,7 +66,6 @@
 - @nx/playwright
 - @nx/web
 - @nx/workspace
-- @oxc-project/runtime
 - @playwright/test
 - @schematics/angular
 - @swc-node/register
@@ -81,6 +79,7 @@
 - jsdom
 - nx
 - prettier
+- sass
 - tslib
 - typescript
 - typescript-eslint
