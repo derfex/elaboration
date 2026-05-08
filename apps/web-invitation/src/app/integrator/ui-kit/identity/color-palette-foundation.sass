@@ -10,20 +10,20 @@
 
     --app-color-primitive--black: #020202
     --app-color-gray-light: #d9d9d9
-    --app-color-white: #fefefe
+    --app-color-primitive--white: #fefefe
 
     --app-color-cyan--dark-50: color-mix(in oklch, var(--app-color-primitive--cyan), var(--app-color-primitive--black))
     --app-color-cyan--dark-75: color-mix(in oklch, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 75%)
 
-    --app-color-white--dark-80: color-mix(in oklch, var(--app-color-white), var(--app-color-primitive--black) 80%)
-    --app-color-white--transparent-50: color-mix(in oklch, var(--app-color-white), #0000)
+    --app-color-white--dark-80: color-mix(in oklch, var(--app-color-primitive--white), var(--app-color-primitive--black) 80%)
+    --app-color-white--transparent-50: color-mix(in oklch, var(--app-color-primitive--white), #0000)
 
   // ## Semantic
 
   :root
     --app-color-accent: var(--app-color-primitive--cyan)
     --app-dark-surface-bg-color: var(--app-color-primitive--black)
-    --app-dark-surface-text-color: var(--app-color-white)
+    --app-dark-surface-text-color: var(--app-color-primitive--white)
     --app-heading-text-color: var(--app-color-primitive--cyan)
     --app-light-surface-bg-color: var(--app-color-gray-light)
     --app-light-surface-text-color: var(--app-color-cyan--dark-50)
@@ -36,7 +36,7 @@
     --app-button-primary-hover-bg-color: var(--app-color-cyan--dark-50)
 
     --app-button-secondary-bg-color: var(--app-color-cyan--dark-50)
-    --app-button-secondary-text-color: var(--app-color-white)
+    --app-button-secondary-text-color: var(--app-color-primitive--white)
     --app-button-secondary-hover-bg-color: var(--app-color-cyan--dark-75)
 
     --app-ornament-text-color: var(--app-color-white--dark-80)
