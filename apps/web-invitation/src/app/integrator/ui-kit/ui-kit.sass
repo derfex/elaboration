@@ -28,25 +28,25 @@
 @mixin app-ui-kit_button-primary-mixin
   @include _app-button-mixin
 
-  background: var(--app-button-primary-bg-color)
-  color: var(--app-button-primary-text-color)
+  background: var(--app-button-primary--bg-color)
+  color: var(--app-button-primary--fg-color)
 
   @include transitions.app-transitions_transition-mixin(background)
 
   &:hover
-    background: var(--app-button-primary-hover-bg-color)
+    background: var(--app-button-primary--hover--bg-color)
 
 
 @mixin app-ui-kit_button-secondary-mixin
   @include _app-button-mixin
 
-  background: var(--app-button-secondary-bg-color)
-  color: var(--app-button-secondary-text-color)
+  background: var(--app-button-secondary--bg-color)
+  color: var(--app-button-secondary--fg-color)
 
   @include transitions.app-transitions_transition-mixin(background)
 
   &:hover
-    background: var(--app-button-secondary-hover-bg-color)
+    background: var(--app-button-secondary--hover--bg-color)
 
 
 // TODO: `app-ui-kit_background-clip-mixin` is unused.
@@ -75,4 +75,4 @@
   box-shadow: $_box-shadow
 
 @mixin app-ui-kit_neon-mixin
-  text-shadow: 0 0 10px var(--app-color-accent), 0 0 800px var(--app-color-accent)
+  text-shadow: 0 0 10px var(--app-color--accent--brand), 0 0 800px var(--app-color--accent--brand)

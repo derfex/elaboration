@@ -38,6 +38,7 @@ class GuestQuestionnaireSectionMediatorStubService {
     return of({
       descriptionParagraphs: ['Test data'],
       googleFormHeight: 42,
+      googleFormLoadingText: 'Test data',
       googleFormURL: 'TestData',
       titleText: 'Test data',
     } satisfies GuestQuestionnaireSectionParameters)
