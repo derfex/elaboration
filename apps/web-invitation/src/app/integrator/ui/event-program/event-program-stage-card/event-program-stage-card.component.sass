@@ -36,12 +36,12 @@ $_padding: 20px
 
   @include ui-kit.app-ui-kit_glass-mixin
 
-  color: var(--app-color-accent)
+  color: var(--app-color--accent--brand)
 
   @include transitions.app-transitions_transition-mixin(text-shadow)
 
   .app-event-program-stage-card:hover &
-    text-shadow: 0 0 2px var(--app-color-accent)
+    text-shadow: 0 0 2px var(--app-color--accent--brand)
 
 .app-text-container
   @include layout.app-layout_flex-column-mixin(8px)
