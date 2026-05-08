@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
 import { map, type Observable, shareReplay } from 'rxjs'
-import { assertDefined } from '~app/dev/dev-error.util'
 import { prepareWebInvitationDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import type {
   BackendAPIConfigurationForBE,
   BackendAPIRelativeURLCodenameForBE,
   BackendAPIURLCodename,
 } from '~be/backend-api-configuration/backend-api-configuration.type'
+import { assertDefined } from '~integrator/dev/dev-error.util'
 
 @Injectable({
   providedIn: 'root',
