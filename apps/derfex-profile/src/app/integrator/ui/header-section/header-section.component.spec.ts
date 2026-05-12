@@ -14,7 +14,10 @@ describe('HeaderSectionComponent', (): void => {
         // Stubs.
         LayoutHeaderStubComponent,
       ],
-      providers: [{ provide: WINDOW, useValue: WINDOWStubToken }],
+      providers: [
+        // Provided by the app.
+        { provide: WINDOW, useValue: WINDOWStubToken },
+      ],
     }).compileComponents()
 
     fixture = TestBed.createComponent(HeaderSectionComponent)
@@ -31,7 +34,7 @@ describe('HeaderSectionComponent', (): void => {
 class LayoutHeaderStubComponent {}
 
 const WINDOWStubToken = {
-  matchMedia(query: string): MediaQueryList {
+  matchMedia(/*query: string*/): MediaQueryList {
     return {
       addEventListener: relax,
       matches: true,
