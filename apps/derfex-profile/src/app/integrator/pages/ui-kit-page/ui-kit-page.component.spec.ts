@@ -4,6 +4,8 @@ import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
+import { WINDOW } from '~integrator/data-access/web-api/window.token'
+import { relax } from '~temp-libs/dev/relax.utility'
 import { UIKitPageComponent } from './ui-kit-page.component'
 
 describe('UIKitPageComponent', (): void => {
@@ -32,6 +34,7 @@ describe('UIKitPageComponent', (): void => {
 
         // Provided by the app.
         { provide: LoadingNotifierService, useClass: LoadingNotifierStubService },
+        { provide: WINDOW, useValue: WINDOWStubToken },
       ],
     }).compileComponents()
 
@@ -64,4 +67,13 @@ class LoadingNotifierStubService {
   public get loading(): Observable<boolean> {
     return of(false)
   }
+}
+
+const WINDOWStubToken = {
+  matchMedia(/*query: string*/): MediaQueryList {
+    return {
+      addEventListener: relax,
+      matches: true,
+    } as unknown as MediaQueryList
+  },
 }
