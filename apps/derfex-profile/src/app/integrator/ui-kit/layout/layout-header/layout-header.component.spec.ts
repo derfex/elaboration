@@ -1,3 +1,4 @@
+import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { LayoutHeaderComponent } from './layout-header.component'
 
@@ -6,8 +7,13 @@ describe('LayoutHeaderComponent', (): void => {
   let fixture: ComponentFixture<LayoutHeaderComponent>
 
   beforeEach(async (): Promise<void> => {
-    await TestBed.configureTestingModule({})
-      .compileComponents()
+    await TestBed.configureTestingModule({
+      imports: [
+        // Stubs.
+        AppSettingsStubComponent,
+        DerfexLogotypeStubComponent,
+      ],
+    }).compileComponents()
 
     fixture = TestBed.createComponent(LayoutHeaderComponent)
     component = fixture.componentInstance
@@ -18,3 +24,9 @@ describe('LayoutHeaderComponent', (): void => {
     expect(component).toBeTruthy()
   })
 })
+
+@Component({ selector: 'app-settings', template: '' })
+class AppSettingsStubComponent {}
+
+@Component({ selector: 'app-derfex-logotype', template: '' })
+class DerfexLogotypeStubComponent {}

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
 import { catchError, combineLatest, map, type Observable, switchMap, tap, zip } from 'rxjs'
-import { assertDefined } from '~app/dev/dev-error.util'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import { DXActivitiesCompiledForBEService } from '~be/dx-activities/dx-activities-compiled-for-be.service'
@@ -18,6 +17,7 @@ import { LoadingNotifierService } from '~integrator/data-access/loading-notifier
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { LocaleUtil } from '~integrator/data-access/locale/locale.util'
+import { assertDefined } from '~temp-libs/dev/dev-error.utility'
 import type {
   DXActivitiesSectionParameters,
   DXActivitiesSectionParametersAndList,

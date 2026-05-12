@@ -21,6 +21,7 @@
       "~entities/*": ["apps/derfex-profile/src/architecture/entities/*"],
       "~integrator/*": ["apps/derfex-profile/src/app/integrator/*"],
       "~pages/*": ["apps/derfex-profile/src/app/integrator/pages/*"],
+      "~temp-libs/*": ["apps/derfex-profile/src/temp-libs/*"],
       "~ui/*": ["apps/derfex-profile/src/app/integrator/ui/*"],
       "~ui-kit/*": ["apps/derfex-profile/src/app/integrator/ui-kit/*"],
     },

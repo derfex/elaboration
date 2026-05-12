@@ -4,6 +4,8 @@ import { Component } from '@angular/core'
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { type Observable, of } from 'rxjs'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
+import { WINDOW } from '~integrator/data-access/web-api/window.token'
+import { relax } from '~temp-libs/dev/relax.utility'
 import { RootPageComponent } from './root-page.component'
 
 describe('RootPageComponent', (): void => {
@@ -19,6 +21,7 @@ describe('RootPageComponent', (): void => {
         DXSkillsSectionStubComponent,
         HeaderSectionStubComponent,
         HeroSectionStubComponent,
+        LayoutLoaderStubComponent,
         LayoutSectionSeparatorStubComponent,
       ],
       // TODO: Do we need to provide something for `HttpClient`
@@ -33,6 +36,7 @@ describe('RootPageComponent', (): void => {
 
         // Provided by the app.
         { provide: LoadingNotifierService, useClass: LoadingNotifierStubService },
+        { provide: WINDOW, useValue: WINDOWStubToken },
       ],
     }).compileComponents()
 
@@ -61,6 +65,9 @@ class HeaderSectionStubComponent {}
 @Component({ selector: 'app-hero-section', template: '' })
 class HeroSectionStubComponent {}
 
+@Component({ selector: 'app-layout-loader', template: '' })
+class LayoutLoaderStubComponent {}
+
 @Component({ selector: 'app-layout-section-separator', template: '' })
 class LayoutSectionSeparatorStubComponent {}
 
@@ -68,4 +75,13 @@ class LoadingNotifierStubService {
   public get loading(): Observable<boolean> {
     return of(false)
   }
+}
+
+const WINDOWStubToken = {
+  matchMedia(/*query: string*/): MediaQueryList {
+    return {
+      addEventListener: relax,
+      matches: true,
+    } as unknown as MediaQueryList
+  },
 }
