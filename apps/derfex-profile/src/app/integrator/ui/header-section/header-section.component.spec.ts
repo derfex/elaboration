@@ -1,8 +1,8 @@
-import { type ComponentFixture, TestBed } from '@angular/core/testing'
-import { HeaderSectionComponent } from './header-section.component'
 import { Component } from '@angular/core'
+import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { WINDOW } from '~integrator/data-access/web-api/window.token'
 import { relax } from '~temp-libs/dev/relax.utility'
+import { HeaderSectionComponent } from './header-section.component'
 
 describe('HeaderSectionComponent', (): void => {
   let component: HeaderSectionComponent
