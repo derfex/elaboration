@@ -21,6 +21,7 @@ describe('RootPageComponent', (): void => {
         DXSkillsSectionStubComponent,
         HeaderSectionStubComponent,
         HeroSectionStubComponent,
+        LayoutLoaderStubComponent,
         LayoutSectionSeparatorStubComponent,
       ],
       // TODO: Do we need to provide something for `HttpClient`
@@ -63,6 +64,9 @@ class HeaderSectionStubComponent {}
 
 @Component({ selector: 'app-hero-section', template: '' })
 class HeroSectionStubComponent {}
+
+@Component({ selector: 'app-layout-loader', template: '' })
+class LayoutLoaderStubComponent {}
 
 @Component({ selector: 'app-layout-section-separator', template: '' })
 class LayoutSectionSeparatorStubComponent {}
