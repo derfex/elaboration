@@ -1,5 +1,5 @@
-import { assertDefined } from '~app/dev/dev-error.util'
 import type { DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
+import { assertDefined } from '~temp-libs/dev/dev-error.utility'
 import { AngularLogotypeComponent } from '~ui/dx-skills/logotypes/angular-logotype/angular-logotype.component'
 import { CSSLogotypeComponent } from '~ui/dx-skills/logotypes/css-logotype/css-logotype.component'
 import { GitLogotypeComponent } from '~ui/dx-skills/logotypes/git-logotype/git-logotype.component'
