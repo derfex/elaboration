@@ -9,9 +9,9 @@
 
 // # Uses in the template
 
-// # Life cycle hooks
-
 // # Initialization
+
+// # Life cycle hooks
 
 // # Private
 
