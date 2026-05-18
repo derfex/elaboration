@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import router from '../router'
+import router from '../integrator/router'
 import App from './App.vue'
 
 describe('App', (): void => {
