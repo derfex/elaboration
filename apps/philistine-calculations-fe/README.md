@@ -1,4 +1,4 @@
-# Philistine calculations
+# Philistine calculations front-end
 
 ## User story
 
@@ -17,7 +17,7 @@ It will be used as a prefix for the files.
 For example:
 ```typescript
 export default defineConfig(() => ({
-  base: '/portfolio/philistine-calculations/',
+  base: '/portfolio/philistine-calculations/app/',
   // …
 }))
 ```
@@ -27,4 +27,4 @@ Run
 nx run philistine-calculations-fe:build
 ```
 
-Find the corresponding compiled files in `dist/apps/philistine-calculations`.
+Find the corresponding compiled files in `dist/apps/philistine-calculations-fe`.
