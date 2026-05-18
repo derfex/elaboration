@@ -19,15 +19,15 @@ const props = withDefaults(defineProps<Props>(), {
 
 const modifierDecreaseButtonDisabled = ref(false)
 function modifierDecreaseButtonClickHandler(operand: number): void {
-  const sum = calculateSum(text.value, -operand)
+  const sum = _calculateSum(text.value, -operand)
   text.value = '' + sum
-  updateModels(sum)
+  _updateModels(sum)
 }
 const modifierIncreaseButtonDisabled = ref(false)
 function modifierIncreaseButtonClickHandler(operand: number): void {
-  const sum = calculateSum(text.value, operand)
+  const sum = _calculateSum(text.value, operand)
   text.value = '' + sum
-  updateModels(sum)
+  _updateModels(sum)
 }
 const modifiersAreShown = ref(props.expanded)
 watch(props, (): void => {
@@ -42,16 +42,16 @@ watchEffect((): void => {
 })
 watchEffect((): void => {
   text.value = stringModel.value
-  const [numeric] = convertTextToNumber(stringModel.value)
+  const [numeric] = _convertTextToNumber(stringModel.value)
   modifierDecreaseButtonDisabled.value = !numeric
   modifierIncreaseButtonDisabled.value = !numeric
 })
 
 function textInputUpdateHandler(event: InputEvent): void {
   const { value } = event.target as HTMLInputElement
-  const [numeric, number] = convertTextToNumber(value)
+  const [numeric, number] = _convertTextToNumber(value)
   if (numeric) {
-    updateModels(number)
+    _updateModels(number)
   }
   modifierDecreaseButtonDisabled.value = !numeric
   modifierIncreaseButtonDisabled.value = !numeric
@@ -69,7 +69,7 @@ function clearButtonClickHandler(): void {
 
 // # Private
 
-function calculateDecimalPlaces(numericString: string): number {
+function _calculateDecimalPlaces(numericString: string): number {
   const decimalIndex = numericString.indexOf('.')
   // (!~x) === (x === -1)
   return !~decimalIndex ? 0 : numericString.length - decimalIndex - 1
@@ -77,14 +77,14 @@ function calculateDecimalPlaces(numericString: string): number {
 
 // `text` should be numeric.
 // Dev note: we use `Math.round` because `550.06 * 100 → 55005.99999999999`.
-function calculateSum(text: string, addendum: number): number {
-  const addendumDecimalPlaces = calculateDecimalPlaces('' + addendum)
-  const textDecimalPlaces = calculateDecimalPlaces(text)
+function _calculateSum(text: string, addendum: number): number {
+  const addendumDecimalPlaces = _calculateDecimalPlaces('' + addendum)
+  const textDecimalPlaces = _calculateDecimalPlaces(text)
   const coefficient = 10 ** Math.max(addendumDecimalPlaces, textDecimalPlaces)
   return Math.round(+text * coefficient + addendum * coefficient) / coefficient
 }
 
-function convertTextToNumber(text: string): ConvertTextToNumberReport {
+function _convertTextToNumber(text: string): ConvertTextToNumberReport {
   const trimmedText = text.trim()
   if (trimmedText === '') return [false, null]
   const number = +trimmedText
@@ -94,7 +94,7 @@ function convertTextToNumber(text: string): ConvertTextToNumberReport {
 
 type ConvertTextToNumberReport = readonly [true, number] | readonly [false, null]
 
-function updateModels(number: number): void {
+function _updateModels(number: number): void {
   numberModel.value = number
   stringModel.value = '' + number
 }
