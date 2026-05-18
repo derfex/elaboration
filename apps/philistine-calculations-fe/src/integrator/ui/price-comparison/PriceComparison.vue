@@ -50,10 +50,7 @@ function addInputGroupButtonClickHandler(): void {
 }
 const clearFormButtonIconCSSClasses = 'mdi mdi-eraser'
 function clearFormButtonClickHandler(): void {
-  inputGroups.value.forEach((group: InputGroupItem): void => {
-    group.packageSizeString = ''
-    group.priceString = ''
-  })
+  _clearInputGroups()
 }
 const collapseInputsButtonIconCSSClasses = 'mdi mdi-arrow-collapse-vertical'
 function collapseInputsButtonClickHandler(): void {
@@ -77,6 +74,13 @@ const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, mi
 
 function _calculateCostPerUnit(price: number, packageSize: number): number {
   return price / packageSize
+}
+
+function _clearInputGroups(): void {
+  inputGroups.value.forEach((group: InputGroupItem): void => {
+    group.packageSizeString = ''
+    group.priceString = ''
+  })
 }
 
 function _createInputGroupItem(packageSize: number, price: number): InputGroupItem {
