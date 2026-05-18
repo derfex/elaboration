@@ -1,15 +1,19 @@
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 
 // # API
 
 const numberModel = defineModel<number>('number', { required: true })
 const stringModel = defineModel<string>('string', { required: true })
 
-const props = defineProps<{
+interface Props {
+  readonly expanded?: boolean
   readonly inputPlaceholder: string
   readonly operands: number[]
-}>()
+}
+const props = withDefaults(defineProps<Props>(), {
+  expanded: true,
+})
 
 // # Uses in the template
 
@@ -25,7 +29,10 @@ function modifierIncreaseButtonClickHandler(operand: number): void {
   text.value = '' + sum
   updateModels(sum)
 }
-const modifiersAreShown = ref(true)
+const modifiersAreShown = ref(props.expanded)
+watch(props, (): void => {
+  modifiersAreShown.value = props.expanded
+})
 
 const text = ref('')
 const textInputPattern = '(-)?\\d+(\\.\\d+)?'
