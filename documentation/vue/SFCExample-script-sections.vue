@@ -9,6 +9,8 @@
 
 // # Uses in the template
 
+// # Life cycle hooks
+
 // # Initialization
 
 // # Private
@@ -17,3 +19,13 @@
 
 // …
 </script>
+
+<template>
+  <div>
+    <div class="app-component-independent-root">Content</div>
+  </div>
+</template>
+
+<style lang="sass" scoped>
+// .app-component-independent-root
+</style>
