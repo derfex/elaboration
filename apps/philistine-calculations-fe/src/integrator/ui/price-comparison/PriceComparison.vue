@@ -5,6 +5,7 @@ import RoundedNumber from '|ui-kit/form/RoundedNumber.vue'
 
 // # Private configuration
 
+let _inputGroupExpandedByDefault = true
 let _inputGroupKey = 0
 const _inputGroupQuantity = 3
 
@@ -12,9 +13,11 @@ const _inputGroupQuantity = 3
 
 const props = defineProps<{
   readonly clearFormButtonText: string
+  readonly collapseInputsButtonText: string
   readonly costPerUnitTitleText: string
   readonly deleteInputGroupButtonHintText: string
   readonly deleteInputGroupTitleText: string
+  readonly expandInputsButtonText: string
   readonly packageSize: number
   readonly packageSizeInputPlaceholder: string
   readonly packageSizeTitleText: string
@@ -52,9 +55,19 @@ function clearFormButtonClickHandler(): void {
     group.priceString = ''
   })
 }
+const collapseInputsButtonIconCSSClasses = 'mdi mdi-arrow-collapse-vertical'
+function collapseInputsButtonClickHandler(): void {
+  _inputGroupExpandedByDefault = false
+  _syncInputGroupExpanded()
+}
 const deleteInputGroupButtonIconCSSClasses = 'mdi mdi-delete-forever'
 function deleteInputGroupButtonClickHandler(groupKey: number): void {
   inputGroups.value = inputGroups.value.filter(({ key }: InputGroupItem) => key !== groupKey)
+}
+const expandInputsButtonIconCSSClasses = 'mdi mdi-arrow-expand-vertical'
+function expandInputsButtonClickHandler(): void {
+  _inputGroupExpandedByDefault = true
+  _syncInputGroupExpanded()
 }
 const packageSizeConvenientNumberInputOperands = [0.01, 0.1] as const
 const priceConvenientNumberInputOperands = [0.01, 100] as const
@@ -68,13 +81,17 @@ function _calculateCostPerUnit(price: number, packageSize: number): number {
 
 function _createInputGroupItem(packageSize: number, price: number): InputGroupItem {
   const key = ++_inputGroupKey
+  const packageSizeExpanded = _inputGroupExpandedByDefault
   const packageSizeString = '' + packageSize
+  const priceExpanded = _inputGroupExpandedByDefault
   const priceString = '' + price
   return {
     key,
     packageSize,
+    packageSizeExpanded,
     packageSizeString,
     price,
+    priceExpanded,
     priceString,
   }
 }
@@ -87,11 +104,20 @@ function _createInputGroups(packageSize: number, price: number, quantity: number
   return groups
 }
 
+function _syncInputGroupExpanded(): void {
+  inputGroups.value.forEach((group: InputGroupItem): void => {
+    group.packageSizeExpanded = _inputGroupExpandedByDefault
+    group.priceExpanded = _inputGroupExpandedByDefault
+  })
+}
+
 interface InputGroupItem {
   readonly key: number
   packageSize: number
+  packageSizeExpanded: boolean
   packageSizeString: string
   price: number
+  priceExpanded: boolean
   priceString: string
 }
 </script>
@@ -120,6 +146,22 @@ interface InputGroupItem {
             <span :class="clearFormButtonIconCSSClasses" />
             {{ props.clearFormButtonText }}
           </button>
+          <button
+            class="app-expand-inputs-button"
+            type="button"
+            @click="expandInputsButtonClickHandler"
+          >
+            <span :class="expandInputsButtonIconCSSClasses" />
+            {{ props.expandInputsButtonText }}
+          </button>
+          <button
+            class="app-collapse-inputs-button"
+            type="button"
+            @click="collapseInputsButtonClickHandler"
+          >
+            <span :class="collapseInputsButtonIconCSSClasses" />
+            {{ props.collapseInputsButtonText }}
+          </button>
         </div>
         <div class="app-form-table">
           <div class="app-form-table__header-row">
@@ -137,6 +179,7 @@ interface InputGroupItem {
                 <ConvenientNumberInput
                   v-model:number="item.price"
                   v-model:string="item.priceString"
+                  :expanded="item.priceExpanded"
                   :input-placeholder="props.priceInputPlaceholder"
                   :operands="priceConvenientNumberInputOperands"
                 />
@@ -146,6 +189,7 @@ interface InputGroupItem {
                 <ConvenientNumberInput
                   v-model:number="item.packageSize"
                   v-model:string="item.packageSizeString"
+                  :expanded="item.packageSizeExpanded"
                   :input-placeholder="props.packageSizeInputPlaceholder"
                   :operands="packageSizeConvenientNumberInputOperands"
                 />
@@ -244,11 +288,24 @@ $_root_padding: $_form-table_gap
     display: none
 
 
+.app-control-panel
+  display: flex
+  flex-wrap: wrap
+  gap: 8px
+
+
 .app-add-input-group-form-button
   @include buttons.app-form-buttons_button-secondary-mixin
 
 .app-clear-form-button
   @include buttons.app-form-buttons_button-secondary-mixin
+
+.app-collapse-inputs-button
+  @include buttons.app-form-buttons_button-secondary-mixin
+
+.app-expand-inputs-button
+  @include buttons.app-form-buttons_button-secondary-mixin
+
 
 .app-delete-input-group-button
   @include buttons.app-form-buttons_button-secondary-mixin
@@ -258,11 +315,6 @@ $_root_padding: $_form-table_gap
     $_delete-input-group-button-height: $_cost-per-unit-rounded-number-height
 
     height: $_delete-input-group-button-height
-
-.app-control-panel
-  display: flex
-  flex-wrap: wrap
-  gap: 8px
 
 .app-rounded-number-box
   @include ui-kit.app-ui-kit_form-textbox-mixin
