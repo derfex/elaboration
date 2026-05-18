@@ -76,7 +76,7 @@ function _calculateDecimalPlaces(numericString: string): number {
 }
 
 // `text` should be numeric.
-// Dev note: we use `Math.round` because `550.06 * 100 → 55005.99999999999`.
+// Dev note: we use `Math.round` because `550.06 * 100 → 55005.99999999999`, but we expect `55006`.
 function _calculateSum(text: string, addendum: number): number {
   const addendumDecimalPlaces = _calculateDecimalPlaces('' + addendum)
   const textDecimalPlaces = _calculateDecimalPlaces(text)
