@@ -70,6 +70,10 @@ const packageSizeConvenientNumberInputOperands = [0.01, 0.1] as const
 const priceConvenientNumberInputOperands = [0.01, 100] as const
 const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, minor: 4 } as const
 
+// # Initialization
+
+_initialization()
+
 // # Private
 
 function _calculateCostPerUnit(price: number, packageSize: number): number {
@@ -106,6 +110,22 @@ function _createInputGroups(packageSize: number, price: number, quantity: number
     groups.push(_createInputGroupItem(packageSize, price))
   }
   return groups
+}
+
+function _initialization(): void {
+  // TODO: Allow to the parent component provide empty parameters.
+  //  It's also important to note that
+  //  * `0 / 0 = NaN`
+  //  * `1 / 0 = Infinity`
+  //  * `-1 / 0 = -Infinity`
+  //  This means the corresponding `costPerUnit` value shouldn't be calculated,
+  //  or it should be marked as invalid in the UI.
+
+  inputGroups.value.forEach((group: InputGroupItem): void => {
+    group.packageSize = 1
+    group.price = 0
+  })
+  _clearInputGroups()
 }
 
 function _syncInputGroupExpanded(): void {
