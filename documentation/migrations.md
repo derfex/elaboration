@@ -12,6 +12,10 @@ nx migrate <package>@<version>
 
 ## To do
 
+### `Angular@21`
+
+Do we need to start use `await fixture.whenStable()`?
+
 ### `vitest`
 
 Upgrade `vitest` from `3.x.x` to `4.x.x`.
