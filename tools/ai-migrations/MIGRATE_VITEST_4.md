@@ -2,7 +2,9 @@
 
 ## Overview
 
-These instructions guide you through migrating an Nx workspace containing multiple Vitest projects from Vitest 3.x to Vitest 4.0. Work systematically through each breaking change category.
+These instructions guide you through migrating an Nx workspace
+containing multiple Vitest projects from Vitest 3.x to Vitest 4.0.
+Work systematically through each breaking change category.
 
 ## Pre-Migration Checklist
 
