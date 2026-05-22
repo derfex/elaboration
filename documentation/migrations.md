@@ -29,6 +29,16 @@ Upgrade `vitest` from `3.x.x` to `4.x.x`.
 ```
 [Migrate `vitest@4`](../tools/ai-migrations/MIGRATE_VITEST_4.md).
 
+#### Step 1
+
+```json
+{
+  "@vitest/coverage-v8": "^4.0.0",
+  "@vitest/ui": "^4.0.0",
+  "vitest": "^4.0.8"
+}
+```
+
 ### `zone.js`
 
 Delete / avoid / reduce usage of `zone.js`.
