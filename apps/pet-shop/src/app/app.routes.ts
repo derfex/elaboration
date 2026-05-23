@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router'
 
-export const routes: Routes = [
+export const appRoutes: Routes = [
   {
     loadComponent: () => import('./integrator/pages/home-page/home-page.component').then((c) => c.HomePageComponent),
     path: '',
