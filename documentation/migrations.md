@@ -16,6 +16,10 @@ nx migrate <package>@<version>
 
 Do we need to start use `await fixture.whenStable()`?
 
+### `@typescript-eslint/utils`
+
+Are we using it?
+
 ### `vitest`
 
 Upgrade `vitest` from `3.x.x` to `4.x.x`.
