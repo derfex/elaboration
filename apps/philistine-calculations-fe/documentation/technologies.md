@@ -51,10 +51,10 @@
 - `defineProps`
 
 - Reactivity API: Core
-    - `computed`
-    - `ref`
-    - `watch`
-    - `watchEffect`
+  - `computed`
+  - `ref`
+  - `watch`
+  - `watchEffect`
 
 ### Unknown
 
