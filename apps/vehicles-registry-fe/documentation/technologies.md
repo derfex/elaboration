@@ -43,8 +43,8 @@
 - `defineProps`
 
 - Reactivity API: Core
-  - `computed` 
-  - `watch` 
+  - `computed`
+  - `watch`
 - Reactivity API: Advanced
   - `shallowRef`
 
@@ -61,14 +61,26 @@
 ### Dev dependencies
 
 - @eslint/js
+- @nx/devkit
 - @nx/eslint
 - @nx/eslint-plugin
 - @nx/js
+- @nx/playwright
 - @nx/vite
+- @nx/vitest
 - @nx/vue
+- @nx/web
+- @nx/workspace
+- @playwright/test
+- @swc-node/register
+- @swc/core
+- @swc/helpers
+- @types/node
 - @typescript-eslint/parser
 - @typescript-eslint/utils
 - @vitejs/plugin-vue
+- @vitest/coverage-v8
+- @vitest/ui
 - @vue/eslint-config-prettier
 - @vue/eslint-config-typescript
 - @vue/test-utils
@@ -76,9 +88,14 @@
 - eslint-config-prettier
 - eslint-plugin-playwright
 - eslint-plugin-vue
+- jiti
+- jsdom
 - nx
 - prettier
 - sass
+- tslib
 - typescript
 - typescript-eslint
 - vite
+- vitest
+- vue-tsc
