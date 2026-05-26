@@ -2,6 +2,47 @@
 
 ## Technologies
 
+### Angular
+
+#### `@angular/core`
+
+- `ChangeDetectionStrategy.OnPush`
+- `Component`
+- `DestroyRef`
+- `Injectable`
+- `inject`
+- `provideBrowserGlobalErrorListeners`
+- `provideZonelessChangeDetection`
+- `type ApplicationConfig`
+- `type OnInit`
+- Signals
+  - `computed`
+  - `input`
+  - `signal`
+
+#### `@angular/common`
+
+- `NgOptimizedImage`
+- HTTP
+  - `HttpTestingController`
+  - `provideHttpClient`
+  - `provideHttpClientTesting`
+  - `withFetch`
+
+#### `@angular/platform-browser`
+
+- `BrowserTestingModule`
+- `DomSanitizer`
+- `bootstrapApplication`
+- `platformBrowserTesting`
+- `type SafeResourceUrl`
+
+#### `@angular/router`
+
+- `RouterModule`
+- `provideRouter`
+- `type Route`
+
 ### CSS
 
 - CSS flexible box layout
@@ -24,6 +65,14 @@
     - ES6 collections: `Map`.
     - ES6 modules.
     - Promises.
+
+### RxJS
+
+- `of`
+- `map`
+- `shareReplay`
+- `switchMap`
+- `type Observable`
 
 ### SASS
 
