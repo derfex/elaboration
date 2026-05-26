@@ -7,23 +7,34 @@
 #### `@angular/core`
 
 - `ChangeDetectionStrategy.OnPush`
+- `ChangeDetectorRef`
 - `Component`
 - `DestroyRef`
 - `Injectable`
+- `Input`
+- `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `provideZonelessChangeDetection`
+- `takeUntilDestroyed`
 - `type ApplicationConfig`
 - `type OnInit`
 - Signals
-    - `computed`
-    - `input`
-    - `signal`
+  - `computed`
+  - `input`
+  - `signal`
+
+- `@angular/core/testing`
+  - `ComponentFixture`
+  - `TestBed`
+  - `getTestBed`
 
 #### `@angular/common`
 
 - `NgOptimizedImage`
-- HTTP
+
+- `@angular/common/http`
+  - `HttpClient`
   - `HttpTestingController`
   - `provideHttpClient`
   - `provideHttpClientTesting`
@@ -31,11 +42,17 @@
 
 #### `@angular/platform-browser`
 
-- `BrowserTestingModule`
 - `DomSanitizer`
 - `bootstrapApplication`
-- `platformBrowserTesting`
 - `type SafeResourceUrl`
+
+- `@angular/platform-browser/testing`
+  - `BrowserTestingModule`
+  - `platformBrowserTesting`
+
+- `@angular/platform-browser-dynamic/testing`, deprecated
+  - `BrowserDynamicTestingModule`
+  - `platformBrowserDynamicTesting`
 
 #### `@angular/router`
 
@@ -47,26 +64,26 @@
 
 - CSS flexible box layout
 - CSS grid layout
-    - `grid-template-columns: subgrid`
+  - `grid-template-columns: subgrid`
 - CSS Houdini
-    - Custom Properties & Values
+  - Custom Properties & Values
 - `@media`
 
 ### ECMAScript
 
 - ECMAScript 2018
-    - Spread operator.
+  - Spread operator.
 - ECMAScript 2017
-    - `async`, `await`.
-    - Trailing commas.
+  - `async`, `await`.
+  - Trailing commas.
 - ECMAScript 2015 (6)
-    - Arrow functions.
-    - `const`, `let`.
-    - Destructuring, object property shorthand.
-    - ES6 classes.
-    - ES6 collections: `Map`, `Set`.
-    - ES6 modules.
-    - Promises.
+  - Arrow functions.
+  - `const`, `let`.
+  - Destructuring, object property shorthand.
+  - ES6 classes.
+  - ES6 collections: `Map`, `Set`.
+  - ES6 modules.
+  - Promises.
 
 ### Nest
 
@@ -117,14 +134,14 @@
 - `defineProps`
 
 - Reactivity API: Core
-    - `computed`
-    - `ref`
-    - `watch`
-    - `watchEffect`
+  - `computed`
+  - `ref`
+  - `watch`
+  - `watchEffect`
 - Reactivity API: Advanced
-    - `shallowRef`
+  - `shallowRef`
 
 ### Unknown
 
 - Vite?
-    - `import.meta.env.BASE_URL`
+  - `import.meta.env.BASE_URL`
