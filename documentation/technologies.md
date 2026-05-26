@@ -33,6 +33,10 @@
   - `provideHttpClientTesting`
   - `withFetch`
 
+#### `@angular/forms`
+
+- `FormsModule`
+
 #### `@angular/platform-browser`
 
 - `DomSanitizer`

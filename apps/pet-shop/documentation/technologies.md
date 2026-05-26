@@ -1,6 +1,6 @@
-# Technologies
+# Pet-shop front-end
 
-## Full list
+## Technologies
 
 ### Angular
 
@@ -19,10 +19,6 @@
 - `takeUntilDestroyed`
 - `type ApplicationConfig`
 - `type OnInit`
-- Signals
-  - `computed`
-  - `input`
-  - `signal`
 
 - `@angular/core/testing`
   - `ComponentFixture`
@@ -31,13 +27,9 @@
 
 #### `@angular/common`
 
-- `NgOptimizedImage`
-
 - `@angular/common/http`
   - `HttpClient`
-  - `HttpTestingController`
   - `provideHttpClient`
-  - `provideHttpClientTesting`
   - `withFetch`
 
 #### `@angular/forms`
@@ -46,13 +38,7 @@
 
 #### `@angular/platform-browser`
 
-- `DomSanitizer`
 - `bootstrapApplication`
-- `type SafeResourceUrl`
-
-- `@angular/platform-browser/testing`
-  - `BrowserTestingModule`
-  - `platformBrowserTesting`
 
 - `@angular/platform-browser-dynamic/testing`, deprecated
   - `BrowserDynamicTestingModule`
@@ -61,16 +47,12 @@
 #### `@angular/router`
 
 - `RouterModule`
-- `provideRouter`
-- `type Route`
+- `type Routes`
 
 ### CSS
 
 - CSS flexible box layout
 - CSS grid layout
-  - `grid-template-columns: subgrid`
-- CSS Houdini
-  - Custom Properties & Values
 - `@media`
 
 ### ECMAScript
@@ -89,63 +71,58 @@
   - ES6 modules.
   - Promises.
 
-### Nest
-
-- `@Body`
-- `@Controller`
-- `@Get`
-- `@Injectable`
-- `@Module`
-- `@Post`
-
-### RxJS
-
-- `of`
-- `map`
-- `shareReplay`
-- `switchMap`
-- `type Observable`
-
 ### SASS
 
-- `@include`
-- `@mixin`
-- `@use`
+Basic syntax only.
 
 ### TypeScript
 
 - `as const`
-- `asserts`
 - `readonly`
-- `typeof`
-- `satisfies`
 
-- `ReturnType`
+## Dependencies
 
-### Vite
+### Dependencies
 
-- `import.meta.env.VITE_*`
+- @angular/common
+- @angular/core
+- @angular/forms
+- @angular/platform-browser
+- @angular/router
+- rxjs
 
-### Vue
+### Dev dependencies
 
-- Composition API
-- Composables
-
-- `<script lang="ts" setup>`
-- `<style lang="sass" scoped>`
-
-- `defineEmits`
-- `defineProps`
-
-- Reactivity API: Core
-  - `computed`
-  - `ref`
-  - `watch`
-  - `watchEffect`
-- Reactivity API: Advanced
-  - `shallowRef`
-
-### Unknown
-
-- Vite?
-  - `import.meta.env.BASE_URL`
+- @angular-devkit/core
+- @angular-devkit/schematics
+- @angular/build
+- @angular/cli
+- @angular/compiler-cli
+- @angular/language-service
+- @eslint/js
+- @nx/angular
+- @nx/devkit
+- @nx/eslint
+- @nx/eslint-plugin
+- @nx/js
+- @nx/playwright
+- @nx/web
+- @nx/workspace
+- @playwright/test
+- @schematics/angular
+- @swc-node/register
+- @swc/core
+- @swc/helpers
+- @typescript-eslint/utils
+- angular-eslint
+- eslint
+- eslint-config-prettier
+- eslint-plugin-playwright
+- jsdom
+- nx
+- prettier
+- sass
+- tslib
+- typescript
+- typescript-eslint
+- vitest
