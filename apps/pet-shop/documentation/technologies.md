@@ -71,6 +71,13 @@
   - ES6 modules.
   - Promises.
 
+### RxJS
+
+- `BehaviorSubject`
+- `map`
+- `of`
+- `type Observable`
+
 ### SASS
 
 Basic syntax only.

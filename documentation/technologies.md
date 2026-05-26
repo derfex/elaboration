@@ -89,8 +89,9 @@
 
 ### RxJS
 
-- `of`
+- `BehaviorSubject`
 - `map`
+- `of`
 - `shareReplay`
 - `switchMap`
 - `type Observable`
