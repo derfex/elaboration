@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators'
 import { BackendAPIService } from '~be/backend-api/backend-api.service'
 import type { PSProductForBE } from '~be/ps-products/ps-products-for-be.type'
 import type { PSProduct } from '~entities/ps-products/ps-products.type'
+import { environment } from '~environments/environment'
 import type { PSProductsServiceReadList } from '~integrator/data-access/ps-products/products-service.type'
-import { environment } from '../../../../environments/environment'
 
 @Injectable({
   providedIn: 'root',

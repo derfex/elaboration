@@ -6,7 +6,7 @@ import type { Observable } from 'rxjs'
 import { BackendAPIService } from '~be/backend-api/backend-api.service'
 import type { PSProductCategoryForBE } from '~be/ps-categories/ps-categories-for-be.type'
 import type { PSProductCategory } from '~entities/ps-product-categories/ps-product-categories.type'
-import { environment } from '../../../../environments/environment'
+import { environment } from '~environments/environment.dev'
 
 @Injectable({
   providedIn: 'root',
