@@ -20,7 +20,7 @@
 - `type OnInit`
 
 - `@angular/core/rxjs-interop`
-    - `takeUntilDestroyed`
+  - `takeUntilDestroyed`
 
 - `@angular/core/testing`
   - `TestBed`

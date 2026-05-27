@@ -1,7 +1,10 @@
+// # External modules
 import { inject, Injectable } from '@angular/core'
 import type { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
-import type { PSProduct } from '../../../../architecture/entities/ps-products/ps-products.type'
+
+// # Internal modules
+import type { PSProduct } from '../../../architecture/entities/ps-products/ps-products.type'
 import type { PSProductTableItem } from '../../ui/ps-products/ps-products.type'
 import { PSProductsHTTPService } from '../backend-api/ps-products/ps-products-http.service'
 import { PSProductsLocalService } from '../data/ps-products/ps-products-local.service'
