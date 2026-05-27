@@ -1,4 +1,4 @@
-# derfex profile front-end
+# `derfex` profile front-end
 
 ## Technologies
 
