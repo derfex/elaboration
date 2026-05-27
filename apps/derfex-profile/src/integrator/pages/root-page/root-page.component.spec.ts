@@ -6,21 +6,23 @@ import { type Observable, of } from 'rxjs'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { WINDOW } from '~integrator/data-access/web-api/window.token'
 import { relax } from '~temp-libs/dev/relax.utility'
-import { UIKitPageComponent } from './ui-kit-page.component'
+import { RootPageComponent } from './root-page.component'
 
-describe('UIKitPageComponent', (): void => {
-  let component: UIKitPageComponent
-  let fixture: ComponentFixture<UIKitPageComponent>
+describe('RootPageComponent', (): void => {
+  let component: RootPageComponent
+  let fixture: ComponentFixture<RootPageComponent>
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
       imports: [
         // Stubs.
+        DXActivitiesSectionStubComponent,
+        DXProjectsSectionStubComponent,
+        DXSkillsSectionStubComponent,
         HeaderSectionStubComponent,
         HeroSectionStubComponent,
         LayoutLoaderStubComponent,
         LayoutSectionSeparatorStubComponent,
-        UIKitSectionStubComponent,
       ],
       // TODO: Do we need to provide something for `HttpClient`
       //  if the component-under-test and the stubs do not use `HttpClient`?
@@ -38,7 +40,7 @@ describe('UIKitPageComponent', (): void => {
       ],
     }).compileComponents()
 
-    fixture = TestBed.createComponent(UIKitPageComponent)
+    fixture = TestBed.createComponent(RootPageComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
@@ -47,6 +49,15 @@ describe('UIKitPageComponent', (): void => {
     expect(component).toBeTruthy()
   })
 })
+
+@Component({ selector: 'app-dx-activities-section', template: '' })
+class DXActivitiesSectionStubComponent {}
+
+@Component({ selector: 'app-dx-projects-section', template: '' })
+class DXProjectsSectionStubComponent {}
+
+@Component({ selector: 'app-dx-skills-section', template: '' })
+class DXSkillsSectionStubComponent {}
 
 @Component({ selector: 'app-header-section', template: '' })
 class HeaderSectionStubComponent {}
@@ -60,13 +71,14 @@ class LayoutLoaderStubComponent {}
 @Component({ selector: 'app-layout-section-separator', template: '' })
 class LayoutSectionSeparatorStubComponent {}
 
-@Component({ selector: 'app-ui-kit-section', template: '' })
-class UIKitSectionStubComponent {}
-
+// TODO: Reorganize the stubs. All methods should be used in the corresponding test group.
 class LoadingNotifierStubService {
   public get loading(): Observable<boolean> {
     return of(false)
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  public setProcessLoading(processCodename: string, loading: boolean): void {}
 }
 
 const WINDOWStubToken = {
