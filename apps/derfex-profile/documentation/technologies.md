@@ -1,22 +1,19 @@
-# Technologies
+# derfex profile front-end
 
-## Full list
+## Technologies
 
 ### Angular
 
 #### `@angular/core`
 
 - `ChangeDetectionStrategy.OnPush`
-- `ChangeDetectorRef`
 - `Component`
 - `DOCUMENT`
 - `DestroyRef`
 - `Injectable`
 - `InjectionToken`
-- `Input`
 - `PLATFORM_ID`
 - `Renderer2`
-- `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `provideZonelessChangeDetection`
@@ -39,7 +36,6 @@
 #### `@angular/common`
 
 - `NgComponentOutlet`
-- `NgOptimizedImage`
 - `NgTemplateOutlet`
 
 - `@angular/common/http`
@@ -51,23 +47,13 @@
   - `HttpTestingController`
   - `provideHttpClientTesting`
 
-#### `@angular/forms`
-
-- `FormsModule`
-
 #### `@angular/platform-browser`
 
-- `DomSanitizer`
 - `bootstrapApplication`
-- `type SafeResourceUrl`
 
 - `@angular/platform-browser/testing`
   - `BrowserTestingModule`
   - `platformBrowserTesting`
-
-- `@angular/platform-browser-dynamic/testing`, deprecated
-  - `BrowserDynamicTestingModule`
-  - `platformBrowserDynamicTesting`
 
 #### `@angular/router`
 
@@ -79,7 +65,6 @@
 
 - CSS flexible box layout
 - CSS grid layout
-  - `grid-template-columns: subgrid`
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
@@ -99,15 +84,6 @@
   - ES6 collections: `Map`, `Set`.
   - ES6 modules.
   - Promises.
-
-### Nest
-
-- `@Body`
-- `@Controller`
-- `@Get`
-- `@Injectable`
-- `@Module`
-- `@Post`
 
 ### RxJS
 
@@ -141,32 +117,49 @@
 - `satisfies`
 - `typeof`
 
-- `ReturnType`
+## Dependencies
 
-### Vite
+### Dependencies
 
-- `import.meta.env.VITE_*`
+- @angular/common
+- @angular/compiler
+- @angular/core
+- @angular/platform-browser
+- @angular/router
+- rxjs
 
-### Vue
+### Dev dependencies
 
-- Composition API
-- Composables
-
-- `<script lang="ts" setup>`
-- `<style lang="sass" scoped>`
-
-- `defineEmits`
-- `defineProps`
-
-- Reactivity API: Core
-  - `computed`
-  - `ref`
-  - `watch`
-  - `watchEffect`
-- Reactivity API: Advanced
-  - `shallowRef`
-
-### Unknown
-
-- Vite?
-  - `import.meta.env.BASE_URL`
+- @angular-devkit/core
+- @angular-devkit/schematics
+- @angular/build
+- @angular/cli
+- @angular/compiler-cli
+- @angular/language-service
+- @eslint/js
+- @nx/angular
+- @nx/devkit
+- @nx/eslint
+- @nx/eslint-plugin
+- @nx/js
+- @nx/playwright
+- @nx/web
+- @nx/workspace
+- @playwright/test
+- @schematics/angular
+- @swc-node/register
+- @swc/core
+- @swc/helpers
+- @typescript-eslint/utils
+- angular-eslint
+- eslint
+- eslint-config-prettier
+- eslint-plugin-playwright
+- jsdom
+- nx
+- prettier
+- sass
+- tslib
+- typescript
+- typescript-eslint
+- vitest

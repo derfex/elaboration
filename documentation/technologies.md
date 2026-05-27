@@ -9,8 +9,12 @@
 - `ChangeDetectionStrategy.OnPush`
 - `ChangeDetectorRef`
 - `Component`
+- `DOCUMENT`
 - `DestroyRef`
 - `Injectable`
+- `InjectionToken`
+- `PLATFORM_ID`
+- `Renderer2`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `provideZonelessChangeDetection`
@@ -23,10 +27,18 @@
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
+  - `toSignal`
+
+- `@angular/core/testing`
+  - `TestBed`
+  - `getTestBed`
+  - `type ComponentFixture`
 
 #### `@angular/common`
 
+- `NgComponentOutlet`
 - `NgOptimizedImage`
+- `NgTemplateOutlet`
 
 - `@angular/common/http`
   - `HttpClient`
@@ -94,14 +106,23 @@
 ### RxJS
 
 - `BehaviorSubject`
+- `catchError`
+- `combineLatest`
+- `distinctUntilChanged`
 - `map`
+- `noop`
 - `of`
 - `shareReplay`
 - `switchMap`
+- `tap`
+- `zip`
 - `type Observable`
 
 ### SASS
 
+- `@else`, `@if`
+- `@for $_i from $_a through $_b`
+- `@function`, `@return`
 - `@include`
 - `@mixin`
 - `@use`
