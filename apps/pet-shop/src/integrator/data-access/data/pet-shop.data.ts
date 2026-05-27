@@ -1,7 +1,7 @@
 // # Internal modules
-import type { PSProduct } from '../../../architecture/entities/ps-products/ps-products.type'
-import { PSProductCategoriesStorage } from './ps-categories/ps-product-categories-storage'
-import { PSProductsStorage } from './ps-products/ps-products-storage'
+import type { PSProduct } from '~entities/ps-products/ps-products.type'
+import { PSProductCategoriesStorage } from '~integrator/data-access/data/ps-categories/ps-product-categories-storage'
+import { PSProductsStorage } from '~integrator/data-access/data/ps-products/ps-products-storage'
 
 const psProductCategoriesStorage = new PSProductCategoriesStorage()
 {

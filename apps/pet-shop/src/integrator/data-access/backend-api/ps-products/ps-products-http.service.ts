@@ -4,11 +4,11 @@ import { type Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 // # Internal modules
-import type { PSProduct } from '../../../../architecture/entities/ps-products/ps-products.type'
+import { BackendAPIService } from '~be/backend-api/backend-api.service'
+import type { PSProductForBE } from '~be/ps-products/ps-products-for-be.type'
+import type { PSProduct } from '~entities/ps-products/ps-products.type'
+import type { PSProductsServiceReadList } from '~integrator/data-access/ps-products/products-service.type'
 import { environment } from '../../../../environments/environment'
-import type { PSProductsServiceReadList } from '../../ps-products/products-service.type'
-import { BackendAPIService } from '../backend-api/backend-api.service'
-import type { PSProductForBE } from './ps-products-for-be.type'
 
 @Injectable({
   providedIn: 'root',
