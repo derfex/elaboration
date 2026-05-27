@@ -16,14 +16,16 @@
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `provideZonelessChangeDetection`
-- `takeUntilDestroyed`
 - `type ApplicationConfig`
 - `type OnInit`
 
+- `@angular/core/rxjs-interop`
+    - `takeUntilDestroyed`
+
 - `@angular/core/testing`
-  - `ComponentFixture`
   - `TestBed`
   - `getTestBed`
+  - `type ComponentFixture`
 
 #### `@angular/common`
 
