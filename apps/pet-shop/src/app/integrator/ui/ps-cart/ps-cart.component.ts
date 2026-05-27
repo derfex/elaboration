@@ -1,5 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, type OnInit } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
