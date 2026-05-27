@@ -18,8 +18,8 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import { PSEmptinessComponent } from '../../ui-kit/ps-emptiness/ps-emptiness.component'
-import type { PSProductTableItem } from './ps-products.type'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
+import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

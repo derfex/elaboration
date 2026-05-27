@@ -1,4 +1,5 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
+
 import { PSCartComponent } from './ps-cart.component'
 
 // TODO: Explore the tests, refactor, {migrate to `vitest`?}.

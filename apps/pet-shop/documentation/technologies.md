@@ -96,6 +96,7 @@ Basic syntax only.
 - @angular/common
 - @angular/core
 - @angular/forms
+- @angular/material
 - @angular/platform-browser
 - @angular/router
 - rxjs

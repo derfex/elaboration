@@ -13,6 +13,16 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "~app/*": ["apps/pet-shop/src/app/*"],
+      "~be/*": ["apps/pet-shop/src/integrator/data-access/backend-api/*"],
+      "~entities/*": ["apps/pet-shop/src/architecture/entities/*"],
+      "~environments/*": ["apps/pet-shop/src/environments/*"],
+      "~integrator/*": ["apps/pet-shop/src/integrator/*"],
+      "~pages/*": ["apps/pet-shop/src/integrator/pages/*"],
+      "~ui/*": ["apps/pet-shop/src/integrator/ui/*"],
+      "~ui-kit/*": ["apps/pet-shop/src/integrator/ui-kit/*"],
+    },
     "strict": true,
     "target": "es2022"
   },

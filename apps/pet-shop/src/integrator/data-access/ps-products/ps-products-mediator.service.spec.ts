@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing'
+
 import { PSProductsMediatorService } from './ps-products-mediator.service'
 
 // TODO: Explore the tests, refactor, {migrate to `vitest`?}.
