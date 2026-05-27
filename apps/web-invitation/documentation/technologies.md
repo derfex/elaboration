@@ -23,19 +23,25 @@
 #### `@angular/common`
 
 - `NgOptimizedImage`
-- HTTP
-  - `HttpTestingController`
+
+- `@angular/common/http`
+  - `HttpClient`
   - `provideHttpClient`
-  - `provideHttpClientTesting`
   - `withFetch`
+
+- `@angular/common/http/testing`
+  - `HttpTestingController`
+  - `provideHttpClientTesting`
 
 #### `@angular/platform-browser`
 
-- `BrowserTestingModule`
 - `DomSanitizer`
 - `bootstrapApplication`
-- `platformBrowserTesting`
 - `type SafeResourceUrl`
+
+- `@angular/platform-browser/testing`
+  - `BrowserTestingModule`
+  - `platformBrowserTesting`
 
 #### `@angular/router`
 
@@ -48,28 +54,28 @@
 - CSS flexible box layout
 - CSS grid layout
 - CSS Houdini
-    - Custom Properties & Values
+  - Custom Properties & Values
 - `@media`
 
 ### ECMAScript
 
 - ECMAScript 2018
-    - Spread operator.
+  - Spread operator.
 - ECMAScript 2017
-    - `async`, `await`.
-    - Trailing commas.
+  - `async`, `await`.
+  - Trailing commas.
 - ECMAScript 2015 (6)
-    - Arrow functions.
-    - `const`, `let`.
-    - ES6 classes.
-    - ES6 collections: `Map`.
-    - ES6 modules.
-    - Promises.
+  - Arrow functions.
+  - `const`, `let`.
+  - ES6 classes.
+  - ES6 collections: `Map`.
+  - ES6 modules.
+  - Promises.
 
 ### RxJS
 
-- `of`
 - `map`
+- `of`
 - `shareReplay`
 - `switchMap`
 - `type Observable`
