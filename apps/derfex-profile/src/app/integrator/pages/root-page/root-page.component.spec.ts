@@ -71,10 +71,14 @@ class LayoutLoaderStubComponent {}
 @Component({ selector: 'app-layout-section-separator', template: '' })
 class LayoutSectionSeparatorStubComponent {}
 
+// TODO: Reorganize the stubs. All methods should be used in the corresponding test group.
 class LoadingNotifierStubService {
   public get loading(): Observable<boolean> {
     return of(false)
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  public setProcessLoading(processCodename: string, loading: boolean): void {}
 }
 
 const WINDOWStubToken = {
