@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing'
 import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
-import { NxWelcomeComponent } from './integrator/angular-example/nx-welcome/nx-welcome.component'
+import { NxWelcomeComponent } from '../integrator/angular-example/nx-welcome/nx-welcome.component'
 
 // TODO: Explore the tests, refactor, {migrate to `vitest`?}.
 
