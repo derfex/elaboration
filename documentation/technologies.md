@@ -2,6 +2,73 @@
 
 ## Used
 
+### Angular
+
+#### `@angular/core`
+
+- `ChangeDetectionStrategy.OnPush`
+- `ChangeDetectorRef`
+- `Component`
+- `DOCUMENT`
+- `DestroyRef`
+- `Injectable`
+- `InjectionToken`
+- `PLATFORM_ID`
+- `Renderer2`
+- `inject`
+- `provideBrowserGlobalErrorListeners`
+- `provideZonelessChangeDetection`
+- `type ApplicationConfig`
+- `type OnInit`
+- Signals
+  - `computed`
+  - `input`
+  - `signal`
+
+- `@angular/core/rxjs-interop`
+  - `takeUntilDestroyed`
+  - `toSignal`
+
+- `@angular/core/testing`
+  - `TestBed`
+  - `getTestBed`
+  - `type ComponentFixture`
+
+#### `@angular/common`
+
+- `NgComponentOutlet`
+- `NgOptimizedImage`
+- `NgTemplateOutlet`
+
+- `@angular/common/http`
+  - `HttpClient`
+  - `provideHttpClient`
+  - `withFetch`
+
+- `@angular/common/http/testing`
+  - `HttpTestingController`
+  - `provideHttpClientTesting`
+
+#### `@angular/forms`
+
+- `FormsModule`
+
+#### `@angular/platform-browser`
+
+- `DomSanitizer`
+- `bootstrapApplication`
+- `type SafeResourceUrl`
+
+- `@angular/platform-browser/testing`
+  - `BrowserTestingModule`
+  - `platformBrowserTesting`
+
+#### `@angular/router`
+
+- `RouterModule`
+- `provideRouter`
+- `type Route`
+
 ### CSS
 
 - CSS flexible box layout
