@@ -2,28 +2,83 @@
 
 ## Technologies
 
+### Angular
+
+#### `@angular/core`
+
+- `ChangeDetectionStrategy.OnPush`
+- `Component`
+- `DestroyRef`
+- `Injectable`
+- `inject`
+- `provideBrowserGlobalErrorListeners`
+- `provideZonelessChangeDetection`
+- `type ApplicationConfig`
+- `type OnInit`
+- Signals
+  - `computed`
+  - `input`
+  - `signal`
+
+#### `@angular/common`
+
+- `NgOptimizedImage`
+
+- `@angular/common/http`
+  - `HttpClient`
+  - `provideHttpClient`
+  - `withFetch`
+
+- `@angular/common/http/testing`
+  - `HttpTestingController`
+  - `provideHttpClientTesting`
+
+#### `@angular/platform-browser`
+
+- `DomSanitizer`
+- `bootstrapApplication`
+- `type SafeResourceUrl`
+
+- `@angular/platform-browser/testing`
+  - `BrowserTestingModule`
+  - `platformBrowserTesting`
+
+#### `@angular/router`
+
+- `RouterModule`
+- `provideRouter`
+- `type Route`
+
 ### CSS
 
 - CSS flexible box layout
 - CSS grid layout
 - CSS Houdini
-    - Custom Properties & Values
+  - Custom Properties & Values
 - `@media`
 
 ### ECMAScript
 
 - ECMAScript 2018
-    - Spread operator.
+  - Spread operator.
 - ECMAScript 2017
-    - `async`, `await`.
-    - Trailing commas.
+  - `async`, `await`.
+  - Trailing commas.
 - ECMAScript 2015 (6)
-    - Arrow functions.
-    - `const`, `let`.
-    - ES6 classes.
-    - ES6 collections: `Map`.
-    - ES6 modules.
-    - Promises.
+  - Arrow functions.
+  - `const`, `let`.
+  - ES6 classes.
+  - ES6 collections: `Map`.
+  - ES6 modules.
+  - Promises.
+
+### RxJS
+
+- `map`
+- `of`
+- `shareReplay`
+- `switchMap`
+- `type Observable`
 
 ### SASS
 
@@ -34,7 +89,7 @@
 ### TypeScript
 
 - `as const`
-- `asserts`
+- `asserts value is Type`
 - `readonly`
 - `satisfies`
 
