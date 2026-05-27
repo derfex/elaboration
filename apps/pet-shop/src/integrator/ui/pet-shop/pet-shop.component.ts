@@ -4,13 +4,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatButton } from '@angular/material/button'
 
 // # Internal modules
-import { PSProductsMediatorService } from '../../data-access/ps-products/ps-products-mediator.service'
-import { PSCartComponent } from '../ps-cart/ps-cart.component'
-import { PSCartService } from '../ps-cart/ps-cart.service'
-import type { PSCartState } from '../ps-cart/ps-cart.service.type'
-import { PSCategoriesSelectComponent } from '../ps-categories/ps-categories-select/ps-categories-select.component'
-import { PSProductsComponent } from '../ps-products/ps-products.component'
-import type { PSProductTableItem } from '../ps-products/ps-products.type'
+import { PSProductsMediatorService } from '~integrator/data-access/ps-products/ps-products-mediator.service'
+import { PSCartComponent } from '~ui/ps-cart/ps-cart.component'
+import { PSCartService } from '~ui/ps-cart/ps-cart.service'
+import type { PSCartState } from '~ui/ps-cart/ps-cart.service.type'
+import { PSCategoriesSelectComponent } from '~ui/ps-categories/ps-categories-select/ps-categories-select.component'
+import { PSProductsComponent } from '~ui/ps-products/ps-products.component'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

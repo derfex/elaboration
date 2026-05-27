@@ -18,10 +18,10 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import { PSEmptinessComponent } from '../../ui-kit/ps-emptiness/ps-emptiness.component'
-import type { PSProductTableItem } from '../ps-products/ps-products.type'
-import { PSCartService } from './ps-cart.service'
-import { type PSCartState } from './ps-cart.service.type'
+import { PSCartService } from '~ui/ps-cart/ps-cart.service'
+import type { PSCartState } from '~ui/ps-cart/ps-cart.service.type'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
+import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

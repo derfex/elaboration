@@ -7,8 +7,8 @@ import { MatFormField, MatLabel } from '@angular/material/input'
 import { MatSelect } from '@angular/material/select'
 
 // # Internal modules
-import type { PSProductCategory } from '../../../../architecture/entities/ps-product-categories/ps-product-categories.type'
-import { PSCategoriesForBEService } from '../../../data-access/backend-api/ps-categories/ps-categories-for-be.service'
+import { PSCategoriesForBEService } from '~be/ps-categories/ps-categories-for-be.service'
+import type { PSProductCategory } from '~entities/ps-product-categories/ps-product-categories.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

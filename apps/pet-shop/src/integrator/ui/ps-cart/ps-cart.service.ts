@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject, type Observable } from 'rxjs'
 
 // # Internal modules
-import type { PSProductTableItem } from '../ps-products/ps-products.type'
-import type { PSCartState } from './ps-cart.service.type'
+import type { PSCartState } from '~ui/ps-cart/ps-cart.service.type'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Injectable({
   providedIn: 'root',
