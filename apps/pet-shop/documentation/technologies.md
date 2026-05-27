@@ -103,8 +103,36 @@ Basic syntax only.
 
 ### Dev dependencies
 
+- @angular-devkit/core
+- @angular-devkit/schematics
+- @angular/build
+- @angular/cli
+- @angular/compiler-cli
+- @angular/language-service
+- @eslint/js
 - @nx/angular
+- @nx/devkit
+- @nx/eslint
+- @nx/eslint-plugin
+- @nx/js
+- @nx/playwright
+- @nx/web
+- @nx/workspace
+- @playwright/test
+- @schematics/angular
+- @swc-node/register
+- @swc/core
+- @swc/helpers
+- @typescript-eslint/utils
+- angular-eslint
 - eslint
+- eslint-config-prettier
+- eslint-plugin-playwright
+- jsdom
+- nx
 - prettier
 - sass
+- tslib
 - typescript
+- typescript-eslint
+- vitest
