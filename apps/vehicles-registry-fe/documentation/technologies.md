@@ -23,7 +23,7 @@
 ### TypeScript
 
 - `as const`
-- `asserts`
+- `asserts value is Type`
 - `readonly`
 - `satisfies`
 

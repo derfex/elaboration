@@ -14,7 +14,6 @@
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `provideZonelessChangeDetection`
-- `takeUntilDestroyed`
 - `type ApplicationConfig`
 - `type OnInit`
 - Signals
@@ -22,16 +21,21 @@
   - `input`
   - `signal`
 
+- `@angular/core/rxjs-interop`
+  - `takeUntilDestroyed`
+
 #### `@angular/common`
 
 - `NgOptimizedImage`
 
 - `@angular/common/http`
   - `HttpClient`
-  - `HttpTestingController`
   - `provideHttpClient`
-  - `provideHttpClientTesting`
   - `withFetch`
+
+- `@angular/common/http/testing`
+  - `HttpTestingController`
+  - `provideHttpClientTesting`
 
 #### `@angular/forms`
 
@@ -105,10 +109,10 @@
 ### TypeScript
 
 - `as const`
-- `asserts`
+- `asserts value is Type`
 - `readonly`
-- `typeof`
 - `satisfies`
+- `typeof`
 
 - `ReturnType`
 
