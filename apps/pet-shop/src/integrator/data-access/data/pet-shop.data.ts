@@ -1,4 +1,5 @@
-import type { PSProduct } from '../../../../architecture/entities/ps-products/ps-products.type'
+// # Internal modules
+import type { PSProduct } from '../../../architecture/entities/ps-products/ps-products.type'
 import { PSProductCategoriesStorage } from './ps-categories/ps-product-categories-storage'
 import { PSProductsStorage } from './ps-products/ps-products-storage'
 

@@ -1,4 +1,5 @@
-import type { PSProductCategory } from '../../../../../architecture/entities/ps-product-categories/ps-product-categories.type'
+// # Internal modules
+import type { PSProductCategory } from '../../../../architecture/entities/ps-product-categories/ps-product-categories.type'
 
 export class PSProductCategoriesStorage {
   #counter = 0
