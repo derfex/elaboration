@@ -10,7 +10,6 @@ describe('GitLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(GitLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

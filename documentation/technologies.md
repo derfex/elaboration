@@ -17,7 +17,6 @@
 - `Renderer2`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
-- `provideZonelessChangeDetection`
 - `type ApplicationConfig`
 - `type OnInit`
 - Signals

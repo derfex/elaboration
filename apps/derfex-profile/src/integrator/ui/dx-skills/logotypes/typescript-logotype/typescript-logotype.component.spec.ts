@@ -10,7 +10,6 @@ describe('TypeScriptLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(TypeScriptLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

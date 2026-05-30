@@ -16,6 +16,13 @@ nx migrate <package>@<version>
 
 Do we need to start use `await fixture.whenStable()`?
 
+API documentation:
+https://angular.dev/api/core/testing/ComponentFixture#whenStable
+
+— Do we need to start use `await fixture.whenStable()`?
+— Looks like it is not necessary.
+https://angular.dev/guide/zoneless#using-zoneless-in-testbed
+
 ### `@oxc-project/runtime`
 
 Should we start to use it?
@@ -23,13 +30,3 @@ Should we start to use it?
 ### `@typescript-eslint/utils`
 
 Are we using it?
-
-### `zone.js`
-
-Delete / avoid / reduce usage of `zone.js`.
-
-https://angular.dev/guide/zoneless
-
-Do we need `@analogjs/vitest-angular/setup-zone`?
-
-`zone.js` imported from `…/node_modules/@analogjs/vitest-angular/setup-zone.js`.

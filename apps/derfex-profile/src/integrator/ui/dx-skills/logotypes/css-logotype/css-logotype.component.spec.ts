@@ -10,7 +10,6 @@ describe('CSSLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(CSSLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

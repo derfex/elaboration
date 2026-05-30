@@ -22,7 +22,6 @@ describe('HeaderSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(HeaderSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

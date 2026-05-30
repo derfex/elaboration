@@ -22,7 +22,6 @@ describe('EventOrganizationSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(EventOrganizationSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

@@ -40,7 +40,6 @@ describe('UIKitPageComponent', (): void => {
 
     fixture = TestBed.createComponent(UIKitPageComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

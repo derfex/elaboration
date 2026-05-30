@@ -10,7 +10,6 @@ describe('SASSLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(SASSLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

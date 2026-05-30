@@ -19,7 +19,7 @@
 - `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
-- `provideZonelessChangeDetection`
+- `provideZonelessChangeDetection` // It is not necessary in @Angular@21+.
 - `type ApplicationConfig`
 - `type OnInit`
 - Signals

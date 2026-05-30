@@ -10,7 +10,6 @@ describe('LayoutSectionSeparatorComponent', (): void => {
 
     fixture = TestBed.createComponent(LayoutSectionSeparatorComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

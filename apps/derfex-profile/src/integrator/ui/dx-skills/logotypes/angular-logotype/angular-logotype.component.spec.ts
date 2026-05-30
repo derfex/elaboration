@@ -10,7 +10,6 @@ describe('AngularLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(AngularLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

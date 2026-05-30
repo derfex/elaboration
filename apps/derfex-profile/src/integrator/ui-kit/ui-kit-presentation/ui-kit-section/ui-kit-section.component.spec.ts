@@ -20,7 +20,6 @@ describe('UIKitSectionComponent', (): void => {
 
   it('should create', (): void => {
     fixture.componentRef.setInput('number', 0)
-    fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

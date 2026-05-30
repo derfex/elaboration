@@ -17,7 +17,6 @@ describe('PSProductsComponent', (): void => {
   beforeEach((): void => {
     fixture = TestBed.createComponent(PSProductsComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

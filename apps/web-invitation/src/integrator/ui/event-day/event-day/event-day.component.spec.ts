@@ -18,7 +18,6 @@ describe('EventDayComponent', (): void => {
     fixture.componentRef.setInput('eventDateCaptionText', 'Test data')
     fixture.componentRef.setInput('eventDateValueText', 'Test data')
     fixture.componentRef.setInput('titleText', 'Test data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

@@ -21,7 +21,6 @@ describe('HeroSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(HeroSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

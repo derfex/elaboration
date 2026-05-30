@@ -22,7 +22,6 @@ describe('GuestQuestionnaireSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(GuestQuestionnaireSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

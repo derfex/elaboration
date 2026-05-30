@@ -10,7 +10,6 @@ describe('SVGLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(SVGLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

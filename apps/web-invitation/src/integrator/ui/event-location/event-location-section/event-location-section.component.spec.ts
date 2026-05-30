@@ -20,7 +20,6 @@ describe('EventLocationSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(EventLocationSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

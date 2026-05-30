@@ -20,7 +20,6 @@ describe('DressCodeComponent', (): void => {
     fixture.componentRef.setInput('illustrationImageWidth', 42)
     fixture.componentRef.setInput('tints', ['#042'])
     fixture.componentRef.setInput('titleText', 'Test data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

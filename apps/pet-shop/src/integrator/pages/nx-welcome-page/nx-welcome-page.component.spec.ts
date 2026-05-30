@@ -13,7 +13,6 @@ describe('NxWelcomePageComponent', (): void => {
 
     fixture = TestBed.createComponent(NxWelcomePageComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

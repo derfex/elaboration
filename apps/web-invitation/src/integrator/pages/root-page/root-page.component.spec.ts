@@ -24,7 +24,6 @@ describe('RootPageComponent', (): void => {
 
     fixture = TestBed.createComponent(RootPageComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

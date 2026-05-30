@@ -12,7 +12,6 @@ describe('GitHubInvertocatLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(GitHubInvertocatLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

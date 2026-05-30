@@ -10,7 +10,6 @@ describe('VueLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(VueLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

@@ -29,7 +29,6 @@ describe('DXActivitiesComponent', (): void => {
     fixture.componentRef.setInput('descriptionText', 'Test data.')
     fixture.componentRef.setInput('emptyStateText', 'Test data.')
     fixture.componentRef.setInput('titleText', 'Test data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

@@ -12,7 +12,6 @@
 - `Injectable`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
-- `provideZonelessChangeDetection`
 - `type ApplicationConfig`
 - `type OnInit`
 - Signals

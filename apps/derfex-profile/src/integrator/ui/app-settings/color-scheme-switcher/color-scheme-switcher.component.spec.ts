@@ -16,7 +16,6 @@ describe('ColorSchemeSwitcherComponent', (): void => {
 
     fixture = TestBed.createComponent(ColorSchemeSwitcherComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

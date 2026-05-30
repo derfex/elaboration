@@ -16,7 +16,6 @@ describe('LocaleSwitcherComponent', (): void => {
 
     fixture = TestBed.createComponent(LocaleSwitcherComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

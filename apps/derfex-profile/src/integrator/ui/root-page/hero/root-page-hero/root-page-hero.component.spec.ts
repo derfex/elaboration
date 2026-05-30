@@ -29,7 +29,6 @@ describe('RootPageHeroComponent', (): void => {
     fixture.componentRef.setInput('contactsText', 'Test data')
     fixture.componentRef.setInput('nameText', 'Test data')
     fixture.componentRef.setInput('titleXML', 'Test <highlight>data</highlight>')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

@@ -10,7 +10,6 @@ describe('LayoutLoaderComponent', (): void => {
 
     fixture = TestBed.createComponent(LayoutLoaderComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

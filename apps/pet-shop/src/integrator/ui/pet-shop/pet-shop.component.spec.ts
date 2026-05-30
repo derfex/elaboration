@@ -17,7 +17,6 @@ describe('PetShopComponent', (): void => {
   beforeEach((): void => {
     fixture = TestBed.createComponent(PetShopComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

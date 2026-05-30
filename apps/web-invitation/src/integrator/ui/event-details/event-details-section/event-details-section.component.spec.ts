@@ -21,7 +21,6 @@ describe('EventDetailsSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(EventDetailsSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

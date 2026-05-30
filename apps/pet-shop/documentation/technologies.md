@@ -15,7 +15,6 @@
 - `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
-- `provideZonelessChangeDetection`
 - `type ApplicationConfig`
 - `type OnInit`
 

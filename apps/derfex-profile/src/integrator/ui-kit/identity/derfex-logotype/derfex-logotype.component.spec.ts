@@ -11,7 +11,6 @@ describe('DerfexLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(DerfexLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

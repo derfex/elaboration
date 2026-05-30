@@ -10,7 +10,6 @@ describe('ButtonArrowIconComponent', (): void => {
 
     fixture = TestBed.createComponent(ArrowLeftIconComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {
