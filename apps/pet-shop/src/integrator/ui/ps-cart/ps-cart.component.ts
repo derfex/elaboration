@@ -57,7 +57,7 @@ export class PSCartComponent {
   }
 
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: string[] = ['action', 'number', 'name', 'category', 'price']
+  protected readonly displayedColumns: DisplayedColumns = ['action', 'number', 'name', 'category', 'price']
 
   #items: readonly PSProductTableItem[] = []
   readonly #psCartService = inject(PSCartService)
@@ -73,3 +73,6 @@ export class PSCartComponent {
   }
   // endregion ## Methods
 }
+
+type DisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
+type DisplayedColumns = readonly DisplayedColumn[]

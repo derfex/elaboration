@@ -16,10 +16,10 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table'
+import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
 
 // # Internal modules
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
-import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,7 +48,7 @@ import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.componen
 export class PSProductsComponent implements OnInit {
   // region ## Properties
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: readonly string[] = ['action', 'number', 'name', 'category', 'price']
+  protected readonly displayedColumns: DisplayedColumns = ['action', 'number', 'name', 'category', 'price']
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
 
   private filterPrivate: number | null = null
@@ -154,3 +154,6 @@ export class PSProductsComponent implements OnInit {
 function compare(a: number | string, b: number | string, isAsc: boolean): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1)
 }
+
+type DisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
+type DisplayedColumns = readonly DisplayedColumn[]
