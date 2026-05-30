@@ -20,7 +20,6 @@ describe('LayoutHeaderComponent', (): void => {
   })
 
   it('should create', (): void => {
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

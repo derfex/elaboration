@@ -10,7 +10,6 @@ describe('NodeJSLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(NodeJSLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

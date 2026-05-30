@@ -20,7 +20,6 @@ describe('DXActivityCardComponent', (): void => {
     fixture.componentRef.setInput('shortDescription', 'Test data.')
     fixture.componentRef.setInput('skills', ['Test data', 'Test data 42'])
     fixture.componentRef.setInput('skillsTitleText', 'Test data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

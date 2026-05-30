@@ -12,7 +12,6 @@ describe('GmailLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(GmailLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

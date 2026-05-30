@@ -10,7 +10,6 @@ describe('HTML5LogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(HTML5LogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

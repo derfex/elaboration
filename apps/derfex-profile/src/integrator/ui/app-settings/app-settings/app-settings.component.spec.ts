@@ -16,7 +16,6 @@ describe('AppSettingsComponent', (): void => {
 
     fixture = TestBed.createComponent(AppSettingsComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

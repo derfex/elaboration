@@ -12,7 +12,6 @@ describe('TelegramLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(TelegramLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

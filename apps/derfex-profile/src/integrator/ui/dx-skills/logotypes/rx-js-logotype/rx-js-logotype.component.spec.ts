@@ -10,7 +10,6 @@ describe('RxJSLogotypeComponent', (): void => {
 
     fixture = TestBed.createComponent(RxJSLogotypeComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {
