@@ -31,7 +31,6 @@ describe('EventProgramComponent', (): void => {
     ]
     fixture.componentRef.setInput('stages', stages)
     fixture.componentRef.setInput('titleText', 'Test data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

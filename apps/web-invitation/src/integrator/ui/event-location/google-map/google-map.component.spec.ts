@@ -14,7 +14,6 @@ describe('GoogleMapComponent', (): void => {
 
   it('should create', (): void => {
     fixture.componentRef.setInput('locationURL', 'TestData')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

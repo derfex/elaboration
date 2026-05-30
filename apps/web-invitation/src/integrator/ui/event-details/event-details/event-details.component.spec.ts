@@ -26,7 +26,6 @@ describe('EventDetailsComponent', (): void => {
     fixture.componentRef.setInput('descriptionParagraphs', ['Test data', 'Test data'])
     fixture.componentRef.setInput('titleText', 'Test data')
     fixture.componentRef.setInput('wishes', wishes)
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

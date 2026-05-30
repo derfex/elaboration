@@ -20,7 +20,6 @@ describe('DressCodeSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(DressCodeSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

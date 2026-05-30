@@ -15,7 +15,6 @@ describe('GoogleFormComponent', (): void => {
   it('should create', (): void => {
     fixture.componentRef.setInput('height', 42)
     fixture.componentRef.setInput('url', 'TestData')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

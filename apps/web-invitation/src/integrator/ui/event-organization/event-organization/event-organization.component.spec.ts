@@ -18,7 +18,6 @@ describe('EventOrganizationComponent', (): void => {
     fixture.componentRef.setInput('contacts', contacts)
     fixture.componentRef.setInput('descriptionParagraphs', ['Test data'])
     fixture.componentRef.setInput('titleText', 'Test data')
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })

@@ -20,7 +20,6 @@ describe('AppFooterSectionComponent', (): void => {
 
     fixture = TestBed.createComponent(AppFooterSectionComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {

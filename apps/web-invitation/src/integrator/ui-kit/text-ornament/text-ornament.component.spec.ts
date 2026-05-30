@@ -14,7 +14,6 @@ describe('TextOrnamentComponent', (): void => {
 
   it('should create', (): void => {
     fixture.componentRef.setInput('texts', ['Test data', 'Test data'])
-    // TODO?: fixture.detectChanges()
     expect(component).toBeTruthy()
   })
 })
