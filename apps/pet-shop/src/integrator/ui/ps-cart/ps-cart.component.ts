@@ -1,6 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, type OnInit } from '@angular/core'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import {
@@ -18,10 +17,9 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import { PSCartService } from '~ui/ps-cart/ps-cart.service'
-import type { PSCartState } from '~ui/ps-cart/ps-cart.service.type'
-import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
+import { PSCartService } from '~ui/ps-cart/ps-cart.service'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,7 +44,7 @@ import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.componen
   styleUrl: './ps-cart.component.sass',
   templateUrl: './ps-cart.component.html',
 })
-export class PSCartComponent implements OnInit {
+export class PSCartComponent {
   // region ## Properties
   @Input()
   public set items(items: readonly PSProductTableItem[]) {
@@ -61,18 +59,9 @@ export class PSCartComponent implements OnInit {
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected displayedColumns: string[] = ['action', 'number', 'name', 'category', 'price']
 
-  readonly #destroyRef = inject(DestroyRef)
   #items: readonly PSProductTableItem[] = []
   readonly #psCartService = inject(PSCartService)
-
   // endregion ## Properties
-
-  // region ## Lifecycle hooks
-  public ngOnInit(): void {
-    this.#fetchCartItems()
-  }
-
-  // endregion ## Lifecycle hooks
 
   // region ## Methods
   protected hasDisplayedData(): boolean {
@@ -82,12 +71,5 @@ export class PSCartComponent implements OnInit {
   protected deleteItem(id: number): void {
     this.#psCartService.deleteProductByID(id)
   }
-
-  #fetchCartItems(): void {
-    this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(({ items }: PSCartState): void => {
-      this.items = items
-    })
-  }
-
   // endregion ## Methods
 }
