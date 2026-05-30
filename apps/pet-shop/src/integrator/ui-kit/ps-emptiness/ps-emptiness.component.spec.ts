@@ -17,7 +17,6 @@ describe('PSEmptinessComponent', (): void => {
   beforeEach((): void => {
     fixture = TestBed.createComponent(PSEmptinessComponent)
     component = fixture.componentInstance
-    fixture.detectChanges()
   })
 
   it('should create', (): void => {
