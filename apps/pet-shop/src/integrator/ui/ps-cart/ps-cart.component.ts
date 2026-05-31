@@ -51,21 +51,21 @@ export class PSCartComponent {
   // endregion ### Injected
 
   public readonly items = input.required<readonly PSProductTableItem[]>()
-
   protected readonly dataSource = computed<MatTableDataSource<PSProductTableItem>>(
     () => new MatTableDataSource<PSProductTableItem>([...this.items()]),
   )
-  protected readonly displayedColumns: DisplayedColumns = ['action', 'number', 'name', 'category', 'price']
-
+  protected readonly deleteItemButtonTitle = 'Delete item'
+  protected readonly psEmptinessText = 'Add products to the cart'
+  protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
   protected readonly tableIsShown = computed<boolean>(() => !!this.dataSource().filteredData.length)
   // endregion ## Properties
 
   // region ## Methods
-  protected deleteItem(id: number): void {
+  protected deleteItemButtonClickHandler(id: number): void {
     this.#psCartService.deleteProductByID(id)
   }
   // endregion ## Methods
 }
 
-type DisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
-type DisplayedColumns = readonly DisplayedColumn[]
+type TableDisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
+type TableDisplayedColumns = readonly TableDisplayedColumn[]
