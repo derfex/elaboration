@@ -28,6 +28,11 @@
   - `getTestBed`
   - `type ComponentFixture`
 
+#### `@angular/cdk`
+
+- `@angular/cdk/collections`
+  - `SelectionModel`
+
 #### `@angular/common`
 
 - `@angular/common/http`
