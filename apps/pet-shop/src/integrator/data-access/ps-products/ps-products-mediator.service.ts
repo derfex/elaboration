@@ -13,18 +13,26 @@ import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
   providedIn: 'root',
 })
 export class PSProductsMediatorService {
-  // TODO: Create a possibility to change `#preferHTTPService`.
-  #preferHTTPService = true
+  // region ## Properties
+  // region ### Injected
   readonly psProductsHTTPService = inject(PSProductsHTTPService)
   readonly psProductsLocalService = inject(PSProductsLocalService)
+  // endregion ### Injected
 
+  // TODO: Create a possibility to change `#preferHTTPService`.
+  #preferHTTPService = true
+  // endregion ## Properties
+
+  // region ## Public API
   public readList(): Observable<readonly PSProductTableItem[]> {
     if (this.#preferHTTPService) {
       return this.#readListFromHTTPService()
     }
     return this.#readListFromLocalService()
   }
+  // endregion ## Public API
 
+  // region ## Methods
   #convertProductToTableItem(product: PSProduct): PSProductTableItem {
     return product
   }
@@ -48,4 +56,5 @@ export class PSProductsMediatorService {
         ),
       )
   }
+  // endregion ## Methods
 }
