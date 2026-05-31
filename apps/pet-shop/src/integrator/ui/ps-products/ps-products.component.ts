@@ -1,6 +1,6 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { ChangeDetectionStrategy, Component, effect, input, Input, type OnInit, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, effect, input, type OnInit, ViewChild } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import {
@@ -47,22 +47,12 @@ import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 })
 export class PSProductsComponent implements OnInit {
   // region ## Properties
+  public readonly filter = input.required<number>()
   public readonly items = input.required<readonly PSProductTableItem[]>()
+
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
   protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
-
-  private filterPrivate: number | null = null
-
-  @Input()
-  public set filter(filter: number) {
-    this.filterPrivate = filter
-    this.dataSource.filter = filter ? filter + '' : ''
-  }
-
-  public get filter(): number {
-    return this.filterPrivate ?? 0
-  }
 
   @ViewChild(MatSort, { static: false })
   sort: MatSort | undefined
@@ -72,6 +62,9 @@ export class PSProductsComponent implements OnInit {
     effect((): void => {
       // TODO: Do we need to clone objects within `items()`?
       this.dataSource.data = [...this.items()]
+
+      const filter = this.filter()
+      this.dataSource.filter = filter ? filter + '' : ''
     })
   }
 

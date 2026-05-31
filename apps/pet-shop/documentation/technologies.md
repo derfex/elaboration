@@ -11,7 +11,6 @@
 - `Component`
 - `DestroyRef`
 - `Injectable`
-- `Input`
 - `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
