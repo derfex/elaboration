@@ -2,7 +2,7 @@
 import { SelectionModel } from '@angular/cdk/collections'
 import { ChangeDetectionStrategy, Component, effect, input, type OnInit } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
+import { MatSort, MatSortModule, type Sort } from '@angular/material/sort'
 import {
   MatCell,
   MatCellDef,
