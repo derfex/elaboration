@@ -52,6 +52,7 @@ export class PSCartComponent {
 
   public readonly items = input.required<readonly PSProductTableItem[]>()
   protected readonly dataSource = computed<MatTableDataSource<PSProductTableItem>>(
+    // TODO: Do we need to clone objects within `items()`?
     () => new MatTableDataSource<PSProductTableItem>([...this.items()]),
   )
   protected readonly deleteItemButtonTitle = 'Delete item'
