@@ -17,6 +17,9 @@
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
 - `type OnInit`
+- Signals
+  - `computed`
+  - `input`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
