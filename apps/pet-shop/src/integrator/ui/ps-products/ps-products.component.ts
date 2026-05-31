@@ -16,9 +16,9 @@ import {
   MatTable,
   MatTableDataSource,
 } from '@angular/material/table'
-import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
 
 // # Internal modules
+import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
