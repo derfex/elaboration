@@ -27,26 +27,25 @@ import type { PSProductCategory } from '~entities/ps-product-categories/ps-produ
 })
 export class PSCategoriesSelectComponent implements OnInit {
   // region ## Properties
-  protected items: readonly PSProductCategory[] = []
-  protected selectedID: number | null = null
-
+  // region ### Injected
   readonly #destroyRef = inject(DestroyRef)
   readonly #psCategoriesForBEService = inject(PSCategoriesForBEService)
+  // endregion ### Injected
 
+  protected items: readonly PSProductCategory[] = []
+  protected selectedID: number | null = null
   // endregion ## Properties
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
     this.#fetchCategories()
   }
-
   // endregion ## Lifecycle hooks
 
   // region ## Public API
   public get selected(): number {
     return this.selectedID ?? 0
   }
-
   // endregion ## Public API
 
   // region ## Methods
@@ -63,6 +62,5 @@ export class PSCategoriesSelectComponent implements OnInit {
         },
       })
   }
-
   // endregion ## Methods
 }
