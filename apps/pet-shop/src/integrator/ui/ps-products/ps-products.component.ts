@@ -1,6 +1,6 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { ChangeDetectionStrategy, Component, Input, type OnInit, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, effect, input, Input, type OnInit, ViewChild } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import {
@@ -47,22 +47,12 @@ import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 })
 export class PSProductsComponent implements OnInit {
   // region ## Properties
+  public readonly items = input.required<readonly PSProductTableItem[]>()
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
   protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
 
   private filterPrivate: number | null = null
-  private itemsPrivate: readonly PSProductTableItem[] = []
-
-  @Input()
-  public set items(items: readonly PSProductTableItem[]) {
-    this.itemsPrivate = items
-    this.dataSource.data = [...items]
-  }
-
-  public get items(): readonly PSProductTableItem[] {
-    return this.itemsPrivate
-  }
 
   @Input()
   public set filter(filter: number) {
@@ -78,6 +68,13 @@ export class PSProductsComponent implements OnInit {
   sort: MatSort | undefined
   // endregion ## Properties
 
+  constructor() {
+    effect((): void => {
+      // TODO: Do we need to clone objects within `items()`?
+      this.dataSource.data = [...this.items()]
+    })
+  }
+
   // region ## Lifecycle hooks
   public ngOnInit(): void {
     this.dataSource.filterPredicate = ({ category }: PSProductTableItem, filter: string): boolean =>
@@ -87,7 +84,7 @@ export class PSProductsComponent implements OnInit {
 
   // region ## Methods
   protected sortData(sort: Sort): void {
-    const data = this.itemsPrivate.slice()
+    const data = [...this.items()]
     if (!sort.active || sort.direction === '') {
       this.dataSource.data = data
       return

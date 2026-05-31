@@ -19,6 +19,7 @@
 - `type OnInit`
 - Signals
   - `computed`
+  - `effect`
   - `input`
 
 - `@angular/core/rxjs-interop`

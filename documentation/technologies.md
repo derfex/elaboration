@@ -21,6 +21,7 @@
 - `type OnInit`
 - Signals
   - `computed`
+  - `effect`
   - `input`
   - `signal`
 
