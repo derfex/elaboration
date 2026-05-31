@@ -1,11 +1,5 @@
 // # External modules
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  inject,
-  input,
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import {
@@ -52,22 +46,21 @@ import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 })
 export class PSCartComponent {
   // region ## Properties
+  // region ### Injected
+  readonly #psCartService = inject(PSCartService)
+  // endregion ### Injected
+
   public readonly items = input.required<readonly PSProductTableItem[]>()
 
   protected readonly dataSource = computed<MatTableDataSource<PSProductTableItem>>(
     () => new MatTableDataSource<PSProductTableItem>([...this.items()]),
   )
-
   protected readonly displayedColumns: DisplayedColumns = ['action', 'number', 'name', 'category', 'price']
 
-  readonly #psCartService = inject(PSCartService)
+  protected readonly tableIsShown = computed<boolean>(() => !!this.dataSource().filteredData.length)
   // endregion ## Properties
 
   // region ## Methods
-  protected hasDisplayedData(): boolean {
-    return !!this.dataSource().filteredData.length
-  }
-
   protected deleteItem(id: number): void {
     this.#psCartService.deleteProductByID(id)
   }
