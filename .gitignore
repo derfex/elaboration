@@ -44,17 +44,27 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.nx/cache
-.nx/workspace-data
-
-.angular
-
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
-.cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+
+# AI
+
+.claude/worktrees
+.cursor/rules/nx-rules.mdc
+
+# Angular
+
+.angular
 
 # Applications
 
 apps/vehicles-registry-fe/.env.local
+
+# NX
+
+.nx/cache
+.nx/polygraph
+.nx/self-healing
+.nx/workspace-data
