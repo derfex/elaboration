@@ -1,6 +1,6 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { ChangeDetectionStrategy, Component, effect, input, type OnInit, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, effect, input, type OnInit } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import {
@@ -53,9 +53,6 @@ export class PSProductsComponent implements OnInit {
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
   protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
-
-  @ViewChild(MatSort, { static: false })
-  sort: MatSort | undefined
   // endregion ## Properties
 
   constructor() {

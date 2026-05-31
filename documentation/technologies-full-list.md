@@ -27,6 +27,7 @@
   - `effect`
   - `input`
   - `signal`
+  - `viewChild`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`

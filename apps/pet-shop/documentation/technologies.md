@@ -11,7 +11,6 @@
 - `Component`
 - `DestroyRef`
 - `Injectable`
-- `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
