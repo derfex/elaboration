@@ -48,8 +48,8 @@ import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 export class PSProductsComponent implements OnInit {
   // region ## Properties
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected readonly displayedColumns: DisplayedColumns = ['action', 'number', 'name', 'category', 'price']
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
+  protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
 
   private filterPrivate: number | null = null
   private itemsPrivate: readonly PSProductTableItem[] = []
@@ -76,7 +76,6 @@ export class PSProductsComponent implements OnInit {
 
   @ViewChild(MatSort, { static: false })
   sort: MatSort | undefined
-
   // endregion ## Properties
 
   // region ## Lifecycle hooks
@@ -84,7 +83,6 @@ export class PSProductsComponent implements OnInit {
     this.dataSource.filterPredicate = ({ category }: PSProductTableItem, filter: string): boolean =>
       category.id === +filter
   }
-
   // endregion ## Lifecycle hooks
 
   // region ## Methods
@@ -145,7 +143,6 @@ export class PSProductsComponent implements OnInit {
   public clearSelection(): void {
     this.selection.clear()
   }
-
   // endregion ### Selection
   // endregion ## Methods
 }
@@ -155,5 +152,5 @@ function compare(a: number | string, b: number | string, isAsc: boolean): number
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1)
 }
 
-type DisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
-type DisplayedColumns = readonly DisplayedColumn[]
+type TableDisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
+type TableDisplayedColumns = readonly TableDisplayedColumn[]
