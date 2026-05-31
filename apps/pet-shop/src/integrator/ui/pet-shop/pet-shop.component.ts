@@ -28,16 +28,18 @@ import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 })
 export class PetShopComponent implements OnInit {
   // region ## Properties
+  // region ### Injected
+  readonly #cdr = inject(ChangeDetectorRef)
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #psCartService = inject(PSCartService)
+  readonly #psProductsMediatorService = inject(PSProductsMediatorService)
+  // endregion ### Injected
+
   protected productsInList: readonly PSProductTableItem[] = []
   protected productsInCart: readonly PSProductTableItem[] = []
 
-  readonly #cdr = inject(ChangeDetectorRef)
-  readonly #destroyRef = inject(DestroyRef)
   #keysInCart: Set<number> = new Set()
   #products: readonly PSProductTableItem[] = []
-  readonly #psCartService = inject(PSCartService)
-  readonly #psProductsMediatorService = inject(PSProductsMediatorService)
-
   // endregion ## Properties
 
   // region ## Lifecycle hooks
@@ -45,7 +47,6 @@ export class PetShopComponent implements OnInit {
     this.#fetchProductsToCart()
     this.#fetchProductsToList()
   }
-
   // endregion ## Lifecycle hooks
 
   // region ## Methods
@@ -86,6 +87,5 @@ export class PetShopComponent implements OnInit {
   #needInList(product: PSProductTableItem): boolean {
     return !this.#keysInCart.has(product.id)
   }
-
   // endregion ## Methods
 }

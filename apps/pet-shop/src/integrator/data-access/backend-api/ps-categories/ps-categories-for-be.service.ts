@@ -12,9 +12,15 @@ import { environment } from '~environments/environment.dev'
   providedIn: 'root',
 })
 export class PSCategoriesForBEService {
+  // region ## Properties
+  // region ### Injected
   readonly #backendAPIService = inject(BackendAPIService)
+  // endregion ### Injected
+  // endregion ## Properties
 
+  // region ## Public API
   public readList(): Observable<readonly PSProductCategory[]> {
     return this.#backendAPIService.get<readonly PSProductCategoryForBE[]>(environment.API.categories.readList)
   }
+  // endregion ## Public API
 }

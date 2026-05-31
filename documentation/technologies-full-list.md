@@ -24,8 +24,10 @@
 - `type OnInit`
 - Signals
   - `computed`
+  - `effect`
   - `input`
   - `signal`
+  - `viewChild`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
@@ -35,6 +37,11 @@
   - `TestBed`
   - `getTestBed`
   - `type ComponentFixture`
+
+#### `@angular/cdk`
+
+- `@angular/cdk/collections`
+  - `SelectionModel`
 
 #### `@angular/common`
 

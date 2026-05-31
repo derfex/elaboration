@@ -1,6 +1,6 @@
-@if (hasDisplayedData()) {
+@if (tableIsShown()) {
   <mat-table
-    [dataSource]="dataSource"
+    [dataSource]="dataSource()"
     class="mat-elevation-z8"
   >
     <!--- Note that these columns can be defined in any order.
@@ -13,8 +13,8 @@
       <mat-cell *matCellDef="let row">
         <button
           mat-icon-button
-          (click)="deleteItem(row.id)"
-          title="Delete item"
+          (click)="deleteItemButtonClickHandler(row.id)"
+          [title]="deleteItemButtonTitle"
         >
           <mat-icon
             color="warn"
@@ -49,11 +49,11 @@
       <mat-cell *matCellDef="let element">{{element.price}} ₽</mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="tableDisplayedColumns"/>
+    <mat-row *matRowDef="let row; columns: tableDisplayedColumns;"/>
   </mat-table>
 } @else {
   <app-ps-emptiness
-    text="Add products to the cart"
+    [text]="psEmptinessText"
   />
 }

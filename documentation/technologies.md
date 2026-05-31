@@ -21,6 +21,7 @@
 - `type OnInit`
 - Signals
   - `computed`
+  - `effect`
   - `input`
   - `signal`
 
@@ -32,6 +33,11 @@
   - `TestBed`
   - `getTestBed`
   - `type ComponentFixture`
+
+#### `@angular/cdk`
+
+- `@angular/cdk/collections`
+  - `SelectionModel`
 
 #### `@angular/common`
 

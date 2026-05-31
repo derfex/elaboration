@@ -1,6 +1,6 @@
 // # External modules
 import { inject, Injectable } from '@angular/core'
-import { type Observable } from 'rxjs'
+import type { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 // # Internal modules
@@ -14,13 +14,19 @@ import type { PSProductsServiceReadList } from '~integrator/data-access/ps-produ
   providedIn: 'root',
 })
 export class PSProductsHTTPService implements PSProductsServiceReadList {
+  // region ## Properties
+  // region ### Injected
   readonly #backendAPIService = inject(BackendAPIService)
+  // endregion ### Injected
+  // endregion ## Properties
 
+  // region ## Public API
   public readList(): Observable<readonly PSProduct[]> {
     return this.#backendAPIService
       .get<readonly PSProductForBE[]>(environment.API.products.readList)
       .pipe(map((products: readonly PSProductForBE[]): readonly PSProduct[] => products.map(convertProduct)))
   }
+  // endregion ## Public API
 }
 
 // # Definitions

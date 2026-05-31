@@ -11,12 +11,14 @@
 - `Component`
 - `DestroyRef`
 - `Injectable`
-- `Input`
-- `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
 - `type OnInit`
+- Signals
+  - `computed`
+  - `effect`
+  - `input`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
@@ -25,6 +27,11 @@
   - `TestBed`
   - `getTestBed`
   - `type ComponentFixture`
+
+#### `@angular/cdk`
+
+- `@angular/cdk/collections`
+  - `SelectionModel`
 
 #### `@angular/common`
 

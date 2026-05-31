@@ -1,8 +1,8 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { ChangeDetectionStrategy, Component, Input, type OnInit, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, effect, input, type OnInit } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
+import { MatSort, MatSortModule, type Sort } from '@angular/material/sort'
 import {
   MatCell,
   MatCellDef,
@@ -18,8 +18,8 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -47,55 +47,40 @@ import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.componen
 })
 export class PSProductsComponent implements OnInit {
   // region ## Properties
+  public readonly filter = input.required<number>()
+  public readonly items = input.required<readonly PSProductTableItem[]>()
+
   protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: readonly string[] = ['action', 'number', 'name', 'category', 'price']
   protected selection = new SelectionModel<PSProductTableItem>(true, [])
-
-  private filterPrivate: number | null = null
-  private itemsPrivate: readonly PSProductTableItem[] = []
-
-  @Input()
-  public set items(items: readonly PSProductTableItem[]) {
-    this.itemsPrivate = items
-    this.dataSource.data = [...items]
-  }
-
-  public get items(): readonly PSProductTableItem[] {
-    return this.itemsPrivate
-  }
-
-  @Input()
-  public set filter(filter: number) {
-    this.filterPrivate = filter
-    this.dataSource.filter = filter ? filter + '' : ''
-  }
-
-  public get filter(): number {
-    return this.filterPrivate ?? 0
-  }
-
-  @ViewChild(MatSort, { static: false })
-  sort: MatSort | undefined
-
+  protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
   // endregion ## Properties
+
+  constructor() {
+    effect((): void => {
+      // TODO: Do we need to clone objects within `items()`?
+      this.dataSource.data = [...this.items()]
+
+      const filter = this.filter()
+      this.dataSource.filter = filter ? filter + '' : ''
+    })
+  }
 
   // region ## Lifecycle hooks
   public ngOnInit(): void {
     this.dataSource.filterPredicate = ({ category }: PSProductTableItem, filter: string): boolean =>
       category.id === +filter
   }
-
   // endregion ## Lifecycle hooks
 
   // region ## Methods
   protected sortData(sort: Sort): void {
-    const data = this.itemsPrivate.slice()
+    const data = [...this.items()]
     if (!sort.active || sort.direction === '') {
       this.dataSource.data = data
       return
     }
 
-    data.sort((a, b) => {
+    data.sort((a, b): -1 | 0 | 1 => {
       const isAsc = sort.direction === 'asc'
       switch (sort.active) {
         case 'name':
@@ -145,12 +130,14 @@ export class PSProductsComponent implements OnInit {
   public clearSelection(): void {
     this.selection.clear()
   }
-
   // endregion ### Selection
   // endregion ## Methods
 }
 
 // Extra.
-function compare(a: number | string, b: number | string, isAsc: boolean): number {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1)
+function compare(a: number | string, b: number | string, isAsc: boolean): -1 | 1 {
+  return ((a < b ? -1 : 1) * (isAsc ? 1 : -1)) as -1 | 1
 }
+
+type TableDisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
+type TableDisplayedColumns = readonly TableDisplayedColumn[]

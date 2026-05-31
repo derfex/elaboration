@@ -1,6 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, Input, type OnInit } from '@angular/core'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import {
@@ -18,10 +17,9 @@ import {
 } from '@angular/material/table'
 
 // # Internal modules
-import { PSCartService } from '~ui/ps-cart/ps-cart.service'
-import type { PSCartState } from '~ui/ps-cart/ps-cart.service.type'
-import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.component'
+import { PSCartService } from '~ui/ps-cart/ps-cart.service'
+import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,48 +44,29 @@ import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.componen
   styleUrl: './ps-cart.component.sass',
   templateUrl: './ps-cart.component.html',
 })
-export class PSCartComponent implements OnInit {
+export class PSCartComponent {
   // region ## Properties
-  @Input()
-  public set items(items: readonly PSProductTableItem[]) {
-    this.#items = items
-    this.dataSource = new MatTableDataSource<PSProductTableItem>([...items])
-  }
-
-  public get items(): readonly PSProductTableItem[] {
-    return this.#items
-  }
-
-  protected dataSource: MatTableDataSource<PSProductTableItem> = new MatTableDataSource<PSProductTableItem>([])
-  protected displayedColumns: string[] = ['action', 'number', 'name', 'category', 'price']
-
-  readonly #destroyRef = inject(DestroyRef)
-  #items: readonly PSProductTableItem[] = []
+  // region ### Injected
   readonly #psCartService = inject(PSCartService)
+  // endregion ### Injected
 
+  public readonly items = input.required<readonly PSProductTableItem[]>()
+  protected readonly dataSource = computed<MatTableDataSource<PSProductTableItem>>(
+    // TODO: Do we need to clone objects within `items()`?
+    () => new MatTableDataSource<PSProductTableItem>([...this.items()]),
+  )
+  protected readonly deleteItemButtonTitle = 'Delete item'
+  protected readonly psEmptinessText = 'Add products to the cart'
+  protected readonly tableDisplayedColumns: TableDisplayedColumns = ['action', 'number', 'name', 'category', 'price']
+  protected readonly tableIsShown = computed<boolean>(() => !!this.dataSource().filteredData.length)
   // endregion ## Properties
 
-  // region ## Lifecycle hooks
-  public ngOnInit(): void {
-    this.#fetchCartItems()
-  }
-
-  // endregion ## Lifecycle hooks
-
   // region ## Methods
-  protected hasDisplayedData(): boolean {
-    return !!this.dataSource.filteredData.length
-  }
-
-  protected deleteItem(id: number): void {
+  protected deleteItemButtonClickHandler(id: number): void {
     this.#psCartService.deleteProductByID(id)
   }
-
-  #fetchCartItems(): void {
-    this.#psCartService.state.pipe(takeUntilDestroyed(this.#destroyRef)).subscribe(({ items }: PSCartState): void => {
-      this.items = items
-    })
-  }
-
   // endregion ## Methods
 }
+
+type TableDisplayedColumn = 'action' | 'category' | 'name' | 'number' | 'price'
+type TableDisplayedColumns = readonly TableDisplayedColumn[]
