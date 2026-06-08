@@ -169,3 +169,9 @@
 
 - Vite?
   - `import.meta.env.BASE_URL`
+
+### Web API
+
+- CSSOM view API
+- Console API
+- Web Storage API

@@ -116,6 +116,12 @@
 - `satisfies`
 - `typeof`
 
+### Web API
+
+- CSSOM view API
+- Console API
+- Web Storage API
+
 ## Dependencies
 
 ### Dependencies
