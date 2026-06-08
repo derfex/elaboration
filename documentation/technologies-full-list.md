@@ -177,3 +177,37 @@
 
 - Vite?
   - `import.meta.env.BASE_URL`
+
+### Web API
+
+- CSSOM view API
+  - `MediaQueryList`
+  - `MediaQueryListEvent`
+- Canvas API
+- Clipboard API
+- Console API
+- Fetch API  
+- Fullscreen API
+- Geolocation API
+- HTML DOM API
+- HTML Drag and Drop API
+- HTML Sanitizer API
+- History API
+- Houdini APIs
+- IndexedDB API
+- Intersection Observer API
+- Navigation API
+- Notifications API
+- Page Visibility API
+- Popover API
+- Push API
+- Resize Observer API
+- SVG API
+- Service Worker API
+- URL API
+- Vibration API
+- Web Components
+- Web Storage API
+- Web Workers API
+- WebGL: 2D and 3D graphics for the web
+- XMLHttpRequest API
