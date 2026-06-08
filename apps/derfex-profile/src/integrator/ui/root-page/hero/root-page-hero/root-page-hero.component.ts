@@ -26,7 +26,7 @@ export class RootPageHeroComponent {
   public readonly nameText = input.required<string>()
   public readonly titleXML = input.required<string>()
 
-  readonly #titleParts = computed(() => {
+  readonly #titleParts = computed<TitleParts>(() => {
     const title = this.titleXML()
     const [start, rest] = title.split('<highlight>')
     const [highlight, end] = rest.split('</highlight>')
@@ -40,4 +40,10 @@ export class RootPageHeroComponent {
   protected readonly titleEndText = computed<string>(() => this.#titleParts().end)
   protected readonly titleHighlightText = computed<string>(() => this.#titleParts().highlight)
   protected readonly titleStartText = computed<string>(() => this.#titleParts().start)
+}
+
+interface TitleParts {
+  readonly end: string
+  readonly highlight: string
+  readonly start: string
 }

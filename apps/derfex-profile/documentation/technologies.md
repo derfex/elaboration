@@ -116,6 +116,14 @@
 - `satisfies`
 - `typeof`
 
+### Web API
+
+- CSSOM view API
+  - `MediaQueryList`
+  - `MediaQueryListEvent`
+- Console API
+- Web Storage API
+
 ## Dependencies
 
 ### Dependencies

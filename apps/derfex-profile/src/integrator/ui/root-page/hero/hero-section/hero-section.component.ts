@@ -19,10 +19,10 @@ export class HeroSectionComponent implements OnInit {
   protected readonly codename = 'HERO'
   protected readonly sectionParameters = signal<HeroSectionParameters>({
     callToActionText: 'No data',
-    contactGitHubURL: 'No data',
-    contactGmailURL: 'No data',
+    contactGitHubURL: 'NoData',
+    contactGmailURL: 'NoData',
     contactTelegramText: 'No data',
-    contactTelegramURL: 'No data',
+    contactTelegramURL: 'NoData',
     contactsText: 'No data',
     nameText: 'No data',
     titleXML: '<highlight>No data</highlight>',
