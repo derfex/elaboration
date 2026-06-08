@@ -181,6 +181,8 @@
 ### Web API
 
 - CSSOM view API
+  - `MediaQueryList`
+  - `MediaQueryListEvent`
 - Canvas API
 - Clipboard API
 - Console API

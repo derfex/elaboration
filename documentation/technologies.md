@@ -173,5 +173,7 @@
 ### Web API
 
 - CSSOM view API
+  - `MediaQueryList`
+  - `MediaQueryListEvent`
 - Console API
 - Web Storage API
