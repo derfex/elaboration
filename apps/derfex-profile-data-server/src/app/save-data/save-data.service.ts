@@ -3,7 +3,7 @@ import * as fsExtra from 'fs-extra'
 import path from 'node:path'
 import type { SaveFilePostRequestBody, SaveFilePostResponse } from './save-data.type'
 
-const filesMap = new Map()
+const filesMap: ReadonlyMap<string, string> = new Map()
 const pathPrefixes = [] as const
 
 @Injectable()
