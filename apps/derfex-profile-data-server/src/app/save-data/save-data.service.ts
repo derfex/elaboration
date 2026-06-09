@@ -1,5 +1,5 @@
 import { Body, HttpException, HttpStatus, Injectable } from '@nestjs/common'
-import * as fs from 'fs-extra'
+import * as fsExtra from 'fs-extra'
 import * as path from 'path'
 import type { SaveFilePostRequestBody, SaveFilePostResponse } from './save-data.type'
 
@@ -21,7 +21,7 @@ export class SaveDataService {
     file = path.join(filePathPrefix, file)
 
     try {
-      await fs.outputFile(file, content)
+      await fsExtra.outputFile(file, content)
       return { message: 'The file was saved successfully.' }
     } catch {
       throw new HttpException('Error saving file.', HttpStatus.INTERNAL_SERVER_ERROR)
