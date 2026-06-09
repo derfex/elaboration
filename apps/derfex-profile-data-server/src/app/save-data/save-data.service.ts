@@ -6,6 +6,8 @@ import type { SaveFilePostRequestBody, SaveFilePostResponse } from './save-data.
 const filePathPrefix = path.join(__dirname)
 const filesMap = new Map()
 
+const pathPrefixes = [] as const
+
 @Injectable()
 export class SaveDataService {
   // Note: use `fileName` in API to simplify the parameter's name and hide the logic.
@@ -23,9 +25,18 @@ export class SaveDataService {
 
     fileName = path.join(filePathPrefix, fileName)
 
+    const promises: Promise<void>[] = []
+    pathPrefixes.forEach((prefix: string): void => {
+      const filePath = path.join(prefix, fileName)
+      const promise = fsExtra.outputFile(filePath, content).catch((): never => {
+        throw new HttpException('Error saving file.', HttpStatus.INTERNAL_SERVER_ERROR)
+      })
+      promises.push(promise)
+    })
+
     try {
-      await fsExtra.outputFile(fileName, content)
-      return { message: 'The file was saved successfully.' }
+      await Promise.all(promises)
+      return { message: 'The content was saved successfully.' }
     } catch {
       throw new HttpException('Error saving file.', HttpStatus.INTERNAL_SERVER_ERROR)
     }
