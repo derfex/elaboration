@@ -5,17 +5,18 @@
 ### ECMAScript
 
 - ECMAScript 2018
-    - Spread operator.
+  - Spread operator.
 - ECMAScript 2017
-    - `async`, `await`.
-    - Trailing commas.
+  - `async`, `await`.
+  - Trailing commas.
 - ECMAScript 2015 (6)
-    - Arrow functions.
-    - `const`, `let`.
-    - ES6 classes.
-    - ES6 collections: `Map`.
-    - ES6 modules.
-    - Promises.
+  - Arrow functions.
+  - `const`, `let`.
+  - Destructuring.
+  - ES6 classes.
+  - ES6 collections: `Map`.
+  - ES6 modules.
+  - Promises.
 
 ### Nest
 
@@ -26,9 +27,22 @@
 - `@Module`
 - `@Post`
 
+- `HttpException`
+- `HttpStatus`
+
+### Node
+
+- `'node:fs/promises'`
+  - `access`
+  - `constants`
+- `'node:path'`
+
 ### TypeScript
 
+- `as const`
 - `readonly`
+
+- `ReadonlyMap<…, …>`
 
 ## Dependencies
 
