@@ -108,6 +108,18 @@
 - `@Module`
 - `@Post`
 
+- `HttpException`
+- `HttpStatus`
+
+### Node
+
+- `'node:fs/promises'`
+  - `access`
+  - `constants`
+- `'node:path'`
+
+- `__dirname`
+
 ### RxJS
 
 - `BehaviorSubject`
@@ -135,12 +147,15 @@
 ### TypeScript
 
 - `as const`
-- `asserts value is Type`
+- `asserts` (`asserts value is Type`)
+- `extends` (`<Type extends …>`)
 - `readonly`
 - `satisfies`
 - `typeof`
 
-- `ReturnType`
+- `ReadonlyMap<…, …>`
+- `ReadonlySet<…>`
+- `ReturnType<…>`
 
 ### Vite
 
