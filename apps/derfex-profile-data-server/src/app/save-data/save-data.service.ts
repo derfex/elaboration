@@ -1,6 +1,6 @@
 import { Body, HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import * as fsExtra from 'fs-extra'
-import * as path from 'path'
+import path from 'node:path'
 import type { SaveFilePostRequestBody, SaveFilePostResponse } from './save-data.type'
 
 const filePathPrefix = path.join(__dirname)
