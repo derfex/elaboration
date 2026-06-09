@@ -53,11 +53,11 @@ export class SaveDataService {
     return access(path, constants.F_OK)
   }
 
-  #debugHandleExistence(path: string, filePath: string): void {
+  #debugHandleExistence(folderPath: string, filePath: string): void {
     // The path exists.
   }
 
-  #debugHandleNonExistence(path: string, filePath: string): void {
+  #debugHandleNonExistence(folderPath: string, filePath: string): void {
     // The path does not exist.
   }
 }
