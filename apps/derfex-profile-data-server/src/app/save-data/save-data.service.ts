@@ -8,20 +8,23 @@ const filesMap = new Map()
 
 @Injectable()
 export class SaveDataService {
-  public async saveFile(@Body() { content, fileName }: SaveFilePostRequestBody): Promise<SaveFilePostResponse> {
-    if (!fileName || !content) {
+  // Note: use `fileName` in API to simplify the parameter's name and hide the logic.
+  public async saveFile(
+    @Body() { content, fileName: fileCodename }: SaveFilePostRequestBody,
+  ): Promise<SaveFilePostResponse> {
+    if (!fileCodename || !content) {
       throw new HttpException('Specify the file name and its contents.', HttpStatus.BAD_REQUEST)
     }
 
-    let file = filesMap.get(fileName)
-    if (!file) {
+    let fileName = filesMap.get(fileCodename)
+    if (!fileName) {
       throw new HttpException('Use a valid file name.', HttpStatus.BAD_REQUEST)
     }
 
-    file = path.join(filePathPrefix, file)
+    fileName = path.join(filePathPrefix, fileName)
 
     try {
-      await fsExtra.outputFile(file, content)
+      await fsExtra.outputFile(fileName, content)
       return { message: 'The file was saved successfully.' }
     } catch {
       throw new HttpException('Error saving file.', HttpStatus.INTERNAL_SERVER_ERROR)
