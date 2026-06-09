@@ -3,9 +3,7 @@ import * as fsExtra from 'fs-extra'
 import path from 'node:path'
 import type { SaveFilePostRequestBody, SaveFilePostResponse } from './save-data.type'
 
-const filePathPrefix = path.join(__dirname)
 const filesMap = new Map()
-
 const pathPrefixes = [] as const
 
 @Injectable()
@@ -18,12 +16,10 @@ export class SaveDataService {
       throw new HttpException('Specify the file name and its contents.', HttpStatus.BAD_REQUEST)
     }
 
-    let fileName = filesMap.get(fileCodename)
+    const fileName = filesMap.get(fileCodename)
     if (!fileName) {
       throw new HttpException('Use a valid file name.', HttpStatus.BAD_REQUEST)
     }
-
-    fileName = path.join(filePathPrefix, fileName)
 
     const promises: Promise<void>[] = []
     pathPrefixes.forEach((prefix: string): void => {
