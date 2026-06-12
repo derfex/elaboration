@@ -82,6 +82,12 @@
 - `provideRouter`
 - `type Route`
 
+#### Templates
+
+- conditions: `@if`, `@else`
+- cycles: `@for (… of …; track …)`, `@empty`
+- `@defer`
+
 ### CSS
 
 - CSS flexible box layout
@@ -145,8 +151,8 @@
 
 ### SASS
 
-- `@else`, `@if`
-- `@for $_i from $_a through $_b`
+- conditions: `@if`, `@else`
+- cycles: `@for $_i from $_a through $_b`
 - `@function`, `@return`
 - `@include`
 - `@mixin`
@@ -195,6 +201,7 @@
 
 ### Web API
 
+- Blob API
 - CSSOM view API
   - `MediaQueryList`
   - `MediaQueryListEvent`
