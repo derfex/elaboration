@@ -31,7 +31,7 @@ export class DXSkillsComponent {
 
   protected readonly url = computed<string>(() => {
     const skill = this.#skillsMap().get(this.#detailsSkillCodename())
-    return skill ? skill.url : 'NoData'
+    return skill ? skill.detailsURL : 'NoData'
   })
 
   readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
@@ -53,7 +53,10 @@ export class DXSkillsComponent {
 
   #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
     return new Map<DXSkillCodename, DXSkill>(
-      skills.map(({ codename, name, url }): [DXSkillCodename, DXSkill] => [codename, { codename, name, url }]),
+      skills.map(({ codename, detailsURL, name }): [DXSkillCodename, DXSkill] => [
+        codename,
+        { codename, detailsURL, name },
+      ]),
     )
   }
 }

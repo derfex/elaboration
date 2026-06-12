@@ -101,7 +101,7 @@ type DXSkillsForBE = readonly DXSkillForBE[]
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
   readonly name: DXSkill['name']
-  readonly url: DXSkill['url']
+  readonly url: DXSkill['detailsURL']
 }
 
 function createProcessCodename(string: string): string {
