@@ -26,6 +26,7 @@
   - `computed`
   - `effect`
   - `input`
+  - `linkedSignal`
   - `signal`
   - `viewChild`
 

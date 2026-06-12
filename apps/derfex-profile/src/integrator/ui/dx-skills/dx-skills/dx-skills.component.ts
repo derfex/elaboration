@@ -1,5 +1,5 @@
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } from '@angular/core'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
 import {
@@ -29,6 +29,20 @@ export class DXSkillsComponent {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 
+  protected readonly url = computed<string>(() => {
+    const skill = this.#skillsMap().get(this.#detailsSkillCodename())
+    return skill ? skill.url : 'NoData'
+  })
+
+  readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
+    return this.#prepareDXSkillsMap(this.skills())
+  })
+
+  readonly #detailsSkillCodename = linkedSignal<DXSkillCodename>(() => {
+    const [skill] = this.skills()
+    return skill ? skill.codename : ('NoData' as DXSkillCodename)
+  })
+
   #prepareDXSkillForTemplate({ codename, name, url }: DXSkill): DXSkillForTemplate {
     return {
       codename,
@@ -36,6 +50,12 @@ export class DXSkillsComponent {
       name,
       url,
     }
+  }
+
+  #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
+    return new Map<DXSkillCodename, DXSkill>(
+      skills.map(({ codename, name, url }): [DXSkillCodename, DXSkill] => [codename, { codename, name, url }]),
+    )
   }
 }
 
@@ -45,3 +65,5 @@ interface DXSkillForTemplate {
   readonly name: DXSkill['name']
   readonly url: DXSkill['url']
 }
+
+type DXSkillsReadonlyMap = ReadonlyMap<DXSkillCodename, DXSkill>

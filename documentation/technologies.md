@@ -23,6 +23,7 @@
   - `computed`
   - `effect`
   - `input`
+  - `linkedSignal`
   - `signal`
 
 - `@angular/core/rxjs-interop`
