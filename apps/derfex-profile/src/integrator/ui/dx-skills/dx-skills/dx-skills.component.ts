@@ -43,12 +43,11 @@ export class DXSkillsComponent {
     return skill ? skill.codename : ('NoData' as DXSkillCodename)
   })
 
-  #prepareDXSkillForTemplate({ codename, name, url }: DXSkill): DXSkillForTemplate {
+  #prepareDXSkillForTemplate({ codename, name }: DXSkill): DXSkillForTemplate {
     return {
       codename,
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
       name,
-      url,
     }
   }
 
@@ -63,7 +62,6 @@ interface DXSkillForTemplate {
   readonly codename: DXSkillCodename
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
-  readonly url: DXSkill['url']
 }
 
 type DXSkillsReadonlyMap = ReadonlyMap<DXSkillCodename, DXSkill>

@@ -8,7 +8,6 @@
       <li class="app-skills__item">
         <app-dx-skill-card
           [titleAttribute]="skill.name"
-          [url]="skill.url"
         >
           <ng-container *ngTemplateOutlet="skillTemplate; context: { $implicit: skill.logotypeComponent }" />
         </app-dx-skill-card>
