@@ -60,6 +60,11 @@
 - `provideRouter`
 - `type Route`
 
+#### Templates
+
+- conditions: `@if`
+- cycles: `@for (… of …; track …)`, `@empty`
+
 ### CSS
 
 - CSS flexible box layout
@@ -101,8 +106,8 @@
 
 ### SASS
 
-- `@else`, `@if`
-- `@for $_i from $_a through $_b`
+- conditions: `@if`, `@else`
+- cycles: `@for $_i from $_a through $_b`
 - `@function`, `@return`
 - `@include`
 - `@mixin`
@@ -111,10 +116,14 @@
 ### TypeScript
 
 - `as const`
-- `asserts value is Type`
+- `asserts` (`asserts value is Type`)
+- `extends` (`<Type extends …>`)
 - `readonly`
 - `satisfies`
 - `typeof`
+
+- `ReadonlyMap<…, …>`
+- `ReadonlySet<…>`
 
 ### Web API
 
