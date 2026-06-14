@@ -32,16 +32,15 @@ export class DXSkillsSectionMediatorService {
 
   #prepareList(dxSkills: DXSkillsForBE): readonly DXSkillsListItem[] {
     return dxSkills
-      .map((skillForBE: DXSkillForBE): DXSkillsSectionMediatorListItem => {
+      .map((skillForBE: DXSkillForBE): DXSkillsListItem => {
         const codename = skillForBE.codename as DXSkillCodename
         const { name, url } = skillForBE
         return {
           codename,
           detailsURL: url,
           name,
-        }
+        } satisfies DXSkillsSectionMediatorListItem
       })
-      .map((skill: DXSkillsSectionMediatorListItem): DXSkillsListItem => skill)
   }
 
   #readDXSkillsAsUncompiled(dxSkillsURL: string): Observable<DXSkillsForBE> {
@@ -100,7 +99,6 @@ export class DXSkillsSectionMediatorService {
 
 type DXSkillsForBE = readonly DXSkillForBE[]
 
-// TODO: Do we need it?
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
   readonly detailsURL: DXSkill['detailsURL']
