@@ -53,9 +53,9 @@ export class DXSkillsComponent {
 
   #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
     return new Map<DXSkillCodename, DXSkill>(
-      skills.map(({ codename, detailsURL, name }): [DXSkillCodename, DXSkill] => [
+      skills.map(({ codename, detailsURL, detailsURLText, name }): [DXSkillCodename, DXSkill] => [
         codename,
-        { codename, detailsURL, name },
+        { codename, detailsURL, detailsURLText, name },
       ]),
     )
   }
