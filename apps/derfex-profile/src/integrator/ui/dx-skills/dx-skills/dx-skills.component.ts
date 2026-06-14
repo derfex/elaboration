@@ -25,7 +25,7 @@ export class DXSkillsComponent {
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
-  protected readonly skillsForTemplate = computed<readonly DXSkillForTemplate[]>(() => {
+  protected readonly skillsForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 
@@ -43,7 +43,7 @@ export class DXSkillsComponent {
     return skill ? skill.codename : ('NoData' as DXSkillCodename)
   })
 
-  #prepareDXSkillForTemplate({ codename, name }: DXSkill): DXSkillForTemplate {
+  #prepareDXSkillForTemplate({ codename, name }: DXSkill): DXSkillSummaryForTemplate {
     return {
       codename,
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
@@ -61,7 +61,7 @@ export class DXSkillsComponent {
   }
 }
 
-interface DXSkillForTemplate {
+interface DXSkillSummaryForTemplate {
   readonly codename: DXSkillCodename
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
