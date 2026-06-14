@@ -30,17 +30,17 @@ export class DXSkillsComponent {
   })
 
   protected readonly url = computed<string>(() => {
-    const skill = this.#skillsMap().get(this.#detailsSkillCodename())
+    const skill = this.#skillsMap().get(this.#skillDetailsCodename())
     return skill ? skill.detailsURL : 'NoData'
+  })
+
+  readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
+    const [skill] = this.skills()
+    return skill ? skill.codename : ('NoData' as DXSkillCodename)
   })
 
   readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
     return this.#prepareDXSkillsMap(this.skills())
-  })
-
-  readonly #detailsSkillCodename = linkedSignal<DXSkillCodename>(() => {
-    const [skill] = this.skills()
-    return skill ? skill.codename : ('NoData' as DXSkillCodename)
   })
 
   #prepareDXSkillForTemplate({ codename, name }: DXSkill): DXSkillSummaryForTemplate {
