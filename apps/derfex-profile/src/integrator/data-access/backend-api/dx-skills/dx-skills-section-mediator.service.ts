@@ -38,6 +38,8 @@ export class DXSkillsSectionMediatorService {
         return {
           codename,
           detailsURL: url,
+          // TODO: Implement.
+          detailsURLText: `About ${name}`,
           name,
         } satisfies DXSkillsSectionMediatorListItem
       })
@@ -102,6 +104,7 @@ type DXSkillsForBE = readonly DXSkillForBE[]
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
   readonly detailsURL: DXSkill['detailsURL']
+  readonly detailsURLText: DXSkillsListItem['detailsURLText']
   readonly name: DXSkill['name']
 }
 

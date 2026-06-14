@@ -49,11 +49,13 @@ class DXSkillsSectionMediatorStubService {
       {
         codename: 'Angular' as DXSkillCodename,
         detailsURL: 'TestData',
+        detailsURLText: 'Test data',
         name: 'Test data',
       },
       {
         codename: 'TS' as DXSkillCodename,
         detailsURL: 'TestData',
+        detailsURLText: 'Test data',
         name: 'Test data',
       },
     ]
