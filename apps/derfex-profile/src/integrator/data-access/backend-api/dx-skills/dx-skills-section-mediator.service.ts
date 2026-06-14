@@ -31,15 +31,23 @@ export class DXSkillsSectionMediatorService {
   }
 
   #prepareList(dxSkills: DXSkillsForBE): readonly DXSkillsListItem[] {
-    return dxSkills.map((skillForBE: DXSkillForBE): DXSkillsSectionMediatorListItem => {
-      const codename = skillForBE.codename as DXSkillCodename
-      const { name, url } = skillForBE
-      return {
-        codename,
-        name,
-        url,
-      }
-    })
+    return dxSkills
+      .map((skillForBE: DXSkillForBE): DXSkillsSectionMediatorListItem => {
+        const codename = skillForBE.codename as DXSkillCodename
+        const { name, url } = skillForBE
+        return {
+          codename,
+          detailsURL: url,
+          name,
+        }
+      })
+      .map(({ codename, detailsURL, name }: DXSkillsSectionMediatorListItem): DXSkillsListItem => {
+        return {
+          codename,
+          name,
+          url: detailsURL,
+        }
+      })
   }
 
   #readDXSkillsAsUncompiled(dxSkillsURL: string): Observable<DXSkillsForBE> {
@@ -98,10 +106,11 @@ export class DXSkillsSectionMediatorService {
 
 type DXSkillsForBE = readonly DXSkillForBE[]
 
+// TODO: Do we need it?
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
+  readonly detailsURL: DXSkill['detailsURL']
   readonly name: DXSkill['name']
-  readonly url: DXSkill['detailsURL']
 }
 
 function createProcessCodename(string: string): string {
