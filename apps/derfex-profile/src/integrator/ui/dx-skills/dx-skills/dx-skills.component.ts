@@ -25,7 +25,7 @@ export class DXSkillsComponent {
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
-  protected readonly skillsForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
+  protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 

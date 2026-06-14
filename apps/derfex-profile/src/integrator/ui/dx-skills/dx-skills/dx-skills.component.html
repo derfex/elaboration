@@ -4,7 +4,7 @@
     <p class="app-description">{{descriptionText()}}</p>
   </div>
   <ul class="app-skills">
-    @for (skill of skillsForTemplate(); track skill.codename) {
+    @for (skill of skillsSummaryForTemplate(); track skill.codename) {
       <li class="app-skills__item">
         <app-dx-skill-card
           [titleAttribute]="skill.name"
