@@ -41,13 +41,7 @@ export class DXSkillsSectionMediatorService {
           name,
         }
       })
-      .map(({ codename, detailsURL, name }: DXSkillsSectionMediatorListItem): DXSkillsListItem => {
-        return {
-          codename,
-          name,
-          url: detailsURL,
-        }
-      })
+      .map((skill: DXSkillsSectionMediatorListItem): DXSkillsListItem => skill)
   }
 
   #readDXSkillsAsUncompiled(dxSkillsURL: string): Observable<DXSkillsForBE> {
