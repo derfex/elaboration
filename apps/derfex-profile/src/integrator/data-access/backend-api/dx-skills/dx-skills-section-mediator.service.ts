@@ -34,11 +34,11 @@ export class DXSkillsSectionMediatorService {
     return dxSkills
       .map((skillForBE: DXSkillForBE): DXSkillsListItem => {
         const codename = skillForBE.codename as DXSkillCodename
-        const { name, url } = skillForBE
+        const { name, referenceURL } = skillForBE
         return {
           codename,
           name,
-          referenceURL: url,
+          referenceURL,
           // TODO: Implement.
           referenceURLText: `About ${name}`,
           // TODO: Implement.
