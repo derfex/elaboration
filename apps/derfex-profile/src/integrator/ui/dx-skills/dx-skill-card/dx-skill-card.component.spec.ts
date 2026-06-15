@@ -1,7 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
 import { DXSkillCardComponent } from './dx-skill-card.component'
 
-describe('DxSkillCardComponent', (): void => {
+describe('DXSkillCardComponent', (): void => {
   let component: DXSkillCardComponent
   let fixture: ComponentFixture<DXSkillCardComponent>
 
