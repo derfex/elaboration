@@ -2,6 +2,8 @@ export interface DXSkillForBE {
   readonly codename: string
   readonly name: string
   readonly referenceURL: string
+  readonly referenceURLText: string
+  readonly shortDescription: string
 }
 
 export interface DXSkillsSectionParametersForBE {

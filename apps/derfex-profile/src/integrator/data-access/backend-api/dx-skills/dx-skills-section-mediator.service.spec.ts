@@ -52,12 +52,16 @@ class DXSkillsForBEStubService {
       {
         codename: 'NoData1',
         name: 'No data',
-        referenceURL: 'No data',
+        referenceURL: 'NoData',
+        referenceURLText: 'No data',
+        shortDescription: 'No data.',
       },
       {
         codename: 'NoData2',
         name: 'No data',
-        referenceURL: 'No data',
+        referenceURL: 'NoData',
+        referenceURLText: 'No data',
+        shortDescription: 'No data.',
       },
     ]
     return of(dxSkills)
