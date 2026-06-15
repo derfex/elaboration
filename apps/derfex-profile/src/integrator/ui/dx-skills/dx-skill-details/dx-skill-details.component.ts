@@ -10,6 +10,7 @@ export class DXSkillDetailsComponent {
   public readonly detailsURL = input.required<string>()
   public readonly detailsURLText = input.required<string>()
   public readonly name = input.required<string>()
+  public readonly shortDescription = input.required<string>()
 
   protected readonly externalLinkText = '🡥'
 }

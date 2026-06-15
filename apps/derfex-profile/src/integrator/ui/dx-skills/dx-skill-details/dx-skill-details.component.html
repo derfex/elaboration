@@ -1,6 +1,9 @@
 <article class="app-article">
-  <div class="app-ng-content-and-title-container">
-    <h3 class="app-title">{{name()}}</h3>
+  <div class="app-ng-content-and-short-description-and-title-container">
+    <div class="app-short-description-and-title-container">
+      <h3 class="app-title">{{name()}}</h3>
+      <p class="app-short-description">{{shortDescription()}}</p>
+    </div>
     <ng-content />
   </div>
   <a
