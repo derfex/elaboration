@@ -51,12 +51,14 @@ class DXSkillsSectionMediatorStubService {
         name: 'Test data',
         referenceURL: 'TestData',
         referenceURLText: 'Test data',
+        shortDescription: 'Test data.',
       },
       {
         codename: 'TS' as DXSkillCodename,
         name: 'Test data',
         referenceURL: 'TestData',
         referenceURLText: 'Test data',
+        shortDescription: 'Test data.',
       },
     ]
     return of({ list, sectionParameters })
