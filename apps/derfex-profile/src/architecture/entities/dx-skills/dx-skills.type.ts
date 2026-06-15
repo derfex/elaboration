@@ -5,6 +5,7 @@ export interface DXSkill {
   readonly detailsURL: string
   readonly detailsURLText: string
   readonly name: string
+  readonly shortDescription: string
 }
 
 export type DXSkillCodename = Brand<string, 'dx skill codename'>

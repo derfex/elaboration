@@ -28,13 +28,14 @@ export class DXSkillsComponent {
   protected readonly skillDetails = computed<DXSkillDetailsForTemplate>(() => {
     const skill = this.#skillsMap().get(this.#skillDetailsCodename())
     if (skill) {
-      const { codename, detailsURL, detailsURLText, name } = skill
+      const { codename, detailsURL, detailsURLText, name, shortDescription } = skill
       return {
         codename,
         detailsURL,
         detailsURLText,
         logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
         name,
+        shortDescription,
       }
     }
     return {
@@ -43,6 +44,7 @@ export class DXSkillsComponent {
       detailsURLText: 'No data',
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
+      shortDescription: 'No data.',
     }
   })
   protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
@@ -67,9 +69,9 @@ export class DXSkillsComponent {
 
   #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
     return new Map<DXSkillCodename, DXSkill>(
-      skills.map(({ codename, detailsURL, detailsURLText, name }): [DXSkillCodename, DXSkill] => [
+      skills.map(({ codename, detailsURL, detailsURLText, name, shortDescription }): [DXSkillCodename, DXSkill] => [
         codename,
-        { codename, detailsURL, detailsURLText, name },
+        { codename, detailsURL, detailsURLText, name, shortDescription },
       ]),
     )
   }
@@ -81,6 +83,7 @@ interface DXSkillDetailsForTemplate {
   readonly detailsURLText: DXSkill['detailsURLText']
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
+  readonly shortDescription: DXSkill['shortDescription']
 }
 
 interface DXSkillSummaryForTemplate {

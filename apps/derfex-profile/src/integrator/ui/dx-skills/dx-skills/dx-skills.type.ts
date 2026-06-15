@@ -5,4 +5,5 @@ export interface DXSkillsListItem {
   readonly detailsURL: DXSkill['detailsURL']
   readonly detailsURLText: DXSkill['detailsURLText']
   readonly name: DXSkill['name']
+  readonly shortDescription: DXSkill['shortDescription']
 }

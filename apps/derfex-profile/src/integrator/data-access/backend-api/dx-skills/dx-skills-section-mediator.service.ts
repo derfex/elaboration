@@ -41,6 +41,8 @@ export class DXSkillsSectionMediatorService {
           // TODO: Implement.
           detailsURLText: `About ${name}`,
           name,
+          // TODO: Implement.
+          shortDescription: name.repeat(3),
         } satisfies DXSkillsSectionMediatorListItem
       })
   }
@@ -106,6 +108,7 @@ interface DXSkillsSectionMediatorListItem {
   readonly detailsURL: DXSkill['detailsURL']
   readonly detailsURLText: DXSkillsListItem['detailsURLText']
   readonly name: DXSkill['name']
+  readonly shortDescription: DXSkill['shortDescription']
 }
 
 function createProcessCodename(string: string): string {
