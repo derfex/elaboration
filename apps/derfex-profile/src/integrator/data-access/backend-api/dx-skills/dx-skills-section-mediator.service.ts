@@ -37,10 +37,10 @@ export class DXSkillsSectionMediatorService {
         const { name, url } = skillForBE
         return {
           codename,
-          detailsURL: url,
-          // TODO: Implement.
-          detailsURLText: `About ${name}`,
           name,
+          referenceURL: url,
+          // TODO: Implement.
+          referenceURLText: `About ${name}`,
           // TODO: Implement.
           shortDescription: name.repeat(3),
         } satisfies DXSkillsSectionMediatorListItem
@@ -105,9 +105,9 @@ type DXSkillsForBE = readonly DXSkillForBE[]
 
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
-  readonly detailsURL: DXSkill['detailsURL']
-  readonly detailsURLText: DXSkillsListItem['detailsURLText']
   readonly name: DXSkill['name']
+  readonly referenceURL: DXSkill['referenceURL']
+  readonly referenceURLText: DXSkillsListItem['referenceURLText']
   readonly shortDescription: DXSkill['shortDescription']
 }
 

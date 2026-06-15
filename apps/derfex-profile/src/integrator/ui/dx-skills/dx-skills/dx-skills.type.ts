@@ -2,8 +2,8 @@ import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.typ
 
 export interface DXSkillsListItem {
   readonly codename: DXSkillCodename
-  readonly detailsURL: DXSkill['detailsURL']
-  readonly detailsURLText: DXSkill['detailsURLText']
   readonly name: DXSkill['name']
+  readonly referenceURL: DXSkill['referenceURL']
+  readonly referenceURLText: DXSkill['referenceURLText']
   readonly shortDescription: DXSkill['shortDescription']
 }

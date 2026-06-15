@@ -7,9 +7,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
   templateUrl: './dx-skill-details.component.html',
 })
 export class DXSkillDetailsComponent {
-  public readonly detailsURL = input.required<string>()
-  public readonly detailsURLText = input.required<string>()
   public readonly name = input.required<string>()
+  public readonly referenceURL = input.required<string>()
+  public readonly referenceURLText = input.required<string>()
   public readonly shortDescription = input.required<string>()
 
   protected readonly externalLinkText = '🡥'

@@ -15,9 +15,9 @@ describe('DXSkillDetailsComponent', (): void => {
   })
 
   it('should create', (): void => {
-    fixture.componentRef.setInput('detailsURL', 'TestData')
-    fixture.componentRef.setInput('detailsURLText', 'Test data')
     fixture.componentRef.setInput('name', 'Test data')
+    fixture.componentRef.setInput('referenceURL', 'TestData')
+    fixture.componentRef.setInput('referenceURLText', 'Test data')
     fixture.componentRef.setInput('shortDescription', 'Test data.')
     fixture.whenStable().then((): void => {
       expect(component).toBeTruthy()

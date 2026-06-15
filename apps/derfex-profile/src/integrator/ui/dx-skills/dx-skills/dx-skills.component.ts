@@ -43,22 +43,22 @@ export class DXSkillsComponent {
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
     const skill = skillsMap.get(codename)
     if (skill) {
-      const { codename, detailsURL, detailsURLText, name, shortDescription } = skill
+      const { codename, name, referenceURL, referenceURLText, shortDescription } = skill
       return {
         codename,
-        detailsURL,
-        detailsURLText,
         logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
         name,
+        referenceURL: referenceURL,
+        referenceURLText: referenceURLText,
         shortDescription,
       }
     }
     return {
       codename: 'NoData' as DXSkillCodename,
-      detailsURL: 'NoData',
-      detailsURLText: 'No data',
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
+      referenceURL: 'NoData',
+      referenceURLText: 'No data',
       shortDescription: 'No data.',
     }
   }
@@ -73,9 +73,9 @@ export class DXSkillsComponent {
 
   #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
     return new Map<DXSkillCodename, DXSkill>(
-      skills.map(({ codename, detailsURL, detailsURLText, name, shortDescription }): [DXSkillCodename, DXSkill] => [
+      skills.map(({ codename, name, referenceURL, referenceURLText, shortDescription }): [DXSkillCodename, DXSkill] => [
         codename,
-        { codename, detailsURL, detailsURLText, name, shortDescription },
+        { codename, name, referenceURL, referenceURLText, shortDescription },
       ]),
     )
   }
@@ -83,10 +83,10 @@ export class DXSkillsComponent {
 
 interface DXSkillDetailsForTemplate {
   readonly codename: DXSkillCodename
-  readonly detailsURL: DXSkill['detailsURL']
-  readonly detailsURLText: DXSkill['detailsURLText']
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
+  readonly referenceURL: DXSkill['referenceURL']
+  readonly referenceURLText: DXSkill['referenceURLText']
   readonly shortDescription: DXSkill['shortDescription']
 }
 

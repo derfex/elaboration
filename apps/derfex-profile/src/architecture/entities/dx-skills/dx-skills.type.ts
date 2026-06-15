@@ -2,9 +2,9 @@ import type { Brand } from '../../brand-type.util'
 
 export interface DXSkill {
   readonly codename: DXSkillCodename
-  readonly detailsURL: string
-  readonly detailsURLText: string
   readonly name: string
+  readonly referenceURL: string
+  readonly referenceURLText: string
   readonly shortDescription: string
 }
 
