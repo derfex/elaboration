@@ -1,5 +1,6 @@
 export interface DXSkillForBE {
   readonly codename: string
+  readonly descriptionListItems: readonly string[]
   readonly name: string
   readonly referenceURL: string
   readonly referenceURLText: string

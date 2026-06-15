@@ -43,9 +43,10 @@ export class DXSkillsComponent {
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
     const skill = skillsMap.get(codename)
     if (skill) {
-      const { codename, name, referenceURL, referenceURLText, shortDescription } = skill
+      const { codename, descriptionListItems, name, referenceURL, referenceURLText, shortDescription } = skill
       return {
         codename,
+        descriptionListItems: [...descriptionListItems],
         logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
         name,
         referenceURL: referenceURL,
@@ -55,6 +56,7 @@ export class DXSkillsComponent {
     }
     return {
       codename: 'NoData' as DXSkillCodename,
+      descriptionListItems: [],
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
       referenceURL: 'NoData',
@@ -73,16 +75,33 @@ export class DXSkillsComponent {
 
   #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
     return new Map<DXSkillCodename, DXSkill>(
-      skills.map(({ codename, name, referenceURL, referenceURLText, shortDescription }): [DXSkillCodename, DXSkill] => [
-        codename,
-        { codename, name, referenceURL, referenceURLText, shortDescription },
-      ]),
+      skills.map(
+        ({
+          codename,
+          descriptionListItems,
+          name,
+          referenceURL,
+          referenceURLText,
+          shortDescription,
+        }): [DXSkillCodename, DXSkill] => [
+          codename,
+          {
+            codename,
+            descriptionListItems: [...descriptionListItems],
+            name,
+            referenceURL,
+            referenceURLText,
+            shortDescription,
+          },
+        ],
+      ),
     )
   }
 }
 
 interface DXSkillDetailsForTemplate {
   readonly codename: DXSkillCodename
+  readonly descriptionListItems: DXSkill['descriptionListItems']
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
   readonly referenceURL: DXSkill['referenceURL']

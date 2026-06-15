@@ -51,6 +51,7 @@ class DXSkillsForBEStubService {
     const dxSkills: readonly DXSkillForBE[] = [
       {
         codename: 'NoData1',
+        descriptionListItems: [],
         name: 'No data',
         referenceURL: 'NoData',
         referenceURLText: 'No data',
@@ -58,6 +59,7 @@ class DXSkillsForBEStubService {
       },
       {
         codename: 'NoData2',
+        descriptionListItems: [],
         name: 'No data',
         referenceURL: 'NoData',
         referenceURLText: 'No data',
