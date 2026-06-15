@@ -1,0 +1,15 @@
+<article class="app-article">
+  <div class="app-ng-content-and-title-container">
+    <h3 class="app-title">{{name()}}</h3>
+    <ng-content />
+  </div>
+  <a
+    class="app-link"
+    [href]="detailsURL()"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <span>{{detailsURLText()}}</span>
+    <span>{{externalLinkText}}</span>
+  </a>
+</article>

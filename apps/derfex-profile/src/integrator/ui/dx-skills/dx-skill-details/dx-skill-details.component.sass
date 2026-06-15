@@ -1,0 +1,27 @@
+@use '../../../ui-kit/ui-kit'
+
+\:host
+  display: block
+
+.app-article
+  padding: 20px
+
+.app-link
+  display: inline-flex
+  align-items: center
+  column-gap: 4px
+
+  color: var(--app-link--fg-color)
+  text-decoration: none
+
+  &:hover
+    color: var(--app-link--fg-color-hover)
+
+.app-ng-content-and-title-container
+  display: flex
+  align-items: start
+  flex-wrap: wrap-reverse
+  justify-content: space-between
+
+.app-title
+  @include ui-kit.app-ui-kit_h3-mixin
