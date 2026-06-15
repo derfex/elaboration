@@ -26,7 +26,22 @@ export class DXSkillsComponent {
   public readonly titleText = input.required<string>()
 
   protected readonly skillDetails = computed<DXSkillDetailsForTemplate>(() => {
-    const skill = this.#skillsMap().get(this.#skillDetailsCodename())
+    return this.#prepareDXSkillDetails(this.#skillDetailsCodename(), this.#skillsMap())
+  })
+  protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
+    return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
+  })
+
+  readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
+    const [skill] = this.skills()
+    return skill ? skill.codename : ('NoData' as DXSkillCodename)
+  })
+  readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
+    return this.#prepareDXSkillsMap(this.skills())
+  })
+
+  #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
+    const skill = skillsMap.get(codename)
     if (skill) {
       const { codename, detailsURL, detailsURLText, name, shortDescription } = skill
       return {
@@ -46,18 +61,7 @@ export class DXSkillsComponent {
       name: 'No data',
       shortDescription: 'No data.',
     }
-  })
-  protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
-    return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
-  })
-
-  readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
-    const [skill] = this.skills()
-    return skill ? skill.codename : ('NoData' as DXSkillCodename)
-  })
-  readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
-    return this.#prepareDXSkillsMap(this.skills())
-  })
+  }
 
   #prepareDXSkillForTemplate({ codename, name }: DXSkill): DXSkillSummaryForTemplate {
     return {
