@@ -9,6 +9,9 @@ export interface DXSkillForBE {
 
 export interface DXSkillsSectionParametersForBE {
   readonly descriptionText: string
+  readonly details: {
+    readonly minHeight: number
+  }
   readonly list: {
     readonly emptyStateText: string
     readonly sourceRelativeURL: string

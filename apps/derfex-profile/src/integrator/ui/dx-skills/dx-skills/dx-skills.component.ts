@@ -22,9 +22,13 @@ import {
 })
 export class DXSkillsComponent {
   public readonly descriptionText = input.required<string>()
+  public readonly skillDetailsMinHeight = input.required<number>()
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
+  protected readonly dxSkillDetailsContainerStyle = computed<string>(() => {
+    return `min-height: ${this.skillDetailsMinHeight()}px`
+  })
   protected readonly skillDetails = computed<DXSkillDetailsForTemplate>(() => {
     return this.#prepareDXSkillDetails(this.#skillDetailsCodename(), this.#skillsMap())
   })

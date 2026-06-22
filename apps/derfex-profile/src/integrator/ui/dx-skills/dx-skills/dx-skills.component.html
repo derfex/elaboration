@@ -3,6 +3,11 @@
     <h2 class="app-title"><span class="app-title__span">{{titleText()}}</span></h2>
     <p class="app-description">{{descriptionText()}}</p>
   </div>
+  <div
+    class="app-dx-skill-details-container"
+    [style]="dxSkillDetailsContainerStyle()"
+  >
+  </div>
   <ul class="app-skills">
     @for (skill of skillsSummaryForTemplate(); track skill.codename) {
       <li class="app-skills__item">

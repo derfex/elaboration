@@ -40,6 +40,9 @@ class DXSkillsSectionMediatorStubService {
   public readSectionParametersAndList(): Observable<DXSkillsSectionParametersAndList> {
     const sectionParameters: DXSkillsSectionParameters = {
       descriptionText: 'Test data.',
+      details: {
+        minHeight: 0,
+      },
       list: {
         emptyStateText: 'Test data.',
       },

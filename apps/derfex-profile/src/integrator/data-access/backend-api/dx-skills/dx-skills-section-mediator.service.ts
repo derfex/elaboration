@@ -80,6 +80,9 @@ export class DXSkillsSectionMediatorService {
           const list = this.#prepareList(dxSkills)
           const sectionParameters: DXSkillsSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
+            details: {
+              minHeight: parametersFromBEAPI.details.minHeight,
+            },
             list: {
               emptyStateText: parametersFromBEAPI.list.emptyStateText,
             },
