@@ -34,10 +34,18 @@ export class DXSkillsSectionMediatorService {
     return dxSkills
       .map((skillForBE: DXSkillForBE): DXSkillsListItem => {
         const codename = skillForBE.codename as DXSkillCodename
-        const { name, proficiencyLevelListItems, referenceCaption, referenceURL, shortDescription } = skillForBE
+        const {
+          name,
+          proficiencyLevelDescription,
+          proficiencyLevelListItems,
+          referenceCaption,
+          referenceURL,
+          shortDescription,
+        } = skillForBE
         return {
           codename,
           name,
+          proficiencyLevelDescription,
           proficiencyLevelListItems: [...proficiencyLevelListItems],
           referenceCaption,
           referenceURL,
@@ -108,6 +116,7 @@ type DXSkillsForBE = readonly DXSkillForBE[]
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
   readonly name: DXSkill['name']
+  readonly proficiencyLevelDescription: DXSkill['proficiencyLevelDescription']
   readonly proficiencyLevelListItems: DXSkill['proficiencyLevelListItems']
   readonly referenceCaption: DXSkillsListItem['referenceCaption']
   readonly referenceURL: DXSkill['referenceURL']

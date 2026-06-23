@@ -94,11 +94,20 @@ export class DXSkillsComponent implements OnInit {
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
     const skill = skillsMap.get(codename)
     if (skill) {
-      const { codename, name, proficiencyLevelListItems, referenceCaption, referenceURL, shortDescription } = skill
+      const {
+        codename,
+        name,
+        proficiencyLevelDescription,
+        proficiencyLevelListItems,
+        referenceCaption,
+        referenceURL,
+        shortDescription,
+      } = skill
       return {
         codename,
         logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
         name,
+        proficiencyLevelDescription,
         proficiencyLevelListItems: [...proficiencyLevelListItems],
         referenceCaption,
         referenceURL,
@@ -109,6 +118,7 @@ export class DXSkillsComponent implements OnInit {
       codename: emptyDXSkillCodename,
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
+      proficiencyLevelDescription: 'No data.',
       proficiencyLevelListItems: [],
       referenceCaption: 'No data',
       referenceURL: 'NoData',
@@ -130,6 +140,7 @@ export class DXSkillsComponent implements OnInit {
         ({
           codename,
           name,
+          proficiencyLevelDescription,
           proficiencyLevelListItems,
           referenceCaption,
           referenceURL,
@@ -139,6 +150,7 @@ export class DXSkillsComponent implements OnInit {
           {
             codename,
             name,
+            proficiencyLevelDescription,
             proficiencyLevelListItems: [...proficiencyLevelListItems],
             referenceCaption,
             referenceURL,
@@ -160,6 +172,7 @@ interface DXSkillDetailsForTemplate {
   readonly codename: DXSkillCodename
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
+  readonly proficiencyLevelDescription: DXSkill['proficiencyLevelDescription']
   readonly proficiencyLevelListItems: DXSkill['proficiencyLevelListItems']
   readonly referenceCaption: DXSkill['referenceCaption']
   readonly referenceURL: DXSkill['referenceURL']

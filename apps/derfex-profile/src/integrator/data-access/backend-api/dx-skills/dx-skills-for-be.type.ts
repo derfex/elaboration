@@ -1,6 +1,7 @@
 export interface DXSkillForBE {
   readonly codename: string
   readonly name: string
+  readonly proficiencyLevelDescription: string
   readonly proficiencyLevelListItems: readonly string[]
   readonly referenceCaption: string
   readonly referenceURL: string

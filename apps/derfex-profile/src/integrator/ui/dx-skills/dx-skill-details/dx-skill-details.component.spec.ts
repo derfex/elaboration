@@ -16,6 +16,7 @@ describe('DXSkillDetailsComponent', (): void => {
 
   it('should create', (): void => {
     fixture.componentRef.setInput('name', 'Test data')
+    fixture.componentRef.setInput('proficiencyLevelDescription', 'Test data:')
     fixture.componentRef.setInput('proficiencyLevelListItems', ['Test data'])
     fixture.componentRef.setInput('referenceCaption', 'Test data')
     fixture.componentRef.setInput('referenceURL', 'TestData')
