@@ -29,6 +29,7 @@ export class DXSkillsComponent {
   protected readonly dxSkillDetailsContainerStyle = computed<string>(() => {
     return `min-height: ${this.skillDetailsMinHeight()}px`
   })
+  protected readonly dxSkillDetailsContainerTransitionCSSClassIsApplied = signal(false)
   protected readonly skillDetails = computed<DXSkillDetailsForTemplate>(() => {
     return this.#prepareDXSkillDetails(this.#skillDetailsCodename(), this.#skillsMap())
   })
