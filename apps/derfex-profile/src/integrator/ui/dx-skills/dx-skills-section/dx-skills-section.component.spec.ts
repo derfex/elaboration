@@ -53,16 +53,16 @@ class DXSkillsSectionMediatorStubService {
         codename: 'Angular' as DXSkillCodename,
         descriptionListItems: ['Test data', 'Test data'],
         name: 'Test data',
+        referenceCaption: 'Test data',
         referenceURL: 'TestData',
-        referenceURLText: 'Test data',
         shortDescription: 'Test data.',
       },
       {
         codename: 'TS' as DXSkillCodename,
         descriptionListItems: ['Test data'],
         name: 'Test data',
+        referenceCaption: 'Test data',
         referenceURL: 'TestData',
-        referenceURLText: 'Test data',
         shortDescription: 'Test data.',
       },
     ]

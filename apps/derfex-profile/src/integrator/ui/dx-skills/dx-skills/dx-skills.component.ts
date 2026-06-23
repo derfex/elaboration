@@ -94,14 +94,14 @@ export class DXSkillsComponent implements OnInit {
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
     const skill = skillsMap.get(codename)
     if (skill) {
-      const { codename, descriptionListItems, name, referenceURL, referenceURLText, shortDescription } = skill
+      const { codename, descriptionListItems, name, referenceCaption, referenceURL, shortDescription } = skill
       return {
         codename,
         descriptionListItems: [...descriptionListItems],
         logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
         name,
-        referenceURL: referenceURL,
-        referenceURLText: referenceURLText,
+        referenceCaption,
+        referenceURL,
         shortDescription,
       }
     }
@@ -110,8 +110,8 @@ export class DXSkillsComponent implements OnInit {
       descriptionListItems: [],
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
+      referenceCaption: 'No data',
       referenceURL: 'NoData',
-      referenceURLText: 'No data',
       shortDescription: 'No data.',
     }
   }
@@ -131,8 +131,8 @@ export class DXSkillsComponent implements OnInit {
           codename,
           descriptionListItems,
           name,
+          referenceCaption,
           referenceURL,
-          referenceURLText,
           shortDescription,
         }): [DXSkillCodename, DXSkill] => [
           codename,
@@ -140,8 +140,8 @@ export class DXSkillsComponent implements OnInit {
             codename,
             descriptionListItems: [...descriptionListItems],
             name,
+            referenceCaption,
             referenceURL,
-            referenceURLText,
             shortDescription,
           },
         ],
@@ -161,8 +161,8 @@ interface DXSkillDetailsForTemplate {
   readonly descriptionListItems: DXSkill['descriptionListItems']
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
+  readonly referenceCaption: DXSkill['referenceCaption']
   readonly referenceURL: DXSkill['referenceURL']
-  readonly referenceURLText: DXSkill['referenceURLText']
   readonly shortDescription: DXSkill['shortDescription']
 }
 

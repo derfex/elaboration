@@ -53,16 +53,16 @@ class DXSkillsForBEStubService {
         codename: 'NoData1',
         descriptionListItems: [],
         name: 'No data',
+        referenceCaption: 'No data',
         referenceURL: 'NoData',
-        referenceURLText: 'No data',
         shortDescription: 'No data.',
       },
       {
         codename: 'NoData2',
         descriptionListItems: [],
         name: 'No data',
+        referenceCaption: 'No data',
         referenceURL: 'NoData',
-        referenceURLText: 'No data',
         shortDescription: 'No data.',
       },
     ]
