@@ -11,7 +11,7 @@ import {
   signal,
 } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, tap } from 'rxjs'
+import { debounceTime, delay, distinctUntilChanged, Subject, tap } from 'rxjs'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
 import { DXSkillDetailsComponent } from '~ui/dx-skills/dx-skill-details/dx-skill-details.component'
@@ -54,7 +54,7 @@ export class DXSkillsComponent implements OnInit {
   })
 
   readonly #dxSkillDetailsContainerTransitionDuration = 100
-  readonly #skillDetailsTransition = new BehaviorSubject<DXSkillCodename>(emptyDXSkillCodename)
+  readonly #skillDetailsTransition = new Subject<DXSkillCodename>()
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
     return skill ? skill.codename : emptyDXSkillCodename
@@ -86,7 +86,6 @@ export class DXSkillsComponent implements OnInit {
         takeUntilDestroyed(this.#destroyRef),
       )
       .subscribe((codename: DXSkillCodename): void => {
-        if (codename === emptyDXSkillCodename) return
         this.#skillDetailsCodename.set(codename)
       })
   }

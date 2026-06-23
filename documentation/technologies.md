@@ -130,6 +130,7 @@
 ### RxJS
 
 - `BehaviorSubject`
+- `Subject`
 - `catchError`
 - `combineLatest`
 - `debounceTime`
