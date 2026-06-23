@@ -2,6 +2,7 @@ import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, signal } from '@angular/core'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
+import { DXSkillDetailsComponent } from '~ui/dx-skills/dx-skill-details/dx-skill-details.component'
 import {
   DXSkillLogotypeComponentsUtil,
   type DXSkillLogotypeComponentType,
@@ -15,6 +16,7 @@ import {
 
     // Provided by the app.
     DXSkillCardComponent,
+    DXSkillDetailsComponent,
   ],
   selector: 'app-dx-skills',
   styleUrl: './dx-skills.component.sass',

@@ -9,6 +9,18 @@
       [class.app-dx-skill-details-container--transition]="dxSkillDetailsContainerTransitionCSSClassIsApplied()"
       [style]="dxSkillDetailsContainerStyle()"
     >
+      <app-dx-skill-details
+        [name]="skillDetails().name"
+        [referenceURL]="skillDetails().referenceURL"
+        [referenceURLText]="skillDetails().referenceURLText"
+        [shortDescription]="skillDetails().shortDescription"
+      >
+        <div class="app-dx-skill-details-container__logotype-container">
+          <ng-container
+            *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skillDetails().logotypeComponent }"
+          />
+        </div>
+      </app-dx-skill-details>
     </div>
   </div>
   <ul class="app-skills">
