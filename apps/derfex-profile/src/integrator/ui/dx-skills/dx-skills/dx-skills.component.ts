@@ -86,6 +86,7 @@ export class DXSkillsComponent implements OnInit {
         takeUntilDestroyed(this.#destroyRef),
       )
       .subscribe((codename: DXSkillCodename): void => {
+        if (codename === emptyDXSkillCodename) return
         this.#skillDetailsCodename.set(codename)
       })
   }
