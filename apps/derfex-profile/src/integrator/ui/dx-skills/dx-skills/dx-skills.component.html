@@ -26,11 +26,13 @@
   <ul class="app-skills">
     @for (skill of skillsSummaryForTemplate(); track skill.codename) {
       <li class="app-skills__item">
-        <app-dx-skill-card
-          [titleAttribute]="skill.name"
+        <button
+          class="app-skills__button"
         >
-          <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
-        </app-dx-skill-card>
+          <app-dx-skill-card [titleAttribute]="skill.name">
+            <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
+          </app-dx-skill-card>
+        </button>
       </li>
     }
   </ul>
