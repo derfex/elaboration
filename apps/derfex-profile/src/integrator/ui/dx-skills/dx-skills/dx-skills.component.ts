@@ -94,12 +94,12 @@ export class DXSkillsComponent implements OnInit {
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
     const skill = skillsMap.get(codename)
     if (skill) {
-      const { codename, descriptionListItems, name, referenceCaption, referenceURL, shortDescription } = skill
+      const { codename, name, proficiencyLevelListItems, referenceCaption, referenceURL, shortDescription } = skill
       return {
         codename,
-        descriptionListItems: [...descriptionListItems],
         logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
         name,
+        proficiencyLevelListItems: [...proficiencyLevelListItems],
         referenceCaption,
         referenceURL,
         shortDescription,
@@ -107,9 +107,9 @@ export class DXSkillsComponent implements OnInit {
     }
     return {
       codename: emptyDXSkillCodename,
-      descriptionListItems: [],
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
+      proficiencyLevelListItems: [],
       referenceCaption: 'No data',
       referenceURL: 'NoData',
       shortDescription: 'No data.',
@@ -129,8 +129,8 @@ export class DXSkillsComponent implements OnInit {
       skills.map(
         ({
           codename,
-          descriptionListItems,
           name,
+          proficiencyLevelListItems,
           referenceCaption,
           referenceURL,
           shortDescription,
@@ -138,8 +138,8 @@ export class DXSkillsComponent implements OnInit {
           codename,
           {
             codename,
-            descriptionListItems: [...descriptionListItems],
             name,
+            proficiencyLevelListItems: [...proficiencyLevelListItems],
             referenceCaption,
             referenceURL,
             shortDescription,
@@ -158,9 +158,9 @@ const emptyDXSkillCodename = 'NoData' as DXSkillCodename
 
 interface DXSkillDetailsForTemplate {
   readonly codename: DXSkillCodename
-  readonly descriptionListItems: DXSkill['descriptionListItems']
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
+  readonly proficiencyLevelListItems: DXSkill['proficiencyLevelListItems']
   readonly referenceCaption: DXSkill['referenceCaption']
   readonly referenceURL: DXSkill['referenceURL']
   readonly shortDescription: DXSkill['shortDescription']

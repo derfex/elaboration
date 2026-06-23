@@ -51,16 +51,16 @@ class DXSkillsSectionMediatorStubService {
     const list: readonly DXSkillsListItem[] = [
       {
         codename: 'Angular' as DXSkillCodename,
-        descriptionListItems: ['Test data', 'Test data'],
         name: 'Test data',
+        proficiencyLevelListItems: ['Test data', 'Test data'],
         referenceCaption: 'Test data',
         referenceURL: 'TestData',
         shortDescription: 'Test data.',
       },
       {
         codename: 'TS' as DXSkillCodename,
-        descriptionListItems: ['Test data'],
         name: 'Test data',
+        proficiencyLevelListItems: ['Test data'],
         referenceCaption: 'Test data',
         referenceURL: 'TestData',
         shortDescription: 'Test data.',

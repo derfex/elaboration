@@ -51,16 +51,16 @@ class DXSkillsForBEStubService {
     const dxSkills: readonly DXSkillForBE[] = [
       {
         codename: 'NoData1',
-        descriptionListItems: [],
         name: 'No data',
+        proficiencyLevelListItems: [],
         referenceCaption: 'No data',
         referenceURL: 'NoData',
         shortDescription: 'No data.',
       },
       {
         codename: 'NoData2',
-        descriptionListItems: [],
         name: 'No data',
+        proficiencyLevelListItems: [],
         referenceCaption: 'No data',
         referenceURL: 'NoData',
         shortDescription: 'No data.',
