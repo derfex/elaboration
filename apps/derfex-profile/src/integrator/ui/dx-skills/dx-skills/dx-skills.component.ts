@@ -1,5 +1,16 @@
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, signal } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  inject,
+  input,
+  linkedSignal,
+  signal,
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { delay, noop, tap, timer } from 'rxjs'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
 import { DXSkillDetailsComponent } from '~ui/dx-skills/dx-skill-details/dx-skill-details.component'
@@ -23,6 +34,8 @@ import {
   templateUrl: './dx-skills.component.html',
 })
 export class DXSkillsComponent {
+  readonly #destroyRef = inject(DestroyRef)
+
   public readonly descriptionText = input.required<string>()
   public readonly skillDetailsMinHeight = input.required<number>()
   public readonly skills = input.required<readonly DXSkill[]>()
@@ -104,6 +117,20 @@ export class DXSkillsComponent {
         ],
       ),
     )
+  }
+
+  #replaceSkillDetails(codename: DXSkillCodename): void {
+    if (codename === this.#skillDetailsCodename()) return
+
+    timer(0)
+      .pipe(
+        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(true)),
+        delay(this.#dxSkillDetailsContainerTransitionDuration),
+        tap((): void => this.#skillDetailsCodename.set(codename)),
+        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(false)),
+        takeUntilDestroyed(this.#destroyRef),
+      )
+      .subscribe(noop)
   }
 }
 
