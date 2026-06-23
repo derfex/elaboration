@@ -17,7 +17,7 @@
         <app-dx-skill-card
           [titleAttribute]="skill.name"
         >
-          <ng-container *ngTemplateOutlet="skillTemplate; context: { $implicit: skill.logotypeComponent }" />
+          <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
         </app-dx-skill-card>
       </li>
     }
@@ -25,6 +25,6 @@
 </article>
 
 
-<ng-template #skillTemplate let-logotypeComponent>
+<ng-template #skillLogotypeTemplate let-logotypeComponent>
   <ng-container *ngComponentOutlet="logotypeComponent" />
 </ng-template>
