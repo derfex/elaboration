@@ -53,8 +53,9 @@ export class DXSkillsComponent implements OnInit {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 
-  readonly #dxSkillDetailsContainerTransitionDuration = 100
   readonly #skillDetailsTransition = new Subject<DXSkillCodename>()
+  readonly #skillDetailsTransitionDebounceTime = 200
+  readonly #skillDetailsTransitionDuration = 100
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
     return skill ? skill.codename : emptyDXSkillCodename
@@ -78,10 +79,10 @@ export class DXSkillsComponent implements OnInit {
   #handleSkillDetailsTransition(): void {
     this.#skillDetailsTransition
       .pipe(
-        debounceTime(300),
+        debounceTime(this.#skillDetailsTransitionDebounceTime),
         distinctUntilChanged(),
         tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(true)),
-        delay(this.#dxSkillDetailsContainerTransitionDuration),
+        delay(this.#skillDetailsTransitionDuration),
         tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(false)),
         takeUntilDestroyed(this.#destroyRef),
       )
