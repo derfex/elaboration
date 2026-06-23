@@ -61,6 +61,14 @@ export class DXSkillsComponent {
     return this.#prepareDXSkillsMap(this.skills())
   })
 
+  protected skillClickHandler(codename: DXSkillCodename): void {
+    this.#replaceSkillDetails(codename)
+  }
+
+  protected skillMouseEnterHandler(codename: DXSkillCodename): void {
+    this.#replaceSkillDetails(codename)
+  }
+
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
     const skill = skillsMap.get(codename)
     if (skill) {

@@ -28,6 +28,8 @@
       <li class="app-skills__item">
         <button
           class="app-skills__button"
+          (click)="skillClickHandler(skill.codename)"
+          (mouseenter)="skillMouseEnterHandler(skill.codename)"
         >
           <app-dx-skill-card [titleAttribute]="skill.name">
             <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
