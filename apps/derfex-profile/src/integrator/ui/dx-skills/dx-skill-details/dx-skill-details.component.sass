@@ -1,3 +1,4 @@
+@use '../../../ui-kit/identity/transitions'
 @use '../../../ui-kit/layout/layout'
 @use '../../../ui-kit/typography/typography'
 @use '../../../ui-kit/ui-kit'
@@ -9,17 +10,30 @@
   padding: 20px
 
 .app-link
+  @include transitions.app-transitions_transition-mixin(color)
+
   display: inline-flex
   align-items: center
   column-gap: 4px
-
-  color: var(--app-link--fg-color)
   text-decoration: none
+  color: var(--app-link--fg-color)
 
   &:hover
     color: var(--app-link--fg-color-hover)
 
-.app-ng-content-and-short-description-and-title-container
+.app-link-and-short-description-and-title-container
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-link-and-short-description-container
+  @include layout.app-layout_flex-column-mixin(4px)
+  @include transitions.app-transitions_transition-mixin(opacity)
+
+  opacity: .6
+
+  &:hover
+    opacity: 1
+
+.app-ng-content-and-link-and-short-description-and-title-container
   display: flex
   align-items: start
   flex-wrap: wrap-reverse
@@ -31,9 +45,6 @@
 
 .app-short-description
   @include typography.app-typography_p-mixin
-
-.app-short-description-and-title-container
-  @include layout.app-layout_flex-column-mixin(8px)
 
 .app-title
   @include ui-kit.app-ui-kit_h3-mixin
