@@ -1,5 +1,5 @@
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, input, linkedSignal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, signal } from '@angular/core'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
 import {
