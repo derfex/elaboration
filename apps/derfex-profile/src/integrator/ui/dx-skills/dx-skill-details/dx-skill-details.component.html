@@ -6,6 +6,11 @@
     </div>
     <ng-content />
   </div>
+  <ul>
+    @for (item of descriptionListItems(); track item) {
+      <li>{{item}}</li>
+    }
+  </ul>
   <a
     class="app-link"
     [href]="referenceURL()"
