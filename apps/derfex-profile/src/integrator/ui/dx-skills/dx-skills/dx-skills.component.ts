@@ -7,10 +7,11 @@ import {
   inject,
   input,
   linkedSignal,
+  type OnInit,
   signal,
 } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
-import { delay, noop, tap, timer } from 'rxjs'
+import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, tap } from 'rxjs'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
 import { DXSkillDetailsComponent } from '~ui/dx-skills/dx-skill-details/dx-skill-details.component'
@@ -33,7 +34,7 @@ import {
   styleUrl: './dx-skills.component.sass',
   templateUrl: './dx-skills.component.html',
 })
-export class DXSkillsComponent {
+export class DXSkillsComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
 
   public readonly descriptionText = input.required<string>()
@@ -53,6 +54,7 @@ export class DXSkillsComponent {
   })
 
   readonly #dxSkillDetailsContainerTransitionDuration = 100
+  readonly #skillDetailsTransition = new BehaviorSubject<DXSkillCodename>('NoData' as DXSkillCodename)
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
     return skill ? skill.codename : ('NoData' as DXSkillCodename)
@@ -61,12 +63,31 @@ export class DXSkillsComponent {
     return this.#prepareDXSkillsMap(this.skills())
   })
 
+  public ngOnInit(): void {
+    this.#handleSkillDetailsTransition()
+  }
+
   protected skillClickHandler(codename: DXSkillCodename): void {
     this.#replaceSkillDetails(codename)
   }
 
   protected skillMouseEnterHandler(codename: DXSkillCodename): void {
     this.#replaceSkillDetails(codename)
+  }
+
+  #handleSkillDetailsTransition(): void {
+    this.#skillDetailsTransition
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(true)),
+        delay(this.#dxSkillDetailsContainerTransitionDuration),
+        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(false)),
+        takeUntilDestroyed(this.#destroyRef),
+      )
+      .subscribe((codename: DXSkillCodename): void => {
+        this.#skillDetailsCodename.set(codename)
+      })
   }
 
   #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
@@ -128,17 +149,7 @@ export class DXSkillsComponent {
   }
 
   #replaceSkillDetails(codename: DXSkillCodename): void {
-    if (codename === this.#skillDetailsCodename()) return
-
-    timer(0)
-      .pipe(
-        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(true)),
-        delay(this.#dxSkillDetailsContainerTransitionDuration),
-        tap((): void => this.#skillDetailsCodename.set(codename)),
-        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(false)),
-        takeUntilDestroyed(this.#destroyRef),
-      )
-      .subscribe(noop)
+    this.#skillDetailsTransition.next(codename)
   }
 }
 

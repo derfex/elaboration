@@ -132,6 +132,8 @@
 - `BehaviorSubject`
 - `catchError`
 - `combineLatest`
+- `debounceTime`
+- `delay`
 - `distinctUntilChanged`
 - `map`
 - `noop`

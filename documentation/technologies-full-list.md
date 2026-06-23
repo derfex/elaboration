@@ -140,6 +140,8 @@
 - `BehaviorSubject`
 - `catchError`
 - `combineLatest`
+- `debounceTime`
+- `delay`
 - `distinctUntilChanged`
 - `map`
 - `noop`
@@ -147,6 +149,7 @@
 - `shareReplay`
 - `switchMap`
 - `tap`
+- `timer`
 - `zip`
 - `type Observable`
 
