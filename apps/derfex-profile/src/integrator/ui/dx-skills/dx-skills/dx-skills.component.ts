@@ -37,6 +37,7 @@ export class DXSkillsComponent {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 
+  readonly #dxSkillDetailsContainerTransitionDuration = 100
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
     return skill ? skill.codename : ('NoData' as DXSkillCodename)

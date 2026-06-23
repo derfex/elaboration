@@ -22,7 +22,9 @@
   @include layout.app-layout_flex-column-mixin(8px)
 
 .app-dx-skill-details-container
-  transition-duration: 300ms
+  $_skill-details-transition-duration: 100ms
+
+  transition-duration: $_skill-details-transition-duration
   transition-property: opacity
   transition-timing-function: ease-in-out
 
