@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 })
 export class DXSkillDetailsComponent {
   public readonly name = input.required<string>()
+  public readonly proficiencyLevelDescription = input.required<string>()
   public readonly proficiencyLevelListItems = input.required<readonly string[]>()
   public readonly referenceCaption = input.required<string>()
   public readonly referenceURL = input.required<string>()

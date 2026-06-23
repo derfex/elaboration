@@ -7,6 +7,8 @@
   display: block
 
 .app-article
+  @include layout.app-layout_flex-column-mixin(24px)
+
   padding: 20px
 
 .app-link
@@ -45,6 +47,9 @@
 
   @media (layout.$app-device-width-medium <= width)
     flex-wrap: nowrap
+
+.app-proficiency-level-description
+  @include typography.app-typography_p-mixin
 
 .app-short-description
   @include typography.app-typography_p-mixin

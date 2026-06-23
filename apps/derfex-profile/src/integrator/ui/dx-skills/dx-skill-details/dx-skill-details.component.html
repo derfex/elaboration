@@ -17,9 +17,12 @@
     </div>
     <ng-content />
   </div>
-  <ul>
-    @for (item of proficiencyLevelListItems(); track item) {
-      <li>{{item}}</li>
-    }
-  </ul>
+  <div>
+    <p class="app-proficiency-level-description">{{proficiencyLevelDescription()}}</p>
+    <ul>
+      @for (item of proficiencyLevelListItems(); track item) {
+        <li>{{item}}</li>
+      }
+    </ul>
+  </div>
 </article>
