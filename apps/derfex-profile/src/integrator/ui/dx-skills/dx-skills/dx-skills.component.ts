@@ -54,10 +54,10 @@ export class DXSkillsComponent implements OnInit {
   })
 
   readonly #dxSkillDetailsContainerTransitionDuration = 100
-  readonly #skillDetailsTransition = new BehaviorSubject<DXSkillCodename>('NoData' as DXSkillCodename)
+  readonly #skillDetailsTransition = new BehaviorSubject<DXSkillCodename>(emptyDXSkillCodename)
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
-    return skill ? skill.codename : ('NoData' as DXSkillCodename)
+    return skill ? skill.codename : emptyDXSkillCodename
   })
   readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
     return this.#prepareDXSkillsMap(this.skills())
@@ -105,7 +105,7 @@ export class DXSkillsComponent implements OnInit {
       }
     }
     return {
-      codename: 'NoData' as DXSkillCodename,
+      codename: emptyDXSkillCodename,
       descriptionListItems: [],
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
       name: 'No data',
@@ -152,6 +152,8 @@ export class DXSkillsComponent implements OnInit {
     this.#skillDetailsTransition.next(codename)
   }
 }
+
+const emptyDXSkillCodename = 'NoData' as DXSkillCodename
 
 interface DXSkillDetailsForTemplate {
   readonly codename: DXSkillCodename
