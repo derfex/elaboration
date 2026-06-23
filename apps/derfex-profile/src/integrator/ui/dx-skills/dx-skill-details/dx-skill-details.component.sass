@@ -25,6 +25,9 @@
   flex-wrap: wrap-reverse
   justify-content: space-between
 
+  @media (layout.$app-device-width-medium <= width)
+    flex-wrap: nowrap
+
 .app-short-description
   @include typography.app-typography_p-mixin
 
