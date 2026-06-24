@@ -25,9 +25,17 @@
   // Should be equal to `readonly #skillDetailsTransitionDuration = 100`.
   $_skill-details-transition-duration: 100ms
 
+  --app-dx-skill-details-container--min-height--device-width-extra-small: 0
+  --app-dx-skill-details-container--min-height--device-width-large: 0
+
+  min-height: var(--app-dx-skill-details-container--min-height--device-width-extra-small)
+
   transition-duration: $_skill-details-transition-duration
-  transition-property: opacity
+  transition-property: min-height, opacity
   transition-timing-function: ease-in-out
+
+  @media (layout.$app-device-width-large <= width)
+    min-height: var(--app-dx-skill-details-container--min-height--device-width-large)
 
 .app-dx-skill-details-container--transition
   opacity: 0
