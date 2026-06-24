@@ -72,9 +72,7 @@ export class DXSkillsComponent implements OnInit {
     this.#replaceSkillDetails(codename)
   }
 
-  protected skillMouseEnterHandler(codename: DXSkillCodename): void {
-    this.#replaceSkillDetails(codename)
-  }
+  // TODO: Investigate `protected skillMouseEnterHandler(codename: DXSkillCodename): void`.
 
   #handleSkillDetailsTransition(): void {
     this.#skillDetailsTransition
