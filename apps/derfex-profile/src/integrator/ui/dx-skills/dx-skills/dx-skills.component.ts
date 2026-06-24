@@ -39,13 +39,14 @@ export class DXSkillsComponent implements OnInit {
 
   public readonly descriptionText = input.required<string>()
   public readonly skillDetailsMinHeightForDeviceWidthExtraSmall = input.required<number>()
+  public readonly skillDetailsMinHeightForDeviceWidthLarge = input.required<number>()
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
   protected readonly dxSkillDetailsContainerStyle = computed<string>(() => {
     return this.#prepareDXSkillDetailsContainerStyle(
       this.skillDetailsMinHeightForDeviceWidthExtraSmall(),
-      Math.round(this.skillDetailsMinHeightForDeviceWidthExtraSmall() / 2),
+      this.skillDetailsMinHeightForDeviceWidthLarge(),
     )
   })
   protected readonly dxSkillDetailsContainerTransitionCSSClassIsApplied = signal(false)

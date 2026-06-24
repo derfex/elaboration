@@ -32,6 +32,7 @@ export class DXSkillsSectionComponent implements OnInit {
   protected readonly sectionParameters = signal({
     descriptionText: 'No data',
     detailsMinHeightForDeviceWidthExtraSmall: 0,
+    detailsMinHeightForDeviceWidthLarge: 0,
     skills: [] as readonly DXSkillsListItem[],
     titleText: 'No data',
   })
@@ -44,6 +45,7 @@ export class DXSkillsSectionComponent implements OnInit {
         this.sectionParameters.set({
           descriptionText: sectionParameters.descriptionText,
           detailsMinHeightForDeviceWidthExtraSmall: sectionParameters.details.minHeight,
+          detailsMinHeightForDeviceWidthLarge: Math.round(sectionParameters.details.minHeight / 2),
           skills: list,
           titleText: sectionParameters.titleText,
         })
