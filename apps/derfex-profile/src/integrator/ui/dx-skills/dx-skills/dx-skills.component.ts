@@ -38,12 +38,15 @@ export class DXSkillsComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
 
   public readonly descriptionText = input.required<string>()
-  public readonly skillDetailsMinHeight = input.required<number>()
+  public readonly skillDetailsMinHeightForDeviceWidthExtraSmall = input.required<number>()
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
   protected readonly dxSkillDetailsContainerStyle = computed<string>(() => {
-    return this.#prepareDXSkillDetailsContainerStyle(this.skillDetailsMinHeight(), Math.round(this.skillDetailsMinHeight() / 2))
+    return this.#prepareDXSkillDetailsContainerStyle(
+      this.skillDetailsMinHeightForDeviceWidthExtraSmall(),
+      Math.round(this.skillDetailsMinHeightForDeviceWidthExtraSmall() / 2),
+    )
   })
   protected readonly dxSkillDetailsContainerTransitionCSSClassIsApplied = signal(false)
   protected readonly skillDetails = computed<DXSkillDetailsForTemplate>(() => {
@@ -125,7 +128,10 @@ export class DXSkillsComponent implements OnInit {
     }
   }
 
-  #prepareDXSkillDetailsContainerStyle(minHeightForDeviceWidthExtraSmall: number, minHeightForDeviceWidthLarge: number): string {
+  #prepareDXSkillDetailsContainerStyle(
+    minHeightForDeviceWidthExtraSmall: number,
+    minHeightForDeviceWidthLarge: number,
+  ): string {
     return [
       `--app-dx-skill-details-container--min-height--device-width-extra-small: ${minHeightForDeviceWidthExtraSmall}px`,
       `--app-dx-skill-details-container--min-height--device-width-large: ${minHeightForDeviceWidthLarge}px`,
