@@ -4,11 +4,13 @@ import {
   Component,
   computed,
   DestroyRef,
+  type ElementRef,
   inject,
   input,
   linkedSignal,
   type OnInit,
   signal,
+  viewChild,
 } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { debounceTime, delay, distinctUntilChanged, Subject, tap } from 'rxjs'
@@ -69,6 +71,9 @@ export class DXSkillsComponent implements OnInit {
     return this.#prepareDXSkillsMap(this.skills())
   })
 
+  private readonly dxSkillDetailsContainer =
+    viewChild.required<ElementRef<HTMLDivElement>>('skillDetailsContainerElement')
+
   public ngOnInit(): void {
     this.#handleSkillDetailsTransition()
   }
@@ -91,6 +96,7 @@ export class DXSkillsComponent implements OnInit {
       )
       .subscribe((codename: DXSkillCodename): void => {
         this.#skillDetailsCodename.set(codename)
+        this.dxSkillDetailsContainer().nativeElement.scrollIntoView()
       })
   }
 

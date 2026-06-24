@@ -18,6 +18,7 @@
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
+- `type ElementRef<…>`
 - `type OnInit`
 - Signals
   - `computed`
@@ -25,6 +26,7 @@
   - `input`
   - `linkedSignal`
   - `signal`
+  - `viewChild`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
