@@ -89,7 +89,10 @@ export class DXSkillsSectionMediatorService {
           const sectionParameters: DXSkillsSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
             details: {
-              minHeight: parametersFromBEAPI.details.minHeight,
+              minHeight: {
+                forDeviceWidthExtraSmall: parametersFromBEAPI.details.minHeight.forDeviceWidthExtraSmall,
+                forDeviceWidthLarge: parametersFromBEAPI.details.minHeight.forDeviceWidthLarge,
+              },
             },
             list: {
               emptyStateText: parametersFromBEAPI.list.emptyStateText,

@@ -44,8 +44,8 @@ export class DXSkillsSectionComponent implements OnInit {
       .subscribe(({ list, sectionParameters }: DXSkillsSectionParametersAndList): void => {
         this.sectionParameters.set({
           descriptionText: sectionParameters.descriptionText,
-          detailsMinHeightForDeviceWidthExtraSmall: sectionParameters.details.minHeight,
-          detailsMinHeightForDeviceWidthLarge: Math.round(sectionParameters.details.minHeight / 2),
+          detailsMinHeightForDeviceWidthExtraSmall: sectionParameters.details.minHeight.forDeviceWidthExtraSmall,
+          detailsMinHeightForDeviceWidthLarge: sectionParameters.details.minHeight.forDeviceWidthLarge,
           skills: list,
           titleText: sectionParameters.titleText,
         })

@@ -11,7 +11,10 @@ export interface DXSkillForBE {
 export interface DXSkillsSectionParametersForBE {
   readonly descriptionText: string
   readonly details: {
-    readonly minHeight: number
+    readonly minHeight: {
+      readonly forDeviceWidthExtraSmall: number
+      readonly forDeviceWidthLarge: number
+    }
   }
   readonly list: {
     readonly emptyStateText: string

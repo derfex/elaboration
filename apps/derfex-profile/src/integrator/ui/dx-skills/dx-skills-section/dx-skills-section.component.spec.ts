@@ -41,7 +41,10 @@ class DXSkillsSectionMediatorStubService {
     const sectionParameters: DXSkillsSectionParameters = {
       descriptionText: 'Test data.',
       details: {
-        minHeight: 0,
+        minHeight: {
+          forDeviceWidthExtraSmall: 0,
+          forDeviceWidthLarge: 0,
+        },
       },
       list: {
         emptyStateText: 'Test data.',
@@ -52,6 +55,7 @@ class DXSkillsSectionMediatorStubService {
       {
         codename: 'Angular' as DXSkillCodename,
         name: 'Test data',
+        proficiencyLevelDescription: 'Test data.',
         proficiencyLevelListItems: ['Test data', 'Test data'],
         referenceCaption: 'Test data',
         referenceURL: 'TestData',
@@ -60,6 +64,7 @@ class DXSkillsSectionMediatorStubService {
       {
         codename: 'TS' as DXSkillCodename,
         name: 'Test data',
+        proficiencyLevelDescription: 'Test data.',
         proficiencyLevelListItems: ['Test data'],
         referenceCaption: 'Test data',
         referenceURL: 'TestData',
