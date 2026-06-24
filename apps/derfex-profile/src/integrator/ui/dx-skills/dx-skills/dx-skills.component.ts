@@ -45,24 +45,24 @@ export class DXSkillsComponent implements OnInit {
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
-  protected readonly dxSkillDetailsContainerStyle = computed<string>(() => {
+  protected readonly details = computed<DXSkillDetailsForTemplate>(() => {
+    return this.#prepareDXSkillDetails(this.#skillDetailsCodename(), this.#skillsMap())
+  })
+  protected readonly detailsContainerStyle = computed<string>(() => {
     return this.#prepareDXSkillDetailsContainerStyle(
       this.skillDetailsMinHeightForDeviceWidthExtraSmall(),
       this.skillDetailsMinHeightForDeviceWidthLarge(),
     )
   })
-  protected readonly dxSkillDetailsContainerTransitionCSSClassIsApplied = signal(false)
-  protected readonly skillDetails = computed<DXSkillDetailsForTemplate>(() => {
-    return this.#prepareDXSkillDetails(this.#skillDetailsCodename(), this.#skillsMap())
-  })
+  protected readonly detailsContainerTransitionCSSClassIsApplied = signal(false)
   protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
   })
 
-  readonly #skillDetailsTransition = new Subject<DXSkillCodename>()
-  readonly #skillDetailsTransitionDebounceTime = 200
+  readonly #detailsTransition = new Subject<DXSkillCodename>()
+  readonly #detailsTransitionDebounceTime = 200
   // Should be equal to `$_skill-details-transition-duration: 100ms`.
-  readonly #skillDetailsTransitionDuration = 100
+  readonly #detailsTransitionDuration = 100
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
     return skill ? skill.codename : emptyDXSkillCodename
@@ -71,8 +71,7 @@ export class DXSkillsComponent implements OnInit {
     return this.#prepareDXSkillsMap(this.skills())
   })
 
-  private readonly dxSkillDetailsContainer =
-    viewChild.required<ElementRef<HTMLDivElement>>('skillDetailsContainerElement')
+  private readonly detailsContainer = viewChild.required<ElementRef<HTMLDivElement>>('detailsContainerElement')
 
   public ngOnInit(): void {
     this.#handleSkillDetailsTransition()
@@ -85,18 +84,18 @@ export class DXSkillsComponent implements OnInit {
   // TODO: Investigate `protected skillMouseEnterHandler(codename: DXSkillCodename): void`.
 
   #handleSkillDetailsTransition(): void {
-    this.#skillDetailsTransition
+    this.#detailsTransition
       .pipe(
-        debounceTime(this.#skillDetailsTransitionDebounceTime),
+        debounceTime(this.#detailsTransitionDebounceTime),
         distinctUntilChanged(),
-        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(true)),
-        delay(this.#skillDetailsTransitionDuration),
-        tap((): void => this.dxSkillDetailsContainerTransitionCSSClassIsApplied.set(false)),
+        tap((): void => this.detailsContainerTransitionCSSClassIsApplied.set(true)),
+        delay(this.#detailsTransitionDuration),
+        tap((): void => this.detailsContainerTransitionCSSClassIsApplied.set(false)),
         takeUntilDestroyed(this.#destroyRef),
       )
       .subscribe((codename: DXSkillCodename): void => {
         this.#skillDetailsCodename.set(codename)
-        this.dxSkillDetailsContainer().nativeElement.scrollIntoView()
+        this.detailsContainer().nativeElement.scrollIntoView()
       })
   }
 
@@ -181,7 +180,7 @@ export class DXSkillsComponent implements OnInit {
   }
 
   #replaceSkillDetails(codename: DXSkillCodename): void {
-    this.#skillDetailsTransition.next(codename)
+    this.#detailsTransition.next(codename)
   }
 }
 

@@ -5,22 +5,22 @@
   </div>
   <div class="app-dx-skill-details-frame">
     <div
-      #skillDetailsContainerElement
+      #detailsContainerElement
       class="app-dx-skill-details-container"
-      [class.app-dx-skill-details-container--transition]="dxSkillDetailsContainerTransitionCSSClassIsApplied()"
-      [style]="dxSkillDetailsContainerStyle()"
+      [class.app-dx-skill-details-container--transition]="detailsContainerTransitionCSSClassIsApplied()"
+      [style]="detailsContainerStyle()"
     >
       <app-dx-skill-details
-        [name]="skillDetails().name"
-        [proficiencyLevelDescription]="skillDetails().proficiencyLevelDescription"
-        [proficiencyLevelListItems]="skillDetails().proficiencyLevelListItems"
-        [referenceCaption]="skillDetails().referenceCaption"
-        [referenceURL]="skillDetails().referenceURL"
-        [shortDescription]="skillDetails().shortDescription"
+        [name]="details().name"
+        [proficiencyLevelDescription]="details().proficiencyLevelDescription"
+        [proficiencyLevelListItems]="details().proficiencyLevelListItems"
+        [referenceCaption]="details().referenceCaption"
+        [referenceURL]="details().referenceURL"
+        [shortDescription]="details().shortDescription"
       >
         <div class="app-dx-skill-details-container__logotype-container">
           <ng-container
-            *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skillDetails().logotypeComponent }"
+            *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: details().logotypeComponent }"
           />
         </div>
       </app-dx-skill-details>
