@@ -55,6 +55,7 @@ export class DXSkillsComponent implements OnInit {
 
   readonly #skillDetailsTransition = new Subject<DXSkillCodename>()
   readonly #skillDetailsTransitionDebounceTime = 200
+  // Should be equal to `$_skill-details-transition-duration: 100ms`.
   readonly #skillDetailsTransitionDuration = 100
   readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
     const [skill] = this.skills()
