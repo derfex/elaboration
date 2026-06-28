@@ -15,6 +15,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { debounceTime, delay, distinctUntilChanged, Subject, tap } from 'rxjs'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
+import { LayoutScrollService } from '~ui-kit/layout/layout-scroll/layout-scroll.service'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
 import { DXSkillDetailsComponent } from '~ui/dx-skills/dx-skill-details/dx-skill-details.component'
 import {
@@ -38,6 +39,7 @@ import {
 })
 export class DXSkillsComponent implements OnInit {
   readonly #destroyRef = inject(DestroyRef)
+  readonly #layoutScrollService = inject(LayoutScrollService)
 
   public readonly descriptionText = input.required<string>()
   public readonly skillDetailsMinHeightForDeviceWidthExtraSmall = input.required<number>()
@@ -95,7 +97,7 @@ export class DXSkillsComponent implements OnInit {
       )
       .subscribe((codename: DXSkillCodename): void => {
         this.#skillDetailsCodename.set(codename)
-        this.articleElement().nativeElement.scrollIntoView()
+        this.#layoutScrollService.scrollIntoView(this.articleElement().nativeElement)
       })
   }
 
