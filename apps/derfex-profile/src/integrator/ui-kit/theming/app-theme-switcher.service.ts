@@ -11,7 +11,7 @@ import type { ThemeColorSchemeCodename } from '~ui-kit/theming/theming.type'
   providedIn: 'root',
 })
 export class AppThemeSwitcherService {
-  readonly #htmlElementRef = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
+  readonly #htmlElement = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)
 
   readonly #colorScheme = new BehaviorSubject<ThemeColorSchemeCodename>('system')
@@ -61,11 +61,11 @@ export class AppThemeSwitcherService {
 
   #updateThemeColorSchemeCSSClasses(renderer: Renderer2, darkColorSchemeIsNeeded: boolean): void {
     if (darkColorSchemeIsNeeded) {
-      renderer.addClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
-      renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
+      renderer.addClass(this.#htmlElement, appThemeColorSchemeDarkCSSClass)
+      renderer.removeClass(this.#htmlElement, appThemeColorSchemeLightCSSClass)
     } else {
-      renderer.removeClass(this.#htmlElementRef, appThemeColorSchemeDarkCSSClass)
-      renderer.addClass(this.#htmlElementRef, appThemeColorSchemeLightCSSClass)
+      renderer.removeClass(this.#htmlElement, appThemeColorSchemeDarkCSSClass)
+      renderer.addClass(this.#htmlElement, appThemeColorSchemeLightCSSClass)
     }
     this.#colorSchemeIsDark = darkColorSchemeIsNeeded
   }
