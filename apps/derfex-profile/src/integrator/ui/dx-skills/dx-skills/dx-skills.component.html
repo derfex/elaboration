@@ -1,11 +1,13 @@
-<article class="app-article">
+<article
+  #articleElement
+  class="app-article"
+>
   <div class="app-description-and-title-container">
     <h2 class="app-title"><span class="app-title__span">{{titleText()}}</span></h2>
     <p class="app-description">{{descriptionText()}}</p>
   </div>
   <div class="app-dx-skill-details-frame">
     <div
-      #detailsContainerElement
       class="app-dx-skill-details-container"
       [class.app-dx-skill-details-container--transition]="detailsContainerTransitionCSSClassIsApplied()"
       [style]="detailsContainerStyle()"

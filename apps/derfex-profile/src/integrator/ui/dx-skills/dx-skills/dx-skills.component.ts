@@ -71,7 +71,7 @@ export class DXSkillsComponent implements OnInit {
     return this.#prepareDXSkillsMap(this.skills())
   })
 
-  private readonly detailsContainer = viewChild.required<ElementRef<HTMLDivElement>>('detailsContainerElement')
+  private readonly articleElement = viewChild.required<ElementRef<HTMLDivElement>>('articleElement')
 
   public ngOnInit(): void {
     this.#handleSkillDetailsTransition()
@@ -95,7 +95,7 @@ export class DXSkillsComponent implements OnInit {
       )
       .subscribe((codename: DXSkillCodename): void => {
         this.#skillDetailsCodename.set(codename)
-        this.detailsContainer().nativeElement.scrollIntoView()
+        this.articleElement().nativeElement.scrollIntoView()
       })
   }
 
