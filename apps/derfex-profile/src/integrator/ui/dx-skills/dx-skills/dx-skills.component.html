@@ -28,20 +28,24 @@
       </app-dx-skill-details>
     </div>
   </div>
-  <ul class="app-skills">
-    @for (skill of skillsSummaryForTemplate(); track skill.codename) {
-      <li class="app-skills__item">
-        <button
-          class="app-skills__button"
-          (click)="skillClickHandler(skill.codename)"
-        >
-          <app-dx-skill-card [titleAttribute]="skill.name">
-            <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
-          </app-dx-skill-card>
-        </button>
-      </li>
-    }
-  </ul>
+  @if (skillsSummaryForTemplateIsShown()) {
+    <ul class="app-skills">
+      @for (skill of skillsSummaryForTemplate(); track skill.codename) {
+        <li class="app-skills__item">
+          <button
+            class="app-skills__button"
+            (click)="skillClickHandler(skill.codename)"
+          >
+            <app-dx-skill-card [titleAttribute]="skill.name">
+              <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
+            </app-dx-skill-card>
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="app-empty-state">{{listEmptyStateText()}}</p>
+  }
 </article>
 
 

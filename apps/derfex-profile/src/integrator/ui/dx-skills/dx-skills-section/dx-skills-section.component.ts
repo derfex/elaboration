@@ -33,6 +33,7 @@ export class DXSkillsSectionComponent implements OnInit {
     descriptionText: 'No data',
     detailsMinHeightForDeviceWidthExtraSmall: 0,
     detailsMinHeightForDeviceWidthLarge: 0,
+    listEmptyStateText: 'No data',
     skills: [] as readonly DXSkillsListItem[],
     titleText: 'No data',
   })
@@ -46,6 +47,7 @@ export class DXSkillsSectionComponent implements OnInit {
           descriptionText: sectionParameters.descriptionText,
           detailsMinHeightForDeviceWidthExtraSmall: sectionParameters.details.minHeight.forDeviceWidthExtraSmall,
           detailsMinHeightForDeviceWidthLarge: sectionParameters.details.minHeight.forDeviceWidthLarge,
+          listEmptyStateText: sectionParameters.list.emptyStateText,
           skills: list,
           titleText: sectionParameters.titleText,
         })

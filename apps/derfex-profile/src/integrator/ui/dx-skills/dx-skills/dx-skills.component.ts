@@ -42,6 +42,7 @@ export class DXSkillsComponent implements OnInit {
   readonly #layoutScrollService = inject(LayoutScrollService)
 
   public readonly descriptionText = input.required<string>()
+  public readonly listEmptyStateText = input.required<string>()
   public readonly skillDetailsMinHeightForDeviceWidthExtraSmall = input.required<number>()
   public readonly skillDetailsMinHeightForDeviceWidthLarge = input.required<number>()
   public readonly skills = input.required<readonly DXSkill[]>()
@@ -59,6 +60,9 @@ export class DXSkillsComponent implements OnInit {
   protected readonly detailsContainerTransitionCSSClassIsApplied = signal(false)
   protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
     return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
+  })
+  protected readonly skillsSummaryForTemplateIsShown = computed<boolean>(() => {
+    return !!this.skillsSummaryForTemplate().length
   })
 
   readonly #detailsTransition = new Subject<DXSkillCodename>()
