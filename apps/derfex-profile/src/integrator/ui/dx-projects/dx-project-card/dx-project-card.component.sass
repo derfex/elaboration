@@ -31,15 +31,12 @@
   color: var(--app-github-invertocat-logotype-color)
 
 .app-link
+  @include transitions.app-transitions_transition-mixin(color)
+  @include ui-kit.app-ui-kit_link-mixin
+
   display: flex
   align-items: center
   column-gap: 4px
-
-  color: var(--app-link--fg-color)
-  text-decoration: none
-
-  &:hover
-    color: var(--app-link--fg-color-hover)
 
 .app-links
   display: flex

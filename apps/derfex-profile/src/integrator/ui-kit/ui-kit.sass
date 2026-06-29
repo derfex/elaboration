@@ -15,6 +15,21 @@
 @mixin app-ui-kit_h4-mixin
   @include typography.app-typography_h4-mixin
 
+@mixin app-ui-kit_link-mixin
+  text-decoration: none
+  color: var(--app-link--fg-color)
+
+  &:hover
+    color: var(--app-link--fg-color-hover)
+
+  &:active
+    color: red
+
+  ::selection
+    text-decoration: underline
+    background: transparent
+    color: var(--app-link--fg-color-selection)
+
 @mixin app-ui-kit_scrollbar-mixin
   scroll-behavior: smooth
   scrollbar-width: thin

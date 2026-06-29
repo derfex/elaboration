@@ -13,15 +13,11 @@
 
 .app-link
   @include transitions.app-transitions_transition-mixin(color)
+  @include ui-kit.app-ui-kit_link-mixin
 
   display: inline-flex
   align-items: center
   column-gap: 4px
-  text-decoration: none
-  color: var(--app-link--fg-color)
-
-  &:hover
-    color: var(--app-link--fg-color-hover)
 
 .app-link-and-short-description-and-title-container
   @include layout.app-layout_flex-column-mixin(8px)

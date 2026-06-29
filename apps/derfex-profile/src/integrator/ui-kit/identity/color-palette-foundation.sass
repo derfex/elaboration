@@ -30,6 +30,8 @@
 
     --dx-color-primitive--crayola-dark-blue: #16d
 
+    --dx-color-primitive--crayola-dark-blue--transparent-500: color-mix(in display-p3, var(--dx-color-primitive--crayola-dark-blue), #0000)
+
     // ### Black, gray, white
 
     --app-color-primitive--black: #000
@@ -92,5 +94,7 @@
     --app-gradient-color-from: var(--app-color--foreground--brand)
     --app-gradient-color-to: #{color-palette-util.app-color-palette_color-mix-50-vars(--app-gradient-color-from, --app-color-primitive--white)}
     --app-gradient-diagonal: linear-gradient(135deg, var(--app-gradient-color-from) 0%, var(--app-gradient-color-to) 100%)
+
+    --app-selection--bg-color: var(--dx-color-primitive--crayola-dark-blue--transparent-500)
 
   // The colors have been defined in `theming` folder and is `*component.sass` files.

@@ -21,9 +21,13 @@
 
     --app-link--fg-color: var(--app-color-auxiliary--foreground--brand--to--background--theme--050)
     --app-link--fg-color-hover: var(--app-color--foreground--brand)
+    --app-link--fg-color-selection: var(--app-color--foreground--brand)
 
   // ## Init
 
   :root
     background: var(--app-root-surface--bg-color)
     color: var(--app-root-surface--fg-color)
+
+  ::selection
+    background: var(--app-selection--bg-color)
