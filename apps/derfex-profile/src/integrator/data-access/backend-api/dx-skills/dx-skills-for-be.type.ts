@@ -17,6 +17,7 @@ export interface DXSkillsSectionParametersForBE {
     }
   }
   readonly list: {
+    readonly descriptionText: string
     readonly emptyStateText: string
     readonly sourceRelativeURL: string
   }

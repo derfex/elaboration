@@ -9,6 +9,7 @@ export interface DXSkillsSectionParameters {
     }
   }
   readonly list: {
+    readonly descriptionText: string
     readonly emptyStateText: string
   }
   readonly titleText: string

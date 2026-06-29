@@ -95,6 +95,7 @@ export class DXSkillsSectionMediatorService {
               },
             },
             list: {
+              descriptionText: parametersFromBEAPI.list.descriptionText,
               emptyStateText: parametersFromBEAPI.list.emptyStateText,
             },
             titleText: parametersFromBEAPI.titleText,

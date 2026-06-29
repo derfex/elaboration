@@ -53,11 +53,17 @@
 .app-empty-state
   @include typography.app-typography_p-mixin
 
+.app-skills
+  @include layout.app-layout_flex-column-mixin(8px)
+
 .app-skills__button
   @include reset.app-reset_button-mixin
 
   width: 100%
   cursor: pointer
+
+.app-skills__description
+  @include typography.app-typography_p-mixin
 
 .app-skills__list
   @include reset.app-reset_ul-mixin

@@ -42,6 +42,7 @@ export class DXSkillsComponent implements OnInit {
   readonly #layoutScrollService = inject(LayoutScrollService)
 
   public readonly descriptionText = input.required<string>()
+  public readonly listDescriptionText = input.required<string>()
   public readonly listEmptyStateText = input.required<string>()
   public readonly skillDetailsMinHeightForDeviceWidthExtraSmall = input.required<number>()
   public readonly skillDetailsMinHeightForDeviceWidthLarge = input.required<number>()

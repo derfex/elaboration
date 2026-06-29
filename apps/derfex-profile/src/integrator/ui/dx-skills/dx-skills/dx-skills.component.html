@@ -28,7 +28,8 @@
       </app-dx-skill-details>
     </div>
   </div>
-  <div>
+  <div class="app-skills">
+    <p class="app-skills__description">{{listDescriptionText()}}</p>
     @if (skillsSummaryForTemplateIsShown()) {
       <ul class="app-skills__list">
         @for (skill of skillsSummaryForTemplate(); track skill.codename) {
