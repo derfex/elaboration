@@ -53,19 +53,19 @@
 .app-empty-state
   @include typography.app-typography_p-mixin
 
-.app-skills
-  @include reset.app-reset_ul-mixin
-  @include layout.app-layout_grid-repeat-auto-fit-mixin(120px, 4px)
-
-  //grid-auto-flow: dense // TODO?: Do we need it?
-
 .app-skills__button
   @include reset.app-reset_button-mixin
 
   width: 100%
   cursor: pointer
 
-.app-skills__item
+.app-skills__list
+  @include reset.app-reset_ul-mixin
+  @include layout.app-layout_grid-repeat-auto-fit-mixin(120px, 4px)
+
+  //grid-auto-flow: dense // TODO?: Do we need it?
+
+.app-skills__list-item
   border: 1px solid var(--app-color--border--foggy)
 
 .app-title
