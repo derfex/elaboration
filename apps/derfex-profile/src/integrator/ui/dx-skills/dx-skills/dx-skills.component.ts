@@ -7,6 +7,7 @@ import {
   type ElementRef,
   inject,
   input,
+  type InputSignal,
   linkedSignal,
   type OnInit,
   signal,
@@ -70,10 +71,9 @@ export class DXSkillsComponent implements OnInit {
   readonly #detailsTransitionDebounceTime = 200
   // Should be equal to `$_skill-details-transition-duration: 100ms`.
   readonly #detailsTransitionDuration = 100
-  readonly #skillDetailsCodename = linkedSignal<DXSkillCodename>(() => {
-    const [skill] = this.skills()
-    return skill ? skill.codename : emptyDXSkillCodename
-  })
+  readonly #skillDetailsCodename = linkedSignal<readonly DXSkill[], DXSkillCodename>(
+    this.#skillDetailsCodenameLinkedSignalOptions(),
+  )
   readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
     return this.#prepareDXSkillsMap(this.skills())
   })
@@ -189,6 +189,27 @@ export class DXSkillsComponent implements OnInit {
   #replaceSkillDetails(codename: DXSkillCodename): void {
     this.#detailsTransition.next(codename)
   }
+
+  #skillDetailsCodenameLinkedSignalComputation(
+    skills: DXSkillDetailsCodenameLinkedSignalComputationSource,
+    previous?: DXSkillDetailsCodenameLinkedSignalComputationPrevious,
+  ): DXSkillCodename {
+    if (previous && previous.value !== emptyDXSkillCodename) {
+      return previous.value
+    }
+    const [skill] = skills
+    return skill ? skill.codename : emptyDXSkillCodename
+  }
+
+  #skillDetailsCodenameLinkedSignalOptions(): {
+    computation: DXSkillDetailsCodenameLinkedSignalComputation
+    source: InputSignal<readonly DXSkill[]>
+  } {
+    return {
+      computation: this.#skillDetailsCodenameLinkedSignalComputation,
+      source: this.skills,
+    }
+  }
 }
 
 const emptyDXSkillCodename = 'NoData' as DXSkillCodename
@@ -203,6 +224,15 @@ interface DXSkillDetailsForTemplate {
   readonly referenceURL: DXSkill['referenceURL']
   readonly shortDescription: DXSkill['shortDescription']
 }
+type DXSkillDetailsCodenameLinkedSignalComputationSource = NoInfer<readonly DXSkill[]>
+type DXSkillDetailsCodenameLinkedSignalComputationPrevious = {
+  source: DXSkillDetailsCodenameLinkedSignalComputationSource
+  value: NoInfer<DXSkillCodename>
+}
+type DXSkillDetailsCodenameLinkedSignalComputation = (
+  source: DXSkillDetailsCodenameLinkedSignalComputationSource,
+  previous?: DXSkillDetailsCodenameLinkedSignalComputationPrevious,
+) => DXSkillCodename
 
 interface DXSkillSummaryForTemplate {
   readonly codename: DXSkillCodename

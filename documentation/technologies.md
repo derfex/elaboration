@@ -27,6 +27,7 @@
   - `linkedSignal`
   - `signal`
   - `viewChild`
+  - `type InputSignal`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
@@ -165,6 +166,7 @@
 - `satisfies`
 - `typeof`
 
+- `NoInfer<…>`
 - `ReadonlyMap<…, …>`
 - `ReadonlySet<…>`
 - `ReturnType<…>`
