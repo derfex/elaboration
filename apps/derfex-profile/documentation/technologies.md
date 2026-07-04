@@ -17,11 +17,15 @@
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
+- `type ElementRef<…>`
 - `type OnInit`
 - Signals
   - `computed`
   - `input`
+  - `linkedSignal`
   - `signal`
+  - `viewChild`
+  - `type InputSignal`
 
 - `@angular/core/rxjs-interop`
   - `takeUntilDestroyed`
@@ -60,6 +64,11 @@
 - `provideRouter`
 - `type Route`
 
+#### Templates
+
+- conditions: `@if`
+- cycles: `@for (… of …; track …)`, `@empty`
+
 ### CSS
 
 - CSS flexible box layout
@@ -87,8 +96,11 @@
 ### RxJS
 
 - `BehaviorSubject`
+- `Subject`
 - `catchError`
 - `combineLatest`
+- `debounceTime`
+- `delay`
 - `distinctUntilChanged`
 - `map`
 - `noop`
@@ -101,8 +113,8 @@
 
 ### SASS
 
-- `@else`, `@if`
-- `@for $_i from $_a through $_b`
+- conditions: `@if`, `@else`
+- cycles: `@for $_i from $_a through $_b`
 - `@function`, `@return`
 - `@include`
 - `@mixin`
@@ -111,10 +123,15 @@
 ### TypeScript
 
 - `as const`
-- `asserts value is Type`
+- `asserts` (`asserts value is Type`)
+- `extends` (`<Type extends …>`)
 - `readonly`
 - `satisfies`
 - `typeof`
+
+- `NoInfer<…>`
+- `ReadonlyMap<…, …>`
+- `ReadonlySet<…>`
 
 ### Web API
 

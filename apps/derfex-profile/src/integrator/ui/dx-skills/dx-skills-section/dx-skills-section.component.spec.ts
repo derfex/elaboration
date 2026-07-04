@@ -40,6 +40,12 @@ class DXSkillsSectionMediatorStubService {
   public readSectionParametersAndList(): Observable<DXSkillsSectionParametersAndList> {
     const sectionParameters: DXSkillsSectionParameters = {
       descriptionText: 'Test data.',
+      details: {
+        minHeight: {
+          forDeviceWidthExtraSmall: 0,
+          forDeviceWidthLarge: 0,
+        },
+      },
       list: {
         emptyStateText: 'Test data.',
       },
@@ -49,12 +55,20 @@ class DXSkillsSectionMediatorStubService {
       {
         codename: 'Angular' as DXSkillCodename,
         name: 'Test data',
-        url: 'TestData',
+        proficiencyLevelDescription: 'Test data.',
+        proficiencyLevelListItems: ['Test data', 'Test data'],
+        referenceCaption: 'Test data',
+        referenceURL: 'TestData',
+        shortDescription: 'Test data.',
       },
       {
         codename: 'TS' as DXSkillCodename,
         name: 'Test data',
-        url: 'TestData',
+        proficiencyLevelDescription: 'Test data.',
+        proficiencyLevelListItems: ['Test data'],
+        referenceCaption: 'Test data',
+        referenceURL: 'TestData',
+        shortDescription: 'Test data.',
       },
     ]
     return of({ list, sectionParameters })

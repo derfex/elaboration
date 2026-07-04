@@ -21,13 +21,57 @@
 .app-description-and-title-container
   @include layout.app-layout_flex-column-mixin(8px)
 
+.app-dx-skill-details-container
+  // Should be equal to `readonly #detailsTransitionDuration = 100`.
+  $_skill-details-transition-duration: 100ms
+
+  --app-dx-skill-details-container--min-height--device-width-extra-small: 0
+  --app-dx-skill-details-container--min-height--device-width-large: 0
+
+  min-height: var(--app-dx-skill-details-container--min-height--device-width-extra-small)
+
+  transition-duration: $_skill-details-transition-duration
+  transition-property: min-height, opacity
+  transition-timing-function: ease-in-out
+
+  @media (layout.$app-device-width-large <= width)
+    min-height: var(--app-dx-skill-details-container--min-height--device-width-large)
+
+.app-dx-skill-details-container--transition
+  opacity: 0
+
+.app-dx-skill-details-container__logotype-container
+  $_size: 100px
+
+  flex-shrink: 0
+  width: $_size
+  height: $_size
+
+.app-dx-skill-details-frame
+  border: 1px solid var(--app-color--border--foggy)
+
+.app-empty-state
+  @include typography.app-typography_p-mixin
+
 .app-skills
+  @include layout.app-layout_flex-column-mixin(8px)
+
+.app-skills__button
+  @include reset.app-reset_button-mixin
+
+  width: 100%
+  cursor: pointer
+
+.app-skills__description
+  @include typography.app-typography_p-mixin
+
+.app-skills__list
   @include reset.app-reset_ul-mixin
   @include layout.app-layout_grid-repeat-auto-fit-mixin(120px, 4px)
 
   //grid-auto-flow: dense // TODO?: Do we need it?
 
-.app-skills__item
+.app-skills__list-item
   border: 1px solid var(--app-color--border--foggy)
 
 .app-title

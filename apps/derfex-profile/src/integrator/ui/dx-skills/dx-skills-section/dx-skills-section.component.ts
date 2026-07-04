@@ -30,7 +30,11 @@ export class DXSkillsSectionComponent implements OnInit {
 
   protected readonly numberText = computed<string>(() => LayoutSectionUtil.convertNumber(this.number()))
   protected readonly sectionParameters = signal({
-    descriptionText: 'No data',
+    descriptionText: 'No data.',
+    detailsMinHeightForDeviceWidthExtraSmall: 0,
+    detailsMinHeightForDeviceWidthLarge: 0,
+    listDescriptionText: 'No data.',
+    listEmptyStateText: 'No data.',
     skills: [] as readonly DXSkillsListItem[],
     titleText: 'No data',
   })
@@ -42,6 +46,10 @@ export class DXSkillsSectionComponent implements OnInit {
       .subscribe(({ list, sectionParameters }: DXSkillsSectionParametersAndList): void => {
         this.sectionParameters.set({
           descriptionText: sectionParameters.descriptionText,
+          detailsMinHeightForDeviceWidthExtraSmall: sectionParameters.details.minHeight.forDeviceWidthExtraSmall,
+          detailsMinHeightForDeviceWidthLarge: sectionParameters.details.minHeight.forDeviceWidthLarge,
+          listDescriptionText: sectionParameters.list.descriptionText,
+          listEmptyStateText: sectionParameters.list.emptyStateText,
           skills: list,
           titleText: sectionParameters.titleText,
         })

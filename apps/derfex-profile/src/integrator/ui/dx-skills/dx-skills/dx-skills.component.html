@@ -1,23 +1,57 @@
-<article class="app-article">
+<article
+  #articleElement
+  class="app-article"
+>
   <div class="app-description-and-title-container">
     <h2 class="app-title"><span class="app-title__span">{{titleText()}}</span></h2>
     <p class="app-description">{{descriptionText()}}</p>
   </div>
-  <ul class="app-skills">
-    @for (skill of skillsForTemplate(); track skill.codename) {
-      <li class="app-skills__item">
-        <app-dx-skill-card
-          [titleAttribute]="skill.name"
-          [url]="skill.url"
-        >
-          <ng-container *ngTemplateOutlet="skillTemplate; context: { $implicit: skill.logotypeComponent }" />
-        </app-dx-skill-card>
-      </li>
+  <div class="app-dx-skill-details-frame">
+    <div
+      class="app-dx-skill-details-container"
+      [class.app-dx-skill-details-container--transition]="detailsContainerTransitionCSSClassIsApplied()"
+      [style]="detailsContainerStyle()"
+    >
+      <app-dx-skill-details
+        [name]="details().name"
+        [proficiencyLevelDescription]="details().proficiencyLevelDescription"
+        [proficiencyLevelListItems]="details().proficiencyLevelListItems"
+        [referenceCaption]="details().referenceCaption"
+        [referenceURL]="details().referenceURL"
+        [shortDescription]="details().shortDescription"
+      >
+        <div class="app-dx-skill-details-container__logotype-container">
+          <ng-container
+            *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: details().logotypeComponent }"
+          />
+        </div>
+      </app-dx-skill-details>
+    </div>
+  </div>
+  <div class="app-skills">
+    <p class="app-skills__description">{{listDescriptionText()}}</p>
+    @if (skillsSummaryForTemplateIsShown()) {
+      <ul class="app-skills__list">
+        @for (skill of skillsSummaryForTemplate(); track skill.codename) {
+          <li class="app-skills__list-item">
+            <button
+              class="app-skills__button"
+              (click)="skillClickHandler(skill.codename)"
+            >
+              <app-dx-skill-card [titleAttribute]="skill.name">
+                <ng-container *ngTemplateOutlet="skillLogotypeTemplate; context: { $implicit: skill.logotypeComponent }" />
+              </app-dx-skill-card>
+            </button>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="app-empty-state">{{listEmptyStateText()}}</p>
     }
-  </ul>
+  </div>
 </article>
 
 
-<ng-template #skillTemplate let-logotypeComponent>
+<ng-template #skillLogotypeTemplate let-logotypeComponent>
   <ng-container *ngComponentOutlet="logotypeComponent" />
 </ng-template>
