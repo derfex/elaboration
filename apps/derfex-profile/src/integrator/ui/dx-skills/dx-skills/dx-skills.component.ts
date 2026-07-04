@@ -61,7 +61,7 @@ export class DXSkillsComponent implements OnInit {
   })
   protected readonly detailsContainerTransitionCSSClassIsApplied = signal(false)
   protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
-    return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
+    return this.skills().map(this.#prepareDXSkillSummaryForTemplate.bind(this))
   })
   protected readonly skillsSummaryForTemplateIsShown = computed<boolean>(() => {
     return !!this.skillsSummaryForTemplate().length
@@ -151,7 +151,7 @@ export class DXSkillsComponent implements OnInit {
     ].join(';')
   }
 
-  #prepareDXSkillForTemplate({ codename, name }: DXSkill): DXSkillSummaryForTemplate {
+  #prepareDXSkillSummaryForTemplate({ codename, name }: DXSkill): DXSkillSummaryForTemplate {
     return {
       codename,
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
