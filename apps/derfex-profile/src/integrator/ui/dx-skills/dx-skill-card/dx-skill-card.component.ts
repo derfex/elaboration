@@ -8,5 +8,4 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core'
 })
 export class DXSkillCardComponent {
   public readonly titleAttribute = input.required<string>()
-  public readonly url = input.required<string>()
 }

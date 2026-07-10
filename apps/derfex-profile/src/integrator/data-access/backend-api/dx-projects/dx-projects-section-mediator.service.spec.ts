@@ -50,16 +50,16 @@ class DXProjectsForBEStubService {
   public readList(): Observable<readonly DXProjectForBE[]> {
     const dxProjects: readonly DXProjectForBE[] = [
       {
-        codename: 'NoData1',
-        name: 'No data',
-        resultURL: 'no/data',
-        sourceURL: 'no/data',
+        codename: 'TestData1',
+        name: 'Test data',
+        resultURL: 'test/data',
+        sourceURL: 'test/data',
       },
       {
-        codename: 'NoData2',
-        name: 'No data',
-        resultURL: 'no/data',
-        sourceURL: 'no/data',
+        codename: 'TestData2',
+        name: 'Test data',
+        resultURL: 'test/data',
+        sourceURL: 'test/data',
       },
     ]
     return of(dxProjects)

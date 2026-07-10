@@ -50,14 +50,22 @@ class DXSkillsForBEStubService {
   public readList(): Observable<readonly DXSkillForBE[]> {
     const dxSkills: readonly DXSkillForBE[] = [
       {
-        codename: 'NoData1',
-        name: 'No data',
-        url: 'No data',
+        codename: 'TestData1',
+        name: 'Test data',
+        proficiencyLevelDescription: 'Test data:',
+        proficiencyLevelListItems: [],
+        referenceCaption: 'Test data',
+        referenceURL: 'TestData',
+        shortDescription: 'Test data.',
       },
       {
-        codename: 'NoData2',
-        name: 'No data',
-        url: 'No data',
+        codename: 'TestData2',
+        name: 'Test data',
+        proficiencyLevelDescription: 'Test data:',
+        proficiencyLevelListItems: [],
+        referenceCaption: 'Test data',
+        referenceURL: 'TestData',
+        shortDescription: 'Test data.',
       },
     ]
     return of(dxSkills)

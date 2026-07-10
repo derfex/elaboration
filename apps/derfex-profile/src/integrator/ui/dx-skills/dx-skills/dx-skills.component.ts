@@ -1,7 +1,24 @@
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  type ElementRef,
+  inject,
+  input,
+  type InputSignal,
+  linkedSignal,
+  type OnInit,
+  signal,
+  viewChild,
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { debounceTime, delay, distinctUntilChanged, Subject, tap } from 'rxjs'
 import type { DXSkill, DXSkillCodename } from '~entities/dx-skills/dx-skills.type'
+import { LayoutScrollService } from '~ui-kit/layout/layout-scroll/layout-scroll.service'
 import { DXSkillCardComponent } from '~ui/dx-skills/dx-skill-card/dx-skill-card.component'
+import { DXSkillDetailsComponent } from '~ui/dx-skills/dx-skill-details/dx-skill-details.component'
 import {
   DXSkillLogotypeComponentsUtil,
   type DXSkillLogotypeComponentType,
@@ -15,33 +32,212 @@ import {
 
     // Provided by the app.
     DXSkillCardComponent,
+    DXSkillDetailsComponent,
   ],
   selector: 'app-dx-skills',
   styleUrl: './dx-skills.component.sass',
   templateUrl: './dx-skills.component.html',
 })
-export class DXSkillsComponent {
+export class DXSkillsComponent implements OnInit {
+  readonly #destroyRef = inject(DestroyRef)
+  readonly #layoutScrollService = inject(LayoutScrollService)
+
   public readonly descriptionText = input.required<string>()
+  public readonly listDescriptionText = input.required<string>()
+  public readonly listEmptyStateText = input.required<string>()
+  public readonly skillDetailsMinHeightForDeviceWidthExtraSmall = input.required<number>()
+  public readonly skillDetailsMinHeightForDeviceWidthLarge = input.required<number>()
   public readonly skills = input.required<readonly DXSkill[]>()
   public readonly titleText = input.required<string>()
 
-  protected readonly skillsForTemplate = computed<readonly DXSkillForTemplate[]>(() => {
-    return this.skills().map(this.#prepareDXSkillForTemplate.bind(this))
+  protected readonly details = computed<DXSkillDetailsForTemplate>(() => {
+    return this.#prepareDXSkillDetails(this.#skillDetailsCodename(), this.#skillsMap())
+  })
+  protected readonly detailsContainerStyle = computed<string>(() => {
+    return this.#prepareDXSkillDetailsContainerStyle(
+      this.skillDetailsMinHeightForDeviceWidthExtraSmall(),
+      this.skillDetailsMinHeightForDeviceWidthLarge(),
+    )
+  })
+  protected readonly detailsContainerTransitionCSSClassIsApplied = signal(false)
+  protected readonly skillsSummaryForTemplate = computed<readonly DXSkillSummaryForTemplate[]>(() => {
+    return this.skills().map(this.#prepareDXSkillSummaryForTemplate.bind(this))
+  })
+  protected readonly skillsSummaryForTemplateIsShown = computed<boolean>(() => {
+    return !!this.skillsSummaryForTemplate().length
   })
 
-  #prepareDXSkillForTemplate({ codename, name, url }: DXSkill): DXSkillForTemplate {
+  readonly #detailsTransition = new Subject<DXSkillCodename>()
+  readonly #detailsTransitionDebounceTime = 200
+  // Should be equal to `$_skill-details-transition-duration: 100ms`.
+  readonly #detailsTransitionDuration = 100
+  readonly #skillDetailsCodename = linkedSignal<readonly DXSkill[], DXSkillCodename>(
+    this.#skillDetailsCodenameLinkedSignalOptions(),
+  )
+  readonly #skillsMap = computed<DXSkillsReadonlyMap>(() => {
+    return this.#prepareDXSkillsMap(this.skills())
+  })
+
+  private readonly articleElement = viewChild.required<ElementRef<HTMLDivElement>>('articleElement')
+
+  public ngOnInit(): void {
+    this.#handleSkillDetailsTransition()
+  }
+
+  protected skillClickHandler(codename: DXSkillCodename): void {
+    this.#replaceSkillDetails(codename)
+  }
+
+  // TODO: Investigate `protected skillMouseEnterHandler(codename: DXSkillCodename): void`.
+
+  #handleSkillDetailsTransition(): void {
+    this.#detailsTransition
+      .pipe(
+        debounceTime(this.#detailsTransitionDebounceTime),
+        distinctUntilChanged(),
+        tap((): void => this.detailsContainerTransitionCSSClassIsApplied.set(true)),
+        delay(this.#detailsTransitionDuration),
+        tap((): void => this.detailsContainerTransitionCSSClassIsApplied.set(false)),
+        takeUntilDestroyed(this.#destroyRef),
+      )
+      .subscribe((codename: DXSkillCodename): void => {
+        this.#skillDetailsCodename.set(codename)
+        this.#layoutScrollService.scrollIntoView(this.articleElement().nativeElement)
+      })
+  }
+
+  #prepareDXSkillDetails(codename: DXSkillCodename, skillsMap: DXSkillsReadonlyMap): DXSkillDetailsForTemplate {
+    const skill = skillsMap.get(codename)
+    if (skill) {
+      const {
+        codename,
+        name,
+        proficiencyLevelDescription,
+        proficiencyLevelListItems,
+        referenceCaption,
+        referenceURL,
+        shortDescription,
+      } = skill
+      return {
+        codename,
+        logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
+        name,
+        proficiencyLevelDescription,
+        proficiencyLevelListItems: [...proficiencyLevelListItems],
+        referenceCaption,
+        referenceURL,
+        shortDescription,
+      }
+    }
+    return {
+      codename: emptyDXSkillCodename,
+      logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent('Angular' as DXSkillCodename),
+      name: 'No data',
+      proficiencyLevelDescription: 'No data.',
+      proficiencyLevelListItems: [],
+      referenceCaption: 'No data',
+      referenceURL: 'NoData',
+      shortDescription: 'No data.',
+    }
+  }
+
+  #prepareDXSkillDetailsContainerStyle(
+    minHeightForDeviceWidthExtraSmall: number,
+    minHeightForDeviceWidthLarge: number,
+  ): string {
+    return [
+      `--app-dx-skill-details-container--min-height--device-width-extra-small: ${minHeightForDeviceWidthExtraSmall}px`,
+      `--app-dx-skill-details-container--min-height--device-width-large: ${minHeightForDeviceWidthLarge}px`,
+    ].join(';')
+  }
+
+  #prepareDXSkillSummaryForTemplate({ codename, name }: DXSkill): DXSkillSummaryForTemplate {
     return {
       codename,
       logotypeComponent: DXSkillLogotypeComponentsUtil.getComponent(codename),
       name,
-      url,
+    }
+  }
+
+  #prepareDXSkillsMap(skills: readonly DXSkill[]): DXSkillsReadonlyMap {
+    return new Map<DXSkillCodename, DXSkill>(
+      skills.map(
+        ({
+          codename,
+          name,
+          proficiencyLevelDescription,
+          proficiencyLevelListItems,
+          referenceCaption,
+          referenceURL,
+          shortDescription,
+        }): [DXSkillCodename, DXSkill] => [
+          codename,
+          {
+            codename,
+            name,
+            proficiencyLevelDescription,
+            proficiencyLevelListItems: [...proficiencyLevelListItems],
+            referenceCaption,
+            referenceURL,
+            shortDescription,
+          },
+        ],
+      ),
+    )
+  }
+
+  #replaceSkillDetails(codename: DXSkillCodename): void {
+    this.#detailsTransition.next(codename)
+  }
+
+  #skillDetailsCodenameLinkedSignalComputation(
+    skills: DXSkillDetailsCodenameLinkedSignalComputationSource,
+    previous?: DXSkillDetailsCodenameLinkedSignalComputationPrevious,
+  ): DXSkillCodename {
+    if (previous && previous.value !== emptyDXSkillCodename) {
+      return previous.value
+    }
+    const [skill] = skills
+    return skill ? skill.codename : emptyDXSkillCodename
+  }
+
+  #skillDetailsCodenameLinkedSignalOptions(): {
+    computation: DXSkillDetailsCodenameLinkedSignalComputation
+    source: InputSignal<readonly DXSkill[]>
+  } {
+    return {
+      computation: this.#skillDetailsCodenameLinkedSignalComputation,
+      source: this.skills,
     }
   }
 }
 
-interface DXSkillForTemplate {
+const emptyDXSkillCodename = 'NoData' as DXSkillCodename
+
+interface DXSkillDetailsForTemplate {
   readonly codename: DXSkillCodename
   readonly logotypeComponent: DXSkillLogotypeComponentType
   readonly name: DXSkill['name']
-  readonly url: DXSkill['url']
+  readonly proficiencyLevelDescription: DXSkill['proficiencyLevelDescription']
+  readonly proficiencyLevelListItems: DXSkill['proficiencyLevelListItems']
+  readonly referenceCaption: DXSkill['referenceCaption']
+  readonly referenceURL: DXSkill['referenceURL']
+  readonly shortDescription: DXSkill['shortDescription']
 }
+type DXSkillDetailsCodenameLinkedSignalComputationSource = NoInfer<readonly DXSkill[]>
+type DXSkillDetailsCodenameLinkedSignalComputationPrevious = {
+  source: DXSkillDetailsCodenameLinkedSignalComputationSource
+  value: NoInfer<DXSkillCodename>
+}
+type DXSkillDetailsCodenameLinkedSignalComputation = (
+  source: DXSkillDetailsCodenameLinkedSignalComputationSource,
+  previous?: DXSkillDetailsCodenameLinkedSignalComputationPrevious,
+) => DXSkillCodename
+
+interface DXSkillSummaryForTemplate {
+  readonly codename: DXSkillCodename
+  readonly logotypeComponent: DXSkillLogotypeComponentType
+  readonly name: DXSkill['name']
+}
+
+type DXSkillsReadonlyMap = ReadonlyMap<DXSkillCodename, DXSkill>

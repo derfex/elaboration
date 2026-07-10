@@ -31,15 +31,27 @@ export class DXSkillsSectionMediatorService {
   }
 
   #prepareList(dxSkills: DXSkillsForBE): readonly DXSkillsListItem[] {
-    return dxSkills.map((skillForBE: DXSkillForBE): DXSkillsSectionMediatorListItem => {
-      const codename = skillForBE.codename as DXSkillCodename
-      const { name, url } = skillForBE
-      return {
-        codename,
-        name,
-        url,
-      }
-    })
+    return dxSkills
+      .map((skillForBE: DXSkillForBE): DXSkillsListItem => {
+        const codename = skillForBE.codename as DXSkillCodename
+        const {
+          name,
+          proficiencyLevelDescription,
+          proficiencyLevelListItems,
+          referenceCaption,
+          referenceURL,
+          shortDescription,
+        } = skillForBE
+        return {
+          codename,
+          name,
+          proficiencyLevelDescription,
+          proficiencyLevelListItems: [...proficiencyLevelListItems],
+          referenceCaption,
+          referenceURL,
+          shortDescription,
+        } satisfies DXSkillsSectionMediatorListItem
+      })
   }
 
   #readDXSkillsAsUncompiled(dxSkillsURL: string): Observable<DXSkillsForBE> {
@@ -76,7 +88,14 @@ export class DXSkillsSectionMediatorService {
           const list = this.#prepareList(dxSkills)
           const sectionParameters: DXSkillsSectionParameters = {
             descriptionText: parametersFromBEAPI.descriptionText,
+            details: {
+              minHeight: {
+                forDeviceWidthExtraSmall: parametersFromBEAPI.details.minHeight.forDeviceWidthExtraSmall,
+                forDeviceWidthLarge: parametersFromBEAPI.details.minHeight.forDeviceWidthLarge,
+              },
+            },
             list: {
+              descriptionText: parametersFromBEAPI.list.descriptionText,
               emptyStateText: parametersFromBEAPI.list.emptyStateText,
             },
             titleText: parametersFromBEAPI.titleText,
@@ -101,7 +120,11 @@ type DXSkillsForBE = readonly DXSkillForBE[]
 interface DXSkillsSectionMediatorListItem {
   readonly codename: DXSkillCodename
   readonly name: DXSkill['name']
-  readonly url: DXSkill['url']
+  readonly proficiencyLevelDescription: DXSkill['proficiencyLevelDescription']
+  readonly proficiencyLevelListItems: DXSkill['proficiencyLevelListItems']
+  readonly referenceCaption: DXSkillsListItem['referenceCaption']
+  readonly referenceURL: DXSkill['referenceURL']
+  readonly shortDescription: DXSkill['shortDescription']
 }
 
 function createProcessCodename(string: string): string {

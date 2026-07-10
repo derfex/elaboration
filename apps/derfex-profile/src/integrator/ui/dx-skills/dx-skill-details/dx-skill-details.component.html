@@ -1,0 +1,28 @@
+<article class="app-article">
+  <div class="app-ng-content-and-link-and-short-description-and-title-container">
+    <div class="app-link-and-short-description-and-title-container">
+      <h3 class="app-title">{{name()}}</h3>
+      <div class="app-link-and-short-description-container">
+        <p class="app-short-description">{{shortDescription()}}</p>
+        <a
+          class="app-link"
+          [href]="referenceURL()"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span>{{referenceCaption()}}</span>
+          <span>{{externalLinkText}}</span>
+        </a>
+      </div>
+    </div>
+    <ng-content />
+  </div>
+  <div>
+    <p class="app-proficiency-level-description">{{proficiencyLevelDescription()}}</p>
+    <ul>
+      @for (item of proficiencyLevelListItems(); track item) {
+        <li>{{item}}</li>
+      }
+    </ul>
+  </div>
+</article>

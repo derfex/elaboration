@@ -31,7 +31,7 @@ export class DXProjectsSectionMediatorService {
   }
 
   #prepareList(dxProjects: DXProjectsForBE): readonly DXProjectsListItem[] {
-    return dxProjects.map((projectForBE: DXProjectForBE): DXProjectsSectionMediatorListItem => {
+    return dxProjects.map((projectForBE: DXProjectForBE): DXProjectsListItem => {
       const codename = projectForBE.codename as DXProjectCodename
       const { name, resultURL, sourceURL } = projectForBE
       return {
@@ -39,7 +39,7 @@ export class DXProjectsSectionMediatorService {
         name,
         resultURL,
         sourceURL,
-      }
+      } satisfies DXProjectsSectionMediatorListItem
     })
   }
 
