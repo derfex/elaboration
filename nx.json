@@ -12,7 +12,8 @@
       "changeDetection": "OnPush",
       "displayBlock": true,
       "prefix": "app",
-      "style": "sass"
+      "style": "sass",
+      "type": "component"
     }
   },
   "namedInputs": {
