@@ -10,6 +10,14 @@ nx migrate latest --interactive
 nx migrate <package>@<version>
 ```
 
+### Angular
+
+Compatibility: [Angular Nx version matrix][Angular Nx version matrix].
+
+### Node.js
+
+Compatibility: [Node Nx version matrix][Node Nx version matrix].
+
 ## To do
 
 ### `Angular@21`
@@ -30,3 +38,7 @@ Should we start to use it?
 ### `@typescript-eslint/utils`
 
 Are we using it?
+
+
+[Angular Nx version matrix]: https://nx.dev/docs/technologies/angular/guides/angular-nx-version-matrix
+[Node Nx version matrix]: https://nx.dev/docs/technologies/node/introduction#requirements

@@ -1,18 +1,20 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "analytics": false,
   "defaultBase": "master",
   "generators": {
     "@nx/angular:application": {
       "e2eTestRunner": "playwright",
       "linter": "eslint",
       "style": "sass",
-      "unitTestRunner": "vitest"
+      "unitTestRunner": "vitest-angular"
     },
     "@nx/angular:component": {
       "changeDetection": "OnPush",
       "displayBlock": true,
       "prefix": "app",
-      "style": "sass"
+      "style": "sass",
+      "type": "component"
     }
   },
   "namedInputs": {
