@@ -44,6 +44,12 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Applications
+
+apps/vehicles-registry-fe/.env.local
+
+# Unsystematized
+
 .nx/cache
 .nx/workspace-data
 
@@ -54,7 +60,3 @@ vitest.config.*.timestamp*
 
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
-
-# Applications
-
-apps/vehicles-registry-fe/.env.local
