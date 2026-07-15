@@ -10,6 +10,11 @@ nx migrate latest --interactive
 nx migrate <package>@<version>
 ```
 
+```sh
+npm install
+nx migrate --run-migrations
+```
+
 ### Angular
 
 Compatibility: [Angular Nx version matrix][Angular Nx version matrix].
