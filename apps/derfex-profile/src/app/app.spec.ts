@@ -1,5 +1,5 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
-import { App as AppComponent } from './app'
+import { AppComponent } from './app.component'
 
 describe('AppComponent', (): void => {
   let component: AppComponent

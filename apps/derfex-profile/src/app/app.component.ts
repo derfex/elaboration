@@ -8,4 +8,4 @@ import { RouterModule } from '@angular/router'
   styleUrl: './app.sass',
   templateUrl: './app.html',
 })
-export class App {}
+export class AppComponent {}
