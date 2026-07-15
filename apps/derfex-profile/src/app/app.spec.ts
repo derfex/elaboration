@@ -1,16 +1,16 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing'
-import { App } from './app'
+import { App as AppComponent } from './app'
 
-describe('App', (): void => {
-  let component: App
-  let fixture: ComponentFixture<App>
+describe('AppComponent', (): void => {
+  let component: AppComponent
+  let fixture: ComponentFixture<AppComponent>
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [AppComponent],
     }).compileComponents()
 
-    fixture = TestBed.createComponent(App)
+    fixture = TestBed.createComponent(AppComponent)
     component = fixture.componentInstance
   })
 
