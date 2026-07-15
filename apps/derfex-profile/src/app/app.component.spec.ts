@@ -7,6 +7,8 @@ describe('AppComponent', (): void => {
 
   beforeEach(async (): Promise<void> => {
     await TestBed.configureTestingModule({
+      // TODO: Do we need to import the component-under-test (`AppComponent`)?
+      //  Does import cause a back-end API call in cases where stubs are created?
       imports: [AppComponent],
     }).compileComponents()
 
