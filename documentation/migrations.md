@@ -10,13 +10,18 @@ nx migrate latest --interactive
 nx migrate <package>@<version>
 ```
 
-### Angular
+```sh
+npm install
+nx migrate --run-migrations
+```
+### Check list
 
-Compatibility: [Angular Nx version matrix][Angular Nx version matrix].
-
-### Node.js
-
-Compatibility: [Node Nx version matrix][Node Nx version matrix].
+- [ ] Angular compatibility: [Angular Nx version matrix][Angular Nx version matrix].
+- [ ] Node.js compatibility: [Node Nx version matrix][Node Nx version matrix].
+- [ ] Unit-tests:
+  ```sh
+  nx run-many --all --target=test
+  ```
 
 ## To do
 
