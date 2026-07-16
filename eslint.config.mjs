@@ -17,7 +17,7 @@ export default [
       '@nx/enforce-module-boundaries': [
         'error',
         {
-          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
+          allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
           depConstraints: [
             {
               onlyDependOnLibsWithTags: ['*'],

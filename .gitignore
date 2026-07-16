@@ -44,13 +44,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-vite.config.*.timestamp*
-vitest.config.*.timestamp*
+# AI, LLM
 
-.github/instructions/nx.instructions.md
-
-# AI
-
+.claude/settings.local.json
 .claude/worktrees
 .cursor/rules/nx-rules.mdc
 
@@ -58,13 +54,22 @@ vitest.config.*.timestamp*
 
 .angular
 
-# Applications
-
-apps/vehicles-registry-fe/.env.local
-
 # NX
 
 .nx/cache
 .nx/polygraph
 .nx/self-healing
 .nx/workspace-data
+
+
+# Applications
+
+apps/vehicles-registry-fe/.env.local
+
+
+# Unsystematized
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
+
+.github/instructions/nx.instructions.md
