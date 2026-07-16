@@ -16,7 +16,7 @@
     "@mdi/font": "^7.4.47",
     "@nestjs/common": "11.1.19",
     "@nestjs/core": "11.1.19",
-    "@nestjs/platform-express": "11.1.19",
+    "@nestjs/platform-express": "11.1.28",
     "fs-extra": "11.3.4",
     "pinia": "^3.0.4",
     "reflect-metadata": "^0.1.13",
@@ -85,7 +85,7 @@
     "tslib": "^2.3.0",
     "typescript": "5.9.2",
     "typescript-eslint": "8.54.0",
-    "vite": "7.3.3",
+    "vite": "7.3.5",
     "vitest": "^4.0.18",
     "vue-tsc": "^2.2.8",
     "webpack-cli": "^5.1.4"
