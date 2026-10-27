@@ -1,4 +1,5 @@
 import nx from '@nx/eslint-plugin'
+import tsESLintPlugin from '@typescript-eslint/eslint-plugin'
 
 export default [
   ...nx.configs['flat/base'],
@@ -55,6 +56,9 @@ export default [
   {
     files: ['**/*.{ts,vue}'],
     name: 'app/{ts,vue}/typification',
+    plugins: {
+      '@typescript-eslint': tsESLintPlugin,
+    },
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'error',
