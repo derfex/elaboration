@@ -57,9 +57,9 @@ Thumbs.db
 # NX
 
 .nx/cache
-.nx/workspace-data
 .nx/polygraph
 .nx/self-healing
+.nx/workspace-data
 
 
 # Applications
