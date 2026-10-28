@@ -11,7 +11,7 @@ nx migrate <package>@<version>
 ```
 
 ```sh
-npm install
+npm install --ignore-scripts
 nx migrate --run-migrations
 ```
 ### Check list
@@ -22,6 +22,12 @@ nx migrate --run-migrations
   ```sh
   nx run-many --all --target=test
   ```
+
+## Troubleshooting
+
+When installing new dependencies, `npm error code ERESOLVE` may occur.
+We can try to resolve conflicts between installed and expected dependencies by deleting `node_modules` folder
+and `package-lock.json` file, then running the dependency installation process again.
 
 ## To do
 
