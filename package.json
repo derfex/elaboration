@@ -51,6 +51,7 @@
     "@nx/web": "22.7.12",
     "@nx/webpack": "22.7.12",
     "@nx/workspace": "22.7.12",
+    "@oxc-project/runtime": "^0.156.0",
     "@playwright/test": "1.58.2",
     "@schematics/angular": "~21.2.0",
     "@swc-node/register": "~1.11.1",

@@ -42,10 +42,6 @@ https://angular.dev/api/core/testing/ComponentFixture#whenStable
 — Looks like it is not necessary.
 https://angular.dev/guide/zoneless#using-zoneless-in-testbed
 
-### `@oxc-project/runtime`
-
-Should we start to use it?
-
 ### `@typescript-eslint/utils`
 
 Are we using it?
