@@ -58,6 +58,7 @@ Source: https://www.npmjs.com/package/@nx/vue/v/23.0.2?activeTab=code
 ```
 It seems that versions 4 and 5 are almost entirely backward compatible.
 Solution: the version of `vue-router@5.0.3` was (temporary?) downgraded to `vue-router@^4.5.0`.
+TODO: migrate to `vue-router@5.0.3`.
 
 ### `@oxc-project/runtime`
 
