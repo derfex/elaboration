@@ -42,23 +42,6 @@ https://angular.dev/api/core/testing/ComponentFixture#whenStable
 — Looks like it is not necessary.
 https://angular.dev/guide/zoneless#using-zoneless-in-testbed
 
-### Vue. `vue-router`
-
-For `nx@22.7.12` to `nx@23.0.2` migration we have a conflict of our dependencies.
-The problem is for `@nx/vue@23.0.2`.
-Source: https://www.npmjs.com/package/@nx/vue/v/23.0.2?activeTab=code
-```json
-{  
-"peerDependencies": {
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0",
-    "…": "…"
-  }
-}
-```
-It seems that versions 4 and 5 are almost entirely backward compatible.
-Solution: the version of `vue-router@5.0.3` was (temporary?) downgraded to `vue-router@^4.5.0`.
-
 ### `@oxc-project/runtime`
 
 Should we start to use it?
