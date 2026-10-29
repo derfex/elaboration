@@ -62,10 +62,15 @@
       "plugin": "@nx/vite/plugin"
     },
     {
-      "plugin": "@nx/vitest",
+      "exclude": [
+        "apps/pet-shop/**/*",
+        "apps/vehicles-registry-fe/**/*"
+      ],
       "options": {
-        "testTargetName": "vite:test"
-      }
+        "testTargetName": "test",
+        "testMode": "watch"
+      },
+      "plugin": "@nx/vitest"
     }
   ],
   "targetDefaults": {
