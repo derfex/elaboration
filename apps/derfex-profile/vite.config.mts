@@ -1,14 +1,24 @@
 /// <reference types='vitest' />
 import angular from '@analogjs/vite-plugin-angular'
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 import { defineConfig, type UserConfig } from 'vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
     root: import.meta.dirname,
     cacheDir: '../../node_modules/.vite/apps/derfex-profile',
-    plugins: [angular(), nxCopyAssetsPlugin(['*.md'])],
+    plugins: [
+      angular(),
+      viteStaticCopy({
+        targets: [
+          {
+            dest: '.',
+            src: 'src/**/*.md',
+          },
+        ],
+      }),
+    ],
     // Uncomment this if you are using workers.
     // worker: {
     //   plugins: () => [nxViteTsPaths()],

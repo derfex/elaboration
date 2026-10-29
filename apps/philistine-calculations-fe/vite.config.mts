@@ -1,8 +1,8 @@
 /// <reference types='vitest' />
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, type UserConfig } from 'vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config
 export default defineConfig(
@@ -25,7 +25,17 @@ export default defineConfig(
       outDir: '../../dist/apps/philistine-calculations-fe',
       reportCompressedSize: true,
     },
-    plugins: [vue(), nxCopyAssetsPlugin(['*.md'])],
+    plugins: [
+      vue(),
+      viteStaticCopy({
+        targets: [
+          {
+            dest: '.',
+            src: 'src/**/*.md',
+          },
+        ],
+      }),
+    ],
     // Uncomment this if you are using workers.
     // worker: {
     //   plugins: () => [nxViteTsPaths()],
