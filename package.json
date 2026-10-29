@@ -88,6 +88,7 @@
     "typescript": "5.9.2",
     "typescript-eslint": "8.54.0",
     "vite": "8.0.9",
+    "vite-plugin-static-copy": "^4.1.1",
     "vitest": "^4.0.18",
     "vue-tsc": "^2.2.8",
     "webpack-cli": "7.2.3"
