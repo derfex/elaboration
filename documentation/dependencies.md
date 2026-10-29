@@ -299,6 +299,24 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `vite`
 
+Used directly by the applications:
+- [`derfex-profile`](../apps/derfex-profile)
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pet-shop`](../apps/pet-shop)
+- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
+- [`web-invitation`](../apps/web-invitation)
+
+### `vite-plugin-static-copy`
+
+Used directly by the applications:
+- [`derfex-profile`](../apps/derfex-profile)
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pet-shop`](../apps/pet-shop)
+- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
+- [`web-invitation`](../apps/web-invitation)
+
 ### `vitest`
 
 ### `vue-tsc`

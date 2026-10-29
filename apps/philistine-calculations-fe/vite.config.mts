@@ -1,9 +1,8 @@
 /// <reference types='vitest' />
-import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin'
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, type UserConfig } from 'vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config
 export default defineConfig(
@@ -18,11 +17,6 @@ export default defineConfig(
       host: 'localhost',
       port: 4300,
     },
-    plugins: [vue(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
-    // Uncomment this if you are using workers.
-    // worker: {
-    //   plugins: () => [nxViteTsPaths()],
-    // },
     build: {
       commonjsOptions: {
         transformMixedEsModules: true,
@@ -31,6 +25,30 @@ export default defineConfig(
       outDir: '../../dist/apps/philistine-calculations-fe',
       reportCompressedSize: true,
     },
+    plugins: [
+      vue(),
+      viteStaticCopy({
+        targets: [
+          {
+            dest: '.',
+            src: 'src/**/*.md',
+          },
+        ],
+      }),
+    ],
+    // Uncomment this if you are using workers.
+    // worker: {
+    //   plugins: () => [nxViteTsPaths()],
+    // },
+    // ↓
+    // Uncomment this if you are using workers.
+    // import tsconfigPaths from 'vite-tsconfig-paths'
+    // …
+    // worker: {
+    //   plugins: [
+    //     tsconfigPaths(),
+    //   ],
+    // },
     resolve: {
       alias: {
         '||': fileURLToPath(new URL('./src', import.meta.url)),
@@ -39,7 +57,9 @@ export default defineConfig(
         '|ui': fileURLToPath(new URL('./src/integrator/ui', import.meta.url)),
         '|ui-kit': fileURLToPath(new URL('./src/integrator/ui-kit', import.meta.url)),
       },
+      tsconfigPaths: true,
     },
+    // FIXME: «TS2353: Object literal may only specify known properties, and `test` does not exist in type `UserConfig`».
     test: {
       coverage: {
         provider: 'v8' as const,
