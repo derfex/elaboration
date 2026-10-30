@@ -7,7 +7,6 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
-    root: import.meta.dirname,
     cacheDir: '../../node_modules/.vite/apps/philistine-calculations-fe',
     server: {
       host: 'localhost',
@@ -59,6 +58,7 @@ export default defineConfig(
       },
       tsconfigPaths: true,
     },
+    root: import.meta.dirname,
     test: {
       coverage: {
         provider: 'v8' as const,

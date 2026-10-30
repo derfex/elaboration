@@ -6,7 +6,6 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
-    root: import.meta.dirname,
     cacheDir: '../../node_modules/.vite/apps/nx-welcome-vue',
     server: {
       host: 'localhost',
@@ -51,6 +50,7 @@ export default defineConfig(
     resolve: {
       tsconfigPaths: true,
     },
+    root: import.meta.dirname,
     test: {
       coverage: {
         provider: 'v8' as const,
