@@ -1,10 +1,8 @@
-# Web-invitation front-end
+# Web-invitation front-end. Technologies
 
-## Technologies
+## Angular
 
-### Angular
-
-#### `@angular/core`
+### `@angular/core`
 
 - `ChangeDetectionStrategy.OnPush`
 - `Component`
@@ -19,7 +17,7 @@
   - `input`
   - `signal`
 
-#### `@angular/common`
+### `@angular/common`
 
 - `NgOptimizedImage`
 
@@ -32,7 +30,7 @@
   - `HttpTestingController`
   - `provideHttpClientTesting`
 
-#### `@angular/platform-browser`
+### `@angular/platform-browser`
 
 - `DomSanitizer`
 - `bootstrapApplication`
@@ -42,13 +40,13 @@
   - `BrowserTestingModule`
   - `platformBrowserTesting`
 
-#### `@angular/router`
+### `@angular/router`
 
 - `RouterModule`
 - `provideRouter`
 - `type Route`
 
-### CSS
+## CSS
 
 - CSS flexible box layout
 - CSS grid layout
@@ -56,7 +54,7 @@
   - Custom Properties & Values
 - `@media`
 
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2018
   - Spread operator.
@@ -71,7 +69,7 @@
   - ES6 modules.
   - Promises.
 
-### RxJS
+## RxJS
 
 - `map`
 - `of`
@@ -79,22 +77,22 @@
 - `switchMap`
 - `type Observable`
 
-### SASS
+## SASS
 
 - `@include`
 - `@mixin`
 - `@use`
 
-### TypeScript
+## TypeScript
 
 - `as const`
 - `asserts value is Type`
 - `readonly`
 - `satisfies`
 
-## Dependencies
+# Dependencies
 
-### Dependencies
+## Dependencies
 
 - @angular/common
 - @angular/compiler
@@ -103,7 +101,7 @@
 - @angular/router
 - rxjs
 
-### Dev dependencies
+## Dev dependencies
 
 - @angular-devkit/core
 - @angular-devkit/schematics
