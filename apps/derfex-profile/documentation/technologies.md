@@ -1,10 +1,8 @@
-# `derfex` profile front-end
+# `derfex` profile front-end. Technologies
 
-## Technologies
+## Angular
 
-### Angular
-
-#### `@angular/core`
+### `@angular/core`
 
 - `ChangeDetectionStrategy.OnPush`
 - `Component`
@@ -36,7 +34,7 @@
   - `getTestBed`
   - `type ComponentFixture`
 
-#### `@angular/common`
+### `@angular/common`
 
 - `NgComponentOutlet`
 - `NgTemplateOutlet`
@@ -50,7 +48,7 @@
   - `HttpTestingController`
   - `provideHttpClientTesting`
 
-#### `@angular/platform-browser`
+### `@angular/platform-browser`
 
 - `bootstrapApplication`
 
@@ -58,18 +56,18 @@
   - `BrowserTestingModule`
   - `platformBrowserTesting`
 
-#### `@angular/router`
+### `@angular/router`
 
 - `RouterModule`
 - `provideRouter`
 - `type Route`
 
-#### Templates
+### Templates
 
 - conditions: `@if`
 - cycles: `@for (… of …; track …)`, `@empty`
 
-### CSS
+## CSS
 
 - CSS flexible box layout
 - CSS grid layout
@@ -77,7 +75,7 @@
   - Custom Properties & Values
 - `@media`
 
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2018
   - Spread operator.
@@ -93,7 +91,7 @@
   - ES6 modules.
   - Promises.
 
-### RxJS
+## RxJS
 
 - `BehaviorSubject`
 - `Subject`
@@ -111,7 +109,7 @@
 - `zip`
 - `type Observable`
 
-### SASS
+## SASS
 
 - conditions: `@if`, `@else`
 - cycles: `@for $_i from $_a through $_b`
@@ -120,7 +118,7 @@
 - `@mixin`
 - `@use`
 
-### TypeScript
+## TypeScript
 
 - `as const`
 - `asserts` (`asserts value is Type`)
@@ -133,7 +131,7 @@
 - `ReadonlyMap<…, …>`
 - `ReadonlySet<…>`
 
-### Web API
+## Web API
 
 - CSSOM view API
   - `MediaQueryList`
@@ -141,9 +139,9 @@
 - Console API
 - Web Storage API
 
-## Dependencies
+# Dependencies
 
-### Dependencies
+## Dependencies
 
 - @angular/common
 - @angular/compiler
@@ -152,7 +150,7 @@
 - @angular/router
 - rxjs
 
-### Dev dependencies
+## Dev dependencies
 
 - @angular-devkit/core
 - @angular-devkit/schematics

@@ -1,8 +1,6 @@
-# `derfex` profile data server
+# `derfex` profile data server. Technologies
 
-## Technologies
-
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2018
   - Spread operator.
@@ -18,7 +16,7 @@
   - ES6 modules.
   - Promises.
 
-### Nest
+## Nest
 
 - `@Body`
 - `@Controller`
@@ -30,25 +28,25 @@
 - `HttpException`
 - `HttpStatus`
 
-### Node
+## Node
 
 - `'node:fs/promises'`
   - `access`
   - `constants`
 - `'node:path'`
 
-### TypeScript
+## TypeScript
 
 - `as const`
 - `readonly`
 
 - `ReadonlyMap<…, …>`
 
+# Dependencies
+
 ## Dependencies
 
-### Dependencies
-
-#### Were added during the application initialization
+### Were added during the application initialization
 
 - @nestjs/common
 - @nestjs/core
@@ -56,9 +54,9 @@
 - fs-extra
 - reflect-metadata
 
-### Dev dependencies
+## Dev dependencies
 
-#### Were added during the application initialization
+### Were added during the application initialization
 
 - @nestjs/schematics
 - @nestjs/testing
@@ -75,7 +73,7 @@
 - ts-node
 - webpack-cli
 
-#### Implied
+### Implied
 
 - @eslint/js
 - @nx/eslint

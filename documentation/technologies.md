@@ -1,10 +1,12 @@
-# Technologies
+# Elaboration (web front-end and node). Technologies. Used
 
-## Used
+Goals:
+- Track the technologies being used.
+- Identify outdated technologies that should be replaced.
 
-### Angular
+## Angular
 
-#### `@angular/core`
+### `@angular/core`
 
 - `ChangeDetectionStrategy.OnPush`
 - `ChangeDetectorRef`
@@ -38,12 +40,12 @@
   - `getTestBed`
   - `type ComponentFixture`
 
-#### `@angular/cdk`
+### `@angular/cdk`
 
 - `@angular/cdk/collections`
   - `SelectionModel`
 
-#### `@angular/common`
+### `@angular/common`
 
 - `NgComponentOutlet`
 - `NgOptimizedImage`
@@ -58,11 +60,11 @@
   - `HttpTestingController`
   - `provideHttpClientTesting`
 
-#### `@angular/forms`
+### `@angular/forms`
 
 - `FormsModule`
 
-#### `@angular/platform-browser`
+### `@angular/platform-browser`
 
 - `DomSanitizer`
 - `bootstrapApplication`
@@ -72,19 +74,23 @@
   - `BrowserTestingModule`
   - `platformBrowserTesting`
 
-#### `@angular/router`
+- `@angular/platform-browser-dynamic/testing`, deprecated
+  - `BrowserDynamicTestingModule`
+  - `platformBrowserDynamicTesting`
+
+### `@angular/router`
 
 - `RouterModule`
 - `provideRouter`
 - `type Route`
 
-#### Templates
+### Templates
 
 - conditions: `@if`, `@else`
 - cycles: `@for (… of …; track …)`, `@empty`
 - `@defer`
 
-### CSS
+## CSS
 
 - CSS flexible box layout
 - CSS grid layout
@@ -93,7 +99,7 @@
   - Custom Properties & Values
 - `@media`
 
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2018
   - Spread operator.
@@ -109,7 +115,7 @@
   - ES6 modules.
   - Promises.
 
-### Nest
+## Nest
 
 - `@Body`
 - `@Controller`
@@ -121,7 +127,7 @@
 - `HttpException`
 - `HttpStatus`
 
-### Node
+## Node
 
 - `'node:fs/promises'`
   - `access`
@@ -130,7 +136,7 @@
 
 - `__dirname`
 
-### RxJS
+## RxJS
 
 - `BehaviorSubject`
 - `Subject`
@@ -148,7 +154,7 @@
 - `zip`
 - `type Observable`
 
-### SASS
+## SASS
 
 - conditions: `@if`, `@else`
 - cycles: `@for $_i from $_a through $_b`
@@ -157,7 +163,7 @@
 - `@mixin`
 - `@use`
 
-### TypeScript
+## TypeScript
 
 - `as const`
 - `asserts` (`asserts value is Type`)
@@ -171,11 +177,11 @@
 - `ReadonlySet<…>`
 - `ReturnType<…>`
 
-### Vite
+## Vite
 
 - `import.meta.env.VITE_*`
 
-### Vue
+## Vue
 
 - Composition API
 - Composables
@@ -194,12 +200,12 @@
 - Reactivity API: Advanced
   - `shallowRef`
 
-### Unknown
+## Unknown
 
 - Vite?
   - `import.meta.env.BASE_URL`
 
-### Web API
+## Web API
 
 - CSSOM view API
   - `MediaQueryList`
