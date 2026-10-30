@@ -1,4 +1,4 @@
-/// <reference types='vitest' />
+/// <reference types='vitest/config' />
 import vue from '@vitejs/plugin-vue'
 import { defineConfig, type UserConfig } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
@@ -6,7 +6,6 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
-    root: import.meta.dirname,
     cacheDir: '../../node_modules/.vite/apps/vehicles-registry-fe',
     server: {
       host: 'localhost',
@@ -51,7 +50,7 @@ export default defineConfig(
     resolve: {
       tsconfigPaths: true,
     },
-    // FIXME: «TS2353: Object literal may only specify known properties, and `test` does not exist in type `UserConfig`».
+    root: import.meta.dirname,
     test: {
       coverage: {
         provider: 'v8' as const,
