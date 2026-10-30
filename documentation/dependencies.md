@@ -281,6 +281,9 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `jsdom`
 
+A peer dependency of:
+- `vitest` (optional)
+
 ### `nx`
 
 ### `prettier`
