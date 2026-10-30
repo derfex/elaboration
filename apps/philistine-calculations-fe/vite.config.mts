@@ -1,4 +1,4 @@
-/// <reference types='vitest' />
+/// <reference types='vitest/config' />
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, type UserConfig } from 'vite'
@@ -59,7 +59,6 @@ export default defineConfig(
       },
       tsconfigPaths: true,
     },
-    // FIXME: «TS2353: Object literal may only specify known properties, and `test` does not exist in type `UserConfig`».
     test: {
       coverage: {
         provider: 'v8' as const,

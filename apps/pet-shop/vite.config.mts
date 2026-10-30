@@ -1,4 +1,4 @@
-/// <reference types='vitest' />
+/// <reference types='vitest/config' />
 import angular from '@analogjs/vite-plugin-angular'
 import { defineConfig, type UserConfig } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
@@ -35,7 +35,6 @@ export default defineConfig(
     resolve: {
       tsconfigPaths: true,
     },
-    // FIXME: «TS2353: Object literal may only specify known properties, and `test` does not exist in type `UserConfig`».
     test: {
       coverage: {
         provider: 'v8' as const,
