@@ -1,37 +1,35 @@
-# Vehicles registry front-end
+# Vehicles registry front-end. Technologies
 
-## Technologies
-
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2017
-    - `async`, `await`.
-    - Trailing commas.
+  - `async`, `await`.
+  - Trailing commas.
 - ECMAScript 2015 (6)
-    - Arrow functions.
-    - `const`, `let`.
-    - ES6 classes.
-    - ES6 collections: `Map`.
-    - ES6 modules.
-    - Promises.
+  - Arrow functions.
+  - `const`, `let`.
+  - ES6 classes.
+  - ES6 collections: `Map`.
+  - ES6 modules.
+  - Promises.
 
-### SASS
+## SASS
 
 - `@include`
 - `@mixin`
 
-### TypeScript
+## TypeScript
 
 - `as const`
-- `asserts value is Type`
+- `asserts` (`asserts value is Type`)
 - `readonly`
 - `satisfies`
 
-### Vite
+## Vite
 
 - `import.meta.env.VITE_*`
 
-### Vue
+## Vue
 
 - Composition API
 - Composables
@@ -48,9 +46,9 @@
 - Reactivity API: Advanced
   - `shallowRef`
 
-## Dependencies
+# Dependencies
 
-### Dependencies
+## Dependencies
 
 - @mdi/font
 - pinia
@@ -58,7 +56,7 @@
 - vue-router
 - vuetify
 
-### Dev dependencies
+## Dev dependencies
 
 - @eslint/js
 - @nx/devkit
