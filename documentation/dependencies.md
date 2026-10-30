@@ -1,4 +1,8 @@
-# Elaboration applications
+# Elaboration (web front-end and node). Dependencies
+
+Goals:
+- Track the dependencies being used.
+- Identify unused dependencies and remove them.
 
 ## Dependencies
 

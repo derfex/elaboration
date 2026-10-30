@@ -1,45 +1,43 @@
-# Philistine calculations front-end
+# Philistine calculations front-end. Technologies
 
-## Technologies
-
-### CSS
+## CSS
 
 - CSS flexible box layout
 - CSS grid layout
-    - `grid-template-columns: subgrid`
+  - `grid-template-columns: subgrid`
 - CSS Houdini
-    - Custom Properties & Values
+  - Custom Properties & Values
 - `@media`
 
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2018
-    - Spread operator.
+  - Spread operator.
 - ECMAScript 2017
-    - `async`, `await`.
-    - Trailing commas.
+  - `async`, `await`.
+  - Trailing commas.
 - ECMAScript 2015 (6)
-    - Arrow functions.
-    - `const`, `let`.
-    - Destructuring, object property shorthand.
-    - ES6 modules.
-    - Promises.
+  - Arrow functions.
+  - `const`, `let`.
+  - Destructuring, object property shorthand.
+  - ES6 modules.
+  - Promises.
 
-### SASS
+## SASS
 
 - `@include`
 - `@mixin`
 - `@use`
 
-### TypeScript
+## TypeScript
 
 - `as const`
 - `readonly`
 - `typeof`
 
-- `ReturnType`
+- `ReturnType<…>`
 
-### Vue
+## Vue
 
 - Composition API
 - Composables
@@ -56,20 +54,20 @@
   - `watch`
   - `watchEffect`
 
-### Unknown
+## Unknown
 
 - Vite?
-    - `import.meta.env.BASE_URL`
+  - `import.meta.env.BASE_URL`
+
+# Dependencies
 
 ## Dependencies
-
-### Dependencies
 
 - @mdi/font
 - vue
 - vue-router
 
-### Dev dependencies
+## Dev dependencies
 
 - @eslint/js
 - @nx/devkit

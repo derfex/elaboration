@@ -1,10 +1,8 @@
-# Pet-shop front-end
+# Pet-shop front-end. Technologies
 
-## Technologies
+## Angular
 
-### Angular
-
-#### `@angular/core`
+### `@angular/core`
 
 - `ChangeDetectionStrategy.OnPush`
 - `ChangeDetectorRef`
@@ -28,23 +26,23 @@
   - `getTestBed`
   - `type ComponentFixture`
 
-#### `@angular/cdk`
+### `@angular/cdk`
 
 - `@angular/cdk/collections`
   - `SelectionModel`
 
-#### `@angular/common`
+### `@angular/common`
 
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
   - `withFetch`
 
-#### `@angular/forms`
+### `@angular/forms`
 
 - `FormsModule`
 
-#### `@angular/platform-browser`
+### `@angular/platform-browser`
 
 - `bootstrapApplication`
 
@@ -52,18 +50,19 @@
   - `BrowserDynamicTestingModule`
   - `platformBrowserDynamicTesting`
 
-#### `@angular/router`
+### `@angular/router`
 
 - `RouterModule`
-- `type Routes`
+- `provideRouter`
+- `type Route`
 
-### CSS
+## CSS
 
 - CSS flexible box layout
 - CSS grid layout
 - `@media`
 
-### ECMAScript
+## ECMAScript
 
 - ECMAScript 2018
   - Spread operator.
@@ -79,25 +78,25 @@
   - ES6 modules.
   - Promises.
 
-### RxJS
+## RxJS
 
 - `BehaviorSubject`
 - `map`
 - `of`
 - `type Observable`
 
-### SASS
+## SASS
 
 Basic syntax only.
 
-### TypeScript
+## TypeScript
 
 - `as const`
 - `readonly`
 
-## Dependencies
+# Dependencies
 
-### Dependencies
+## Dependencies
 
 - @angular/common
 - @angular/core
@@ -107,7 +106,7 @@ Basic syntax only.
 - @angular/router
 - rxjs
 
-### Dev dependencies
+## Dev dependencies
 
 - @angular-devkit/core
 - @angular-devkit/schematics

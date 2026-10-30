@@ -1,4 +1,4 @@
-# Elaboration applications
+# Elaboration (web front-end and node). Migrations
 
 ## Nx migrations
 
