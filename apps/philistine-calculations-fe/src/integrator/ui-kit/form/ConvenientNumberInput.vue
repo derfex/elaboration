@@ -9,7 +9,7 @@ const stringModel = defineModel<string>('string', { required: true })
 interface Props {
   readonly expanded?: boolean
   readonly inputPlaceholder: string
-  readonly operands: number[]
+  readonly operands: readonly number[]
 }
 const props = withDefaults(defineProps<Props>(), {
   expanded: true,
