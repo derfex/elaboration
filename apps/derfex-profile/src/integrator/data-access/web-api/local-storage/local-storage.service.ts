@@ -1,9 +1,7 @@
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { LOCAL_STORAGE } from '~integrator/data-access/web-api/local-storage/local-storage.token'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class LocalStorageService {
   readonly #storageRef = inject(LOCAL_STORAGE)
 

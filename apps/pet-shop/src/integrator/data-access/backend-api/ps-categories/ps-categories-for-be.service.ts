@@ -1,5 +1,5 @@
 // # External modules
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import type { Observable } from 'rxjs'
 
 // # Internal modules
@@ -8,9 +8,7 @@ import type { PSProductCategoryForBE } from '~be/ps-categories/ps-categories-for
 import type { PSProductCategory } from '~entities/ps-product-categories/ps-product-categories.type'
 import { environment } from '~environments/environment.dev'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class PSCategoriesForBEService {
   // region ## Properties
   // region ### Injected

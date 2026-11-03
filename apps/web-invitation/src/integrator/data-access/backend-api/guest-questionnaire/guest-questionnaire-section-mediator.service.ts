@@ -1,13 +1,11 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { map, type Observable, switchMap } from 'rxjs'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import type { GuestQuestionnaireSectionParametersForBE } from '~be/guest-questionnaire/guest-questionnaire-section-for-be.type'
 import type { GuestQuestionnaireSectionParameters } from '~ui/guest-questionnaire/guest-questionnaire-section/guest-questionnaire-section.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class GuestQuestionnaireSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #httpClient = inject(HttpClient)

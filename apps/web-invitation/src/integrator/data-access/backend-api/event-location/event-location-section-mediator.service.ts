@@ -1,14 +1,12 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { map, type Observable, switchMap } from 'rxjs'
 import { prepareWebInvitationDataCDNURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
 import type { EventLocationSectionParametersForBE } from '~be/event-location/event-location-section-for-be.type'
 import type { EventLocationSectionParameters } from '~ui/event-location/event-location-section/event-location-section.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class EventLocationSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #httpClient = inject(HttpClient)

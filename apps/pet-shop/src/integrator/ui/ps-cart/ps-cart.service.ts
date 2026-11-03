@@ -1,14 +1,12 @@
 // # External modules
-import { Injectable } from '@angular/core'
+import { Service } from '@angular/core'
 import { BehaviorSubject, type Observable } from 'rxjs'
 
 // # Internal modules
 import type { PSCartState } from '~ui/ps-cart/ps-cart.service.type'
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class PSCartService {
   // region ## Properties
   readonly #subject = new BehaviorSubject<PSCartState>(defaultState)

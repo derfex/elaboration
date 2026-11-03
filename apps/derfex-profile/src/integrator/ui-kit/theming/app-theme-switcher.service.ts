@@ -1,4 +1,4 @@
-import { DOCUMENT, inject, Injectable, type Renderer2 } from '@angular/core'
+import { DOCUMENT, inject, type Renderer2, Service } from '@angular/core'
 import { BehaviorSubject, distinctUntilChanged, type Observable } from 'rxjs'
 import { MediaQueryService } from '~integrator/data-access/web-api/media-query/media-query.service'
 import {
@@ -7,9 +7,7 @@ import {
 } from '~ui-kit/theming/theming'
 import type { ThemeColorSchemeCodename } from '~ui-kit/theming/theming.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class AppThemeSwitcherService {
   readonly #htmlElement = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
   readonly #mediaQueryService = inject(MediaQueryService)

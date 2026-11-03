@@ -1,4 +1,4 @@
-import { inject, Injectable, type Renderer2 } from '@angular/core'
+import { inject, type Renderer2, Service } from '@angular/core'
 import { combineLatest, map, noop, type Observable } from 'rxjs'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
@@ -6,9 +6,7 @@ import { LocalStorageService } from '~integrator/data-access/web-api/local-stora
 import { AppThemeSwitcherService } from '~ui-kit/theming/app-theme-switcher.service'
 import type { ThemeColorSchemeCodename } from '~ui-kit/theming/theming.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class AppSettingsService {
   readonly #appThemeSwitcherService = inject(AppThemeSwitcherService)
   readonly #localStorageService = inject(LocalStorageService)

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { map, type Observable, shareReplay, switchMap } from 'rxjs'
 import type { AppSectionsParametersForBE } from '~be/app/app-sections-for-be.type'
 import { prepareWebInvitationDataCDNURL } from '~be/backend-api-configuration/backend-api-configuration'
@@ -7,9 +7,7 @@ import { BackendAPIConfigurationService } from '~be/backend-api-configuration/ba
 import type { AppFooterSectionParameters } from '~ui/app-footer-section/app-footer-section/app-footer-section.type'
 import type { AppHeroSectionParameters } from '~ui/app-hero-section/app-hero-section/app-hero-section.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class AppSectionsMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #httpClient = inject(HttpClient)

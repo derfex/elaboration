@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core'
+import { Service } from '@angular/core'
 import { BehaviorSubject, distinctUntilChanged, type Observable } from 'rxjs'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class LoadingNotifierService {
   readonly #loading = new BehaviorSubject<boolean>(false)
   readonly #processCodenamesSet = new Set<string>()

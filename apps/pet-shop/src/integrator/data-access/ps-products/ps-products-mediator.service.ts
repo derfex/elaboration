@@ -1,5 +1,5 @@
 // # External modules
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import type { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -9,9 +9,7 @@ import type { PSProduct } from '~entities/ps-products/ps-products.type'
 import { PSProductsLocalService } from '~integrator/data-access/data/ps-products/ps-products-local.service'
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class PSProductsMediatorService {
   // region ## Properties
   // region ### Injected

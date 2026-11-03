@@ -1,14 +1,12 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import type { Observable } from 'rxjs'
 import type {
   DXActivitiesCompiledSectionParametersForBE,
   DXActivityCompiledForBE,
 } from '~be/dx-activities/dx-activities-compiled-for-be.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class DXActivitiesCompiledForBEService {
   readonly #httpClient = inject(HttpClient)
 
@@ -16,7 +14,9 @@ export class DXActivitiesCompiledForBEService {
     return this.#httpClient.get<readonly DXActivityCompiledForBE[]>(dxActivitiesCompiledURL)
   }
 
-  public readSectionParameters(dxActivitiesSectionCompiledURL: string): Observable<DXActivitiesCompiledSectionParametersForBE> {
+  public readSectionParameters(
+    dxActivitiesSectionCompiledURL: string,
+  ): Observable<DXActivitiesCompiledSectionParametersForBE> {
     return this.#httpClient.get<DXActivitiesCompiledSectionParametersForBE>(dxActivitiesSectionCompiledURL)
   }
 }

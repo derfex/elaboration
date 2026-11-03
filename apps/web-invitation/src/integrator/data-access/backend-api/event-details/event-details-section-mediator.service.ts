@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { map, type Observable, switchMap } from 'rxjs'
 import { prepareWebInvitationDataCDNURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
@@ -9,9 +9,7 @@ import type {
 } from '~be/event-details/event-details-section-for-be.type'
 import type { EventDetailsSectionParameters } from '~ui/event-details/event-details-section/event-details-section.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class EventDetailsSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #httpClient = inject(HttpClient)

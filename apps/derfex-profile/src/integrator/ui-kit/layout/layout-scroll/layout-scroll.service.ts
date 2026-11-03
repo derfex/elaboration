@@ -1,8 +1,6 @@
-import { DOCUMENT, inject, Injectable } from '@angular/core'
+import { DOCUMENT, inject, Service } from '@angular/core'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class LayoutScrollService {
   readonly #htmlElement = inject<Document>(DOCUMENT).documentElement as HTMLHtmlElement
 
