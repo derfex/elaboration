@@ -22,6 +22,10 @@ nx migrate --run-migrations
   ```sh
   nx run-many --all --target=test
   ```
+- [ ] Typecheck:
+  ```sh
+  nx run-many -t typecheck
+  ```
 
 ## Troubleshooting
 
