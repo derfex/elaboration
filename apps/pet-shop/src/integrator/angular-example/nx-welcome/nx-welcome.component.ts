@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core'
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core'
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Eager,
   encapsulation: ViewEncapsulation.None,
   imports: [],
   selector: 'app-nx-welcome',
