@@ -17,6 +17,7 @@ Goals:
 - `InjectionToken`
 - `PLATFORM_ID`
 - `Renderer2`
+- `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`

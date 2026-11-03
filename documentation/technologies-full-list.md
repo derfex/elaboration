@@ -18,6 +18,7 @@ Goals:
 - `Input`
 - `PLATFORM_ID`
 - `Renderer2`
+- `Service`
 - `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`

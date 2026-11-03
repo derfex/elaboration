@@ -8,6 +8,7 @@
 - `Component`
 - `DestroyRef`
 - `Injectable`
+- `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
