@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import type { EventDetailsWish } from '~ui/event-details/event-details/event-details.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-event-details',
   styleUrl: './event-details.component.sass',
   templateUrl: './event-details.component.html',

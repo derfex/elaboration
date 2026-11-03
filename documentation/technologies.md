@@ -8,7 +8,7 @@ Goals:
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
+- `ChangeDetectionStrategy.Eager`
 - `ChangeDetectorRef`
 - `Component`
 - `DOCUMENT`

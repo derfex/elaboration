@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { GitHubInvertocatLogotypeComponent } from '~ui/dx-contacts/logotypes/github-invertocat-logotype/github-invertocat-logotype.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [GitHubInvertocatLogotypeComponent],
   selector: 'app-dx-project-card',
   styleUrl: './dx-project-card.component.sass',

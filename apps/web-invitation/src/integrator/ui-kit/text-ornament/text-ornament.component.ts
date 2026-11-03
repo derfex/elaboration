@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { Component, input } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-text-ornament',
   styleUrl: './text-ornament.component.sass',
   templateUrl: './text-ornament.component.html',

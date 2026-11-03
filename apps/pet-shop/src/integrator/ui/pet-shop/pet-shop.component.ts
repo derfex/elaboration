@@ -1,5 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, inject, type OnInit } from '@angular/core'
+import { ChangeDetectorRef, Component, DestroyRef, inject, type OnInit } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { MatButton } from '@angular/material/button'
 
@@ -13,7 +13,6 @@ import { PSProductsComponent } from '~ui/ps-products/ps-products.component'
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatButton,
 

@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core'
+import { Component, computed, inject, input } from '@angular/core'
 import { DomSanitizer, type SafeResourceUrl } from '@angular/platform-browser'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-google-map',
   styleUrl: './google-map.component.sass',
   templateUrl: './google-map.component.html',

@@ -1,6 +1,6 @@
 // # External modules
 import { SelectionModel } from '@angular/cdk/collections'
-import { ChangeDetectionStrategy, Component, effect, input, type OnInit } from '@angular/core'
+import { Component, effect, input, type OnInit } from '@angular/core'
 import { MatCheckbox } from '@angular/material/checkbox'
 import { MatSort, MatSortModule, type Sort } from '@angular/material/sort'
 import {
@@ -22,7 +22,6 @@ import { PSEmptinessComponent } from '~ui-kit/ps-emptiness/ps-emptiness.componen
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatCell,
     MatCellDef,

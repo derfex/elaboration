@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { Component, input } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-event-program-stage-card',
   styleUrl: './event-program-stage-card.component.sass',
   templateUrl: './event-program-stage-card.component.html',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { Component } from '@angular/core'
 import { AppFooterSectionComponent } from '~ui/app-footer-section/app-footer-section/app-footer-section.component'
 import { AppHeroSectionComponent } from '~ui/app-hero-section/app-hero-section/app-hero-section.component'
 import { DressCodeSectionComponent } from '~ui/dress-code/dress-code-section/dress-code-section.component'
@@ -10,7 +10,6 @@ import { EventProgramSectionComponent } from '~ui/event-program/event-program-se
 import { GuestQuestionnaireSectionComponent } from '~ui/guest-questionnaire/guest-questionnaire-section/guest-questionnaire-section.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
     AppFooterSectionComponent,

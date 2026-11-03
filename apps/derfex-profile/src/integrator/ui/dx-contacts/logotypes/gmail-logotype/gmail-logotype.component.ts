@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-gmail-logotype',
   styleUrl: './gmail-logotype.component.sass',
   templateUrl: './gmail-logotype.component.svg',

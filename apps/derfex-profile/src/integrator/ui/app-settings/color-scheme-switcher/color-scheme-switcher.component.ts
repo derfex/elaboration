@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, Renderer2, signal } from '@angular/core'
+import { Component, DestroyRef, inject, type OnInit, Renderer2, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { AppThemeSwitcherService } from '~ui-kit/theming/app-theme-switcher.service'
 import type { ThemeColorSchemeCodename } from '~ui-kit/theming/theming.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-color-scheme-switcher',
   styleUrl: './color-scheme-switcher.component.sass',
   templateUrl: './color-scheme-switcher.component.html',

@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import type { DXProjectCodename } from '~entities/dx-projects/dx-projects.type'
 import { DXProjectCardComponent } from '~ui/dx-projects/dx-project-card/dx-project-card.component'
 import type { DXProjectsListItem } from '~ui/dx-projects/dx-projects/dx-projects.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
     DXProjectCardComponent,

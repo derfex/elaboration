@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { Component, computed, DestroyRef, inject, type OnInit, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { EventLocationSectionMediatorService } from '~be/event-location/event-location-section-mediator.service'
 import { TextOrnamentComponent } from '~ui-kit/text-ornament/text-ornament.component'
@@ -8,7 +8,6 @@ import type { EventLocationSectionParameters } from '~ui/event-location/event-lo
 import { GoogleMapComponent } from '~ui/event-location/google-map/google-map.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgOptimizedImage,
 

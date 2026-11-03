@@ -1,11 +1,10 @@
 // # External modules
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { Component } from '@angular/core'
 
 // # Internal modules
 import { PetShopComponent } from '~ui/pet-shop/pet-shop.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
     PetShopComponent,

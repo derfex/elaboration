@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 import type { DXActivityCodename } from '~entities/dx-activities/dx-activities.type'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 import { DXActivityCardComponent } from '~ui/dx-activities/dx-activity-card/dx-activity-card.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
     DXActivityCardComponent,

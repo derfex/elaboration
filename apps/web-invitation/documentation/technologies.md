@@ -4,7 +4,6 @@
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
 - `Component`
 - `DestroyRef`
 - `Injectable`

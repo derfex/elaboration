@@ -1,5 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit } from '@angular/core'
+import { Component, DestroyRef, inject, type OnInit } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormsModule } from '@angular/forms'
 import { MatOption } from '@angular/material/core'
@@ -11,7 +11,6 @@ import { PSCategoriesForBEService } from '~be/ps-categories/ps-categories-for-be
 import type { PSProductCategory } from '~entities/ps-product-categories/ps-product-categories.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     FormsModule,
     MatFormField,

@@ -4,7 +4,7 @@
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
+- `ChangeDetectionStrategy.Eager`
 - `ChangeDetectorRef`
 - `Component`
 - `DestroyRef`

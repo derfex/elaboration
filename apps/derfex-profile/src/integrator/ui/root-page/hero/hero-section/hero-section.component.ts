@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { HeroSectionMediatorService } from '~be/hero/hero-section-mediator.service'
 import { LayoutHeroComponent } from '~ui-kit/layout/layout-hero/layout-hero.component'
@@ -6,7 +6,6 @@ import type { HeroSectionParameters } from '~ui/root-page/hero/hero-section/hero
 import { RootPageHeroComponent } from '~ui/root-page/hero/root-page-hero/root-page-hero.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [LayoutHeroComponent, RootPageHeroComponent],
   selector: 'app-hero-section',
   styleUrl: './hero-section.component.sass',
