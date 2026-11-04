@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "ignoreDeprecations": "6.0"
+    "esModuleInterop": true
   },
   "extends": "../../tsconfig.base.json",
   "files": [],

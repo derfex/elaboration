@@ -7,7 +7,6 @@
   },
   "compilerOptions": {
     "emitDecoratorMetadata": false,
-    "ignoreDeprecations": "6.0",
     "isolatedModules": true,
     "module": "preserve",
     "moduleResolution": "bundler",

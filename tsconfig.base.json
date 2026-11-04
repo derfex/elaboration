@@ -4,9 +4,7 @@
     "baseUrl": ".",
     "declaration": false,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": false,
     "experimentalDecorators": true,
-    "ignoreDeprecations": "6.0",
     "importHelpers": true,
     "lib": [
       "es2020",
@@ -14,17 +12,12 @@
     ],
     "module": "esnext",
     "moduleResolution": "node",
-    "noUncheckedSideEffectImports": false,
     "paths": {},
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": false,
-    "target": "es2015",
-    "types": [
-      "*"
-    ]
+    "target": "es2015"
   },
   "exclude": [
     "node_modules",
