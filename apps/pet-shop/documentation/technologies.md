@@ -37,7 +37,6 @@
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
-  - `withFetch`
 
 ### `@angular/forms`
 

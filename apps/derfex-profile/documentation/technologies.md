@@ -42,7 +42,6 @@
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
-  - `withFetch`
 
 - `@angular/common/http/testing`
   - `HttpTestingController`
