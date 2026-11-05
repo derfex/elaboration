@@ -183,6 +183,8 @@ Goals:
 - `ReadonlySet<…>`
 - `ReturnType<…>`
 
+- `declare module …`
+
 ## Vite
 
 - `import.meta.env.VITE_*`
