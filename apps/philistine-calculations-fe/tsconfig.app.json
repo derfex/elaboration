@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "../../dist/out-tsc",
     "paths": {
-      "|integrator/*": ["./src/integrator/*"],
-      "|logic/*": ["./src/architecture/logic/*"],
-      "|ui/*": ["./src/integrator/ui/*"],
-      "|ui-kit/*": ["./src/integrator/ui-kit/*"],
-      "||/*": ["./src/*"]
+      "|integrator/*": ["./apps/philistine-calculations-fe/src/integrator/*"],
+      "|logic/*": ["./apps/philistine-calculations-fe/src/architecture/logic/*"],
+      "|ui/*": ["./apps/philistine-calculations-fe/src/integrator/ui/*"],
+      "|ui-kit/*": ["./apps/philistine-calculations-fe/src/integrator/ui-kit/*"],
+      "||/*": ["./apps/philistine-calculations-fe/src/*"]
     },
     "types": ["vite/client"]
   },
