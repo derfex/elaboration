@@ -10,7 +10,6 @@
       "unitTestRunner": "vitest-angular"
     },
     "@nx/angular:component": {
-      "changeDetection": "OnPush",
       "displayBlock": true,
       "prefix": "app",
       "style": "sass",
