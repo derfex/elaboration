@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { Component, input } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-dx-activity-card',
   styleUrl: './dx-activity-card.component.sass',
   templateUrl: './dx-activity-card.component.html',

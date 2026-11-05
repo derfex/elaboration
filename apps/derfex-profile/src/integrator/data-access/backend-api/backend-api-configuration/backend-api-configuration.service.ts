@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { map, type Observable, shareReplay, switchMap, tap } from 'rxjs'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import type {
@@ -12,9 +12,7 @@ import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-swi
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { assertDefined } from '~temp-libs/dev/dev-error.utility'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class BackendAPIConfigurationService {
   readonly #loadingNotifierService = inject(LoadingNotifierService)
   readonly #localeSwitcherService = inject(LocaleSwitcherService)

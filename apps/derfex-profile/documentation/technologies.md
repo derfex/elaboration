@@ -4,7 +4,6 @@
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
 - `Component`
 - `DOCUMENT`
 - `DestroyRef`
@@ -12,6 +11,7 @@
 - `InjectionToken`
 - `PLATFORM_ID`
 - `Renderer2`
+- `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
@@ -42,7 +42,6 @@
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
-  - `withFetch`
 
 - `@angular/common/http/testing`
   - `HttpTestingController`

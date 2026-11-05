@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { EventOrganizationSectionMediatorService } from '~be/event-organization/event-organization-section-mediator.service'
 import type { EventOrganizationSectionParameters } from '~ui/event-organization/event-organization-section/event-organization-section.type'
 import { EventOrganizationComponent } from '~ui/event-organization/event-organization/event-organization.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [EventOrganizationComponent],
   selector: 'app-event-organization-section',
   styleUrl: './event-organization-section.component.sass',

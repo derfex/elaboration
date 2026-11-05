@@ -1,9 +1,7 @@
-import { DOCUMENT, inject, Injectable, type Renderer2 } from '@angular/core'
+import { DOCUMENT, inject, type Renderer2, Service } from '@angular/core'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class DocumentLangSwitcherService {
   readonly #htmlElement = inject(DOCUMENT).documentElement
 

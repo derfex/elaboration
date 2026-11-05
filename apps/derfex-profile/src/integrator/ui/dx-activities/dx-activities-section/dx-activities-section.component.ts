@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
@@ -16,7 +15,6 @@ import { DXActivitiesComponent } from '~ui/dx-activities/dx-activities/dx-activi
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DXActivitiesComponent],
   selector: 'app-dx-activities-section',
   styleUrl: './dx-activities-section.component.sass',

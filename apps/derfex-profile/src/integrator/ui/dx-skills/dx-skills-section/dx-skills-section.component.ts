@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
@@ -16,7 +15,6 @@ import { DXSkillsComponent } from '~ui/dx-skills/dx-skills/dx-skills.component'
 import type { DXSkillsListItem } from '~ui/dx-skills/dx-skills/dx-skills.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DXSkillsComponent],
   selector: 'app-dx-skills-section',
   styleUrl: './dx-skills-section.component.sass',

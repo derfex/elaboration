@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { toSignal } from '@angular/core/rxjs-interop'
 import { LoadingNotifierService } from '~integrator/data-access/loading-notifier/loading-notifier.service'
 import { LayoutLoaderComponent } from '~ui-kit/layout/layout-loader/layout-loader.component'
@@ -8,7 +8,6 @@ import { HeaderSectionComponent } from '~ui/header-section/header-section.compon
 import { HeroSectionComponent } from '~ui/root-page/hero/hero-section/hero-section.component'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     // Provided by the app.
     HeaderSectionComponent,

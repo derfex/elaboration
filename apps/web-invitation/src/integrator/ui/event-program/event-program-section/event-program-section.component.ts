@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
+import { Component, DestroyRef, inject, type OnInit, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { EventProgramSectionMediatorService } from '~be/event-program/event-program-section-mediator.service'
 import type {
@@ -9,7 +9,6 @@ import { EventProgramComponent } from '~ui/event-program/event-program/event-pro
 import type { EventProgramStagesListItem } from '~ui/event-program/event-program/event-program.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [EventProgramComponent],
   selector: 'app-event-program-section',
   styleUrl: './event-program-section.component.sass',

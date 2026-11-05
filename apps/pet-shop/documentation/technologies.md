@@ -4,11 +4,12 @@
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
+- `ChangeDetectionStrategy.Eager`
 - `ChangeDetectorRef`
 - `Component`
 - `DestroyRef`
 - `Injectable`
+- `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
@@ -36,7 +37,6 @@
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
-  - `withFetch`
 
 ### `@angular/forms`
 

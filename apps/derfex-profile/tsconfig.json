@@ -3,7 +3,6 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
     "typeCheckHostBindings": true
   },
   "compilerOptions": {
@@ -16,14 +15,14 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "~app/*": ["apps/derfex-profile/src/app/*"],
-      "~be/*": ["apps/derfex-profile/src/integrator/data-access/backend-api/*"],
-      "~entities/*": ["apps/derfex-profile/src/architecture/entities/*"],
-      "~integrator/*": ["apps/derfex-profile/src/integrator/*"],
-      "~pages/*": ["apps/derfex-profile/src/integrator/pages/*"],
-      "~temp-libs/*": ["apps/derfex-profile/src/temp-libs/*"],
-      "~ui/*": ["apps/derfex-profile/src/integrator/ui/*"],
-      "~ui-kit/*": ["apps/derfex-profile/src/integrator/ui-kit/*"],
+      "~app/*": ["./src/app/*"],
+      "~be/*": ["./src/integrator/data-access/backend-api/*"],
+      "~entities/*": ["./src/architecture/entities/*"],
+      "~integrator/*": ["./src/integrator/*"],
+      "~pages/*": ["./src/integrator/pages/*"],
+      "~temp-libs/*": ["./src/temp-libs/*"],
+      "~ui/*": ["./src/integrator/ui/*"],
+      "~ui-kit/*": ["./src/integrator/ui-kit/*"],
     },
     "strict": true,
     "target": "es2022"

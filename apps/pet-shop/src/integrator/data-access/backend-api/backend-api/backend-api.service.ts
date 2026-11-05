@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import type { Observable } from 'rxjs'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class BackendAPIService {
   // region ## Properties
   // region ### Injected

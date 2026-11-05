@@ -4,10 +4,10 @@
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
 - `Component`
 - `DestroyRef`
 - `Injectable`
+- `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
@@ -24,7 +24,6 @@
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
-  - `withFetch`
 
 - `@angular/common/http/testing`
   - `HttpTestingController`

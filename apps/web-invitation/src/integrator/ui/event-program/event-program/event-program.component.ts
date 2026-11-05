@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { Component, input } from '@angular/core'
 import { EventProgramStageCardComponent } from '~ui/event-program/event-program-stage-card/event-program-stage-card.component'
 import type { EventProgramStagesListItem } from '~ui/event-program/event-program/event-program.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [EventProgramStageCardComponent],
   selector: 'app-event-program',
   styleUrl: './event-program.component.sass',

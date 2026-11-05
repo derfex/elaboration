@@ -1,6 +1,5 @@
 import { NgComponentOutlet, NgTemplateOutlet } from '@angular/common'
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
@@ -25,7 +24,6 @@ import {
 } from '~ui/dx-skills/logotypes/dx-skill-logotype-components.util'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgComponentOutlet,
     NgTemplateOutlet,

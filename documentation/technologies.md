@@ -8,7 +8,7 @@ Goals:
 
 ### `@angular/core`
 
-- `ChangeDetectionStrategy.OnPush`
+- `ChangeDetectionStrategy.Eager`
 - `ChangeDetectorRef`
 - `Component`
 - `DOCUMENT`
@@ -17,6 +17,7 @@ Goals:
 - `InjectionToken`
 - `PLATFORM_ID`
 - `Renderer2`
+- `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
 - `type ApplicationConfig`
@@ -54,7 +55,6 @@ Goals:
 - `@angular/common/http`
   - `HttpClient`
   - `provideHttpClient`
-  - `withFetch`
 
 - `@angular/common/http/testing`
   - `HttpTestingController`
@@ -176,6 +176,8 @@ Goals:
 - `ReadonlyMap<…, …>`
 - `ReadonlySet<…>`
 - `ReturnType<…>`
+
+- `declare module …`
 
 ## Vite
 

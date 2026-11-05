@@ -1,8 +1,7 @@
 import { NgOptimizedImage } from '@angular/common'
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { Component, computed, input } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgOptimizedImage],
   selector: 'app-hero',
   styleUrl: './app-hero.component.sass',

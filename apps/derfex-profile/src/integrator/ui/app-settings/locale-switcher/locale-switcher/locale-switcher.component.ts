@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, type OnInit, Renderer2, signal } from '@angular/core'
+import { Component, DestroyRef, inject, type OnInit, Renderer2, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { LocaleSwitcherService } from '~integrator/data-access/locale/locale-switcher.service'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 import { DocumentLangSwitcherService } from '~ui/app-settings/locale-switcher/document-lang-switcher/document-lang-switcher.service'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-locale-switcher',
   styleUrl: './locale-switcher.component.sass',
   templateUrl: './locale-switcher.component.html',

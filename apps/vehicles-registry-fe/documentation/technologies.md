@@ -25,6 +25,8 @@
 - `readonly`
 - `satisfies`
 
+- `declare module …`
+
 ## Vite
 
 - `import.meta.env.VITE_*`

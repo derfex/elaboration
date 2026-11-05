@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   computed,
   DestroyRef,
@@ -16,7 +15,6 @@ import { DXProjectsComponent } from '~ui/dx-projects/dx-projects/dx-projects.com
 import type { DXProjectsListItem } from '~ui/dx-projects/dx-projects/dx-projects.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DXProjectsComponent],
   selector: 'app-dx-projects-section',
   styleUrl: './dx-projects-section.component.sass',

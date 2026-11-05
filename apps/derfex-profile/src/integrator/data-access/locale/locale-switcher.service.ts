@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core'
+import { Service } from '@angular/core'
 import { BehaviorSubject, distinctUntilChanged, type Observable } from 'rxjs'
 import type { AppLocale } from '~integrator/data-access/locale/locale.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class LocaleSwitcherService {
   readonly #locale = new BehaviorSubject<AppLocale>('EN')
 

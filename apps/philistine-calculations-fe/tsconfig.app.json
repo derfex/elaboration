@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "../../dist/out-tsc",
     "paths": {
       "|integrator/*": ["./src/integrator/*"],

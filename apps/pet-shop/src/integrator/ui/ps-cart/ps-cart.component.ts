@@ -1,5 +1,5 @@
 // # External modules
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core'
+import { Component, computed, inject, input } from '@angular/core'
 import { MatIconButton } from '@angular/material/button'
 import { MatIcon } from '@angular/material/icon'
 import {
@@ -22,7 +22,6 @@ import { PSCartService } from '~ui/ps-cart/ps-cart.service'
 import type { PSProductTableItem } from '~ui/ps-products/ps-products.type'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MatCell,
     MatCellDef,

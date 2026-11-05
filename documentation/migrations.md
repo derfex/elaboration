@@ -22,6 +22,10 @@ nx migrate --run-migrations
   ```sh
   nx run-many --all --target=test
   ```
+- [ ] Typecheck:
+  ```sh
+  nx run-many -t typecheck
+  ```
 
 ## Troubleshooting
 
@@ -29,9 +33,20 @@ When installing new dependencies, `npm error code ERESOLVE` may occur.
 We can try to resolve conflicts between installed and expected dependencies by deleting `node_modules` folder
 and `package-lock.json` file, then running the dependency installation process again.
 
-## To do
+## To do. Applications
 
-### `Angular@21`
+### `derfex-profile-data-server`
+
+- [ ] [tsconfig.spec.json](../apps/derfex-profile-data-server/tsconfig.spec.json), `compilerOptions`,
+  `"module": "commonjs"` → `"module": "nodenext"` (for `"moduleResolution": "nodenext"`)
+- [ ] [tsconfig.spec.json](../apps/derfex-profile-data-server/tsconfig.spec.json), `compilerOptions`,
+  `"moduleResolution": "node16"` → `"moduleResolution": "nodenext"` (Nest)
+- [ ] [tsconfig.app.json](../apps/derfex-profile-data-server/tsconfig.app.json), `compilerOptions`,
+  `"target": "es2021"` → `"es2023"` / `"esnext"`
+
+## To do. Dependencies
+
+### Angular. `Angular@21`
 
 Do we need to start use `await fixture.whenStable()`?
 
@@ -62,7 +77,7 @@ It seems that `vue-router`'s versions 4 and 5 are almost entirely backward compa
 Solution: the version of `vue-router@5.0.3` was (temporary?) downgraded to `vue-router@^4.5.0`.  
 TODO: migrate to `vue-router@5.0.3`.
 
-### `@typescript-eslint/utils`
+### Typescript. `@typescript-eslint/utils`
 
 Are we using it?
 

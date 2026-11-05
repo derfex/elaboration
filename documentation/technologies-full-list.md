@@ -8,6 +8,7 @@ Goals:
 
 ### `@angular/core`
 
+- `ChangeDetectionStrategy.Eager`
 - `ChangeDetectionStrategy.OnPush`
 - `ChangeDetectorRef`
 - `Component`
@@ -18,6 +19,7 @@ Goals:
 - `Input`
 - `PLATFORM_ID`
 - `Renderer2`
+- `Service`
 - `ViewChild`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
@@ -180,6 +182,8 @@ Goals:
 - `ReadonlyMap<…, …>`
 - `ReadonlySet<…>`
 - `ReturnType<…>`
+
+- `declare module …`
 
 ## Vite
 

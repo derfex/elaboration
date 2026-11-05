@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { map, type Observable, shareReplay } from 'rxjs'
 import { prepareWebInvitationDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import type {
@@ -9,9 +9,7 @@ import type {
 } from '~be/backend-api-configuration/backend-api-configuration.type'
 import { assertDefined } from '~integrator/dev/dev-error.util'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class BackendAPIConfigurationService {
   readonly #relativeURLCodenamesMap: ReadonlyMap<BackendAPIRelativeURLCodenameForBE, BackendAPIURLCodename> = new Map<
     BackendAPIRelativeURLCodenameForBE,

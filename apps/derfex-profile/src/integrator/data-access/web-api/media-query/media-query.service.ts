@@ -1,9 +1,7 @@
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { WINDOW } from '~integrator/data-access/web-api/window.token'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class MediaQueryService {
   readonly #windowRef = inject(WINDOW)
 

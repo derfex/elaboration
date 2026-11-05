@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { Component } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-colors-presentation',
   styleUrl: './colors-presentation.component.sass',
   templateUrl: './colors-presentation.component.html',

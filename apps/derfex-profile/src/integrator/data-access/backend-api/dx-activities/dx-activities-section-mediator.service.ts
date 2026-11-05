@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { inject, Injectable } from '@angular/core'
+import { inject, Service } from '@angular/core'
 import { catchError, combineLatest, map, type Observable, switchMap, tap, zip } from 'rxjs'
 import { prepareProfileDataBEAPIURL } from '~be/backend-api-configuration/backend-api-configuration'
 import { BackendAPIConfigurationService } from '~be/backend-api-configuration/backend-api-configuration.service'
@@ -24,9 +24,7 @@ import type {
 } from '~ui/dx-activities/dx-activities-section/dx-activities-section.type'
 import type { DXActivitiesListItem } from '~ui/dx-activities/dx-activities/dx-activities.type'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class DXActivitiesSectionMediatorService {
   readonly #backendAPIConfigurationService = inject(BackendAPIConfigurationService)
   readonly #dxActivitiesCompiledForBEService = inject(DXActivitiesCompiledForBEService)

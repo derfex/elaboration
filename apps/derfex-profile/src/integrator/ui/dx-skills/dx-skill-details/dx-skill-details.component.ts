@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { Component, input } from '@angular/core'
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-dx-skill-details',
   styleUrl: './dx-skill-details.component.sass',
   templateUrl: './dx-skill-details.component.html',
