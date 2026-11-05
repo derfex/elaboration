@@ -9,14 +9,14 @@
       "configurations": {
         "development": {
           "args": [
-            "--node-env=development"
+            "--config-node-env=development"
           ]
         }
       },
       "executor": "nx:run-commands",
       "options": {
         "args": [
-          "--node-env=production"
+          "--config-node-env=production"
         ],
         "command": "webpack-cli build",
         "cwd": "apps/derfex-profile-data-server"
