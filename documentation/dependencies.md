@@ -121,9 +121,13 @@ Used directly by [`vehicles-registry-fe`](../apps/vehicles-registry-fe) applicat
 
 ### `reflect-metadata`
 
+A dependency of:
+- `@angular/compiler-cli`
+
 A peer dependency of:
 - `@nestjs/common`
 - `@nestjs/core`
+- `@nx/nest` (optional)
 
 ### `rxjs`
 
