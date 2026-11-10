@@ -12,7 +12,7 @@
     "@angular/material": "22.1.8",
     "@angular/platform-browser": "22.1.8",
     "@angular/platform-browser-dynamic": "22.1.8",
-    "@angular/router": "22.1.8",
+    "@angular/router": "22.2.1",
     "@mdi/font": "^7.4.47",
     "@nestjs/common": "11.2.9",
     "@nestjs/core": "11.2.9",
