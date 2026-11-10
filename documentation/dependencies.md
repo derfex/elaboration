@@ -131,10 +131,11 @@ A peer dependency of:
 
 ### `rxjs`
 
-A peer dependency of:
-- `@angular-devkit/architect`
+A dependency of:
 - `@angular-devkit/core`
 - `@angular-devkit/schematics`
+
+A peer dependency of:
 - `@angular/cdk`
 - `@angular/common`
 - `@angular/core`
@@ -143,10 +144,7 @@ A peer dependency of:
 - `@angular/router`
 - `@nestjs/common`
 - `@nestjs/core`
-- `@nestjs/schematics`
 - `@nx/angular`
-- `@nx/webpack`
-- `sass-embedded`
 
 ### `vue`
 
