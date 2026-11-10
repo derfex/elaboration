@@ -44,16 +44,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# AI, LLM
-
-.claude/settings.local.json
-.claude/worktrees
-.cursor/rules/nx-rules.mdc
-
-# Angular
-
-.angular
-
 # NX
 
 .nx/cache
@@ -61,6 +51,16 @@ Thumbs.db
 .nx/polygraph
 .nx/self-healing
 .nx/workspace-data
+
+# Angular
+
+.angular
+
+# AI, LLM
+
+.claude/settings.local.json
+.claude/worktrees
+.cursor/rules/nx-rules.mdc
 
 
 # Applications
