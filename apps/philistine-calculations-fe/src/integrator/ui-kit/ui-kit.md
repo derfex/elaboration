@@ -29,7 +29,7 @@ They contain fundamental definitions such as CSS custom properties and basic CSS
     - identity/[fonts-foundation.sass](identity/fonts-foundation.sass)
     - identity/[transitions-foundation.sass](identity/transitions-foundation.sass)
   - theming/[theming-foundation.sass](theming/theming-foundation.sass)
-  - (FIXME?): [ui-kit.sass](ui-kit.sass)
+  - [ui-kit-utility.sass](ui-kit-utility.sass)
 
 ### On demand
 
@@ -38,6 +38,7 @@ They contain fundamental definitions such as CSS custom properties and basic CSS
   - form/[form.sass](form/form.sass)
   - typography/[typography.sass](typography/typography.sass)
     - identity/[fonts.sass](identity/fonts.sass)
+- [ui-kit-utility.sass](ui-kit-utility.sass)
 - form/[buttons.sass](form/buttons.sass)
   - identity/[transitions.sass](identity/transitions.sass)
 - form/[form.sass](form/form.sass)
