@@ -2,6 +2,7 @@
 import vuePlugin from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, type UserConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config
@@ -26,6 +27,17 @@ export default defineConfig(
     },
     plugins: [
       vuePlugin(),
+      VitePWA({
+        manifest: {
+          background_color: '#000',
+          description: 'Assistance in predicting benefits.',
+          display: 'standalone',
+          name: 'Philistine calculations | Elaboration. Vue',
+          short_name: 'Philistine calculations',
+          theme_color: '#0ff',
+        },
+        registerType: 'autoUpdate',
+      }),
       viteStaticCopy({
         targets: [
           {
