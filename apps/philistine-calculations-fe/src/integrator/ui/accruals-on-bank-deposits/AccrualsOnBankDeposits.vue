@@ -2,7 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import { calculateAccrual } from '|logic/accruals-on-bank-deposits'
 import RoundedNumber from '|ui-kit/data-display/RoundedNumber.vue'
-import ConvenientNumberInput from '|ui-kit/form/ConvenientNumberInput.vue'
+import ConvenientNumberInput from '|ui-kit/interactive/form/ConvenientNumberInput.vue'
 
 // # API
 

@@ -163,8 +163,8 @@ function _updateModels(number: number): void {
 </template>
 
 <style lang="sass" scoped>
-@use '../interactive/buttons'
-@use '../ui-kit'
+@use '../../ui-kit'
+@use '../buttons'
 @use 'form'
 
 .app-component-independent-root
