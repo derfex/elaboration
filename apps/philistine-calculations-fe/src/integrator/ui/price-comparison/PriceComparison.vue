@@ -247,7 +247,7 @@ interface InputGroupItem {
 </template>
 
 <style lang="sass" scoped>
-@use '../../ui-kit/form/buttons'
+@use '../../ui-kit/interactive/buttons'
 @use '../../ui-kit/layout/layout'
 @use '../../ui-kit/ui-kit'
 
