@@ -2,6 +2,7 @@
 @use './identity/identity-foundation'
 @use './reset-foundation'
 @use './theming/theming-foundation'
+@use './ui-kit'
 
 @mixin app-ui-kit-foundation_styles-mixin
   @include reset-foundation.app-reset-foundation_styles-mixin
@@ -11,9 +12,10 @@
   // ## Init
 
   :root
+    @include ui-kit.app-ui-kit_scrollbar-mixin
+
     background: var(--app-root-surface--bg-color)
     color: var(--app-root-surface--fg-color)
-    scrollbar-width: thin
 
   ::selection
     background: var(--app-selection--bg-color)

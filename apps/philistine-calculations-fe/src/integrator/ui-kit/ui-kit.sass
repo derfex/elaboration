@@ -41,6 +41,14 @@
 @mixin app-ui-kit_neon-mixin
   text-shadow: 0 0 10px var(--app-color--accent--brand), 0 0 800px var(--app-color--accent--brand)
 
+// # Scroll
+
+@mixin app-ui-kit_scrollbar-mixin
+  @media (prefers-reduced-motion: no-preference)
+    scroll-behavior: smooth
+  scrollbar-gutter: stable
+  scrollbar-width: thin
+
 // # Typography
 
 @mixin app-ui-kit_h1-mixin
