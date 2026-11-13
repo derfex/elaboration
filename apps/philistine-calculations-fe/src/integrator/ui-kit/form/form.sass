@@ -29,6 +29,11 @@ $_app-form_textbox_padding: 8px
   background: #0000
   accent-color: var(--app-color--accent--brand)
 
+@mixin app-form_textbox-like_invalid-mixin
+  &:invalid
+    outline: 2px solid var(--app-input--invalid--outline-color)
+    outline-offset: -3px
+
 @mixin app-form_textbox_numeric-mixin
   @include app-form_textbox-like_general-mixin
   @include _numeric_font-mixin

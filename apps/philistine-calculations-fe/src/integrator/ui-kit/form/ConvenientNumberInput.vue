@@ -209,14 +209,12 @@ $_border-radius: form.$app-form_textbox_border-radius
 
 .app-textbox
   @include form.app-form_textbox_numeric-mixin
+  @include form.app-form_textbox-like_invalid-mixin
 
   position: relative
   border-top-right-radius: $_border-radius
   width: 100%
   height: $_row-height
-
-  &:invalid
-    outline: 2px solid var(--app-input--invalid--outline-color)
 
 .app-toggle-button
   @include buttons.app-form-buttons_button-secondary-custom-mixin
