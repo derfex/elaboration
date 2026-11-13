@@ -1,12 +1,14 @@
 @use '@mdi/font/css/materialdesignicons.css'
 @use './identity/identity-foundation'
-@use './reset-foundation'
+@use './interactive/outline-foundation.sass'
 @use './theming/theming-foundation'
+@use './reset-foundation'
 @use './ui-kit-utility'
 
 @mixin app-ui-kit-foundation_styles-mixin
   @include reset-foundation.app-reset-foundation_styles-mixin
   @include identity-foundation.app-identity-foundation_styles-mixin
+  @include outline-foundation.app-interactive-outline-foundation_custom-properties-mixin
   @include theming-foundation.app-theming-foundation_styles-mixin
 
   // ## Init

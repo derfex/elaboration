@@ -28,6 +28,7 @@ They contain fundamental definitions such as CSS custom properties and basic CSS
     - identity/[color-palette-foundation.sass](identity/color-palette-foundation.sass)
     - identity/[fonts-foundation.sass](identity/fonts-foundation.sass)
     - identity/[transitions-foundation.sass](identity/transitions-foundation.sass)
+  - interactive/[outline-foundation.sass](interactive/outline-foundation.sass)
   - theming/[theming-foundation.sass](theming/theming-foundation.sass)
   - [ui-kit-utility.sass](ui-kit-utility.sass)
 
