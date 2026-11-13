@@ -319,20 +319,20 @@ $_root_padding: $_form-table_gap
 
 
 .app-add-input-group-form-button
-  @include buttons.app-form-buttons_button-secondary-mixin
+  @include buttons.app-interactive-buttons_button-secondary-mixin
 
 .app-clear-form-button
-  @include buttons.app-form-buttons_button-secondary-mixin
+  @include buttons.app-interactive-buttons_button-secondary-mixin
 
 .app-collapse-inputs-button
-  @include buttons.app-form-buttons_button-secondary-mixin
+  @include buttons.app-interactive-buttons_button-secondary-mixin
 
 .app-expand-inputs-button
-  @include buttons.app-form-buttons_button-secondary-mixin
+  @include buttons.app-interactive-buttons_button-secondary-mixin
 
 
 .app-delete-input-group-button
-  @include buttons.app-form-buttons_button-secondary-mixin
+  @include buttons.app-interactive-buttons_button-secondary-mixin
 
   @media (layout.$app-device-width-medium <= width)
     $_cost-per-unit-rounded-number-height: 44px

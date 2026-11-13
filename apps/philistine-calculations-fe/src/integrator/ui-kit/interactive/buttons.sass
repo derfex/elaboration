@@ -8,8 +8,8 @@
   &:not(:disabled)
     cursor: pointer
 
-// TODO: `app-form-buttons_button-primary-mixin` is unused.
-//@mixin app-form-buttons_button-primary-mixin
+// TODO: `app-interactive-buttons_button-primary-mixin` is unused.
+//@mixin app-interactive-buttons_button-primary-mixin
 //  @include _app-button-mixin
 //
 //  border-radius: 4px
@@ -23,13 +23,13 @@
 //    &:not(:disabled):hover
 //      background: var(--app-button-primary--hover--bg-color)
 
-@mixin app-form-buttons_button-secondary-mixin
-  @include app-form-buttons_button-secondary-custom-mixin
+@mixin app-interactive-buttons_button-secondary-mixin
+  @include app-interactive-buttons_button-secondary-custom-mixin
 
   border-radius: 4px
   padding: 8px 20px
 
-@mixin app-form-buttons_button-secondary-custom-mixin
+@mixin app-interactive-buttons_button-secondary-custom-mixin
   @include _app-button-mixin
 
   background: var(--app-button-secondary--bg-color)
