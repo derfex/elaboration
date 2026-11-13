@@ -1,3 +1,5 @@
+@use '../interactive/focus'
+
 // TODO: Do we need `line-height: normal`?
 
 
@@ -29,9 +31,7 @@ $_app-form_textbox_padding: 8px
   background: #0000
   accent-color: var(--app-color--accent--brand)
 
-  &:focus-visible
-    outline: var(--app-interaction--focus--outline-width) var(--app-interaction--focus--outline-style) var(--app-interaction--focus--outline-color)
-    outline-offset: var(--app-interaction--focus--outline-offset)
+  @include focus.app-interactive-focus_focus-visible-mixin
 
 @mixin app-form_textbox-like_invalid-mixin
   &:invalid

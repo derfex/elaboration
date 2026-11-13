@@ -41,6 +41,8 @@ They contain fundamental definitions such as CSS custom properties and basic CSS
     - identity/[fonts.sass](identity/fonts.sass)
 - [ui-kit-utility.sass](ui-kit-utility.sass)
 - form/[form.sass](form/form.sass)
+  - interactive/[focus.sass](interactive/focus.sass)
 - interactive/[buttons.sass](interactive/buttons.sass)
     - identity/[transitions.sass](identity/transitions.sass)
+    - interactive/[focus.sass](interactive/focus.sass)
 - layout/[layout.sass](layout/layout.sass)

@@ -1,4 +1,5 @@
 @use '../identity/transitions'
+@use 'focus'
 
 @mixin _app-button-mixin
   border: 0
@@ -7,6 +8,8 @@
 
   &:not(:disabled)
     cursor: pointer
+
+  @include focus.app-interactive-focus_focus-visible-mixin
 
 // TODO: `app-interactive-buttons_button-primary-mixin` is unused.
 //@mixin app-interactive-buttons_button-primary-mixin
