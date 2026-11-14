@@ -7,6 +7,9 @@
     // ### Brand
 
     --app-color-primitive--cyan: #0ff
+
+    // ### Additional
+
     --app-color-primitive--orange: orange
 
     // ### Black, gray, white
@@ -47,7 +50,7 @@
 
     // ### Interactive
 
-    --app-color--interactive--stroke--warning: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--orange) 75%)
+    --app-color--interactive--border--warning: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--orange) 75%)
 
     // #### States
 
@@ -87,7 +90,7 @@
   :root
     --app-decor--border-color: var(--app-color--border--base-state--tertiary)
 
-    --app-input--invalid--outline-color: var(--app-color--interactive--stroke--warning)
+    --app-input--invalid--outline-color: var(--app-color--interactive--border--warning)
 
     --app-heading--fg-color: var(--app-color--foreground--heading)
 
