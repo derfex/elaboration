@@ -36,7 +36,16 @@
 
     --app-color--foreground--heading: var(--app-color--accent--brand)
 
+    // ### Interactive
+
     --app-color--interaction--stroke--warning: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--orange) 75%)
+
+    // #### States
+
+    // ##### Background
+
+    //--app-color--background--base-state--primary
+    --app-color--background--base-state--secondary: var(--app-color-primitive--cyan--dark-500)
 
   // ## Component
 
@@ -45,10 +54,10 @@
     //--app-button-primary--bg-color: var(--app-color-primitive--cyan)
     // TODO: `--app-button-primary--fg-color` is unused.
     //--app-button-primary--fg-color: var(--app-color-primitive--black)
-    // TODO: `--app-button-primary-hover-bg-color` is unused.
+    // TODO: `--app-button-primary--hover--bg-color` is unused.
     //--app-button-primary--hover--bg-color: var(--app-color-primitive--cyan--dark-500)
 
-    --app-button-secondary--bg-color: var(--app-color-primitive--cyan--dark-500)
+    --app-button-secondary--bg-color: var(--app-color--background--base-state--secondary)
     --app-button-secondary--fg-color: var(--app-color-primitive--white)
     --app-button-secondary--disabled--bg-color: var(--app-color-primitive--cyan--dark-900)
     --app-button-secondary--hover--bg-color: var(--app-color-primitive--cyan--dark-750)
