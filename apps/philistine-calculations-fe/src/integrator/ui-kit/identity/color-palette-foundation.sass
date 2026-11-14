@@ -24,7 +24,7 @@
 
     // ### Contextual palettes
 
-    --app-color-primitive--orange: orange
+    --app-color-primitive--warning: orange
 
   // ## Semantic
 
@@ -49,8 +49,6 @@
     --app-color--on-background--emphasize: var(--app-color--accent--brand)
 
     // ### Interactive
-
-    --app-color--interactive--border--warning: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--orange) 75%)
 
     // #### States
 
@@ -83,14 +81,14 @@
 
     // TODO?: --app-color--border--hover
 
-    // TODO?: --app-color--border--invalid
+    --app-color--border--invalid: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--warning) 75%)
 
   // ## Component
 
   :root
     --app-decor--border-color: var(--app-color--border--base-state--tertiary)
 
-    --app-input--invalid--outline-color: var(--app-color--interactive--border--warning)
+    --app-input--invalid--outline-color: var(--app-color--border--invalid)
 
     --app-heading--fg-color: var(--app-color--foreground--heading)
 
