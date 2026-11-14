@@ -34,7 +34,16 @@
     // TODO: `--app-root-surface-text-color` is unused.
     // --app-root-surface-text-color: var(--app-color-primitive--white--dark-155)
 
+    // ### Data display
+
     --app-color--foreground--heading: var(--app-color--accent--brand)
+
+    // #### Selection
+
+    // ##### Background and on background
+
+    --app-color--background--emphasize: var(--app-color-primitive--white--transparent-500)
+    --app-color--on-background--emphasize: var(--app-color--accent--brand)
 
     // ### Interactive
 
@@ -89,8 +98,8 @@
     // TODO: `--app-ornament-text-color` is unused.
     // --app-ornament-text-color: var(--app-color-primitive--white--dark-800)
 
-    --app-selection--bg-color: var(--app-color-primitive--white--transparent-500)
-    --app-selection--fg-color: var(--app-color--accent--brand)
+    --app-selection--bg-color: var(--app-color--background--emphasize)
+    --app-selection--fg-color: var(--app-color--on-background--emphasize)
 
     --app-text--disabled--color: var(--app-color-primitive--gray)
 
