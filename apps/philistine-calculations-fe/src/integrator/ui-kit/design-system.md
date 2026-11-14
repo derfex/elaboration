@@ -2,11 +2,16 @@
 
 ## Design tokens
 
-- primary
-- semantic
-  - `background`
-  - `on-background`
-  - `foreground`
-  - `border`
-    - TODO?: rename to `stroke`?
-- component
+- Primary
+  - Colors
+    - Neutral palette
+    - Primary palette
+    - Contextual palettes
+- Semantic
+  - Colors
+    - `background`
+    - `on-background`
+    - `foreground`
+    - `border`
+      - TODO?: rename to `stroke`?
+- Component
