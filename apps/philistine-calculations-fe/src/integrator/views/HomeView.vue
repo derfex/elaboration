@@ -46,6 +46,7 @@ const navLinks = [
 </template>
 
 <style lang="sass" scoped>
+@use '../ui-kit/interactive/focus'
 @use '../ui-kit/layout/layout'
 @use '../ui-kit/reset'
 @use '../ui-kit/ui-kit'
@@ -60,12 +61,16 @@ const navLinks = [
   @include layout.app-layout_section-wrapper-mixin
 
 
+// TODO: Move links to `anchors-foundation`?
 .app-nav-link
   color: var(--app-color--accent--brand)
 
   @media (hover: hover)
     &:hover
       @include ui-kit.app-ui-kit_neon-mixin
+
+  // TODO: Do we need another `outline-offset` for links?
+  @include focus.app-interactive-focus_focus-visible-mixin
 
 .app-nav-link--exact-active::before
   content: '→ '
