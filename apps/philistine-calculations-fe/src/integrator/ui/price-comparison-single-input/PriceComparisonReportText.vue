@@ -68,7 +68,7 @@ function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodi
 function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSyntaxErrorItem[]): string {
   return syntaxErrorsList
     .map(({ id, report }: BargainReportSyntaxErrorItem): string => {
-      return `_. #${id}. ${report}\n`
+      return `   #${id}. ${report}\n`
     })
     .join('')
 }
