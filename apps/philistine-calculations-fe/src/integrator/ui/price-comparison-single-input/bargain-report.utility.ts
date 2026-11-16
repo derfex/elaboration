@@ -10,17 +10,18 @@ export interface BargainReportCommodity {
   readonly price: number
 }
 
-export type BargainReportItem = BargainReportCommodityItem | BargainReportSyntaxErrorItem
-export type BargainReportList = readonly BargainReportItem[]
-
-interface BargainReportCommodityItem {
+export interface BargainReportCommodityItem {
   readonly id: number
   readonly kind: 'commodity'
   readonly report: BargainReportCommodity
 }
 
-interface BargainReportSyntaxErrorItem {
+export interface BargainReportSyntaxErrorItem {
   readonly id: number
   readonly kind: 'syntaxError'
   readonly report: string
 }
+
+export type BargainReportItem = BargainReportCommodityItem | BargainReportSyntaxErrorItem
+export type BargainReportList = readonly BargainReportItem[]
+
