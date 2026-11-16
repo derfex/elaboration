@@ -17,6 +17,7 @@ import PriceComparisonReportText from '|ui/price-comparison-single-input/PriceCo
 
 const props = defineProps<{
   readonly parseSingleInputButtonText: string
+  readonly singleInputHintText: string
   readonly singleInputText: string
   readonly singleInputTextAreaPlaceholder: string
   readonly singleInputTitleText: string
@@ -94,6 +95,7 @@ function _parseNotes(notes: string): void {
       <form class="app-form">
         <label class="app-form__control-container">
           <span>{{ props.singleInputTitleText }}</span>
+          <span class="app-single-input-hint">{{ props.singleInputHintText }}</span>
           <textarea
             v-model="singleInputModel"
             :placeholder="props.singleInputTextAreaPlaceholder"
@@ -149,6 +151,11 @@ $_root_padding: $_base_gap
 
 .app-parse-single-input-button
   @include buttons.app-interactive-standalone-buttons_button-primary-mixin
+
+.app-single-input-hint
+  font-size: 12px
+  // TODO?: Create and use a mixin?
+  color: var(--app-color--foreground--small-text)
 
 .app-single-input-textarea
   $_config_line-height: 1.18
