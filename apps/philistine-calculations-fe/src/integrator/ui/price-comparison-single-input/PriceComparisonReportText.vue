@@ -91,6 +91,8 @@ $_root_padding: 20px
 .app-component-independent-root
   @include ui-kit.app-ui-kit_glass-mixin
 
+  margin-block: 0
   border-radius: $_root_border-radius
   padding: $_root_padding
+  white-space: pre-wrap
 </style>
