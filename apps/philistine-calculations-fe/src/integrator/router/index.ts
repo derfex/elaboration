@@ -16,6 +16,11 @@ const router = createRouter({
           name: 'price-comparison',
           path: 'price-comparison',
         },
+        {
+          component: (): RouteComponent => import('../ui/price-comparison-single-input/PriceComparisonSingleInputSection.vue'),
+          name: 'price-comparison-single-input',
+          path: 'price-comparison-single-input',
+        },
       ],
       component: HomeView,
       name: 'home',

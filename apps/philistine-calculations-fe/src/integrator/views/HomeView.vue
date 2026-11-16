@@ -12,6 +12,10 @@ const navLinks = [
     captionText: 'Price comparison',
     routeName: 'price-comparison',
   },
+  {
+    captionText: 'Price comparison: single input',
+    routeName: 'price-comparison-single-input',
+  },
 ]
 </script>
 
