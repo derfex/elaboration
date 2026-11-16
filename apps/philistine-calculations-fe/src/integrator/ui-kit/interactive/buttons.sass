@@ -35,14 +35,10 @@ $_standalone-button_padding: 8px 20px
 //      background: var(--app-button-primary--hover--bg-color)
 
 @mixin app-interactive-standalone-buttons_button-secondary-mixin
-  @include app-interactive-buttons_button-secondary-custom-mixin
+  @include app-interactive-buttons_button-secondary-customizable-mixin
 
   border-radius: $_standalone-button_border-radius
   padding: $_standalone-button_padding
-
-// TODO: Delete the alias.
-@mixin app-interactive-buttons_button-secondary-mixin
-  @include app-interactive-standalone-buttons_button-secondary-mixin
 
 @mixin app-interactive-buttons_button-secondary-customizable-mixin
   @include _app-button-mixin
@@ -58,7 +54,3 @@ $_standalone-button_padding: 8px 20px
 
   &:disabled
     background: var(--app-button-secondary--disabled--bg-color)
-
-// TODO: Delete the alias.
-@mixin app-interactive-buttons_button-secondary-custom-mixin
-  @include app-interactive-buttons_button-secondary-customizable-mixin
