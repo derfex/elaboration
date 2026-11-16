@@ -1,7 +1,10 @@
+@use '../identity/fonts'
 @use '../identity/transitions'
 @use 'focus'
 
 @mixin _app-button-mixin
+  @include fonts.app-fonts_geometric-mixin
+
   border: 0
   line-height: initial
   text-align: center
