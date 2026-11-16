@@ -1,3 +1,7 @@
+export function calculateCostPerUnit(price: number, packageSize: number): number {
+  return price / packageSize
+}
+
 export function checkIfBargainReportItemIsCommodity(item: BargainReportItem): item is BargainReportCommodityItem {
   return item.kind === 'commodity'
 }

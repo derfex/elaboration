@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue'
 import RoundedNumber from '|ui-kit/data-display/RoundedNumber.vue'
 import ConvenientNumberInput from '|ui-kit/interactive/form/ConvenientNumberInput.vue'
+import { calculateCostPerUnit } from '|ui/price-comparison-single-input/bargain-report.utility'
 
 // # Private configuration
 
@@ -33,7 +34,7 @@ const inputGroups = ref<InputGroupItem[]>(
   _createInputGroups(props.packageSize, props.price, _inputGroupQuantity) as InputGroupItem[],
 )
 const costPerUnitList = computed<readonly number[]>(() => {
-  return inputGroups.value.map(({ packageSize, price }: InputGroupItem) => _calculateCostPerUnit(price, packageSize))
+  return inputGroups.value.map(({ packageSize, price }: InputGroupItem) => calculateCostPerUnit(price, packageSize))
 })
 
 watch(props, (): void => {
@@ -75,10 +76,6 @@ const roundedNumberComponentNumberOfDigitsAfterDecimalPoint = { essential: 2, mi
 _initialization()
 
 // # Private
-
-function _calculateCostPerUnit(price: number, packageSize: number): number {
-  return price / packageSize
-}
 
 function _clearInputGroups(): void {
   inputGroups.value.forEach((group: InputGroupItem): void => {
