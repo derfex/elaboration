@@ -17,6 +17,7 @@ import PriceComparisonReportText from '|ui/price-comparison-single-input/PriceCo
 
 const props = defineProps<{
   readonly parseSingleInputButtonText: string
+  readonly reportInitialMessage: string
   readonly singleInputHintText: string
   readonly singleInputText: string
   readonly singleInputTextAreaPlaceholder: string
@@ -111,7 +112,10 @@ function _parseNotes(notes: string): void {
         </button>
       </form>
 
-      <PriceComparisonReportText :list="bargainReport" />
+      <PriceComparisonReportText
+        :initial-message="props.reportInitialMessage"
+        :list="bargainReport"
+      />
     </div>
   </div>
 </template>

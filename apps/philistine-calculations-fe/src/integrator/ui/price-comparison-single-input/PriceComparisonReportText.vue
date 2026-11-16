@@ -12,12 +12,13 @@ import {
 // # API
 
 const props = defineProps<{
+  readonly initialMessage: string
   readonly list: BargainReportList
 }>()
 
 // # Uses in the template
 
-const bargainReportText = ref<string>('')
+const bargainReportText = ref<string>(props.initialMessage)
 watch(props, (): void => {
   const { commoditiesList, syntaxErrorsList } = _categorizeBargainReportItems(props.list)
   bargainReportText.value = _generateSyntaxErrorsText(syntaxErrorsList) + _generateCommoditiesText(commoditiesList)
