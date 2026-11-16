@@ -70,7 +70,7 @@ function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSynta
     .map(({ id, report }: BargainReportSyntaxErrorItem): string => {
       return `_. #${id}. ${report}\n`
     })
-    .join()
+    .join('')
 }
 </script>
 
