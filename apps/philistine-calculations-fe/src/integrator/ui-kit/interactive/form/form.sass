@@ -38,6 +38,9 @@ $_app-form_textbox_padding: 8px
     outline: var(--app-interactive--invalid--outline-width) var(--app-interactive--invalid--outline-style) var(--app-interactive--invalid--outline-color)
     outline-offset: var(--app-interactive--invalid--outline-offset)
 
+@mixin app-form_textbox_area-mixin
+  @include app-form_textbox-like_general-mixin
+
 @mixin app-form_textbox_numeric-mixin
   @include app-form_textbox-like_general-mixin
   @include _numeric_font-mixin
