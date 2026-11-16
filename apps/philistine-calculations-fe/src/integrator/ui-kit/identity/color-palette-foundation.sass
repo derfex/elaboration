@@ -10,10 +10,6 @@
     --app-color-primitive--gray: #888
     --app-color-primitive--white: #fff
 
-    --app-color-primitive--cyan--dark-500: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black))
-    --app-color-primitive--cyan--dark-750: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 75%)
-    --app-color-primitive--cyan--dark-900: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 90%)
-
     --app-color-primitive--white--dark-155: color-mix(in display-p3, var(--app-color-primitive--white), var(--app-color-primitive--black) 15.5%)
     --app-color-primitive--white--dark-800: color-mix(in display-p3, var(--app-color-primitive--white), var(--app-color-primitive--black) 80%)
     --app-color-primitive--white--transparent-500: color-mix(in display-p3, var(--app-color-primitive--white), #0000)
@@ -21,6 +17,12 @@
     // ### Primary palette
 
     --app-color-primitive--cyan: #0ff
+
+    --app-color-primitive--cyan--dark-250: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 25%)
+    --app-color-primitive--cyan--dark-500: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black))
+    --app-color-primitive--cyan--dark-750: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 75%)
+    --app-color-primitive--cyan--dark-800: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 80%)
+    --app-color-primitive--cyan--dark-900: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 90%)
 
     // ### Contextual palettes
 
@@ -54,17 +56,17 @@
 
     // ##### Background and on background
 
-    // TODO?: --app-color--background--base-state--primary
-    // TODO?: --app-color--on-background--base-state--primary
+    --app-color--background--base-state--primary: var(--app-color-primitive--cyan)
+    --app-color--on-background--base-state--primary: var(--app-color-primitive--black)
     --app-color--background--base-state--secondary: var(--app-color-primitive--cyan--dark-500)
     --app-color--on-background--base-state--secondary: var(--app-color-primitive--white)
 
-    // TODO?: --app-color--background--disabled--primary
+    --app-color--background--disabled--primary: var(--app-color-primitive--cyan--dark-800)
     --app-color--background--disabled--secondary: var(--app-color-primitive--cyan--dark-900)
 
     // TODO?: --app-color--background--focus
 
-    // TODO?: --app-color--background--hover--primary
+    --app-color--background--hover--primary: var(--app-color-primitive--cyan--dark-250)
     --app-color--background--hover--secondary: var(--app-color-primitive--cyan--dark-750)
 
     // TODO?: --app-color--background--invalid

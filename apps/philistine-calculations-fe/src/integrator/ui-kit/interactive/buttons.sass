@@ -19,20 +19,26 @@ $_standalone-button_padding: 8px 20px
 
   @include focus.app-interactive-focus_focus-visible-mixin
 
-// TODO: `app-interactive-standalone-buttons_button-primary-mixin` is unused.
-//@mixin app-interactive-standalone-buttons_button-primary-mixin
-//  @include _app-button-mixin
-//
-//  border-radius: $_standalone-button_border-radius
-//  padding: $_standalone-button_padding
-//  background: var(--app-button-primary--bg-color)
-//  color: var(--app-button-primary--on-bg-color)
-//
-//  @include transitions.app-transitions_transition-mixin(background)
-//
-//  @media (hover: hover)
-//    &:not(:disabled):hover
-//      background: var(--app-button-primary--hover--bg-color)
+@mixin app-interactive-standalone-buttons_button-primary-mixin
+  @include _app-interactive-buttons_button-primary-customizable-mixin
+
+  border-radius: $_standalone-button_border-radius
+  padding: $_standalone-button_padding
+
+@mixin _app-interactive-buttons_button-primary-customizable-mixin
+  @include _app-button-mixin
+
+  background: var(--app-button-primary--bg-color)
+  color: var(--app-button-primary--on-bg-color)
+
+  @include transitions.app-transitions_transition-mixin(background)
+
+  @media (hover: hover)
+    &:not(:disabled):hover
+      background: var(--app-button-primary--hover--bg-color)
+
+  &:disabled
+    background: var(--app-button-primary--disabled--bg-color)
 
 @mixin app-interactive-standalone-buttons_button-secondary-mixin
   @include app-interactive-buttons_button-secondary-customizable-mixin
