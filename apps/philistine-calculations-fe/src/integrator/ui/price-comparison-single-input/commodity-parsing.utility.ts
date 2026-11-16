@@ -39,6 +39,10 @@ function parseNoteToCommodity(note: string): ParsedCommodityNote | null {
       if (priceText.length) break
       else continue
     }
+    if (symbol === ',') {
+      priceText += '.'
+      continue
+    }
     priceText += symbol
   }
   const price = parseFloat(priceText)
@@ -51,6 +55,10 @@ function parseNoteToCommodity(note: string): ParsedCommodityNote | null {
     if (symbol === ' ') {
       if (packageSizeText.length) break
       else continue
+    }
+    if (symbol === ',') {
+      packageSizeText += '.'
+      continue
     }
     packageSizeText += symbol
   }
