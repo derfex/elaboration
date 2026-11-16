@@ -2,6 +2,11 @@
 @use '../identity/transitions'
 @use 'focus'
 
+
+$_standalone-button_border-radius: 4px
+$_standalone-button_padding: 8px 20px
+
+
 @mixin _app-button-mixin
   @include fonts.app-fonts_geometric-mixin
 
@@ -14,12 +19,12 @@
 
   @include focus.app-interactive-focus_focus-visible-mixin
 
-// TODO: `app-interactive-buttons_button-primary-mixin` is unused.
-//@mixin app-interactive-buttons_button-primary-mixin
+// TODO: `app-interactive-standalone-buttons_button-primary-mixin` is unused.
+//@mixin app-interactive-standalone-buttons_button-primary-mixin
 //  @include _app-button-mixin
 //
-//  border-radius: 4px
-//  padding: 8px 20px
+//  border-radius: $_standalone-button_border-radius
+//  padding: $_standalone-button_padding
 //  background: var(--app-button-primary--bg-color)
 //  color: var(--app-button-primary--on-bg-color)
 //
@@ -29,13 +34,17 @@
 //    &:not(:disabled):hover
 //      background: var(--app-button-primary--hover--bg-color)
 
-@mixin app-interactive-buttons_button-secondary-mixin
+@mixin app-interactive-standalone-buttons_button-secondary-mixin
   @include app-interactive-buttons_button-secondary-custom-mixin
 
-  border-radius: 4px
-  padding: 8px 20px
+  border-radius: $_standalone-button_border-radius
+  padding: $_standalone-button_padding
 
-@mixin app-interactive-buttons_button-secondary-custom-mixin
+// TODO: Delete the alias.
+@mixin app-interactive-buttons_button-secondary-mixin
+  @include app-interactive-standalone-buttons_button-secondary-mixin
+
+@mixin app-interactive-buttons_button-secondary-customizable-mixin
   @include _app-button-mixin
 
   background: var(--app-button-secondary--bg-color)
@@ -49,3 +58,7 @@
 
   &:disabled
     background: var(--app-button-secondary--disabled--bg-color)
+
+// TODO: Delete the alias.
+@mixin app-interactive-buttons_button-secondary-custom-mixin
+  @include app-interactive-buttons_button-secondary-customizable-mixin
