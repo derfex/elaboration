@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { calculateRoundedNumberParts } from '|logic/rounded-number/rounded-number'
 import {
   type BargainReportCommodityItem,
@@ -17,10 +17,10 @@ const props = defineProps<{
 
 // # Uses in the template
 
-const bargainReport = ref<BargainReportList>(props.list)
-const bargainReportText = computed<string>(() => {
-  const { commoditiesList, syntaxErrorsList } = _categorizeBargainReportItems(bargainReport.value)
-  return _generateSyntaxErrorsText(syntaxErrorsList) + _generateCommoditiesText(commoditiesList)
+const bargainReportText = ref<string>('')
+watch(props, (): void => {
+  const { commoditiesList, syntaxErrorsList } = _categorizeBargainReportItems(props.list)
+  bargainReportText.value = _generateSyntaxErrorsText(syntaxErrorsList) + _generateCommoditiesText(commoditiesList)
 })
 
 // # Private
