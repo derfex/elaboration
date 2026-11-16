@@ -85,7 +85,8 @@ function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSynta
 
 
 $_root_border-radius: 4px
-$_root_padding: 20px
+$_root_padding: 8px
+$_root_font-size: 16px
 
 
 .app-component-independent-root
@@ -94,5 +95,6 @@ $_root_padding: 20px
   margin-block: 0
   border-radius: $_root_border-radius
   padding: $_root_padding
+  font-size: $_root_font-size
   white-space: pre-wrap
 </style>
