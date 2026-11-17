@@ -1,6 +1,7 @@
 export function parseCommoditiesNotes(notes: string): ParseCommoditiesReport {
   const commodities: ParseCommoditiesReportCommodity[] = []
-  const syntaxErrors: ParseCommoditiesReportSyntaxError[] = []
+  const range: ParseCommoditiesReportError[] = []
+  const syntax: ParseCommoditiesReportError[] = []
   notes.split('\n').forEach((note: string, index: number): void => {
     const parsed = parseNoteToCommodity(note)
     if (parsed) {
@@ -9,13 +10,13 @@ export function parseCommoditiesNotes(notes: string): ParseCommoditiesReport {
         sequentialNumber: index + 1,
       })
     } else {
-      syntaxErrors.push({
+      syntax.push({
         note,
         sequentialNumber: index + 1,
       })
     }
   })
-  return { commodities, syntaxErrors }
+  return { commodities, errors: { range, syntax } }
 }
 
 export interface ParsedCommodityNote {
@@ -26,7 +27,10 @@ export interface ParsedCommodityNote {
 
 export interface ParseCommoditiesReport {
   readonly commodities: readonly ParseCommoditiesReportCommodity[]
-  readonly syntaxErrors: readonly ParseCommoditiesReportSyntaxError[]
+  readonly errors: {
+    readonly range: readonly ParseCommoditiesReportError[]
+    readonly syntax: readonly ParseCommoditiesReportError[]
+  }
 }
 
 
@@ -79,7 +83,7 @@ interface ParseCommoditiesReportCommodity {
   readonly sequentialNumber: number
 }
 
-interface ParseCommoditiesReportSyntaxError {
+interface ParseCommoditiesReportError {
   readonly note: string
   readonly sequentialNumber: number
 }

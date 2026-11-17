@@ -65,7 +65,7 @@ function _generateSyntaxErrorMessage(
 
 function _parseNotes(notes: string): void {
   const report: BargainReportItem[] = []
-  const { commodities, syntaxErrors } = parseCommoditiesNotes(notes)
+  const { commodities, errors: { syntax: syntaxErrors }} = parseCommoditiesNotes(notes)
   commodities.forEach(({ parsed, sequentialNumber }: ParseCommoditiesReport['commodities'][number]): void => {
     report.push({
       id: sequentialNumber,
