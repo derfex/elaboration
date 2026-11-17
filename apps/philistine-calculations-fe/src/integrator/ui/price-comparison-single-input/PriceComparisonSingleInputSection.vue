@@ -3,6 +3,7 @@ import PriceComparisonSingleInput from './PriceComparisonSingleInput.vue'
 
 // # Uses in the template
 
+const errorInitialDataLabelText = 'Initial data'
 const parseSingleInputButtonText = 'Parse'
 const reportInitialMessage = 'Here will be a report on the best prices.'
 const singleInputHintText = 'ⓘ Type “{price} {package size} {optional comment}” lines and press “Parse”'
@@ -10,7 +11,6 @@ const singleInputText = ''
 const singleInputTextAreaPlaceholder = '89.99 950 milk A\n129.99 1500 milk B'
 const singleInputTitleText = 'Single input'
 const syntaxErrorCodename = 'Syntax error'
-const syntaxErrorInitialDataLabelText = 'Initial data'
 const titleText = 'Price comparison: single input'
 </script>
 
@@ -19,6 +19,7 @@ const titleText = 'Price comparison: single input'
     <div class="app-component-independent-root">
       <div class="app-section__wrapper">
         <PriceComparisonSingleInput
+          :error-initial-data-label-text="errorInitialDataLabelText"
           :parse-single-input-button-text="parseSingleInputButtonText"
           :report-initial-message="reportInitialMessage"
           :single-input-hint-text="singleInputHintText"
@@ -26,7 +27,6 @@ const titleText = 'Price comparison: single input'
           :single-input-text="singleInputText"
           :single-input-title-text="singleInputTitleText"
           :syntax-error-codename="syntaxErrorCodename"
-          :syntax-error-initial-data-label-text="syntaxErrorInitialDataLabelText"
           :title-text="titleText"
         />
       </div>

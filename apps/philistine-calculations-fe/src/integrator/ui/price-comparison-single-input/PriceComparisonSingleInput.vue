@@ -16,6 +16,7 @@ import PriceComparisonReportText from '|ui/price-comparison-single-input/PriceCo
 // # API
 
 const props = defineProps<{
+  readonly errorInitialDataLabelText: string
   readonly parseSingleInputButtonText: string
   readonly reportInitialMessage: string
   readonly singleInputHintText: string
@@ -23,7 +24,6 @@ const props = defineProps<{
   readonly singleInputTextAreaPlaceholder: string
   readonly singleInputTitleText: string
   readonly syntaxErrorCodename: string
-  readonly syntaxErrorInitialDataLabelText: string
   readonly titleText: string
 }>()
 
@@ -77,7 +77,7 @@ function _parseNotes(notes: string): void {
       // TODO: Unused. Check. Do we need `id`.
       id: sequentialNumber,
       kind: 'syntaxError',
-      report: _generateSyntaxErrorMessage(props.syntaxErrorCodename, props.syntaxErrorInitialDataLabelText, note),
+      report: _generateSyntaxErrorMessage(props.syntaxErrorCodename, props.errorInitialDataLabelText, note),
     })
   })
   // TODO: The report's items are categorized. Is it ok?
