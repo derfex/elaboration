@@ -60,7 +60,7 @@ function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodi
         const costPer1000UnitsNumberParts = calculateRoundedNumberParts(costPer1000Units, essential, minor)
         const costPer1000UnitsText = `${costPer1000UnitsNumberParts.essential}{${costPer1000UnitsNumberParts.minor}}`
         const cost = `${costPerUnitText} (1000: ${costPer1000UnitsText})`
-        return `${index + 1}. #${id}. ${price}¤ · ${packageSize} → ${cost} — ${comment}`
+        return `${index + 1}. #${id}. ${price}¤ ÷ ${packageSize} = ${cost}${comment ? ' — ' + comment : ''}`
       },
     )
     .join('\n')
