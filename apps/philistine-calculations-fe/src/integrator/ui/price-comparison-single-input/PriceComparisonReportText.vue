@@ -2,57 +2,32 @@
 import { ref, watch } from 'vue'
 import { calculateRoundedNumberParts } from '|logic/rounded-number/rounded-number'
 import {
+  type BargainReport,
   type BargainReportCommodityItem,
-  type BargainReportItem,
-  type BargainReportList,
+  type BargainReportRangeErrorItem,
   type BargainReportSyntaxErrorItem,
-  checkIfBargainReportItemIsCommodity,
-  checkIfBargainReportItemIsSyntaxError,
 } from '|ui/price-comparison-single-input/bargain-report.utility'
 
 // # API
 
 const props = defineProps<{
   readonly initialMessage: string
-  readonly list: BargainReportList
+  readonly report: BargainReport
 }>()
 
 // # Uses in the template
 
 const bargainReportText = ref<string>(props.initialMessage)
 watch(props, (): void => {
-  const { commoditiesList, syntaxErrorsList } = _categorizeBargainReportItems(props.list)
-  bargainReportText.value = _generateSyntaxErrorsText(syntaxErrorsList) + _generateCommoditiesText(commoditiesList)
+  bargainReportText.value = _generateReportText(props.report)
 })
 
 // # Private
 
-function _categorizeBargainReportItems(bargainReport: BargainReportList): {
-  readonly commoditiesList: readonly BargainReportCommodityItem[]
-  readonly syntaxErrorsList: readonly BargainReportSyntaxErrorItem[]
-} {
-  const commoditiesList: BargainReportCommodityItem[] = []
-  const syntaxErrorsList: BargainReportSyntaxErrorItem[] = []
-  bargainReport.forEach((item: BargainReportItem): void => {
-    if (checkIfBargainReportItemIsCommodity(item)) {
-      commoditiesList.push(item)
-    } else if (checkIfBargainReportItemIsSyntaxError(item)) {
-      syntaxErrorsList.push(item)
-    } else {
-      // TODO.
-    }
-  })
-  commoditiesList.sort(_sortCommoditiesCompareFn)
-  return {
-    commoditiesList,
-    syntaxErrorsList,
-  }
-}
-
 function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodityItem[]): string {
   const essential = 2
   const minor = 4
-  return commoditiesList
+  return _sortCommodities(commoditiesList)
     .map(
       (
         {
@@ -72,6 +47,14 @@ function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodi
     .join('\n')
 }
 
+function _generateRangeErrorsText(syntaxErrorsList: readonly BargainReportRangeErrorItem[]): string {
+  return syntaxErrorsList
+    .map(({ report, sequentialNumber }: BargainReportRangeErrorItem): string => {
+      return `   #${sequentialNumber}. ${report}\n`
+    })
+    .join('')
+}
+
 function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSyntaxErrorItem[]): string {
   return syntaxErrorsList
     .map(({ report, sequentialNumber }: BargainReportSyntaxErrorItem): string => {
@@ -80,8 +63,23 @@ function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSynta
     .join('')
 }
 
+function _generateReportText(report: BargainReport): string {
+  const {
+    commodities,
+    errors: { range, syntax },
+  } = report
+  return _generateRangeErrorsText(range) + _generateSyntaxErrorsText(syntax) + _generateCommoditiesText(commodities)
+}
+
 function _sortCommoditiesCompareFn(a: BargainReportCommodityItem, b: BargainReportCommodityItem): number {
   return a.report.costPerUnit - b.report.costPerUnit
+}
+
+function _sortCommodities(commodities: readonly BargainReportCommodityItem[]): readonly BargainReportCommodityItem[] {
+  // TODO:
+  //  TS2550: Property `toSorted` does not exist on type `BargainReportCommodityItem[]`.
+  //  Do you need to change your target library? Try changing the `lib` compiler option to `es2023` or later.
+  return [...commodities].sort(_sortCommoditiesCompareFn)
 }
 </script>
 

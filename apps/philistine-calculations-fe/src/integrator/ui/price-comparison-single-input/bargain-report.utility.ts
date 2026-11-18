@@ -33,12 +33,12 @@ export function createBargainReportSyntaxErrorItem(
   }
 }
 
-export function checkIfBargainReportItemIsCommodity(item: BargainReportItem): item is BargainReportCommodityItem {
-  return item.kind === 'commodity'
-}
-
-export function checkIfBargainReportItemIsSyntaxError(item: BargainReportItem): item is BargainReportSyntaxErrorItem {
-  return item.kind === 'syntaxError'
+export interface BargainReport {
+  readonly commodities: readonly BargainReportCommodityItem[]
+  readonly errors: {
+    readonly range: readonly BargainReportRangeErrorItem[]
+    readonly syntax: readonly BargainReportSyntaxErrorItem[]
+  }
 }
 
 export interface BargainReportCommodity {
@@ -66,7 +66,3 @@ export interface BargainReportSyntaxErrorItem {
   readonly report: string
   readonly sequentialNumber: number
 }
-
-export type BargainReportItem = BargainReportCommodityItem | BargainReportRangeErrorItem | BargainReportSyntaxErrorItem
-export type BargainReportList = readonly BargainReportItem[]
-

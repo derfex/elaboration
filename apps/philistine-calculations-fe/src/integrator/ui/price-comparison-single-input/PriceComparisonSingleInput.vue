@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import {
+  type BargainReport,
   type BargainReportCommodity,
-  type BargainReportItem,
-  type BargainReportList,
+  type BargainReportCommodityItem,
+  type BargainReportRangeErrorItem,
+  type BargainReportSyntaxErrorItem,
   calculateCostPerUnit,
   createBargainReportCommodityItem,
   createBargainReportRangeErrorItem,
@@ -33,7 +35,7 @@ const props = defineProps<{
 
 // # Uses in the template
 
-const bargainReport = ref<BargainReportList>([])
+const bargainReport = ref<BargainReport>({ commodities: [], errors: { range: [], syntax: [] } })
 const singleInputModel = ref(props.singleInputText)
 
 function parseSingleInputButtonClickHandler(): void {
@@ -67,33 +69,32 @@ function _generateSyntaxErrorMessage(
 }
 
 function _parseNotes(notes: string): void {
-  const report: BargainReportItem[] = []
-  const {
-    commodities,
-    errors: { range, syntax },
-  } = parseCommoditiesNotes(notes)
-  commodities.forEach(({ parsed, sequentialNumber }: ParseCommoditiesReport['commodities'][number]): void => {
-    report.push(createBargainReportCommodityItem(_convertToBargainReportCommodity(parsed), sequentialNumber))
-  })
-  range.forEach(({ note, sequentialNumber }): void => {
-    report.push(
+  const parsedCommodities = parseCommoditiesNotes(notes)
+  const commodities: BargainReportCommodityItem[] = []
+  parsedCommodities.commodities.forEach(
+    ({ parsed, sequentialNumber }: ParseCommoditiesReport['commodities'][number]): void => {
+      commodities.push(createBargainReportCommodityItem(_convertToBargainReportCommodity(parsed), sequentialNumber))
+    },
+  )
+  const range: BargainReportRangeErrorItem[] = []
+  parsedCommodities.errors.range.forEach(({ note, sequentialNumber }): void => {
+    range.push(
       createBargainReportRangeErrorItem(
         _generateSyntaxErrorMessage(props.errorRangeCodename, props.errorInitialDataLabelText, note),
         sequentialNumber,
       ),
     )
   })
-  syntax.forEach(({ note, sequentialNumber }): void => {
-    report.push(
+  const syntax: BargainReportSyntaxErrorItem[] = []
+  parsedCommodities.errors.syntax.forEach(({ note, sequentialNumber }): void => {
+    syntax.push(
       createBargainReportSyntaxErrorItem(
         _generateSyntaxErrorMessage(props.errorSyntaxCodename, props.errorInitialDataLabelText, note),
         sequentialNumber,
       ),
     )
   })
-  // TODO: The report's items are categorized. Is it ok?
-  //  Do we need to categorize the second time (check `_categorizeBargainReportItems`)?
-  bargainReport.value = report
+  bargainReport.value = { commodities, errors: { range, syntax } }
 }
 </script>
 
@@ -125,7 +126,7 @@ function _parseNotes(notes: string): void {
 
       <PriceComparisonReportText
         :initial-message="props.reportInitialMessage"
-        :list="bargainReport"
+        :report="bargainReport"
       />
     </div>
   </div>
