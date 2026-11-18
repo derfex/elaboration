@@ -42,7 +42,7 @@ function _categorizeBargainReportItems(bargainReport: BargainReportList): {
       // TODO.
     }
   })
-  commoditiesList.sort((a, b) => a.report.costPerUnit - b.report.costPerUnit)
+  commoditiesList.sort(_sortCommoditiesCompareFn)
   return {
     commoditiesList,
     syntaxErrorsList,
@@ -75,6 +75,10 @@ function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSynta
       return `   #${id}. ${report}\n`
     })
     .join('')
+}
+
+function _sortCommoditiesCompareFn(a: BargainReportCommodityItem, b: BargainReportCommodityItem): number {
+  return a.report.costPerUnit - b.report.costPerUnit
 }
 </script>
 
