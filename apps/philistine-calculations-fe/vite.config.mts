@@ -32,6 +32,12 @@ export default defineConfig(
           background_color: '#000',
           description: 'Assistance in predicting benefits.',
           display: 'standalone',
+          icons: [
+            {
+              sizes: 'any',
+              src: 'assets/derfex-logotype.svg',
+            },
+          ],
           name: 'Philistine calculations | Elaboration. Vue',
           short_name: 'Philistine calculations',
           theme_color: '#0ff',
