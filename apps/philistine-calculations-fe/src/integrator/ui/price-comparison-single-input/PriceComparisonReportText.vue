@@ -55,7 +55,10 @@ function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodi
   return commoditiesList
     .map(
       (
-        { id, report: { comment, costPer1000Units, costPerUnit, packageSize, price } }: BargainReportCommodityItem,
+        {
+          report: { comment, costPer1000Units, costPerUnit, packageSize, price },
+          sequentialNumber,
+        }: BargainReportCommodityItem,
         index,
       ): string => {
         const costPerUnitNumberParts = calculateRoundedNumberParts(costPerUnit, essential, minor)
@@ -63,7 +66,7 @@ function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodi
         const costPer1000UnitsNumberParts = calculateRoundedNumberParts(costPer1000Units, essential, minor)
         const costPer1000UnitsText = `${costPer1000UnitsNumberParts.essential}{${costPer1000UnitsNumberParts.minor}}`
         const cost = `${costPerUnitText} (1000: ${costPer1000UnitsText})`
-        return `${index + 1}. #${id}. ${price}¤ ÷ ${packageSize} = ${cost}${comment ? ' — ' + comment : ''}`
+        return `${index + 1}. #${sequentialNumber}. ${price}¤ ÷ ${packageSize} = ${cost}${comment ? ' — ' + comment : ''}`
       },
     )
     .join('\n')
@@ -71,8 +74,8 @@ function _generateCommoditiesText(commoditiesList: readonly BargainReportCommodi
 
 function _generateSyntaxErrorsText(syntaxErrorsList: readonly BargainReportSyntaxErrorItem[]): string {
   return syntaxErrorsList
-    .map(({ id, report }: BargainReportSyntaxErrorItem): string => {
-      return `   #${id}. ${report}\n`
+    .map(({ report, sequentialNumber }: BargainReportSyntaxErrorItem): string => {
+      return `   #${sequentialNumber}. ${report}\n`
     })
     .join('')
 }

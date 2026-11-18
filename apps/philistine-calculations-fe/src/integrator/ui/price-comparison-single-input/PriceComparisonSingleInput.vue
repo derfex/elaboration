@@ -71,25 +71,23 @@ function _parseNotes(notes: string): void {
   } = parseCommoditiesNotes(notes)
   commodities.forEach(({ parsed, sequentialNumber }: ParseCommoditiesReport['commodities'][number]): void => {
     report.push({
-      id: sequentialNumber,
       kind: 'commodity',
       report: _convertToBargainReportCommodity(parsed),
+      sequentialNumber,
     })
   })
   range.forEach(({ note, sequentialNumber }): void => {
     report.push({
-      // TODO: Unused. Check. Do we need `id`?
-      id: sequentialNumber,
       kind: 'rangeError',
       report: _generateSyntaxErrorMessage(props.errorRangeCodename, props.errorInitialDataLabelText, note),
+      sequentialNumber,
     })
   })
   syntax.forEach(({ note, sequentialNumber }): void => {
     report.push({
-      // TODO: Unused. Check. Do we need `id`?
-      id: sequentialNumber,
       kind: 'syntaxError',
       report: _generateSyntaxErrorMessage(props.errorSyntaxCodename, props.errorInitialDataLabelText, note),
+      sequentialNumber,
     })
   })
   // TODO: The report's items are categorized. Is it ok?

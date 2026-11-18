@@ -19,21 +19,21 @@ export interface BargainReportCommodity {
 }
 
 export interface BargainReportCommodityItem {
-  readonly id: number
   readonly kind: 'commodity'
   readonly report: BargainReportCommodity
+  readonly sequentialNumber: number
 }
 
 export interface BargainReportRangeErrorItem {
-  readonly id: number
   readonly kind: 'rangeError'
   readonly report: string
+  readonly sequentialNumber: number
 }
 
 export interface BargainReportSyntaxErrorItem {
-  readonly id: number
   readonly kind: 'syntaxError'
   readonly report: string
+  readonly sequentialNumber: number
 }
 
 export type BargainReportItem = BargainReportCommodityItem | BargainReportRangeErrorItem | BargainReportSyntaxErrorItem
