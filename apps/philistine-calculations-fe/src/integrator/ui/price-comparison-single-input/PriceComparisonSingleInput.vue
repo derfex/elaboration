@@ -112,7 +112,9 @@ function _parseNotes(notes: string): void {
           <textarea
             v-model="singleInputModel"
             :placeholder="props.singleInputTextAreaPlaceholder"
+            autofocus
             class="app-single-input-textarea"
+            name="commodities notes"
           />
         </label>
         <button
@@ -188,6 +190,7 @@ $_root_padding: $_base_gap
   resize: vertical
   width: 100%
   min-height: $_min-height
+  field-sizing: content
   font-size: $_font-size
   font-family: monospace
 </style>
