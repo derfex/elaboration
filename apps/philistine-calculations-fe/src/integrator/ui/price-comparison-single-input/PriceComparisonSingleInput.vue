@@ -65,7 +65,10 @@ function _generateSyntaxErrorMessage(
 
 function _parseNotes(notes: string): void {
   const report: BargainReportItem[] = []
-  const { commodities, errors: { syntax: syntaxErrors }} = parseCommoditiesNotes(notes)
+  const {
+    commodities,
+    errors: { range, syntax },
+  } = parseCommoditiesNotes(notes)
   commodities.forEach(({ parsed, sequentialNumber }: ParseCommoditiesReport['commodities'][number]): void => {
     report.push({
       id: sequentialNumber,
@@ -73,9 +76,17 @@ function _parseNotes(notes: string): void {
       report: _convertToBargainReportCommodity(parsed),
     })
   })
-  syntaxErrors.forEach(({ note, sequentialNumber }): void => {
+  range.forEach(({ note, sequentialNumber }): void => {
     report.push({
-      // TODO: Unused. Check. Do we need `id`.
+      // TODO: Unused. Check. Do we need `id`?
+      id: sequentialNumber,
+      kind: 'rangeError',
+      report: _generateSyntaxErrorMessage(props.errorRangeCodename, props.errorInitialDataLabelText, note),
+    })
+  })
+  syntax.forEach(({ note, sequentialNumber }): void => {
+    report.push({
+      // TODO: Unused. Check. Do we need `id`?
       id: sequentialNumber,
       kind: 'syntaxError',
       report: _generateSyntaxErrorMessage(props.errorSyntaxCodename, props.errorInitialDataLabelText, note),

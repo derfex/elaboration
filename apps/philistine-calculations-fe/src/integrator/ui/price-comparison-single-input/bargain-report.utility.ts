@@ -6,6 +6,10 @@ export function checkIfBargainReportItemIsCommodity(item: BargainReportItem): it
   return item.kind === 'commodity'
 }
 
+export function checkIfBargainReportItemIsSyntaxError(item: BargainReportItem): item is BargainReportSyntaxErrorItem {
+  return item.kind === 'syntaxError'
+}
+
 export interface BargainReportCommodity {
   readonly comment: string
   readonly costPer1000Units: number
@@ -20,12 +24,18 @@ export interface BargainReportCommodityItem {
   readonly report: BargainReportCommodity
 }
 
+export interface BargainReportRangeErrorItem {
+  readonly id: number
+  readonly kind: 'rangeError'
+  readonly report: string
+}
+
 export interface BargainReportSyntaxErrorItem {
   readonly id: number
   readonly kind: 'syntaxError'
   readonly report: string
 }
 
-export type BargainReportItem = BargainReportCommodityItem | BargainReportSyntaxErrorItem
+export type BargainReportItem = BargainReportCommodityItem | BargainReportRangeErrorItem | BargainReportSyntaxErrorItem
 export type BargainReportList = readonly BargainReportItem[]
 

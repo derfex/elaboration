@@ -7,6 +7,7 @@ import {
   type BargainReportList,
   type BargainReportSyntaxErrorItem,
   checkIfBargainReportItemIsCommodity,
+  checkIfBargainReportItemIsSyntaxError,
 } from '|ui/price-comparison-single-input/bargain-report.utility'
 
 // # API
@@ -35,8 +36,10 @@ function _categorizeBargainReportItems(bargainReport: BargainReportList): {
   bargainReport.forEach((item: BargainReportItem): void => {
     if (checkIfBargainReportItemIsCommodity(item)) {
       commoditiesList.push(item)
-    } else {
+    } else if (checkIfBargainReportItemIsSyntaxError(item)) {
       syntaxErrorsList.push(item)
+    } else {
+      // TODO.
     }
   })
   commoditiesList.sort((a, b) => a.report.costPerUnit - b.report.costPerUnit)
