@@ -5,6 +5,9 @@ import {
   type BargainReportItem,
   type BargainReportList,
   calculateCostPerUnit,
+  createBargainReportCommodityItem,
+  createBargainReportRangeErrorItem,
+  createBargainReportSyntaxErrorItem,
 } from '|ui/price-comparison-single-input/bargain-report.utility'
 import {
   parseCommoditiesNotes,
@@ -70,25 +73,23 @@ function _parseNotes(notes: string): void {
     errors: { range, syntax },
   } = parseCommoditiesNotes(notes)
   commodities.forEach(({ parsed, sequentialNumber }: ParseCommoditiesReport['commodities'][number]): void => {
-    report.push({
-      kind: 'commodity',
-      report: _convertToBargainReportCommodity(parsed),
-      sequentialNumber,
-    })
+    report.push(createBargainReportCommodityItem(_convertToBargainReportCommodity(parsed), sequentialNumber))
   })
   range.forEach(({ note, sequentialNumber }): void => {
-    report.push({
-      kind: 'rangeError',
-      report: _generateSyntaxErrorMessage(props.errorRangeCodename, props.errorInitialDataLabelText, note),
-      sequentialNumber,
-    })
+    report.push(
+      createBargainReportRangeErrorItem(
+        _generateSyntaxErrorMessage(props.errorRangeCodename, props.errorInitialDataLabelText, note),
+        sequentialNumber,
+      ),
+    )
   })
   syntax.forEach(({ note, sequentialNumber }): void => {
-    report.push({
-      kind: 'syntaxError',
-      report: _generateSyntaxErrorMessage(props.errorSyntaxCodename, props.errorInitialDataLabelText, note),
-      sequentialNumber,
-    })
+    report.push(
+      createBargainReportSyntaxErrorItem(
+        _generateSyntaxErrorMessage(props.errorSyntaxCodename, props.errorInitialDataLabelText, note),
+        sequentialNumber,
+      ),
+    )
   })
   // TODO: The report's items are categorized. Is it ok?
   //  Do we need to categorize the second time (check `_categorizeBargainReportItems`)?

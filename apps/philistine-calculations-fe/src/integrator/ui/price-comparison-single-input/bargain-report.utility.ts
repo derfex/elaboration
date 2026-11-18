@@ -2,6 +2,37 @@ export function calculateCostPerUnit(price: number, packageSize: number): number
   return price / packageSize
 }
 
+export function createBargainReportCommodityItem(
+  report: BargainReportCommodity,
+  sequentialNumber: number,
+): BargainReportCommodityItem {
+  return {
+    kind: 'commodity',
+    report,
+    sequentialNumber,
+  }
+}
+export function createBargainReportRangeErrorItem(
+  report: string,
+  sequentialNumber: number,
+): BargainReportRangeErrorItem {
+  return {
+    kind: 'rangeError',
+    report,
+    sequentialNumber,
+  }
+}
+export function createBargainReportSyntaxErrorItem(
+  report: string,
+  sequentialNumber: number,
+): BargainReportSyntaxErrorItem {
+  return {
+    kind: 'syntaxError',
+    report,
+    sequentialNumber,
+  }
+}
+
 export function checkIfBargainReportItemIsCommodity(item: BargainReportItem): item is BargainReportCommodityItem {
   return item.kind === 'commodity'
 }
