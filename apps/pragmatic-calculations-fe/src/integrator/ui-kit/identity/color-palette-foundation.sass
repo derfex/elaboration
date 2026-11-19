@@ -16,13 +16,13 @@
 
     // ### Primary palette
 
-    --app-color-primitive--cyan: #0ff
+    --app-color-primitive--crayola-dark-blue: #16d
 
-    --app-color-primitive--cyan--dark-250: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 25%)
-    --app-color-primitive--cyan--dark-500: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black))
-    --app-color-primitive--cyan--dark-750: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 75%)
-    --app-color-primitive--cyan--dark-800: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 80%)
-    --app-color-primitive--cyan--dark-900: color-mix(in display-p3, var(--app-color-primitive--cyan), var(--app-color-primitive--black) 90%)
+    --app-color-primitive--crayola-dark-blue--dark-250: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 25%)
+    --app-color-primitive--crayola-dark-blue--dark-500: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black))
+    --app-color-primitive--crayola-dark-blue--dark-750: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 75%)
+    --app-color-primitive--crayola-dark-blue--dark-800: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 80%)
+    --app-color-primitive--crayola-dark-blue--dark-900: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 90%)
 
     // ### Contextual palettes
 
@@ -32,7 +32,7 @@
 
   :root
     // TODO: Do we need to use `accent` in `--app-color--accent--brand`?
-    --app-color--accent--brand: var(--app-color-primitive--cyan)
+    --app-color--accent--brand: var(--app-color-primitive--crayola-dark-blue)
 
     // TODO: `--app-root-surface-bg-color` is unused.
     // --app-root-surface-bg-color: var(--app-color-primitive--black)
@@ -57,18 +57,18 @@
 
     // ##### Background and on background
 
-    --app-color--background--base-state--primary: var(--app-color-primitive--cyan)
-    --app-color--on-background--base-state--primary: var(--app-color-primitive--black)
-    --app-color--background--base-state--secondary: var(--app-color-primitive--cyan--dark-500)
+    --app-color--background--base-state--primary: var(--app-color-primitive--crayola-dark-blue)
+    --app-color--on-background--base-state--primary: var(--app-color-primitive--white)
+    --app-color--background--base-state--secondary: var(--app-color-primitive--crayola-dark-blue--dark-500)
     --app-color--on-background--base-state--secondary: var(--app-color-primitive--white)
 
-    --app-color--background--disabled--primary: var(--app-color-primitive--cyan--dark-800)
-    --app-color--background--disabled--secondary: var(--app-color-primitive--cyan--dark-900)
+    --app-color--background--disabled--primary: var(--app-color-primitive--crayola-dark-blue--dark-800)
+    --app-color--background--disabled--secondary: var(--app-color-primitive--crayola-dark-blue--dark-900)
 
     // TODO?: --app-color--background--focus
 
-    --app-color--background--hover--primary: var(--app-color-primitive--cyan--dark-250)
-    --app-color--background--hover--secondary: var(--app-color-primitive--cyan--dark-750)
+    --app-color--background--hover--primary: var(--app-color-primitive--crayola-dark-blue--dark-250)
+    --app-color--background--hover--secondary: var(--app-color-primitive--crayola-dark-blue--dark-750)
 
     // TODO?: --app-color--background--invalid
 
@@ -76,7 +76,7 @@
 
     // ##### Border
 
-    --app-color--border--base-state--tertiary: var(--app-color-primitive--cyan--dark-750)
+    --app-color--border--base-state--tertiary: var(--app-color-primitive--crayola-dark-blue--dark-750)
 
     // TODO?: --app-color--border--disabled
 

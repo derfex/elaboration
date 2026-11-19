@@ -40,7 +40,7 @@ export default defineConfig(
           ],
           name: 'Pragmatic calculations | by derfex',
           short_name: 'Pragmatic calculations',
-          theme_color: '#0ff',
+          theme_color: '#16d',
         },
         registerType: 'autoUpdate',
       }),
