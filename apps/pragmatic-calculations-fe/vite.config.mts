@@ -48,7 +48,8 @@ export default defineConfig(
         targets: [
           {
             dest: '.',
-            src: 'src/**/*.md',
+            rename: { stripBase: 1 },
+            src: 'src/assets/**/*.*',
           },
         ],
       }),
