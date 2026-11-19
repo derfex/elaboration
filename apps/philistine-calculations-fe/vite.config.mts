@@ -8,7 +8,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
-    cacheDir: '../../node_modules/.vite/apps/philistine-calculations-fe',
+    cacheDir: '../../node_modules/.vite/apps/pragmatic-calculations-fe',
     server: {
       host: 'localhost',
       port: 4200,
@@ -22,7 +22,7 @@ export default defineConfig(
         transformMixedEsModules: true,
       },
       emptyOutDir: true,
-      outDir: '../../dist/apps/philistine-calculations-fe',
+      outDir: '../../dist/apps/pragmatic-calculations-fe',
       reportCompressedSize: true,
     },
     plugins: [
@@ -38,8 +38,8 @@ export default defineConfig(
               src: 'assets/derfex-logotype.svg',
             },
           ],
-          name: 'Philistine calculations | Elaboration. Vue',
-          short_name: 'Philistine calculations',
+          name: 'Pragmatic calculations | by derfex',
+          short_name: 'Pragmatic calculations',
           theme_color: '#0ff',
         },
         registerType: 'autoUpdate',
@@ -80,12 +80,12 @@ export default defineConfig(
     test: {
       coverage: {
         provider: 'v8' as const,
-        reportsDirectory: '../../coverage/apps/philistine-calculations-fe',
+        reportsDirectory: '../../coverage/apps/pragmatic-calculations-fe',
       },
       environment: 'jsdom',
       globals: true,
       include: ['{src,tests}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-      name: 'philistine-calculations-fe',
+      name: 'pragmatic-calculations-fe',
       reporters: ['default'],
       watch: false,
     },

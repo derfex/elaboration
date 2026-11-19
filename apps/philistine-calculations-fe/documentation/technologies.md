@@ -1,4 +1,4 @@
-# Philistine calculations front-end. Technologies
+# Pragmatic calculations front-end. Technologies
 
 ## CSS
 

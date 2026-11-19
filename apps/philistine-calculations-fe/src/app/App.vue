@@ -3,7 +3,7 @@ import { RouterView } from 'vue-router'
 
 // # Uses in the template
 
-const titleText = 'Philistine calculations'
+const titleText = 'Pragmatic calculations'
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-# Philistine calculations
+# Pragmatic calculations
 
 ## Aliases
 

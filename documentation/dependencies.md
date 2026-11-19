@@ -91,7 +91,7 @@ Used directly by the applications:
 Webfont distribution for the Material Design Icons.
 
 Used directly by the applications:
-- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 ### `@nestjs/common`
@@ -150,7 +150,7 @@ A peer dependency of:
 
 Used directly by the applications:
 - [`nx-welcome-vue`](../apps/nx-welcome-vue)
-- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 A peer dependency of:
@@ -164,7 +164,7 @@ A peer dependency of:
 
 Used directly by the applications:
 - [`nx-welcome-vue`](../apps/nx-welcome-vue)
-- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 ### `vuetify`
@@ -312,7 +312,7 @@ Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
 - [`nx-welcome-vue`](../apps/nx-welcome-vue)
 - [`pet-shop`](../apps/pet-shop)
-- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 - [`web-invitation`](../apps/web-invitation)
 
@@ -322,7 +322,7 @@ Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
 - [`nx-welcome-vue`](../apps/nx-welcome-vue)
 - [`pet-shop`](../apps/pet-shop)
-- [`philistine-calculations-fe`](../apps/philistine-calculations-fe)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 - [`web-invitation`](../apps/web-invitation)
 
