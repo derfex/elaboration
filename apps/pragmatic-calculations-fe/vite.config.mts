@@ -49,7 +49,7 @@ export default defineConfig(
           {
             dest: '.',
             rename: { stripBase: 1 },
-            src: 'src/assets/**/*.*',
+            src: 'src/assets/*.*',
           },
         ],
       }),
