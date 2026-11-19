@@ -103,6 +103,7 @@ Goals:
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
+- `field-sizing: content`
 
 ## ECMAScript
 

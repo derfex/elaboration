@@ -8,6 +8,7 @@
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
+- `field-sizing: content`
 
 ## ECMAScript
 
@@ -20,6 +21,7 @@
   - Arrow functions.
   - `const`, `let`.
   - Destructuring, object property shorthand.
+  - ES6 collections: `Map`.
   - ES6 modules.
   - Promises.
 
@@ -32,9 +34,11 @@
 ## TypeScript
 
 - `as const`
+- `asserts` (`asserts value is Type`)
 - `readonly`
 - `typeof`
 
+- `ReadonlyMap<…, …>`
 - `ReturnType<…>`
 
 ## Vue
@@ -106,5 +110,7 @@
 - typescript
 - typescript-eslint
 - vite
+- vite-plugin-pwa
+- vite-plugin-static-copy
 - vitest
 - vue-tsc
