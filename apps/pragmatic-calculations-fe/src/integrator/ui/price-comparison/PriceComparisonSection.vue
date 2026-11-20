@@ -3,6 +3,7 @@ import PriceComparison from './PriceComparison.vue'
 
 // # Uses in the template
 
+const addInputGroupButtonText = 'Add a new row'
 const clearFormButtonText = 'Clear all “Price” and “Package size”'
 const collapseInputsButtonText = 'Collapse all “Price” and “Package size”'
 const costPerUnitTitleText = 'Cost per unit'
@@ -23,6 +24,7 @@ const titleText = 'Price comparison'
     <div class="app-component-independent-root">
       <div class="app-section__wrapper">
         <PriceComparison
+          :add-input-group-button-text="addInputGroupButtonText"
           :clear-form-button-text="clearFormButtonText"
           :collapse-inputs-button-text="collapseInputsButtonText"
           :cost-per-unit-title-text="costPerUnitTitleText"

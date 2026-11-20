@@ -13,6 +13,7 @@ const _inputGroupQuantity = 3
 // # API
 
 const props = defineProps<{
+  readonly addInputGroupButtonText: string
   readonly clearFormButtonText: string
   readonly collapseInputsButtonText: string
   readonly costPerUnitTitleText: string
@@ -45,7 +46,6 @@ watch(props, (): void => {
 })
 
 const addInputGroupButtonIconCSSClasses = 'mdi mdi-plus'
-const addInputGroupButtonText = 'Add a new row'
 function addInputGroupButtonClickHandler(): void {
   inputGroups.value.push(_createInputGroupItem(props.packageSize, props.price))
 }
@@ -157,7 +157,7 @@ interface InputGroupItem {
             @click="addInputGroupButtonClickHandler"
           >
             <span :class="addInputGroupButtonIconCSSClasses" />
-            {{ addInputGroupButtonText }}
+            {{ props.addInputGroupButtonText }}
           </button>
           <button
             class="app-clear-form-button"
