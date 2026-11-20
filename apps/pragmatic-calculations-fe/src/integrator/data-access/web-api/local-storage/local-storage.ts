@@ -1,7 +1,7 @@
 import { type ShallowRef, shallowRef } from 'vue'
 
 export function useLocalStorage<TData>(key: string, initialValue: TData): UseLocalStorageResult<TData> {
-  const readValue = (key: string): TData => {
+  const _readValue = (key: string): TData => {
     try {
       const item = window.localStorage.getItem(key)
       return item ? (JSON.parse(item) as TData) : initialValue
@@ -9,6 +9,24 @@ export function useLocalStorage<TData>(key: string, initialValue: TData): UseLoc
       // TODO: Reorganize the error.
       console.error(`Error reading \`localStorage\` key “${key}”:`, error)
       return initialValue
+    }
+  }
+
+  const clear = (): void => {
+    try {
+      window.localStorage.clear()
+    } catch (error) {
+      // TODO: Reorganize the error.
+      console.error(`Error clearing \`localStorage\``, error)
+    }
+  }
+
+  const removeItem = (): void => {
+    try {
+      window.localStorage.removeItem(key)
+    } catch (error) {
+      // TODO: Reorganize the error.
+      console.error(`Error removing \`localStorage\` item by the key “${key}”:`, error)
     }
   }
 
@@ -21,18 +39,20 @@ export function useLocalStorage<TData>(key: string, initialValue: TData): UseLoc
     }
   }
 
-  const state = shallowRef<TData>(readValue(key))
+  const state = shallowRef<TData>(_readValue(key))
 
   // Subscribe to `localStorage` changes in other browser windows and tabs.
-  window.addEventListener('storage', (event): void => {
+  window.addEventListener('storage', (event: StorageEvent): void => {
     if (event.key === key) {
-      state.value = readValue(key)
+      state.value = _readValue(key)
     }
   })
 
   const reset: () => void = (): void => writeValue(initialValue)
 
   return {
+    clear,
+    removeItem,
     reset,
     state,
     writeValue,
@@ -40,6 +60,8 @@ export function useLocalStorage<TData>(key: string, initialValue: TData): UseLoc
 }
 
 interface UseLocalStorageResult<TData> {
+  readonly clear: () => void
+  readonly removeItem: () => void
   readonly reset: () => void
   readonly state: ShallowRef<TData>
   readonly writeValue: (value: TData) => void
