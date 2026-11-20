@@ -26,6 +26,7 @@ const props = defineProps<{
   readonly errorSyntaxCodename: string
   readonly parseSingleInputButtonText: string
   readonly reportInitialMessage: string
+  readonly resetButtonText: string
   readonly singleInputHintText: string
   readonly singleInputText: string
   readonly singleInputTextAreaPlaceholder: string
@@ -124,6 +125,12 @@ function _parseNotes(notes: string): void {
         >
           {{ props.parseSingleInputButtonText }}
         </button>
+        <button
+          class="app-reset-button"
+          type="reset"
+        >
+          {{props.resetButtonText}}
+        </button>
       </form>
 
       <PriceComparisonReportText
@@ -166,6 +173,9 @@ $_root_padding: $_base_gap
 .app-form__control-container
   @include layout.app-layout_flex-column-mixin(8px)
 
+
+.app-reset-button
+  @include buttons.app-interactive-standalone-buttons_button-secondary-mixin
 
 .app-parse-single-input-button
   @include buttons.app-interactive-standalone-buttons_button-primary-mixin
