@@ -1,13 +1,13 @@
 /// <reference types='vitest/config' />
 import vuePlugin from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig, type UserConfig } from 'vite'
+import { type ConfigEnv, defineConfig, type PluginOption, type UserConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config
 export default defineConfig(
-  (): UserConfig => ({
+  ({ command }): UserConfig => ({
     cacheDir: '../../node_modules/.vite/apps/pragmatic-calculations-fe',
     server: {
       host: 'localhost',
@@ -44,15 +44,7 @@ export default defineConfig(
         },
         registerType: 'autoUpdate',
       }),
-      viteStaticCopy({
-        targets: [
-          {
-            dest: '.',
-            rename: { stripBase: 1 },
-            src: 'src/assets/*.*',
-          },
-        ],
-      }),
+      commandToVitePluginsMap.get(command),
     ],
     // Uncomment this if you are using workers.
     // worker: {
@@ -92,3 +84,22 @@ export default defineConfig(
     },
   }),
 )
+
+const commandToVitePluginsMap: ReadonlyMap<ConfigEnv['command'], PluginOption> = new Map<
+  ConfigEnv['command'],
+  PluginOption
+>([
+  [
+    'build',
+    viteStaticCopy({
+      targets: [
+        {
+          dest: '.',
+          rename: { stripBase: 1 },
+          src: 'src/assets/*.*',
+        },
+      ],
+    }),
+  ],
+  ['serve', null],
+])
