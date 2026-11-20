@@ -129,7 +129,7 @@ function _parseNotes(notes: string): void {
           class="app-reset-button"
           type="reset"
         >
-          {{props.resetButtonText}}
+          {{ props.resetButtonText }}
         </button>
       </form>
 
