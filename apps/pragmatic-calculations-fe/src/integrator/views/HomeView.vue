@@ -9,12 +9,12 @@ const navLinks = [
     routeName: 'accruals-on-bank-deposits',
   },
   {
-    captionText: 'Price comparison',
-    routeName: 'price-comparison',
+    captionText: 'Price comparison. Version 1',
+    routeName: 'price-comparison-v1',
   },
   {
-    captionText: 'Price comparison: single input',
-    routeName: 'price-comparison-single-input',
+    captionText: 'Price comparison. Version 2',
+    routeName: 'price-comparison-v2',
   },
 ]
 </script>
