@@ -20,6 +20,8 @@ import PriceComparisonReportText from '|ui/price-comparison-single-input/PriceCo
 
 // # API
 
+const singleInputModel = defineModel<string>('singleInputText', { required: true })
+
 const props = defineProps<{
   readonly errorInitialDataLabelText: string
   readonly errorRangeCodename: string
@@ -37,7 +39,6 @@ const props = defineProps<{
 // # Uses in the template
 
 const bargainReport = ref<BargainReport>({ commodities: [], errors: { range: [], syntax: [] } })
-const singleInputModel = ref(props.singleInputText)
 
 function parseSingleInputButtonClickHandler(): void {
   _parseNotes(singleInputModel.value)
