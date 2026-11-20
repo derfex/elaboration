@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { useLocalStorage } from './local-storage'
+import { useLocalStorage } from './local-storage.composable'
 
 describe('useLocalStorage', (): void => {
   const testKey = 'test-key'

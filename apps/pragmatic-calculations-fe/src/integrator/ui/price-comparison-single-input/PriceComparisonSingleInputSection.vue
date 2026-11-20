@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { shallowRef, watch } from 'vue'
-import { useLocalStorage } from '|integrator/data-access/web-api/local-storage/local-storage'
+import { useLocalStorage } from '|integrator/data-access/web-api/local-storage/local-storage.composable'
 import PriceComparisonSingleInput from './PriceComparisonSingleInput.vue'
 
 // # Private configuration
