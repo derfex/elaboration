@@ -188,6 +188,11 @@ Goals:
 
 ## Vite
 
+- `defineConfig`
+- `type ConfigEnv`
+- `type PluginOption`
+- `type UserConfig`
+
 - `import.meta.env.VITE_*`
 
 ## Vue

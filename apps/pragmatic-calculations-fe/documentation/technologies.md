@@ -41,6 +41,13 @@
 - `ReadonlyMap<…, …>`
 - `ReturnType<…>`
 
+## Vite
+
+- `defineConfig`
+- `type ConfigEnv`
+- `type PluginOption`
+- `type UserConfig`
+
 ## Vue
 
 - Composition API
