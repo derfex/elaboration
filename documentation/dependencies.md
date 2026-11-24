@@ -316,6 +316,11 @@ Used directly by the applications:
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 - [`web-invitation`](../apps/web-invitation)
 
+### `vite-plugin-pwa`
+
+Used directly by the applications:
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+
 ### `vite-plugin-static-copy`
 
 Used directly by the applications:
