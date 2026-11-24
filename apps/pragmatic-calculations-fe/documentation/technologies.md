@@ -8,8 +8,8 @@
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
-  - `@media (min-width: value)`
-  - `@media (value <= width)`
+  - `@media (min-width: …)`
+  - `@media (… <= width)`
   - `@media (hover: hover)`
   - `@media (prefers-reduced-motion: no-preference)`
 - `field-sizing: content`
