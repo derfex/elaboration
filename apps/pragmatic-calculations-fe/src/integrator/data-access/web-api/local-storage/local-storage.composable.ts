@@ -53,6 +53,7 @@ export function useLocalStorage<TData>(key: string, initialValue: TData): UseLoc
   return {
     clear,
     removeItem,
+    // TODO: `reset` is unused.
     reset,
     state,
     writeValue,
