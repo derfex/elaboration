@@ -15,12 +15,12 @@ describe('useLocalStorage', (): void => {
     vi.restoreAllMocks()
   })
 
-  it('should return initial value when localStorage is empty', (): void => {
+  it('should return initial value when `localStorage` is empty', (): void => {
     const { state } = useLocalStorage(testKey, initialValue)
     expect(state.value).toEqual(initialValue)
   })
 
-  it('should read value from localStorage', (): void => {
+  it('should read value from `localStorage`', (): void => {
     const testValue = { count: 42 }
     window.localStorage.setItem(testKey, JSON.stringify(testValue))
 
@@ -28,7 +28,7 @@ describe('useLocalStorage', (): void => {
     expect(state.value).toEqual(testValue)
   })
 
-  it('should write value to localStorage', (): void => {
+  it('should write value to `localStorage`', (): void => {
     const { writeValue } = useLocalStorage(testKey, initialValue)
     const newValue = { count: 100 }
 
