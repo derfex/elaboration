@@ -48,6 +48,15 @@
 - `type PluginOption`
 - `type UserConfig`
 
+## Vitest
+
+- `afterEach`
+- `beforeEach`
+- `describe`
+- `expect`
+- `it`
+- `vi`
+
 ## Vue
 
 - Composition API

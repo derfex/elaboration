@@ -195,6 +195,15 @@ Goals:
 
 - `import.meta.env.VITE_*`
 
+## Vitest
+
+- `afterEach`
+- `beforeEach`
+- `describe`
+- `expect`
+- `it`
+- `vi`
+
 ## Vue
 
 - Composition API
