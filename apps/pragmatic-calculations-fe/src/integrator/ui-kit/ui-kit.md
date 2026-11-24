@@ -18,6 +18,13 @@ which are explicitly called in the consuming files.
 Files with the `*-foundation.sass` postfix are loaded once at the application start.
 They contain fundamental definitions such as CSS custom properties and basic CSS rules.
 
+### `*-utility.sass`
+
+Files with the `*-utility.sass` postfix can be used by files `*-foundation.sass` and `*.sass`.
+They contain utility mixins.
+From the perspective of CSS architecture, these files may be redundant,
+making them the first candidates for reorganization.
+
 ## Hierarchy
 
 ### Foundation
