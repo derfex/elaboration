@@ -8,6 +8,10 @@
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
+  - `@media (min-width: value)`
+  - `@media (value <= width)`
+  - `@media (hover: hover)`
+  - `@media (prefers-reduced-motion: no-preference)`
 - `field-sizing: content`
 
 ## ECMAScript
@@ -35,11 +39,14 @@
 
 - `as const`
 - `asserts` (`asserts value is Type`)
+- `is` (`value is Type`)
 - `readonly`
 - `typeof`
 
 - `ReadonlyMap<…, …>`
 - `ReturnType<…>`
+
+- `declare module …`
 
 ## Vite
 
@@ -65,7 +72,7 @@
 - `<script lang="ts" setup>`
 - `<style lang="sass" scoped>`
 
-- `defineEmits`
+- `defineModel`
 - `defineProps`
 
 - Reactivity API: Core
@@ -73,6 +80,14 @@
   - `ref`
   - `watch`
   - `watchEffect`
+- Reactivity API: Advanced
+  - `shallowRef`
+  - `type ShallowRef`
+
+## Web API
+
+- Console API
+- Web Storage API
 
 ## Unknown
 
