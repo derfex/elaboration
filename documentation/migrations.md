@@ -81,6 +81,13 @@ TODO: migrate to `vue-router@5.0.3`.
 
 Are we using it?
 
+### `@mdi/font`
+
+https://pictogrammers.com/library/mdi/icon/plus
+
+> We highly recommend you do not use the webfont.
+> See [Webfont Alternatives](https://pictogrammers.com/docs/guides/webfont-alternatives) for more information.
+
 
 [Angular Nx version matrix]: https://nx.dev/docs/technologies/angular/guides/angular-nx-version-matrix
 [Node Nx version matrix]: https://nx.dev/docs/technologies/node/introduction#requirements

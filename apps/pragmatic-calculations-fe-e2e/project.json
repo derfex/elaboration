@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "implicitDependencies": ["pragmatic-calculations-fe"],
+  "name": "pragmatic-calculations-fe-e2e",
+  "projectType": "application",
+  "sourceRoot": "apps/pragmatic-calculations-fe-e2e/src",
+  "// targets": "to see all targets run: nx show project pragmatic-calculations-fe-e2e --web",
+  "targets": {}
+}

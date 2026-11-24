@@ -98,6 +98,11 @@ Goals:
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
+  - `@media (min-width: …)`
+  - `@media (… <= width)`
+  - `@media (hover: hover)`
+  - `@media (prefers-reduced-motion: no-preference)`
+- `field-sizing: content`
 
 ## ECMAScript
 
@@ -168,6 +173,7 @@ Goals:
 - `as const`
 - `asserts` (`asserts value is Type`)
 - `extends` (`<Type extends …>`)
+- `is` (`value is Type`)
 - `readonly`
 - `satisfies`
 - `typeof`
@@ -181,7 +187,21 @@ Goals:
 
 ## Vite
 
+- `defineConfig`
+- `type ConfigEnv`
+- `type PluginOption`
+- `type UserConfig`
+
 - `import.meta.env.VITE_*`
+
+## Vitest
+
+- `afterEach`
+- `beforeEach`
+- `describe`
+- `expect`
+- `it`
+- `vi`
 
 ## Vue
 
@@ -192,6 +212,7 @@ Goals:
 - `<style lang="sass" scoped>`
 
 - `defineEmits`
+- `defineModel`
 - `defineProps`
 
 - Reactivity API: Core
@@ -201,11 +222,7 @@ Goals:
   - `watchEffect`
 - Reactivity API: Advanced
   - `shallowRef`
-
-## Unknown
-
-- Vite?
-  - `import.meta.env.BASE_URL`
+  - `type ShallowRef`
 
 ## Web API
 
@@ -214,3 +231,8 @@ Goals:
   - `MediaQueryListEvent`
 - Console API
 - Web Storage API
+
+## Unknown
+
+- Vite?
+  - `import.meta.env.BASE_URL`

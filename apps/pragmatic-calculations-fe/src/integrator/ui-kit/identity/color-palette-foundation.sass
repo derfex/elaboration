@@ -1,0 +1,105 @@
+@mixin app-color-palette-foundation_custom-properties-mixin
+  // # Colors, shades, tints, tones
+
+  // ## Primitive
+
+  :root
+    // ### Neutral palette
+
+    --app-color-primitive--black: #000
+    --app-color-primitive--gray: #888
+    --app-color-primitive--white: #fff
+
+    --app-color-primitive--white--dark-155: color-mix(in display-p3, var(--app-color-primitive--white), var(--app-color-primitive--black) 15.5%)
+    --app-color-primitive--white--dark-800: color-mix(in display-p3, var(--app-color-primitive--white), var(--app-color-primitive--black) 80%)
+    --app-color-primitive--white--transparent-500: color-mix(in display-p3, var(--app-color-primitive--white), #0000)
+
+    // ### Primary palette
+
+    --app-color-primitive--crayola-dark-blue: #16d
+
+    --app-color-primitive--crayola-dark-blue--dark-250: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 25%)
+    --app-color-primitive--crayola-dark-blue--dark-500: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black))
+    --app-color-primitive--crayola-dark-blue--dark-750: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 75%)
+    --app-color-primitive--crayola-dark-blue--dark-800: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 80%)
+    --app-color-primitive--crayola-dark-blue--dark-900: color-mix(in display-p3, var(--app-color-primitive--crayola-dark-blue), var(--app-color-primitive--black) 90%)
+
+    // ### Contextual palettes
+
+    --app-color-primitive--warning: orange
+
+  // ## Semantic
+
+  :root
+    // TODO: Do we need to use `accent` in `--app-color--accent--brand`?
+    --app-color--accent--brand: var(--app-color-primitive--crayola-dark-blue)
+
+    // TODO: `--app-root-surface-bg-color` is unused.
+    // --app-root-surface-bg-color: var(--app-color-primitive--black)
+    // TODO: `--app-root-surface-text-color` is unused.
+    // --app-root-surface-text-color: var(--app-color-primitive--white--dark-155)
+
+    // ### Data display
+
+    --app-color--foreground--heading: var(--app-color--accent--brand)
+    --app-color--foreground--small-text: var(--app-color-primitive--white--dark-155)
+
+    // #### Selection
+
+    // ##### Background and on background
+
+    --app-color--background--emphasize: var(--app-color-primitive--white--transparent-500)
+    --app-color--on-background--emphasize: var(--app-color--accent--brand)
+
+    // ### Interactive
+
+    // #### States
+
+    // ##### Background and on background
+
+    --app-color--background--base-state--primary: var(--app-color-primitive--crayola-dark-blue)
+    --app-color--on-background--base-state--primary: var(--app-color-primitive--white)
+    --app-color--background--base-state--secondary: var(--app-color-primitive--crayola-dark-blue--dark-500)
+    --app-color--on-background--base-state--secondary: var(--app-color-primitive--white)
+
+    --app-color--background--disabled--primary: var(--app-color-primitive--crayola-dark-blue--dark-800)
+    --app-color--background--disabled--secondary: var(--app-color-primitive--crayola-dark-blue--dark-900)
+
+    // TODO?: --app-color--background--focus
+
+    --app-color--background--hover--primary: var(--app-color-primitive--crayola-dark-blue--dark-250)
+    --app-color--background--hover--secondary: var(--app-color-primitive--crayola-dark-blue--dark-750)
+
+    // TODO?: --app-color--background--invalid
+
+    // ##### Foreground
+
+    // ##### Border
+
+    --app-color--border--base-state--tertiary: var(--app-color-primitive--crayola-dark-blue--dark-750)
+
+    // TODO?: --app-color--border--disabled
+
+    --app-color--border--focus: var(--app-color--accent--brand)
+
+    // TODO?: --app-color--border--hover
+
+    --app-color--border--invalid: color-mix(in display-p3, var(--app-color--accent--brand), var(--app-color-primitive--warning) 75%)
+
+  // ## Component
+
+  :root
+    --app-decor--border-color: var(--app-color--border--base-state--tertiary)
+
+    --app-input--invalid--outline-color: var(--app-color--border--invalid)
+
+    --app-heading--fg-color: var(--app-color--foreground--heading)
+
+    // TODO: `--app-ornament-text-color` is unused.
+    // --app-ornament-text-color: var(--app-color-primitive--white--dark-800)
+
+    --app-selection--bg-color: var(--app-color--background--emphasize)
+    --app-selection--on-bg-color: var(--app-color--on-background--emphasize)
+
+    --app-text--disabled--color: var(--app-color-primitive--gray)
+

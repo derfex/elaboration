@@ -1,0 +1,27 @@
+@use '@mdi/font/css/materialdesignicons.css'
+@use './identity/identity-foundation'
+@use './interactive/buttons-foundation.sass'
+@use './interactive/outline-foundation.sass'
+@use './theming/theming-foundation'
+@use './reset-foundation'
+@use './ui-kit-utility'
+
+@mixin app-ui-kit-foundation_styles-mixin
+  @include reset-foundation.app-reset-foundation_styles-mixin
+  @include identity-foundation.app-identity-foundation_styles-mixin
+  @include buttons-foundation.app-interactive-buttons-foundation_custom-properties-mixin
+  @include outline-foundation.app-interactive-outline-foundation_custom-properties-mixin
+  @include theming-foundation.app-theming-foundation_styles-mixin
+
+  // ## Init
+
+  :root
+    @include ui-kit-utility.app-ui-kit-utility_scrollbar-mixin
+
+    background: var(--app-root-surface--bg-color)
+    color: var(--app-root-surface--fg-color)
+
+  ::selection
+    background: var(--app-selection--bg-color)
+    color: var(--app-selection--on-bg-color)
+    text-shadow: none

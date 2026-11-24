@@ -1,0 +1,62 @@
+@use '../identity/fonts'
+@use '../identity/transitions'
+@use 'focus'
+
+
+$_standalone-button_border-radius: 4px
+$_standalone-button_padding: 8px 20px
+
+
+@mixin _app-button-mixin
+  @include fonts.app-fonts_geometric-mixin
+
+  border: 0
+  line-height: initial
+  text-align: center
+
+  &:not(:disabled)
+    cursor: pointer
+
+  @include focus.app-interactive-focus_focus-visible-mixin
+
+@mixin app-interactive-standalone-buttons_button-primary-mixin
+  @include _app-interactive-buttons_button-primary-customizable-mixin
+
+  border-radius: $_standalone-button_border-radius
+  padding: $_standalone-button_padding
+
+@mixin _app-interactive-buttons_button-primary-customizable-mixin
+  @include _app-button-mixin
+
+  background: var(--app-button-primary--bg-color)
+  color: var(--app-button-primary--on-bg-color)
+
+  @include transitions.app-transitions_transition-mixin(background)
+
+  @media (hover: hover)
+    &:not(:disabled):hover
+      background: var(--app-button-primary--hover--bg-color)
+
+  &:disabled
+    background: var(--app-button-primary--disabled--bg-color)
+
+@mixin app-interactive-standalone-buttons_button-secondary-mixin
+  @include app-interactive-buttons_button-secondary-customizable-mixin
+
+  border-radius: $_standalone-button_border-radius
+  padding: $_standalone-button_padding
+
+@mixin app-interactive-buttons_button-secondary-customizable-mixin
+  @include _app-button-mixin
+
+  background: var(--app-button-secondary--bg-color)
+  color: var(--app-button-secondary--on-bg-color)
+
+  @include transitions.app-transitions_transition-mixin(background)
+
+  @media (hover: hover)
+    &:not(:disabled):hover
+      background: var(--app-button-secondary--hover--bg-color)
+
+  &:disabled
+    background: var(--app-button-secondary--disabled--bg-color)
