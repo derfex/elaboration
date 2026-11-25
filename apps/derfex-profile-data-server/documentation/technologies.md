@@ -79,6 +79,7 @@
 - @nx/eslint
 - @nx/eslint-plugin
 - @nx/js
+[//]: # (TODO?: Do we use `@typescript-eslint/parser`?)
 - @typescript-eslint/parser
 - @typescript-eslint/utils
 - eslint

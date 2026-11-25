@@ -22,6 +22,7 @@ Goals:
 - `Service`
 - `ViewChild`
 - `inject`
+- `injectAsync`
 - `provideBrowserGlobalErrorListeners`
 - `provideZonelessChangeDetection` // It is not necessary in @Angular@21+.
 - `type ApplicationConfig`
@@ -107,6 +108,7 @@ Goals:
   - `@media (… <= width)`
   - `@media (hover: hover)`
   - `@media (prefers-reduced-motion: no-preference)`
+  - `@media screen`
 - `field-sizing: content`
 
 ## ECMAScript
@@ -228,6 +230,7 @@ Goals:
   - `watchEffect`
 - Reactivity API: Advanced
   - `shallowRef`
+  - `type ShallowRef`
 
 ## Web API
 

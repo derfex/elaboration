@@ -180,11 +180,24 @@ TODO.
 
 ### `@analogjs/vite-plugin-angular`
 
+Used directly by the applications:
+- [`derfex-profile`](../apps/derfex-profile)
+- [`pet-shop`](../apps/pet-shop)
+- [`web-invitation`](../apps/web-invitation)
+
 ### `@angular-devkit/core`
 
 ### `@angular-devkit/schematics`
 
 ### `@angular/build`
+
+Used directly by the applications:
+- [`derfex-profile`](../apps/derfex-profile)
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pet-shop`](../apps/pet-shop)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
+- [`web-invitation`](../apps/web-invitation)
 
 ### `@angular/cli`
 
@@ -197,6 +210,9 @@ TODO.
 ### `@nestjs/schematics`
 
 ### `@nestjs/testing`
+
+Used directly by the applications:
+- [`derfex-profile-data-server`](../apps/derfex-profile-data-server)
 
 ### `@nx/angular`
 
@@ -251,11 +267,23 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `@typescript-eslint/eslint-plugin`
 
+Used directly by [`eslint.config.mjs`](../eslint.config.mjs).
+
 ### `@typescript-eslint/parser`
+
+Used directly by the applications:
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 ### `@typescript-eslint/utils`
 
 ### `@vitejs/plugin-vue`
+
+Used directly by the applications:
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 ### `@vitest/coverage-v8`
 
@@ -267,6 +295,11 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `@vue/test-utils`
 
+Used directly by the applications:
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
+
 ### `angular-eslint`
 
 ### `eslint`
@@ -275,7 +308,20 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `eslint-plugin-playwright`
 
+Used directly by the applications:
+- [`derfex-profile-e2e`](../apps/derfex-profile-e2e)
+- [`nx-welcome-vue-e2e`](../apps/nx-welcome-vue-e2e)
+- [`pet-shop-e2e`](../apps/pet-shop-e2e)
+- [`pragmatic-calculations-fe-e2e`](../apps/pragmatic-calculations-fe-e2e)
+- [`vehicles-registry-fe-e2e`](../apps/vehicles-registry-fe-e2e)
+- [`web-invitation-e2e`](../apps/web-invitation-e2e)
+
 ### `eslint-plugin-vue`
+
+Used directly by the applications:
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 ### `jest`
 
@@ -332,6 +378,11 @@ Used directly by the applications:
 - [`web-invitation`](../apps/web-invitation)
 
 ### `vitest`
+
+Used directly by the applications:
+- [`nx-welcome-vue`](../apps/nx-welcome-vue)
+- [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
+- [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
 ### `vue-tsc`
 
