@@ -107,6 +107,7 @@ Goals:
   - `@media (… <= width)`
   - `@media (hover: hover)`
   - `@media (prefers-reduced-motion: no-preference)`
+  - `@media screen`
 - `field-sizing: content`
 
 ## ECMAScript
@@ -228,6 +229,7 @@ Goals:
   - `watchEffect`
 - Reactivity API: Advanced
   - `shallowRef`
+  - `type ShallowRef`
 
 ## Web API
 

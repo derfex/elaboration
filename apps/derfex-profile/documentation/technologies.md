@@ -73,6 +73,7 @@
 - CSS Houdini
   - Custom Properties & Values
 - `@media`
+  - `@media (… <= width)`
 
 ## ECMAScript
 
@@ -130,6 +131,11 @@
 - `ReadonlyMap<…, …>`
 - `ReadonlySet<…>`
 
+## Vite
+
+- `defineConfig`
+- `type UserConfig`
+
 ## Web API
 
 - CSSOM view API
@@ -183,4 +189,6 @@
 - tslib
 - typescript
 - typescript-eslint
+- vite
+- vite-plugin-static-copy
 - vitest

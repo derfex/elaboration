@@ -8,7 +8,6 @@
 - `ChangeDetectorRef`
 - `Component`
 - `DestroyRef`
-- `Injectable`
 - `Service`
 - `inject`
 - `provideBrowserGlobalErrorListeners`
@@ -56,11 +55,18 @@
 - `provideRouter`
 - `type Route`
 
+### Templates
+
+- conditions: `@if`
+- cycles: `@for (… of …; track …)`, `@empty`
+
 ## CSS
 
 - CSS flexible box layout
 - CSS grid layout
 - `@media`
+  - `@media (min-width: …)`
+  - `@media screen`
 
 ## ECMAScript
 
@@ -140,4 +146,6 @@ Basic syntax only.
 - tslib
 - typescript
 - typescript-eslint
+- vite
+- vite-plugin-static-copy
 - vitest
