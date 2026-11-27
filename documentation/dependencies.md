@@ -363,6 +363,9 @@ A peer dependency of:
 
 ### `ts-node`
 
+A peer dependency of:
+- `jest-config` (indirect dependence) (optional)
+
 ### `tslib`
 
 ### `typescript`
