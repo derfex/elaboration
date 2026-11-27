@@ -1,9 +1,9 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "pet-shop",
+  "name": "pet-shop-fe",
   "prefix": "app",
   "projectType": "application",
-  "sourceRoot": "apps/pet-shop/src",
+  "sourceRoot": "apps/pet-shop-fe/src",
   "tags": [],
   "targets": {
     "build": {
@@ -35,26 +35,25 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/pet-shop/public"
+            "input": "apps/pet-shop-fe/public"
           }
         ],
-        "browser": "apps/pet-shop/src/main.ts",
-        "index": "apps/pet-shop/src/index.html",
-        "inlineStyleLanguage": "scss",
-        "outputPath": "dist/apps/pet-shop",
-        "scripts": [],
+        "browser": "apps/pet-shop-fe/src/main.ts",
+        "index": "apps/pet-shop-fe/src/index.html",
+        "inlineStyleLanguage": "sass",
+        "outputPath": "dist/apps/pet-shop-fe",
         "styles": [
           "@angular/material/prebuilt-themes/azure-blue.css",
-          "apps/pet-shop/src/styles.sass"
+          "apps/pet-shop-fe/src/styles.sass"
         ],
-        "tsConfig": "apps/pet-shop/tsconfig.app.json"
+        "tsConfig": "apps/pet-shop-fe/tsconfig.app.json"
       },
       "outputs": ["{options.outputPath}"]
     },
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
       "options": {
-        "buildTarget": "pet-shop:build"
+        "buildTarget": "pet-shop-fe:build"
       }
     },
     "lint": {
@@ -63,10 +62,10 @@
     "serve": {
       "configurations": {
         "development": {
-          "buildTarget": "pet-shop:build:development"
+          "buildTarget": "pet-shop-fe:build:development"
         },
         "production": {
-          "buildTarget": "pet-shop:build:production"
+          "buildTarget": "pet-shop-fe:build:production"
         }
       },
       "continuous": true,
@@ -77,20 +76,17 @@
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "pet-shop:build",
+        "buildTarget": "pet-shop-fe:build",
         "port": 4200,
         "spa": true,
-        "staticFilePath": "dist/apps/pet-shop/browser"
+        "staticFilePath": "dist/apps/pet-shop-fe/browser"
       }
     },
     "test": {
+      "executor": "@angular/build:unit-test",
       "options": {
-        "coverage.reportsDirectory": "../../../coverage/apps/pet-shop"
-      },
-      "outputs": [
-        "{projectRoot}/{options.coverage.reportsDirectory}",
-        "{workspaceRoot}/coverage/apps/pet-shop"
-      ]
+        "watch": false
+      }
     }
   }
 }

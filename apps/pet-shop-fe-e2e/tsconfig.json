@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
@@ -15,7 +14,7 @@
   "include": [
     "**/*.ts",
     "**/*.js",
-    "playwright.config.ts",
+    "playwright.config.mts",
     "src/**/*.spec.ts",
     "src/**/*.spec.js",
     "src/**/*.test.ts",

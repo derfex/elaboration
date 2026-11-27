@@ -6,7 +6,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 // https://vitejs.dev/config
 export default defineConfig(
   (): UserConfig => ({
-    cacheDir: '../../node_modules/.vite/apps/pet-shop',
+    cacheDir: '../../node_modules/.vite/apps/pet-shop-fe',
     plugins: [
       viteAngularPlugin(),
       viteStaticCopy({
@@ -38,7 +38,7 @@ export default defineConfig(
     test: {
       coverage: {
         provider: 'v8' as const,
-        reportsDirectory: '../../coverage/apps/pet-shop',
+        reportsDirectory: '../../coverage/apps/pet-shop-fe',
       },
       environment: 'jsdom',
       globals: true,

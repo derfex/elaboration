@@ -2,9 +2,9 @@ import esLintNXPlugin from '@nx/eslint-plugin'
 import baseConfig from '../../eslint.config.mjs'
 
 export default [
-  ...baseConfig,
   ...esLintNXPlugin.configs['flat/angular'],
   ...esLintNXPlugin.configs['flat/angular-template'],
+  ...baseConfig,
   {
     files: ['**/*.ts'],
     rules: {
