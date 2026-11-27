@@ -257,7 +257,15 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `@swc/core`
 
+A peer dependency of:
+- `@swc-node/register`
+- `nx` (optional)
+- `ts-node` (optional)
+
 ### `@swc/helpers`
+
+A peer dependency of:
+- `@swc/core` (optional)
 
 ### `@types/fs-extra`
 

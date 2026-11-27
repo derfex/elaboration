@@ -132,8 +132,6 @@ Basic syntax only.
 - @playwright/test
 - @schematics/angular
 - @swc-node/register
-- @swc/core
-- @swc/helpers
 - @typescript-eslint/utils
 - angular-eslint
 - eslint

@@ -117,8 +117,6 @@
 - @nx/workspace
 - @playwright/test
 - @swc-node/register
-- @swc/core
-- @swc/helpers
 - @types/node
 - @typescript-eslint/parser
 - @typescript-eslint/utils

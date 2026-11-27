@@ -56,7 +56,7 @@
     "@schematics/angular": "22.1.9",
     "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.15.8",
-    "@swc/helpers": "0.5.18",
+    "@swc/helpers": "0.5.24",
     "@types/fs-extra": "11.0.4",
     "@types/jest": "30.0.0",
     "@types/node": "24.0.1",
