@@ -83,13 +83,10 @@
       }
     },
     "test": {
+      "executor": "@angular/build:unit-test",
       "options": {
-        "coverage.reportsDirectory": "../../../coverage/apps/pet-shop-fe"
-      },
-      "outputs": [
-        "{projectRoot}/{options.coverage.reportsDirectory}",
-        "{workspaceRoot}/coverage/apps/pet-shop-fe"
-      ]
+        "watch": false
+      }
     }
   }
 }
