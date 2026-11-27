@@ -9,13 +9,20 @@ const baseURL = process.env['BASE_URL'] || 'http://localhost:4200'
  * Read environment variables from a file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+// import 'dotenv/config';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
+ *
+ * Generated as a .mts file so Node forces ESM regardless of workspace
+ * `type`. Playwright routes `.mts` through its ESM loader (dynamic import,
+ * bypassing the pirates CJS-compile path), and Nx's native TS strip loads
+ * `.mts` directly. Playwright's configLoader auto-discovers
+ * `playwright.config.mts` via its extension list
+ * (.ts/.js/.mts/.mjs/.cts/.cjs).
  */
 export default defineConfig({
-  ...nxE2EPreset(__filename, { testDir: './src' }),
+  ...nxE2EPreset(import.meta.dirname, { testDir: './src' }),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   projects: [
     {
@@ -53,12 +60,12 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     } */
   ],
-  /* Run your local dev server before starting the tests */
   use: {
     baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
+  /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npx nx run pet-shop:serve',
     cwd: workspaceRoot,
