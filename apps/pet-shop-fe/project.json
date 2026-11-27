@@ -40,9 +40,8 @@
         ],
         "browser": "apps/pet-shop-fe/src/main.ts",
         "index": "apps/pet-shop-fe/src/index.html",
-        "inlineStyleLanguage": "scss",
+        "inlineStyleLanguage": "sass",
         "outputPath": "dist/apps/pet-shop-fe",
-        "scripts": [],
         "styles": [
           "@angular/material/prebuilt-themes/azure-blue.css",
           "apps/pet-shop-fe/src/styles.sass"
