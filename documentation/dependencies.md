@@ -302,6 +302,8 @@ Used directly by the applications:
 
 ### `@vue/eslint-config-prettier`
 
+[//]: # (TODO: Is it unused?)
+
 ### `@vue/eslint-config-typescript`
 
 ### `@vue/test-utils`

@@ -122,7 +122,6 @@
 - @vitejs/plugin-vue
 - @vitest/coverage-v8
 - @vitest/ui
-- @vue/eslint-config-prettier
 - @vue/eslint-config-typescript
 - @vue/test-utils
 - eslint
