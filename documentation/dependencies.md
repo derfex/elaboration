@@ -355,6 +355,12 @@ A peer dependency of:
 
 ### `ts-jest`
 
+Used directly by the applications:
+- [`derfex-profile-data-server`](../apps/derfex-profile-data-server) (`jest.config.cts`)
+
+A peer dependency of:
+- `@nx/jest` (optional)
+
 ### `ts-node`
 
 ### `tslib`
