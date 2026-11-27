@@ -27,19 +27,19 @@ Run `npx nx graph` to visually explore what was created. Now, let's get you up t
 To run the dev server for your app, use:
 
 ```sh
-npx nx serve pet-shop-fe
+npx nx serve application_name
 ```
 
 To create a production bundle:
 
 ```sh
-npx nx build pet-shop-fe
+npx nx build application_name
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-npx nx show project pet-shop-fe
+npx nx show project application_name
 ```
 
 These targets are either [inferred automatically](https://nx.dev/docs/concepts/inferred-tasks)
