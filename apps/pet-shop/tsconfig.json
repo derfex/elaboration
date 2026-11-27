@@ -6,7 +6,6 @@
     "typeCheckHostBindings": true
   },
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
