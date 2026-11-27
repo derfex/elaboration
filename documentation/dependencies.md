@@ -255,6 +255,9 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `@swc-node/register`
 
+A peer dependency of:
+- `nx` (optional)
+
 ### `@swc/core`
 
 A peer dependency of:

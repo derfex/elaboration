@@ -174,7 +174,6 @@
 - @nx/workspace
 - @playwright/test
 - @schematics/angular
-- @swc-node/register
 - @typescript-eslint/utils
 - angular-eslint
 - eslint
