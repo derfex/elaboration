@@ -3,9 +3,9 @@
   "implicitDependencies": [
     "pet-shop"
   ],
-  "name": "pet-shop-e2e",
+  "name": "pet-shop-fe-e2e",
   "projectType": "application",
-  "sourceRoot": "apps/pet-shop-e2e/src",
-  "// targets": "to see all targets run: nx show project pet-shop-e2e --web",
+  "sourceRoot": "apps/pet-shop-fe-e2e/src",
+  "// targets": "to see all targets run: nx show project pet-shop-fe-e2e --web",
   "targets": {}
 }
