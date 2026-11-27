@@ -1,8 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "implicitDependencies": [
-    "pet-shop"
-  ],
+  "implicitDependencies": ["pet-shop-fe"],
   "name": "pet-shop-fe-e2e",
   "projectType": "application",
   "sourceRoot": "apps/pet-shop-fe-e2e/src",

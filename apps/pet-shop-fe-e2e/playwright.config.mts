@@ -67,7 +67,7 @@ export default defineConfig({
   },
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'npx nx run pet-shop:serve',
+    command: 'npx nx run pet-shop-fe:serve',
     cwd: workspaceRoot,
     reuseExistingServer: true,
     url: 'http://localhost:4200',

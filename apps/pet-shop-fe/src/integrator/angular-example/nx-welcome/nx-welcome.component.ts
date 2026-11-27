@@ -501,7 +501,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
         <div id="welcome">
           <h1>
             <span> Hello there, </span>
-            Welcome pet-shop 👋
+            Welcome pet-shop-fe 👋
           </h1>
         </div>
         <!--  HERO  -->
@@ -867,7 +867,7 @@ nx run-many -t build test lint</pre>
               </svg>
               View project details
             </summary>
-            <pre>nx show project pet-shop</pre>
+            <pre>nx show project pet-shop-fe</pre>
           </details>
 
           <details>

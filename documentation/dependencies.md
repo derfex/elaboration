@@ -25,7 +25,7 @@ including directives and pipes, location services used in routing, HTTP services
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`web-invitation`](../apps/web-invitation)
 
 ### `@angular/compiler`
@@ -42,7 +42,7 @@ Implements Angular's core functionality, low-level services, and utilities.
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`web-invitation`](../apps/web-invitation)
 
 ### `@angular/forms`
@@ -50,14 +50,14 @@ Used directly by the applications:
 Forms.
 
 Used directly by the applications:
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 
 ### `@angular/material`
 
 UI component infrastructure and Material Design components for Angular web applications.
 
 Used directly by the applications:
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 
 ### `@angular/platform-browser`
 
@@ -65,7 +65,7 @@ The web development framework for building modern apps.
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`web-invitation`](../apps/web-invitation)
 
 ### `@angular/platform-browser-dynamic`
@@ -75,7 +75,7 @@ FIXME?: Deprecated?
 Supports JIT compilation and execution of Angular apps on different supported browsers.
 
 Used directly by the applications:
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 
 ### `@angular/router`
 
@@ -83,7 +83,7 @@ Router.
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`web-invitation`](../apps/web-invitation)
 
 ### `@mdi/font`
@@ -185,7 +185,7 @@ TODO.
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`web-invitation`](../apps/web-invitation)
 
 ### `@angular-devkit/core`
@@ -197,7 +197,7 @@ Used directly by the applications:
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
 - [`nx-welcome-vue`](../apps/nx-welcome-vue)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 - [`web-invitation`](../apps/web-invitation)
@@ -335,7 +335,7 @@ A peer dependency of:
 Used directly by the applications:
 - [`derfex-profile-e2e`](../apps/derfex-profile-e2e)
 - [`nx-welcome-vue-e2e`](../apps/nx-welcome-vue-e2e)
-- [`pet-shop-e2e`](../apps/pet-shop-e2e)
+- [`pet-shop-fe-e2e`](../apps/pet-shop-fe-e2e)
 - [`pragmatic-calculations-fe-e2e`](../apps/pragmatic-calculations-fe-e2e)
 - [`vehicles-registry-fe-e2e`](../apps/vehicles-registry-fe-e2e)
 - [`web-invitation-e2e`](../apps/web-invitation-e2e)
@@ -390,7 +390,7 @@ A peer dependency of:
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
 - [`nx-welcome-vue`](../apps/nx-welcome-vue)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 - [`web-invitation`](../apps/web-invitation)
@@ -404,7 +404,7 @@ Used directly by the applications:
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`pet-shop`](../apps/pet-shop)
+- [`pet-shop-fe`](../apps/pet-shop-fe)
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 - [`web-invitation`](../apps/web-invitation)
