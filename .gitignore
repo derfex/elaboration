@@ -70,6 +70,8 @@ apps/vehicles-registry-fe/.env.local
 
 # Unsystematized
 
+__screenshots__/
+
 vite.config.*.timestamp*
 vitest.config.*.timestamp*
 
