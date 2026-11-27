@@ -1,5 +1,5 @@
 /// <reference types='vitest/config' />
-import angular from '@analogjs/vite-plugin-angular'
+import viteAngularPlugin from '@analogjs/vite-plugin-angular'
 import { defineConfig, type UserConfig } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
@@ -8,7 +8,7 @@ export default defineConfig(
   (): UserConfig => ({
     cacheDir: '../../node_modules/.vite/apps/web-invitation',
     plugins: [
-      angular(),
+      viteAngularPlugin(),
       viteStaticCopy({
         targets: [
           {
