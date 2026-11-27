@@ -371,7 +371,6 @@ Used directly by the applications:
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`nx-welcome-vue`](../apps/nx-welcome-vue)
 - [`pet-shop`](../apps/pet-shop)
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
