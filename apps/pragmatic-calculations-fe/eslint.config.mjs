@@ -1,9 +1,9 @@
-import vue from 'eslint-plugin-vue'
+import esLintVuePlugin from 'eslint-plugin-vue'
 import baseConfig from '../../eslint.config.mjs'
 
 export default [
   ...baseConfig,
-  ...vue.configs['flat/recommended'],
+  ...esLintVuePlugin.configs['flat/recommended'],
   {
     files: ['**/*.vue'],
     languageOptions: {

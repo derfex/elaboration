@@ -167,6 +167,9 @@ Used directly by the applications:
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
+A peer dependency of:
+- `@nx/vue`
+
 ### `vuetify`
 
 Vuetify is a no-design-skills-required Open Source UI component framework for Vue.
@@ -255,9 +258,20 @@ Probably it is used indirectly by every Angular app's unit tests.
 
 ### `@swc-node/register`
 
+A peer dependency of:
+- `nx` (optional)
+
 ### `@swc/core`
 
+A peer dependency of:
+- `@swc-node/register`
+- `nx` (optional)
+- `ts-node` (optional)
+
 ### `@swc/helpers`
+
+A peer dependency of:
+- `@swc/core` (optional)
 
 ### `@types/fs-extra`
 
@@ -291,7 +305,11 @@ Used directly by the applications:
 
 ### `@vue/eslint-config-prettier`
 
+[//]: # (TODO: Is it unused?)
+
 ### `@vue/eslint-config-typescript`
+
+[//]: # (TODO: Is it unused?)
 
 ### `@vue/test-utils`
 
@@ -305,6 +323,12 @@ Used directly by the applications:
 ### `eslint`
 
 ### `eslint-config-prettier`
+
+A dependency of:
+- `@vue/eslint-config-prettier`
+
+A peer dependency of:
+- `@nx/eslint-plugin` (optional)
 
 ### `eslint-plugin-playwright`
 
@@ -344,7 +368,16 @@ A peer dependency of:
 
 ### `ts-jest`
 
+Used directly by the applications:
+- [`derfex-profile-data-server`](../apps/derfex-profile-data-server) (`jest.config.cts`)
+
+A peer dependency of:
+- `@nx/jest` (optional)
+
 ### `ts-node`
+
+A peer dependency of:
+- `jest-config` (indirect dependence) (optional)
 
 ### `tslib`
 
@@ -371,7 +404,6 @@ Used directly by the applications:
 
 Used directly by the applications:
 - [`derfex-profile`](../apps/derfex-profile)
-- [`nx-welcome-vue`](../apps/nx-welcome-vue)
 - [`pet-shop`](../apps/pet-shop)
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)

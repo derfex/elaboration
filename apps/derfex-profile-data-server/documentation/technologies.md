@@ -83,7 +83,6 @@
 - @typescript-eslint/parser
 - @typescript-eslint/utils
 - eslint
-- eslint-config-prettier
 - eslint-plugin-playwright
 - nx
 - prettier

@@ -1,10 +1,10 @@
-import nx from '@nx/eslint-plugin'
+import esLintNXPlugin from '@nx/eslint-plugin'
 import tsESLintPlugin from '@typescript-eslint/eslint-plugin'
 
 export default [
-  ...nx.configs['flat/base'],
-  ...nx.configs['flat/typescript'],
-  ...nx.configs['flat/javascript'],
+  ...esLintNXPlugin.configs['flat/base'],
+  ...esLintNXPlugin.configs['flat/typescript'],
+  ...esLintNXPlugin.configs['flat/javascript'],
   {
     ignores: [
       '**/dist',

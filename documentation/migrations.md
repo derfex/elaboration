@@ -74,7 +74,8 @@ Source: https://www.npmjs.com/package/@nx/vue/v/23.0.2?activeTab=code
 ```
 It seems that `vue-router`'s versions 4 and 5 are almost entirely backward compatible.
 
-Solution: the version of `vue-router@5.0.3` was (temporary?) downgraded to `vue-router@^4.5.0`.  
+2026-10-30: Solution: the version of `vue-router@5.0.3` was (temporary?) downgraded to `vue-router@^4.5.0`.  
+2026-11-27: Update: install `vue-router@^4.6.5`.  
 TODO: migrate to `vue-router@5.0.3`.
 
 ### Typescript. `@typescript-eslint/utils`

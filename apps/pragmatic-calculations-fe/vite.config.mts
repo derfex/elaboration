@@ -1,5 +1,5 @@
 /// <reference types='vitest/config' />
-import vuePlugin from '@vitejs/plugin-vue'
+import viteVuePlugin from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 import { type ConfigEnv, defineConfig, type PluginOption, type UserConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -26,7 +26,7 @@ export default defineConfig(
       reportCompressedSize: true,
     },
     plugins: [
-      vuePlugin(),
+      viteVuePlugin(),
       VitePWA({
         manifest: {
           background_color: '#000',

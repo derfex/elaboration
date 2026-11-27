@@ -1,7 +1,6 @@
 /// <reference types='vitest/config' />
-import vue from '@vitejs/plugin-vue'
+import viteVuePlugin from '@vitejs/plugin-vue'
 import { defineConfig, type UserConfig } from 'vite'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config
 export default defineConfig(
@@ -24,15 +23,7 @@ export default defineConfig(
       reportCompressedSize: true,
     },
     plugins: [
-      vue(),
-      viteStaticCopy({
-        targets: [
-          {
-            dest: '.',
-            src: 'src/**/*.md',
-          },
-        ],
-      }),
+      viteVuePlugin(),
     ],
     // Uncomment this if you are using workers.
     // worker: {
