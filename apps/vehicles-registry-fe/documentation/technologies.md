@@ -82,7 +82,6 @@
 - @vue/eslint-config-typescript
 - @vue/test-utils
 - eslint
-- eslint-config-prettier
 - eslint-plugin-playwright
 - eslint-plugin-vue
 - jiti

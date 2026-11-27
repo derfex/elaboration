@@ -134,7 +134,6 @@ Basic syntax only.
 - @typescript-eslint/utils
 - angular-eslint
 - eslint
-- eslint-config-prettier
 - eslint-plugin-playwright
 - jsdom
 - nx

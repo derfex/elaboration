@@ -317,6 +317,12 @@ Used directly by the applications:
 
 ### `eslint-config-prettier`
 
+A dependency of:
+- `@vue/eslint-config-prettier`
+
+A peer dependency of:
+- `@nx/eslint-plugin` (optional)
+
 ### `eslint-plugin-playwright`
 
 Used directly by the applications:

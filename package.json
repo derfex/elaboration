@@ -71,7 +71,7 @@
     "@vue/test-utils": "2.4.10",
     "angular-eslint": "22.6.0",
     "eslint": "9.29.0",
-    "eslint-config-prettier": "^10.0.0",
+    "eslint-config-prettier": "^10.1.9",
     "eslint-plugin-playwright": "^1.6.2",
     "eslint-plugin-vue": "^9.16.1",
     "jest": "30.3.0",
