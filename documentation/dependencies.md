@@ -167,6 +167,9 @@ Used directly by the applications:
 - [`pragmatic-calculations-fe`](../apps/pragmatic-calculations-fe)
 - [`vehicles-registry-fe`](../apps/vehicles-registry-fe)
 
+A peer dependency of:
+- `@nx/vue`
+
 ### `vuetify`
 
 Vuetify is a no-design-skills-required Open Source UI component framework for Vue.
