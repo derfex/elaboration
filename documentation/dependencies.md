@@ -306,6 +306,8 @@ Used directly by the applications:
 
 ### `@vue/eslint-config-typescript`
 
+[//]: # (TODO: Is it unused?)
+
 ### `@vue/test-utils`
 
 Used directly by the applications:
