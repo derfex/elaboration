@@ -4,12 +4,12 @@ export const appRoutes: Routes = [
   {
     loadComponent: () => import('~pages/home-page/home-page.component').then((c) => c.HomePageComponent),
     path: '',
-    title: 'Elaboration: Angular. Pet-shop',
+    title: 'Pet-shop | Elaboration. Angular',
   },
   {
     loadComponent: () =>
       import('~pages/nx-welcome-page/nx-welcome-page.component').then((c) => c.NxWelcomePageComponent),
     path: 'nx-welcome',
-    title: 'Elaboration: Angular. NX welcome',
+    title: 'NX welcome | Elaboration. Angular',
   },
 ]
